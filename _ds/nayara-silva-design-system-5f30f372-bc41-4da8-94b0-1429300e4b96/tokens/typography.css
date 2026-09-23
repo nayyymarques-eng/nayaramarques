@@ -1,0 +1,56 @@
+:root{
+  /* --- Sizes. Every headline in the source is a clamp(); the min/max are
+         tokenised so the pair can be reused verbatim. ------------------- */
+  --size-display:clamp(34px,5.2vw,68px);      /* page h1 */
+  --size-mega:clamp(28px,4vw,52px);       /* dark CTA headline */
+  --size-title:clamp(24px,3.4vw,44px);      /* case / card title, big stat */
+  --size-statement:clamp(20px,2.6vw,30px);  /* statement line, section h3 */
+  --size-lead:clamp(19px,2.2vw,26px);       /* lead paragraph, card h3 */
+  --size-body-lg:20px;                      /* hero deck, standfirst */
+  --size-body:16px;                         /* running prose */
+  --size-small:14px;                        /* captions, card prose, chips */
+  --size-label:11px;                        /* button + link labels, markers */
+  --size-eyebrow:10px;                      /* uppercase section labels */
+
+  /* --- Weights. 500 is the headline weight; the brand never sets 700. -- */
+  --weight-regular:400; /* @kind other */
+  --weight-medium:500; /* @kind other */
+  --weight-semibold:600; /* @kind other */
+
+  /* --- Tracking. Tighter as type grows, wide only for uppercase. ------- */
+  --track-display:-0.045em; /* @kind other */
+  --track-mega:-0.042em; /* @kind other */
+  --track-title:-0.036em; /* @kind other */
+  --track-statement:-0.03em; /* @kind other */
+  --track-lead:-0.026em; /* @kind other */
+  --track-body-lg:-0.018em; /* @kind other */
+  --track-label:0.12em; /* @kind other */
+  --track-eyebrow:0.14em; /* @kind other */
+
+  /* --- Leading --------------------------------------------------------- */
+  --leading-display:0.94; /* @kind other */
+  --leading-mega:1; /* @kind other */
+  --leading-title:1.06; /* @kind other */
+  --leading-lead:1.16; /* @kind other */
+  --leading-statement:1.22; /* @kind other */
+  --leading-body-lg:1.45; /* @kind other */
+  --leading-small:1.6; /* @kind other */
+  --leading-body:1.7; /* @kind other */
+
+  /* --- Measures. Prose is capped in ch, never in px. ------------------- */
+  --measure-title:20ch; /* @kind other */
+  --measure-card:52ch; /* @kind other */
+  --measure-standfirst:56ch; /* @kind other */
+  --measure-deck:58ch; /* @kind other */
+  --measure-prose:62ch; /* @kind other */
+  --measure-prose-wide:66ch; /* @kind other */
+  --measure-list:70ch; /* @kind other */
+  --measure-caption:88ch; /* @kind other */
+
+  /* --- Aliases --------------------------------------------------------- */
+  --type-eyebrow:var(--weight-semibold) var(--size-eyebrow)/1.4 var(--font-sans);
+  --type-label:var(--weight-semibold) var(--size-label)/1.2 var(--font-sans);
+  --type-body:var(--weight-regular) var(--size-body)/var(--leading-body) var(--font-sans);
+  --type-small:var(--weight-regular) var(--size-small)/var(--leading-small) var(--font-sans);
+  --type-mono:var(--weight-regular) var(--size-label)/1.4 var(--font-mono);
+}

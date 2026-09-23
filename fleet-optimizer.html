@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fleet Optimizer — Nayara Marques</title>
+<meta name="description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nayara Marques">
+<meta property="og:title" content="Fleet Optimizer — Nayara Marques">
+<meta property="og:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<meta property="og:url" content="https://www.nayaramarques.com/fleet-optimizer.html">
+<meta property="og:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nayara Marques, product designer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fleet Optimizer — Nayara Marques">
+<meta name="twitter:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
+<script src="./support.js"></script>
+<style id="boot-style">
+  html { background:#f2f1ee; color:#3a3e44; font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html.booting x-dc { visibility: hidden; }
+  #boot { display:none; }
+  html.booting #boot { display:block; }
+  @keyframes bootPulse { 0%,100% { opacity:1 } 50% { opacity:.5 } }
+  #boot i { display:block; background:#e4e2dc; animation: bootPulse 1.5s cubic-bezier(.19,1,.22,1) infinite; }
+</style>
+<script>document.documentElement.classList.add('booting');</script>
+</head>
+<body>
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:#f2f1ee;z-index:9999">
+  <div style="height:57px;border-bottom:1px solid #dedbd5;display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
+    <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:#e2e0da;animation:none"></i>
+    <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
+    <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
+    <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
+  </div>
+</div>
+<script>
+(function () {
+  var done = function () { document.documentElement.classList.remove('booting'); };
+  var start = function () {
+    var x = document.querySelector('x-dc');
+    if (!x) return done();
+    var raw = x.firstElementChild;
+    // The nav is a child component fetched after the page renders — waiting only on
+    // the page itself left an empty nav bar on screen for a beat.
+    var tick = function () {
+      var pageUp = !raw || !raw.isConnected || !x.contains(raw);
+      var navUp = !!document.querySelector('header nav a');
+      if (pageUp && navUp) return done();
+      requestAnimationFrame(tick);
+    };
+    tick();
+    // last-resort cap: never leave the page hidden, but give a cold nav fetch room
+    setTimeout(done, 10000);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Fleet Optimizer — Nayara Marques</title>
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/base.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/styles.css">
+<script src="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/_ds_bundle.js"></script>
+<style>
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--rust); }
+  ::selection { background: var(--ink); color: var(--paper); }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  @media (max-width: 860px) {
+    [data-rail] {
+      flex: 1 1 100% !important;
+      top: 56px !important;
+      z-index: 5;
+      background-color: inherit;
+      padding: 13px 0 11px !important;
+      margin: 0 0 6px !important;
+      border-bottom: 1px solid #dedbd5;
+    }
+  }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+
+  <dc-import name="Nav" hint-size="100%,57px" style="position:sticky;top:0;z-index:50"></dc-import>
+
+  <main style="max-width:1400px;margin:0 auto;padding:0 32px">
+
+    <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 0">
+      <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:20px"><span style="color:var(--rust)">Loadsmart</span> · Chicago · 2021—2023</div>
+      <h1 style="font-weight:500;font-size:var(--size-display);line-height:var(--leading-display);letter-spacing:var(--track-display);margin:0 0 clamp(24px,3vw,32px);max-width:23ch;text-wrap:balance">Capacity matching for private truck fleets</h1>
+      <div style="height:1px;background:#e2e0da;margin-bottom:clamp(24px,3vw,32px)"></div>
+      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:#4e535a;text-wrap:pretty">Fleet Optimizer connects private fleet capacity to shipper demand. A design sprint produced a web platform; a comparison test said the plain email it replaced was the better bet. We shipped the email.</p>
+    </section>
+
+    <section style="background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(28px,4vw,40px) 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(20px,3vw,36px)">
+        <div>
+          <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Role</div>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small)">Senior Product Designer. Sole designer; I ran the research and facilitated the design sprint.</p>
+        </div>
+        <div>
+          <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Team</div>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small)">Me, 2 PMs, plus product, business and tech across four countries. Sponsored by The Home Depot.</p>
+        </div>
+        <div>
+          <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Context</div>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small)">A new business vertical at a logistics unicorn, still experimental and leaning on market research.</p>
+        </div>
+        <div>
+          <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Contribution</div>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">qual + quant research · sprint facilitation · concept design · comparison testing · product strategy</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:clamp(28px,4vw,40px)">
+      <div style="aspect-ratio:16/9;position:relative;border:1px solid var(--line);background:var(--white);overflow:hidden"><image-slot id="fleet-hero" src="assets/p28-0.png" shape="rect" fit="contain" placeholder="Hero — View Matches, the platform the research shelved" style="max-width:100%;width:100%;height:100%"></image-slot></div>
+      <p style="margin:12px 0 0;max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">View Matches — the platform the sprint produced, and the research shelved.</p>
+    </section>
+
+    <section style="display:grid">
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">01 — Context &amp; my role</h2>
+        <div style="flex:1 1 460px;min-width:0;max-width:var(--measure-prose-wide)">
+          <p style="margin:0 0 18px;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Loadsmart automates how freight is priced, booked and shipped. Fleet Optimizer was a new vertical aimed at private and dedicated fleets: companies that own their trucks, or run dedicated service for a single shipper.</p>
+          <p style="margin:0;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The product team already had a solution concept. What it didn't have was evidence that the concept met a real demand. My job was to find the similarities across fleet types and bring the findings to the table with the PM and VP of Product — including when they pointed away from the plan.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">02 — The problem</h2>
+        <div style="flex:1 1 460px;min-width:0;max-width:var(--measure-prose)">
+          <p style="margin:0 0 20px;font-size:var(--size-statement);font-weight:500;line-height:var(--leading-statement);letter-spacing:var(--track-statement);text-wrap:pretty">Empty return trips are expensive, and nobody was being paid to care.</p>
+          <p style="margin:0 0 24px;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Six 30-minute semi-structured interviews with fleet managers of dedicated fleets, conducted over Google Meet. Four findings mattered:</p>
+          <div style="display:grid;gap:0">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)">
+              <span style="font-size:var(--size-label);color:var(--rust);white-space:nowrap;padding-top:3px">6 of 6</span>
+              <p style="margin:0;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Fleet managers spend most of their time analysing data — largely in spreadsheets — trying to optimise the fleet and hit their metrics.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)">
+              <span style="font-size:var(--size-label);color:var(--rust);white-space:nowrap;padding-top:3px">6 of 6</span>
+              <p style="margin:0;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Dedicated fleets are paid for the round trip. Around 70% of return freight moves empty, and the customer has already agreed to pay for it.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)">
+              <span style="font-size:var(--size-label);color:var(--rust);white-space:nowrap;padding-top:3px">5 of 6</span>
+              <p style="margin:0;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Service on dedicated loads outranks third-party freight every time. A backhaul that risks the committed route isn't worth taking.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+              <span style="font-size:var(--size-label);color:var(--rust);white-space:nowrap;padding-top:3px">6 of 6</span>
+              <p style="margin:0;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Loading and unloading time decides it. Drop-and-hook is easy; a live load with strapping and tarping can add four hours to a driver's day.</p>
+            </div>
+          </div>
+          <p style="margin:24px 0 0;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">So filling backhauls was not the top priority we had assumed, and available capacity is not a simple calculation — it depends on shipper volume, hours of service, and the characteristics of the load offered.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">03 — Constraints</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="A" title="No users in the design sprint." measure="70ch" hint-size="100%,80px">We couldn't get a fleet manager into the room, so every sprint output was a hypothesis until tested.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="B" title="Distributed by four time zones." measure="70ch" hint-size="100%,80px">The sprint ran online with participants in the US, Peru, Brazil and Argentina, which shaped how it had to be facilitated.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="C" title="An experimental vertical." last="{{ true }}" measure="70ch" hint-size="100%,80px">Investment depended on evidence, and the company could — and later did — change strategy.</x-import>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">04 — Process &amp; key decisions</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="margin:0 0 28px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">No method was set out in advance. Looking back, the work moved through four stages: the interviews, the sprint I facilitated, the comparison test, and the decisions that came out of it.</p>
+
+          <div style="border-top:1px solid var(--line-ink);padding-top:18px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink);margin-bottom:6px">01 — Interviews</div>
+          <p style="margin:0 0 clamp(44px,6vw,72px);max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Six people from fleet teams, 30 minutes each, semi-structured. The findings in section 02 came from this round and reset what the team thought the priority was.</p>
+
+          <div style="border-top:1px solid var(--line-ink);padding-top:18px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink);margin-bottom:6px">02 — Design sprint</div>
+          <p style="margin:0 0 clamp(44px,6vw,72px);max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">A cross-functional sprint run online across four countries, with product, business and tech in the room and no fleet manager available. Its winning concept was View Matches, the platform pictured above.</p>
+
+          <div style="border-top:1px solid var(--line-ink);padding-top:18px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink);margin-bottom:6px">03 — Comparison test</div>
+          <p style="margin:0 0 clamp(44px,6vw,72px);max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Six participants, each shown the platform and the existing match e-mail in sequence and asked which they would use. The split it exposed — tactical staff against managers — was not something the sprint had modelled.</p>
+
+          <div style="border-top:1px solid var(--line-ink);padding-top:18px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink);margin-bottom:24px">04 — Key decisions</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;align-items:stretch">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 01" title="Test the new thing against the thing it replaces" gained="A clear answer instead of polite approval. Tactical staff who accept or reject loads preferred the e-mail; only managers, who receive reports and don't work the loads, preferred the platform." traded="A sprint's worth of team investment in a platform we chose to shelve. That's an uncomfortable result to present, and the right one." hint-size="100%,380px">The sprint's winning solution was View Matches — a site where fleet managers upload and manage available capacity and receive load matches. Instead of testing it alone, I ran a sequential comparison against the existing e-mail matches with six participants.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 02" title="Improve the e-mail first, keep the platform for later" gained="A 250% lift in response rate, tracked in a Superset dashboard — against six months where the e-mail produced four replies total." traded="Investing in a channel we don't own. Every future feature has to survive an inbox." hint-size="100%,380px">We redesigned the match e-mail around the lane rather than the fleet number, made the price and CTA prominent, linked the map to Google Maps, and added recurrency information plus a feedback and add-capacity section. View Matches stayed on the roadmap for high-level managers.</x-import>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">05 — The solution</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="margin:0 0 28px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">A rebuilt match e-mail, designed to be decided on from a phone in a yard. Four changes carried the redesign.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,32px);align-items:start">
+            <div style="min-width:0;display:flex;flex-direction:column">
+              <div style="aspect-ratio:1132/1349;position:relative;border:1px solid var(--line);background:var(--white);overflow:hidden"><image-slot id="fleet-email-before" src="assets/p30-0.png" shape="rect" fit="contain" placeholder="E-mail — before" style="max-width:100%;width:100%;height:100%"></image-slot></div>
+              <div style="font-size:var(--size-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--ink);margin:14px 0 8px">Before</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">The original match e-mail: led by the fleet number, with the price and the action below the fold of a phone screen.</p>
+            </div>
+            <div style="min-width:0;display:flex;flex-direction:column">
+              <div style="aspect-ratio:724/1188;position:relative;border:1px solid var(--line);background:var(--white);overflow:hidden"><image-slot id="fleet-email-after" src="assets/p30-1.png" shape="rect" fit="contain" placeholder="E-mail — after" style="max-width:100%;width:100%;height:100%"></image-slot></div>
+              <div style="font-size:var(--size-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--ink);margin:14px 0 8px">After</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Lane-led, with price and CTA up front, the map linked out to Google Maps, recurrency stated, and a feedback and add-capacity section at the end.</p>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:clamp(28px,4vw,40px)">
+            <div style="background:var(--white);border:1px solid var(--line);padding:20px">
+              <div style="font-size:var(--size-small);font-weight:600;margin-bottom:8px">Lane, not fleet number</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">The subject and first line now name origin and destination, so the message can be placed without opening a record.</p>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--line);padding:20px">
+              <div style="font-size:var(--size-small);font-weight:600;margin-bottom:8px">Price and CTA up front</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Accepting or rejecting is a price decision, so both sit above everything else in the message.</p>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--line);padding:20px">
+              <div style="font-size:var(--size-small);font-weight:600;margin-bottom:8px">Recurrency stated</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">A one-off load and a weekly lane are different propositions, so the e-mail says which it is.</p>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--line);padding:20px">
+              <div style="font-size:var(--size-small);font-weight:600;margin-bottom:8px">A way to reply with more than yes</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Feedback and add-capacity sections turned a broadcast into a channel the team could learn from. Loading time decided most rejections, and this is where that reason could finally be captured.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">06 — Impact</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="margin:0 0 34px;max-width:var(--measure-caption);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Six participants saw both options in sequence. The test produced two findings.</p>
+
+          <div style="border-top:1px solid var(--line-ink);padding-top:18px;margin-bottom:clamp(40px,5vw,60px)">
+            <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink);margin-bottom:10px">Finding 01 — the platform was the wrong surface</div>
+            <p style="margin:0 0 22px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The people who actually accept and reject loads preferred the e-mail; only managers, who read reports rather than work the loads, preferred the platform. Recommending the e-mail meant asking the team to set aside a platform it had already sprinted on and designed. The comparison made that case, and the build moved to the channel the tactical users were already in.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;border:1px solid var(--line);background:var(--paper);padding:18px 20px">
+              <span style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);flex-shrink:0">What shipped</span>
+              <span style="font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-decoration:line-through">View Matches platform</span>
+              <span aria-hidden="true" style="font-size:var(--size-small);color:var(--ink-7)">→</span>
+              <span style="font-size:var(--size-small);line-height:var(--leading-small);font-weight:600;color:var(--ink)">Redesigned match e-mail</span>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid var(--line-ink);padding-top:18px">
+            <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink);margin-bottom:10px">Finding 02 — the channel was under-used, not exhausted</div>
+            <p style="margin:0 0 22px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The e-mail had produced four replies in six months, which had been read as the channel being dead. Rebuilt around the lane and the price, the same channel lifted its response rate 250%, tracked in a Superset dashboard.</p>
+            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);overflow:hidden">
+              <div style="background:var(--paper);padding:24px 20px;height:100%"><div style="font-size:var(--size-title);line-height:var(--leading-title);letter-spacing:var(--track-title);margin-bottom:10px">+250%</div><p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">response rate after the e-mail redesign</p></div>
+              <div style="background:var(--paper);padding:24px 20px;height:100%"><div style="font-size:var(--size-title);line-height:var(--leading-title);letter-spacing:var(--track-title);margin-bottom:10px">4</div><p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">replies in the six months before it, the baseline the lift is measured against</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">07 — What I learned</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;align-items:stretch">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="On the product" title="Comparison beats evaluation" hint-size="100%,240px">Asking "is this good?" gets you agreement; asking "which of these two?" gets you a decision. It also surfaced a split between tactical and managerial users we hadn't modelled at all.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="On the product" title="The least glamorous surface often carries the business" hint-size="100%,240px">An e-mail was a worse portfolio piece and a better product decision. The channel a user already checks beats the one you would rather build.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="On the practice" title="A sprint without users is a hypothesis generator" hint-size="100%,240px">It was still worth running — it aligned four countries' worth of stakeholders in a week. But I now write the test that will check its output before the sprint starts, not after.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="On the practice" title="Six interviews can redirect a roadmap" hint-size="100%,240px">The research cost days and moved the plan before a build cycle was spent. Sizing research to the decision, rather than to the ideal, is what lets it fit a delivery timeline at all.</x-import>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section style="display:grid">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(56px,8vw,96px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="margin:0 0 24px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The work runs from the interviews to the e-mail redesign going live. Four things are outside it.</p>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="01" title="Where the vertical ended up." measure="70ch" hint-size="100%,80px">The company later changed strategy and stopped focusing on private fleets, so there is no long-run figure for booked backhauls or revenue. The +250% is a response-rate lift on a small baseline, not a business outcome.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="02" title="The platform, beyond one screen." measure="70ch" hint-size="100%,80px">View Matches was designed in full during the sprint. Only the matches view is shown here, because the rest was never tested and never built.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="03" title="Research depth." measure="70ch" hint-size="100%,80px">Six interviews and six comparison sessions, all with dedicated-fleet teams. Enough to redirect the plan; not enough to generalise to private fleets that don't run dedicated service.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="04" title="The driver's side." last="{{ true }}" measure="70ch" hint-size="100%,80px">Every finding about loading time and hours of service came from managers describing drivers' days. No driver was interviewed.</x-import>
+        </div>
+      </div>
+    </section>
+
+    <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.NextCase" title="Specifying an AI composer, frame by frame" href="composer-spec.html" tag="AI platform" hint-size="100%,240px"></x-import>
+
+  </main>
+
+  <dc-import name="Foot" hint-size="100%,80px"></dc-import>
+
+</div>
+</x-dc>
+</body>
+</html>

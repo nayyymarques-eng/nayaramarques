@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design system, AI platform — Nayara Marques</title>
+<meta name="description" content="Design system for an AI platform in private capital markets. One canonical source, eight rule families, 48 components, 9 templates, and a register for anything drawn outside the catalogue.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nayara Marques">
+<meta property="og:title" content="Design system, AI platform — Nayara Marques">
+<meta property="og:description" content="Design system for an AI platform in private capital markets. One canonical source, eight rule families, 48 components, 9 templates, and a register for anything drawn outside the catalogue.">
+<meta property="og:url" content="https://www.nayaramarques.com/design-system.html">
+<meta property="og:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nayara Marques, product designer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Design system, AI platform — Nayara Marques">
+<meta name="twitter:description" content="Design system for an AI platform in private capital markets. One canonical source, eight rule families, 48 components, 9 templates, and a register for anything drawn outside the catalogue.">
+<meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
+<script src="./support.js"></script>
+<style id="boot-style">
+  html { background:#f2f1ee; color:#3a3e44; font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html.booting x-dc { visibility: hidden; }
+  #boot { display:none; }
+  html.booting #boot { display:block; }
+  @keyframes bootPulse { 0%,100% { opacity:1 } 50% { opacity:.5 } }
+  #boot i { display:block; background:#e4e2dc; animation: bootPulse 1.5s cubic-bezier(.19,1,.22,1) infinite; }
+</style>
+<script>document.documentElement.classList.add('booting');</script>
+</head>
+<body>
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:#f2f1ee;z-index:9999">
+  <div style="height:57px;border-bottom:1px solid #dedbd5;display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
+    <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:#e2e0da;animation:none"></i>
+    <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
+    <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
+    <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
+  </div>
+</div>
+<script>
+(function () {
+  var done = function () { document.documentElement.classList.remove('booting'); };
+  var start = function () {
+    var x = document.querySelector('x-dc');
+    if (!x) return done();
+    var raw = x.firstElementChild;
+    // The nav is a child component fetched after the page renders — waiting only on
+    // the page itself left an empty nav bar on screen for a beat.
+    var tick = function () {
+      var pageUp = !raw || !raw.isConnected || !x.contains(raw);
+      var navUp = !!document.querySelector('header nav a');
+      if (pageUp && navUp) return done();
+      requestAnimationFrame(tick);
+    };
+    tick();
+    // last-resort cap: never leave the page hidden, but give a cold nav fetch room
+    setTimeout(done, 10000);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Design system, AI platform — Nayara Marques</title>
+<meta name="description" content="Design system for an AI platform in private capital markets. One canonical source, eight rule families, 48 components, 9 templates, and a register for anything drawn outside the catalogue.">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/base.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/styles.css">
+<script src="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/_ds_bundle.js"></script>
+<style>
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--rust); }
+  ::selection { background: var(--ink); color: var(--paper); }
+  figure { margin: 0; }
+  table { border-collapse: collapse; width: 100%; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  @media (max-width: 860px) {
+    [data-rail] {
+      flex: 1 1 100% !important;
+      top: 56px !important;
+      z-index: 5;
+      background-color: inherit;
+      padding: 13px 0 11px !important;
+      margin: 0 0 6px !important;
+      border-bottom: 1px solid #dedbd5;
+    }
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Nav" hint-size="100%,57px" style="position:sticky;top:0;z-index:50"></dc-import>
+
+  <main style="flex:1;max-width:1400px;margin:0 auto;padding:0 32px;width:100%">
+
+    <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 0">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--rust);margin-bottom:20px">
+        <span>Design system</span><span>AI platform · private capital markets</span><span>2026—</span>
+      </div>
+      <h1 style="font-size:var(--size-display);font-weight:500;line-height:var(--leading-display);letter-spacing:var(--track-display);margin:0 0 clamp(24px,3vw,32px);max-width:24ch;text-wrap:balance">A design system a whole team can build from</h1>
+      <div style="height:1px;background:#e2e0da;margin-bottom:clamp(24px,3vw,32px)"></div>
+      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:#4e535a;text-wrap:pretty">Two sources of truth, and neither matched what shipped. I made the build environment canonical, wrote eight rule families a component list cannot carry, and routed anything drawn from scratch to review.</p>
+    </section>
+
+    <section style="background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(28px,4vw,40px) 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(20px,3vw,36px)">
+        <div>
+          <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Role</div>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small)">Sole designer. Tokens, components, rules, templates, governance.</p>
+        </div>
+        <div>
+          <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Users</div>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small)">Engineers building UI, AI tools generating it, one designer reviewing it.</p>
+        </div>
+        <div>
+          <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Scope</div>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small)">Three products and a marketing site. One brand, one codebase. A startup team: one designer, six people building against the system.</p>
+        </div>
+        <div>
+          <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Built in</div>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Claude Design as the canonical source; handed to engineering through Claude Code as a portable rule set.</p>
+        </div>
+      </div>
+    </section>
+
+    <sc-if value="{{ numbersBand }}" hint-placeholder-val="{{ true }}">
+      <section style="padding:clamp(28px,4vw,40px) 0 clamp(36px,5vw,64px);border-bottom:1px solid var(--line)">
+        <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:22px">Found on audit · built since</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:clamp(18px,3vw,32px)">
+          <div style="border-top:1px solid var(--line-ink);padding-top:12px">
+            <div style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em">10</div>
+            <p style="margin:6px 0 0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">title declarations doing one job, in a single product</p>
+          </div>
+          <div style="border-top:1px solid var(--line-ink);padding-top:12px">
+            <div style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em">5</div>
+            <p style="margin:6px 0 0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">tab families, four different bottom edges</p>
+          </div>
+          <div style="border-top:1px solid var(--line-ink);padding-top:12px">
+            <div style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em">48</div>
+            <p style="margin:6px 0 0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">components now, each with a contract and a spec card</p>
+          </div>
+          <div style="border-top:1px solid var(--line-ink);padding-top:12px">
+            <div style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em">8</div>
+            <p style="margin:6px 0 0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">rule families, plus a decision map and one traced screen</p>
+          </div>
+          <div style="border-top:1px solid var(--line-ink);padding-top:12px">
+            <div style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em">9</div>
+            <p style="margin:6px 0 0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">templates as sanctioned starting points</p>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <section style="display:grid">
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">01 — Context</h2>
+        <div style="flex:1 1 460px;min-width:0;max-width:var(--measure-prose-wide)">
+          <p style="margin:0 0 18px;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The platform serves private capital markets across three products and a marketing site: an AI toolkit for investment workflows, a network for industry groups, and a marketplace where allocators source and diligence investments.</p>
+          <p style="margin:0 0 18px;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">I am the only designer. Everyone else who builds UI is an engineer, and most new UI arrives through AI tools. The system is read more often by a machine following instructions than by a person browsing a library, so it had to be an instruction set rather than a maintained file: precise enough that whoever builds next gets the same answer I would.</p>
+          <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">Illustrated with wireframes of the system's own structure rather than product screenshots. Names and values are as specified.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">02 — The problem</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="max-width:var(--measure-prose);margin:0 0 24px;font-size:var(--size-statement);font-weight:500;line-height:var(--leading-statement);letter-spacing:var(--track-statement);text-wrap:pretty">Two problems. There were two sources of truth and neither one shipped, and a catalogue of components did not stop the drift it was meant to stop.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;align-items:stretch;padding-bottom:clamp(28px,4vw,40px);border-bottom:1px solid var(--line)">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Problem A" title="Two sources of truth, one of them drifting" hint-size="100%,220px">A component library in one tool, an incomplete implementation in the codebase. The design file was complete but not what shipped; the codebase shipped but was inconsistently styled. Every question about a colour, a variant name or a hover state had two answers and no tiebreak, so the tiebreak was me.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Problem B" title="A component list does not stop drift" hint-size="100%,220px">Forty-odd components existed and screens still came out inconsistent. What was missing sat between the components: whether a list page goes white or grey, whether a title is sized by its container or by importance, which of four tab-shaped components is navigation and which is a filter, when a shadow is allowed.</x-import>
+          </div>
+
+          <h3 style="margin:clamp(28px,4vw,40px) 0 20px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6)">What the audit found</h3>
+          <ul style="list-style:none;margin:0;padding:0;max-width:var(--measure-prose-wide)">
+            <li style="padding:16px 0 18px;border-top:1px solid var(--line)">
+              <div style="margin-bottom:8px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">Ten title declarations for one job</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">Across a single product: ten separate header title declarations, four different bottom edges, five tab families. Each page was individually defensible.</p>
+            </li>
+            <li style="padding:16px 0 18px;border-top:1px solid var(--line)">
+              <div style="margin-bottom:8px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">Tokens that pointed at nothing</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">Two font weights with no font file behind them, so anything set to them was synthesised by the browser. Two shadow scales with near-identical names and different values. Two type scales where the same name meant 14px in one and 18.7px in the other.</p>
+            </li>
+            <li style="padding:16px 0 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+              <div style="margin-bottom:8px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">AI-assisted building multiplies all of it</div>
+              <p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">A plausible table, banner or title row can be drawn in seconds. It looks finished, so it reads as a decision, and a reviewer cannot tell an approximation from a decision without opening the markup.</p>
+            </li>
+          </ul>
+
+          <sc-if value="{{ diagrams }}" hint-placeholder-val="{{ true }}">
+            <figure style="margin-top:clamp(28px,4vw,40px)">
+              <div style="border:1px solid var(--line);background:var(--white)"><div style="padding:24px 26px 26px;background:#f2f1ee">
+                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid #3a3e44"><span>As-is</span><span>Two answers, no tiebreak</span></div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:22px">
+                  <div style="background:#fff;border:1px solid #dedbd5;padding:13px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:11px">Design file</div>
+                    <div style="display:flex;flex-direction:column;gap:6px"><span style="width:84%;height:5px;background:#e7e5df"></span><span style="width:62%;height:5px;background:#e7e5df"></span><span style="width:74%;height:5px;background:#e7e5df"></span></div>
+                    <p style="margin:11px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Complete. Not what shipped.</p>
+                  </div>
+                  <div style="background:#fff;border:1px solid #dedbd5;padding:13px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:11px">Codebase</div>
+                    <div style="display:flex;flex-direction:column;gap:6px"><span style="width:70%;height:5px;background:#dcd9d2"></span><span style="width:48%;height:5px;background:#dcd9d2"></span><span style="width:56%;height:5px;background:#dcd9d2"></span></div>
+                    <p style="margin:11px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Shipped. Incomplete and inconsistent.</p>
+                  </div>
+                </div>
+                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid #dedbd5">
+                  <span style="flex:none;font-size:11px;font-weight:600;color:#2f6d92;padding-top:2px">01</span>
+                  <p style="margin:0;font-size:14px;line-height:1.6;color:#4e535a"><strong style="font-weight:600">Every value had two answers.</strong> Colour, variant name, hover state, spacing.</p>
+                </div>
+                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid #dedbd5">
+                  <span style="flex:none;font-size:11px;font-weight:600;color:#2f6d92;padding-top:2px">02</span>
+                  <p style="margin:0;font-size:14px;line-height:1.6;color:#4e535a"><strong style="font-weight:600">The tiebreak was one person.</strong> Asked the same question repeatedly, in chat.</p>
+                </div>
+                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5">
+                  <span style="flex:none;font-size:11px;font-weight:600;color:#2f6d92;padding-top:2px">03</span>
+                  <p style="margin:0;font-size:14px;line-height:1.6;color:#4e535a"><strong style="font-weight:600">So following the system was optional.</strong> Whoever was building either guessed or waited.</p>
+                </div>
+              </div></div>
+              <figcaption style="margin:14px 0 0;max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Two libraries, each partially right, and the three costs that followed from having no tiebreak.</figcaption>
+            </figure>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">03 — Constraints</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="A" title="One source of truth, sitting where the work is made." measure="70ch" hint-size="100%,80px">Tooling that only produces pictures puts the system one translation away from the product. Whatever became canonical had to be the thing people build from directly.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="B" title="Components enter one at a time." measure="70ch" hint-size="100%,80px">A marketplace kit could have filled the catalogue in an afternoon, with the wrong typeface and a generic palette. Each component is rebuilt on our tokens, reviewed on its own, and given a spec card.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="C" title="Every gap had to be closed, because a gap is where the tool invents." measure="70ch" hint-size="100%,80px">An AI tool fills anything the system leaves unspecified with a plausible assumption. The answer was not to restrict what it can build, but to leave less to assume: every rule resolving to a number, a token or a named component, and the genuine gaps named as gaps rather than left open.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="D" title="One reviewer, and no process that queues." last="{{ true }}" measure="70ch" hint-size="100%,80px">Governance designed for a design team stalls on a team of one. Nothing could block a build waiting for approval, and nothing could require two people to agree.</x-import>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">04 — Approach &amp; key decisions</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="margin:0 0 28px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Four stages, in this order: audit what exists, settle where the truth lives, write the decisions down, build the route a new part takes to reach a designer.</p>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(20px,3vw,32px);margin-bottom:clamp(40px,6vw,64px)">
+            <div style="border-top:1px solid var(--line-ink);padding-top:14px"><div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--rust);margin-bottom:8px">01</div><div style="font-size:var(--size-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--ink);margin-bottom:8px">Audit</div><p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">Every header, token and near-duplicate component catalogued against what shipped.</p></div>
+            <div style="border-top:1px solid var(--line-ink);padding-top:14px"><div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--rust);margin-bottom:8px">02</div><div style="font-size:var(--size-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--ink);margin-bottom:8px">Where truth lives</div><p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">One canonical source named, the repo demoted to structural reference.</p></div>
+            <div style="border-top:1px solid var(--line-ink);padding-top:14px"><div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--rust);margin-bottom:8px">03</div><div style="font-size:var(--size-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--ink);margin-bottom:8px">Rules layer</div><p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">The decisions between the components, written to pass or fail. Section 06.</p></div>
+            <div style="border-top:1px solid var(--line-ink);padding-top:14px"><div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--rust);margin-bottom:8px">04</div><div style="font-size:var(--size-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--ink);margin-bottom:8px">Register</div><p style="margin:0;font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">A reporting route for anything drawn that the catalogue does not cover.</p></div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,44px);align-items:start">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 01 · Problem A" title="The build environment is the canonical source" gained="One place to ask, and it is the place people already work in. Disagreements resolve without me." traded="The repo is now knowingly behind. Re-syncing it is a standing debt rather than a one-off migration." hint-size="100%,380px">The system moved to the environment where screens are built, and picture-only design tooling came out of the workflow. The codebase is still read for the structural anatomy of a component, but on any conflict of colour, type, variant naming or behaviour, the canonical source wins. That sentence sits at the top of the readme and of the portable rule set: a tiebreak is only worth having if it is unambiguous.</x-import>
+
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 02 · Problem B" title="The system has a rules layer above the components" gained="A build comes out right without my taste in the loop. The rule is checkable by the person writing the code, or the tool writing it for them." traded="Rules need maintaining as carefully as components, and a loosely written rule is worse than none because it gets followed." hint-size="100%,380px">The system got a layer above the components: the decisions a prop list cannot carry. Which surface a page sits on. Title size set by the container, never by importance. Four legal control heights and six legal radii. One number for sections, cards and insets. Shadow means floating. Two easings. Alongside it, a decision map from job to component — including the wrong choice people were making instead — and one reference screen with every visible decision traced to the rule that produced it.</x-import>
+
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 03 · Constraint D" title="The register reports new parts without blocking the build" gained="Anything invented outside the catalogue arrives on a list with its picture, its spec and the alternatives it rejected. Recurrence becomes countable." traded="It relies on the report being filed. The rule has to be repeated in every brief, and an unreported part still ships." hint-size="100%,380px">Parts the system does not cover get drawn. Preventing that produces silent approximations instead, so the rule is: draw it, tag it, and write a row naming what it does, the components considered and why each was wrong. The build continues either way. The row reaches the one reviewer, who can turn it into a component, reject it with the name of what to use instead, or leave it as a proposal until it is seen a second time.</x-import>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">05 — What I built</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="margin:0 0 24px;max-width:var(--measure-prose);font-size:var(--size-statement);font-weight:500;line-height:var(--leading-statement);letter-spacing:var(--track-statement);text-wrap:pretty">Four layers and a register. Tokens fix the values, components fix the parts, rules fix the decisions between the parts, templates fix where a page starts.</p>
+          <p style="margin:0 0 20px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Each layer exists because the one below it leaves a question open. The register runs alongside all four, for the case where nothing covers the answer. The drift was never in the values or the parts — it was in layer three, which most systems leave to a design review.</p>
+
+          <sc-if value="{{ diagrams }}" hint-placeholder-val="{{ true }}">
+            <figure>
+              <div data-figure="stack" style="border:1px solid var(--line);background:var(--white)"><div style="padding:26px;background:#f2f1ee">
+                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #3a3e44"><span>The stack</span><span>Each layer answers what the one below leaves open</span></div>
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) 152px;gap:22px;align-items:start">
+                  <div style="display:flex;flex-direction:column;gap:9px">
+                    <div style="background:#fff;border:1px solid #dedbd5;padding:12px 13px">
+                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b">Layer 01</span><span style="font-size:11px;font-weight:600;color:#3a3e44">Tokens</span><span style="margin-left:auto;font-size:10px;color:#5f646b">no literals</span></div>
+                      <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="width:38px;height:12px;background:#e7e5df"></span><span style="width:38px;height:12px;background:#dcd9d2"></span><span style="width:52px;height:12px;background:#e7e5df"></span><span style="width:44px;height:12px;background:#dcd9d2"></span><span style="width:30px;height:12px;background:#e7e5df"></span></div>
+                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Leaves open: which token, where.</p>
+                    </div>
+                    <div style="background:#fff;border:1px solid #dedbd5;padding:12px 13px">
+                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b">Layer 02</span><span style="font-size:11px;font-weight:600;color:#3a3e44">Components</span><span style="margin-left:auto;font-size:10px;color:#5f646b">one contract each</span></div>
+                      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px"><span style="height:18px;background:#e7e5df"></span><span style="height:18px;background:#e7e5df"></span><span style="height:18px;background:#e7e5df"></span><span style="height:18px;background:#e7e5df"></span></div>
+                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Leaves open: which one for this job, and how they sit together.</p>
+                    </div>
+                    <div style="background:#fff;border:1px solid #3a3e44;box-shadow:0 2px 10px -2px rgba(16,17,20,.16);padding:12px 13px">
+                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92">Layer 03</span><span style="font-size:11px;font-weight:600;color:#3a3e44">Applied rules</span><span style="margin-left:auto;font-size:10px;color:#5f646b">pass or fail</span></div>
+                      <div style="display:flex;flex-direction:column;gap:6px"><span style="width:100%;height:6px;background:#dcd9d2"></span><span style="width:86%;height:6px;background:#dcd9d2"></span><span style="width:92%;height:6px;background:#dcd9d2"></span></div>
+                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Surfaces · titles · geometry · spacing · elevation · states · motion · limits.</p>
+                    </div>
+                    <div style="background:#fff;border:1px solid #dedbd5;padding:12px 13px">
+                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b">Layer 04</span><span style="font-size:11px;font-weight:600;color:#3a3e44">Templates</span><span style="margin-left:auto;font-size:10px;color:#5f646b">where a page starts</span></div>
+                      <div style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px"><span style="height:30px;background:#e7e5df"></span><span style="height:30px;background:#dcd9d2"></span></div>
+                    </div>
+                  </div>
+                  <div style="border:1px solid #dedbd5;background:#fff;padding:12px 13px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92;margin-bottom:10px">Register</div>
+                    <p style="margin:0 0 11px;font-size:10px;line-height:1.55;color:#5f646b">Runs beside all four, for the part no layer covers.</p>
+                    <div style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:10px;color:#4e535a;border:1px solid #dedbd5;padding:6px 8px">Drawn</span>
+                      <span style="font-size:10px;color:#4e535a;border:1px solid #dedbd5;padding:6px 8px">Reported</span>
+                      <span style="font-size:10px;color:#4e535a;border:1px solid #dedbd5;padding:6px 8px">Reviewed</span>
+                    </div>
+                  </div>
+                </div>
+              </div></div>
+              <figcaption style="margin:14px 0 0;max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Tokens → components → rules → templates, and what each layer leaves for the next. The register sits alongside rather than inside, because it handles the case the system has no answer for.</figcaption>
+            </figure>
+          </sc-if>
+
+          <h3 style="margin:clamp(36px,5vw,56px) 0 12px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">The decision map</h3>
+          <p style="margin:0 0 20px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Most drift was not invention. It was a reasonable component used for the wrong job: a filter drawn as a second row of navigation, a status pill used as a count, a menu hand-built from a button and a chevron. The map names the job, the component that does it, and the substitute people reach for instead. The substitute is always plausible, which is why it kept being chosen.</p>
+          <figure>
+            <div style="border:1px solid var(--line);background:var(--white);padding:24px 26px 26px;overflow-x:auto">
+              <table>
+                <caption style="text-align:left;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;padding-bottom:12px;border-bottom:1px solid #3a3e44">Decision map · job → component → wrong choice</caption>
+                <thead>
+                  <tr>
+                    <th scope="col" style="text-align:left;padding:12px 14px 10px 0;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;width:30%">The job</th>
+                    <th scope="col" style="text-align:left;padding:12px 14px 10px 0;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;width:26%">Use</th>
+                    <th scope="col" style="text-align:left;padding:12px 0 10px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92">Reached for instead</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Move between a record's sub-pages</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">Underline tabs</td>
+                    <td style="padding:11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">The filled segmented switcher, which means a view and not a route</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Narrow a list to this quarter</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">Toggle group in the toolbar</td>
+                    <td style="padding:11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">A second tab row: a filter drawn as navigation</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Open a status or download menu</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">Menu button</td>
+                    <td style="padding:11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">Button plus chevron plus a hand-built surface</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Show a count beside a nav row</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">The rail's built-in numeral</td>
+                    <td style="padding:11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">A badge, which in this system means a status</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Lay cards out in columns</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">Card grid</td>
+                    <td style="padding:11px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">A hand-rolled grid, which gives every card its own height</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption style="margin:14px 0 0;max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Five rows from the map. Naming the wrong answer changed behaviour more than naming the right one.</figcaption>
+          </figure>
+
+          <h3 style="margin:clamp(36px,5vw,56px) 0 12px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">The register</h3>
+          <p style="margin:0 0 20px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Every prototype eventually needs something the catalogue does not have. The register is the route that part takes to a designer: drawn and tagged, a row written with its picture, its spec and the components rejected with reasons, then handed over. Three kinds are judged by three tests. The same part drawn in two projects is one row with two sightings, which is what makes recurrence countable.</p>
+          <sc-if value="{{ diagrams }}" hint-placeholder-val="{{ true }}">
+            <figure>
+              <div style="border:1px solid var(--line);background:var(--white)"><div style="padding:24px 26px 26px;background:#f2f1ee">
+                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #3a3e44"><span>Register lifecycle</span><span>Nothing here is canon until it ships</span></div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:20px">
+                  <div style="background:#fff;border:1px solid #dedbd5;padding:12px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:9px">01 Drawn</div>
+                    <div style="width:100%;height:22px;background:#e7e5df;margin-bottom:7px"></div>
+                    <p style="margin:0;font-size:10px;line-height:1.5;color:#5f646b">Tagged in the prototype. The build keeps going.</p>
+                  </div>
+                  <div style="background:#fff;border:1px solid #dedbd5;padding:12px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:9px">02 Reported</div>
+                    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"><span style="height:5px;background:#dcd9d2"></span><span style="width:78%;height:5px;background:#dcd9d2"></span><span style="width:88%;height:5px;background:#dcd9d2"></span></div>
+                    <p style="margin:0;font-size:10px;line-height:1.5;color:#5f646b">Picture, spec, and what was rejected and why.</p>
+                  </div>
+                  <div style="background:#fff;border:1px solid #3a3e44;box-shadow:0 2px 10px -2px rgba(16,17,20,.16);padding:12px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92;margin-bottom:9px">03 Reviewed</div>
+                    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"><span style="font-size:10px;color:#4e535a">Approved to build</span><span style="font-size:10px;color:#4e535a">Rejected, with the name to use</span></div>
+                    <p style="margin:0;font-size:10px;line-height:1.5;color:#5f646b">One reviewer. A rejection has to name the replacement.</p>
+                  </div>
+                  <div style="background:#fff;border:1px solid #dedbd5;padding:12px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:9px">04 In the system</div>
+                    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin-bottom:7px"><span style="height:10px;background:#e7e5df"></span><span style="height:10px;background:#e7e5df"></span><span style="height:10px;background:#e7e5df"></span><span style="height:10px;background:#e7e5df"></span></div>
+                    <p style="margin:0;font-size:10px;line-height:1.5;color:#5f646b">Rebuilt on tokens with a spec card. The hand-drawn markup is deleted.</p>
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;padding-top:14px;border-top:1px solid #dedbd5">
+                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:7px">Component</div><p style="margin:0;font-size:10px;line-height:1.55;color:#4e535a">Seen twice · not composable · tokens only.</p></div>
+                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:7px">Variant</div><p style="margin:0;font-size:10px;line-height:1.55;color:#4e535a">A different meaning, not a different look.</p></div>
+                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:7px">Composition</div><p style="margin:0;font-size:10px;line-height:1.55;color:#4e535a">Same arrangement twice · carries decisions · shorter than the markup it replaces.</p></div>
+                </div>
+              </div></div>
+              <figcaption style="margin:14px 0 0;max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Four states and three tests. The row travels; the build never waits for it.</figcaption>
+            </figure>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">06 — The rules</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="margin:0 0 20px;max-width:var(--measure-prose);font-size:var(--size-statement);font-weight:500;line-height:var(--leading-statement);letter-spacing:var(--track-statement);text-wrap:pretty">Eight rule families. Every answer is a number, a token or a named component.</p>
+          <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The test for every rule: could an engineer who has never spoken to me apply it, and could a reviewer check it without opening the design file. “Use generous spacing” fails. “Twenty-four for sections, cards and every inset” passes. Writing to that standard made the rules usable by an AI tool and by a person for the same reason — neither can resolve a rule that rests on taste.</p>
+          <p style="margin:0 0 clamp(28px,4vw,40px);max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Every value was read out of the component source rather than restated from memory. A rules document that disagrees with the components is a third source of truth.</p>
+
+          <figure style="margin-bottom:clamp(36px,5vw,56px)">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" style="text-align:left;width:30%;padding-bottom:12px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6)">Family</th>
+                  <th scope="col" style="text-align:left;padding:0 0 12px clamp(12px,2vw,24px);font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6)">The rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row" style="text-align:left;vertical-align:top;padding:14px 0;border-top:1px solid var(--line);font-size:var(--size-small);font-weight:500;color:var(--ink)">Surfaces</th><td style="vertical-align:top;padding:14px 0 14px clamp(12px,2vw,24px);border-top:1px solid var(--line);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Page, then card, then content. Never a third fill. Floating layers are lighter than what sits under them, and one grey is hover only.</td></tr>
+                <tr><th scope="row" style="text-align:left;vertical-align:top;padding:14px 0;border-top:1px solid var(--line);font-size:var(--size-small);font-weight:500;color:var(--ink)">Titles</th><td style="vertical-align:top;padding:14px 0 14px clamp(12px,2vw,24px);border-top:1px solid var(--line);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Size is set by the container, never by importance. One size per container type, listed.</td></tr>
+                <tr><th scope="row" style="text-align:left;vertical-align:top;padding:14px 0;border-top:1px solid var(--line);font-size:var(--size-small);font-weight:500;color:var(--ink)">Body and weight</th><td style="vertical-align:top;padding:14px 0 14px clamp(12px,2vw,24px);border-top:1px solid var(--line);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">One default for body, cells and field values. Four weights with a named job each, and two deleted because no font file backed them.</td></tr>
+                <tr><th scope="row" style="text-align:left;vertical-align:top;padding:14px 0;border-top:1px solid var(--line);font-size:var(--size-small);font-weight:500;color:var(--ink)">Geometry</th><td style="vertical-align:top;padding:14px 0 14px clamp(12px,2vw,24px);border-top:1px solid var(--line);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Four legal control heights and six legal radii. Nothing else, including “close enough”.</td></tr>
+                <tr><th scope="row" style="text-align:left;vertical-align:top;padding:14px 0;border-top:1px solid var(--line);font-size:var(--size-small);font-weight:500;color:var(--ink)">Spacing</th><td style="vertical-align:top;padding:14px 0 14px clamp(12px,2vw,24px);border-top:1px solid var(--line);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">A short ladder, and one number for sections, cards and every inset, so page rhythm cannot be renegotiated per screen.</td></tr>
+                <tr><th scope="row" style="text-align:left;vertical-align:top;padding:14px 0;border-top:1px solid var(--line);font-size:var(--size-small);font-weight:500;color:var(--ink)">Elevation</th><td style="vertical-align:top;padding:14px 0 14px clamp(12px,2vw,24px);border-top:1px solid var(--line);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">No shadow by default. A shadow means the thing floats. It never signals importance.</td></tr>
+                <tr><th scope="row" style="text-align:left;vertical-align:top;padding:14px 0;border-top:1px solid var(--line);font-size:var(--size-small);font-weight:500;color:var(--ink)">States</th><td style="vertical-align:top;padding:14px 0 14px clamp(12px,2vw,24px);border-top:1px solid var(--line);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Eight required states per component, each with one treatment. Every list owes an empty state and a loading state.</td></tr>
+                <tr><th scope="row" style="text-align:left;vertical-align:top;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:var(--size-small);font-weight:500;color:var(--ink)">Motion</th><td style="vertical-align:top;padding:14px 0 14px clamp(12px,2vw,24px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Durations by interaction type, two easings, and nothing animates layout.</td></tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <div style="border-top:1px solid var(--line-ink);padding-top:18px;margin-bottom:clamp(36px,5vw,56px)">
+            <h3 style="margin:0 0 12px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">The self-check, and the override rule</h3>
+            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The rules end in a check short enough to run: no colour literals anywhere; radii and control heights only from the legal sets; font sizes only from the scale; spacing only from the ladder; no raw table, button, input or select; shadows only on floating layers. It is mechanical on purpose — a rule that needs interpretation comes back as a question.</p>
+            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">On overriding a component: layout properties are yours, and anything encoding what the element <em>is</em> — background, colour, border, radius, height, padding, type — is not. If no variant gives you what you need, that is a variant discussion. This is the rule that stopped the catalogue being forked at the call site.</p>
+            <p style="margin:0;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">A system written to pass or fail is also cheaper to hand a model than a component library to read. Closed gaps mean fewer invented parts, and fewer invented parts mean fewer screens generated twice.</p>
+          </div>
+
+          <div style="border-top:1px solid var(--line-ink);padding-top:18px">
+            <h3 style="margin:0 0 12px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">Two lists published as gaps</h3>
+            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The <strong style="color:var(--ink);font-weight:600">undecided</strong> list — page width, grid, breakpoints, layering, the success, warning and info colours, validation timing, table density — carries one instruction: ask, do not invent. The <strong style="color:var(--ink);font-weight:600">not built</strong> list names components that do not exist, from a mobile nav drawer to charts, with the same instruction: name the gap, do not ship a lookalike.</p>
+            <p style="margin:0;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">This was the least intuitive decision and it changed the most. An approximation looks finished, so it reads as a decision, and a reader cannot tell the two apart. Naming the gap keeps an unfinished system honest.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">07 — Outcome</h2>
+        <div style="flex:1 1 460px;min-width:0">
+          <p style="margin:0 0 34px;max-width:var(--measure-caption);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The system is in use and still growing. Three things are true of how the team works now.</p>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="01" title="The whole team builds, and the result looks like the product." measure="70ch" hint-size="100%,80px">Engineers and AI tools build against the guidelines directly, without a designer in the loop for each screen. The answers that used to need my taste are now a number, a token or a named component.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="02" title="AI-generated UI stays reviewable." measure="70ch" hint-size="100%,80px">Anything drawn outside the catalogue is tagged in the file and reported as a row with its picture, its spec and the alternatives it rejected. Review is reading a list rather than auditing markup, which is the only version that scales to one reviewer.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="03" title="Ambiguity is named up front." last="{{ true }}" measure="70ch" hint-size="100%,80px">The undecided and not-built lists ship with the rules. Someone who needs breakpoints or a chart finds out before they build, and asks, rather than inventing an answer that has to be unpicked later.</x-import>
+          <p style="margin:24px 0 0;max-width:var(--measure-prose);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4);text-wrap:pretty">Adoption, review time and how often the register is used are not measured yet. The counts above the fold are scope, not evidence.</p>
+        </div>
+      </div>
+
+      <sc-if value="{{ showLimits }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(56px,8vw,96px)">
+          <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
+          <div style="flex:1 1 460px;min-width:0">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="01" title="Outcome numbers." measure="70ch" hint-size="100%,80px">Adoption, review time and register use are not measured yet. The token cost of a generated screen should fall as gaps close, but I haven't instrumented it, so that figure is not reported here.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="02" title="The re-sync with the codebase." measure="70ch" hint-size="100%,80px">Naming one canonical source made the repo knowingly behind. Bringing it back into line has not happened.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="03" title="The components themselves." measure="70ch" hint-size="100%,80px">Forty-eight components each have their own decisions, states and spec card. This case is the structure, not a tour of the parts.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="04" title="Dark mode, accessibility and the unbuilt list." measure="70ch" hint-size="100%,80px">Dark-theme tokens exist and are not specified in use. Charts, a drawer and an accordion are named gaps.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="05" title="Whether the register holds at a larger size." last="{{ true }}" measure="70ch" hint-size="100%,80px">The system serves six active users and one reviewer. At that size it assumes local decisions win and rows arrive because someone files them. Both assumptions are deliberate, and both are untested above this size. Whether they hold with more designers and more projects is the next thing to find out.</x-import>
+          </div>
+        </div>
+      </sc-if>
+
+    </section>
+
+    <section style="background:var(--ink);box-shadow:0 0 0 100vmax var(--ink);clip-path:inset(0 -100vmax);padding:clamp(56px,9vw,120px) 0">
+      <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--on-ink-muted);margin-bottom:clamp(20px,3vw,28px)">Design systems</div>
+      <h2 style="margin:0 0 clamp(20px,3vw,28px);max-width:26ch;font-size:var(--size-mega);font-weight:500;line-height:var(--leading-mega);letter-spacing:var(--track-mega);color:var(--on-ink);text-wrap:balance">Let’s make a system your whole team can build from.</h2>
+      <p style="margin:0 0 clamp(28px,4vw,36px);max-width:58ch;font-size:var(--size-body-lg);line-height:var(--leading-body-lg);letter-spacing:var(--track-body-lg);color:var(--on-ink-muted);text-wrap:pretty">Tokens and components are the easy half. I write the decisions between them, and the governance that keeps a system honest while a whole team and its tools build on it.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border:1px solid var(--on-ink);border-radius:2px;background:var(--on-ink);color:var(--ink);text-decoration:none;font-size:var(--size-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;transition:background .2s cubic-bezier(.19,1,.22,1),color .2s cubic-bezier(.19,1,.22,1)" style-hover="background:transparent;color:var(--on-ink)">Let’s talk <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.NextCase" title="An advisors platform for four business verticals" href="advisors-platform.html" tag="BTG Pactual" hint-size="100%,240px"></x-import>
+
+  </main>
+
+  <dc-import name="Foot" hint-size="100%,76px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;diagrams&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Case study&quot;},&quot;numbersBand&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Case study&quot;},&quot;showLimits&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Case study&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      diagrams: this.props.diagrams ?? true,
+      numbersBand: this.props.numbersBand ?? true,
+      showLimits: this.props.showLimits ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

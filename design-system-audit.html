@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit design system — Nayara Silva</title>
+<meta name="description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nayara Marques">
+<meta property="og:title" content="Audit design system — Nayara Silva">
+<meta property="og:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<meta property="og:url" content="https://www.nayaramarques.com/design-system-audit.html">
+<meta property="og:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nayara Marques, product designer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Audit design system — Nayara Silva">
+<meta name="twitter:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Audit design system — Nayara Silva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #f2f1ee; color: #3a3e44; font-family: Archivo, system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+  ::selection { background: #3a3e44; color: #f2f1ee; }
+  @keyframes lineUp { from { transform: translateY(104%); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+
+:root{
+  --paper:#f2f1ee; --paper-2:#e9e7e2; --paper-3:#e8e6e1; --white:#fff;
+  --ink:#3a3e44; --ink-2:#4e535a; --ink-4:#4e535a; --ink-6:#5f646b;
+  --on-ink:#f2f1ee; --on-ink-muted:#a4a8ae;
+  --rust:#2f6d92; --rust-hover:#3d84ad;
+  --line:#dedbd5; --line-3:#dedbd5; --line-4:#e8e6e1;
+  --gained:#2f6d92; --traded:#5f646b;
+  --font-sans:Archivo,system-ui,sans-serif;
+  --weight-regular:400; --weight-medium:500; --weight-semibold:600;
+  --size-display:clamp(34px,5.2vw,68px); --size-mega:clamp(28px,4vw,52px); --size-title:clamp(24px,3.4vw,44px);
+  --size-statement:clamp(20px,2.6vw,30px); --size-lead:clamp(19px,2.2vw,26px);
+  --size-body-lg:20px; --size-body:16px; --size-small:14px; --size-micro:12px; --size-label:11px; --size-eyebrow:10px;
+  --track-display:-0.045em; --track-mega:-0.042em; --track-title:-0.036em; --track-statement:-0.03em;
+  --track-lead:-0.026em; --track-label:0.12em; --track-eyebrow:0.14em;
+  --leading-display:0.94; --leading-title:1.06; --leading-lead:1.16; --leading-body:1.7; --leading-small:1.6;
+  --space-1:4px; --space-3:8px; --space-5:12px; --space-7:16px; --space-9:20px; --space-11:24px;
+  --space-14:32px; --space-16:36px; --space-18:44px;
+  --radius:2px; --radius-pill:999px;
+  --section-y:clamp(40px,6vw,72px); --section-y-lg:clamp(44px,7vw,88px); --section-y-xl:clamp(48px,8vw,110px);
+  --card-p:clamp(20px,2.6vw,28px); --page-max:1400px;
+  --surface-page:var(--paper); --surface-band:var(--paper-2); --surface-card:var(--white); --surface-inverse:var(--ink);
+  --text-strong:var(--ink); --text-body:var(--ink-2); --text-muted:var(--ink-4); --text-meta:var(--ink-6);
+  --text-accent:var(--rust);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+
+html{scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+*,*::before,*::after{box-sizing:inherit}
+.audit{background:var(--surface-page);color:var(--text-body);font:var(--weight-regular) var(--size-body)/var(--leading-body) var(--font-sans)}
+.wrap{max-width:var(--page-max);margin:0 auto;padding:0 var(--space-14)}
+@media (max-width:640px){.wrap{padding:0 var(--space-9)}}
+.audit section{padding:var(--section-y-lg) 0;border-top:1px solid var(--line)}
+.band{background:var(--surface-band)}
+.audit h1,.audit h2,.audit h3{color:var(--text-strong);font-weight:var(--weight-medium);margin:0}
+h1{font-size:var(--size-display);line-height:var(--leading-display);letter-spacing:var(--track-display);max-width:17ch;text-wrap:balance}
+h2{font-size:var(--size-title);line-height:var(--leading-title);letter-spacing:var(--track-title);max-width:22ch;text-wrap:balance}
+h3{font-size:var(--size-statement);line-height:1.22;letter-spacing:var(--track-statement)}
+.audit p{margin:0 0 var(--space-9);max-width:62ch}
+.eyebrow{font-size:var(--size-eyebrow);font-weight:var(--weight-semibold);letter-spacing:var(--track-eyebrow);
+  text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-9)}
+.eyebrow.accent{color:var(--text-accent)}
+.lead{font-size:var(--size-lead);line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--text-muted);max-width:44ch}
+.audit p.sub{font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:#4e535a;max-width:58ch;margin:0;text-wrap:pretty}
+
+
+
+
+
+
+
+.hero{padding-top:var(--section-y-xl);padding-bottom:var(--section-y)}
+.audit a.btn{display:inline-block;font-size:var(--size-label);font-weight:var(--weight-semibold);letter-spacing:var(--track-label);
+  text-transform:uppercase;text-decoration:none;padding:14px 24px;border-radius:var(--radius);
+  background:var(--text-strong);color:var(--surface-page);border:1px solid var(--text-strong)}
+.audit a.btn.outline{background:transparent;color:var(--text-strong);border-color:var(--line-3)}
+.audit a.btn:hover{background:#2f6d92;border-color:#2f6d92;color:#fff}
+.btn:focus-visible{outline:2px solid var(--text-strong);outline-offset:2px}
+.actions{display:flex;flex-wrap:wrap;gap:var(--space-5);margin-top:var(--space-11)}
+.audit p.under{font-size:var(--size-small);color:var(--text-meta);margin:var(--space-14) 0 0;max-width:62ch}
+.under a{display:inline-block}
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:var(--space-14) 0 0}
+.grid.four{grid-template-columns:repeat(4,1fr)} .grid.two{grid-template-columns:repeat(2,1fr)}
+@media (max-width:980px){.grid.four{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:720px){.grid.four,.grid.two{grid-template-columns:1fr}}
+.cell{background:var(--surface-card);padding:var(--card-p)}
+.cell p{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted);margin:0}
+.cell p+p{margin-top:var(--space-5)}
+.cell p.stat,.stat{font-size:var(--size-title);line-height:1;letter-spacing:var(--track-title);color:var(--text-strong);font-weight:var(--weight-regular);margin-bottom:var(--space-3)}
+.label{font-size:var(--size-label);font-weight:var(--weight-semibold);letter-spacing:var(--track-label);text-transform:uppercase;margin:0 0 var(--space-5)}
+.label.gained{color:var(--gained)} .label.traded{color:var(--traded)} .label.meta{color:var(--text-meta)}
+ul.deliver{list-style:none;margin:var(--space-14) 0 0;padding:0;border-top:1px solid var(--line)}
+ul.deliver li{border-bottom:1px solid var(--line);padding:var(--space-11) 0;display:grid;grid-template-columns:minmax(180px,22%) 1fr;gap:var(--space-11)}
+@media (max-width:720px){ul.deliver li{grid-template-columns:1fr;gap:var(--space-3)}}
+ul.deliver b{color:var(--text-strong);font-weight:var(--weight-medium);font-size:var(--size-body)}
+ul.deliver span{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted)}
+ol.steps{list-style:none;counter-reset:s;margin:var(--space-14) 0 0;padding:0;border-top:1px solid var(--line)}
+ol.steps li{counter-increment:s;border-bottom:1px solid var(--line);padding:var(--space-11) 0;display:grid;grid-template-columns:44px 1fr;gap:var(--space-9)}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font-size:var(--size-label);font-weight:var(--weight-semibold);
+  letter-spacing:var(--track-label);color:var(--text-accent);padding-top:5px}
+ol.steps b{display:block;color:var(--text-strong);font-weight:var(--weight-medium);margin-bottom:var(--space-1)}
+ol.steps span{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted)}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:var(--space-14)}
+@media (max-width:720px){.price{grid-template-columns:1fr}}
+.price>div{background:var(--surface-card);padding:var(--card-p)}
+.price .big{font-size:var(--size-mega);line-height:1;letter-spacing:var(--track-mega);color:var(--text-strong);font-weight:var(--weight-medium);margin:0}
+.tick{list-style:none;margin:var(--space-9) 0 0;padding:0}
+.tick li{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted);padding:var(--space-3) 0 var(--space-3) var(--space-11);position:relative}
+.tick li::before{content:"—";position:absolute;left:0;color:var(--text-accent)}
+.inverse{background:var(--surface-inverse);color:var(--on-ink-muted)}
+.inverse h2{color:var(--on-ink)} .inverse p{color:var(--on-ink-muted)} .inverse .eyebrow{color:var(--on-ink-muted)}
+.inverse .btn,.audit .inverse a.btn{background:var(--on-ink);color:var(--ink);border-color:var(--on-ink)}
+.audit .inverse a.btn:hover{background:#2f6d92;border-color:#2f6d92;color:#fff}
+details{border-bottom:1px solid var(--line);padding:var(--space-11) 0}
+details:first-of-type{border-top:1px solid var(--line);margin-top:var(--space-14)}
+summary{cursor:pointer;color:var(--text-strong);font-weight:var(--weight-medium);list-style:none;display:flex;justify-content:space-between;gap:var(--space-9)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--text-accent);font-weight:var(--weight-semibold)}
+details[open] summary::after{content:"–"}
+details p{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted);margin:var(--space-7) 0 0;max-width:70ch}
+summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
+.author{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-18);align-items:start}
+@media (max-width:900px){.author{grid-template-columns:1fr;gap:var(--space-11)}}
+.foot{border-top:1px solid var(--line);padding-top:var(--space-14);padding-bottom:var(--space-14);font-size:var(--size-micro);color:var(--text-meta)}
+.foot a{color:var(--text-meta)}
+.audit a{color:var(--text-accent)}
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Nav" hint-size="100%,58px"></dc-import>
+
+  <main class="audit" style="flex:1">
+<header class="wrap hero">
+  <p class="eyebrow accent">Audit design system</p>
+  <h1><span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Your design system decides what AI costs you</span></span></h1>
+  <div style="height:1px;background:#dedbd5;margin:clamp(20px,3vw,28px) 0"></div>
+  <p class="sub">When it drifts, agents guess. They write raw values, rebuild parts you already have, and every guess comes back to a person to review. The audit finds where that happens, and what it costs to fix.</p>
+  <div class="actions">
+    <a class="btn" href="#book">Book an audit</a>
+    <a class="btn outline" href="#why">Why it pays</a>
+  </div>
+  <p class="under">For teams with a design system in code. No system yet, or one worth replacing: <a href="design-system-build.html">I build it from scratch</a>.</p>
+</header>
+
+<section class="band" id="why">
+  <div class="wrap">
+    <p class="eyebrow">Why now</p>
+    <h2>If AI writes your UI, your design system is the budget</h2>
+    <p style="margin-top:var(--space-9)">An agent builds from whatever your system gives it. When components and tokens are reachable, it writes less, reuses more and comes back for fewer corrections. When they are not, it guesses, and you pay for every guess in tokens, review time and rework.</p>
+    <div class="grid two">
+      <div class="cell">
+        <p class="label meta">Storybook's benchmark</p>
+        <p class="stat">27%</p>
+        <p style="margin-top:var(--space-5)">fewer tokens to build the same UI when the agent can read the component library, with 2.76 times faster generation and 12.8% more reuse of existing components.</p>
+      </div>
+      <div class="cell">
+        <p class="label meta">My own site, measured</p>
+        <p class="stat">44%</p>
+        <p style="margin-top:var(--space-5)">shorter: the same case-study screen is 21,229 characters written raw and 11,961 built from components. About 2,300 tokens saved on one screen, before any correction rounds.</p>
+      </div>
+    </div>
+    <p class="under">The audit tells you which half of your system an agent can follow, and which half it has to guess. That is the number that decides your AI cost.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The cost of drift</p>
+    <h2>Every value an agent guesses, you pay for twice</h2>
+    <p style="margin-top:var(--space-9)">Once when it is written, and again when a person finds it in review. Drift is not a tidiness problem; it is a throughput problem.</p>
+    <div class="grid two">
+      <div class="cell"><p class="label traded">Tokens</p><h3>Raw values are long</h3><p style="margin-top:var(--space-5)">A component call is one line. The same part written by hand is forty, with every colour, space and state spelled out. The model writes all of it, and you pay for all of it, every time.</p></div>
+      <div class="cell"><p class="label traded">Review</p><h3>Guesses land on a person</h3><p style="margin-top:var(--space-5)">A value off the scale looks right and reads wrong. Someone has to catch it, ask for a change, and check the fix. That loop costs more than the generation did.</p></div>
+      <div class="cell"><p class="label traded">Consistency</p><h3>Near-misses ship</h3><p style="margin-top:var(--space-5)">Nine greys that are almost the same. A button rebuilt because the real one was not findable. None of it fails a test, and all of it makes the product feel loose.</p></div>
+      <div class="cell"><p class="label traded">Accessibility</p><h3>Conditions slip quietly</h3><p style="margin-top:var(--space-5)">Contrast below the minimum, movement that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="what">
+  <div class="wrap">
+    <p class="eyebrow">What the audit checks</p>
+    <h2>Five pillars, one report</h2>
+    <p style="margin-top:var(--space-9)">Each pillar answers a different question, and each one fails in a different way. The method was tested on four published open-source design systems, Primer, Radix Themes, Carbon and Chakra UI, mature systems with full-time teams behind them. Every one still had findings worth fixing.</p>
+    <ul class="deliver">
+      <li><b>Values</b><span>Every colour, space, size, radius, type and motion value in your components, checked against your own tokens: what is hand-written, what equals a token nobody found, and what sits on no scale. Plus the token set itself: what nobody uses, and what is defined twice.</span></li>
+      <li><b>People</b><span>Text contrast on every pair your tokens declare, in every theme. Reduced motion on everything that moves. High contrast, visible focus, and right-to-left if you need it.</span></li>
+      <li><b>Structure</b><span>Components rebuilt by hand where one exists, parts used outside their contract, and styling that overrides what a component is rather than where it sits.</span></li>
+      <li><b>Content</b><span>Numbers and claims with no source, and the words your voice rules ban. What the system teaches an agent, it repeats in every screen.</span></li>
+      <li><b>Agent readiness</b><span>What a coding agent has to invent when it builds with your system: decisions it made up, token names it expected to exist, and decisions that exist but were not findable.</span></li>
+    </ul>
+    <p class="under">Every finding is checked by hand before it reaches you. You get one report, fixes ranked by cost and gain, and a 30-minute call.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What the audit finds</p>
+    <h2>Four kinds of finding, and only two are mechanical</h2>
+    <p style="margin-top:var(--space-9)">A percentage tells you little on its own. What matters is which kind of finding you have, because each one costs something different to fix.</p>
+    <div class="grid two">
+      <div class="cell"><p class="label gained">Mechanical</p><h3>A value that equals a token</h3><p style="margin-top:var(--space-5)">The decision exists; someone wrote the number instead. Find, replace, and prove with a before-and-after render that nothing moved.</p></div>
+      <div class="cell"><p class="label traded">Needs a decision</p><h3>A value on no scale</h3><p style="margin-top:var(--space-5)">An optical nudge, or drift. Only your team can say which. The audit groups them and shows where they cluster, so deciding takes minutes.</p></div>
+      <div class="cell"><p class="label gained">Affects people</p><h3>Contrast and motion</h3><p style="margin-top:var(--space-5)">Text colours checked against every background in every theme, and movement checked against the reduced-motion setting. The findings teams act on first.</p></div>
+      <div class="cell"><p class="label traded">Getting worse</p><h3>What AI invents</h3><p style="margin-top:var(--space-5)">Give a coding agent your system and it fills the gaps by guessing. The audit measures that too: which decisions it made up, and which existed but were not findable.</p></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="band">
+  <div class="wrap author">
+    <div style="width:100%;max-width:560px;aspect-ratio:4/3;overflow:hidden;background:#e6e4df">
+      <img src="assets/nayara-portrait.png" alt="Nayara Marques" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
+    </div>
+    <div>
+      <p class="eyebrow">Who runs it</p>
+      <h2 style="margin-bottom:var(--space-11)">I design systems, and I ship them</h2>
+      <p>Nine years designing products, the last few of them writing the code that ships them. Brazilian, based in Barcelona, working US East Coast hours. Fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks.</p>
+      <p>I built the design system for Clade's AI platform in Claude Design: 48 components, 9 templates, tokens as the single source of truth, and validation that catches AI creation drift before it reaches a screen. The audit is that method, applied to your system.</p>
+      <p style="margin:0"><a href="work.html" style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;text-decoration:none;color:#2f6d92">See the work →</a></p>
+    </div>
+  </div>
+</section><section class="inverse" id="book">
+  <div class="wrap">
+    <p class="eyebrow">The audit</p>
+    <h2>One fixed price. Two audits a month.</h2>
+    <div class="price">
+      <div>
+        <p class="big">5 days</p>
+        <p style="margin-top:var(--space-5)">From the day access arrives. Fixed scope, fixed fee, quoted before we start.</p>
+        <div class="actions"><a class="btn" href="contact.html">Book an audit</a></div>
+      </div>
+      <div>
+        <p class="label meta">What is included</p>
+        <ul class="tick">
+          <li>Drift list, contrast report, conditions check</li>
+          <li>Fixes ranked by cost and gain</li>
+          <li>A 30-minute call</li>
+          <li>React, CSS, Sass or CSS-in-JS</li>
+        </ul>
+        <p class="label meta" style="margin-top:var(--space-11)">What is not</p>
+        <ul class="tick">
+          <li>Fixing the drift. If you want that, the fee comes off a project engagement.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2>The things teams ask before booking</h2>
+    <details><summary>Our system is in Figma, not in code.</summary><p>Then the audit reads the design file and the product instead, and the drift list compares what is drawn with what ships. Tell me which you have and I will say what the report can cover.</p></details>
+    <details><summary>We use Storybook. Does this replace it?</summary><p>No. Storybook shows that each component works and gives agents your catalogue. The audit measures whether the screens built with it follow the system, and checks the conditions Storybook does not: contrast across themes, reduced motion, high contrast. It runs on top of what you already have.</p></details>
+    <details><summary>Can you sign an NDA, or work from an export?</summary><p>Yes to both. If repository access is a problem, an export of the design system and a few product screens is enough to produce the drift list.</p></details>
+    <details><summary>What if the audit finds very little?</summary><p>That happens, and it is a useful answer: the report says so and names what it checked. The four public systems all scored high on tokens and still had findings worth fixing.</p></details>
+    <details><summary>Who does the work?</summary><p>I do. The scan is automated; the verification, the ranking and the report are mine. Every finding is checked by hand, because automated scans are wrong often enough to matter.</p></details>
+    <div class="actions"><a class="btn" href="#book">Book an audit</a></div>
+  </div>
+</section>
+
+
+  </main>
+
+  <dc-import name="Foot" hint-size="100%,76px"></dc-import>
+
+</div>
+</x-dc>
+</body>
+</html>

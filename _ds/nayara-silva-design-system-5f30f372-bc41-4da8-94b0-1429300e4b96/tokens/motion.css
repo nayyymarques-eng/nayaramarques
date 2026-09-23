@@ -1,0 +1,32 @@
+:root{
+  /* One easing curve carries the whole site. */
+  --ease:cubic-bezier(.19,1,.22,1); /* @kind other */
+  --ease-out:ease; /* @kind other */
+
+  --dur-hover:.2s; /* @kind other */
+  --dur-hover-slow:.25s; /* @kind other */
+  --dur-roll:.38s; /* @kind other */
+  --dur-enter:1.2s; /* @kind other */
+  --dur-enter-slow:1.5s; /* @kind other */
+  --dur-rule:1.6s; /* @kind other */
+
+  --transition-hover:color var(--dur-hover-slow) var(--ease-out),background var(--dur-hover) var(--ease-out),border-color var(--dur-hover) var(--ease-out); /* @kind other */
+  --transition-nudge:padding-left .35s var(--ease); /* @kind other */
+}
+
+/* Entrance animations. Text arrives by masked line reveal; blocks fade up.
+   Both blur on the way in, ~3—5px, and land at zero. */
+@keyframes lineUp{
+  from{transform:translateY(104%);filter:blur(5px)}
+  55%{filter:blur(0.8px)}
+  to{transform:translateY(0);filter:blur(0)}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px);filter:blur(3px)}
+  to{opacity:1;transform:none;filter:blur(0)}
+}
+@keyframes ruleIn{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important}}

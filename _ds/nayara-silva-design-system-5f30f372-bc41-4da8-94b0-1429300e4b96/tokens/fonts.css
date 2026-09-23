@@ -1,0 +1,10 @@
+/* Archivo — the single typeface of the brand.
+   The source site loads it from Google Fonts as a variable font (wght 100..900).
+   No local binaries were provided, so it is imported from the Google CDN here.
+   Swap this @import for @font-face rules if self-hosted files become available. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap");
+
+:root{
+  --font-sans:Archivo,system-ui,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
