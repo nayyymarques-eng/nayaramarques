@@ -50,9 +50,11 @@ Token by job:
 ## 2. Layout (LAY)
 - **LAY-01** Nothing scrolls sideways, at any width. The page wrapper (first `div` after `</helmet>`) carries `overflow-x:clip`. Not on `<main>` (it cuts the bands), not on `<html>` (browsers treat it as hidden). *(both checks)*
 - **LAY-02** A full-bleed band is `background:var(--paper|--paper-2);box-shadow:0 0 0 100vmax <same>;clip-path:inset(0 -100vmax)`. Bands alternate `--paper` / `--paper-2`. Never `border-top`/`border-bottom` on a band. *(check_source)*
-- **LAY-03** Where two light sections meet there is exactly one line, and it runs edge to edge: add `position:relative` and `style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)"` (`style-after` with `bottom:0` for a bottom line). *(check_pages)*
+- **LAY-03** Where two sections with **different** backgrounds meet there is exactly one line, and it runs edge to edge: add `position:relative` and `style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)"` (`style-after` with `bottom:0` for a bottom line). *(check_pages)*
 - **LAY-04** Never two lines at one boundary. If the section above has a bottom line, the one below has no top line. *(check_pages)*
-- **LAY-05** Dividers inside a section (list rows, cards, figure frames) stay at content width: a plain `1px solid var(--line)` border.
+- **LAY-05** Two sections with the **same** background read as one section: the divider between them is an in-flow divider at content width, never edge to edge. On a band inside `<main>` use `left:0;right:0`; on a full-width section use `left:32px;right:32px` (the gutter). Dividers inside a section (list rows, cards, figure frames) are plain `1px solid var(--line)` borders. *(check_pages: LAY-06 flags an edge-to-edge line between same backgrounds)*
+- **LAY-05a** The home hero never has a line under it. `section#work` carries `data-rule="none"`, which tells check_pages the gap is intended.
+- **LAY-05b** The footer (`Foot.dc.html`) draws an in-flow divider, because it usually follows a section of its own background. A page where it follows a different background extends it in its own `<style>` (see `work.html`).
 - **LAY-06** Mobile (375px): the menu fills the height below the header; figures stack; nothing overflows.
 - **LAY-07** Case page order: hero (eyebrow `Label · Context · Year`) → details band (Role, Users, Timeframe, Built) → numbered rail sections `01 — …` to `What this case doesn't cover` → dark call to action → `NextCase`.
 

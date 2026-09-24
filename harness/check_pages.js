@@ -6,7 +6,9 @@
  *   LAY-01  page is wider than the screen
  *   LAY-03  two light sections meet with no line between them
  *   LAY-04  two light sections meet with two lines between them
- *   LAY-05  a section line stops at the content edge (section borders run edge to edge)
+ *   LAY-03  a line between different backgrounds stops at the content edge (it must run edge to edge)
+ *   LAY-05  an edge-to-edge line between two sections of the same background (same background = one section: use an in-flow divider)
+ *   Boundaries marked data-rule="none" are skipped (e.g. the home hero).
  */
 (() => {
   const main = document.querySelector('main') || document.body;
@@ -46,17 +48,22 @@
   const near = y => (heads.filter(h => h[0] <= y + 40).pop() || [0, 'top'])[1];
   const out = [];
   if (document.documentElement.scrollWidth > W + 1) out.push(`LAY-01 page is ${document.documentElement.scrollWidth}px wide on a ${W}px screen`);
+  const noRule = [...document.querySelectorAll('[data-rule="none"]')].map(e => e.getBoundingClientRect().top + scrollY);
+  const skip = y => noRule.some(t => Math.abs(t - y) <= 2);
+  for (const l of lines.filter(l => l.full)) {
+    if (colorAt(l.y - 3) === colorAt(l.y + 3)) out.push(`LAY-05 edge-to-edge line between two sections of the same background, near "${near(l.y)}"`);
+  }
   const H = document.documentElement.scrollHeight;
   let prev = colorAt(0);
   for (let y = 1; y < H; y++) {
     const c = colorAt(y);
     if (c === prev) continue;
-    if (light(c) && light(prev)) {
+    if (light(c) && light(prev) && !skip(y)) {
       const here = lines.filter(l => Math.abs(l.y - y) <= 2);
       const ys = [...new Set(here.map(l => Math.round(l.y)))];
       if (ys.length === 0) out.push(`LAY-03 no line where sections meet, near "${near(y)}"`);
       else if (ys.length > 1) out.push(`LAY-04 double line where sections meet, near "${near(y)}"`);
-      else if (!here.some(l => l.full)) out.push(`LAY-05 section line stops at the content edge, near "${near(y)}"`);
+      else if (!here.some(l => l.full)) out.push(`LAY-03 section line stops at the content edge, near "${near(y)}"`);
     }
     prev = c;
   }

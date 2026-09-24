@@ -73,6 +73,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
 <style>
+  /* The footer follows a darker band on this page, so its line is a section border and runs edge to edge (LAY-03). */
+  footer > div::before { left: -100vmax !important; right: -100vmax !important; }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
   * { box-sizing: border-box; }
