@@ -150,32 +150,31 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <p class="eyebrow accent">Audit design system</p>
   <h1><span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Is AI following your design system?</span></span></h1>
   <div style="height:1px;background:var(--line);margin:clamp(20px,3vw,28px) 0"></div>
-  <p class="sub">An agent builds from what your system gives it. Where the system is clear, it reuses your parts. Where it is not, it guesses: raw values, rebuilt components, parts nobody asked for. The audit shows how AI reads your system, where it follows it, and where it invents, and what each gap costs to fix.</p>
+  <p class="sub">An agent builds from what your system gives it. Where it is clear, the agent reuses your parts. Where it is not, it guesses: raw values, rebuilt components, parts nobody asked for. The audit shows where AI follows your system, where it invents, and what each gap costs.</p>
   <div class="actions">
     <a class="btn" href="#book">Book an audit</a>
     <a class="btn outline" href="#why">Why it pays</a>
   </div>
-  <p class="under">For teams with a design system in code. No system yet, or one worth replacing: <a href="design-system-build.html">I build it from scratch</a>.</p>
+  <p class="under">For teams with a design system in code. No system yet: <a href="design-system-build.html">I build it from scratch</a>.</p>
 </header>
 
 <section class="band" id="why">
   <div class="wrap">
     <p class="eyebrow">Why now</p>
     <h2>If AI writes your UI, your design system is the budget</h2>
-    <p style="margin-top:var(--space-9)">An agent builds from whatever your system gives it. When components and tokens are reachable, it writes less, reuses more and comes back for fewer corrections. When they are not, it guesses, and you pay for every guess in tokens, review time and rework.</p>
+    <p style="margin-top:var(--space-9)">When components and tokens are reachable, an agent writes less, reuses more and needs fewer corrections. When they are not, you pay for every guess in tokens, review and rework.</p>
     <div class="grid two">
       <div class="cell">
         <p class="label meta">Storybook's benchmark</p>
         <p class="stat">27%</p>
-        <p style="margin-top:var(--space-5)">fewer tokens to build the same UI when the agent can read the component library, with 2.76 times faster generation and 12.8% more reuse of existing components.</p>
+        <p style="margin-top:var(--space-5)">fewer tokens to build the same UI when the agent can read the component library, with 2.76 times faster generation and 12.8% more reuse.</p>
       </div>
       <div class="cell">
         <p class="label meta">My own site, measured</p>
         <p class="stat">44%</p>
-        <p style="margin-top:var(--space-5)">shorter: the same case-study screen is 21,229 characters written raw and 11,961 built from components. About 2,300 tokens saved on one screen, before any correction rounds.</p>
+        <p style="margin-top:var(--space-5)">shorter: the same case-study screen is 21,229 characters written raw and 11,961 built from components. About 2,300 tokens saved on one screen.</p>
       </div>
     </div>
-    <p class="under">The audit tells you which half of your system an agent can follow, and which half it has to guess. That is the number that decides your AI cost.</p>
   </div>
 </section>
 
@@ -183,12 +182,12 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <div class="wrap">
     <p class="eyebrow">The cost of drift</p>
     <h2>Every value an agent guesses, you pay for twice</h2>
-    <p style="margin-top:var(--space-9)">Once when it is written, and again when a person finds it in review. Drift is not a tidiness problem; it is a throughput problem.</p>
+    <p style="margin-top:var(--space-9)">Once when it is written, again when someone catches it in review. Drift is a throughput problem, not a tidiness one.</p>
     <div class="grid two">
-      <div class="cell"><p class="label traded">Tokens</p><h3>Raw values are long</h3><p style="margin-top:var(--space-5)">A component call is one line. The same part written by hand is forty, with every colour, space and state spelled out. The model writes all of it, and you pay for all of it, every time.</p></div>
-      <div class="cell"><p class="label traded">Review</p><h3>Guesses land on a person</h3><p style="margin-top:var(--space-5)">A value off the scale looks right and reads wrong. Someone has to catch it, ask for a change, and check the fix. That loop costs more than the generation did.</p></div>
-      <div class="cell"><p class="label traded">Consistency</p><h3>Near-misses ship</h3><p style="margin-top:var(--space-5)">Nine greys that are almost the same. A button rebuilt because the real one was not findable. None of it fails a test, and all of it makes the product feel loose.</p></div>
-      <div class="cell"><p class="label traded">Accessibility</p><h3>Conditions slip quietly</h3><p style="margin-top:var(--space-5)">Contrast below the minimum, movement that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></div>
+      <div class="cell"><p class="label traded">Tokens</p><h3>Raw values are long</h3><p style="margin-top:var(--space-5)">A component call is one line. The same part by hand is forty, and you pay for all forty every time.</p></div>
+      <div class="cell"><p class="label traded">Review</p><h3>Guesses land on a person</h3><p style="margin-top:var(--space-5)">An off-scale value looks right and reads wrong. Catching and fixing it costs more than generating it.</p></div>
+      <div class="cell"><p class="label traded">Consistency</p><h3>Near-misses ship</h3><p style="margin-top:var(--space-5)">Nine near-identical greys. A button rebuilt because the real one was hard to find. Nothing fails a test; the product feels loose.</p></div>
+      <div class="cell"><p class="label traded">Accessibility</p><h3>Conditions slip quietly</h3><p style="margin-top:var(--space-5)">Contrast below the minimum, motion that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></div>
     </div>
   </div>
 </section>
@@ -197,15 +196,14 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <div class="wrap">
     <p class="eyebrow">What the audit checks</p>
     <h2>Five pillars, one report</h2>
-    <p style="margin-top:var(--space-9)">Together they answer three questions: how AI reads your system, whether it follows it, and what it does when something is missing. Each pillar fails in a different way. The method was tested on four published open-source design systems, Primer, Radix Themes, Carbon and Chakra UI, mature systems with full-time teams behind them. Every one still had findings worth fixing.</p>
+    <p style="margin-top:var(--space-9)">They answer three questions: how AI reads your system, whether it follows it, and what it does when something is missing. Tested on Primer, Radix Themes, Carbon and Chakra UI: every one had findings worth fixing.</p>
     <ul class="deliver">
-      <li><b>Values</b><span>Every colour, space, size, radius, type and motion value in your components, checked against your own tokens: what is hand-written, what equals a token nobody found, and what sits on no scale. Plus the token set itself: what nobody uses, and what is defined twice.</span></li>
-      <li><b>People</b><span>Text contrast on every pair your tokens declare, in every theme. Reduced motion on everything that moves. High contrast, visible focus, and right-to-left if you need it.</span></li>
-      <li><b>Structure</b><span>Components rebuilt by hand where one exists, parts used outside their contract, and styling that overrides what a component is rather than where it sits.</span></li>
-      <li><b>Content</b><span>Numbers and claims with no source, and the words your voice rules ban. What the system teaches an agent, it repeats in every screen.</span></li>
-      <li><b>Agent readiness</b><span>What a coding agent has to invent when it builds with your system: decisions it made up, token names it expected to exist, and decisions that exist but were not findable.</span></li>
+      <li><b>Values</b><span>Every hard-coded value in your components, checked against your tokens: equal to a token nobody found, or on no scale. Plus unused and duplicate tokens.</span></li>
+      <li><b>People</b><span>Contrast on every declared pair, in every theme. Reduced motion, high contrast, visible focus, and right-to-left if you need it.</span></li>
+      <li><b>Structure</b><span>Components rebuilt by hand, parts used outside their contract, styling that changes what a component is.</span></li>
+      <li><b>Content</b><span>Unsourced numbers and claims, and words your voice rules ban. An agent repeats what the system teaches it.</span></li>
+      <li><b>Agent readiness</b><span>What a coding agent has to invent: decisions it made up, and names it expected but could not find.</span></li>
     </ul>
-    <p class="under">Every finding is checked by hand before it reaches you. You get one report, fixes ranked by cost and gain, and a 30-minute call.</p>
   </div>
 </section>
 
@@ -213,12 +211,12 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <div class="wrap">
     <p class="eyebrow">What the audit finds</p>
     <h2>Four kinds of finding, and only two are mechanical</h2>
-    <p style="margin-top:var(--space-9)">A percentage tells you little on its own. What matters is which kind of finding you have, because each one costs something different to fix.</p>
+    <p style="margin-top:var(--space-9)">Each costs something different to fix.</p>
     <div class="grid two">
-      <div class="cell"><p class="label gained">Mechanical</p><h3>A value that equals a token</h3><p style="margin-top:var(--space-5)">The decision exists; someone wrote the number instead. Find, replace, and prove with a before-and-after render that nothing moved.</p></div>
-      <div class="cell"><p class="label traded">Needs a decision</p><h3>A value on no scale</h3><p style="margin-top:var(--space-5)">An optical nudge, or drift. Only your team can say which. The audit groups them and shows where they cluster, so deciding takes minutes.</p></div>
-      <div class="cell"><p class="label gained">Affects people</p><h3>Contrast and motion</h3><p style="margin-top:var(--space-5)">Text colours checked against every background in every theme, and movement checked against the reduced-motion setting. The findings teams act on first.</p></div>
-      <div class="cell"><p class="label traded">Getting worse</p><h3>What AI invents</h3><p style="margin-top:var(--space-5)">Give a coding agent your system and it fills the gaps by guessing. The audit measures that too: which decisions it made up, and which existed but were not findable.</p></div>
+      <div class="cell"><p class="label gained">Mechanical</p><h3>A value that equals a token</h3><p style="margin-top:var(--space-5)">The decision exists; someone typed the number. Find, replace, and prove with a before-and-after render that nothing moved.</p></div>
+      <div class="cell"><p class="label traded">Needs a decision</p><h3>A value on no scale</h3><p style="margin-top:var(--space-5)">An optical nudge or drift: only your team can say. Grouped by where they cluster, so deciding takes minutes.</p></div>
+      <div class="cell"><p class="label gained">Affects people</p><h3>Contrast and motion</h3><p style="margin-top:var(--space-5)">Contrast in every theme, and motion against the reduced-motion setting. Teams fix these first.</p></div>
+      <div class="cell"><p class="label traded">Getting worse</p><h3>What AI invents</h3><p style="margin-top:var(--space-5)">A coding agent fills gaps by guessing. The audit shows what it made up and what it could not find.</p></div>
     </div>
   </div>
 </section>
@@ -233,8 +231,8 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
     <div>
       <p class="eyebrow">Who runs it</p>
       <h2 style="margin-bottom:var(--space-11)">I design systems, and I ship them</h2>
-      <p>Nine years designing products, the last few of them writing the code that ships them. Brazilian, based in Barcelona, working US East Coast hours. Fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks.</p>
-      <p>I built the design system for an AI platform in private capital markets, in Claude Design: 48 components, 9 templates, tokens as the single source of truth, and validation that catches AI creation drift before it reaches a screen. The audit is that method, applied to your system.</p>
+      <p>Nine years designing products, lately also writing the code. Based in Barcelona, on US East Coast hours. Fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks.</p>
+      <p>I built the design system for an AI platform in private capital markets, in Claude Design: 48 components, 9 templates, tokens as the single source of truth, validation that catches AI drift. The audit is that method, applied to your system.</p>
       <p style="margin:0"><a href="work.html" style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;text-decoration:none;color:var(--rust)">See the work →</a></p>
     </div>
   </div>
@@ -268,12 +266,12 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 <section>
   <div class="wrap">
     <p class="eyebrow">Questions</p>
-    <h2>The things teams ask before booking</h2>
-    <details><summary>Our system is in Figma, not in code.</summary><p>Then the audit reads the design file and the product instead, and the drift list compares what is drawn with what ships. Tell me which you have and I will say what the report can cover.</p></details>
-    <details><summary>We use Storybook. Does this replace it?</summary><p>No. Storybook shows that each component works and gives agents your catalogue. The audit measures whether the screens built with it follow the system, and checks the conditions Storybook does not: contrast across themes, reduced motion, high contrast. It runs on top of what you already have.</p></details>
-    <details><summary>Can you sign an NDA, or work from an export?</summary><p>Yes to both. If repository access is a problem, an export of the design system and a few product screens is enough to produce the drift list.</p></details>
-    <details><summary>What if the audit finds very little?</summary><p>That happens, and it is a useful answer: the report says so and names what it checked. The four public systems all scored high on tokens and still had findings worth fixing.</p></details>
-    <details><summary>Who does the work?</summary><p>I do. The scan is automated; the verification, the ranking and the report are mine. Every finding is checked by hand, because automated scans are wrong often enough to matter.</p></details>
+    <h2>What teams ask before booking</h2>
+    <details><summary>Our system is in Figma, not in code.</summary><p>Then the audit compares the design file with what ships. Tell me what you have and I will say what the report can cover.</p></details>
+    <details><summary>We use Storybook. Does this replace it?</summary><p>No, it runs on top. Storybook shows each component works; the audit checks whether screens built with it follow the system, plus contrast, reduced motion and high contrast.</p></details>
+    <details><summary>Can you sign an NDA, or work from an export?</summary><p>Yes to both. Without repository access, an export of the design system and a few product screens is enough for the drift list.</p></details>
+    <details><summary>What if the audit finds very little?</summary><p>Then the report says so and names what it checked. The four public systems all scored high on tokens and still had findings worth fixing.</p></details>
+    <details><summary>Who does the work?</summary><p>I do. The scan is automated. I check every finding by hand, because scans are wrong often enough to matter, then rank the fixes and write the report.</p></details>
     <div class="actions"><a class="btn" href="#book">Book an audit</a></div>
   </div>
 </section>

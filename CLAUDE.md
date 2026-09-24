@@ -35,12 +35,14 @@ Token by job:
 | Text on the dark band | `--on-ink`, prose `--on-ink-muted` |
 | Accent: eyebrows on cases, link hover, highlights | `--rust` (`--rust-hover` for hover on index pages) |
 | Pale blue, only on ink grounds | `--baby` |
+| Note or callout ground on paper (soft blue banner, eyebrow in `--rust`) | `--note` |
 | Nav mark only | `--red` |
 | Section border, default rule, card border | `--line` |
 | Grid gutter behind joined cards | `--line-2` |
 | Control / pill border | `--line-3` |
 | Inner rule in a white card, soft chip border | `--line-4` |
-| Emphatic rule that opens a block | `--line-ink` |
+| Emphatic rule that opens a block; the divider between case sections | `--line-ink` |
+| Item rule inside a section (steps, stats, sub-sections) | `--line-mid` |
 | Gained / traded labels | `--gained` / `--traded` |
 | Wireframe skeleton bar | `--paper-2` (border `--line-4`); darker bar `--line` |
 | Wireframe figure ground | `--paper` |
@@ -57,6 +59,8 @@ Token by job:
 - **LAY-05b** The footer (`Foot.dc.html`) draws an in-flow divider, because it usually follows a section of its own background. A page where it follows a different background extends it in its own `<style>` (see `work.html`).
 - **LAY-06** Mobile (375px): the menu fills the height below the header; figures stack; nothing overflows.
 - **LAY-07** Case page order: hero (eyebrow `Label · Context · Year`) → details band (Role, Users, Timeframe, Built) → numbered rail sections `01 — …` to `What this case doesn't cover` → dark call to action → `NextCase`.
+- **LAY-08** Case headings. Big type only names a part the reader can navigate to, and the section title is the largest. (1) Section title: the index lists it; in the body `case-index.js` shows it as `04 The decision` at `--size-statement`, number in `--rust`, name in `--ink` (on phones the sticky rail shows it instead). Only sections use `NN`. (2) Sub-section: `<h3>` at `--size-body-lg`, weight 500, a noun phrase with a nested number in `--ink-7` (`5.2 Field and send`); only when a section has two or more parts, otherwise use a label. (3) Card titles: inside their card only (the card is the claim); in case bodies `--size-lead` steps down to `--size-body-lg`, set once in `case-index.js`. (4) Labels: eyebrow size, `--ink-6`/`--ink-7`, for figures, lists and single parts; never `NN —`, never blue (the note label is the one blue exception). (5) No statement or pull-quote blocks: a section's point is its first body sentence.
+- **LAY-09** Case rules and spacing. Three line weights: section divider `--line-ink` (darkest), item or sub-section rule `--line-mid`, list-row separator `--line`. A heading sits close to what it introduces: section title 16px above its first line; sub-section 56px above, 12px below (at least 1.5× more above than below). `case-index.js` applies the spacing; do not hand-set margins around case headings.
 
 ## 3. Components (CMP)
 - **CMP-01** Reuse before drawing. Design-system components: `<x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.<Name>">`
@@ -75,7 +79,7 @@ Token by job:
 - **CNT-04** No em dashes in prose. Allowed only in rail numbers (`01 — Title`) and page titles (`Page — Nayara Marques`). Use commas, colons, full stops, parentheses; ranges read "3 to 6 months". *(check_source, warning)*
 - **CNT-05** AI work is dated 2026.
 - **CNT-06** Numbers come only from this list: 90% acceptance, 250% response rate, 80% wanted modularization, 44% shorter screen (21,229 → 11,961 characters). The Storybook benchmark (27%, 2.76×, 12.8%) is unverified: do not reuse it. Anything else: ask.
-- **CNT-07** Voice: restrained, report-like, specific. Sentence case. No hype, no stacked disclaimers. Each case opens with the problem, what I did, the result, and says what it does not cover.
+- **CNT-07** Voice: restrained, report-like, specific. Sentence case. No hype, no stacked disclaimers. Each case opens with the problem, what I did, the result, and says what it does not cover. Headings and labels say what a section is about, in plain nouns ("Benchmark", "Expected gains"), never a claim or slogan; claims live in the body, next to their evidence.
 - **CNT-08** Case titles (keep links consistent): Where AI lives in an institutional investment platform · Specifying an AI composer, frame by frame · A design system AI can build from · Capacity matching for private truck fleets · An advisors platform for four business verticals · Modular card insurance in a banking app.
 - **CNT-09** Positioning: the harness work governs AI generation (AI exploring and designing), not production. Services: Build = a design system AI can build with; Audit = is AI following your design system.
 
