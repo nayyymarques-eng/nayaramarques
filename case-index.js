@@ -16,17 +16,20 @@
     '[data-case-index] a[aria-current="step"] span:first-child{color:var(--rust)}',
     '[data-case-index] a.done{color:var(--ink-4)}',
     // the rail text is replaced by the index; it stays in the page (transparent) so screen readers keep the heading
-    '@media ' + WIDE + '{html.has-case-index [data-rail-indexed]{color:transparent!important;user-select:none}',
-    // the section title in the body is the largest heading in a case: number in the accent, name in ink
+    // the section title in the body is the largest heading in a case, at every width: number in the accent, name in ink
     '[data-case-eyebrow]{display:block;margin:0 0 16px;font-size:var(--size-statement,clamp(20px,2.6vw,30px));font-weight:500;line-height:1.22;letter-spacing:var(--track-statement,-0.03em);color:var(--ink)}',
     '[data-case-eyebrow] span{color:var(--rust);margin-right:0.45em}',
+    '@media ' + WIDE + '{html.has-case-index [data-rail-indexed]{color:transparent!important;user-select:none}',
     // the body sits on the details band's 4-column grid: index in column 1, content and dividers from column 2
     'html.has-case-index [data-case-band]{--case-gap:clamp(20px,3vw,36px);column-gap:var(--case-gap)!important;',
     '--case-col:calc((100% - 3 * var(--case-gap)) / 4);--case-divider-left:calc(var(--case-col) + var(--case-gap))}',
     'html.has-case-index [data-case-band]>[data-rail-indexed]{flex:0 0 var(--case-col)!important}}',
     // card titles (DecisionCard and hand-built cards read --size-lead) step down below the section title
     '[data-case-band]{--size-lead:var(--size-body-lg,20px);--leading-lead:1.3;--track-lead:var(--track-body-lg,-0.018em)}',
-    '@media not all and ' + WIDE + '{[data-case-index],[data-case-eyebrow]{display:none!important}}'
+    // narrow screens: no index column, but the section title stays the largest heading;
+    // the old small rail is hidden visually and kept for screen readers
+    '@media not all and ' + WIDE + '{[data-case-index]{display:none!important}'
+      + 'html.has-case-index [data-rail-indexed]{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0);white-space:nowrap;border:0!important;padding:0!important;margin:0!important}}'
   ].join('');
 
   function init() {
