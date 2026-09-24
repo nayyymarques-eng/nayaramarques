@@ -1,13 +1,13 @@
 ---
 name: ds-handoff
-description: Keep Claude Design in step with the design system that ships in the nayaramarques.com repo. Lists the token changes Claude Design hasn't received yet, packages the tokens, components and rules into ~/Downloads, and writes the paste-ready prompt for the other Claude. Use this whenever tokens/colors.css (or any token file) changes, after tokenize-colours changes a token value, when the user wants to render, rebuild, share or "deploy" the design system, send it to Claude Design, or asks whether Claude Design and the site match.
+description: Keep Claude Design in step with the design system that ships in the nayaramarques.com repo. Lists the token changes Claude Design hasn't received yet, packages the tokens, components and rules into ~/Downloads, and writes the paste-ready prompt for the other Claude. Use this whenever tokens/colors.css (or any token file) changes, after tokenize-colours changes a token value, when the user wants to render, rebuild or share the design system in Claude Design, or asks whether Claude Design and the site match. For a direct push of tokens the user runs /ds-sync.
 ---
 
 # Design system handoff
 
 The site runs on a snapshot of the design system in `_ds/…`. Tokens are edited in the repo (checked by the harness, deployed with the site). Claude Design holds the original project, which the components are compiled from. Every token change in the repo therefore has to reach Claude Design too, or the next export from Claude Design silently undoes it. This skill makes that step routine and visible.
 
-Why a package and a prompt: the other Claude cannot open GitHub links, and this session usually can't reach Claude Design either (its login is rejected; `DesignSync` only runs inside `/design-sync`, which the user starts). So the handoff is: the user pastes a prompt, the other Claude reads a local folder or attached files.
+Two routes. **Direct:** the user starts `/ds-sync`, which writes the token files into the project through `DesignSync` (needs a working Design login). **Paste (this skill):** when that login fails, or for a full render or rebuild, which `ds-sync` does not do. The other Claude cannot open GitHub links, so here the user pastes a prompt and it reads a local folder or attached files. The drift report and `--mark-sent` below are shared by both routes.
 
 ## Steps
 
@@ -23,7 +23,7 @@ Why a package and a prompt: the other Claude cannot open GitHub links, and this 
 
 ## If Claude Design access works in this session
 
-If `/design-sync` is running and the tools are available, prefer a reviewed sync over the paste: one file at a time (`tokens/colors.css` first), with the plan shown to the user before any write. Then `--mark-sent`.
+If `DesignSync` works in this session, use the `ds-sync` skill instead of the paste: it diffs the real project, shows the plan, writes only the token files that differ, reads them back, then runs `--mark-sent`.
 
 ## Things to say, not assume
 

@@ -26,6 +26,8 @@ If the change is meant to move only specific colours (a token merge, a hex → t
 4. **Rendered, phone.** `resize_window` preset `mobile`, repeat step 3 on the pages you changed plus `index.html`, then preset `desktop` again.
 5. **Fingerprint** (if taken): on each page run `('compare', [<rgb triples allowed to change>])`. Anything reported as UNEXPECTED is a regression until explained.
 6. **Links.** Every local `href`/`src` points to a file that exists (a short Python walk over `*.html` is enough).
+7. **Job title.** One title and level across the site: flag any that differs from the one on `index.html`.
+8. **Proposals.** `python3 .claude/skills/ds-proposals/scripts/proposals.py scan`: report the count that needs a verdict. It never blocks a deploy; open proposals are for `ds-proposals`.
 
 Batch navigation in `browser_batch` (max 25 actions per call, so two batches for 16 pages). If a result says the page navigated mid-script, rerun that page alone: it is usually the runtime finishing late, not a failure.
 
@@ -49,6 +51,8 @@ End with this table, then one line on anything not checked:
 | Pages, phone | n/n pass |
 | Colour fingerprint | identical apart from allowed colours / not taken |
 | Links | none broken |
+| Job title | one title / differs on … |
+| Proposals | n need a verdict |
 
 ## PAGES
 
