@@ -20,6 +20,7 @@
 <meta name="twitter:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <style id="boot-style">
   html { background:#f2f1ee; color:#3a3e44; font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
@@ -31,11 +32,11 @@
 <script>document.documentElement.classList.add('booting');</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:#f2f1ee;z-index:9999">
-  <div style="height:57px;border-bottom:1px solid #dedbd5;display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--paper);z-index:9999">
+  <div style="height:57px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
   <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:#e2e0da;animation:none"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--line);animation:none"></i>
     <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
     <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
     <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
@@ -73,11 +74,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: #f2f1ee; color: #3a3e44; font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
   * { box-sizing: border-box; }
-  a { color: #3a3e44; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: #2f6d92; }
-  ::selection { background: #3a3e44; color: #f2f1ee; }
+  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--rust); }
+  ::selection { background: var(--ink); color: var(--paper); }
   @keyframes lineUp { from { transform: translateY(1.05em); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); filter: blur(3px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
@@ -89,7 +90,7 @@
       background-color: inherit;
       padding: 13px 0 11px !important;
       margin: 0 0 6px !important;
-      border-bottom: 1px solid #dedbd5;
+      border-bottom: 1px solid var(--line);
     }
   }
 </style>
@@ -145,36 +146,36 @@
 </script>
 </helmet>
 
-<div style="min-height:100vh">
+<div style="min-height:100vh;overflow-x:clip">
 
   <dc-import name="Nav" hint-size="100%,57px" style="position:sticky;top:0;z-index:50"></dc-import>
 
   <main style="max-width:1400px;margin:0 auto;padding:0 32px">
 
     <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 0">
-      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92;margin-bottom:20px"><span>BTG Pactual</span> · São Paulo · 2019—2021</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:20px"><span>BTG Pactual</span> · São Paulo · 2019—2021</div>
       <h1 style="font-weight:500;font-size:clamp(34px,5.2vw,68px);line-height:0.94;letter-spacing:-0.045em;margin:0 0 clamp(24px,3vw,32px);max-width:26ch;text-wrap:balance">An advisors platform for four business verticals</h1>
-      <div style="height:1px;background:#e2e0da;margin-bottom:clamp(24px,3vw,32px)"></div>
-      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:#4e535a;text-wrap:pretty">A workspace for advisors across BTG Pactual’s verticals: configurable dashboard, modular side menu, client page. Four directors could veto — 12 interviews through concept test to one MVP they all signed off on.</p>
+      <div style="height:1px;background:var(--line);margin-bottom:clamp(24px,3vw,32px)"></div>
+      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);text-wrap:pretty">A workspace for advisors across BTG Pactual’s verticals: configurable dashboard, modular side menu, client page. Four directors could veto — 12 interviews through concept test to one MVP they all signed off on.</p>
     </section>
 
-    <section style="background:#eceae5;box-shadow:0 0 0 100vmax #eceae5;clip-path:inset(0 -100vmax);position:relative;padding:clamp(28px,4vw,40px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:#dedbd5" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:#dedbd5">
+    <section style="background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding:clamp(28px,4vw,40px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(20px,3vw,36px)">
         <div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:10px">Role</div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Role</div>
           <p style="margin:0;font-size:14px;line-height:1.6">Product Design Lead.</p>
         </div>
         <div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:10px">Team</div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Team</div>
           <p style="margin:0;font-size:14px;line-height:1.6">Me plus 4 product designers, with tech leads and 4 business directors.</p>
         </div>
         <div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:10px">Context</div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Context</div>
           <p style="margin:0;font-size:14px;line-height:1.6">The investment verticals at one of Latin America's largest investment banks.</p>
         </div>
         <div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:10px">Contribution</div>
-          <p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">research · concept design · concept testing · workshop facilitation · prioritisation · team leadership</p>
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Contribution</div>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">research · concept design · concept testing · workshop facilitation · prioritisation · team leadership</p>
         </div>
       </div>
     </section>
@@ -185,124 +186,124 @@
 
     <section style="display:grid">
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#f2f1ee;box-shadow:0 0 0 100vmax #f2f1ee;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">Note — BTG Pactual</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">Note — BTG Pactual</h2>
         <div style="flex:1 1 460px;min-width:0">
-          <p style="margin:0 0 16px;max-width:62ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">Two and a half years at BTG Pactual, across retail and investments. I was one of the early designers on BTG+, the bank’s consumer app, and shaped its early MVP; BTG+ is now one of the largest businesses in the group. This project sits on the investment side, serving the advisors rather than the end client.</p>
-          <p style="margin:0;max-width:62ch;font-size:14px;line-height:1.6;color:#5a5f66;text-wrap:pretty">Context for this case and for <a href="card-insurance.html" style="color:#3a3e44;text-decoration:none;border-bottom:1px solid #dedbd5" style-hover="color:#2f6d92">Modular card insurance</a>, both from that period.</p>
+          <p style="margin:0 0 16px;max-width:62ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">Two and a half years at BTG Pactual, across retail and investments. I was one of the early designers on BTG+, the bank’s consumer app, and shaped its early MVP; BTG+ is now one of the largest businesses in the group. This project sits on the investment side, serving the advisors rather than the end client.</p>
+          <p style="margin:0;max-width:62ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">Context for this case and for <a href="card-insurance.html" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)" style-hover="color:var(--rust)">Modular card insurance</a>, both from that period.</p>
         </div>
       </div>
 
-<div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#eceae5;box-shadow:0 0 0 100vmax #eceae5;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">01 — The advisors platform</h2>
+<div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">01 — The advisors platform</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
-          <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">The project started as a demand from three business directors. Their advisors were giving consistently negative feedback about the existing platform: incomplete, with features scattered across internal and external tools, and it was measurably affecting advisor performance.</p>
-          <p style="margin:0;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">I ran Phase 1, research through concept. When the concept was approved I was promoted to Design Lead and built the Phase 2 team: four mid-level designers, each owning a module, with me still designing alongside them.</p>
-          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#e2e0da;border:1px solid #dedbd5;overflow:hidden;margin-top:28px">
-            <div style="background:#fff;padding:18px 16px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">B2B</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">Independent investment offices working with BTG products.</p></div>
-            <div style="background:#fff;padding:18px 16px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">B2C</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">Advisors inside the bank, dealing directly with clients.</p></div>
-            <div style="background:#fff;padding:18px 16px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">Wealth</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">Advisors managing large fortunes — the bank's biggest specialty.</p></div>
-            <div style="background:#fff;padding:18px 16px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">Advisors</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">A separate structure, from a bank acquired by the group.</p></div>
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">The project started as a demand from three business directors. Their advisors were giving consistently negative feedback about the existing platform: incomplete, with features scattered across internal and external tools, and it was measurably affecting advisor performance.</p>
+          <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">I ran Phase 1, research through concept. When the concept was approved I was promoted to Design Lead and built the Phase 2 team: four mid-level designers, each owning a module, with me still designing alongside them.</p>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);overflow:hidden;margin-top:28px">
+            <div style="background:var(--white);padding:18px 16px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">B2B</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">Independent investment offices working with BTG products.</p></div>
+            <div style="background:var(--white);padding:18px 16px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">B2C</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">Advisors inside the bank, dealing directly with clients.</p></div>
+            <div style="background:var(--white);padding:18px 16px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">Wealth</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">Advisors managing large fortunes — the bank's biggest specialty.</p></div>
+            <div style="background:var(--white);padding:18px 16px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">Advisors</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">A separate structure, from a bank acquired by the group.</p></div>
           </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#f2f1ee;box-shadow:0 0 0 100vmax #f2f1ee;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">02 — The problem</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">02 — The problem</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p style="margin:0 0 20px;font-size:clamp(20px,2.6vw,30px);line-height:1.22;letter-spacing:-0.03em;text-wrap:pretty">Advisors were doing the integration work the software should have done.</p>
-          <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">I recruited 12 advisors across B2B, B2C and the Advisors vertical and ran semi-structured interviews. Wealth was deliberately left out of the first concept to keep scope honest.</p>
-          <p style="margin:0 0 24px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">The hypothesis held: advisors manage and communicate with many clients daily on top of their own organisation, and the information they need to make a decision is split across Portal Admin, Excel, Notes, internal Research and Power BI.</p>
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">I recruited 12 advisors across B2B, B2C and the Advisors vertical and ran semi-structured interviews. Wealth was deliberately left out of the first concept to keep scope honest.</p>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">The hypothesis held: advisors manage and communicate with many clients daily on top of their own organisation, and the information they need to make a decision is split across Portal Admin, Excel, Notes, internal Research and Power BI.</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px">
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">Wrong information</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">Information not updated</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">No useful filters</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">No opportunity curation</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">Inefficient customer support</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">Too many channels</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">Incomplete client profile</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">Control outside the platform</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">Multitasking</span>
-            <span style="font-size:11px;padding:7px 12px;border:1px solid #dedbd5;background:#fff;color:#4e535a">Accessibility</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">Wrong information</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">Information not updated</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">No useful filters</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">No opportunity curation</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">Inefficient customer support</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">Too many channels</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">Incomplete client profile</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">Control outside the platform</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">Multitasking</span>
+            <span style="font-size:11px;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--ink-2)">Accessibility</span>
           </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#eceae5;box-shadow:0 0 0 100vmax #eceae5;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">03 — Constraints</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">03 — Constraints</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
-          <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid #dedbd5">
-            <span style="font-size:11px;color:#2f6d92;flex-shrink:0;padding-top:3px">A</span>
-            <p style="margin:0;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty"><strong style="color:#3a3e44;font-weight:600">Four verticals, four directors, one product.</strong> Each vertical had a different definition of the MVP, and each director could veto.</p>
+          <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)">
+            <span style="font-size:11px;color:var(--rust);flex-shrink:0;padding-top:3px">A</span>
+            <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty"><strong style="color:var(--ink);font-weight:600">Four verticals, four directors, one product.</strong> Each vertical had a different definition of the MVP, and each director could veto.</p>
           </div>
-          <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid #dedbd5">
-            <span style="font-size:11px;color:#2f6d92;flex-shrink:0;padding-top:3px">B</span>
-            <p style="margin:0;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty"><strong style="color:#3a3e44;font-weight:600">No project manager at the start.</strong> Definition and prioritisation had no owner, so I took it — which is why the workshops exist.</p>
+          <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)">
+            <span style="font-size:11px;color:var(--rust);flex-shrink:0;padding-top:3px">B</span>
+            <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty"><strong style="color:var(--ink);font-weight:600">No project manager at the start.</strong> Definition and prioritisation had no owner, so I took it — which is why the workshops exist.</p>
           </div>
-          <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5">
-            <span style="font-size:11px;color:#2f6d92;flex-shrink:0;padding-top:3px">C</span>
-            <p style="margin:0;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty"><strong style="color:#3a3e44;font-weight:600">Board approval gated every step.</strong> Weekly design critiques and board meetings meant the concept had to be legible to directors, not just to designers.</p>
+          <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+            <span style="font-size:11px;color:var(--rust);flex-shrink:0;padding-top:3px">C</span>
+            <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty"><strong style="color:var(--ink);font-weight:600">Board approval gated every step.</strong> Weekly design critiques and board meetings meant the concept had to be legible to directors, not just to designers.</p>
           </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#f2f1ee;box-shadow:0 0 0 100vmax #f2f1ee;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">04 — Process &amp; key decisions</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">04 — Process &amp; key decisions</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
-          <p style="margin:0 0 28px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">We split the work into two phases: Concept Design, to prove the direction and win approval, then Detailed Design, to make it buildable. Three product principles carried through both — <strong style="font-weight:600">customizable, multitasking, propositional</strong>.</p>
+          <p style="margin:0 0 28px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">We split the work into two phases: Concept Design, to prove the direction and win approval, then Detailed Design, to make it buildable. Three product principles carried through both — <strong style="font-weight:600">customizable, multitasking, propositional</strong>.</p>
 
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#e2e0da;border:1px solid #dedbd5;overflow:hidden;margin-bottom:32px">
-            <div style="background:#fff;padding:20px 18px">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92;margin-bottom:10px">Phase 1 · Concept</div>
-              <p style="margin:0 0 10px;font-size:11px;line-height:1.4;color:#5a5f66">research → concept design → concept test → refinement → project definition → business approval</p>
-              <p style="margin:0;font-size:14px;line-height:1.6;color:#5f646b">Me, with tech leads and business directors</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);overflow:hidden;margin-bottom:32px">
+            <div style="background:var(--white);padding:20px 18px">
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Phase 1 · Concept</div>
+              <p style="margin:0 0 10px;font-size:11px;line-height:1.4;color:var(--ink-4)">research → concept design → concept test → refinement → project definition → business approval</p>
+              <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6)">Me, with tech leads and business directors</p>
             </div>
-            <div style="background:#fff;padding:20px 18px">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92;margin-bottom:10px">Phase 2 · Detailed</div>
-              <p style="margin:0 0 10px;font-size:11px;line-height:1.4;color:#5a5f66">detailed design → usability test → refinement → design spec → handover → business approval</p>
-              <p style="margin:0;font-size:14px;line-height:1.6;color:#5f646b">Me as design lead, plus 4 product designers</p>
+            <div style="background:var(--white);padding:20px 18px">
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Phase 2 · Detailed</div>
+              <p style="margin:0 0 10px;font-size:11px;line-height:1.4;color:var(--ink-4)">detailed design → usability test → refinement → design spec → handover → business approval</p>
+              <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6)">Me as design lead, plus 4 product designers</p>
             </div>
           </div>
 
           <div style="display:grid;gap:22px">
 
-            <div style="border:1px solid #dedbd5;background:#fff;padding:clamp(20px,2.6vw,28px)">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:12px">Decision 01</div>
+            <div style="border:1px solid var(--line);background:var(--white);padding:clamp(20px,2.6vw,28px)">
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Decision 01</div>
               <h3 style="font-weight:500;font-size:clamp(19px,2.2vw,26px);line-height:1.16;letter-spacing:-0.026em;margin:0 0 14px">Design 21 concept features, present 9</h3>
-              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">I ideated across the whole daily workflow — dashboard, widgets, side menu, opportunities, clients, research, goals, bulk investment, bulk message — then cut the board presentation to the nine that carried the argument.</p>
-              <div style="border-top:1px solid #dedbd5;padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
-                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3f6b4a;margin-bottom:7px">Gained</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">A concept broad enough to test as a real workday, presented tightly enough to approve in one meeting.</p></div>
-                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a4a2a;margin-bottom:7px">Traded away</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">Twelve features went unshown, and some resurfaced later as surprises in prioritisation.</p></div>
+              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">I ideated across the whole daily workflow — dashboard, widgets, side menu, opportunities, clients, research, goals, bulk investment, bulk message — then cut the board presentation to the nine that carried the argument.</p>
+              <div style="border-top:1px solid var(--line);padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
+                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gained);margin-bottom:7px">Gained</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">A concept broad enough to test as a real workday, presented tightly enough to approve in one meeting.</p></div>
+                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--traded);margin-bottom:7px">Traded away</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">Twelve features went unshown, and some resurfaced later as surprises in prioritisation.</p></div>
               </div>
             </div>
 
-            <div style="border:1px solid #dedbd5;background:#fff;padding:clamp(20px,2.6vw,28px)">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:12px">Decision 02</div>
+            <div style="border:1px solid var(--line);background:var(--white);padding:clamp(20px,2.6vw,28px)">
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Decision 02</div>
               <h3 style="font-weight:500;font-size:clamp(19px,2.2vw,26px);line-height:1.16;letter-spacing:-0.026em;margin:0 0 14px">A modular dashboard instead of four products</h3>
-              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">Rather than build a variant per vertical, the dashboard is composed of widgets each office configures. One codebase, four workflows. Tabs and a persistent side menu carried the multitasking principle.</p>
-              <div style="border-top:1px solid #dedbd5;padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
-                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3f6b4a;margin-bottom:7px">Gained</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">90% acceptance in the concept test, and a way for four directors to say yes to the same thing.</p></div>
-                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a4a2a;margin-bottom:7px">Traded away</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">Configurability is expensive to build and easy to get lost in. It pushed complexity onto engineering and onto first-run setup.</p></div>
+              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">Rather than build a variant per vertical, the dashboard is composed of widgets each office configures. One codebase, four workflows. Tabs and a persistent side menu carried the multitasking principle.</p>
+              <div style="border-top:1px solid var(--line);padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
+                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gained);margin-bottom:7px">Gained</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">90% acceptance in the concept test, and a way for four directors to say yes to the same thing.</p></div>
+                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--traded);margin-bottom:7px">Traded away</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">Configurability is expensive to build and easy to get lost in. It pushed complexity onto engineering and onto first-run setup.</p></div>
               </div>
             </div>
 
-            <div style="border:1px solid #dedbd5;background:#fff;padding:clamp(20px,2.6vw,28px)">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:12px">Decision 03</div>
+            <div style="border:1px solid var(--line);background:var(--white);padding:clamp(20px,2.6vw,28px)">
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Decision 03</div>
               <h3 style="font-weight:500;font-size:clamp(19px,2.2vw,26px);line-height:1.16;letter-spacing:-0.026em;margin:0 0 14px">Run the prioritisation myself, as two workshops</h3>
-              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">Workshop 1: feature map and an impact-versus-effort matrix with tech leads, business directors and design leads. Async in between: a table of dependencies and feature sizes from design and engineering, against business and user pain points. Workshop 2: each vertical proposed its MVP, then we merged them into one.</p>
-              <div style="border-top:1px solid #dedbd5;padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
-                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3f6b4a;margin-bottom:7px">Gained</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">One agreed MVP, with the tradeoffs made in the room rather than relitigated every sprint.</p></div>
-                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a4a2a;margin-bottom:7px">Traded away</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">Weeks of my design time spent on product management, at a point where the design also needed me.</p></div>
+              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">Workshop 1: feature map and an impact-versus-effort matrix with tech leads, business directors and design leads. Async in between: a table of dependencies and feature sizes from design and engineering, against business and user pain points. Workshop 2: each vertical proposed its MVP, then we merged them into one.</p>
+              <div style="border-top:1px solid var(--line);padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
+                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gained);margin-bottom:7px">Gained</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">One agreed MVP, with the tradeoffs made in the room rather than relitigated every sprint.</p></div>
+                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--traded);margin-bottom:7px">Traded away</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">Weeks of my design time spent on product management, at a point where the design also needed me.</p></div>
               </div>
             </div>
 
-            <div style="border:1px solid #dedbd5;background:#fff;padding:clamp(20px,2.6vw,28px)">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:12px">Decision 04</div>
+            <div style="border:1px solid var(--line);background:var(--white);padding:clamp(20px,2.6vw,28px)">
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Decision 04</div>
               <h3 style="font-weight:500;font-size:clamp(19px,2.2vw,26px);line-height:1.16;letter-spacing:-0.026em;margin:0 0 14px">Recruit advisors into the design process permanently</h3>
-              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">My team set up an "Advisors + Design Group": advisors who wanted to join discussions and design workshops. It became a standing recruitment pool and research database for the whole BTG design team.</p>
-              <div style="border-top:1px solid #dedbd5;padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
-                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3f6b4a;margin-bottom:7px">Gained</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">Bi-weekly usability tests with real advisors, without re-recruiting every round.</p></div>
-                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a4a2a;margin-bottom:7px">Traded away</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">A self-selecting group skews enthusiastic. We watched for that and kept recruiting outside it for bigger decisions.</p></div>
+              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">My team set up an "Advisors + Design Group": advisors who wanted to join discussions and design workshops. It became a standing recruitment pool and research database for the whole BTG design team.</p>
+              <div style="border-top:1px solid var(--line);padding-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px">
+                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gained);margin-bottom:7px">Gained</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">Bi-weekly usability tests with real advisors, without re-recruiting every round.</p></div>
+                <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--traded);margin-bottom:7px">Traded away</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">A self-selecting group skews enthusiastic. We watched for that and kept recruiting outside it for bigger decisions.</p></div>
               </div>
             </div>
 
@@ -310,79 +311,79 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#eceae5;box-shadow:0 0 0 100vmax #eceae5;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">05 — The solution</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">05 — The solution</h2>
         <div style="flex:1 1 460px;min-width:0">
-          <p style="margin:0 0 28px;max-width:62ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">A configurable dashboard, a modular side menu, and a client page built as a workspace — with the tools an advisor actually reaches for attached to it: call, message, annotation, app view, trading, withdrawal, investment simulator, download, favourites.</p>
-          <p style="margin:18px 0 0;max-width:62ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">The dashboard composes from six widget modules — Metas, Clientes, Produtos, Tickets, Movimentações, Agenda — each office keeping the ones it works from. Reaching that set took around 150 prototypes across the concept phase.</p>
+          <p style="margin:0 0 28px;max-width:62ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">A configurable dashboard, a modular side menu, and a client page built as a workspace — with the tools an advisor actually reaches for attached to it: call, message, annotation, app view, trading, withdrawal, investment simulator, download, favourites.</p>
+          <p style="margin:18px 0 0;max-width:62ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">The dashboard composes from six widget modules — Metas, Clientes, Produtos, Tickets, Movimentações, Agenda — each office keeping the ones it works from. Reaching that set took around 150 prototypes across the concept phase.</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(20px,2.6vw,28px);margin-top:clamp(28px,3.4vw,40px)">
             <figure data-zoom="" data-caption="The dashboard in edit mode: widgets added from a tray, each office keeping the modules it works from." style="margin:0;cursor:zoom-in">
-              <div style="aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid #dedbd5;background:#fff"><image-slot id="advisors-dashboard" src="assets/p49-0.png" fit="contain" shape="rect" placeholder="Dashboard + widgets" style="max-width:100%;position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
-              <figcaption style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#5a5f66;text-wrap:pretty">The dashboard in edit mode: widgets added from a tray, each office keeping the modules it works from.</figcaption>
+              <div style="aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid var(--line);background:var(--white)"><image-slot id="advisors-dashboard" src="assets/p49-0.png" fit="contain" shape="rect" placeholder="Dashboard + widgets" style="max-width:100%;position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+              <figcaption style="margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">The dashboard in edit mode: widgets added from a tray, each office keeping the modules it works from.</figcaption>
             </figure>
             <figure data-zoom="" data-caption="The client page as a workspace — position, profile and the advisor tools attached to the record." style="margin:0;cursor:zoom-in">
-              <div style="aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid #dedbd5;background:#fff"><image-slot id="advisors-client" src="assets/p53-0.png" fit="contain" shape="rect" placeholder="Client page — tools rail" style="max-width:100%;position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
-              <figcaption style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#5a5f66;text-wrap:pretty">The client page as a workspace — position, profile and the advisor tools attached to the record.</figcaption>
+              <div style="aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid var(--line);background:var(--white)"><image-slot id="advisors-client" src="assets/p53-0.png" fit="contain" shape="rect" placeholder="Client page — tools rail" style="max-width:100%;position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+              <figcaption style="margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">The client page as a workspace — position, profile and the advisor tools attached to the record.</figcaption>
             </figure>
             <figure data-zoom="" data-caption="Opportunities curated against client profiles, so the advisor is not the one doing the matching." style="margin:0;cursor:zoom-in">
-              <div style="aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid #dedbd5;background:#fff"><image-slot id="advisors-opportunities" src="assets/p51-0.png" fit="contain" shape="rect" placeholder="Opportunities and research" style="max-width:100%;position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
-              <figcaption style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#5a5f66;text-wrap:pretty">Opportunities curated against client profiles, so the advisor is not the one doing the matching.</figcaption>
+              <div style="aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid var(--line);background:var(--white)"><image-slot id="advisors-opportunities" src="assets/p51-0.png" fit="contain" shape="rect" placeholder="Opportunities and research" style="max-width:100%;position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+              <figcaption style="margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">Opportunities curated against client profiles, so the advisor is not the one doing the matching.</figcaption>
             </figure>
           </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#f2f1ee;box-shadow:0 0 0 100vmax #f2f1ee;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">06 — Impact</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">06 — Impact</h2>
         <div style="flex:1 1 460px;min-width:0">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:1px;background:#e2e0da;border:1px solid #dedbd5;overflow:hidden;margin-bottom:28px">
-            <div style="background:#fff;padding:24px 20px"><div style="font-size:clamp(24px,3.4vw,44px);line-height:1.06;letter-spacing:-0.036em;margin-bottom:10px">90%</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">overall feature acceptance in the concept test, with 9 advisors across 3 verticals</p></div>
-            <div style="background:#fff;padding:24px 20px"><div style="font-size:clamp(24px,3.4vw,44px);line-height:1.06;letter-spacing:-0.036em;margin-bottom:10px">85%</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">acceptance for tabs — advisors mapped them straight onto browser behaviour</p></div>
-            <div style="background:#fff;padding:24px 20px"><div style="font-size:clamp(24px,3.4vw,44px);line-height:1.06;letter-spacing:-0.036em;margin-bottom:10px">4 → 1</div><p style="margin:0;font-size:14px;line-height:1.6;color:#5a5f66">business verticals aligned on a single prioritised MVP</p></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);overflow:hidden;margin-bottom:28px">
+            <div style="background:var(--white);padding:24px 20px"><div style="font-size:clamp(24px,3.4vw,44px);line-height:1.06;letter-spacing:-0.036em;margin-bottom:10px">90%</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">overall feature acceptance in the concept test, with 9 advisors across 3 verticals</p></div>
+            <div style="background:var(--white);padding:24px 20px"><div style="font-size:clamp(24px,3.4vw,44px);line-height:1.06;letter-spacing:-0.036em;margin-bottom:10px">85%</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">acceptance for tabs — advisors mapped them straight onto browser behaviour</p></div>
+            <div style="background:var(--white);padding:24px 20px"><div style="font-size:clamp(24px,3.4vw,44px);line-height:1.06;letter-spacing:-0.036em;margin-bottom:10px">4 → 1</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-4)">business verticals aligned on a single prioritised MVP</p></div>
           </div>
-          <p style="margin:0;max-width:62ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">The concept was approved by the board and moved into Detailed Design with a team of five. Two findings changed the build: the side menu needed text labels, not icons alone, and the client page had too much white space for people used to dense information.</p>
+          <p style="margin:0;max-width:62ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">The concept was approved by the board and moved into Detailed Design with a team of five. Two findings changed the build: the side menu needed text labels, not icons alone, and the client page had too much white space for people used to dense information.</p>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#eceae5;box-shadow:0 0 0 100vmax #eceae5;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">07 — What I learned</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">07 — What I learned</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:66ch">
-          <p style="margin:0 0 18px;font-size:16px;font-weight:400;line-height:1.7;letter-spacing:normal;color:#4e535a;text-wrap:pretty">Alignment is a design deliverable. The feature map and the dependency table did more for this project than any screen, because until the four directors could see the same tradeoffs, no design was safe to build.</p>
-          <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">How I split the team mattered more than how I briefed it. I gave each designer a module rather than a vertical, so no one owned a single director’s agenda and every module had to work for all four workflows. It forced them to research across verticals instead of designing for the loudest one, and it made the bi-weekly board reviews a conversation about the product rather than a negotiation between businesses.</p>
-          <p style="margin:0;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">Scoring each screen during the concept test — rather than asking for opinions — gave the board a number they trusted, and gave me usability findings I hadn't gone looking for.</p>
+          <p style="margin:0 0 18px;font-size:16px;font-weight:400;line-height:1.7;letter-spacing:normal;color:var(--ink-2);text-wrap:pretty">Alignment is a design deliverable. The feature map and the dependency table did more for this project than any screen, because until the four directors could see the same tradeoffs, no design was safe to build.</p>
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">How I split the team mattered more than how I briefed it. I gave each designer a module rather than a vertical, so no one owned a single director’s agenda and every module had to work for all four workflows. It forced them to research across verticals instead of designing for the loudest one, and it made the bi-weekly board reviews a conversation about the product rather than a negotiation between businesses.</p>
+          <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">Scoring each screen during the concept test — rather than asking for opinions — gave the board a number they trusted, and gave me usability findings I hadn't gone looking for.</p>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:#f2f1ee;box-shadow:0 0 0 100vmax #f2f1ee;clip-path:inset(0 -100vmax);padding:clamp(36px,5vw,64px) 0 clamp(56px,8vw,96px)">
-        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a5f66;margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding:clamp(36px,5vw,64px) 0 clamp(56px,8vw,96px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+        <h2 data-rail style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
         <div style="flex:1 1 460px;min-width:0">
-          <p style="margin:0 0 24px;max-width:62ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty">The work here runs from the interviews to board approval and the start of Detailed Design. Four things sit outside it.</p>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid #dedbd5">
-            <span style="flex:0 0 22px;font-size:11px;font-weight:600;letter-spacing:0.12em;color:#2f6d92">01</span>
-            <p style="margin:0;max-width:70ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty"><strong style="font-weight:600;color:#3a3e44">Adoption and business outcomes.</strong> The 90% and 85% are concept-test acceptance scores, not shipped results. I left BTG before the platform had been live long enough to measure usage, retention or advisor productivity, so any figure would be a guess.</p>
+          <p style="margin:0 0 24px;max-width:62ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">The work here runs from the interviews to board approval and the start of Detailed Design. Four things sit outside it.</p>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)">
+            <span style="flex:0 0 22px;font-size:11px;font-weight:600;letter-spacing:0.12em;color:var(--rust)">01</span>
+            <p style="margin:0;max-width:70ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty"><strong style="font-weight:600;color:var(--ink)">Adoption and business outcomes.</strong> The 90% and 85% are concept-test acceptance scores, not shipped results. I left BTG before the platform had been live long enough to measure usage, retention or advisor productivity, so any figure would be a guess.</p>
           </div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid #dedbd5">
-            <span style="flex:0 0 22px;font-size:11px;font-weight:600;letter-spacing:0.12em;color:#2f6d92">02</span>
-            <p style="margin:0;max-width:70ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty"><strong style="font-weight:600;color:#3a3e44">The Wealth vertical.</strong> Four verticals shaped the brief, but Wealth was deprioritised for the first MVP. It was never researched or designed for here, and advisors managing large fortunes work differently enough that the modular dashboard may not hold for them.</p>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)">
+            <span style="flex:0 0 22px;font-size:11px;font-weight:600;letter-spacing:0.12em;color:var(--rust)">02</span>
+            <p style="margin:0;max-width:70ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty"><strong style="font-weight:600;color:var(--ink)">The Wealth vertical.</strong> Four verticals shaped the brief, but Wealth was deprioritised for the first MVP. It was never researched or designed for here, and advisors managing large fortunes work differently enough that the modular dashboard may not hold for them.</p>
           </div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid #dedbd5">
-            <span style="flex:0 0 22px;font-size:11px;font-weight:600;letter-spacing:0.12em;color:#2f6d92">03</span>
-            <p style="margin:0;max-width:70ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty"><strong style="font-weight:600;color:#3a3e44">Module-level design.</strong> In Detailed Design I led four product designers, each owning a module. The concept, the structure and the prioritisation are mine; the detailed work inside individual modules is theirs.</p>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)">
+            <span style="flex:0 0 22px;font-size:11px;font-weight:600;letter-spacing:0.12em;color:var(--rust)">03</span>
+            <p style="margin:0;max-width:70ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty"><strong style="font-weight:600;color:var(--ink)">Module-level design.</strong> In Detailed Design I led four product designers, each owning a module. The concept, the structure and the prioritisation are mine; the detailed work inside individual modules is theirs.</p>
           </div>
-          <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5">
-            <span style="flex:0 0 22px;font-size:11px;font-weight:600;letter-spacing:0.12em;color:#2f6d92">04</span>
-            <p style="margin:0;max-width:70ch;font-size:16px;line-height:1.7;color:#4e535a;text-wrap:pretty"><strong style="font-weight:600;color:#3a3e44">What shipped against the spec.</strong> Three of the modules were in build when I left. I cannot show which parts survived engineering, or what changed after handover.</p>
+          <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+            <span style="flex:0 0 22px;font-size:11px;font-weight:600;letter-spacing:0.12em;color:var(--rust)">04</span>
+            <p style="margin:0;max-width:70ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty"><strong style="font-weight:600;color:var(--ink)">What shipped against the spec.</strong> Three of the modules were in build when I left. I cannot show which parts survived engineering, or what changed after handover.</p>
           </div>
         </div>
       </div>
 
     </section>
 
-    <section style="border-top:1px solid #dedbd5;padding:clamp(36px,5vw,64px) 0 clamp(56px,8vw,96px)">
-      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:14px">Next case study</div>
-      <a href="card-insurance.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;position:relative;transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:#2f6d92;padding-left:10px">
+    <section style="position:relative;padding:clamp(36px,5vw,64px) 0 clamp(56px,8vw,96px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:14px">Next case study</div>
+      <a href="card-insurance.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;position:relative;transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust);padding-left:10px">
         <h2 style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;margin:0">Modular card insurance in a banking app</h2>
-        <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;flex-shrink:0">BTG Pactual</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">BTG Pactual</span>
       </a>
     </section>
 

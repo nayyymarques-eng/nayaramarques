@@ -8,14 +8,14 @@
 <body>
 <x-dc>
 <section style="{{ sectionStyle }}">
-  <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f636a;margin-bottom:14px">Next case study</div>
-  <a href="{{ href }}" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-top:1px solid #101114;border-bottom:1px solid #dedbd5;transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:#4a5526;padding-left:10px">
+  <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:14px">Next case study</div>
+  <a href="{{ href }}" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust);padding-left:10px">
     <h2 style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;margin:0">{{ title }}</h2>
-    <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f636a;flex-shrink:0">{{ tag }}</span>
+    <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">{{ tag }}</span>
   </a>
 </section>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1000,&quot;height&quot;:260},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;AI features inside an institutional investment platform&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;href&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;AI Surfaces.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tag&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;AI platform&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;band&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;paper&quot;,&quot;grey&quot;],&quot;default&quot;:&quot;paper&quot;,&quot;tsType&quot;:&quot;'paper' | 'grey'&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1000,&quot;height&quot;:260},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Where AI lives in an institutional investment platform&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;href&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;AI Surfaces.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tag&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;AI platform&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;band&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;paper&quot;,&quot;grey&quot;],&quot;default&quot;:&quot;paper&quot;,&quot;tsType&quot;:&quot;'paper' | 'grey'&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     const band = this.props.band === 'grey' ? '#e9e7e2' : null;

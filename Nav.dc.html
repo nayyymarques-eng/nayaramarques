@@ -18,9 +18,9 @@
   }
 </style>
 </helmet>
-<header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(242,241,238,0.46);border-bottom:1px solid #e9e7e2">
+<header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(242,241,238,0.46);border-bottom:1px solid var(--paper-2)">
   <nav style="max-width:1400px;margin:0 auto;padding:0 32px;height:57px;display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px)">
-    <a href="index.html" aria-label="Nayara Marques — home" style="display:flex;align-items:center;gap:12px;height:20px;font-size:14px;font-weight:600;letter-spacing:normal;color:#3a3e44;text-decoration:none;flex-shrink:0">
+    <a href="index.html" aria-label="Nayara Marques — home" style="display:flex;align-items:center;gap:12px;height:20px;font-size:14px;font-weight:600;letter-spacing:normal;color:var(--ink);text-decoration:none;flex-shrink:0">
       <span data-nav-mark="" aria-hidden="true" style="width:18px;height:18px;flex:none;position:relative">
       <span style="{{ markStyle }}">
         <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true" style="display:block;overflow:visible">
@@ -34,34 +34,34 @@
 
 
       <div ref="{{ workEl }}" style="position:relative">
-        <button onClick="{{ toggleWork }}" aria-expanded="{{ workOpen }}" aria-haspopup="true" style="appearance:none;background:none;border:0;padding:0;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#5a5f66;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color .2s ease" style-hover="color:#3a3e44">
+        <button onClick="{{ toggleWork }}" aria-expanded="{{ workOpen }}" aria-haspopup="true" style="appearance:none;background:none;border:0;padding:0;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-4);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color .2s ease" style-hover="color:var(--ink)">
           Work <span style="{{ workCaretStyle }}">▾</span>
         </button>
         <div style="{{ workPanelStyle }}">
-          <a href="ai-surfaces.html" aria-current="{{ cAi }}" style="{{ sAi }}" style-hover="background:#eceae5">AI surfaces</a>
-          <a href="composer-spec.html" aria-current="{{ cComposer }}" style="{{ sComposer }}" style-hover="background:#eceae5">Composer spec</a>
-          <a href="design-system.html" aria-current="{{ cDs }}" style="{{ sDs }}" style-hover="background:#eceae5">Design system</a>
-          <a href="advisors-platform.html" aria-current="{{ cAdvisors }}" style="{{ sAdvisors }}" style-hover="background:#eceae5">Advisors platform</a>
-          <a href="fleet-optimizer.html" aria-current="{{ cFleet }}" style="{{ sFleet }}" style-hover="background:#eceae5">Fleet optimizer</a>
-          <a href="card-insurance.html" aria-current="{{ cCard }}" style="{{ sCard }}" style-hover="background:#eceae5">Card insurance</a>
-          <a href="work.html" style="display:block;padding:12px 18px;text-decoration:none;color:#2f6d92;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:background .18s ease" style-hover="background:#eceae5">All work</a>
+          <a href="ai-surfaces.html" aria-current="{{ cAi }}" style="{{ sAi }}" style-hover="background:var(--paper-2)">AI surfaces</a>
+          <a href="composer-spec.html" aria-current="{{ cComposer }}" style="{{ sComposer }}" style-hover="background:var(--paper-2)">Composer spec</a>
+          <a href="design-system.html" aria-current="{{ cDs }}" style="{{ sDs }}" style-hover="background:var(--paper-2)">Design system</a>
+          <a href="advisors-platform.html" aria-current="{{ cAdvisors }}" style="{{ sAdvisors }}" style-hover="background:var(--paper-2)">Advisors platform</a>
+          <a href="fleet-optimizer.html" aria-current="{{ cFleet }}" style="{{ sFleet }}" style-hover="background:var(--paper-2)">Fleet optimizer</a>
+          <a href="card-insurance.html" aria-current="{{ cCard }}" style="{{ sCard }}" style-hover="background:var(--paper-2)">Card insurance</a>
+          <a href="work.html" style="display:block;padding:12px 18px;text-decoration:none;color:var(--rust);font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--paper-2)">All work</a>
         </div>
       </div>
       <div ref="{{ svcEl }}" style="position:relative">
-        <button onClick="{{ toggleSvc }}" aria-expanded="{{ svcOpen }}" aria-haspopup="true" style="appearance:none;background:none;border:0;padding:0;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#5a5f66;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color .2s ease" style-hover="color:#3a3e44">
+        <button onClick="{{ toggleSvc }}" aria-expanded="{{ svcOpen }}" aria-haspopup="true" style="appearance:none;background:none;border:0;padding:0;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-4);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color .2s ease" style-hover="color:var(--ink)">
           Services <span style="{{ svcCaretStyle }}">▾</span>
         </button>
         <div style="{{ svcPanelStyle }}">
-          <a href="design-system-build.html" aria-current="{{ cBuild }}" style="{{ sBuild }}" style-hover="background:#eceae5">Build design system</a>
-          <a href="design-system-audit.html" aria-current="{{ cAudit }}" style="{{ sAudit }}" style-hover="background:#eceae5">Audit design system</a>
-          <a href="project-engagement.html" aria-current="{{ cProject }}" style="{{ sProject }}" style-hover="background:#eceae5">Project engagement</a>
-          <a href="embedded-partner.html" aria-current="{{ cPartner }}" style="{{ sPartner }}" style-hover="background:#eceae5">Embedded partner</a>
-          <a href="start-a-project.html" style="display:block;padding:12px 18px;text-decoration:none;color:#2f6d92;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:background .18s ease" style-hover="background:#eceae5">Start a project</a>
+          <a href="design-system-build.html" aria-current="{{ cBuild }}" style="{{ sBuild }}" style-hover="background:var(--paper-2)">Build design system</a>
+          <a href="design-system-audit.html" aria-current="{{ cAudit }}" style="{{ sAudit }}" style-hover="background:var(--paper-2)">Audit design system</a>
+          <a href="project-engagement.html" aria-current="{{ cProject }}" style="{{ sProject }}" style-hover="background:var(--paper-2)">Project engagement</a>
+          <a href="embedded-partner.html" aria-current="{{ cPartner }}" style="{{ sPartner }}" style-hover="background:var(--paper-2)">Embedded partner</a>
+          <a href="start-a-project.html" style="display:block;padding:12px 18px;text-decoration:none;color:var(--rust);font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--paper-2)">Start a project</a>
         </div>
       </div>
 
-      <a href="about.html" style="color:#5a5f66;text-decoration:none;transition:color .2s ease" style-hover="color:#3a3e44">About</a>
-      <a href="contact.html" style="color:#5a5f66;text-decoration:none;transition:color .2s ease" style-hover="color:#3a3e44">Contact</a>
+      <a href="about.html" style="color:var(--ink-4);text-decoration:none;transition:color .2s ease" style-hover="color:var(--ink)">About</a>
+      <a href="contact.html" style="color:var(--ink-4);text-decoration:none;transition:color .2s ease" style-hover="color:var(--ink)">Contact</a>
     </div>
     <button data-nav-burger="" onClick="{{ toggleMobile }}" aria-label="Menu" aria-expanded="{{ mobileOpen }}" style="display:none;appearance:none;background:none;border:0;padding:10px;margin-right:-10px;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;align-items:flex-end">
       <span style="{{ burgerTop }}"></span>
@@ -72,7 +72,7 @@
   <div data-nav-panel="" style="{{ mobilePanelStyle }}">
     <div style="padding:8px 32px 28px;display:flex;flex-direction:column;gap:22px">
       <div style="display:flex;flex-direction:column;gap:2px">
-        <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;padding:8px 0">Work</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);padding:8px 0">Work</span>
         <a href="ai-surfaces.html" style="{{ mRow }}">AI surfaces</a>
         <a href="composer-spec.html" style="{{ mRow }}">Composer spec</a>
         <a href="design-system.html" style="{{ mRow }}">Design system</a>
@@ -82,14 +82,14 @@
         <a href="work.html" style="{{ mRowAccent }}">All work</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:2px">
-        <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;padding:8px 0">Services</span>
+        <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);padding:8px 0">Services</span>
         <a href="design-system-build.html" style="{{ mRow }}">Build design system</a>
         <a href="design-system-audit.html" style="{{ mRow }}">Audit design system</a>
         <a href="project-engagement.html" style="{{ mRow }}">Project engagement</a>
         <a href="embedded-partner.html" style="{{ mRow }}">Embedded partner</a>
         <a href="start-a-project.html" style="{{ mRowAccent }}">Start a project</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:2px;border-top:1px solid #e9e7e2;padding-top:10px">
+      <div style="display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--paper-2);padding-top:10px">
         <a href="about.html" style="{{ mRow }}">About</a>
         <a href="contact.html" style="{{ mRow }}">Contact</a>
       </div>
@@ -151,24 +151,24 @@ class Component extends DCLogic {
     const open = this.state.open, workOpen = this.state.workOpen, svcOpen = this.state.svcOpen;
     const caret = (o) => 'display:inline-block;font-size:10px;transition:transform .22s ease;transform:rotate(' + (o ? '180deg' : '0deg') + ')';
     const panel = (o, w) => [
-      'position:absolute;top:calc(100% + 14px);left:-18px;min-width:' + w + ';background:#f2f1ee;border:1px solid #e9e7e2;',
+      'position:absolute;top:calc(100% + 14px);left:-18px;min-width:' + w + ';background:var(--paper);border:1px solid var(--paper-2);',
       'box-shadow:0 18px 44px -26px rgba(16,17,20,0.34);z-index:60;',
       'transition:opacity .2s ease, transform .22s cubic-bezier(.19,1,.22,1), visibility .2s;',
       o ? 'opacity:1;transform:translateY(0);visibility:visible;pointer-events:auto;' : 'opacity:0;transform:translateY(-6px);visibility:hidden;pointer-events:none;'
     ].join('');
     let here = '';
     try { here = decodeURIComponent(location.pathname.split('/').pop() || ''); } catch (e) {}
-    const base = 'display:block;padding:12px 18px;text-decoration:none;border-bottom:1px solid #e9e7e2;font-size:14px;font-weight:400;letter-spacing:normal;text-transform:none;transition:background .18s ease;';
-    const row = (file, last) => {
-      const b = last ? base.replace('#edebe6', '#d3d0c9') : base;
+    const base = 'display:block;padding:12px 18px;text-decoration:none;border-bottom:1px solid var(--paper-2);font-size:14px;font-weight:400;letter-spacing:normal;text-transform:none;transition:background .18s ease;';
+    const row = (file) => {
+      const b = base;
       return here === file + '.dc.html'
-        ? b + 'color:#3a3e44;background:#f8f7f4;'
-        : b + 'color:#3a3e44;';
+        ? b + 'color:var(--ink);background:var(--paper-3);'
+        : b + 'color:var(--ink);';
     };
     const cur = (file) => (here === file + '.dc.html' ? 'page' : undefined);
     const shown = this.state.nameShown;
     const mo = this.state.mobileOpen;
-    const bar = (t) => 'display:block;height:1.5px;background:#3a3e44;transition:transform .25s cubic-bezier(.19,1,.22,1), opacity .2s ease;' + t;
+    const bar = (t) => 'display:block;height:1.5px;background:var(--ink);transition:transform .25s cubic-bezier(.19,1,.22,1), opacity .2s ease;' + t;
     const mRowBase = 'display:block;padding:11px 0;font-size:16px;font-weight:400;letter-spacing:-0.01em;text-transform:none;text-decoration:none;';
     return {
       mobileOpen: mo,
@@ -176,10 +176,10 @@ class Component extends DCLogic {
       burgerTop: bar('width:22px;' + (mo ? 'transform:translateY(6.5px) rotate(45deg);' : '')),
       burgerMid: bar('width:22px;' + (mo ? 'opacity:0;' : '')),
       burgerBot: bar(mo ? 'width:22px;transform:translateY(-6.5px) rotate(-45deg);' : 'width:16px;'),
-      mRow: mRowBase + 'color:#3a3e44;',
-      mRowAccent: mRowBase + 'color:#2f6d92;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;',
-      mobilePanelStyle: 'display:none;overflow:hidden;border-top:1px solid #e9e7e2;background:rgba(242,241,238,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:max-height .32s cubic-bezier(.19,1,.22,1), opacity .24s ease;'
-        + (mo ? 'max-height:80vh;opacity:1;overflow-y:auto;' : 'max-height:0;opacity:0;'),
+      mRow: mRowBase + 'color:var(--ink);',
+      mRowAccent: mRowBase + 'color:var(--rust);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;',
+      mobilePanelStyle: 'display:none;overflow:hidden;border-top:1px solid var(--paper-2);background:rgba(242,241,238,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:max-height .32s cubic-bezier(.19,1,.22,1), opacity .24s ease;height:calc(100dvh - 58px);'
+        + (mo ? 'max-height:calc(100dvh - 58px);opacity:1;overflow-y:auto;overscroll-behavior:contain;' : 'max-height:0;opacity:0;'),
       open, workOpen, svcOpen,
       sBuild: row('Design System Build'), cBuild: cur('Design System Build'),
       sAudit: row('Design System Audit'), sProject: row('Project Engagements'), sPartner: row('Embedded Partner', true),
@@ -190,7 +190,7 @@ class Component extends DCLogic {
       svcPanelStyle: panel(svcOpen, '250px'),
       markStyle: 'position:absolute;inset:0;transition:opacity .22s ease, transform .26s cubic-bezier(.19,1,.22,1);'
         + (shown ? 'opacity:1;transform:scale(1);' : 'opacity:0;transform:scale(0.55);'),
-      nameStyle: 'display:block;line-height:20px;white-space:nowrap;overflow:hidden;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;transition:opacity .3s ease, transform .45s cubic-bezier(.19,1,.22,1), max-width .45s cubic-bezier(.19,1,.22,1);'
+      nameStyle: 'display:block;line-height:20px;white-space:nowrap;overflow:hidden;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);transition:opacity .3s ease, transform .45s cubic-bezier(.19,1,.22,1), max-width .45s cubic-bezier(.19,1,.22,1);'
         + (shown ? 'opacity:1;transform:translateX(0);max-width:220px;' : 'opacity:0;transform:translateX(-6px);max-width:0;'),
       sAi: row('AI Surfaces'), sComposer: row('Composer Spec'), sDs: row('Design System'),
       sAdvisors: row('Advisors Platform'), sFleet: row('Fleet Optimizer'), sCard: row('Card Insurance', true),

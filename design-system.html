@@ -31,11 +31,11 @@
 <script>document.documentElement.classList.add('booting');</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:#f2f1ee;z-index:9999">
-  <div style="height:57px;border-bottom:1px solid #dedbd5;display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--paper);z-index:9999">
+  <div style="height:57px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
   <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:#e2e0da;animation:none"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--line);animation:none"></i>
     <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
     <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
     <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
@@ -96,13 +96,13 @@
       background-color: inherit;
       padding: 13px 0 11px !important;
       margin: 0 0 6px !important;
-      border-bottom: 1px solid #dedbd5;
+      border-bottom: 1px solid var(--line);
     }
   }
 </style>
 </helmet>
 
-<div style="min-height:100vh;display:flex;flex-direction:column">
+<div style="min-height:100vh;display:flex;flex-direction:column;overflow-x:clip">
 
   <dc-import name="Nav" hint-size="100%,57px" style="position:sticky;top:0;z-index:50"></dc-import>
 
@@ -110,14 +110,14 @@
 
     <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 0">
       <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--rust);margin-bottom:20px">
-        <span>Design system</span><span>AI platform · private capital markets</span><span>2026—</span>
+        <span>Design system</span><span>AI platform · private capital markets</span><span>2026</span>
       </div>
-      <h1 style="font-size:var(--size-display);font-weight:500;line-height:var(--leading-display);letter-spacing:var(--track-display);margin:0 0 clamp(24px,3vw,32px);max-width:24ch;text-wrap:balance">A design system a whole team can build from</h1>
-      <div style="height:1px;background:#e2e0da;margin-bottom:clamp(24px,3vw,32px)"></div>
-      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:#4e535a;text-wrap:pretty">Two sources of truth, and neither matched what shipped. I made the build environment canonical, wrote eight rule families a component list cannot carry, and routed anything drawn from scratch to review.</p>
+      <h1 style="font-size:var(--size-display);font-weight:500;line-height:var(--leading-display);letter-spacing:var(--track-display);margin:0 0 clamp(24px,3vw,32px);max-width:24ch;text-wrap:balance">A design system AI can build from</h1>
+      <div style="height:1px;background:var(--line);margin-bottom:clamp(24px,3vw,32px)"></div>
+      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);text-wrap:pretty">Most new UI arrived through AI tools, and the system gave them two answers. I made one source canonical, wrote eight rule families so AI reuses what exists instead of guessing, and routed anything it draws new to review as drift.</p>
     </section>
 
-    <section style="background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(28px,4vw,40px) 0">
+    <section style="background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding:clamp(28px,4vw,40px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(20px,3vw,36px)">
         <div>
           <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:10px">Role</div>
@@ -139,7 +139,7 @@
     </section>
 
     <sc-if value="{{ numbersBand }}" hint-placeholder-val="{{ true }}">
-      <section style="padding:clamp(28px,4vw,40px) 0 clamp(36px,5vw,64px);border-bottom:1px solid var(--line)">
+      <section style="padding:clamp(28px,4vw,40px) 0 clamp(36px,5vw,64px)">
         <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-6);margin-bottom:22px">Found on audit · built since</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:clamp(18px,3vw,32px)">
           <div style="border-top:1px solid var(--line-ink);padding-top:12px">
@@ -168,7 +168,7 @@
 
     <section style="display:grid">
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">01 — Context</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:var(--measure-prose-wide)">
           <p style="margin:0 0 18px;font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The platform serves private capital markets across three products and a marketing site: an AI toolkit for investment workflows, a network for industry groups, and a marketplace where allocators source and diligence investments.</p>
@@ -177,7 +177,7 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">02 — The problem</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p style="max-width:var(--measure-prose);margin:0 0 24px;font-size:var(--size-statement);font-weight:500;line-height:var(--leading-statement);letter-spacing:var(--track-statement);text-wrap:pretty">Two problems. There were two sources of truth and neither one shipped, and a catalogue of components did not stop the drift it was meant to stop.</p>
@@ -204,31 +204,31 @@
 
           <sc-if value="{{ diagrams }}" hint-placeholder-val="{{ true }}">
             <figure style="margin-top:clamp(28px,4vw,40px)">
-              <div style="border:1px solid var(--line);background:var(--white)"><div style="padding:24px 26px 26px;background:#f2f1ee">
-                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid #3a3e44"><span>As-is</span><span>Two answers, no tiebreak</span></div>
+              <div style="border:1px solid var(--line);background:var(--white)"><div style="padding:24px 26px 26px;background:var(--paper)">
+                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--line-ink)"><span>As-is</span><span>Two answers, no tiebreak</span></div>
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:22px">
-                  <div style="background:#fff;border:1px solid #dedbd5;padding:13px">
-                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:11px">Design file</div>
-                    <div style="display:flex;flex-direction:column;gap:6px"><span style="width:84%;height:5px;background:#e7e5df"></span><span style="width:62%;height:5px;background:#e7e5df"></span><span style="width:74%;height:5px;background:#e7e5df"></span></div>
-                    <p style="margin:11px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Complete. Not what shipped.</p>
+                  <div style="background:var(--white);border:1px solid var(--line);padding:13px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:11px">Design file</div>
+                    <div style="display:flex;flex-direction:column;gap:6px"><span style="width:84%;height:5px;background:var(--paper-2)"></span><span style="width:62%;height:5px;background:var(--paper-2)"></span><span style="width:74%;height:5px;background:var(--paper-2)"></span></div>
+                    <p style="margin:11px 0 0;font-size:10px;line-height:1.5;color:var(--ink-6)">Complete. Not what shipped.</p>
                   </div>
-                  <div style="background:#fff;border:1px solid #dedbd5;padding:13px">
-                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:11px">Codebase</div>
-                    <div style="display:flex;flex-direction:column;gap:6px"><span style="width:70%;height:5px;background:#dcd9d2"></span><span style="width:48%;height:5px;background:#dcd9d2"></span><span style="width:56%;height:5px;background:#dcd9d2"></span></div>
-                    <p style="margin:11px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Shipped. Incomplete and inconsistent.</p>
+                  <div style="background:var(--white);border:1px solid var(--line);padding:13px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:11px">Codebase</div>
+                    <div style="display:flex;flex-direction:column;gap:6px"><span style="width:70%;height:5px;background:var(--line)"></span><span style="width:48%;height:5px;background:var(--line)"></span><span style="width:56%;height:5px;background:var(--line)"></span></div>
+                    <p style="margin:11px 0 0;font-size:10px;line-height:1.5;color:var(--ink-6)">Shipped. Incomplete and inconsistent.</p>
                   </div>
                 </div>
-                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid #dedbd5">
-                  <span style="flex:none;font-size:11px;font-weight:600;color:#2f6d92;padding-top:2px">01</span>
-                  <p style="margin:0;font-size:14px;line-height:1.6;color:#4e535a"><strong style="font-weight:600">Every value had two answers.</strong> Colour, variant name, hover state, spacing.</p>
+                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line)">
+                  <span style="flex:none;font-size:11px;font-weight:600;color:var(--rust);padding-top:2px">01</span>
+                  <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)"><strong style="font-weight:600">Every value had two answers.</strong> Colour, variant name, hover state, spacing.</p>
                 </div>
-                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid #dedbd5">
-                  <span style="flex:none;font-size:11px;font-weight:600;color:#2f6d92;padding-top:2px">02</span>
-                  <p style="margin:0;font-size:14px;line-height:1.6;color:#4e535a"><strong style="font-weight:600">The tiebreak was one person.</strong> Asked the same question repeatedly, in chat.</p>
+                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line)">
+                  <span style="flex:none;font-size:11px;font-weight:600;color:var(--rust);padding-top:2px">02</span>
+                  <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)"><strong style="font-weight:600">The tiebreak was one person.</strong> Asked the same question repeatedly, in chat.</p>
                 </div>
-                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5">
-                  <span style="flex:none;font-size:11px;font-weight:600;color:#2f6d92;padding-top:2px">03</span>
-                  <p style="margin:0;font-size:14px;line-height:1.6;color:#4e535a"><strong style="font-weight:600">So following the system was optional.</strong> Whoever was building either guessed or waited.</p>
+                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+                  <span style="flex:none;font-size:11px;font-weight:600;color:var(--rust);padding-top:2px">03</span>
+                  <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)"><strong style="font-weight:600">So following the system was optional.</strong> Whoever was building either guessed or waited.</p>
                 </div>
               </div></div>
               <figcaption style="margin:14px 0 0;max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Two libraries, each partially right, and the three costs that followed from having no tiebreak.</figcaption>
@@ -237,7 +237,7 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">03 — Constraints</h2>
         <div style="flex:1 1 460px;min-width:0">
           <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="A" title="One source of truth, sitting where the work is made." measure="70ch" hint-size="100%,80px">Tooling that only produces pictures puts the system one translation away from the product. Whatever became canonical had to be the thing people build from directly.</x-import>
@@ -247,7 +247,7 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">04 — Approach &amp; key decisions</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p style="margin:0 0 28px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Four stages, in this order: audit what exists, settle where the truth lives, write the decisions down, build the route a new part takes to reach a designer.</p>
@@ -262,52 +262,52 @@
           <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,44px);align-items:start">
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 01 · Problem A" title="The build environment is the canonical source" gained="One place to ask, and it is the place people already work in. Disagreements resolve without me." traded="The repo is now knowingly behind. Re-syncing it is a standing debt rather than a one-off migration." hint-size="100%,380px">The system moved to the environment where screens are built, and picture-only design tooling came out of the workflow. The codebase is still read for the structural anatomy of a component, but on any conflict of colour, type, variant naming or behaviour, the canonical source wins. That sentence sits at the top of the readme and of the portable rule set: a tiebreak is only worth having if it is unambiguous.</x-import>
 
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 02 · Problem B" title="The system has a rules layer above the components" gained="A build comes out right without my taste in the loop. The rule is checkable by the person writing the code, or the tool writing it for them." traded="Rules need maintaining as carefully as components, and a loosely written rule is worse than none because it gets followed." hint-size="100%,380px">The system got a layer above the components: the decisions a prop list cannot carry. Which surface a page sits on. Title size set by the container, never by importance. Four legal control heights and six legal radii. One number for sections, cards and insets. Shadow means floating. Two easings. Alongside it, a decision map from job to component — including the wrong choice people were making instead — and one reference screen with every visible decision traced to the rule that produced it.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 02 · Problem B" title="The system has a rules layer above the components" gained="A build comes out right without my taste in the loop. The rule is checkable by the person writing the code, or the tool writing it for them." traded="Rules need maintaining as carefully as components, and a loosely written rule is worse than none because it gets followed." hint-size="100%,380px">The system got a layer above the components: the decisions a prop list cannot carry. Which surface a page sits on. Title size set by the container, never by importance. Four legal control heights and six legal radii. One number for sections, cards and insets. Shadow means floating. Two easings. Alongside it, a decision map from job to component, including the wrong choice people were making instead, and one reference screen with every visible decision traced to the rule that produced it.</x-import>
 
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 03 · Constraint D" title="The register reports new parts without blocking the build" gained="Anything invented outside the catalogue arrives on a list with its picture, its spec and the alternatives it rejected. Recurrence becomes countable." traded="It relies on the report being filed. The rule has to be repeated in every brief, and an unreported part still ships." hint-size="100%,380px">Parts the system does not cover get drawn. Preventing that produces silent approximations instead, so the rule is: draw it, tag it, and write a row naming what it does, the components considered and why each was wrong. The build continues either way. The row reaches the one reviewer, who can turn it into a component, reject it with the name of what to use instead, or leave it as a proposal until it is seen a second time.</x-import>
           </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">05 — What I built</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p style="margin:0 0 24px;max-width:var(--measure-prose);font-size:var(--size-statement);font-weight:500;line-height:var(--leading-statement);letter-spacing:var(--track-statement);text-wrap:pretty">Four layers and a register. Tokens fix the values, components fix the parts, rules fix the decisions between the parts, templates fix where a page starts.</p>
-          <p style="margin:0 0 20px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Each layer exists because the one below it leaves a question open. The register runs alongside all four, for the case where nothing covers the answer. The drift was never in the values or the parts — it was in layer three, which most systems leave to a design review.</p>
+          <p style="margin:0 0 20px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Each layer exists because the one below it leaves a question open. The register runs alongside all four, for the case where nothing covers the answer. The drift was never in the values or the parts. It was in layer three, which most systems leave to a design review.</p>
 
           <sc-if value="{{ diagrams }}" hint-placeholder-val="{{ true }}">
             <figure>
-              <div data-figure="stack" style="border:1px solid var(--line);background:var(--white)"><div style="padding:26px;background:#f2f1ee">
-                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #3a3e44"><span>The stack</span><span>Each layer answers what the one below leaves open</span></div>
+              <div data-figure="stack" style="border:1px solid var(--line);background:var(--white)"><div style="padding:26px;background:var(--paper)">
+                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line-ink)"><span>The stack</span><span>Each layer answers what the one below leaves open</span></div>
                 <div style="display:grid;grid-template-columns:minmax(0,1fr) 152px;gap:22px;align-items:start">
                   <div style="display:flex;flex-direction:column;gap:9px">
-                    <div style="background:#fff;border:1px solid #dedbd5;padding:12px 13px">
-                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b">Layer 01</span><span style="font-size:11px;font-weight:600;color:#3a3e44">Tokens</span><span style="margin-left:auto;font-size:10px;color:#5f646b">no literals</span></div>
-                      <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="width:38px;height:12px;background:#e7e5df"></span><span style="width:38px;height:12px;background:#dcd9d2"></span><span style="width:52px;height:12px;background:#e7e5df"></span><span style="width:44px;height:12px;background:#dcd9d2"></span><span style="width:30px;height:12px;background:#e7e5df"></span></div>
-                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Leaves open: which token, where.</p>
+                    <div style="background:var(--white);border:1px solid var(--line);padding:12px 13px">
+                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Layer 01</span><span style="font-size:11px;font-weight:600;color:var(--ink)">Tokens</span><span style="margin-left:auto;font-size:10px;color:var(--ink-6)">no literals</span></div>
+                      <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="width:38px;height:12px;background:var(--paper-2)"></span><span style="width:38px;height:12px;background:var(--line)"></span><span style="width:52px;height:12px;background:var(--paper-2)"></span><span style="width:44px;height:12px;background:var(--line)"></span><span style="width:30px;height:12px;background:var(--paper-2)"></span></div>
+                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:var(--ink-6)">Leaves open: which token, where.</p>
                     </div>
-                    <div style="background:#fff;border:1px solid #dedbd5;padding:12px 13px">
-                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b">Layer 02</span><span style="font-size:11px;font-weight:600;color:#3a3e44">Components</span><span style="margin-left:auto;font-size:10px;color:#5f646b">one contract each</span></div>
-                      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px"><span style="height:18px;background:#e7e5df"></span><span style="height:18px;background:#e7e5df"></span><span style="height:18px;background:#e7e5df"></span><span style="height:18px;background:#e7e5df"></span></div>
-                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Leaves open: which one for this job, and how they sit together.</p>
+                    <div style="background:var(--white);border:1px solid var(--line);padding:12px 13px">
+                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Layer 02</span><span style="font-size:11px;font-weight:600;color:var(--ink)">Components</span><span style="margin-left:auto;font-size:10px;color:var(--ink-6)">one contract each</span></div>
+                      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px"><span style="height:18px;background:var(--paper-2)"></span><span style="height:18px;background:var(--paper-2)"></span><span style="height:18px;background:var(--paper-2)"></span><span style="height:18px;background:var(--paper-2)"></span></div>
+                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:var(--ink-6)">Leaves open: which one for this job, and how they sit together.</p>
                     </div>
-                    <div style="background:#fff;border:1px solid #3a3e44;box-shadow:0 2px 10px -2px rgba(16,17,20,.16);padding:12px 13px">
-                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92">Layer 03</span><span style="font-size:11px;font-weight:600;color:#3a3e44">Applied rules</span><span style="margin-left:auto;font-size:10px;color:#5f646b">pass or fail</span></div>
-                      <div style="display:flex;flex-direction:column;gap:6px"><span style="width:100%;height:6px;background:#dcd9d2"></span><span style="width:86%;height:6px;background:#dcd9d2"></span><span style="width:92%;height:6px;background:#dcd9d2"></span></div>
-                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:#5f646b">Surfaces · titles · geometry · spacing · elevation · states · motion · limits.</p>
+                    <div style="background:var(--white);border:1px solid var(--line-ink);box-shadow:0 2px 10px -2px rgba(16,17,20,.16);padding:12px 13px">
+                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust)">Layer 03</span><span style="font-size:11px;font-weight:600;color:var(--ink)">Applied rules</span><span style="margin-left:auto;font-size:10px;color:var(--ink-6)">pass or fail</span></div>
+                      <div style="display:flex;flex-direction:column;gap:6px"><span style="width:100%;height:6px;background:var(--line)"></span><span style="width:86%;height:6px;background:var(--line)"></span><span style="width:92%;height:6px;background:var(--line)"></span></div>
+                      <p style="margin:9px 0 0;font-size:10px;line-height:1.5;color:var(--ink-6)">Surfaces · titles · geometry · spacing · elevation · states · motion · limits.</p>
                     </div>
-                    <div style="background:#fff;border:1px solid #dedbd5;padding:12px 13px">
-                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b">Layer 04</span><span style="font-size:11px;font-weight:600;color:#3a3e44">Templates</span><span style="margin-left:auto;font-size:10px;color:#5f646b">where a page starts</span></div>
-                      <div style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px"><span style="height:30px;background:#e7e5df"></span><span style="height:30px;background:#dcd9d2"></span></div>
+                    <div style="background:var(--white);border:1px solid var(--line);padding:12px 13px">
+                      <div style="display:flex;align-items:baseline;gap:9px;margin-bottom:9px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Layer 04</span><span style="font-size:11px;font-weight:600;color:var(--ink)">Templates</span><span style="margin-left:auto;font-size:10px;color:var(--ink-6)">where a page starts</span></div>
+                      <div style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px"><span style="height:30px;background:var(--paper-2)"></span><span style="height:30px;background:var(--line)"></span></div>
                     </div>
                   </div>
-                  <div style="border:1px solid #dedbd5;background:#fff;padding:12px 13px">
-                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92;margin-bottom:10px">Register</div>
-                    <p style="margin:0 0 11px;font-size:10px;line-height:1.55;color:#5f646b">Runs beside all four, for the part no layer covers.</p>
+                  <div style="border:1px solid var(--line);background:var(--white);padding:12px 13px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Register</div>
+                    <p style="margin:0 0 11px;font-size:10px;line-height:1.55;color:var(--ink-6)">Runs beside all four, for the part no layer covers.</p>
                     <div style="display:flex;flex-direction:column;gap:7px">
-                      <span style="font-size:10px;color:#4e535a;border:1px solid #dedbd5;padding:6px 8px">Drawn</span>
-                      <span style="font-size:10px;color:#4e535a;border:1px solid #dedbd5;padding:6px 8px">Reported</span>
-                      <span style="font-size:10px;color:#4e535a;border:1px solid #dedbd5;padding:6px 8px">Reviewed</span>
+                      <span style="font-size:10px;color:var(--ink-2);border:1px solid var(--line);padding:6px 8px">Drawn</span>
+                      <span style="font-size:10px;color:var(--ink-2);border:1px solid var(--line);padding:6px 8px">Reported</span>
+                      <span style="font-size:10px;color:var(--ink-2);border:1px solid var(--line);padding:6px 8px">Reviewed</span>
                     </div>
                   </div>
                 </div>
@@ -321,39 +321,39 @@
           <figure>
             <div style="border:1px solid var(--line);background:var(--white);padding:24px 26px 26px;overflow-x:auto">
               <table>
-                <caption style="text-align:left;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;padding-bottom:12px;border-bottom:1px solid #3a3e44">Decision map · job → component → wrong choice</caption>
+                <caption style="text-align:left;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);padding-bottom:12px;border-bottom:1px solid var(--line-ink)">Decision map · job → component → wrong choice</caption>
                 <thead>
                   <tr>
-                    <th scope="col" style="text-align:left;padding:12px 14px 10px 0;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;width:30%">The job</th>
-                    <th scope="col" style="text-align:left;padding:12px 14px 10px 0;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;width:26%">Use</th>
-                    <th scope="col" style="text-align:left;padding:12px 0 10px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92">Reached for instead</th>
+                    <th scope="col" style="text-align:left;padding:12px 14px 10px 0;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);width:30%">The job</th>
+                    <th scope="col" style="text-align:left;padding:12px 14px 10px 0;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);width:26%">Use</th>
+                    <th scope="col" style="text-align:left;padding:12px 0 10px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust)">Reached for instead</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Move between a record's sub-pages</td>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">Underline tabs</td>
-                    <td style="padding:11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">The filled segmented switcher, which means a view and not a route</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);font-size:11px;color:var(--ink-2);vertical-align:top">Move between a record's sub-pages</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);font-size:11px;font-weight:600;color:var(--ink);vertical-align:top">Underline tabs</td>
+                    <td style="padding:11px 0;border-top:1px solid var(--line);font-size:11px;color:var(--ink-6);vertical-align:top">The filled segmented switcher, which means a view and not a route</td>
                   </tr>
                   <tr>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Narrow a list to this quarter</td>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">Toggle group in the toolbar</td>
-                    <td style="padding:11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">A second tab row: a filter drawn as navigation</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);font-size:11px;color:var(--ink-2);vertical-align:top">Narrow a list to this quarter</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);font-size:11px;font-weight:600;color:var(--ink);vertical-align:top">Toggle group in the toolbar</td>
+                    <td style="padding:11px 0;border-top:1px solid var(--line);font-size:11px;color:var(--ink-6);vertical-align:top">A second tab row: a filter drawn as navigation</td>
                   </tr>
                   <tr>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Open a status or download menu</td>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">Menu button</td>
-                    <td style="padding:11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">Button plus chevron plus a hand-built surface</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);font-size:11px;color:var(--ink-2);vertical-align:top">Open a status or download menu</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);font-size:11px;font-weight:600;color:var(--ink);vertical-align:top">Menu button</td>
+                    <td style="padding:11px 0;border-top:1px solid var(--line);font-size:11px;color:var(--ink-6);vertical-align:top">Button plus chevron plus a hand-built surface</td>
                   </tr>
                   <tr>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Show a count beside a nav row</td>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">The rail's built-in numeral</td>
-                    <td style="padding:11px 0;border-top:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">A badge, which in this system means a status</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);font-size:11px;color:var(--ink-2);vertical-align:top">Show a count beside a nav row</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);font-size:11px;font-weight:600;color:var(--ink);vertical-align:top">The rail's built-in numeral</td>
+                    <td style="padding:11px 0;border-top:1px solid var(--line);font-size:11px;color:var(--ink-6);vertical-align:top">A badge, which in this system means a status</td>
                   </tr>
                   <tr>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5;font-size:11px;color:#4e535a;vertical-align:top">Lay cards out in columns</td>
-                    <td style="padding:11px 14px 11px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5;font-size:11px;font-weight:600;color:#3a3e44;vertical-align:top">Card grid</td>
-                    <td style="padding:11px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5;font-size:11px;color:#5f646b;vertical-align:top">A hand-rolled grid, which gives every card its own height</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:11px;color:var(--ink-2);vertical-align:top">Lay cards out in columns</td>
+                    <td style="padding:11px 14px 11px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:11px;font-weight:600;color:var(--ink);vertical-align:top">Card grid</td>
+                    <td style="padding:11px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:11px;color:var(--ink-6);vertical-align:top">A hand-rolled grid, which gives every card its own height</td>
                   </tr>
                 </tbody>
               </table>
@@ -365,47 +365,55 @@
           <p style="margin:0 0 20px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Every prototype eventually needs something the catalogue does not have. The register is the route that part takes to a designer: drawn and tagged, a row written with its picture, its spec and the components rejected with reasons, then handed over. Three kinds are judged by three tests. The same part drawn in two projects is one row with two sightings, which is what makes recurrence countable.</p>
           <sc-if value="{{ diagrams }}" hint-placeholder-val="{{ true }}">
             <figure>
-              <div style="border:1px solid var(--line);background:var(--white)"><div style="padding:24px 26px 26px;background:#f2f1ee">
-                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #3a3e44"><span>Register lifecycle</span><span>Nothing here is canon until it ships</span></div>
+              <div style="border:1px solid var(--line);background:var(--white)"><div style="padding:24px 26px 26px;background:var(--paper)">
+                <div style="display:flex;justify-content:space-between;gap:12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line-ink)"><span>Register lifecycle</span><span>Nothing here is canon until it ships</span></div>
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:20px">
-                  <div style="background:#fff;border:1px solid #dedbd5;padding:12px">
-                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:9px">01 Drawn</div>
-                    <div style="width:100%;height:22px;background:#e7e5df;margin-bottom:7px"></div>
-                    <p style="margin:0;font-size:10px;line-height:1.5;color:#5f646b">Tagged in the prototype. The build keeps going.</p>
+                  <div style="background:var(--white);border:1px solid var(--line);padding:12px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:9px">01 Drawn</div>
+                    <div style="width:100%;height:22px;background:var(--paper-2);margin-bottom:7px"></div>
+                    <p style="margin:0;font-size:10px;line-height:1.5;color:var(--ink-6)">Tagged in the prototype. The build keeps going.</p>
                   </div>
-                  <div style="background:#fff;border:1px solid #dedbd5;padding:12px">
-                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:9px">02 Reported</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"><span style="height:5px;background:#dcd9d2"></span><span style="width:78%;height:5px;background:#dcd9d2"></span><span style="width:88%;height:5px;background:#dcd9d2"></span></div>
-                    <p style="margin:0;font-size:10px;line-height:1.5;color:#5f646b">Picture, spec, and what was rejected and why.</p>
+                  <div style="background:var(--white);border:1px solid var(--line);padding:12px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:9px">02 Reported</div>
+                    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"><span style="height:5px;background:var(--line)"></span><span style="width:78%;height:5px;background:var(--line)"></span><span style="width:88%;height:5px;background:var(--line)"></span></div>
+                    <p style="margin:0;font-size:10px;line-height:1.5;color:var(--ink-6)">Picture, spec, and what was rejected and why.</p>
                   </div>
-                  <div style="background:#fff;border:1px solid #3a3e44;box-shadow:0 2px 10px -2px rgba(16,17,20,.16);padding:12px">
-                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#2f6d92;margin-bottom:9px">03 Reviewed</div>
-                    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"><span style="font-size:10px;color:#4e535a">Approved to build</span><span style="font-size:10px;color:#4e535a">Rejected, with the name to use</span></div>
-                    <p style="margin:0;font-size:10px;line-height:1.5;color:#5f646b">One reviewer. A rejection has to name the replacement.</p>
+                  <div style="background:var(--white);border:1px solid var(--line-ink);box-shadow:0 2px 10px -2px rgba(16,17,20,.16);padding:12px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:9px">03 Reviewed</div>
+                    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"><span style="font-size:10px;color:var(--ink-2)">Approved to build</span><span style="font-size:10px;color:var(--ink-2)">Rejected, with the name to use</span></div>
+                    <p style="margin:0;font-size:10px;line-height:1.5;color:var(--ink-6)">One reviewer. A rejection has to name the replacement.</p>
                   </div>
-                  <div style="background:#fff;border:1px solid #dedbd5;padding:12px">
-                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:9px">04 In the system</div>
-                    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin-bottom:7px"><span style="height:10px;background:#e7e5df"></span><span style="height:10px;background:#e7e5df"></span><span style="height:10px;background:#e7e5df"></span><span style="height:10px;background:#e7e5df"></span></div>
-                    <p style="margin:0;font-size:10px;line-height:1.5;color:#5f646b">Rebuilt on tokens with a spec card. The hand-drawn markup is deleted.</p>
+                  <div style="background:var(--white);border:1px solid var(--line);padding:12px">
+                    <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:9px">04 In the system</div>
+                    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin-bottom:7px"><span style="height:10px;background:var(--paper-2)"></span><span style="height:10px;background:var(--paper-2)"></span><span style="height:10px;background:var(--paper-2)"></span><span style="height:10px;background:var(--paper-2)"></span></div>
+                    <p style="margin:0;font-size:10px;line-height:1.5;color:var(--ink-6)">Rebuilt on tokens with a spec card. The hand-drawn markup is deleted.</p>
                   </div>
                 </div>
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;padding-top:14px;border-top:1px solid #dedbd5">
-                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:7px">Component</div><p style="margin:0;font-size:10px;line-height:1.55;color:#4e535a">Seen twice · not composable · tokens only.</p></div>
-                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:7px">Variant</div><p style="margin:0;font-size:10px;line-height:1.55;color:#4e535a">A different meaning, not a different look.</p></div>
-                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5f646b;margin-bottom:7px">Composition</div><p style="margin:0;font-size:10px;line-height:1.55;color:#4e535a">Same arrangement twice · carries decisions · shorter than the markup it replaces.</p></div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;padding-top:14px;border-top:1px solid var(--line)">
+                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Component</div><p style="margin:0;font-size:10px;line-height:1.55;color:var(--ink-2)">Seen twice · not composable · tokens only.</p></div>
+                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Variant</div><p style="margin:0;font-size:10px;line-height:1.55;color:var(--ink-2)">A different meaning, not a different look.</p></div>
+                  <div><div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Composition</div><p style="margin:0;font-size:10px;line-height:1.55;color:var(--ink-2)">Same arrangement twice · carries decisions · shorter than the markup it replaces.</p></div>
                 </div>
               </div></div>
               <figcaption style="margin:14px 0 0;max-width:var(--measure-caption);font-size:var(--size-small);line-height:var(--leading-small);color:var(--ink-4)">Four states and three tests. The row travels; the build never waits for it.</figcaption>
             </figure>
           </sc-if>
+          <h3 style="margin:clamp(36px,5vw,56px) 0 12px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">How AI uses it while exploring</h3>
+          <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The system is not only for finished screens. Most ideas on the platform start with an AI tool exploring: a new surface, a variation, a flow nobody has drawn. That is where drift starts, because an exploration looks finished long before anyone has decided it.</p>
+          <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">So every component enters the system with its constraints: the job it does, where it must not be used, and what to reach for instead. An agent exploring a new idea reads those before it draws, reuses what fits, and tags what does not. Anything it invents arrives in the register as a row, not in the product as a screen.</p>
+          <div style="margin-top:clamp(20px,3vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;align-items:stretch">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Reuse" title="What exists is findable" hint-size="100%,220px">Each component carries its job and its not-for list, so an agent can match a need to a part instead of redrawing it.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Drift" title="What is new is visible" hint-size="100%,220px">A part the system does not have is tagged and reported. It becomes a component with rules, or is replaced by one that exists.</x-import>
+          </div>
+          <p style="margin:clamp(20px,3vw,28px) 0 0;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The AI surfaces work entered the system this way: the floating composer, the edit mode and the review state became components with rules. See <a href="ai-surfaces.html">AI surfaces</a>.</p>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">06 — The rules</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p style="margin:0 0 20px;max-width:var(--measure-prose);font-size:var(--size-statement);font-weight:500;line-height:var(--leading-statement);letter-spacing:var(--track-statement);text-wrap:pretty">Eight rule families. Every answer is a number, a token or a named component.</p>
-          <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The test for every rule: could an engineer who has never spoken to me apply it, and could a reviewer check it without opening the design file. “Use generous spacing” fails. “Twenty-four for sections, cards and every inset” passes. Writing to that standard made the rules usable by an AI tool and by a person for the same reason — neither can resolve a rule that rests on taste.</p>
+          <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The test for every rule: could an engineer who has never spoken to me apply it, and could a reviewer check it without opening the design file. “Use generous spacing” fails. “Twenty-four for sections, cards and every inset” passes. Writing to that standard made the rules usable by an AI tool and by a person for the same reason: neither can resolve a rule that rests on taste.</p>
           <p style="margin:0 0 clamp(28px,4vw,40px);max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">Every value was read out of the component source rather than restated from memory. A rules document that disagrees with the components is a third source of truth.</p>
 
           <figure style="margin-bottom:clamp(36px,5vw,56px)">
@@ -431,20 +439,20 @@
 
           <div style="border-top:1px solid var(--line-ink);padding-top:18px;margin-bottom:clamp(36px,5vw,56px)">
             <h3 style="margin:0 0 12px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">The self-check, and the override rule</h3>
-            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The rules end in a check short enough to run: no colour literals anywhere; radii and control heights only from the legal sets; font sizes only from the scale; spacing only from the ladder; no raw table, button, input or select; shadows only on floating layers. It is mechanical on purpose — a rule that needs interpretation comes back as a question.</p>
-            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">On overriding a component: layout properties are yours, and anything encoding what the element <em>is</em> — background, colour, border, radius, height, padding, type — is not. If no variant gives you what you need, that is a variant discussion. This is the rule that stopped the catalogue being forked at the call site.</p>
+            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The rules end in a check short enough to run: no colour literals anywhere; radii and control heights only from the legal sets; font sizes only from the scale; spacing only from the ladder; no raw table, button, input or select; shadows only on floating layers. It is mechanical on purpose. A rule that needs interpretation comes back as a question.</p>
+            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">On overriding a component: layout properties are yours, and anything encoding what the element <em>is</em> (background, colour, border, radius, height, padding, type) is not. If no variant gives you what you need, that is a variant discussion. This is the rule that stopped the catalogue being forked at the call site.</p>
             <p style="margin:0;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">A system written to pass or fail is also cheaper to hand a model than a component library to read. Closed gaps mean fewer invented parts, and fewer invented parts mean fewer screens generated twice.</p>
           </div>
 
           <div style="border-top:1px solid var(--line-ink);padding-top:18px">
             <h3 style="margin:0 0 12px;font-size:var(--size-lead);font-weight:500;line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--ink)">Two lists published as gaps</h3>
-            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The <strong style="color:var(--ink);font-weight:600">undecided</strong> list — page width, grid, breakpoints, layering, the success, warning and info colours, validation timing, table density — carries one instruction: ask, do not invent. The <strong style="color:var(--ink);font-weight:600">not built</strong> list names components that do not exist, from a mobile nav drawer to charts, with the same instruction: name the gap, do not ship a lookalike.</p>
+            <p style="margin:0 0 18px;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The <strong style="color:var(--ink);font-weight:600">undecided</strong> list (page width, grid, breakpoints, layering, the success, warning and info colours, validation timing, table density) carries one instruction: ask, do not invent. The <strong style="color:var(--ink);font-weight:600">not built</strong> list names components that do not exist, from a mobile nav drawer to charts, with the same instruction: name the gap, do not ship a lookalike.</p>
             <p style="margin:0;max-width:var(--measure-prose);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">This was the least intuitive decision and it changed the most. An approximation looks finished, so it reads as a decision, and a reader cannot tell the two apart. Naming the gap keeps an unfinished system honest.</p>
           </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper);box-shadow:0 0 0 100vmax var(--paper);clip-path:inset(0 -100vmax);position:relative;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(36px,5vw,64px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">07 — Outcome</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p style="margin:0 0 34px;max-width:var(--measure-caption);font-size:var(--size-body);line-height:var(--leading-body);color:var(--ink-2);text-wrap:pretty">The system is in use and still growing. Three things are true of how the team works now.</p>
@@ -456,7 +464,7 @@
       </div>
 
       <sc-if value="{{ showLimits }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(56px,8vw,96px)">
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);position:relative;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(56px,8vw,96px)" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
           <h2 data-rail style="flex:0 0 200px;font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--ink-4);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
           <div style="flex:1 1 460px;min-width:0">
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" marker="01" title="Outcome numbers." measure="70ch" hint-size="100%,80px">Adoption, review time and register use are not measured yet. The token cost of a generated screen should fall as gaps close, but I haven't instrumented it, so that figure is not reported here.</x-import>
@@ -472,8 +480,8 @@
 
     <section style="background:var(--ink);box-shadow:0 0 0 100vmax var(--ink);clip-path:inset(0 -100vmax);padding:clamp(56px,9vw,120px) 0">
       <div style="font-size:var(--size-eyebrow);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--on-ink-muted);margin-bottom:clamp(20px,3vw,28px)">Design systems</div>
-      <h2 style="margin:0 0 clamp(20px,3vw,28px);max-width:26ch;font-size:var(--size-mega);font-weight:500;line-height:var(--leading-mega);letter-spacing:var(--track-mega);color:var(--on-ink);text-wrap:balance">Let’s make a system your whole team can build from.</h2>
-      <p style="margin:0 0 clamp(28px,4vw,36px);max-width:58ch;font-size:var(--size-body-lg);line-height:var(--leading-body-lg);letter-spacing:var(--track-body-lg);color:var(--on-ink-muted);text-wrap:pretty">Tokens and components are the easy half. I write the decisions between them, and the governance that keeps a system honest while a whole team and its tools build on it.</p>
+      <h2 style="margin:0 0 clamp(20px,3vw,28px);max-width:26ch;font-size:var(--size-mega);font-weight:500;line-height:var(--leading-mega);letter-spacing:var(--track-mega);color:var(--on-ink);text-wrap:balance">Let’s make a system your team and its AI tools can build from.</h2>
+      <p style="margin:0 0 clamp(28px,4vw,36px);max-width:58ch;font-size:var(--size-body-lg);line-height:var(--leading-body-lg);letter-spacing:var(--track-body-lg);color:var(--on-ink-muted);text-wrap:pretty">Tokens and components are the easy half. I write the decisions between them, so AI reuses what exists, and the review that catches what it invents.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px">
         <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border:1px solid var(--on-ink);border-radius:2px;background:var(--on-ink);color:var(--ink);text-decoration:none;font-size:var(--size-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;transition:background .2s cubic-bezier(.19,1,.22,1),color .2s cubic-bezier(.19,1,.22,1)" style-hover="background:transparent;color:var(--on-ink)">Let’s talk <span aria-hidden="true">→</span></a>
       </div>

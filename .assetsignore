@@ -5,3 +5,5 @@
 wrangler.jsonc
 .DS_Store
 .wrangler
+harness
+CLAUDE.md

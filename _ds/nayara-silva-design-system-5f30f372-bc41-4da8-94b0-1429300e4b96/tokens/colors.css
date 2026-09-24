@@ -14,7 +14,7 @@
   --ink-6:#5f646b;          /* eyebrows, metadata */
   --ink-7:#8c9096;          /* arrows, disabled-ish, mono labels */
   --on-ink:#f2f1ee;         /* paper on the dark section */
-  --on-ink-muted:#c3c7cc;   /* prose on the dark section */
+  --on-ink-muted:#a4a8ae;   /* prose on the dark section */
 
   /* --- Blue: the chromatic accent, with red for micro details ---------- */
   --rust:#2f6d92;           /* eyebrows on case studies, hover ink, prices */
@@ -23,7 +23,7 @@
   --red:#c0392b;            /* micro accents only — the nav mark */
 
   /* --- Hairlines ------------------------------------------------------- */
-  --line:#e2e0da;           /* default 1px rule and card border */
+  --line:#dedbd5;           /* default 1px rule and card border */
   --line-2:#e0ded7;         /* grid gutter fill behind joined cards */
   --line-3:#d3d0c9;         /* outline button / pill border */
   --line-4:#edebe6;         /* inner rule inside a white card */

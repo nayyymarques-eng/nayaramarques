@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Audit design system — Nayara Silva</title>
-<meta name="description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<title>Audit design system — Nayara Marques</title>
+<meta name="description" content="Is AI following your design system? A five-day audit of how agents read your system, where they follow it, and where they invent.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nayara Marques">
-<meta property="og:title" content="Audit design system — Nayara Silva">
-<meta property="og:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<meta property="og:title" content="Audit design system — Nayara Marques">
+<meta property="og:description" content="Is AI following your design system? A five-day audit of how agents read your system, where they follow it, and where they invent.">
 <meta property="og:url" content="https://www.nayaramarques.com/design-system-audit.html">
 <meta property="og:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Nayara Marques, product designer">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Audit design system — Nayara Silva">
-<meta name="twitter:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
+<meta name="twitter:title" content="Audit design system — Nayara Marques">
+<meta name="twitter:description" content="Is AI following your design system? A five-day audit of how agents read your system, where they follow it, and where they invent.">
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
 </head>
@@ -26,25 +26,21 @@
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<title>Audit design system — Nayara Silva</title>
+<title>Audit design system — Nayara Marques</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: #f2f1ee; color: #3a3e44; font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
   * { box-sizing: border-box; }
-  ::selection { background: #3a3e44; color: #f2f1ee; }
+  ::selection { background: var(--ink); color: var(--paper); }
   @keyframes lineUp { from { transform: translateY(104%); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
 
 :root{
-  --paper:#f2f1ee; --paper-2:#e9e7e2; --paper-3:#e8e6e1; --white:#fff;
-  --ink:#3a3e44; --ink-2:#4e535a; --ink-4:#4e535a; --ink-6:#5f646b;
-  --on-ink:#f2f1ee; --on-ink-muted:#a4a8ae;
-  --rust:#2f6d92; --rust-hover:#3d84ad;
-  --line:#dedbd5; --line-3:#dedbd5; --line-4:#e8e6e1;
-  --gained:#2f6d92; --traded:#5f646b;
+  /* Colours come from the design-system tokens. */
   --font-sans:Archivo,system-ui,sans-serif;
   --weight-regular:400; --weight-medium:500; --weight-semibold:600;
   --size-display:clamp(34px,5.2vw,68px); --size-mega:clamp(28px,4vw,52px); --size-title:clamp(24px,3.4vw,44px);
@@ -58,9 +54,6 @@
   --radius:2px; --radius-pill:999px;
   --section-y:clamp(40px,6vw,72px); --section-y-lg:clamp(44px,7vw,88px); --section-y-xl:clamp(48px,8vw,110px);
   --card-p:clamp(20px,2.6vw,28px); --page-max:1400px;
-  --surface-page:var(--paper); --surface-band:var(--paper-2); --surface-card:var(--white); --surface-inverse:var(--ink);
-  --text-strong:var(--ink); --text-body:var(--ink-2); --text-muted:var(--ink-4); --text-meta:var(--ink-6);
-  --text-accent:var(--rust);
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 
@@ -81,8 +74,8 @@ h3{font-size:var(--size-statement);line-height:1.22;letter-spacing:var(--track-s
 .eyebrow{font-size:var(--size-eyebrow);font-weight:var(--weight-semibold);letter-spacing:var(--track-eyebrow);
   text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-9)}
 .eyebrow.accent{color:var(--text-accent)}
-.lead{font-size:var(--size-lead);line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--text-muted);max-width:44ch}
-.audit p.sub{font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:#4e535a;max-width:58ch;margin:0;text-wrap:pretty}
+.lead{font-size:var(--size-lead);line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--text-body);max-width:44ch}
+.audit p.sub{font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);max-width:58ch;margin:0;text-wrap:pretty}
 
 
 
@@ -94,8 +87,8 @@ h3{font-size:var(--size-statement);line-height:1.22;letter-spacing:var(--track-s
 .audit a.btn{display:inline-block;font-size:var(--size-label);font-weight:var(--weight-semibold);letter-spacing:var(--track-label);
   text-transform:uppercase;text-decoration:none;padding:14px 24px;border-radius:var(--radius);
   background:var(--text-strong);color:var(--surface-page);border:1px solid var(--text-strong)}
-.audit a.btn.outline{background:transparent;color:var(--text-strong);border-color:var(--line-3)}
-.audit a.btn:hover{background:#2f6d92;border-color:#2f6d92;color:#fff}
+.audit a.btn.outline{background:transparent;color:var(--text-strong);border-color:var(--line)}
+.audit a.btn:hover{background:var(--rust);border-color:var(--rust);color:var(--white)}
 .btn:focus-visible{outline:2px solid var(--text-strong);outline-offset:2px}
 .actions{display:flex;flex-wrap:wrap;gap:var(--space-5);margin-top:var(--space-11)}
 .audit p.under{font-size:var(--size-small);color:var(--text-meta);margin:var(--space-14) 0 0;max-width:62ch}
@@ -105,40 +98,40 @@ h3{font-size:var(--size-statement);line-height:1.22;letter-spacing:var(--track-s
 @media (max-width:980px){.grid.four{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:720px){.grid.four,.grid.two{grid-template-columns:1fr}}
 .cell{background:var(--surface-card);padding:var(--card-p)}
-.cell p{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted);margin:0}
+.cell p{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body);margin:0}
 .cell p+p{margin-top:var(--space-5)}
 .cell p.stat,.stat{font-size:var(--size-title);line-height:1;letter-spacing:var(--track-title);color:var(--text-strong);font-weight:var(--weight-regular);margin-bottom:var(--space-3)}
 .label{font-size:var(--size-label);font-weight:var(--weight-semibold);letter-spacing:var(--track-label);text-transform:uppercase;margin:0 0 var(--space-5)}
-.label.gained{color:var(--gained)} .label.traded{color:var(--traded)} .label.meta{color:var(--text-meta)}
+.label.gained{color:var(--rust)} .label.traded{color:var(--ink-6)} .label.meta{color:var(--text-meta)}
 ul.deliver{list-style:none;margin:var(--space-14) 0 0;padding:0;border-top:1px solid var(--line)}
 ul.deliver li{border-bottom:1px solid var(--line);padding:var(--space-11) 0;display:grid;grid-template-columns:minmax(180px,22%) 1fr;gap:var(--space-11)}
 @media (max-width:720px){ul.deliver li{grid-template-columns:1fr;gap:var(--space-3)}}
 ul.deliver b{color:var(--text-strong);font-weight:var(--weight-medium);font-size:var(--size-body)}
-ul.deliver span{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted)}
+ul.deliver span{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body)}
 ol.steps{list-style:none;counter-reset:s;margin:var(--space-14) 0 0;padding:0;border-top:1px solid var(--line)}
 ol.steps li{counter-increment:s;border-bottom:1px solid var(--line);padding:var(--space-11) 0;display:grid;grid-template-columns:44px 1fr;gap:var(--space-9)}
 ol.steps li::before{content:counter(s,decimal-leading-zero);font-size:var(--size-label);font-weight:var(--weight-semibold);
   letter-spacing:var(--track-label);color:var(--text-accent);padding-top:5px}
 ol.steps b{display:block;color:var(--text-strong);font-weight:var(--weight-medium);margin-bottom:var(--space-1)}
-ol.steps span{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted)}
+ol.steps span{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body)}
 .price{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:var(--space-14)}
 @media (max-width:720px){.price{grid-template-columns:1fr}}
 .price>div{background:var(--surface-card);padding:var(--card-p)}
 .price .big{font-size:var(--size-mega);line-height:1;letter-spacing:var(--track-mega);color:var(--text-strong);font-weight:var(--weight-medium);margin:0}
 .tick{list-style:none;margin:var(--space-9) 0 0;padding:0}
-.tick li{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted);padding:var(--space-3) 0 var(--space-3) var(--space-11);position:relative}
+.tick li{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body);padding:var(--space-3) 0 var(--space-3) var(--space-11);position:relative}
 .tick li::before{content:"—";position:absolute;left:0;color:var(--text-accent)}
 .inverse{background:var(--surface-inverse);color:var(--on-ink-muted)}
 .inverse h2{color:var(--on-ink)} .inverse p{color:var(--on-ink-muted)} .inverse .eyebrow{color:var(--on-ink-muted)}
 .inverse .btn,.audit .inverse a.btn{background:var(--on-ink);color:var(--ink);border-color:var(--on-ink)}
-.audit .inverse a.btn:hover{background:#2f6d92;border-color:#2f6d92;color:#fff}
+.audit .inverse a.btn:hover{background:var(--rust);border-color:var(--rust);color:var(--white)}
 details{border-bottom:1px solid var(--line);padding:var(--space-11) 0}
 details:first-of-type{border-top:1px solid var(--line);margin-top:var(--space-14)}
 summary{cursor:pointer;color:var(--text-strong);font-weight:var(--weight-medium);list-style:none;display:flex;justify-content:space-between;gap:var(--space-9)}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";color:var(--text-accent);font-weight:var(--weight-semibold)}
 details[open] summary::after{content:"–"}
-details p{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-muted);margin:var(--space-7) 0 0;max-width:70ch}
+details p{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body);margin:var(--space-7) 0 0;max-width:70ch}
 summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 .author{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-18);align-items:start}
 @media (max-width:900px){.author{grid-template-columns:1fr;gap:var(--space-11)}}
@@ -148,16 +141,16 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 </style>
 </helmet>
 
-<div style="min-height:100vh;display:flex;flex-direction:column">
+<div style="min-height:100vh;display:flex;flex-direction:column;overflow-x:clip">
 
   <dc-import name="Nav" hint-size="100%,58px"></dc-import>
 
   <main class="audit" style="flex:1">
 <header class="wrap hero">
   <p class="eyebrow accent">Audit design system</p>
-  <h1><span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Your design system decides what AI costs you</span></span></h1>
-  <div style="height:1px;background:#dedbd5;margin:clamp(20px,3vw,28px) 0"></div>
-  <p class="sub">When it drifts, agents guess. They write raw values, rebuild parts you already have, and every guess comes back to a person to review. The audit finds where that happens, and what it costs to fix.</p>
+  <h1><span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Is AI following your design system?</span></span></h1>
+  <div style="height:1px;background:var(--line);margin:clamp(20px,3vw,28px) 0"></div>
+  <p class="sub">An agent builds from what your system gives it. Where the system is clear, it reuses your parts. Where it is not, it guesses: raw values, rebuilt components, parts nobody asked for. The audit shows how AI reads your system, where it follows it, and where it invents, and what each gap costs to fix.</p>
   <div class="actions">
     <a class="btn" href="#book">Book an audit</a>
     <a class="btn outline" href="#why">Why it pays</a>
@@ -204,7 +197,7 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <div class="wrap">
     <p class="eyebrow">What the audit checks</p>
     <h2>Five pillars, one report</h2>
-    <p style="margin-top:var(--space-9)">Each pillar answers a different question, and each one fails in a different way. The method was tested on four published open-source design systems, Primer, Radix Themes, Carbon and Chakra UI, mature systems with full-time teams behind them. Every one still had findings worth fixing.</p>
+    <p style="margin-top:var(--space-9)">Together they answer three questions: how AI reads your system, whether it follows it, and what it does when something is missing. Each pillar fails in a different way. The method was tested on four published open-source design systems, Primer, Radix Themes, Carbon and Chakra UI, mature systems with full-time teams behind them. Every one still had findings worth fixing.</p>
     <ul class="deliver">
       <li><b>Values</b><span>Every colour, space, size, radius, type and motion value in your components, checked against your own tokens: what is hand-written, what equals a token nobody found, and what sits on no scale. Plus the token set itself: what nobody uses, and what is defined twice.</span></li>
       <li><b>People</b><span>Text contrast on every pair your tokens declare, in every theme. Reduced motion on everything that moves. High contrast, visible focus, and right-to-left if you need it.</span></li>
@@ -234,25 +227,25 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 
 <section class="band">
   <div class="wrap author">
-    <div style="width:100%;max-width:560px;aspect-ratio:4/3;overflow:hidden;background:#e6e4df">
+    <div style="width:100%;max-width:560px;aspect-ratio:4/3;overflow:hidden;background:var(--paper-2)">
       <img src="assets/nayara-portrait.png" alt="Nayara Marques" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
     </div>
     <div>
       <p class="eyebrow">Who runs it</p>
       <h2 style="margin-bottom:var(--space-11)">I design systems, and I ship them</h2>
       <p>Nine years designing products, the last few of them writing the code that ships them. Brazilian, based in Barcelona, working US East Coast hours. Fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks.</p>
-      <p>I built the design system for Clade's AI platform in Claude Design: 48 components, 9 templates, tokens as the single source of truth, and validation that catches AI creation drift before it reaches a screen. The audit is that method, applied to your system.</p>
-      <p style="margin:0"><a href="work.html" style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;text-decoration:none;color:#2f6d92">See the work →</a></p>
+      <p>I built the design system for an AI platform in private capital markets, in Claude Design: 48 components, 9 templates, tokens as the single source of truth, and validation that catches AI creation drift before it reaches a screen. The audit is that method, applied to your system.</p>
+      <p style="margin:0"><a href="work.html" style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;text-decoration:none;color:var(--rust)">See the work →</a></p>
     </div>
   </div>
 </section><section class="inverse" id="book">
   <div class="wrap">
     <p class="eyebrow">The audit</p>
-    <h2>One fixed price. Two audits a month.</h2>
+    <h2>Priced on the call. Two audits a month.</h2>
     <div class="price">
       <div>
         <p class="big">5 days</p>
-        <p style="margin-top:var(--space-5)">From the day access arrives. Fixed scope, fixed fee, quoted before we start.</p>
+        <p style="margin-top:var(--space-5)">From the day access arrives. Fixed scope. Priced on the call.</p>
         <div class="actions"><a class="btn" href="contact.html">Book an audit</a></div>
       </div>
       <div>

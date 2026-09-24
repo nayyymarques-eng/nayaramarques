@@ -20,6 +20,7 @@
 <meta name="twitter:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <style id="boot-style">
   html { background:#f2f1ee; color:#3a3e44; font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
@@ -31,11 +32,11 @@
 <script>document.documentElement.classList.add('booting');</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:#f2f1ee;z-index:9999">
-  <div style="height:57px;border-bottom:1px solid #dedbd5;display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--paper);z-index:9999">
+  <div style="height:57px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
   <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:#e2e0da;animation:none"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--line);animation:none"></i>
     <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
     <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
     <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
@@ -73,57 +74,57 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
 <style>
   html { -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: #f2f1ee; color: #3a3e44; font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
   * { box-sizing: border-box; }
-  a { color: #2f6d92; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: #3d84ad; }
-  ::selection { background: #3a3e44; color: #f2f1ee; }
-  input, select, textarea { font-family: Archivo, system-ui, sans-serif; font-size: 16px; color: #3a3e44; background: #ffffff; border: 1px solid #dedbd5; border-radius: 2px; padding: 12px 14px; width: 100%; }
-  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid #3a3e44; outline-offset: 2px; }
+  a { color: var(--rust); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--rust-hover); }
+  ::selection { background: var(--ink); color: var(--paper); }
+  input, select, textarea { font-family: Archivo, system-ui, sans-serif; font-size: 16px; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 2px; padding: 12px 14px; width: 100%; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--line-ink); outline-offset: 2px; }
   @keyframes lineUp { from { transform: translateY(104%); filter: blur(5px); } to { transform: none; filter: blur(0); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
 </style>
 </helmet>
 
-<div style="min-height:100vh;display:flex;flex-direction:column">
+<div style="min-height:100vh;display:flex;flex-direction:column;overflow-x:clip">
 
   <dc-import name="Nav" hint-size="100%,57px" style="position:sticky;top:0;z-index:50"></dc-import>
 
   <main style="flex:1;width:100%">
 
     <section style="max-width:1400px;margin:0 auto;min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 32px">
-      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:#2f6d92;margin-bottom:clamp(20px,3vw,32px)">Start a project</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:var(--rust);margin-bottom:clamp(20px,3vw,32px)">Start a project</div>
       <h1 style="font-weight:500;font-size:clamp(34px,5.2vw,68px);line-height:0.94;letter-spacing:-0.045em;margin:0 0 clamp(20px,3vw,28px);max-width:15ch;text-wrap:balance">
         <span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Six questions, then a call.</span></span>
       </h1>
-      <div style="height:1px;background:#e2e0da;margin-bottom:clamp(20px,3vw,28px)"></div>
-      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:#4e535a;text-wrap:pretty">Enough for me to tell you on the call which model fits and what it costs, rather than spending the call finding out. Takes about two minutes.</p>
+      <div style="height:1px;background:var(--line);margin-bottom:clamp(20px,3vw,28px)"></div>
+      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);text-wrap:pretty">Enough for me to tell you on the call which model fits and what it costs, rather than spending the call finding out. Takes about two minutes.</p>
     </section>
 
-    <section style="background:#e9e7e2;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5">
+    <section style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
       <div style="max-width:1400px;margin:0 auto;padding:clamp(36px,5vw,64px) 32px">
         <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);align-items:flex-start">
-          <div style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:#5f646b">The brief</div>
+          <div style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:var(--ink-6)">The brief</div>
           <div style="flex:1 1 460px;min-width:0;max-width:640px">
             <div style="display:grid;gap:22px">
 
               <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:#4e535a">Your name and company</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">Your name and company</span>
                 <input ref="{{ f1 }}" type="text" placeholder="Name · Company" autocomplete="organization">
               </label>
 
               <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:#4e535a">Email</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">Email</span>
                 <input ref="{{ f2 }}" type="email" placeholder="you@company.com" autocomplete="email">
               </label>
 
               <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:#4e535a">What are you building, and what is in the way?</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">What are you building, and what is in the way?</span>
                 <textarea ref="{{ f3 }}" rows="4" placeholder="A few sentences is plenty."></textarea>
               </label>
 
               <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:#4e535a">Where the work stands</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">Where the work stands</span>
                 <select ref="{{ f4 }}">
                   <option>An idea, nothing built</option>
                   <option>Something built, not yet shipped</option>
@@ -133,7 +134,7 @@
               </label>
 
               <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:#4e535a">When you want to start</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">When you want to start</span>
                 <select ref="{{ f5 }}">
                   <option>As soon as possible</option>
                   <option>Within a month</option>
@@ -143,7 +144,7 @@
               </label>
 
               <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:#4e535a">Budget you have in mind</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">Budget you have in mind</span>
                 <select ref="{{ f6 }}">
                   <option>Not decided yet</option>
                   <option>Under $10k</option>
@@ -152,12 +153,12 @@
                   <option>Over $50k</option>
                   <option>Monthly retainer</option>
                 </select>
-                <span style="font-size:14px;line-height:1.6;color:#5f646b">A range is fine. It tells me which model to propose, and I will say if none of them fits it.</span>
+                <span style="font-size:14px;line-height:1.6;color:var(--ink-6)">A range is fine. It tells me which model to propose, and I will say if none of them fits it.</span>
               </label>
 
               <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;padding-top:6px">
-                <button type="button" onClick="{{ send }}" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:Archivo,sans-serif;padding:14px 24px;background:#3a3e44;color:#f2f1ee;border:1px solid #3a3e44;border-radius:2px;font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;transition:background .2s ease" style-hover="background:#2f6d92;border-color:#2f6d92">Send the brief →</button>
-                <span style="font-size:14px;line-height:1.6;color:#5f646b">{{ status }}</span>
+                <button type="button" onClick="{{ send }}" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:Archivo,sans-serif;padding:14px 24px;background:var(--ink);color:var(--paper);border:1px solid var(--line-ink);border-radius:2px;font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--rust);border-color:var(--rust)">Send the brief →</button>
+                <span style="font-size:14px;line-height:1.6;color:var(--ink-6)">{{ status }}</span>
               </div>
 
             </div>
@@ -169,21 +170,21 @@
     <section>
       <div style="max-width:1400px;margin:0 auto;padding:clamp(36px,5vw,64px) 32px">
         <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);align-items:flex-start">
-          <div style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:#5f646b">What happens next</div>
+          <div style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:var(--ink-6)">What happens next</div>
           <div style="flex:1 1 460px;min-width:0;max-width:66ch">
-            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid #dedbd5">
-              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:#2f6d92">01</span>
-              <p style="margin:0;font-size:14px;line-height:1.6;color:#3a3e44;text-wrap:pretty">I read it and reply within two working days, either with a time or with the reason it is not a fit.</p>
+            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)">
+              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:var(--rust)">01</span>
+              <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink);text-wrap:pretty">I read it and reply within two working days, either with a time or with the reason it is not a fit.</p>
             </div>
-            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid #dedbd5">
-              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:#2f6d92">02</span>
-              <p style="margin:0;font-size:14px;line-height:1.6;color:#3a3e44;text-wrap:pretty">A thirty-minute call. I ask what you have tried, you ask what you like. No deck.</p>
+            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)">
+              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:var(--rust)">02</span>
+              <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink);text-wrap:pretty">A thirty-minute call. I ask what you have tried, you ask what you like. No deck.</p>
             </div>
-            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5">
-              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:#2f6d92">03</span>
-              <p style="margin:0;font-size:14px;line-height:1.6;color:#3a3e44;text-wrap:pretty">A written proposal within three days: the model, the scope, the price, and what it excludes.</p>
+            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:var(--rust)">03</span>
+              <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink);text-wrap:pretty">A written proposal within three days: the model, the scope, the price, and what it excludes.</p>
             </div>
-            <p style="margin:20px 0 0;font-size:14px;line-height:1.6;color:#5f646b;text-wrap:pretty">Prefer to just write? <a href="contact.html">Email me directly</a>.</p>
+            <p style="margin:20px 0 0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty">Prefer to just write? <a href="contact.html">Email me directly</a>.</p>
           </div>
         </div>
       </div>
