@@ -6,7 +6,7 @@ argument-hint: [short description of the change]
 Deploy the site. Change description: $ARGUMENTS
 
 1. Run `git status`. If nothing changed, say so and stop.
-2. Run the harness (rules in `CLAUDE.md`). Stop and report if anything fails, unless I say go:
+2. Run the `site-verify` skill (rules in `CLAUDE.md`). Stop and report if anything fails, unless I say go. At minimum:
    - `python3 harness/check_source.py` must end with `0 failure(s)`. List warnings in files that changed.
    - For each changed page, in the local preview: `eval(await (await fetch('/harness/check_pages.js')).text())` must return `pass`.
    - Links: every local `href`/`src` in the changed files points to a file that exists.
