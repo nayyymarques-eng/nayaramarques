@@ -6,7 +6,7 @@
   --slate-700:#4e535a; --slate-800:#3a3e44;
   --slate-950:#101114;  /* shadows only */
   --slate-200:#c8cdd8;  /* dark mockup text; goes in B-7 */
-  --blue-200:#a8cbdf;   --blue-500:#3d84ad;  --blue-600:#2f6d92;
+  --blue-200:#a8cbdf;   --blue-600:#2f6d92;
   --red-600:#c0392b;    --green-700:#3f6b4a; --clay-700:#8a4a2a;
 
   /* --- 2. Roles. Pages use only these. -------------------------------- */
@@ -27,7 +27,6 @@
   --text-on-inverse-mock:var(--slate-200);  /* dark mockup text; goes in B-7 */
 
   --accent:var(--blue-600);                 /* case eyebrows, link hover, highlights */
-  --accent-hover:var(--blue-500);           /* folds into --accent in B-3 */
   --accent-soft:var(--blue-200);            /* pale blue, ink grounds only */
   --brand-mark:var(--red-600);              /* the nav star */
 
@@ -53,7 +52,7 @@
   --ink-4:var(--text-muted);          --ink-6:var(--text-meta);
   --ink-7:var(--text-subtle);         --on-ink:var(--text-on-inverse);
   --on-ink-muted:var(--text-on-inverse-muted);  --term-fg:var(--text-on-inverse-mock);
-  --rust:var(--accent);               --rust-hover:var(--accent-hover);
+  --rust:var(--accent);               --rust-hover:var(--accent);
   --baby:var(--accent-soft);          --note:var(--surface-note);
   --red:var(--brand-mark);
   --line:var(--border);               --line-2:var(--border);
@@ -62,5 +61,6 @@
   --gained:var(--status-gain);        --traded:var(--status-cost);
   --text-accent:var(--accent);        --border-default:var(--border);
   --text-meta:var(--text-muted);      /* B-1 */
+  --accent-hover:var(--accent);       /* B-3 */
   --shadow-ink:var(--slate-950);
 }

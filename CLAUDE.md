@@ -38,7 +38,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 | Arrows, icons (never text) | `--text-subtle` |
 | Text on the dark band | `--text-on-inverse`, prose `--text-on-inverse-muted` |
 | Text in a dark mockup | `--text-on-inverse-mock` |
-| Accent: case eyebrows, link hover, highlights | `--accent` (`--accent-hover` for hover on index pages) |
+| Accent: case eyebrows, link hover, highlights | `--accent` |
 | Pale blue, only on ink grounds | `--accent-soft` |
 | Nav mark only | `--brand-mark` |
 | Inner rule in a white card, soft chip border | `--border-subtle` |
