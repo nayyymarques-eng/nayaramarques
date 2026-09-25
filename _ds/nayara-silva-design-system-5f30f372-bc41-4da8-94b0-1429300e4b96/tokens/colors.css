@@ -5,7 +5,6 @@
   --slate-300:#a4a8ae;  --slate-500:#7f8389; --slate-550:#5f646b;  /* slate-500: B-2, arrows and icons at 3:1 */
   --slate-700:#4e535a; --slate-800:#3a3e44;
   --slate-950:#101114;  /* shadows only */
-  --slate-200:#c8cdd8;  /* dark mockup text; goes in B-7 */
   --blue-200:#a8cbdf;   --blue-600:#2d6b90;
   --red-600:#c0392b;    --green-700:#3f6b4a; --clay-700:#8a4a2a;
 
@@ -23,8 +22,7 @@
   --text-muted:var(--slate-550);            /* captions, nav links, secondary, eyebrows, metadata (B-1: was #5a5f66) */
   --text-subtle:var(--slate-500);           /* arrows, icons; never text (B-2: was #8c9096) */
   --text-on-inverse:var(--sand-50);         /* text on the dark band */
-  --text-on-inverse-muted:var(--slate-300); /* prose on the dark band */
-  --text-on-inverse-mock:var(--slate-200);  /* dark mockup text; goes in B-7 */
+  --text-on-inverse-muted:var(--slate-300); /* prose on the dark band, text in dark mockups */
 
   --accent:var(--blue-600);                 /* case eyebrows, link hover, highlights */
   --accent-soft:var(--blue-200);            /* pale blue, ink grounds only */
@@ -50,7 +48,7 @@
   --ink:var(--text-strong);           --ink-2:var(--text-body);
   --ink-4:var(--text-muted);          --ink-6:var(--text-meta);
   --ink-7:var(--text-subtle);         --on-ink:var(--text-on-inverse);
-  --on-ink-muted:var(--text-on-inverse-muted);  --term-fg:var(--text-on-inverse-mock);
+  --on-ink-muted:var(--text-on-inverse-muted);  --term-fg:var(--text-on-inverse-muted);
   --rust:var(--accent);               --rust-hover:var(--accent);
   --baby:var(--accent-soft);          --note:var(--surface-note);
   --red:var(--brand-mark);
@@ -62,5 +60,6 @@
   --text-meta:var(--text-muted);      /* B-1 */
   --accent-hover:var(--accent);       /* B-3 */
   --border-control:var(--border);     /* B-5 */
+  --text-on-inverse-mock:var(--text-on-inverse-muted); /* B-7 */
   --shadow-ink:var(--slate-950);
 }
