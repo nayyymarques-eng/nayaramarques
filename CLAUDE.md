@@ -38,9 +38,9 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 | Arrows, icons (never text) | `--text-subtle` |
 | Text on the dark band | `--text-on-inverse`, prose `--text-on-inverse-muted` |
 | Text in a dark mockup | `--text-on-inverse-mock` |
-| Accent: case eyebrows, link hover, highlights | `--accent` |
+| Accent: case eyebrows, link hover, highlights, arrows, ordinals | `--accent` |
 | Pale blue, only on ink grounds | `--accent-soft` |
-| Nav mark only | `--brand-mark` |
+| Nav mark only (never arrows or ordinals) | `--brand-mark` |
 | Inner rule in a white card, soft chip border | `--border-subtle` |
 | Section border, default rule, card border, control and pill border, grid gutter | `--border` |
 | Item rule inside a section (steps, stats, sub-sections) | `--border-strong` |
