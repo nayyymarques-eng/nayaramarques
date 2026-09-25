@@ -22,7 +22,7 @@
 <script src="./support.js"></script>
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <style id="boot-style">
-  html { background:#f2f1ee; color:#3a3e44; font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--paper); color:var(--ink); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -112,23 +112,23 @@
     box = document.createElement('div');
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'true');
-    box.style.cssText = 'position:fixed;inset:0;z-index:200;background:rgba(242,241,238,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:clamp(24px,5vw,64px);cursor:zoom-out';
+    box.style.cssText = 'position:fixed;inset:0;z-index:200;background:color-mix(in srgb,var(--paper) 96%,transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:clamp(24px,5vw,64px);cursor:zoom-out';
     var img = document.createElement('img');
     img.src = src;
     img.alt = caption || '';
-    img.style.cssText = 'max-width:100%;max-height:78vh;object-fit:contain;border:1px solid #dedbd5;background:#fff;display:block';
+    img.style.cssText = 'max-width:100%;max-height:78vh;object-fit:contain;border:1px solid var(--line);background:var(--white);display:block';
     box.appendChild(img);
     if (caption) {
       var c = document.createElement('p');
       c.textContent = caption;
-      c.style.cssText = 'margin:0;max-width:72ch;text-align:center;font-family:Archivo,system-ui,sans-serif;font-size:14px;line-height:1.6;color:#5a5f66';
+      c.style.cssText = 'margin:0;max-width:72ch;text-align:center;font-family:Archivo,system-ui,sans-serif;font-size:14px;line-height:1.6;color:var(--ink-4)';
       box.appendChild(c);
     }
     var x = document.createElement('button');
     x.type = 'button';
     x.textContent = 'Close \u00d7';
     x.setAttribute('aria-label', 'Close');
-    x.style.cssText = 'position:absolute;top:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);appearance:none;background:none;border:0;padding:8px;font-family:Archivo,system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#2f6d92;cursor:pointer';
+    x.style.cssText = 'position:absolute;top:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);appearance:none;background:none;border:0;padding:8px;font-family:Archivo,system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);cursor:pointer';
     box.appendChild(x);
     box.addEventListener('click', close);
     document.body.appendChild(box);

@@ -1,0 +1,98 @@
+[
+  {
+    "fingerprint": "copy|DecisionCard.dc.html|DecisionCard",
+    "value": "91cb793bb83f",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): unused local copy; pages use the system DecisionCard"
+  },
+  {
+    "fingerprint": "copy|ListRow.dc.html|ListRow",
+    "value": "d2e034230ec8",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): unused local copy; pages use the system ListRow"
+  },
+  {
+    "fingerprint": "copy|NextCase.dc.html|NextCase",
+    "value": "a28b144717f4",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): unused local copy; pages use the system NextCase"
+  },
+  {
+    "fingerprint": "orphan|CarouselSlide.dc.html|CarouselSlide",
+    "value": "0c1a2ac285f2",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "orphan|CaseSection.dc.html|CaseSection",
+    "value": "d4309389b7e7",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "orphan|FlowChain.dc.html|FlowChain",
+    "value": "2783673dcc55",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "orphan|FlowStep.dc.html|FlowStep",
+    "value": "56fbed44f8e9",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "orphan|HairlineGrid.dc.html|HairlineGrid",
+    "value": "20176ef1e351",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "orphan|InfoCard.dc.html|InfoCard",
+    "value": "deb351ee6bd9",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "orphan|MediaCarousel.dc.html|MediaCarousel",
+    "value": "b3a5e055cce8",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "orphan|ProcessStep.dc.html|ProcessStep",
+    "value": "13ecea7e08d2",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "orphan|StatTile.dc.html|StatTile",
+    "value": "a6dcb2090757",
+    "verdict": "retire",
+    "who": "Nayara",
+    "when": "2026-09-25",
+    "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  }
+]

@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
 <style id="boot-style">
-  html { background:#f2f1ee; color:#3a3e44; font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--paper); color:var(--ink); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -134,11 +134,11 @@
   });
   document.addEventListener('mouseover', function(e){
     var b = e.target.closest && e.target.closest('[data-nav]');
-    if (b) { b.style.color = '#2f6d92'; b.style.borderColor = '#3a3e44'; }
+    if (b) { b.style.color = 'var(--rust)'; b.style.borderColor = 'var(--line-ink)'; }
   });
   document.addEventListener('mouseout', function(e){
     var b = e.target.closest && e.target.closest('[data-nav]');
-    if (b) { b.style.color = '#5f646b'; b.style.borderColor = '#e2e0da'; }
+    if (b) { b.style.color = 'var(--ink-6)'; b.style.borderColor = '#e2e0da'; }
   });
   // Same reasoning as the icons: init() paints, painting mutates, so polling beats observing.
   (function poll(n) {

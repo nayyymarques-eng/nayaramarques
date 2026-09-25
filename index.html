@@ -22,7 +22,7 @@
 <script src="./support.js"></script>
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <style id="boot-style">
-  html { background:#f2f1ee; color:#3a3e44; font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--paper); color:var(--ink); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -117,11 +117,11 @@
 
     <section style="position:relative;max-width:1400px;margin:0 auto;padding:clamp(80px,10.5vw,152px) 32px clamp(80px,10.5vw,152px)">
       <div aria-hidden="true" style="position:absolute;top:-80px;bottom:0;left:-100vmax;right:-100vmax;overflow:hidden;pointer-events:none;z-index:0">
-        <span style="position:absolute;left:18%;top:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, rgba(168,203,223,0.62), rgba(168,203,223,0) 68%);filter:blur(34px);animation:cornerA 9s cubic-bezier(.45,0,.55,1) infinite"></span>
-        <span style="position:absolute;right:18%;bottom:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, rgba(47,109,146,0.32), rgba(47,109,146,0) 70%);filter:blur(54px);animation:cornerB 12s cubic-bezier(.45,0,.55,1) infinite"></span>
-        <span style="position:absolute;left:36%;top:-30%;width:32%;height:160%;border-radius:50%;background:radial-gradient(circle at 50% 50%, rgba(236,234,229,0.98), rgba(236,234,229,0) 66%);filter:blur(38px);animation:cornerC 15s cubic-bezier(.45,0,.55,1) infinite"></span>
+        <span style="position:absolute;left:18%;top:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--baby) 62%,transparent), transparent 68%);filter:blur(34px);animation:cornerA 9s cubic-bezier(.45,0,.55,1) infinite"></span>
+        <span style="position:absolute;right:18%;bottom:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--rust) 32%,transparent), transparent 70%);filter:blur(54px);animation:cornerB 12s cubic-bezier(.45,0,.55,1) infinite"></span>
+        <span style="position:absolute;left:36%;top:-30%;width:32%;height:160%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--paper-2) 98%,transparent), transparent 66%);filter:blur(38px);animation:cornerC 15s cubic-bezier(.45,0,.55,1) infinite"></span>
         <span style="position:absolute;inset:0;opacity:0.075;mix-blend-mode:multiply;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:180px 180px"></span>
-        <span style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom, rgba(236,234,229,0) 0%, rgba(236,234,229,0.7) 55%, var(--paper-2) 100%)"></span>
+        <span style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom, transparent 0%, color-mix(in srgb,var(--paper-2) 70%,transparent) 55%, var(--paper-2) 100%)"></span>
       </div>
       <div style="position:relative;z-index:1">
       <div style="margin-bottom:clamp(16px,2vw,22px)">
@@ -149,7 +149,7 @@
         </a>
         <details data-picker="" style="position:relative;display:inline-block">
           <summary style="list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border:1px solid var(--line);color:var(--ink);border-radius:2px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease,border-color .2s ease" style-hover="background:var(--paper-2);border-color:var(--line-ink)">Résumé <span style="color:var(--red)">↓</span></summary>
-          <div style="position:absolute;top:calc(100% + 8px);left:0;min-width:190px;background:var(--paper);border:1px solid var(--line);box-shadow:0 18px 44px -26px rgba(16,17,20,0.34);z-index:30">
+          <div style="position:absolute;top:calc(100% + 8px);left:0;min-width:190px;background:var(--paper);border:1px solid var(--line);box-shadow:0 18px 44px -26px color-mix(in srgb,var(--shadow-ink) 34%,transparent);z-index:30">
             <a href="assets/nayara-marques-resume.pdf" download style="display:flex;justify-content:space-between;gap:16px;padding:13px 16px;border-bottom:1px solid var(--paper-2);text-decoration:none;color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--paper-2)">PDF <span style="color:var(--ink-6)">↓</span></a>
             <a href="assets/nayara-marques-resume.md" download style="display:flex;justify-content:space-between;gap:16px;padding:13px 16px;text-decoration:none;color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--paper-2)">Markdown <span style="color:var(--ink-6)">↓</span></a>
           </div>
@@ -254,7 +254,7 @@
           </div>
           <div style="display:flex;flex-direction:column">
             <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--rust);margin-bottom:12px">The email</div>
-            <div style="flex:1;background:var(--white);border:1px solid var(--line-ink);box-shadow:0 2px 10px -2px rgba(16,17,20,.16);display:flex;flex-direction:column;min-height:0">
+            <div style="flex:1;background:var(--white);border:1px solid var(--line-ink);box-shadow:0 2px 10px -2px color-mix(in srgb,var(--shadow-ink) 16%,transparent);display:flex;flex-direction:column;min-height:0">
               <div style="padding:14px 16px;border-bottom:1px solid var(--line-4)">
                 <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px">3 loads matching your lanes this week</div>
                 <div style="font-size:10px;color:var(--ink-6)">Reply with a price, or ignore.</div>
@@ -299,7 +299,7 @@
           <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:52%;background:var(--paper-3)"></div><div style="height:5px;width:72%;background:var(--paper-3)"></div></div>
           <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:64%;background:var(--paper-3)"></div><div style="height:5px;width:48%;background:var(--paper-3)"></div></div>
           <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:74%;background:var(--paper-3)"></div><div style="height:5px;width:56%;background:var(--paper-3)"></div></div>
-          <div style="grid-column:span 3;grid-row:span 2;background:var(--white);border:1px solid var(--line-ink);box-shadow:0 2px 10px -2px rgba(16,17,20,.16);padding:16px;display:flex;flex-direction:column">
+          <div style="grid-column:span 3;grid-row:span 2;background:var(--white);border:1px solid var(--line-ink);box-shadow:0 2px 10px -2px color-mix(in srgb,var(--shadow-ink) 16%,transparent);padding:16px;display:flex;flex-direction:column">
             <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--rust);margin-bottom:12px">Frame 07 · typing</div>
             <div style="flex:1;display:flex;flex-direction:column;gap:7px"><div style="height:6px;background:var(--line)"></div><div style="height:6px;width:82%;background:var(--line)"></div><div style="height:6px;width:54%;background:var(--line)"></div></div>
             <div style="margin-top:14px;border:1px solid var(--line-ink);border-radius:8px;padding:10px 10px 10px 12px;display:flex;align-items:center;gap:10px">

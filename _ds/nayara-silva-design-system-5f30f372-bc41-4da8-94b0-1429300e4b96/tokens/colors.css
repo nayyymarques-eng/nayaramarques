@@ -2,18 +2,16 @@
   /* --- Paper stack: three warm greys, no pure white page ---------------- */
   --paper:#f2f1ee;          /* default page */
   --paper-2:#eceae5;        /* alternating band, one step darker */
-  --paper-3:#edebe6;        /* outline-button hover fill */
+  --paper-3:var(--paper-2); /* outline-button hover fill, skeleton bar (A1: was #edebe6) */
   --white:#fff;             /* cards and tiles only, never a page */
 
   /* --- Ink ------------------------------------------------------------- */
   --ink:#3a3e44;            /* text, solid buttons, dark sections */
   --ink-2:#4e535a;          /* running prose on paper */
-  --ink-3:#575c63;          /* card prose */
   --ink-4:#5a5f66;          /* secondary prose, captions */
-  --ink-5:#63686f;          /* home sub-lead */
   --ink-6:#5f646b;          /* eyebrows, metadata */
   --ink-7:#8c9096;          /* arrows, disabled-ish, mono labels */
-  --on-ink:#f2f1ee;         /* paper on the dark section */
+  --on-ink:var(--paper);    /* paper on the dark section */
   --on-ink-muted:#a4a8ae;   /* prose on the dark section */
 
   /* --- Blue: the chromatic accent, with red for micro details ---------- */
@@ -25,29 +23,21 @@
 
   /* --- Hairlines ------------------------------------------------------- */
   --line:#dedbd5;           /* default 1px rule and card border */
-  --line-2:#e0ded7;         /* grid gutter fill behind joined cards */
+  --line-2:var(--line);     /* grid gutter fill behind joined cards (A3: was #e0ded7) */
   --line-3:#d3d0c9;         /* outline button / pill border */
-  --line-4:#edebe6;         /* inner rule inside a white card */
-  --line-ink:#3a3e44;       /* the emphatic rule that opens a block */
+  --line-4:var(--paper-2);  /* inner rule inside a white card (A2: was #edebe6) */
+  --line-ink:var(--ink);    /* the emphatic rule that opens a block */
   --line-mid:#b8b5ae;       /* item rule inside a section: steps, stats, sub-sections */
 
   /* --- Semantic, used as 10px uppercase labels ------------------------- */
   --gained:#3f6b4a;         /* "Gained", availability dot */
   --traded:#8a4a2a;         /* "Traded away", "Risk 01" */
 
-  /* --- Validation states (CI terminal output) -------------------------- */
-  --state-pass:oklch(0.75 0.16 150);
-  --state-warn:oklch(0.82 0.15 85);
-  --state-fail:oklch(0.72 0.19 25);
-
-  /* --- Terminal / dark surface stack ----------------------------------- */
-  --term-bg:#3a3e44;
-  --term-chrome:#1b1e27;
-  --term-border:#232732;
-  --term-border-2:#2b303c;
-  --term-dot:#3d424f;
-  --term-dim:#8b8f96;
+  /* --- Dark mockup text ---------------------------------------------- */
   --term-fg:#c8cdd8;
+
+  /* --- Shadows: the only place the darkest ink survives ---------------- */
+  --shadow-ink:#101114;
 
   /* --- Semantic aliases ----------------------------------------------- */
   --surface-page:var(--paper);

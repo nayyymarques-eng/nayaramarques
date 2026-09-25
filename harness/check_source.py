@@ -24,14 +24,16 @@ HEX = re.compile(r'#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b')
 FUNC = re.compile(r'\b(?:rgba?|hsla?|oklch)\(')
 
 # Checks added in the consolidation are reported as warnings until the pages are clean,
-# then promoted to failures (set to False).
-NEW_AS_WARN = True
+# then promoted to failures (the rule leaves this set). COL-04 on non-colour tokens: until
+# design-system-audit.html drops its local copies.
+NEW_AS_WARN = {'COL-04'}
 
 # Known exceptions (COL-02). Keep this list short; every entry needs a reason.
 ALLOW = {
     ('*', '#e0c3bd'): 'loading screen placeholder, paints before tokens load',
     ('card-insurance.html', '#cccccc'): 'recreated bank-app screen, not site UI',
     ('card-insurance.html', '#c4c4c4'): 'recreated bank-app screen, not site UI',
+    ('composer-spec.html', '#e2e0da'): 'pending B-12 of the consolidation (ΔE 1.19 to --line); remove with it',
 }
 
 PAGES = sorted(p for p in glob.glob(ROOT + '*.html') if not p.endswith('.dc.html'))
@@ -40,7 +42,7 @@ FILES = sorted(glob.glob(ROOT + '*.html'))
 findings = []
 
 def add(rule, path, detail, new=False):
-    findings.append((rule, path.replace(ROOT, ''), detail, new and NEW_AS_WARN))
+    findings.append((rule, path.replace(ROOT, ''), detail, new and rule in NEW_AS_WARN))
 
 def prose(html):
     """Visible text only, roughly: drop tags, scripts, styles and attributes."""
