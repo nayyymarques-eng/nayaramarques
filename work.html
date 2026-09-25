@@ -31,7 +31,7 @@
   #boot { display:none; }
   html.booting #boot { display:block; }
   @keyframes bootPulse { 0%,100% { opacity:1 } 50% { opacity:.5 } }
-  #boot i { display:block; background:#e4e2dc; animation: bootPulse 1.5s cubic-bezier(.19,1,.22,1) infinite; }
+  #boot i { display:block; background:var(--border); animation: bootPulse 1.5s cubic-bezier(.19,1,.22,1) infinite; }
 </style>
 <script>document.documentElement.classList.add('booting');</script>
 </head>

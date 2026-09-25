@@ -13,7 +13,7 @@ Sources of truth, in order: `_ds/…/tokens/*.css` (values) → this file (decis
 
 ## 1. Colour (COL)
 - **COL-01** No literal colour in any CSS context: `style`, `style-before`, `style-after`, `style-hover`, `<style>`, CSS strings in x-dc and inline scripts. Use `var(--token)`. `rgba()`, `hsl()`, `oklch()` count as literals; use `color-mix(in srgb, var(--role) N%, transparent)`. *(check_source)*
-- **COL-02** Exceptions, and only these: SVG presentation attributes (`fill=`, `stroke=`, var() does not work there); the loading screen's placeholder mark and skeleton (`#e0c3bd`, `#e4e2dc` in `#boot` / `boot-style`; its page and text colours use tokens); the recreated bank-app screen in `card-insurance.html` (`#cccccc`, `#c4c4c4`).
+- **COL-02** Exceptions, and only these: SVG presentation attributes (`fill=`, `stroke=`, var() does not work there); the loading screen's placeholder mark (`#e0c3bd` in `#boot`; the rest of the loading screen uses tokens); the recreated bank-app screen in `card-insurance.html` (`#cccccc`, `#c4c4c4`).
 - **COL-03** Every page links `tokens/colors.css` before its first `<style>`, followed by `typography.css`, `spacing.css`, `borders.css` and `motion.css`. *(check_source)*
 - **COL-04** No page redefines a token (primitive, role or alias, in any `tokens/` file). Change it in `tokens/`, and tell Nayara so Claude Design is updated too (`ds-sync`). *(check_source)*
 - **COL-05** No new colour. If no token fits the job, stop and propose one: name, value, job. Do not approximate.

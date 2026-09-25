@@ -26,7 +26,7 @@
   #boot { display:none; }
   html.booting #boot { display:block; }
   @keyframes bootPulse { 0%,100% { opacity:1 } 50% { opacity:.5 } }
-  #boot i { display:block; background:#e4e2dc; animation: bootPulse 1.5s cubic-bezier(.19,1,.22,1) infinite; }
+  #boot i { display:block; background:var(--border); animation: bootPulse 1.5s cubic-bezier(.19,1,.22,1) infinite; }
 </style>
 <script>document.documentElement.classList.add('booting');</script>
 </head>
@@ -138,7 +138,7 @@
   });
   document.addEventListener('mouseout', function(e){
     var b = e.target.closest && e.target.closest('[data-nav]');
-    if (b) { b.style.color = 'var(--text-muted)'; b.style.borderColor = '#e2e0da'; }
+    if (b) { b.style.color = 'var(--text-muted)'; b.style.borderColor = 'var(--border)'; }
   });
   // Same reasoning as the icons: init() paints, painting mutates, so polling beats observing.
   (function poll(n) {

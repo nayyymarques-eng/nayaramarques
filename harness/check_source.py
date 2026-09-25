@@ -39,7 +39,6 @@ ALLOW = {
     ('*', '#e0c3bd'): 'loading screen placeholder, paints before tokens load',
     ('card-insurance.html', '#cccccc'): 'recreated bank-app screen, not site UI',
     ('card-insurance.html', '#c4c4c4'): 'recreated bank-app screen, not site UI',
-    ('composer-spec.html', '#e2e0da'): 'pending B-12 of the consolidation (ΔE 1.19 to --line); remove with it',
 }
 
 PAGES = sorted(p for p in glob.glob(ROOT + '*.html') if not p.endswith('.dc.html'))
