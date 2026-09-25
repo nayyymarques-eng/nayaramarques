@@ -28,7 +28,7 @@ LINK = '<link rel="stylesheet" href="%s/tokens/colors.css">' % DS
 
 ATTR = re.compile(r'(\s(?:style|style-before|style-after|style-hover)=")([^"]*)(")')
 STYLE = re.compile(r'(<style(?![^>]*id="boot-style")[^>]*>)(.*?)(</style>)', re.S)
-DC = re.compile(r'(<script type="text/x-dc" data-dc-script>)(.*?)(</script>)', re.S)
+DC = re.compile(r'(<script type="text/x-dc" data-dc-script[^>]*>)(.*?)(</script>)', re.S)
 DC_CSS = re.compile(r"([a-z-]+:[^;'\"`]*?)#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b")
 HEX = re.compile(r'#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b')
 

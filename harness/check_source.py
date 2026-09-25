@@ -11,13 +11,21 @@ import re
 import sys
 
 ROOT = __file__.rsplit('/harness/', 1)[0] + '/'
-TOKENS = ROOT + '_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css'
+TOKEN_DIR = ROOT + '_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/'
 
 # CSS contexts: where var() works, so a literal colour is drift
 ATTR = re.compile(r'\s(?:style|style-before|style-after|style-hover)="([^"]*)"')
 STYLE = re.compile(r'<style(?![^>]*id="boot-style")[^>]*>(.*?)</style>', re.S)
-DC_SCRIPT = re.compile(r'<script type="text/x-dc" data-dc-script>(.*?)</script>', re.S)
+DC_SCRIPT = re.compile(r'<script type="text/x-dc" data-dc-script[^>]*>(.*?)</script>', re.S)
+# plain inline scripts (no src) can carry CSS strings: cssText = '…', .style.x = '…', style objects
+INLINE_SCRIPT = re.compile(r'<script(?![^>]*\ssrc=)(?![^>]*type="text/x-dc")[^>]*>(.*?)</script>', re.S)
 HEX = re.compile(r'#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b')
+# colour functions are literals too; tokens/*.css and the boot style may use them
+FUNC = re.compile(r'\b(?:rgba?|hsla?|oklch)\(')
+
+# Checks added in the consolidation are reported as warnings until the pages are clean,
+# then promoted to failures (set to False).
+NEW_AS_WARN = True
 
 # Known exceptions (COL-02). Keep this list short; every entry needs a reason.
 ALLOW = {
@@ -31,15 +39,22 @@ FILES = sorted(glob.glob(ROOT + '*.html'))
 
 findings = []
 
-def add(rule, path, detail):
-    findings.append((rule, path.replace(ROOT, ''), detail))
+def add(rule, path, detail, new=False):
+    findings.append((rule, path.replace(ROOT, ''), detail, new and NEW_AS_WARN))
 
 def prose(html):
     """Visible text only, roughly: drop tags, scripts, styles and attributes."""
     html = re.sub(r'<(script|style|svg)[\s\S]*?</\1>', ' ', html)
     return re.sub(r'<[^>]+>', ' ', html)
 
-tokens_css = open(TOKENS).read()
+# every token name the design system defines, in any tokens/*.css file
+TOKEN_NAMES = set()
+COLOR_TOKEN_NAMES = set()
+for f in glob.glob(TOKEN_DIR + '*.css'):
+    names = set(re.findall(r'--([a-z0-9-]+)\s*:', open(f).read()))
+    TOKEN_NAMES |= names
+    if f.endswith('/colors.css'):
+        COLOR_TOKEN_NAMES |= names
 
 for path in FILES:
     t = open(path).read()
@@ -47,23 +62,28 @@ for path in FILES:
     is_page = path in PAGES
 
     # COL-01 no literal colours in CSS contexts
-    for rx in (ATTR, STYLE, DC_SCRIPT):
+    legacy_dc = re.compile(r'<script type="text/x-dc" data-dc-script>(.*?)</script>', re.S)
+    for rx, new in ((ATTR, False), (STYLE, False), (DC_SCRIPT, None), (INLINE_SCRIPT, True)):
         for m in rx.finditer(t):
+            # scripts with data-props were never scanned before the consolidation
+            is_new = new if new is not None else not legacy_dc.match(m.group(0))
             for h in HEX.findall(m.group(1)):
                 h = h.lower()
                 if ('*', h) in ALLOW or (name, h) in ALLOW:
                     continue
-                add('COL-01', path, f'literal colour {h}; use a token from tokens/colors.css')
+                add('COL-01', path, f'literal colour {h}; use a token from tokens/colors.css', is_new)
+            for f in FUNC.findall(m.group(1)):
+                add('COL-01', path, f'colour function {f}...); use color-mix(in srgb, var(--token) N%, transparent)', True)
 
     # COL-03 every page loads the colour tokens
     if is_page and 'tokens/colors.css' not in t:
         add('COL-03', path, 'page does not load tokens/colors.css')
 
-    # COL-04 no page redefines a design-system colour token
+    # COL-04 no page redefines a design-system token (any tokens/*.css file)
     for block in re.findall(r':root\s*\{([^}]*)\}', t):
         for k in re.findall(r'--([a-z0-9-]+):', block):
-            if re.search(r'--' + re.escape(k) + r':', tokens_css):
-                add('COL-04', path, f'redefines --{k}; change it in tokens/colors.css instead')
+            if k in TOKEN_NAMES:
+                add('COL-04', path, f'redefines --{k}; change it in tokens/ instead', k not in COLOR_TOKEN_NAMES)
 
     # LAY-01 page wrapper clips horizontal overflow (full-bleed lines must not widen the page)
     if is_page and '<x-dc>' in t and 'overflow-x:clip' not in t.split('</helmet>', 1)[-1][:2000]:
@@ -96,9 +116,9 @@ for path in FILES:
         add('CNT-04', path, f'em dash in prose: "{s[:70]}"')
 
 WARN = {'CNT-04'}   # needs a person's judgement: reported, never blocks a deploy
-errors = [f for f in findings if f[0] not in WARN]
-warns = [f for f in findings if f[0] in WARN]
-for rule, name, detail in errors + warns:
-    print(f'{"warn " if rule in WARN else "FAIL "}{rule}  {name}  {detail}')
+errors = [f for f in findings if f[0] not in WARN and not f[3]]
+warns = [f for f in findings if f[0] in WARN or f[3]]
+for rule, name, detail, new in errors + warns:
+    print(f'{"FAIL " if (rule, name, detail, new) in errors else "warn "}{rule}  {name}  {detail}')
 print(f'\n{len(errors)} failure(s), {len(warns)} warning(s)' if findings else 'pass')
 sys.exit(1 if errors else 0)
