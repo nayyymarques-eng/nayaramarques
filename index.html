@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/base.css">
 <style id="boot-style">
   html { background:var(--surface-page); color:var(--text-strong); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
@@ -82,12 +83,6 @@
   * { box-sizing: border-box; }
   summary::-webkit-details-marker { display: none; }
   html, body { overflow-x: clip; max-width: 100%; }
-  a { color: var(--text-strong); text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: var(--accent); }
-  ::selection { background: var(--surface-inverse); color: var(--text-on-inverse); }
-  @keyframes lineUp { from { transform: translateY(1.05em); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); filter: blur(3px); } to { opacity: 1; transform: none; filter: blur(0); } }
-  @keyframes ruleIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   @keyframes roleIn { from { opacity: 0; transform: translateY(calc(0.22em + 14px)); filter: blur(3px); } to { opacity: 1; transform: translateY(0.22em); filter: blur(0); } }
   @keyframes glyphIn { from { opacity: .25; filter: blur(1.6px); transform: translateY(-0.035em); } to { opacity: 1; filter: blur(0); transform: translateY(0); } }
   @keyframes cornerA { 0% { transform: translate3d(-30%, -26%, 0) scale(1); } 25% { transform: translate3d(34%, -22%, 0) scale(1.16); } 50% { transform: translate3d(30%, 24%, 0) scale(0.94); } 75% { transform: translate3d(-28%, 26%, 0) scale(1.2); } 100% { transform: translate3d(-30%, -26%, 0) scale(1); } }
@@ -95,7 +90,6 @@
   @keyframes cornerC { 0% { transform: translate3d(-20%, 22%, 0) scale(1.1); } 33% { transform: translate3d(26%, -18%, 0) scale(1.28); } 66% { transform: translate3d(-24%, -20%, 0) scale(0.98); } 100% { transform: translate3d(-20%, 22%, 0) scale(1.1); } }
   @keyframes softOut { 0% { transform: translateY(0); filter: blur(0); opacity: 1; } 40% { opacity: 0.55; } 100% { transform: translateY(-26%); filter: blur(3px); opacity: 0; } }
   @keyframes softIn  { 0% { transform: translateY(26%); filter: blur(3px); opacity: 0; } 55% { opacity: 0.85; } 100% { transform: translateY(0); filter: blur(0); opacity: 1; } }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   @media (max-width: 720px) {
     [data-reveal] { padding-top: var(--space-2xl) !important; padding-bottom: var(--space-3xl) !important; gap: var(--space-xl) !important; }
   }

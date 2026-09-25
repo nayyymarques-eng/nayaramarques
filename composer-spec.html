@@ -81,12 +81,8 @@
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
   * { box-sizing: border-box; }
-  a { color: var(--text-strong); text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: var(--accent); }
-  ::selection { background: var(--surface-inverse); color: var(--text-on-inverse); }
   .sk { background: var(--surface-band); border-radius: var(--radius-sm); }
   .sk-d { background: var(--border); border-radius: var(--radius-sm); }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); filter: blur(3px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes drawBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   @keyframes spin { to { transform: rotate(360deg); } }
   @keyframes caret { 0%, 48% { opacity: 1; } 52%, 100% { opacity: 0; } }
@@ -94,7 +90,6 @@
   @keyframes openChips { 0%, 7% { max-width: 0; opacity: 0; margin-left: -8px; } 17%, 76% { max-width: 420px; opacity: 1; margin-left: 0; } 88%, 100% { max-width: 0; opacity: 0; margin-left: -8px; } }
   @keyframes openBar { 0%, 7% { max-height: 0; opacity: 0; } 17%, 76% { max-height: 56px; opacity: 1; } 88%, 100% { max-height: 0; opacity: 0; } }
   @keyframes litPlus { 0%, 7% { background: transparent; } 17%, 76% { background: var(--surface-band); } 88%, 100% { background: transparent; } }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   @media (max-width: 860px) {
     [data-rail] {
       flex: 1 1 100% !important;
