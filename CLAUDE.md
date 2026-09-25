@@ -48,7 +48,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 | Focus ring | `--focus-ring` |
 | Elevation: small (mock tiles), medium (floating cards), large (menus, popovers) | `--shadow-sm` / `--shadow-md` / `--shadow-lg` |
 | Corners: site controls / mockup surfaces / dots and pills | `--radius-sm` / `--radius-md` / `--radius-full` |
-| Type sizes | `--font-size-2xs` 10 · `xs` 11 · `sm` 14 · `md` 16 · `lg` 20 · `xl-lead` · `xl` · `2xl` · `2xl-cta` · `3xl` |
+| Type sizes (8) | `--font-size-2xs` 10 · `xs` 11 · `sm` 14 · `md` 16 · `lg` 18–20 · `xl` 20–28 · `2xl` 24–44 · `3xl` 34–68. Card titles use `--font-size-xl-lead` (= `xl`, stepped down in case bodies) |
 | Spacing | `--space-3xs` 2 · `2xs` 4 · `xs` 8 · `sm` 12 · `md` 16 · `lg` 20 · `xl` 24 · `2xl` 32 · `3xl` 40 · `4xl` 48 · `5xl` 64; fluid `--space-fluid-s/m/l/xl`, `--section-y` |
 | Wireframe figure ground | `--surface-page` |
 | Wireframe marker dot | `--border` |
