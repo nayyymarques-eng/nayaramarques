@@ -19,6 +19,8 @@
   * { box-sizing:border-box; }
   a { color:var(--text-strong); }
   a:hover { color:var(--accent); }
+  a[data-btn="primary"]:hover { background:var(--accent); color:var(--text-on-inverse); }
+  a[data-btn="secondary"]:hover { background:var(--surface-hover); color:var(--text-strong); }
 </style>
 </head>
 <body>
@@ -42,8 +44,8 @@
     <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
     <p style="margin:0 0 var(--space-fluid-xl);max-width:58ch;font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-strong);text-wrap:pretty">The link may be old, or I may have moved something. The six case studies are all on the work index.</p>
     <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm)">
-      <a href="work.html" style="padding:var(--space-md) var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase">Selected work →</a>
-      <a href="index.html" style="padding:var(--space-md) var(--space-xl);border:1px solid var(--border);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase">Home</a>
+      <a href="work.html" style="padding:var(--space-md) var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase" data-btn="primary">Selected work →</a>
+      <a href="index.html" style="padding:var(--space-md) var(--space-xl);border:1px solid var(--border);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase" data-btn="secondary">Home</a>
     </div>
   </main>
 

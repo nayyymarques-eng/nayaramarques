@@ -51,6 +51,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 | Type sizes (8) | `--font-size-2xs` 10 · `xs` 11 · `sm` 14 · `md` 16 · `lg` 18–20 · `xl` 20–28 · `2xl` 24–44 · `3xl` 34–68. Card titles use `--font-size-xl-lead` (= `xl`, stepped down in case bodies) |
 | Leading and tracking | `--leading-none` 1 · `heading` 1.2 · `label` 1.4 · `snug` 1.5 · `small` 1.6 · `body` 1.7 (`display` 0.94, `title` 1.06); `--tracking-display` · `title` · `heading` · `lead`, `label` 0.12em on 11px labels, `eyebrow` 0.14em on 10px eyebrows |
 | Spacing | `--space-3xs` 2 · `2xs` 4 · `xs` 8 · `sm` 12 · `md` 16 · `lg` 20 · `xl` 24 · `2xl` 32 · `3xl` 40 · `4xl` 48 · `5xl` 64; fluid `--space-fluid-s` 12–20 · `m` 20–28 · `l` 24–36 · `xl` 28–44, `--section-y` 36–64, `--section-y-lg` 48–96 (the home hero keeps its own value) |
+| Buttons | primary: solid `--surface-inverse`, text `--text-on-inverse`, hover `--accent`; secondary: 1px `--border` outline, hover `--surface-hover`; inverse (on the dark band): solid `--surface-page`, hover `--accent` with `--text-on-inverse` |
 | Wireframe figure ground | `--surface-page` |
 | Wireframe marker dot | `--border` |
 
