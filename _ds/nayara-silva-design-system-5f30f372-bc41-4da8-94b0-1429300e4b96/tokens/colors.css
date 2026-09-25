@@ -1,7 +1,7 @@
 :root{
   /* --- 1. Primitives. Values only; pages never use these names. -------- */
   --sand-0:#ffffff;     --sand-50:#f2f1ee;   --sand-100:#eceae5;
-  --sand-200:#dedbd5;   --sand-300:#d3d0c9;  --sand-400:#b8b5ae;
+  --sand-200:#dedbd5;   --sand-400:#b8b5ae;
   --slate-300:#a4a8ae;  --slate-500:#7f8389; --slate-550:#5f646b;  /* slate-500: B-2, arrows and icons at 3:1 */
   --slate-700:#4e535a; --slate-800:#3a3e44;
   --slate-950:#101114;  /* shadows only */
@@ -31,8 +31,7 @@
   --brand-mark:var(--red-600);              /* the nav star */
 
   --border-subtle:var(--sand-100);          /* inner rule in a white card, soft chip border */
-  --border:var(--sand-200);                 /* default rule, card border, grid gutter */
-  --border-control:var(--sand-300);         /* pill, control; folds into --border in B-5 */
+  --border:var(--sand-200);                 /* default rule, card border, control and pill border, grid gutter */
   --border-strong:var(--sand-400);          /* item rule inside a section */
   --border-emphatic:var(--slate-800);       /* opens a block; divider between case sections */
 
@@ -62,5 +61,6 @@
   --text-accent:var(--accent);        --border-default:var(--border);
   --text-meta:var(--text-muted);      /* B-1 */
   --accent-hover:var(--accent);       /* B-3 */
+  --border-control:var(--border);     /* B-5 */
   --shadow-ink:var(--slate-950);
 }

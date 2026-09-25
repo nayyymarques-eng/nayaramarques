@@ -10,7 +10,7 @@
 
   --border-hairline:1px solid var(--border); /* @kind other */
   --border-hairline-strong:1px solid var(--border-emphatic); /* @kind other */
-  --border-control-1:1px solid var(--border-control); /* @kind other */
+  --border-control-1:1px solid var(--border); /* @kind other */
 
   /* Elevation: three shades, --shadow-sm / -md / -lg in colors.css (they mix
      from the colour primitives). The bleed shadow below is a layout device, not

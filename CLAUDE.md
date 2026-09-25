@@ -21,7 +21,7 @@ Sources of truth, in order: `_ds/…/tokens/*.css` (values) → this file (decis
 - **COL-07** Pages never use the old alias names listed under the token table. *(check_source; warning until the aliases go)*
 - **COL-08** Text passes WCAG AA on its ground: 4.5:1, or 3:1 for large text. *(check_pages; warning until the consolidation's B-2 and B-14 land)*
 
-Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line-*`, `--rust`, `--text-meta`, `--size-*`, `--track-*`, `--space-1…18`, `--card-p`) remain only as aliases for the Claude Design bundle until it is regenerated on the roles; never write them in new code.
+Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line-*`, `--rust`, `--text-meta`, `--border-control`, `--size-*`, `--track-*`, `--space-1…18`, `--card-p`) remain only as aliases for the Claude Design bundle until it is regenerated on the roles; never write them in new code.
 
 | Job | Token |
 |---|---|
@@ -42,8 +42,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 | Pale blue, only on ink grounds | `--accent-soft` |
 | Nav mark only | `--brand-mark` |
 | Inner rule in a white card, soft chip border | `--border-subtle` |
-| Section border, default rule, card border, grid gutter | `--border` |
-| Control / pill border | `--border-control` |
+| Section border, default rule, card border, control and pill border, grid gutter | `--border` |
 | Item rule inside a section (steps, stats, sub-sections) | `--border-strong` |
 | Emphatic rule that opens a block; the divider between case sections | `--border-emphatic` |
 | Gained / traded labels | `--status-gain` / `--status-cost` |
@@ -53,7 +52,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 | Type sizes | `--font-size-2xs` 10 · `xs` 11 · `sm` 14 · `md` 16 · `lg` 20 · `xl-lead` · `xl` · `2xl` · `2xl-cta` · `3xl` |
 | Spacing | `--space-3xs` 2 · `2xs` 4 · `xs` 8 · `sm` 12 · `md` 16 · `lg` 20 · `xl` 24 · `2xl` 32 · `3xl` 40 · `4xl` 48 · `5xl` 64; fluid `--space-fluid-s/m/l/xl`, `--section-y` |
 | Wireframe figure ground | `--surface-page` |
-| Wireframe marker dot | `--border-control` |
+| Wireframe marker dot | `--border` |
 
 ## 2. Layout (LAY)
 - **LAY-01** Nothing scrolls sideways, at any width. The page wrapper (first `div` after `</helmet>`) carries `overflow-x:clip`. Not on `<main>` (it cuts the bands), not on `<html>` (browsers treat it as hidden). *(both checks)*
