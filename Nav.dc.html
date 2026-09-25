@@ -19,7 +19,7 @@
 </style>
 </helmet>
 <header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:color-mix(in srgb,var(--surface-page) 46%,transparent);border-bottom:1px solid var(--border-subtle)">
-  <nav style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl);height:57px;display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px)">
+  <nav style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl);height:57px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-fluid-l)">
     <a href="index.html" aria-label="Nayara Marques — home" style="display:flex;align-items:center;gap:var(--space-sm);height:20px;font-size:var(--font-size-sm);font-weight:600;letter-spacing:normal;color:var(--text-strong);text-decoration:none;flex-shrink:0">
       <span data-nav-mark="" aria-hidden="true" style="width:18px;height:18px;flex:none;position:relative">
       <span style="{{ markStyle }}">
@@ -30,11 +30,11 @@
       </span>
       <span style="{{ nameStyle }}">Nayara Marques</span>
     </a>
-    <div data-nav-desktop="" style="display:flex;align-items:center;height:20px;gap:clamp(16px,2.4vw,28px);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase">
+    <div data-nav-desktop="" style="display:flex;align-items:center;height:20px;gap:var(--space-fluid-m);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase">
 
 
       <div ref="{{ workEl }}" style="position:relative">
-        <button onClick="{{ toggleWork }}" aria-expanded="{{ workOpen }}" aria-haspopup="true" style="appearance:none;background:none;border:0;padding:0;font-family:Archivo,sans-serif;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color .2s ease" style-hover="color:var(--text-strong)">
+        <button onClick="{{ toggleWork }}" aria-expanded="{{ workOpen }}" aria-haspopup="true" style="appearance:none;background:none;border:0;padding:0;font-family:Archivo,sans-serif;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-xs);transition:color .2s ease" style-hover="color:var(--text-strong)">
           Work <span style="{{ workCaretStyle }}">▾</span>
         </button>
         <div style="{{ workPanelStyle }}">
@@ -44,11 +44,11 @@
           <a href="advisors-platform.html" aria-current="{{ cAdvisors }}" style="{{ sAdvisors }}" style-hover="background:var(--surface-band)">Advisors platform</a>
           <a href="fleet-optimizer.html" aria-current="{{ cFleet }}" style="{{ sFleet }}" style-hover="background:var(--surface-band)">Fleet optimizer</a>
           <a href="card-insurance.html" aria-current="{{ cCard }}" style="{{ sCard }}" style-hover="background:var(--surface-band)">Card insurance</a>
-          <a href="work.html" style="display:block;padding:var(--space-sm) 18px;text-decoration:none;color:var(--accent);font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">All work</a>
+          <a href="work.html" style="display:block;padding:var(--space-sm) var(--space-lg);text-decoration:none;color:var(--accent);font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">All work</a>
         </div>
       </div>
       <div ref="{{ svcEl }}" style="position:relative">
-        <button onClick="{{ toggleSvc }}" aria-expanded="{{ svcOpen }}" aria-haspopup="true" style="appearance:none;background:none;border:0;padding:0;font-family:Archivo,sans-serif;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color .2s ease" style-hover="color:var(--text-strong)">
+        <button onClick="{{ toggleSvc }}" aria-expanded="{{ svcOpen }}" aria-haspopup="true" style="appearance:none;background:none;border:0;padding:0;font-family:Archivo,sans-serif;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-xs);transition:color .2s ease" style-hover="color:var(--text-strong)">
           Services <span style="{{ svcCaretStyle }}">▾</span>
         </button>
         <div style="{{ svcPanelStyle }}">
@@ -56,21 +56,21 @@
           <a href="design-system-audit.html" aria-current="{{ cAudit }}" style="{{ sAudit }}" style-hover="background:var(--surface-band)">Audit design system</a>
           <a href="project-engagement.html" aria-current="{{ cProject }}" style="{{ sProject }}" style-hover="background:var(--surface-band)">Project engagement</a>
           <a href="embedded-partner.html" aria-current="{{ cPartner }}" style="{{ sPartner }}" style-hover="background:var(--surface-band)">Embedded partner</a>
-          <a href="start-a-project.html" style="display:block;padding:var(--space-sm) 18px;text-decoration:none;color:var(--accent);font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">Start a project</a>
+          <a href="start-a-project.html" style="display:block;padding:var(--space-sm) var(--space-lg);text-decoration:none;color:var(--accent);font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">Start a project</a>
         </div>
       </div>
 
       <a href="about.html" style="color:var(--text-muted);text-decoration:none;transition:color .2s ease" style-hover="color:var(--text-strong)">About</a>
       <a href="contact.html" style="color:var(--text-muted);text-decoration:none;transition:color .2s ease" style-hover="color:var(--text-strong)">Contact</a>
     </div>
-    <button data-nav-burger="" onClick="{{ toggleMobile }}" aria-label="Menu" aria-expanded="{{ mobileOpen }}" style="display:none;appearance:none;background:none;border:0;padding:10px;margin-right:-10px;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;align-items:flex-end">
+    <button data-nav-burger="" onClick="{{ toggleMobile }}" aria-label="Menu" aria-expanded="{{ mobileOpen }}" style="display:none;appearance:none;background:none;border:0;padding:var(--space-sm);margin-right:-10px;cursor:pointer;flex-direction:column;justify-content:center;gap:var(--space-2xs);width:44px;height:44px;align-items:flex-end">
       <span style="{{ burgerTop }}"></span>
       <span style="{{ burgerMid }}"></span>
       <span style="{{ burgerBot }}"></span>
     </button>
   </nav>
   <div data-nav-panel="" style="{{ mobilePanelStyle }}">
-    <div style="padding:var(--space-xs) var(--space-2xl) 28px;display:flex;flex-direction:column;gap:22px">
+    <div style="padding:var(--space-xs) var(--space-2xl) var(--space-2xl);display:flex;flex-direction:column;gap:var(--space-xl)">
       <div style="display:flex;flex-direction:column;gap:var(--space-3xs)">
         <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);padding:var(--space-xs) 0">Work</span>
         <a href="ai-surfaces.html" style="{{ mRow }}">AI surfaces</a>
@@ -89,7 +89,7 @@
         <a href="embedded-partner.html" style="{{ mRow }}">Embedded partner</a>
         <a href="start-a-project.html" style="{{ mRowAccent }}">Start a project</a>
       </div>
-      <div style="display:flex;flex-direction:column;gap:var(--space-3xs);border-top:1px solid var(--border-subtle);padding-top:10px">
+      <div style="display:flex;flex-direction:column;gap:var(--space-3xs);border-top:1px solid var(--border-subtle);padding-top:var(--space-sm)">
         <a href="about.html" style="{{ mRow }}">About</a>
         <a href="contact.html" style="{{ mRow }}">Contact</a>
       </div>
@@ -158,7 +158,7 @@ class Component extends DCLogic {
     ].join('');
     let here = '';
     try { here = decodeURIComponent(location.pathname.split('/').pop() || ''); } catch (e) {}
-    const base = 'display:block;padding:var(--space-sm) 18px;text-decoration:none;border-bottom:1px solid var(--border-subtle);font-size:var(--font-size-sm);font-weight:400;letter-spacing:normal;text-transform:none;transition:background .18s ease;';
+    const base = 'display:block;padding:var(--space-sm) var(--space-lg);text-decoration:none;border-bottom:1px solid var(--border-subtle);font-size:var(--font-size-sm);font-weight:400;letter-spacing:normal;text-transform:none;transition:background .18s ease;';
     const row = (file) => {
       const b = base;
       return here === file + '.dc.html'
@@ -169,7 +169,7 @@ class Component extends DCLogic {
     const shown = this.state.nameShown;
     const mo = this.state.mobileOpen;
     const bar = (t) => 'display:block;height:1.5px;background:var(--surface-inverse);transition:transform .25s cubic-bezier(.19,1,.22,1), opacity .2s ease;' + t;
-    const mRowBase = 'display:block;padding:11px 0;font-size:var(--font-size-md);font-weight:400;letter-spacing:var(--tracking-lead);text-transform:none;text-decoration:none;';
+    const mRowBase = 'display:block;padding:var(--space-sm) 0;font-size:var(--font-size-md);font-weight:400;letter-spacing:var(--tracking-lead);text-transform:none;text-decoration:none;';
     return {
       mobileOpen: mo,
       toggleMobile: () => this.setState(s => ({ mobileOpen: !s.mobileOpen, open: false, workOpen: false, svcOpen: false })),

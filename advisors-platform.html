@@ -38,9 +38,9 @@
 <body>
 <div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--surface-page);z-index:9999">
   <div style="height:57px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 var(--space-2xl);gap:var(--space-sm)"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
-  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) var(--space-2xl) 0">
+  <div style="max-width:1400px;margin:0 auto;padding:var(--section-y-lg) var(--space-2xl) 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--border);animation:none"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:var(--space-fluid-xl) 0 0;background:var(--border);animation:none"></i>
     <i style="width:min(92%,620px);height:14px;margin-top:var(--space-fluid-l)"></i>
     <i style="width:min(86%,580px);height:14px;margin-top:var(--space-sm)"></i>
     <i style="width:min(64%,430px);height:14px;margin-top:var(--space-sm)"></i>
@@ -116,7 +116,7 @@
     box = document.createElement('div');
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'true');
-    box.style.cssText = 'position:fixed;inset:0;z-index:200;background:color-mix(in srgb,var(--surface-page) 96%,transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:clamp(24px,5vw,64px);cursor:zoom-out';
+    box.style.cssText = 'position:fixed;inset:0;z-index:200;background:color-mix(in srgb,var(--surface-page) 96%,transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:var(--section-y);cursor:zoom-out';
     var img = document.createElement('img');
     img.src = src;
     img.alt = caption || '';
@@ -158,15 +158,15 @@
 
   <main style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl)">
 
-    <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 0">
+    <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:var(--section-y-lg) 0">
       <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-lg)"><span>BTG Pactual</span> · São Paulo · 2019—2021</div>
-      <h1 style="font-weight:500;font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 clamp(24px,3vw,32px);max-width:26ch;text-wrap:balance">An advisors platform for four business verticals</h1>
-      <div style="height:1px;background:var(--border);margin-bottom:clamp(24px,3vw,32px)"></div>
+      <h1 style="font-weight:500;font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-l);max-width:26ch;text-wrap:balance">An advisors platform for four business verticals</h1>
+      <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
       <p style="margin:0;max-width:58ch;font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">A workspace for advisors across BTG Pactual’s verticals: configurable dashboard, modular side menu, client page. Four directors could each veto it. I led it from 12 interviews to a concept test with 90% acceptance and one MVP all four signed.</p>
     </section>
 
-    <section style="background:var(--surface-band);box-shadow:0 0 0 100vmax var(--surface-band);clip-path:inset(0 -100vmax);position:relative;padding:clamp(28px,4vw,40px) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(20px,3vw,36px)">
+    <section style="background:var(--surface-band);box-shadow:0 0 0 100vmax var(--surface-band);clip-path:inset(0 -100vmax);position:relative;padding:var(--space-fluid-xl) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-fluid-l)">
         <div>
           <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Role</div>
           <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7)">Product Design Lead.</p>
@@ -192,7 +192,7 @@
 
       
 
-<div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0">
+<div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">01 — The advisors platform</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p style="margin:0 0 18px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Three business directors asked for it. Their advisors called the platform incomplete, with features scattered across tools, and it hurt their performance.</p>
@@ -211,7 +211,7 @@
         </div></div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">02 — The problem</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);font-weight:400;line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty">Advisors were doing the integration work the software should have done.</p>
@@ -232,7 +232,7 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">03 — Constraints</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <div style="display:flex;gap:var(--space-md);padding:18px 0;border-top:1px solid var(--border)">
@@ -250,7 +250,7 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">04 — Process &amp; key decisions</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p style="margin:0 0 28px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Two phases: Concept Design to win approval, then Detailed Design to make it buildable. Three principles ran through both: <strong style="font-weight:600">customizable, multitasking, propositional</strong>.</p>
@@ -314,12 +314,12 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">05 — The solution</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p style="margin:0 0 28px;max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">A configurable dashboard, a modular side menu, and a client page built as a workspace, with the advisor’s tools attached.</p>
           <p style="margin:18px 0 0;max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Six widget modules (Metas, Clientes, Produtos, Tickets, Movimentações, Agenda), reached through around 150 prototypes.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--space-fluid-m);margin-top:clamp(28px,3.4vw,40px)">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--space-fluid-m);margin-top:var(--space-fluid-xl)">
             <figure data-zoom="" data-caption="The dashboard in edit mode: each office adds the widgets it works from." style="margin:0;cursor:zoom-in">
               <div style="aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid var(--border);background:var(--surface-card)"><image-slot id="advisors-dashboard" src="assets/p49-0.png" fit="contain" shape="rect" placeholder="Dashboard + widgets" style="max-width:100%;position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
               <figcaption data-caption style="margin:0;border:1px solid var(--border);border-top:0;background:var(--surface-band);padding:14px 18px;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">The dashboard in edit mode.</strong> Each office adds the widgets it works from.</figcaption>
@@ -336,7 +336,7 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">06 — Impact</h2>
         <div style="flex:1 1 460px;min-width:0">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:1px;background:var(--border);border:1px solid var(--border);overflow:hidden;margin-bottom:28px">
@@ -348,7 +348,7 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">07 — What I learned</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:66ch">
           <p style="margin:0 0 18px;font-size:var(--font-size-md);font-weight:400;line-height:var(--leading-body);letter-spacing:normal;color:var(--text-body);text-wrap:pretty">Alignment is a design deliverable. Until four directors saw the same tradeoffs, no design was safe to build.</p>
@@ -357,7 +357,7 @@
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0 clamp(56px,8vw,96px)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding:var(--section-y) 0 var(--section-y-lg)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">From interviews to board approval. Not covered:</p>
@@ -382,9 +382,9 @@
 
     </section>
 
-    <section style="position:relative;padding:var(--section-y) 0 clamp(56px,8vw,96px)" style-before="content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)">
+    <section style="position:relative;padding:var(--section-y) 0 var(--section-y-lg)" style-before="content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)">
       <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:14px">Next case study</div>
-      <a href="card-insurance.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;position:relative;transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:10px">
+      <a href="card-insurance.html" style="display:flex;flex-wrap:wrap;gap:var(--space-fluid-s);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:var(--space-fluid-s) 0;position:relative;transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:10px">
         <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0">Modular card insurance in a banking app</h2>
         <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);flex-shrink:0">BTG Pactual</span>
       </a>
