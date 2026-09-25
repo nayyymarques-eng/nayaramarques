@@ -10,7 +10,7 @@
     '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:clamp(28px,4vw,56px) 0 0;padding:var(--space-sm) var(--space-md);background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-sm);pointer-events:auto}',
     '[data-case-index] a{display:grid;grid-template-columns:22px 1fr;gap:6px;padding:7px 0 7px var(--space-sm);border-left:1px solid var(--border);',
     'font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;',
-    'color:var(--text-subtle);text-decoration:none;transition:color .25s ease,border-color .25s ease}',
+    'color:var(--text-muted);text-decoration:none;transition:color .25s ease,border-color .25s ease}',
     '[data-case-index] a:hover{color:var(--text-muted)}',
     '[data-case-index] a[aria-current="step"]{color:var(--text-strong);border-left:2px solid var(--accent);padding-left:11px}',
     '[data-case-index] a[aria-current="step"] span:first-child{color:var(--accent)}',

@@ -105,7 +105,8 @@
     const L1 = lum(c), L2 = lum(g);
     const ratio = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
     const px = parseFloat(cs.fontSize), bold = parseInt(cs.fontWeight) >= 700;
-    const need = (px >= 24 || (bold && px >= 18.66)) ? 3 : 4.5;
+    // arrows and other symbol-only text are icons: non-text contrast, 3:1 (WCAG 1.4.11)
+    const need = (px >= 24 || (bold && px >= 18.66) || !/[A-Za-z0-9]/.test(e.textContent)) ? 3 : 4.5;
     if (ratio < need - 0.005) {
       const k = cs.color + ' on ' + g.slice(0, 3).map(Math.round).join(',');
       if (!low.has(k)) low.set(k, { ratio, n: 0, text: e.textContent.trim().slice(0, 30) });
