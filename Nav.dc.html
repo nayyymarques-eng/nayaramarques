@@ -72,7 +72,7 @@
   <div data-nav-panel="" style="{{ mobilePanelStyle }}">
     <div style="padding:var(--space-xs) var(--space-2xl) 28px;display:flex;flex-direction:column;gap:22px">
       <div style="display:flex;flex-direction:column;gap:var(--space-3xs)">
-        <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);padding:var(--space-xs) 0">Work</span>
+        <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);padding:var(--space-xs) 0">Work</span>
         <a href="ai-surfaces.html" style="{{ mRow }}">AI surfaces</a>
         <a href="composer-spec.html" style="{{ mRow }}">Composer spec</a>
         <a href="design-system.html" style="{{ mRow }}">Design system</a>
@@ -82,7 +82,7 @@
         <a href="work.html" style="{{ mRowAccent }}">All work</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:var(--space-3xs)">
-        <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);padding:var(--space-xs) 0">Services</span>
+        <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);padding:var(--space-xs) 0">Services</span>
         <a href="design-system-build.html" style="{{ mRow }}">Build design system</a>
         <a href="design-system-audit.html" style="{{ mRow }}">Audit design system</a>
         <a href="project-engagement.html" style="{{ mRow }}">Project engagement</a>
@@ -190,7 +190,7 @@ class Component extends DCLogic {
       svcPanelStyle: panel(svcOpen, '250px'),
       markStyle: 'position:absolute;inset:0;transition:opacity .22s ease, transform .26s cubic-bezier(.19,1,.22,1);'
         + (shown ? 'opacity:1;transform:scale(1);' : 'opacity:0;transform:scale(0.55);'),
-      nameStyle: 'display:block;line-height:20px;white-space:nowrap;overflow:hidden;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);transition:opacity .3s ease, transform .45s cubic-bezier(.19,1,.22,1), max-width .45s cubic-bezier(.19,1,.22,1);'
+      nameStyle: 'display:block;line-height:20px;white-space:nowrap;overflow:hidden;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);transition:opacity .3s ease, transform .45s cubic-bezier(.19,1,.22,1), max-width .45s cubic-bezier(.19,1,.22,1);'
         + (shown ? 'opacity:1;transform:translateX(0);max-width:220px;' : 'opacity:0;transform:translateX(-6px);max-width:0;'),
       sAi: row('AI Surfaces'), sComposer: row('Composer Spec'), sDs: row('Design System'),
       sAdvisors: row('Advisors Platform'), sFleet: row('Fleet Optimizer'), sCard: row('Card Insurance', true),

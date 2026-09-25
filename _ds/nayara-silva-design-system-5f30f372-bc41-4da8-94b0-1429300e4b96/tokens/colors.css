@@ -3,7 +3,7 @@
   --sand-0:#ffffff;     --sand-50:#f2f1ee;   --sand-100:#eceae5;
   --sand-200:#dedbd5;   --sand-300:#d3d0c9;  --sand-400:#b8b5ae;
   --slate-300:#a4a8ae;  --slate-400:#8c9096; --slate-550:#5f646b;
-  --slate-600:#5a5f66;  --slate-700:#4e535a; --slate-800:#3a3e44;
+  --slate-700:#4e535a; --slate-800:#3a3e44;
   --slate-950:#101114;  /* shadows only */
   --slate-200:#c8cdd8;  /* dark mockup text; goes in B-7 */
   --blue-200:#a8cbdf;   --blue-500:#3d84ad;  --blue-600:#2f6d92;
@@ -20,8 +20,7 @@
 
   --text-strong:var(--slate-800);           /* headings, strong text */
   --text-body:var(--slate-700);             /* running prose, card prose */
-  --text-muted:var(--slate-600);            /* captions, nav links, secondary */
-  --text-meta:var(--slate-550);             /* eyebrows, metadata; folds into --text-muted in B-1 */
+  --text-muted:var(--slate-550);            /* captions, nav links, secondary, eyebrows, metadata (B-1: was #5a5f66) */
   --text-subtle:var(--slate-400);           /* arrows, placeholders; not text after B-2 */
   --text-on-inverse:var(--sand-50);         /* text on the dark band */
   --text-on-inverse-muted:var(--slate-300); /* prose on the dark band */
@@ -62,5 +61,6 @@
   --line-mid:var(--border-strong);    --line-ink:var(--border-emphatic);
   --gained:var(--status-gain);        --traded:var(--status-cost);
   --text-accent:var(--accent);        --border-default:var(--border);
+  --text-meta:var(--text-muted);      /* B-1 */
   --shadow-ink:var(--slate-950);
 }

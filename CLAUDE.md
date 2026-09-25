@@ -21,7 +21,7 @@ Sources of truth, in order: `_ds/…/tokens/*.css` (values) → this file (decis
 - **COL-07** Pages never use the old alias names listed under the token table. *(check_source; warning until the aliases go)*
 - **COL-08** Text passes WCAG AA on its ground: 4.5:1, or 3:1 for large text. *(check_pages; warning until the consolidation's B-2 and B-14 land)*
 
-Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line-*`, `--rust`, `--size-*`, `--track-*`, `--space-1…18`, `--card-p`) remain only as aliases for the Claude Design bundle until it is regenerated on the roles; never write them in new code.
+Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line-*`, `--rust`, `--text-meta`, `--size-*`, `--track-*`, `--space-1…18`, `--card-p`) remain only as aliases for the Claude Design bundle until it is regenerated on the roles; never write them in new code.
 
 | Job | Token |
 |---|---|
@@ -34,8 +34,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 | Wireframe highlight | `--surface-accent-tint` |
 | Headings, strong text | `--text-strong` |
 | Running prose, card prose | `--text-body` |
-| Captions, secondary text, nav links | `--text-muted` |
-| Eyebrows, metadata | `--text-meta` |
+| Captions, secondary text, nav links, eyebrows, metadata | `--text-muted` |
 | Arrows, mono labels | `--text-subtle` |
 | Text on the dark band | `--text-on-inverse`, prose `--text-on-inverse-muted` |
 | Text in a dark mockup | `--text-on-inverse-mock` |
@@ -66,7 +65,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 - **LAY-05b** The footer (`Foot.dc.html`) draws an in-flow divider, because it usually follows a section of its own background. A page where it follows a different background extends it in its own `<style>` (see `work.html`).
 - **LAY-06** Mobile (375px): the menu fills the height below the header; figures stack; nothing overflows.
 - **LAY-07** Case page order: hero (eyebrow `Label · Context · Year`) → details band (Role, Users, Timeframe, Built) → numbered rail sections `01 — …` to `What this case doesn't cover` → dark call to action → `NextCase`.
-- **LAY-08** Case headings. Big type only names a part the reader can navigate to, and the section title is the largest. (1) Section title: the index lists it; in the body `case-index.js` shows it as `04 The decision` at `--font-size-xl`, number in `--accent`, name in `--text-strong` (on phones the sticky rail shows it instead). Only sections use `NN`. (2) Sub-section: `<h3>` at `--font-size-lg`, weight 500, a noun phrase with a nested number in `--text-subtle` (`5.2 Field and send`); only when a section has two or more parts, otherwise use a label. (3) Card titles: inside their card only (the card is the claim); in case bodies `--font-size-xl-lead` (and the bundle's `--size-lead`) steps down to `--font-size-lg`, set once in `case-index.js`. (4) Labels: eyebrow size, `--text-meta`/`--text-subtle`, for figures, lists and single parts; never `NN —`, never blue (the note label is the one blue exception). (5) No statement or pull-quote blocks: a section's point is its first body sentence.
+- **LAY-08** Case headings. Big type only names a part the reader can navigate to, and the section title is the largest. (1) Section title: the index lists it; in the body `case-index.js` shows it as `04 The decision` at `--font-size-xl`, number in `--accent`, name in `--text-strong` (on phones the sticky rail shows it instead). Only sections use `NN`. (2) Sub-section: `<h3>` at `--font-size-lg`, weight 500, a noun phrase with a nested number in `--text-subtle` (`5.2 Field and send`); only when a section has two or more parts, otherwise use a label. (3) Card titles: inside their card only (the card is the claim); in case bodies `--font-size-xl-lead` (and the bundle's `--size-lead`) steps down to `--font-size-lg`, set once in `case-index.js`. (4) Labels: eyebrow size, `--text-muted`/`--text-subtle`, for figures, lists and single parts; never `NN —`, never blue (the note label is the one blue exception). (5) No statement or pull-quote blocks: a section's point is its first body sentence.
 - **LAY-09** Case rules and spacing. Three line weights: section divider `--border-emphatic` (darkest), item or sub-section rule `--border-strong`, list-row separator `--border`. A heading sits close to what it introduces: section title 16px above its first line; sub-section 56px above, 12px below (at least 1.5× more above than below). `case-index.js` applies the spacing; do not hand-set margins around case headings.
 
 ## 3. Components (CMP)
