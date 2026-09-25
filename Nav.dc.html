@@ -169,7 +169,7 @@ class Component extends DCLogic {
     const shown = this.state.nameShown;
     const mo = this.state.mobileOpen;
     const bar = (t) => 'display:block;height:1.5px;background:var(--surface-inverse);transition:transform .25s cubic-bezier(.19,1,.22,1), opacity .2s ease;' + t;
-    const mRowBase = 'display:block;padding:11px 0;font-size:var(--font-size-md);font-weight:400;letter-spacing:-0.01em;text-transform:none;text-decoration:none;';
+    const mRowBase = 'display:block;padding:11px 0;font-size:var(--font-size-md);font-weight:400;letter-spacing:var(--tracking-lead);text-transform:none;text-decoration:none;';
     return {
       mobileOpen: mo,
       toggleMobile: () => this.setState(s => ({ mobileOpen: !s.mobileOpen, open: false, workOpen: false, svcOpen: false })),
@@ -177,7 +177,7 @@ class Component extends DCLogic {
       burgerMid: bar('width:22px;' + (mo ? 'opacity:0;' : '')),
       burgerBot: bar(mo ? 'width:22px;transform:translateY(-6.5px) rotate(-45deg);' : 'width:16px;'),
       mRow: mRowBase + 'color:var(--text-strong);',
-      mRowAccent: mRowBase + 'color:var(--accent);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;',
+      mRowAccent: mRowBase + 'color:var(--accent);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;',
       mobilePanelStyle: 'display:none;overflow:hidden;border-top:1px solid var(--border-subtle);background:color-mix(in srgb,var(--surface-page) 96%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:max-height .32s cubic-bezier(.19,1,.22,1), opacity .24s ease;height:calc(100dvh - 58px);'
         + (mo ? 'max-height:calc(100dvh - 58px);opacity:1;overflow-y:auto;overscroll-behavior:contain;' : 'max-height:0;opacity:0;'),
       open, workOpen, svcOpen,
@@ -190,7 +190,7 @@ class Component extends DCLogic {
       svcPanelStyle: panel(svcOpen, '250px'),
       markStyle: 'position:absolute;inset:0;transition:opacity .22s ease, transform .26s cubic-bezier(.19,1,.22,1);'
         + (shown ? 'opacity:1;transform:scale(1);' : 'opacity:0;transform:scale(0.55);'),
-      nameStyle: 'display:block;line-height:20px;white-space:nowrap;overflow:hidden;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);transition:opacity .3s ease, transform .45s cubic-bezier(.19,1,.22,1), max-width .45s cubic-bezier(.19,1,.22,1);'
+      nameStyle: 'display:block;line-height:var(--leading-label);white-space:nowrap;overflow:hidden;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-muted);transition:opacity .3s ease, transform .45s cubic-bezier(.19,1,.22,1), max-width .45s cubic-bezier(.19,1,.22,1);'
         + (shown ? 'opacity:1;transform:translateX(0);max-width:220px;' : 'opacity:0;transform:translateX(-6px);max-width:0;'),
       sAi: row('AI Surfaces'), sComposer: row('Composer Spec'), sDs: row('Design System'),
       sAdvisors: row('Advisors Platform'), sFleet: row('Fleet Optimizer'), sCard: row('Card Insurance', true),

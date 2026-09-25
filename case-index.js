@@ -17,7 +17,7 @@
     '[data-case-index] a.done{color:var(--text-muted)}',
     // the rail text is replaced by the index; it stays in the page (transparent) so screen readers keep the heading
     // the section title in the body is the largest heading in a case, at every width: number in the accent, name in ink
-    '[data-case-eyebrow]{display:block;margin:0 0 var(--space-md);font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);color:var(--text-strong)}',
+    '[data-case-eyebrow]{display:block;margin:0 0 var(--space-md);font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);color:var(--text-strong)}',
     '[data-case-eyebrow] span{color:var(--accent);margin-right:0.45em}',
     '@media ' + WIDE + '{html.has-case-index [data-rail-indexed]{color:transparent!important;user-select:none}',
     // the body sits on the details band's 4-column grid: index in column 1, content and dividers from column 2
@@ -25,7 +25,7 @@
     '--case-col:calc((100% - 3 * var(--case-gap)) / 4);--case-divider-left:calc(var(--case-col) + var(--case-gap))}',
     'html.has-case-index [data-case-band]>[data-rail-indexed]{flex:0 0 var(--case-col)!important}}',
     // card titles (DecisionCard reads --size-lead, hand-built cards --font-size-xl-lead) step down below the section title
-    '[data-case-band]{--size-lead:var(--font-size-lg);--font-size-xl-lead:var(--font-size-lg);--leading-lead:1.3;--track-lead:var(--tracking-lead)}',
+    '[data-case-band]{--size-lead:var(--font-size-lg);--font-size-xl-lead:var(--font-size-lg);--leading-lead:var(--leading-heading);--track-lead:var(--tracking-lead)}',
     // narrow screens: no index column, but the section title stays the largest heading;
     // the old small rail is hidden visually and kept for screen readers
     '@media not all and ' + WIDE + '{[data-case-index]{display:none!important}'

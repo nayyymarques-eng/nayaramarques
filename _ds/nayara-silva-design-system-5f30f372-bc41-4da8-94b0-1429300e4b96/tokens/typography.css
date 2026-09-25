@@ -17,7 +17,7 @@
 
   --leading-none:1; --leading-heading:1.2; --leading-label:1.4; --leading-snug:1.5;
 
-  --tracking-display:-0.045em; --tracking-title:-0.036em; --tracking-heading:-0.03em;
+  --tracking-display:-0.045em; --tracking-title:-0.036em; --tracking-heading:-0.028em;
   --tracking-lead:-0.018em; --tracking-label:0.12em; --tracking-eyebrow:0.14em;
 
   /* --- Sizes (old names, aliases of the scale; removed in step 6). Every headline in the source is a clamp(); the min/max are
@@ -40,10 +40,10 @@
 
   /* --- Tracking. Tighter as type grows, wide only for uppercase. ------- */
   --track-display:var(--tracking-display); /* @kind other */
-  --track-mega:-0.042em; /* @kind other */
+  --track-mega:var(--tracking-display); /* @kind other */
   --track-title:var(--tracking-title); /* @kind other */
   --track-statement:var(--tracking-heading); /* @kind other */
-  --track-lead:-0.026em; /* @kind other */
+  --track-lead:var(--tracking-heading); /* card titles; case-index.js steps it to --tracking-lead in case bodies */ /* @kind other */
   --track-body-lg:var(--tracking-lead); /* @kind other */
   --track-label:var(--tracking-label); /* @kind other */
   --track-eyebrow:var(--tracking-eyebrow); /* @kind other */
@@ -52,9 +52,9 @@
   --leading-display:0.94; /* @kind other */
   --leading-mega:var(--leading-none); /* @kind other */
   --leading-title:1.06; /* @kind other */
-  --leading-lead:1.16; /* @kind other */
-  --leading-statement:1.22; /* @kind other */
-  --leading-body-lg:1.45; /* @kind other */
+  --leading-lead:var(--leading-heading); /* @kind other */
+  --leading-statement:var(--leading-heading); /* @kind other */
+  --leading-body-lg:var(--leading-snug); /* @kind other */
   --leading-small:1.6; /* @kind other */
   --leading-body:1.7; /* @kind other */
 
