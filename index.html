@@ -21,8 +21,12 @@
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <style id="boot-style">
-  html { background:var(--paper); color:var(--ink); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--surface-page); color:var(--text-strong); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -32,14 +36,14 @@
 <script>document.documentElement.classList.add('booting');</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--paper);z-index:9999">
-  <div style="height:57px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
-  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--surface-page);z-index:9999">
+  <div style="height:57px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 var(--space-2xl);gap:var(--space-sm)"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) var(--space-2xl) 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--line);animation:none"></i>
-    <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
-    <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
-    <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--border);animation:none"></i>
+    <i style="width:min(92%,620px);height:14px;margin-top:var(--space-fluid-l)"></i>
+    <i style="width:min(86%,580px);height:14px;margin-top:var(--space-sm)"></i>
+    <i style="width:min(64%,430px);height:14px;margin-top:var(--space-sm)"></i>
   </div>
 </div>
 <script>
@@ -74,13 +78,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&amp;family=Instrument+Serif&amp;family=Chakra+Petch:wght@600&amp;display=swap" rel="stylesheet">
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
   * { box-sizing: border-box; }
   summary::-webkit-details-marker { display: none; }
   html, body { overflow-x: clip; max-width: 100%; }
-  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: var(--rust); }
-  ::selection { background: var(--ink); color: var(--paper); }
+  a { color: var(--text-strong); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--accent); }
+  ::selection { background: var(--surface-inverse); color: var(--text-on-inverse); }
   @keyframes lineUp { from { transform: translateY(1.05em); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); filter: blur(3px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes ruleIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -93,7 +97,7 @@
   @keyframes softIn  { 0% { transform: translateY(26%); filter: blur(3px); opacity: 0; } 55% { opacity: 0.85; } 100% { transform: translateY(0); filter: blur(0); opacity: 1; } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   @media (max-width: 720px) {
-    [data-reveal] { padding-top: 34px !important; padding-bottom: 38px !important; gap: 24px !important; }
+    [data-reveal] { padding-top: 34px !important; padding-bottom: 38px !important; gap: var(--space-xl) !important; }
   }
   @media (max-width: 720px) { [data-illo] { display: none !important; } }
   @media (hover: hover) {
@@ -115,43 +119,43 @@
 
   <main style="flex:1">
 
-    <section style="position:relative;max-width:1400px;margin:0 auto;padding:clamp(80px,10.5vw,152px) 32px clamp(80px,10.5vw,152px)">
+    <section style="position:relative;max-width:1400px;margin:0 auto;padding:clamp(80px,10.5vw,152px) var(--space-2xl) clamp(80px,10.5vw,152px)">
       <div aria-hidden="true" style="position:absolute;top:-80px;bottom:0;left:-100vmax;right:-100vmax;overflow:hidden;pointer-events:none;z-index:0">
-        <span style="position:absolute;left:18%;top:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--baby) 62%,transparent), transparent 68%);filter:blur(34px);animation:cornerA 9s cubic-bezier(.45,0,.55,1) infinite"></span>
-        <span style="position:absolute;right:18%;bottom:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--rust) 32%,transparent), transparent 70%);filter:blur(54px);animation:cornerB 12s cubic-bezier(.45,0,.55,1) infinite"></span>
-        <span style="position:absolute;left:36%;top:-30%;width:32%;height:160%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--paper-2) 98%,transparent), transparent 66%);filter:blur(38px);animation:cornerC 15s cubic-bezier(.45,0,.55,1) infinite"></span>
+        <span style="position:absolute;left:18%;top:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--accent-soft) 62%,transparent), transparent 68%);filter:blur(34px);animation:cornerA 9s cubic-bezier(.45,0,.55,1) infinite"></span>
+        <span style="position:absolute;right:18%;bottom:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--accent) 32%,transparent), transparent 70%);filter:blur(54px);animation:cornerB 12s cubic-bezier(.45,0,.55,1) infinite"></span>
+        <span style="position:absolute;left:36%;top:-30%;width:32%;height:160%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--surface-band) 98%,transparent), transparent 66%);filter:blur(38px);animation:cornerC 15s cubic-bezier(.45,0,.55,1) infinite"></span>
         <span style="position:absolute;inset:0;opacity:0.075;mix-blend-mode:multiply;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:180px 180px"></span>
-        <span style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom, transparent 0%, color-mix(in srgb,var(--paper-2) 70%,transparent) 55%, var(--paper-2) 100%)"></span>
+        <span style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom, transparent 0%, color-mix(in srgb,var(--surface-band) 70%,transparent) 55%, var(--surface-band) 100%)"></span>
       </div>
       <div style="position:relative;z-index:1">
       <div style="margin-bottom:clamp(16px,2vw,22px)">
-        <h1 data-hero="" style="font-size:clamp(34px,5.2vw,68px);font-weight:500;line-height:1;letter-spacing:-0.045em;margin:0;display:flex;align-items:baseline;height:1em">
-          <span style="display:block;overflow:hidden;padding:0.1em 0.04em 0.2em;margin:-0.1em -0.04em -0.2em"><span style="display:block;line-height:1;white-space:nowrap;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">nayara</span></span>
+        <h1 data-hero="" style="font-size:var(--font-size-3xl);font-weight:500;line-height:var(--leading-none);letter-spacing:var(--tracking-display);margin:0;display:flex;align-items:baseline;height:1em">
+          <span style="display:block;overflow:hidden;padding:0.1em 0.04em 0.2em;margin:-0.1em -0.04em -0.2em"><span style="display:block;line-height:var(--leading-none);white-space:nowrap;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">nayara</span></span>
           <span data-mark-slot="" aria-hidden="true" style="flex:none;width:0.66em;height:0.66em;margin:0 0.24em;align-self:center;position:relative">
         <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true" style="display:block;overflow:visible">
           <path d="M 50 2 C 54 34 66 46 98 50 C 66 54 54 66 50 98 C 46 66 34 54 2 50 C 34 46 46 34 50 2" fill="#c0392b"></path>
         </svg>
           </span>
-          <span data-role-slot="" style="position:relative;width:0;height:0;margin-left:0"><span data-role-word="" style="position:absolute;left:0;bottom:0;line-height:1;color:var(--rust);white-space:nowrap;font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.02em;font-size:1.18em;transform:translateY(0.22em);animation:roleIn 1.4s cubic-bezier(.19,1,.22,1) .18s both">Product Designer</span></span>
+          <span data-role-slot="" style="position:relative;width:0;height:0;margin-left:0"><span data-role-word="" style="position:absolute;left:0;bottom:0;line-height:var(--leading-none);color:var(--accent);white-space:nowrap;font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.02em;font-size:1.18em;transform:translateY(0.22em);animation:roleIn 1.4s cubic-bezier(.19,1,.22,1) .18s both">Product Designer</span></span>
         </h1>
       </div>
       <div style="padding-top: 0px">
         <div style="display:flex;flex-direction:column;gap:14px;animation:fadeUp 1.3s cubic-bezier(.19,1,.22,1) .86s both">
           
-          <p style="margin:0;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;text-wrap:pretty;max-width:58ch">Product designer working AI-native on B2B and B2C products in fintech, logistics and energy. I design the thing and help get it built.</p>
-          <p style="margin:0;font-size:11px;font-weight:600;line-height:1.4;letter-spacing:0.12em;color:var(--ink-6)">CLADE · BTG PACTUAL · LOADSMART · ITAÚ</p>
+          <p style="margin:0;font-size:var(--font-size-sublead);font-weight:400;line-height:var(--leading-snug);letter-spacing:-0.015em;text-wrap:pretty;max-width:58ch">Product designer working AI-native on B2B and B2C products in fintech, logistics and energy. I design the thing and help get it built.</p>
+          <p style="margin:0;font-size:var(--font-size-xs);font-weight:600;line-height:var(--leading-label);letter-spacing:var(--tracking-label);color:var(--text-meta)">CLADE · BTG PACTUAL · LOADSMART · ITAÚ</p>
         </div>
         
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(32px,4vw,44px);animation:fadeUp 1.3s cubic-bezier(.19,1,.22,1) 1.16s both">
-        <a href="contact.html" style="display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--ink);color:var(--paper);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--rust);color:var(--white)">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--accent);color:var(--surface-card)">
           Get in touch <span>→</span>
         </a>
         <details data-picker="" style="position:relative;display:inline-block">
-          <summary style="list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border:1px solid var(--line);color:var(--ink);border-radius:2px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease,border-color .2s ease" style-hover="background:var(--paper-2);border-color:var(--line-ink)">Résumé <span style="color:var(--red)">↓</span></summary>
-          <div style="position:absolute;top:calc(100% + 8px);left:0;min-width:190px;background:var(--paper);border:1px solid var(--line);box-shadow:0 18px 44px -26px color-mix(in srgb,var(--shadow-ink) 34%,transparent);z-index:30">
-            <a href="assets/nayara-marques-resume.pdf" download style="display:flex;justify-content:space-between;gap:16px;padding:13px 16px;border-bottom:1px solid var(--paper-2);text-decoration:none;color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--paper-2)">PDF <span style="color:var(--ink-6)">↓</span></a>
-            <a href="assets/nayara-marques-resume.md" download style="display:flex;justify-content:space-between;gap:16px;padding:13px 16px;text-decoration:none;color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--paper-2)">Markdown <span style="color:var(--ink-6)">↓</span></a>
+          <summary style="list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);border:1px solid var(--border);color:var(--text-strong);border-radius:var(--radius-sm);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;white-space:nowrap;transition:background .2s ease,border-color .2s ease" style-hover="background:var(--surface-band);border-color:var(--border-emphatic)">Résumé <span style="color:var(--brand-mark)">↓</span></summary>
+          <div style="position:absolute;top:calc(100% + 8px);left:0;min-width:190px;background:var(--surface-page);border:1px solid var(--border);box-shadow:var(--shadow-lg);z-index:30">
+            <a href="assets/nayara-marques-resume.pdf" download style="display:flex;justify-content:space-between;gap:var(--space-md);padding:13px var(--space-md);border-bottom:1px solid var(--border-subtle);text-decoration:none;color:var(--text-strong);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">PDF <span style="color:var(--text-meta)">↓</span></a>
+            <a href="assets/nayara-marques-resume.md" download style="display:flex;justify-content:space-between;gap:var(--space-md);padding:13px var(--space-md);text-decoration:none;color:var(--text-strong);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">Markdown <span style="color:var(--text-meta)">↓</span></a>
           </div>
         </details>
       </div>
@@ -159,347 +163,347 @@
 
     </section>
 
-    <section id="work" data-rule="none" style="background:var(--paper-2)">
-      <div style="max-width:1400px;margin:0 auto;padding:0 32px clamp(48px,7vw,96px)">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(8px,1.4vw,16px);padding-bottom:14px">
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0">Selected work</h2>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--red)" data-count="">Six case studies</span>
+    <section id="work" data-rule="none" style="background:var(--surface-band)">
+      <div style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl) clamp(48px,7vw,96px)">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-lg);flex-wrap:wrap;margin-bottom:clamp(8px,1.4vw,16px);padding-bottom:14px">
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0">Selected work</h2>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--brand-mark)" data-count="">Six case studies</span>
         </div>
 <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:0">
-          <a href="ai-surfaces.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust)">
-          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:16px">
-            <span style="color:var(--red)">01</span><span>AI platform · private capital markets</span><span>2024—26</span>
+          <a href="ai-surfaces.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-md)">
+            <span style="color:var(--brand-mark)">01</span><span>AI platform · private capital markets</span><span>2024—26</span>
           </div>
-          <h2 style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;margin:0 0 16px;max-width:20ch;text-wrap:pretty">Where AI lives in an institutional investment platform</h2>
-          <p style="margin:0 0 20px;max-width:52ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">AI left its separate chat page for reports, documents and meeting notes, in two modes: ask about what you see, or edit it with review before saving.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">AI-native</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Composer</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Design-to-code</span>
+          <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">Where AI lives in an institutional investment platform</h2>
+          <p style="margin:0 0 var(--space-lg);max-width:52ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">AI left its separate chat page for reports, documents and meeting notes, in two modes: ask about what you see, or edit it with review before saving.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-bottom:var(--space-lg)">
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">AI-native</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Composer</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Design-to-code</span>
           </div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--red)">→</span></div>
+          <div style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--brand-mark)">→</span></div>
         </a>
-          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--paper);border:1px solid var(--line);padding:34px 38px;display:flex;flex-direction:column">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line-ink);font-size:11px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6)"><span>Placement</span><span>Four entry points, one language</span></div>
+          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--surface-page);border:1px solid var(--border);padding:34px 38px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--border-emphatic);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta)"><span>Placement</span><span>Four entry points, one language</span></div>
         <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:22px 0;min-height:0">
           <div style="display:flex;flex-direction:column">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);margin-bottom:14px">Centralised</div>
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);margin-bottom:14px">Centralised</div>
             <div style="display:flex;flex-direction:column;gap:10px">
-              <div style="background:var(--white);border:1px solid var(--line-4);padding:11px 12px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink-2)">Dashboard</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--ink-7)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
-              <div style="background:var(--white);border:1px solid var(--line-4);padding:11px 12px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink-2)">Reports</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--ink-7)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
-              <div style="background:var(--white);border:1px solid var(--line-4);padding:11px 12px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink-2)">Documents</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--ink-7)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
-              <div style="background:var(--white);border:1px solid var(--line-4);padding:11px 12px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink-2)">Meeting notes</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--ink-7)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:11px var(--space-sm);display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Dashboard</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:11px var(--space-sm);display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Reports</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:11px var(--space-sm);display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Documents</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:11px var(--space-sm);display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Meeting notes</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
             </div>
-            <div style="margin-top:14px;background:var(--ink);padding:16px;text-align:center">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--paper);margin-bottom:6px">One AI panel</div>
-              <div style="font-size:11px;line-height:1.5;color:var(--term-fg)">Knows nothing about where you were</div>
+            <div style="margin-top:14px;background:var(--surface-inverse);padding:var(--space-md);text-align:center">
+              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-on-inverse);margin-bottom:6px">One AI panel</div>
+              <div style="font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-on-inverse-mock)">Knows nothing about where you were</div>
             </div>
-            <div style="margin-top:auto;padding-top:14px;font-size:11px;line-height:1.6;color:var(--ink-6)">Leave the surface, describe it again.</div>
+            <div style="margin-top:auto;padding-top:14px;font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-meta)">Leave the surface, describe it again.</div>
           </div>
           <div style="display:flex;flex-direction:column">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--rust);margin-bottom:14px">Distributed</div>
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--accent);margin-bottom:14px">Distributed</div>
             <div style="display:flex;flex-direction:column;gap:10px">
-              <div style="background:var(--white);border:1px solid var(--line-4);padding:12px"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="width:7px;height:7px;background:var(--rust)"></span><span style="font-size:11px;color:var(--ink-2)">Dashboard</span><span style="margin-left:auto;font-size:10px;letter-spacing:0.12em;line-height:1.5;text-transform:uppercase;color:var(--ink-6)">Composer</span></div><div style="height:5px;width:64%;background:var(--paper-3)"></div></div>
-              <div style="background:var(--white);border:1px solid var(--line-4);padding:12px"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="width:7px;height:7px;background:var(--rust)"></span><span style="font-size:11px;color:var(--ink-2)">Reports</span><span style="margin-left:auto;font-size:10px;letter-spacing:0.12em;line-height:1.5;text-transform:uppercase;color:var(--ink-6)">In context</span></div><div style="height:5px;width:78%;background:var(--paper-3)"></div></div>
-              <div style="background:var(--white);border:1px solid var(--line-4);padding:12px"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="width:7px;height:7px;background:var(--rust)"></span><span style="font-size:11px;color:var(--ink-2)">Documents</span><span style="margin-left:auto;font-size:10px;letter-spacing:0.12em;line-height:1.5;text-transform:uppercase;color:var(--ink-6)">In context</span></div><div style="height:5px;width:56%;background:var(--paper-3)"></div></div>
-              <div style="background:var(--white);border:1px solid var(--line-4);padding:12px"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="width:7px;height:7px;background:var(--rust)"></span><span style="font-size:11px;color:var(--ink-2)">Meeting notes</span><span style="margin-left:auto;font-size:10px;letter-spacing:0.12em;line-height:1.5;text-transform:uppercase;color:var(--ink-6)">In context</span></div><div style="height:5px;width:70%;background:var(--paper-3)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Dashboard</span><span style="margin-left:auto;font-size:var(--font-size-2xs);letter-spacing:var(--tracking-label);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta)">Composer</span></div><div style="height:5px;width:64%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Reports</span><span style="margin-left:auto;font-size:var(--font-size-2xs);letter-spacing:var(--tracking-label);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta)">In context</span></div><div style="height:5px;width:78%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Documents</span><span style="margin-left:auto;font-size:var(--font-size-2xs);letter-spacing:var(--tracking-label);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta)">In context</span></div><div style="height:5px;width:56%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Meeting notes</span><span style="margin-left:auto;font-size:var(--font-size-2xs);letter-spacing:var(--tracking-label);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta)">In context</span></div><div style="height:5px;width:70%;background:var(--surface-hover)"></div></div>
             </div>
-            <div style="margin-top:14px;background:var(--white);border:1px solid var(--line-4);padding:14px;display:flex;align-items:center;gap:10px">
-              <div style="flex:1;height:5px;background:var(--paper-3)"></div>
-              <span style="width:1px;height:13px;background:var(--ink)"></span>
-              <span style="width:22px;height:22px;background:var(--rust);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;display:block;color:var(--white)"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></span>
+            <div style="margin-top:14px;background:var(--surface-card);border:1px solid var(--border-subtle);padding:14px;display:flex;align-items:center;gap:10px">
+              <div style="flex:1;height:5px;background:var(--surface-hover)"></div>
+              <span style="width:1px;height:13px;background:var(--surface-inverse)"></span>
+              <span style="width:22px;height:22px;background:var(--accent);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;display:block;color:var(--surface-card)"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></span>
             </div>
-            <div style="margin-top:auto;padding-top:14px;font-size:11px;line-height:1.6;color:var(--ink)">The question is asked where the work is.</div>
+            <div style="margin-top:auto;padding-top:14px;font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-strong)">The question is asked where the work is.</div>
           </div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)">
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Composer</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Streaming</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Inline edit</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Human review</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border)">
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Composer</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Streaming</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Inline edit</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Human review</span>
         </div>
       </div></div>
         </div>
 
-      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--line-ink)">
-          <a href="fleet-optimizer.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust)">
-          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:16px">
-            <span style="color:var(--red)">02</span><span>Loadsmart</span><span>2021—23</span>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--border-emphatic)">
+          <a href="fleet-optimizer.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-md)">
+            <span style="color:var(--brand-mark)">02</span><span>Loadsmart</span><span>2021—23</span>
           </div>
-          <h2 style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;margin:0 0 16px;max-width:20ch;text-wrap:pretty">Capacity matching for private truck fleets</h2>
-          <p style="margin:0 0 20px;max-width:52ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">A design sprint produced a platform. A test with six people from fleet teams favoured the plain email it was meant to replace. We shipped the email: response rate up 250%.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Research</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Product strategy</span>
+          <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">Capacity matching for private truck fleets</h2>
+          <p style="margin:0 0 var(--space-lg);max-width:52ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">A design sprint produced a platform. A test with six people from fleet teams favoured the plain email it was meant to replace. We shipped the email: response rate up 250%.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-bottom:var(--space-lg)">
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Research</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Product strategy</span>
           </div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--red)">→</span></div>
+          <div style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--brand-mark)">→</span></div>
         </a>
-          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--paper);border:1px solid var(--line);padding:34px 38px;display:flex;flex-direction:column">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line-ink);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6)"><span>Comparison test · six people from fleet teams</span><span>What shipped</span></div>
+          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--surface-page);border:1px solid var(--border);padding:34px 38px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--border-emphatic);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta)"><span>Comparison test · six people from fleet teams</span><span>What shipped</span></div>
         <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:22px 0;min-height:0">
           <div style="display:flex;flex-direction:column;opacity:.6">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);margin-bottom:12px">The platform</div>
-            <div style="flex:1;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;min-height:0">
-              <div style="height:30px;border-bottom:1px solid var(--line-4);background:var(--paper);display:flex;align-items:center;gap:12px;padding:0 12px"><div style="width:7px;height:7px;background:var(--line)"></div><div style="height:5px;width:52px;background:var(--paper-3)"></div><div style="height:5px;width:40px;background:var(--paper-3)"></div></div>
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);margin-bottom:var(--space-sm)">The platform</div>
+            <div style="flex:1;background:var(--surface-card);border:1px solid var(--border);display:flex;flex-direction:column;min-height:0">
+              <div style="height:30px;border-bottom:1px solid var(--border-subtle);background:var(--surface-page);display:flex;align-items:center;gap:var(--space-sm);padding:0 var(--space-sm)"><div style="width:7px;height:7px;background:var(--border)"></div><div style="height:5px;width:52px;background:var(--surface-hover)"></div><div style="height:5px;width:40px;background:var(--surface-hover)"></div></div>
               <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:9px;min-height:0">
-                <div style="height:6px;width:64%;background:var(--line)"></div>
-                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line-4)"><div style="height:5px;background:var(--paper-3)"></div><div style="height:5px;background:var(--paper-3)"></div><div style="height:5px;background:var(--paper-3)"></div></div>
-                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line-4)"><div style="height:5px;background:var(--paper-3)"></div><div style="height:5px;background:var(--paper-3)"></div><div style="height:5px;background:var(--paper-3)"></div></div>
-                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line-4)"><div style="height:5px;background:var(--paper-3)"></div><div style="height:5px;background:var(--paper-3)"></div><div style="height:5px;background:var(--paper-3)"></div></div>
-                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line-4)"><div style="height:5px;background:var(--paper-3)"></div><div style="height:5px;background:var(--paper-3)"></div><div style="height:5px;background:var(--paper-3)"></div></div>
-                <div style="margin-top:auto;display:flex;gap:8px"><div style="height:24px;width:82px;background:var(--paper-3)"></div><div style="height:24px;width:64px;border:1px solid var(--line-4)"></div></div>
+                <div style="height:6px;width:64%;background:var(--border)"></div>
+                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-sm);padding:var(--space-xs) 0;border-top:1px solid var(--border-subtle)"><div style="height:5px;background:var(--surface-hover)"></div><div style="height:5px;background:var(--surface-hover)"></div><div style="height:5px;background:var(--surface-hover)"></div></div>
+                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-sm);padding:var(--space-xs) 0;border-top:1px solid var(--border-subtle)"><div style="height:5px;background:var(--surface-hover)"></div><div style="height:5px;background:var(--surface-hover)"></div><div style="height:5px;background:var(--surface-hover)"></div></div>
+                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-sm);padding:var(--space-xs) 0;border-top:1px solid var(--border-subtle)"><div style="height:5px;background:var(--surface-hover)"></div><div style="height:5px;background:var(--surface-hover)"></div><div style="height:5px;background:var(--surface-hover)"></div></div>
+                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-sm);padding:var(--space-xs) 0;border-top:1px solid var(--border-subtle)"><div style="height:5px;background:var(--surface-hover)"></div><div style="height:5px;background:var(--surface-hover)"></div><div style="height:5px;background:var(--surface-hover)"></div></div>
+                <div style="margin-top:auto;display:flex;gap:var(--space-xs)"><div style="height:24px;width:82px;background:var(--surface-hover)"></div><div style="height:24px;width:64px;border:1px solid var(--border-subtle)"></div></div>
               </div>
             </div>
-            <div style="margin-top:12px;font-size:11px;line-height:1.5;color:var(--ink-6)">A login, a dashboard and a bidding screen.</div>
+            <div style="margin-top:var(--space-sm);font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-meta)">A login, a dashboard and a bidding screen.</div>
           </div>
           <div style="display:flex;flex-direction:column">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--rust);margin-bottom:12px">The email</div>
-            <div style="flex:1;background:var(--white);border:1px solid var(--line-ink);box-shadow:0 2px 10px -2px color-mix(in srgb,var(--shadow-ink) 16%,transparent);display:flex;flex-direction:column;min-height:0">
-              <div style="padding:14px 16px;border-bottom:1px solid var(--line-4)">
-                <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px">3 loads matching your lanes this week</div>
-                <div style="font-size:10px;color:var(--ink-6)">Reply with a price, or ignore.</div>
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--accent);margin-bottom:var(--space-sm)">The email</div>
+            <div style="flex:1;background:var(--surface-card);border:1px solid var(--border-emphatic);box-shadow:var(--shadow-md);display:flex;flex-direction:column;min-height:0">
+              <div style="padding:14px var(--space-md);border-bottom:1px solid var(--border-subtle)">
+                <div style="font-size:12px;font-weight:600;color:var(--text-strong);margin-bottom:6px">3 loads matching your lanes this week</div>
+                <div style="font-size:var(--font-size-2xs);color:var(--text-meta)">Reply with a price, or ignore.</div>
               </div>
-              <div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:0">
-                <div style="border:1px solid var(--line);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink-2)">Chicago → Dallas · Tue</span><span style="font-size:11px;font-weight:600;color:var(--ink)">$2,150</span></div>
-                <div style="border:1px solid var(--line);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink-2)">Dallas → Memphis · Wed</span><span style="font-size:11px;font-weight:600;color:var(--ink)">$1,480</span></div>
-                <div style="border:1px solid var(--line);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink-2)">Memphis → Chicago · Fri</span><span style="font-size:11px;font-weight:600;color:var(--ink)">$1,920</span></div>
-                <div style="margin-top:auto;display:flex;align-items:center;gap:10px"><span style="display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--white);padding:8px 12px;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;display:block;color:var(--white)"><path d="M9 14 4 9l5-5"></path><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>Reply</span><span style="font-size:10px;color:var(--ink-6)">No login, no new tool</span></div>
+              <div style="flex:1;padding:14px var(--space-md);display:flex;flex-direction:column;gap:10px;min-height:0">
+                <div style="border:1px solid var(--border);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Chicago → Dallas · Tue</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">$2,150</span></div>
+                <div style="border:1px solid var(--border);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Dallas → Memphis · Wed</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">$1,480</span></div>
+                <div style="border:1px solid var(--border);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Memphis → Chicago · Fri</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">$1,920</span></div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:10px"><span style="display:inline-flex;align-items:center;gap:var(--space-xs);background:var(--accent);color:var(--surface-card);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;display:block;color:var(--surface-card)"><path d="M9 14 4 9l5-5"></path><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>Reply</span><span style="font-size:var(--font-size-2xs);color:var(--text-meta)">No login, no new tool</span></div>
               </div>
             </div>
-            <div style="margin-top:12px;font-size:11px;line-height:1.5;color:var(--ink)">Response rate up 250%.</div>
+            <div style="margin-top:var(--space-sm);font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-strong)">Response rate up 250%.</div>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--line);font-size:11px;line-height:1.5;color:var(--ink-2)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;display:block;flex:none;color:var(--rust)"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        <div style="display:flex;align-items:center;gap:var(--space-sm);padding-top:14px;border-top:1px solid var(--border);font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-body)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;display:block;flex:none;color:var(--accent)"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           <span>The sprint built the platform. The test chose the email.</span>
         </div>
       </div></div>
         </div>
 
-      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--line-ink)">
-          <a href="composer-spec.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust)">
-          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:16px">
-            <span style="color:var(--red)">03</span><span>AI platform · private capital markets</span><span>2024—26</span>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--border-emphatic)">
+          <a href="composer-spec.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-md)">
+            <span style="color:var(--brand-mark)">03</span><span>AI platform · private capital markets</span><span>2024—26</span>
           </div>
-          <h2 style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;margin:0 0 16px;max-width:20ch;text-wrap:pretty">Specifying an AI composer, frame by frame</h2>
-          <p style="margin:0 0 20px;max-width:52ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">One bar offered every AI feature at once. I emptied its first layer and respecified it as 26 frames in six state families, each with a line an engineer can pass or fail.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Interaction design</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">State specification</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Prototyping</span>
+          <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">Specifying an AI composer, frame by frame</h2>
+          <p style="margin:0 0 var(--space-lg);max-width:52ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">One bar offered every AI feature at once. I emptied its first layer and respecified it as 26 frames in six state families, each with a line an engineer can pass or fail.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-bottom:var(--space-lg)">
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Interaction design</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">State specification</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Prototyping</span>
           </div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--red)">→</span></div>
+          <div style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--brand-mark)">→</span></div>
         </a>
-          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--paper);border:1px solid var(--line);padding:34px 38px;display:flex;flex-direction:column">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line-ink);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6)"><span>Composer · 26 frames</span><span>Six state families</span></div>
-        <div style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:12px;padding:22px 0">
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:70%;background:var(--paper-3)"></div><div style="height:5px;width:44%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:58%;background:var(--paper-3)"></div><div style="height:5px;width:66%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:80%;background:var(--paper-3)"></div><div style="height:5px;width:38%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:52%;background:var(--paper-3)"></div><div style="height:5px;width:72%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:64%;background:var(--paper-3)"></div><div style="height:5px;width:48%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:74%;background:var(--paper-3)"></div><div style="height:5px;width:56%;background:var(--paper-3)"></div></div>
-          <div style="grid-column:span 3;grid-row:span 2;background:var(--white);border:1px solid var(--line-ink);box-shadow:0 2px 10px -2px color-mix(in srgb,var(--shadow-ink) 16%,transparent);padding:16px;display:flex;flex-direction:column">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--rust);margin-bottom:12px">Frame 07 · typing</div>
-            <div style="flex:1;display:flex;flex-direction:column;gap:7px"><div style="height:6px;background:var(--line)"></div><div style="height:6px;width:82%;background:var(--line)"></div><div style="height:6px;width:54%;background:var(--line)"></div></div>
-            <div style="margin-top:14px;border:1px solid var(--line-ink);border-radius:8px;padding:10px 10px 10px 12px;display:flex;align-items:center;gap:10px">
-              <div style="flex:1;height:5px;background:var(--line)"></div>
-              <span style="width:1px;height:13px;background:var(--ink)"></span>
-              <span style="width:22px;height:22px;background:var(--rust);border-radius:6px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;display:block;color:var(--white)"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></span>
+          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--surface-page);border:1px solid var(--border);padding:34px 38px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--border-emphatic);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta)"><span>Composer · 26 frames</span><span>Six state families</span></div>
+        <div style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:var(--space-sm);padding:22px 0">
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:70%;background:var(--surface-hover)"></div><div style="height:5px;width:44%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:58%;background:var(--surface-hover)"></div><div style="height:5px;width:66%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:80%;background:var(--surface-hover)"></div><div style="height:5px;width:38%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:52%;background:var(--surface-hover)"></div><div style="height:5px;width:72%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:64%;background:var(--surface-hover)"></div><div style="height:5px;width:48%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:74%;background:var(--surface-hover)"></div><div style="height:5px;width:56%;background:var(--surface-hover)"></div></div>
+          <div style="grid-column:span 3;grid-row:span 2;background:var(--surface-card);border:1px solid var(--border-emphatic);box-shadow:var(--shadow-md);padding:var(--space-md);display:flex;flex-direction:column">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--accent);margin-bottom:var(--space-sm)">Frame 07 · typing</div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:7px"><div style="height:6px;background:var(--border)"></div><div style="height:6px;width:82%;background:var(--border)"></div><div style="height:6px;width:54%;background:var(--border)"></div></div>
+            <div style="margin-top:14px;border:1px solid var(--border-emphatic);border-radius:8px;padding:10px 10px 10px var(--space-sm);display:flex;align-items:center;gap:10px">
+              <div style="flex:1;height:5px;background:var(--border)"></div>
+              <span style="width:1px;height:13px;background:var(--surface-inverse)"></span>
+              <span style="width:22px;height:22px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;display:block;color:var(--surface-card)"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></span>
             </div>
-            <div style="margin-top:10px;font-size:10px;line-height:1.5;color:var(--ink-6)">Send goes live on the first character.</div>
+            <div style="margin-top:10px;font-size:var(--font-size-2xs);line-height:var(--leading-snug);color:var(--text-meta)">Send goes live on the first character.</div>
           </div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:66%;background:var(--paper-3)"></div><div style="height:5px;width:50%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:78%;background:var(--paper-3)"></div><div style="height:5px;width:42%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:46%;background:var(--paper-3)"></div><div style="height:5px;width:68%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:70%;background:var(--paper-3)"></div><div style="height:5px;width:58%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:54%;background:var(--paper-3)"></div><div style="height:5px;width:74%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:62%;background:var(--paper-3)"></div><div style="height:5px;width:46%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:72%;background:var(--paper-3)"></div><div style="height:5px;width:60%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:48%;background:var(--paper-3)"></div><div style="height:5px;width:66%;background:var(--paper-3)"></div></div>
-          <div style="background:var(--white);border:1px solid var(--line);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:82%;background:var(--paper-3)"></div><div style="height:5px;width:40%;background:var(--paper-3)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:66%;background:var(--surface-hover)"></div><div style="height:5px;width:50%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:78%;background:var(--surface-hover)"></div><div style="height:5px;width:42%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:46%;background:var(--surface-hover)"></div><div style="height:5px;width:68%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:70%;background:var(--surface-hover)"></div><div style="height:5px;width:58%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:54%;background:var(--surface-hover)"></div><div style="height:5px;width:74%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:62%;background:var(--surface-hover)"></div><div style="height:5px;width:46%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:72%;background:var(--surface-hover)"></div><div style="height:5px;width:60%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:48%;background:var(--surface-hover)"></div><div style="height:5px;width:66%;background:var(--surface-hover)"></div></div>
+          <div style="background:var(--surface-card);border:1px solid var(--border);padding:9px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"><div style="height:5px;width:82%;background:var(--surface-hover)"></div><div style="height:5px;width:40%;background:var(--surface-hover)"></div></div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)">
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--rust);border:1px solid var(--rust);padding:6px 10px">Field</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Attachments</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Modes</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Voice</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Model</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Send</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border)">
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--accent);border:1px solid var(--accent);padding:6px 10px">Field</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Attachments</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Modes</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Voice</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Model</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Send</span>
         </div>
       </div></div>
         </div>
 
-      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--line-ink)">
-          <a href="design-system.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust)">
-          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:16px">
-            <span style="color:var(--red)">04</span><span>AI platform · private capital markets</span><span>2026—</span>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--border-emphatic)">
+          <a href="design-system.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-md)">
+            <span style="color:var(--brand-mark)">04</span><span>AI platform · private capital markets</span><span>2026—</span>
           </div>
-          <h2 style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;margin:0 0 16px;max-width:20ch;text-wrap:pretty">A design system AI can build from</h2>
-          <p style="margin:0 0 20px;max-width:52ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">Most new UI arrived through AI tools. One canonical source, eight rule families so AI reuses what exists, and a register that sends what it invents to review.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Design systems</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Rules layer</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Governance</span>
+          <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">A design system AI can build from</h2>
+          <p style="margin:0 0 var(--space-lg);max-width:52ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">Most new UI arrived through AI tools. One canonical source, eight rule families so AI reuses what exists, and a register that sends what it invents to review.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-bottom:var(--space-lg)">
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Design systems</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Rules layer</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Governance</span>
           </div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--red)">→</span></div>
+          <div style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--brand-mark)">→</span></div>
         </a>
-          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--paper);border:1px solid var(--line);padding:34px 38px;display:flex;flex-direction:column">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line-ink);font-size:11px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6)"><span>The stack</span><span>Each layer answers the one below</span></div>
-        <div style="flex:1;display:flex;gap:20px;padding:22px 0;min-height:0">
-          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:12px">
-            <div style="flex:1;background:var(--white);border:1px solid var(--line-4);padding:14px 16px;display:flex;flex-direction:column;justify-content:center">
-              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:11px;color:var(--ink)"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);margin-right:10px;white-space:nowrap">Layer 01</span>Tokens</span><span style="font-size:10px;line-height:1.5;color:var(--ink-6)">no literals</span></div>
-              <div style="display:flex;gap:8px"><div style="height:9px;width:54px;background:var(--paper-3)"></div><div style="height:9px;width:44px;background:var(--line)"></div><div style="height:9px;width:62px;background:var(--paper-3)"></div><div style="height:9px;width:38px;background:var(--line)"></div><div style="height:9px;width:50px;background:var(--paper-3)"></div></div>
-              <div style="margin-top:10px;font-size:10px;line-height:1.6;color:var(--ink-6)">Leaves open: which token, where.</div>
+          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--surface-page);border:1px solid var(--border);padding:34px 38px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--border-emphatic);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta)"><span>The stack</span><span>Each layer answers the one below</span></div>
+        <div style="flex:1;display:flex;gap:var(--space-lg);padding:22px 0;min-height:0">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--space-sm)">
+            <div style="flex:1;background:var(--surface-card);border:1px solid var(--border-subtle);padding:14px var(--space-md);display:flex;flex-direction:column;justify-content:center">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:var(--font-size-xs);color:var(--text-strong)"><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);margin-right:10px;white-space:nowrap">Layer 01</span>Tokens</span><span style="font-size:var(--font-size-2xs);line-height:var(--leading-snug);color:var(--text-meta)">no literals</span></div>
+              <div style="display:flex;gap:var(--space-xs)"><div style="height:9px;width:54px;background:var(--surface-hover)"></div><div style="height:9px;width:44px;background:var(--border)"></div><div style="height:9px;width:62px;background:var(--surface-hover)"></div><div style="height:9px;width:38px;background:var(--border)"></div><div style="height:9px;width:50px;background:var(--surface-hover)"></div></div>
+              <div style="margin-top:10px;font-size:var(--font-size-2xs);line-height:var(--leading-small);color:var(--text-meta)">Leaves open: which token, where.</div>
             </div>
-            <div style="flex:1;background:var(--white);border:1px solid var(--line-4);padding:14px 16px;display:flex;flex-direction:column;justify-content:center">
-              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:11px;color:var(--ink)"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);margin-right:10px;white-space:nowrap">Layer 02</span>Components</span><span style="font-size:10px;line-height:1.5;color:var(--ink-6)">one contract each</span></div>
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"><div style="height:9px;background:var(--paper-3)"></div><div style="height:9px;background:var(--paper-3)"></div><div style="height:9px;background:var(--paper-3)"></div><div style="height:9px;background:var(--paper-3)"></div></div>
-              <div style="margin-top:10px;font-size:10px;line-height:1.6;color:var(--ink-6)">Leaves open: which one, and how they sit together.</div>
+            <div style="flex:1;background:var(--surface-card);border:1px solid var(--border-subtle);padding:14px var(--space-md);display:flex;flex-direction:column;justify-content:center">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:var(--font-size-xs);color:var(--text-strong)"><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);margin-right:10px;white-space:nowrap">Layer 02</span>Components</span><span style="font-size:var(--font-size-2xs);line-height:var(--leading-snug);color:var(--text-meta)">one contract each</span></div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-xs)"><div style="height:9px;background:var(--surface-hover)"></div><div style="height:9px;background:var(--surface-hover)"></div><div style="height:9px;background:var(--surface-hover)"></div><div style="height:9px;background:var(--surface-hover)"></div></div>
+              <div style="margin-top:10px;font-size:var(--font-size-2xs);line-height:var(--leading-small);color:var(--text-meta)">Leaves open: which one, and how they sit together.</div>
             </div>
-            <div style="flex:1;background:var(--white);border:1px solid var(--line-3);padding:14px 16px;display:flex;flex-direction:column;justify-content:center">
-              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:11px;color:var(--ink)"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--rust);margin-right:10px">Layer 03</span>Applied rules</span><span style="font-size:10px;line-height:1.5;color:var(--rust)">pass or fail</span></div>
-              <div style="display:flex;flex-direction:column;gap:6px"><div style="height:7px;background:var(--line)"></div><div style="height:7px;width:86%;background:var(--line)"></div></div>
-              <div style="margin-top:10px;font-size:10px;line-height:1.6;color:var(--ink-2)">Surfaces · titles · geometry · spacing · elevation · states · motion · limits.</div>
+            <div style="flex:1;background:var(--surface-card);border:1px solid var(--border-control);padding:14px var(--space-md);display:flex;flex-direction:column;justify-content:center">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:var(--font-size-xs);color:var(--text-strong)"><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--accent);margin-right:10px">Layer 03</span>Applied rules</span><span style="font-size:var(--font-size-2xs);line-height:var(--leading-snug);color:var(--accent)">pass or fail</span></div>
+              <div style="display:flex;flex-direction:column;gap:6px"><div style="height:7px;background:var(--border)"></div><div style="height:7px;width:86%;background:var(--border)"></div></div>
+              <div style="margin-top:10px;font-size:var(--font-size-2xs);line-height:var(--leading-small);color:var(--text-body)">Surfaces · titles · geometry · spacing · elevation · states · motion · limits.</div>
             </div>
-            <div style="flex:1;background:var(--white);border:1px solid var(--line-4);padding:14px 16px;display:flex;flex-direction:column;justify-content:center">
-              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:11px;color:var(--ink)"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);margin-right:10px;white-space:nowrap">Layer 04</span>Templates</span><span style="font-size:10px;line-height:1.5;color:var(--ink-6)">where a page starts</span></div>
-              <div style="display:flex;gap:8px"><div style="height:16px;width:64px;background:var(--paper-3)"></div><div style="height:16px;flex:1;background:var(--line)"></div></div>
+            <div style="flex:1;background:var(--surface-card);border:1px solid var(--border-subtle);padding:14px var(--space-md);display:flex;flex-direction:column;justify-content:center">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:var(--font-size-xs);color:var(--text-strong)"><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);margin-right:10px;white-space:nowrap">Layer 04</span>Templates</span><span style="font-size:var(--font-size-2xs);line-height:var(--leading-snug);color:var(--text-meta)">where a page starts</span></div>
+              <div style="display:flex;gap:var(--space-xs)"><div style="height:16px;width:64px;background:var(--surface-hover)"></div><div style="height:16px;flex:1;background:var(--border)"></div></div>
             </div>
           </div>
-          <div style="flex:none;width:200px;background:var(--white);border:1px solid var(--line-4);padding:14px 16px;display:flex;flex-direction:column">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Register</div>
-            <p style="margin:0 0 14px;font-size:10px;line-height:1.6;color:var(--ink-6)">Runs beside all four, for the part no layer covers.</p>
+          <div style="flex:none;width:200px;background:var(--surface-card);border:1px solid var(--border-subtle);padding:14px var(--space-md);display:flex;flex-direction:column">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--accent);margin-bottom:10px">Register</div>
+            <p style="margin:0 0 14px;font-size:var(--font-size-2xs);line-height:var(--leading-small);color:var(--text-meta)">Runs beside all four, for the part no layer covers.</p>
             <div style="display:flex;flex-direction:column;gap:9px">
-              <div style="border:1px solid var(--line-4);padding:9px 10px;font-size:11px;line-height:1.5;color:var(--ink-2)">Drawn</div>
-              <div style="border:1px solid var(--line-4);padding:9px 10px;font-size:11px;line-height:1.5;color:var(--ink-2)">Reported</div>
-              <div style="border:1px solid var(--line-4);padding:9px 10px;font-size:11px;line-height:1.5;color:var(--ink-2)">Reviewed</div>
+              <div style="border:1px solid var(--border-subtle);padding:9px 10px;font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-body)">Drawn</div>
+              <div style="border:1px solid var(--border-subtle);padding:9px 10px;font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-body)">Reported</div>
+              <div style="border:1px solid var(--border-subtle);padding:9px 10px;font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-body)">Reviewed</div>
             </div>
-            <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--line-4);font-size:10px;line-height:1.6;color:var(--ink-6)">48 components · 9 templates</div>
+            <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border-subtle);font-size:var(--font-size-2xs);line-height:var(--leading-small);color:var(--text-meta)">48 components · 9 templates</div>
           </div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)">
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">One canonical source</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.5;text-transform:uppercase;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Eight rule families</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border)">
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">One canonical source</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Eight rule families</span>
         </div>
       </div></div>
         </div>
 
-      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--line-ink)">
-          <a href="advisors-platform.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust)">
-          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:16px">
-            <span style="color:var(--red)">05</span><span>BTG Pactual</span><span>2019—21</span>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--border-emphatic)">
+          <a href="advisors-platform.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-md)">
+            <span style="color:var(--brand-mark)">05</span><span>BTG Pactual</span><span>2019—21</span>
           </div>
-          <h2 style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;margin:0 0 16px;max-width:20ch;text-wrap:pretty">An advisors platform for four business verticals</h2>
-          <p style="margin:0 0 20px;max-width:52ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">A configurable dashboard, a modular menu and a client page built as a workspace: the platform four business verticals finally agreed on. 12 interviews, 21 concept features, 90% acceptance.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Product strategy</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">0→1</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Team leadership</span>
+          <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">An advisors platform for four business verticals</h2>
+          <p style="margin:0 0 var(--space-lg);max-width:52ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">A configurable dashboard, a modular menu and a client page built as a workspace: the platform four business verticals finally agreed on. 12 interviews, 21 concept features, 90% acceptance.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-bottom:var(--space-lg)">
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Product strategy</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">0→1</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Team leadership</span>
           </div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--red)">→</span></div>
+          <div style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--brand-mark)">→</span></div>
         </a>
-          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--paper);border:1px solid var(--line);padding:34px 38px;display:flex;flex-direction:column">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line-ink);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6)"><span>Advisor workspace</span><span>One platform · four verticals</span></div>
+          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--surface-page);border:1px solid var(--border);padding:34px 38px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--border-emphatic);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta)"><span>Advisor workspace</span><span>One platform · four verticals</span></div>
         <div style="flex:1;display:flex;gap:18px;padding:22px 0;min-height:0">
-          <div style="flex:none;width:176px;background:var(--white);border:1px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:10px">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);margin-bottom:2px">Menu</div>
-            <div style="display:flex;align-items:center;gap:9px;padding:8px 9px;border:1px solid var(--line-ink)"><span style="width:7px;height:7px;background:var(--rust)"></span><span style="font-size:11px;color:var(--ink)">Clients</span></div>
-            <div style="display:flex;align-items:center;gap:9px;padding:8px 9px;border:1px solid var(--line)"><span style="width:7px;height:7px;background:var(--line)"></span><span style="font-size:11px;color:var(--ink-6)">Portfolios</span></div>
-            <div style="display:flex;align-items:center;gap:9px;padding:8px 9px;border:1px solid var(--line)"><span style="width:7px;height:7px;background:var(--line)"></span><span style="font-size:11px;color:var(--ink-6)">Products</span></div>
-            <div style="display:flex;align-items:center;gap:9px;padding:8px 9px;border:1px solid var(--line)"><span style="width:7px;height:7px;background:var(--line)"></span><span style="font-size:11px;color:var(--ink-6)">Pipeline</span></div>
-            <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--line-4);font-size:10px;line-height:1.5;color:var(--ink-6)">Modules switch per vertical</div>
+          <div style="flex:none;width:176px;background:var(--surface-card);border:1px solid var(--border);padding:14px;display:flex;flex-direction:column;gap:10px">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);margin-bottom:var(--space-3xs)">Menu</div>
+            <div style="display:flex;align-items:center;gap:9px;padding:var(--space-xs) 9px;border:1px solid var(--border-emphatic)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-strong)">Clients</span></div>
+            <div style="display:flex;align-items:center;gap:9px;padding:var(--space-xs) 9px;border:1px solid var(--border)"><span style="width:7px;height:7px;background:var(--border)"></span><span style="font-size:var(--font-size-xs);color:var(--text-meta)">Portfolios</span></div>
+            <div style="display:flex;align-items:center;gap:9px;padding:var(--space-xs) 9px;border:1px solid var(--border)"><span style="width:7px;height:7px;background:var(--border)"></span><span style="font-size:var(--font-size-xs);color:var(--text-meta)">Products</span></div>
+            <div style="display:flex;align-items:center;gap:9px;padding:var(--space-xs) 9px;border:1px solid var(--border)"><span style="width:7px;height:7px;background:var(--border)"></span><span style="font-size:var(--font-size-xs);color:var(--text-meta)">Pipeline</span></div>
+            <div style="margin-top:auto;padding-top:var(--space-sm);border-top:1px solid var(--border-subtle);font-size:var(--font-size-2xs);line-height:var(--leading-snug);color:var(--text-meta)">Modules switch per vertical</div>
           </div>
           <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:14px">
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
-              <div style="background:var(--white);border:1px solid var(--line);padding:13px"><div style="height:16px;width:54%;background:var(--line);margin-bottom:9px"></div><div style="height:5px;width:74%;background:var(--paper-3)"></div></div>
-              <div style="background:var(--white);border:1px solid var(--line);padding:13px"><div style="height:16px;width:44%;background:var(--line);margin-bottom:9px"></div><div style="height:5px;width:62%;background:var(--paper-3)"></div></div>
-              <div style="background:var(--white);border:1px dashed var(--rust);padding:13px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--rust)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;display:block"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase">Add widget</span></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border);padding:13px"><div style="height:16px;width:54%;background:var(--border);margin-bottom:9px"></div><div style="height:5px;width:74%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border);padding:13px"><div style="height:16px;width:44%;background:var(--border);margin-bottom:9px"></div><div style="height:5px;width:62%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px dashed var(--accent);padding:13px;display:flex;align-items:center;justify-content:center;gap:var(--space-xs);color:var(--accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;display:block"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase">Add widget</span></div>
             </div>
-            <div style="flex:1;background:var(--white);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;min-height:0">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6)">Client page · workspace</span><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--rust)">Configurable</span></div>
+            <div style="flex:1;background:var(--surface-card);border:1px solid var(--border);padding:var(--space-md);display:flex;flex-direction:column;min-height:0">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta)">Client page · workspace</span><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--accent)">Configurable</span></div>
               <div style="display:flex;gap:14px;flex:1;min-height:0">
                 <div style="flex:1;display:flex;flex-direction:column;gap:9px">
-                  <div style="height:6px;width:82%;background:var(--line)"></div>
-                  <div style="height:6px;width:58%;background:var(--paper-3)"></div>
-                  <div style="height:1px;background:var(--paper-3);margin:6px 0"></div>
-                  <div style="height:6px;width:70%;background:var(--paper-3)"></div>
-                  <div style="height:6px;width:46%;background:var(--paper-3)"></div>
-                  <div style="height:6px;width:64%;background:var(--paper-3)"></div>
+                  <div style="height:6px;width:82%;background:var(--border)"></div>
+                  <div style="height:6px;width:58%;background:var(--surface-hover)"></div>
+                  <div style="height:1px;background:var(--surface-hover);margin:6px 0"></div>
+                  <div style="height:6px;width:70%;background:var(--surface-hover)"></div>
+                  <div style="height:6px;width:46%;background:var(--surface-hover)"></div>
+                  <div style="height:6px;width:64%;background:var(--surface-hover)"></div>
                 </div>
-                <div style="flex:none;width:210px;border-left:1px solid var(--line-4);padding-left:14px;display:flex;flex-direction:column;gap:10px">
-                  <div style="height:6px;width:60%;background:var(--line)"></div>
-                  <div style="height:44px;border:1px solid var(--line-4)"></div>
-                  <div style="height:44px;border:1px solid var(--line-4)"></div>
+                <div style="flex:none;width:210px;border-left:1px solid var(--border-subtle);padding-left:14px;display:flex;flex-direction:column;gap:10px">
+                  <div style="height:6px;width:60%;background:var(--border)"></div>
+                  <div style="height:44px;border:1px solid var(--border-subtle)"></div>
+                  <div style="height:44px;border:1px solid var(--border-subtle)"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)">
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">B2B</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">B2C</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Wealth</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Advisors</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border)">
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">B2B</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">B2C</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Wealth</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Advisors</span>
         </div>
       </div></div>
         </div>
 
-      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--line-ink);border-bottom:1px solid var(--line)">
-          <a href="card-insurance.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust)">
-          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:16px">
-            <span style="color:var(--red)">06</span><span>BTG Pactual</span><span>2020</span>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.5vw,56px);align-items:start;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--border-emphatic);border-bottom:1px solid var(--border)">
+          <a href="card-insurance.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-md)">
+            <span style="color:var(--brand-mark)">06</span><span>BTG Pactual</span><span>2020</span>
           </div>
-          <h2 style="font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;margin:0 0 16px;max-width:20ch;text-wrap:pretty">Modular card insurance in a banking app</h2>
-          <p style="margin:0 0 20px;max-width:52ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">Customisable card insurance. 80% of customers wanted a modular package; usability testing then moved the flow out of card signup to protect conversion.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Usability testing</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--line);color:var(--ink-6)">Complex flows</span>
+          <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">Modular card insurance in a banking app</h2>
+          <p style="margin:0 0 var(--space-lg);max-width:52ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">Customisable card insurance. 80% of customers wanted a modular package; usability testing then moved the flow out of card signup to protect conversion.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-bottom:var(--space-lg)">
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Usability testing</span>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);color:var(--text-meta)">Complex flows</span>
           </div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--red)">→</span></div>
+          <div style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;display:flex;gap:10px;align-items:center">Read the case study <span style="color:var(--brand-mark)">→</span></div>
         </a>
-          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--paper);border:1px solid var(--line);padding:34px 38px;display:flex;flex-direction:column">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line-ink);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6)"><span>Card insurance · modular cover</span><span>Moved out of card signup</span></div>
+          <div data-illo="" style="aspect-ratio:4/3;position:relative;overflow:hidden"><div data-illo-inner="" style="width:880px;height:660px;transform-origin:top left;position:absolute;top:0;left:0;background:var(--surface-page);border:1px solid var(--border);padding:34px 38px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--border-emphatic);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta)"><span>Card insurance · modular cover</span><span>Moved out of card signup</span></div>
         <div style="flex:1;display:flex;gap:26px;padding:22px 0;min-height:0">
-          <div style="flex:none;width:270px;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;min-height:0">
-            <div style="height:26px;background:var(--paper);border-bottom:1px solid var(--line-4);display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:9px;color:var(--ink-7)"><span>12:20</span><span>Card protection</span></div>
-            <div style="flex:1;padding:16px;display:flex;flex-direction:column;min-height:0">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);margin-bottom:10px">Base module</div>
-              <div style="border:1px solid var(--line-4);padding:11px 12px;margin-bottom:14px"><div style="font-size:12px;color:var(--ink);margin-bottom:6px">Card theft and misuse</div><div style="height:5px;width:66%;background:var(--paper-3)"></div></div>
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);margin-bottom:10px">Extensions</div>
+          <div style="flex:none;width:270px;background:var(--surface-card);border:1px solid var(--border);display:flex;flex-direction:column;min-height:0">
+            <div style="height:26px;background:var(--surface-page);border-bottom:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-sm);font-size:9px;color:var(--text-subtle)"><span>12:20</span><span>Card protection</span></div>
+            <div style="flex:1;padding:var(--space-md);display:flex;flex-direction:column;min-height:0">
+              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);margin-bottom:10px">Base module</div>
+              <div style="border:1px solid var(--border-subtle);padding:11px var(--space-sm);margin-bottom:14px"><div style="font-size:12px;color:var(--text-strong);margin-bottom:6px">Card theft and misuse</div><div style="height:5px;width:66%;background:var(--surface-hover)"></div></div>
+              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);margin-bottom:10px">Extensions</div>
               <div style="display:flex;flex-direction:column;gap:9px">
-                <div style="border:1px solid var(--rust);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink)">Accidental damage</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--rust)"><path d="M20 6 9 17l-5-5"></path></svg></div>
-                <div style="border:1px solid var(--rust);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink)">Personal possessions</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--rust)"><path d="M20 6 9 17l-5-5"></path></svg></div>
-                <div style="border:1px solid var(--line);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:11px;color:var(--ink-6)">Travel cover</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--ink-7)"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></div>
+                <div style="border:1px solid var(--accent);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-strong)">Accidental damage</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--accent)"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                <div style="border:1px solid var(--accent);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-strong)">Personal possessions</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--accent)"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                <div style="border:1px solid var(--border);padding:10px 11px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-meta)">Travel cover</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></div>
               </div>
-              <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--line-4);display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6)">Monthly</span><span style="font-size:18px;font-weight:500;letter-spacing:-0.03em;color:var(--ink)">R$ 12,90</span></div>
+              <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta)">Monthly</span><span style="font-size:18px;font-weight:500;letter-spacing:var(--tracking-heading);color:var(--text-strong)">R$ 12,90</span></div>
             </div>
           </div>
-          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:16px">
-            <div style="background:var(--white);border:1px solid var(--line);padding:16px">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);margin-bottom:12px">Where the flow sits</div>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--space-md)">
+            <div style="background:var(--surface-card);border:1px solid var(--border);padding:var(--space-md)">
+              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);margin-bottom:var(--space-sm)">Where the flow sits</div>
               <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-                <span style="font-size:11px;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:8px 11px;white-space:nowrap;text-decoration:line-through">Inside card signup</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;flex:none;color:var(--rust)"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                <span style="font-size:11px;line-height:1.5;color:var(--ink);border:1px solid var(--line-3);padding:8px 11px;white-space:nowrap">After the card is approved</span>
+                <span style="font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:var(--space-xs) 11px;white-space:nowrap;text-decoration:line-through">Inside card signup</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;flex:none;color:var(--accent)"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                <span style="font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-strong);border:1px solid var(--border-control);padding:var(--space-xs) 11px;white-space:nowrap">After the card is approved</span>
               </div>
-              <p style="margin:12px 0 0;font-size:11px;line-height:1.6;color:var(--ink-2)">Usability testing moved it out of signup to protect conversion.</p>
+              <p style="margin:var(--space-sm) 0 0;font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-body)">Usability testing moved it out of signup to protect conversion.</p>
             </div>
-            <div style="flex:1;background:var(--white);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;min-height:0">
-              <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);margin-bottom:14px">Shared with the household</div>
+            <div style="flex:1;background:var(--surface-card);border:1px solid var(--border);padding:var(--space-md);display:flex;flex-direction:column;min-height:0">
+              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);margin-bottom:14px">Shared with the household</div>
               <div style="display:flex;flex-direction:column;gap:9px">
-                <div style="display:flex;align-items:center;gap:10px;padding-bottom:9px;border-bottom:1px solid var(--line-4)"><span style="width:7px;height:7px;background:var(--rust)"></span><span style="font-size:11px;color:var(--ink-2)">Partner</span><span style="margin-left:auto;height:5px;width:64px;background:var(--paper-3)"></span></div>
-                <div style="display:flex;align-items:center;gap:10px;padding-bottom:9px;border-bottom:1px solid var(--line-4)"><span style="width:7px;height:7px;background:var(--rust)"></span><span style="font-size:11px;color:var(--ink-2)">Child</span><span style="margin-left:auto;height:5px;width:48px;background:var(--paper-3)"></span></div>
-                <div style="display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:var(--line)"></span><span style="font-size:11px;color:var(--ink-6)">Add member</span></div>
+                <div style="display:flex;align-items:center;gap:10px;padding-bottom:9px;border-bottom:1px solid var(--border-subtle)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Partner</span><span style="margin-left:auto;height:5px;width:64px;background:var(--surface-hover)"></span></div>
+                <div style="display:flex;align-items:center;gap:10px;padding-bottom:9px;border-bottom:1px solid var(--border-subtle)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Child</span><span style="margin-left:auto;height:5px;width:48px;background:var(--surface-hover)"></span></div>
+                <div style="display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:var(--border)"></span><span style="font-size:var(--font-size-xs);color:var(--text-meta)">Add member</span></div>
               </div>
-              <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--line-4);font-size:11px;line-height:1.6;color:var(--ink-2)">80% of customers wanted to modularise their package.</div>
+              <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border-subtle);font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-body)">80% of customers wanted to modularise their package.</div>
             </div>
           </div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)">
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Seven insurers reviewed</span>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;line-height:1.5;color:var(--ink-6);border:1px solid var(--line-4);padding:7px 11px;white-space:nowrap">Usability testing</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border)">
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Seven insurers reviewed</span>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-meta);border:1px solid var(--border-subtle);padding:7px 11px;white-space:nowrap">Usability testing</span>
         </div>
       </div></div>
         </div>
@@ -508,27 +512,27 @@
 
 
 
-    <section style="border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,72px) 32px">
-        <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(20px,3vw,32px)">Where I've built</h2>
+    <section style="border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,72px) var(--space-2xl)">
+        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 clamp(20px,3vw,32px)">Where I've built</h2>
         <div style="display:flex;flex-wrap:wrap;gap:clamp(18px,3.5vw,48px);align-items:baseline">
-          <span style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em">Clade</span>
-          <span style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em">Loadsmart</span>
-          <span style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em">BTG Pactual</span>
-          <span style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em">CCEE</span>
-          <span style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em">Itaú</span>
-          <span style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em">Ativa Investimentos</span>
+          <span style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading)">Clade</span>
+          <span style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading)">Loadsmart</span>
+          <span style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading)">BTG Pactual</span>
+          <span style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading)">CCEE</span>
+          <span style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading)">Itaú</span>
+          <span style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading)">Ativa Investimentos</span>
         </div>
-        <p style="margin:22px 0 0;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-6);line-height:1.4">New York, Chicago, São Paulo. Fintech, logistics, energy. Seed startup to one of Latin America's largest investment banks.</p>
+        <p style="margin:22px 0 0;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-meta);line-height:var(--leading-label)">New York, Chicago, São Paulo. Fintech, logistics, energy. Seed startup to one of Latin America's largest investment banks.</p>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line);background:var(--ink);color:var(--paper)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,9vw,120px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
-        <h2 style="font-size:clamp(28px,4vw,52px);font-weight:500;line-height:1;letter-spacing:-0.042em;margin:0;text-wrap:balance">Looking for someone who ships the whole thing?</h2>
+    <section style="border-top:1px solid var(--border);background:var(--surface-inverse);color:var(--text-on-inverse)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,9vw,120px) var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
+        <h2 style="font-size:var(--font-size-2xl-cta);font-weight:500;line-height:var(--leading-none);letter-spacing:-0.042em;margin:0;text-wrap:balance">Looking for someone who ships the whole thing?</h2>
         <div>
-          <p style="margin:0 0 26px;font-size:16px;line-height:1.7;color:var(--on-ink-muted);text-wrap:pretty">Open to senior, lead and founding design roles, or consulting. Design that ships with engineering, not alongside it. Remote, happy to travel. Tell me what you are building and I will say honestly if I am the right person.</p>
-          <a href="contact.html" style="display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--baby);color:var(--ink);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--rust);color:var(--white)">
+          <p style="margin:0 0 26px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty">Open to senior, lead and founding design roles, or consulting. Design that ships with engineering, not alongside it. Remote, happy to travel. Tell me what you are building and I will say honestly if I am the right person.</p>
+          <a href="contact.html" style="display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--accent-soft);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--accent);color:var(--surface-card)">
             Start a conversation <span>→</span>
           </a>
         </div>
@@ -564,7 +568,7 @@ class Component extends DCLogic {
       if (node._face === word) return;
       node._face = word;
       node._spans = null;
-      node.style.cssText = 'position:absolute;left:0;bottom:0;line-height:1;color:var(--rust);white-space:nowrap;' + FACE[word];
+      node.style.cssText = 'position:absolute;left:0;bottom:0;line-height:var(--leading-none);color:var(--accent);white-space:nowrap;' + FACE[word];
     };
     const paint = (node, str) => {
       let spans = node._spans;

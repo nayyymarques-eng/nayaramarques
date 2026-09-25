@@ -8,6 +8,10 @@
  *   LAY-04  two light sections meet with two lines between them
  *   LAY-03  a line between different backgrounds stops at the content edge (it must run edge to edge)
  *   LAY-05  an edge-to-edge line between two sections of the same background (same background = one section: use an in-flow divider)
+ *   COL-08  text contrast below WCAG AA on its ground: 4.5, or 3.0 for large text (24px+, or 18.66px+ bold).
+ *           The ground is the composited background of the nearest ancestors (images and gradients are
+ *           skipped, as are [data-mock] figures and hidden text). Reported as "warn" until the
+ *           consolidation's B-2 and B-14 land, then it fails like the rest (COL08_FAILS).
  *   Boundaries marked data-rule="none" are skipped (e.g. the home hero).
  */
 (() => {
@@ -67,5 +71,49 @@
     }
     prev = c;
   }
-  return location.pathname + ' :: ' + (out.length ? out.join(' ; ') : 'pass');
+  // COL-08 contrast
+  const COL08_FAILS = false;
+  const rgba = c => { const m = (c.match(/[\d.]+/g) || []).map(Number); if (/^color\(srgb/.test(c)) { m[0] *= 255; m[1] *= 255; m[2] *= 255; } return [m[0], m[1], m[2], m.length > 3 ? m[3] : 1]; };
+  const over = (top, bot) => { const a = top[3]; return [0, 1, 2].map(i => top[i] * a + bot[i] * (1 - a)).concat(1); };
+  const lum = c => { const f = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2]); };
+  const ground = e => {
+    const layers = [];
+    for (let a = e; a; a = a.parentElement) {
+      const cs = getComputedStyle(a);
+      if (cs.backgroundImage !== 'none') return null;
+      const c = rgba(cs.backgroundColor);
+      if (c[3] > 0) { layers.push(c); if (c[3] >= 1) break; }
+    }
+    let g = [255, 255, 255, 1];
+    for (let i = layers.length - 1; i >= 0; i--) g = over(layers[i], g);
+    return g;
+  };
+  const low = new Map();
+  for (const e of document.querySelectorAll('body *')) {
+    if (e.closest('script,style,template,svg,[data-mock],[aria-hidden="true"]')) continue;
+    if (![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
+    const cs = getComputedStyle(e);
+    if (cs.visibility === 'hidden' || cs.display === 'none' || parseFloat(cs.opacity) === 0) continue;
+    const r = e.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2 || cs.clipPath.includes('inset(50%)') || cs.clip === 'rect(0px, 0px, 0px, 0px)') continue;
+    let hidden = false;
+    for (let a = e; a; a = a.parentElement) { const s = getComputedStyle(a); if (parseFloat(s.opacity) === 0 || s.visibility === 'hidden') { hidden = true; break; } }
+    if (hidden) continue;
+    const g = ground(e); if (!g) continue;
+    const fg = rgba(cs.color); if (fg[3] === 0) continue;
+    const c = over(fg, g);
+    const L1 = lum(c), L2 = lum(g);
+    const ratio = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
+    const px = parseFloat(cs.fontSize), bold = parseInt(cs.fontWeight) >= 700;
+    const need = (px >= 24 || (bold && px >= 18.66)) ? 3 : 4.5;
+    if (ratio < need - 0.005) {
+      const k = cs.color + ' on ' + g.slice(0, 3).map(Math.round).join(',');
+      if (!low.has(k)) low.set(k, { ratio, n: 0, text: e.textContent.trim().slice(0, 30) });
+      low.get(k).n++;
+    }
+  }
+  const contrast = [...low.entries()].map(([k, v]) => `COL-08 ${v.ratio.toFixed(2)} "${v.text}" (${v.n}x ${k})`);
+  if (COL08_FAILS) out.push(...contrast);
+  const warn = !COL08_FAILS && contrast.length ? ' [warn ' + contrast.join(' ; ') + ']' : '';
+  return location.pathname + ' :: ' + (out.length ? out.join(' ; ') : 'pass') + warn;
 })()

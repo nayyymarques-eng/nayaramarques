@@ -21,8 +21,12 @@
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <style id="boot-style">
-  html { background:var(--paper); color:var(--ink); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--surface-page); color:var(--text-strong); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -32,14 +36,14 @@
 <script>document.documentElement.classList.add('booting');</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--paper);z-index:9999">
-  <div style="height:57px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
-  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--surface-page);z-index:9999">
+  <div style="height:57px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 var(--space-2xl);gap:var(--space-sm)"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) var(--space-2xl) 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--line);animation:none"></i>
-    <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
-    <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
-    <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--border);animation:none"></i>
+    <i style="width:min(92%,620px);height:14px;margin-top:var(--space-fluid-l)"></i>
+    <i style="width:min(86%,580px);height:14px;margin-top:var(--space-sm)"></i>
+    <i style="width:min(64%,430px);height:14px;margin-top:var(--space-sm)"></i>
   </div>
 </div>
 <script>
@@ -74,14 +78,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
   * { box-sizing: border-box; }
   summary::-webkit-details-marker { display: none; }
   details > summary span[data-faq]::before { content: "+"; }
   details[open] > summary span[data-faq]::before { content: "\2013"; }
-  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: var(--rust); }
-  ::selection { background: var(--ink); color: var(--paper); }
+  a { color: var(--text-strong); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--accent); }
+  ::selection { background: var(--surface-inverse); color: var(--text-on-inverse); }
   @keyframes lineUp { from { transform: translateY(1.05em); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); filter: blur(3px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
@@ -94,230 +98,230 @@
 
   <main style="flex:1">
 
-    <section style="max-width:1400px;margin:0 auto;min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 32px">
-      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:clamp(20px,3vw,32px)">Engagement model 02</div>
-      <h1 style="font-size:clamp(34px,5.2vw,68px);font-weight:500;line-height:0.94;letter-spacing:-0.045em;margin:0 0 clamp(22px,3vw,32px);max-width:none">
+    <section style="max-width:1400px;margin:0 auto;min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) var(--space-2xl)">
+      <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:clamp(20px,3vw,32px)">Engagement model 02</div>
+      <h1 style="font-size:var(--font-size-3xl);font-weight:500;line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 clamp(22px,3vw,32px);max-width:none">
         <span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Embedded partner</span></span>
       </h1>
-      <div style="height:1px;background:var(--line);transform-origin:left;margin-bottom:clamp(24px,3vw,36px)"></div>
+      <div style="height:1px;background:var(--border);transform-origin:left;margin-bottom:var(--space-fluid-l)"></div>
       <div>
-        <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);text-wrap:pretty;animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .5s both">You have a product and a team. You need design that reaches production, not just approval.</p>
+        <p style="margin:0;max-width:58ch;font-size:var(--font-size-sublead);font-weight:400;line-height:var(--leading-snug);letter-spacing:-0.015em;color:var(--text-body);text-wrap:pretty;animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .5s both">You have a product and a team. You need design that reaches production, not just approval.</p>
         
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(30px,4vw,44px);animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .74s both">
-        <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--ink);color:var(--paper);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--rust);color:var(--white)">Book an intro call <span>→</span></a>
-        <a href="project-engagement.html" style="white-space:nowrap;display:inline-flex;align-items:center;padding:14px 24px;border:1px solid var(--line);color:var(--ink);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:border-color .2s ease,background .2s ease" style-hover="border-color:var(--line-ink);background:var(--paper-3)">Starting from scratch?</a>
+        <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--accent);color:var(--surface-card)">Book an intro call <span>→</span></a>
+        <a href="project-engagement.html" style="white-space:nowrap;display:inline-flex;align-items:center;padding:14px var(--space-xl);border:1px solid var(--border);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:border-color .2s ease,background .2s ease" style-hover="border-color:var(--border-emphatic);background:var(--surface-hover)">Starting from scratch?</a>
       </div>
     </section>
 
-    <section style="background:var(--paper-2);border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(36px,5vw,64px) 32px">
-        <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(20px,2.6vw,30px)">Who you'd be working with</h2>
-      <div style="background:var(--paper);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px) clamp(18px,2.6vw,30px);max-width:860px">
+    <section style="background:var(--surface-band);border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
+        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 clamp(20px,2.6vw,30px)">Who you'd be working with</h2>
+      <div style="background:var(--surface-page);border:1px solid var(--border);padding:clamp(18px,2.4vw,26px) clamp(18px,2.6vw,30px);max-width:860px">
         <div style="display:grid">
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:12px 0;">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Role</div>
-            <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">Senior Product Designer · design lead and design system owner</div>
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:var(--space-sm) 0;">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">Role</div>
+            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Senior Product Designer · design lead and design system owner</div>
           </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:12px 0;border-top:1px solid var(--line);">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Experience</div>
-            <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">Nine years across fintech, logistics and energy</div>
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">Experience</div>
+            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Nine years across fintech, logistics and energy</div>
           </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:12px 0;border-top:1px solid var(--line);">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Engagements</div>
-            <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">Project work · embedded with your team · advisory · senior &amp; lead roles</div>
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">Engagements</div>
+            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Project work · embedded with your team · advisory · senior &amp; lead roles</div>
           </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:12px 0;border-top:1px solid var(--line);">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">What I take on</div>
-            <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">0→1 products · design systems in code · AI-native workflows</div>
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">What I take on</div>
+            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">0→1 products · design systems in code · AI-native workflows</div>
           </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:12px 0;border-top:1px solid var(--line);">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Based</div>
-            <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">Barcelona, Spain, remote worldwide. English, Spanish and Portuguese.</div>
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">Based</div>
+            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Barcelona, Spain, remote worldwide. English, Spanish and Portuguese.</div>
           </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:14px 0 0;border-top:1px solid var(--line);margin-top:2px">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Availability</div>
-            <a href="contact.html" style="display:inline-flex;gap:9px;align-items:center;font-size:14px;font-weight:600;letter-spacing:normal;line-height:1.6;color:var(--rust);text-decoration:none;transition:color .2s ease" style-hover="color:var(--rust-hover)"><span style="width:6px;height:6px;border-radius:999px;background:currentColor;flex-shrink:0"></span><span>Available now</span></a>
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(14px,3vw,32px);align-items:baseline;padding:14px 0 0;border-top:1px solid var(--border);margin-top:var(--space-3xs)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">Availability</div>
+            <a href="contact.html" style="display:inline-flex;gap:9px;align-items:center;font-size:var(--font-size-sm);font-weight:600;letter-spacing:normal;line-height:var(--leading-small);color:var(--accent);text-decoration:none;transition:color .2s ease" style-hover="color:var(--accent-hover)"><span style="width:6px;height:6px;border-radius:999px;background:currentColor;flex-shrink:0"></span><span>Available now</span></a>
           </div>
         </div>
       </div>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px">
-        <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(24px,3vw,36px)">How the engagement is shaped</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)">
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Typical duration</div>
-            <div style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em;line-height:1.22;margin-bottom:10px">3 to 6 months</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)">Rolling monthly, one month's notice either way.</p>
+    <section style="border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl)">
+        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-fluid-l)">How the engagement is shaped</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--border);border-left:1px solid var(--border)">
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-sm)">Typical duration</div>
+            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:1.22;margin-bottom:10px">3 to 6 months</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Rolling monthly, one month's notice either way.</p>
           </div>
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Commitment</div>
-            <div style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em;line-height:1.22;margin-bottom:10px">Your rhythm</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)">Days a week set by your team, inside your standups.</p>
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-sm)">Commitment</div>
+            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:1.22;margin-bottom:10px">Your rhythm</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Days a week set by your team, inside your standups.</p>
           </div>
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Scope</div>
-            <div style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em;line-height:1.22;margin-bottom:10px">Your roadmap</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)">Priorities move with the team. No change requests for a reordered sprint.</p>
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-sm)">Scope</div>
+            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:1.22;margin-bottom:10px">Your roadmap</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Priorities move with the team. No change requests for a reordered sprint.</p>
           </div>
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Best for</div>
-            <div style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em;line-height:1.22;margin-bottom:10px">Continuous work</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)">Teams shipping weekly with no design lead, or one who is stretched.</p>
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-sm)">Best for</div>
+            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:1.22;margin-bottom:10px">Continuous work</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Teams shipping weekly with no design lead, or one who is stretched.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section style="background:var(--paper-2);border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px">
+    <section style="background:var(--surface-band);border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl)">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,64px);align-items:start;margin-bottom:clamp(28px,3.5vw,44px)">
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0">Where I can help</h2>
-          <p style="margin:0;max-width:56ch;font-size:20px;font-weight:500;line-height:1.45;letter-spacing:-0.018em;text-wrap:pretty">Five positions. Most teams need two or three, depending on the hole in the team, not the stage of the product.</p>
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0">Where I can help</h2>
+          <p style="margin:0;max-width:56ch;font-size:var(--font-size-lg);font-weight:500;line-height:1.45;letter-spacing:var(--tracking-lead);text-wrap:pretty">Five positions. Most teams need two or three, depending on the hole in the team, not the stage of the product.</p>
         </div>
 
         <div style="display:grid;gap:0">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">01</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Design lead, or your only designer</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">As lead I set the standard and direct designers; as the only designer I hold everything from strategy to shipped code. I have done both, and will tell you which you need.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:7px">You need this when</span>You have no designer, or designers nobody leads.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">01</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Design lead, or your only designer</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">As lead I set the standard and direct designers; as the only designer I hold everything from strategy to shipped code. I have done both, and will tell you which you need.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:7px">You need this when</span>You have no designer, or designers nobody leads.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">02</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Product designer on the roadmap</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">End-to-end design at your cadence: flows, interaction, interface, and usability testing where the stakes justify it.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:7px">You need this when</span>The roadmap moves faster than design, and specs run out mid-sprint.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">02</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Product designer on the roadmap</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">End-to-end design at your cadence: flows, interaction, interface, and usability testing where the stakes justify it.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:7px">You need this when</span>The roadmap moves faster than design, and specs run out mid-sprint.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">03</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Design system owner</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Tokens in code, component decisions written down, and validation that catches drift in CI.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:7px">You need this when</span>You have a system nobody owns, or three, and engineers rebuild their own.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">03</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Design system owner</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Tokens in code, component decisions written down, and validation that catches drift in CI.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:7px">You need this when</span>You have a system nobody owns, or three, and engineers rebuild their own.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">04</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">The person who finds what is leaking</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">An audit of what you ship (states, flows, inconsistencies), taken to strategy, not filed as tickets.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:7px">You need this when</span>The backlog is full of symptoms and the underlying problem has never been named.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">04</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">The person who finds what is leaking</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">An audit of what you ship (states, flows, inconsistencies), taken to strategy, not filed as tickets.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:7px">You need this when</span>The backlog is full of symptoms and the underlying problem has never been named.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">05</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Prototyping and shipping</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Working HTML, CSS and JS on your data, so the team argues about behaviour, not images. It lands on your branch, through your review.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:7px">You need this when</span>Design stops at approval, and the last ten percent falls to whoever has capacity.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">05</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Prototyping and shipping</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Working HTML, CSS and JS on your data, so the team argues about behaviour, not images. It lands on your branch, through your review.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:7px">You need this when</span>Design stops at approval, and the last ten percent falls to whoever has capacity.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,72px);align-items:start">
+    <section style="border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,72px);align-items:start">
         <div>
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 22px">Investment</h2>
-          <div style="background:var(--paper);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px)">
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:12px 0">
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Lighter week</div><div style="font-size:14px;color:var(--ink-2);line-height:1.6">One workstream, monthly retainer</div></div>
-              <div style="font-size:14px;font-weight:600;color:var(--rust);white-space:nowrap">On the call</div>
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 22px">Investment</h2>
+          <div style="background:var(--surface-page);border:1px solid var(--border);padding:clamp(18px,2.4vw,26px)">
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0">
+              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">Lighter week</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">One workstream, monthly retainer</div></div>
+              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
             </div>
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line)">
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Core week</div><div style="font-size:14px;color:var(--ink-2);line-height:1.6">Product design plus the system</div></div>
-              <div style="font-size:14px;font-weight:600;color:var(--rust);white-space:nowrap">On the call</div>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border)">
+              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">Core week</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">Product design plus the system</div></div>
+              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
             </div>
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line)">
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Full week</div><div style="font-size:14px;color:var(--ink-2);line-height:1.6">Design lead, or your only designer</div></div>
-              <div style="font-size:14px;font-weight:600;color:var(--rust);white-space:nowrap">On the call</div>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border)">
+              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">Full week</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">Design lead, or your only designer</div></div>
+              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
             </div>
-            <p style="margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--ink-2)">A flat monthly fee for the agreed days. Priced on the call, once I know the shape of the work. <a href="start-a-project.html" style="color:var(--rust)">Send a short brief →</a> and I will bring a figure.</p>
+            <p style="margin:var(--space-md) 0 0;padding-top:14px;border-top:1px solid var(--border);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">A flat monthly fee for the agreed days. Priced on the call, once I know the shape of the work. <a href="start-a-project.html" style="color:var(--accent)">Send a short brief →</a> and I will bring a figure.</p>
           </div>
         </div>
         <div>
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 22px">What I need from you</h2>
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 22px">What I need from you</h2>
           <div style="display:grid;gap:0">
-            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)"><span style="font-size:11px;font-weight:600;color:var(--ink-6);flex-shrink:0;padding-top:2px">01</span><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink)">Treat me as part of the team: standups, Slack, sprint planning, not a vendor channel.</p></div>
-            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)"><span style="font-size:11px;font-weight:600;color:var(--ink-6);flex-shrink:0;padding-top:2px">02</span><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink)">Repository access and a review process I can push into.</p></div>
-            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)"><span style="font-size:11px;font-weight:600;color:var(--ink-6);flex-shrink:0;padding-top:2px">03</span><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink)">One engineer who cares about the front-end and will review my PRs.</p></div>
-            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span style="font-size:11px;font-weight:600;color:var(--ink-6);flex-shrink:0;padding-top:2px">04</span><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink)">A roadmap I can see, even a rough one, so design lands before the sprint.</p></div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);flex-shrink:0;padding-top:var(--space-3xs)">01</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">Treat me as part of the team: standups, Slack, sprint planning, not a vendor channel.</p></div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);flex-shrink:0;padding-top:var(--space-3xs)">02</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">Repository access and a review process I can push into.</p></div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);flex-shrink:0;padding-top:var(--space-3xs)">03</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">One engineer who cares about the front-end and will review my PRs.</p></div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);flex-shrink:0;padding-top:var(--space-3xs)">04</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">A roadmap I can see, even a rough one, so design lands before the sprint.</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section style="background:var(--paper-2);border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,64px);align-items:start;margin-bottom:clamp(24px,3vw,36px)">
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0">What this does not include</h2>
-          <p style="margin:0;max-width:56ch;font-size:20px;font-weight:500;line-height:1.45;letter-spacing:-0.018em;text-wrap:pretty">Both can be arranged; say so on the call.</p>
+    <section style="background:var(--surface-band);border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,64px);align-items:start;margin-bottom:var(--space-fluid-l)">
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0">What this does not include</h2>
+          <p style="margin:0;max-width:56ch;font-size:var(--font-size-lg);font-weight:500;line-height:1.45;letter-spacing:var(--tracking-lead);text-wrap:pretty">Both can be arranged; say so on the call.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)">
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px)">
-            <div style="font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16;margin-bottom:10px">Backend engineering</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">I write the front-end. Server-side belongs to your team or a developer you bring in.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)">
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px)">
+            <div style="font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16;margin-bottom:10px">Backend engineering</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">I write the front-end. Server-side belongs to your team or a developer you bring in.</p>
           </div>
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px)">
-            <div style="font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16;margin-bottom:10px">Brand identity</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">A different discipline. I design inside your brand, or a plain one, and can refer you.</p>
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px)">
+            <div style="font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16;margin-bottom:10px">Brand identity</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">A different discipline. I design inside your brand, or a plain one, and can refer you.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px">
-        <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(20px,2.4vw,28px)">Relevant work</h2>
-        <a href="ai-surfaces.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust);padding-left:10px">
-          <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">Where AI lives in an institutional investment platform</h3>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">AI platform</span>
+    <section style="border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl)">
+        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 clamp(20px,2.4vw,28px)">Relevant work</h2>
+        <a href="ai-surfaces.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:10px">
+          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">Where AI lives in an institutional investment platform</h3>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">AI platform</span>
         </a>
-        <a href="design-system.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-bottom:1px solid var(--line);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust);padding-left:10px">
-          <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">A design system AI can build from</h3>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">Method</span>
+        <a href="design-system.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:10px">
+          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">A design system AI can build from</h3>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">Method</span>
         </a>
-        <a href="card-insurance.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-bottom:1px solid var(--line);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust);padding-left:10px">
-          <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">Modular card insurance in a banking app</h3>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">BTG Pactual</span>
+        <a href="card-insurance.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:10px">
+          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">Modular card insurance in a banking app</h3>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">BTG Pactual</span>
         </a>
       </div>
     </section>
 
-    <section style="background:var(--paper-2);border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px">
-                <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:var(--ink-6);margin-bottom:20px">Questions</div>
-        <h2 style="margin:0 0 clamp(24px,3.4vw,40px);font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;max-width:22ch;text-wrap:balance">What teams ask before embedding</h2>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line);border-top:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">How is this different from hiring a contractor? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">I ship the front-end, so work doesn't stop at a handoff, and I argue about what's on the roadmap, not just how it looks.</p>
+    <section style="background:var(--surface-band);border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl)">
+                <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-lg)">Questions</div>
+        <h2 style="margin:0 0 clamp(24px,3.4vw,40px);font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);max-width:22ch;text-wrap:balance">What teams ask before embedding</h2>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border);border-top:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">How is this different from hiring a contractor? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">I ship the front-end, so work doesn't stop at a handoff, and I argue about what's on the roadmap, not just how it looks.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">We already have designers. Does that work? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Often better. I take the system and front-end, or the lead, so they can stay on product depth. I've led designers and supported them.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">We already have designers. Does that work? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Often better. I take the system and front-end, or the lead, so they can stay on product depth. I've led designers and supported them.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">What happens when the engagement ends? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">The system is the handover: tokens, component docs and validation in CI keep the standard without me.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">What happens when the engagement ends? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">The system is the handover: tokens, component docs and validation in CI keep the standard without me.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">Is AI writing our product? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">No. Claude Code and Claude Design speed up exploration and implementation. Every decision, review and shipped line is mine, gated by the same checks as any engineer's.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">Is AI writing our product? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">No. Claude Code and Claude Design speed up exploration and implementation. Every decision, review and shipped line is mine, gated by the same checks as any engineer's.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">Could this become a full-time role? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Yes. I'm open to senior and lead roles, and embedding is a good way to start that conversation. No fee for converting.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">Could this become a full-time role? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Yes. I'm open to senior and lead roles, and embedding is a good way to start that conversation. No fee for converting.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">Which time zones do you cover? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Remote worldwide, in English, Spanish and Portuguese, on hours that overlap yours. I travel for onsites when it matters.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">Which time zones do you cover? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Remote worldwide, in English, Spanish and Portuguese, on hours that overlap yours. I travel for onsites when it matters.</p>
           </details>
         <div style="margin-top:clamp(28px,4vw,40px)">
-          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--ink);color:var(--paper);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--rust)">Start a conversation <span aria-hidden="true">→</span></a>
+          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--accent)">Start a conversation <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line);background:var(--ink);color:var(--paper)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(48px,8vw,110px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
-        <h2 style="font-size:clamp(28px,4vw,52px);font-weight:500;line-height:1;letter-spacing:-0.042em;margin:0;text-wrap:balance">Need a designer inside your team?</h2>
+    <section style="border-top:1px solid var(--border);background:var(--surface-inverse);color:var(--text-on-inverse)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(48px,8vw,110px) var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
+        <h2 style="font-size:var(--font-size-2xl-cta);font-weight:500;line-height:var(--leading-none);letter-spacing:-0.042em;margin:0;text-wrap:balance">Need a designer inside your team?</h2>
         <div>
-          <p style="margin:0 0 26px;font-size:16px;line-height:1.7;color:var(--on-ink-muted);text-wrap:pretty">A 30-minute call. Tell me what your team ships and what keeps slipping; I'll say where I'd start, and whether you need me at all.</p>
-          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--paper);color:var(--ink);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--rust);color:var(--white)">Book an intro call <span>→</span></a>
+          <p style="margin:0 0 26px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty">A 30-minute call. Tell me what your team ships and what keeps slipping; I'll say where I'd start, and whether you need me at all.</p>
+          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--surface-page);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--accent);color:var(--surface-card)">Book an intro call <span>→</span></a>
         </div>
       </div>
     </section>

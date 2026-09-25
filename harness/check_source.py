@@ -6,6 +6,7 @@
 Exit code 0 = no failures, 1 = failures. Warnings never fail. Each line: FAIL|warn RULE-ID file detail.
 Rules are defined in CLAUDE.md; this script checks the ones a machine can settle.
 """
+import collections
 import glob
 import re
 import sys
@@ -24,9 +25,14 @@ HEX = re.compile(r'#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b')
 FUNC = re.compile(r'\b(?:rgba?|hsla?|oklch)\(')
 
 # Checks added in the consolidation are reported as warnings until the pages are clean,
-# then promoted to failures (the rule leaves this set). COL-04 on non-colour tokens: until
-# design-system-audit.html drops its local copies.
-NEW_AS_WARN = {'COL-04'}
+# then promoted to failures (the rule leaves this set). COL-06 and COL-07 become failures in
+# step 6, once the Claude Design bundle reads the role names and the aliases are removed.
+NEW_AS_WARN = {'COL-06', 'COL-07'}
+
+# Token layers in tokens/colors.css: primitives (values only), roles (what pages use), and the
+# temporary aliases (old names). Pages use roles.
+PRIMITIVE = re.compile(r'var\(--((?:sand|slate|blue|red|green|clay)-\d+)\)')
+OLD_NONCOLOUR = re.compile(r'var\(--((?:size|track)-[a-z-]+|space-\d+|card-p|radius|radius-pill|leading-mega)[,)]')
 
 # Known exceptions (COL-02). Keep this list short; every entry needs a reason.
 ALLOW = {
@@ -57,6 +63,10 @@ for f in glob.glob(TOKEN_DIR + '*.css'):
     TOKEN_NAMES |= names
     if f.endswith('/colors.css'):
         COLOR_TOKEN_NAMES |= names
+# the colour aliases: everything declared after the "Temporary aliases" comment
+_colors = open(TOKEN_DIR + 'colors.css').read()
+_alias_block = _colors.split('Temporary aliases', 1)[1] if 'Temporary aliases' in _colors else ''
+ALIASES = set(re.findall(r'--([a-z0-9-]+)\s*:', _alias_block))
 
 for path in FILES:
     t = open(path).read()
@@ -76,6 +86,16 @@ for path in FILES:
                 add('COL-01', path, f'literal colour {h}; use a token from tokens/colors.css', is_new)
             for f in FUNC.findall(m.group(1)):
                 add('COL-01', path, f'colour function {f}...); use color-mix(in srgb, var(--token) N%, transparent)', True)
+
+    # COL-06 pages use roles, never primitives
+    for k in sorted(set(PRIMITIVE.findall(t))):
+        add('COL-06', path, f'uses the primitive --{k}; use a role token', True)
+
+    # COL-07 retired alias names (old token names kept only until the bundle moves to roles)
+    old = collections.Counter(m for m in re.findall(r'var\(--([a-z0-9-]+)[,)]', t) if m in ALIASES)
+    old.update(k for k in OLD_NONCOLOUR.findall(t) if k in TOKEN_NAMES)
+    for k, n in sorted(old.items()):
+        add('COL-07', path, f'uses the old name --{k} ({n}x); use its role name', True)
 
     # COL-03 every page loads the colour tokens
     if is_page and 'tokens/colors.css' not in t:

@@ -1,5 +1,13 @@
 :root{
-  /* --- Static steps. The source uses a 2px-based, not strictly 4px, set. */
+  /* --- Scale. A 4px scale; pages use these names. --------------------- */
+  --space-3xs:2px; --space-2xs:4px; --space-xs:8px; --space-sm:12px; --space-md:16px;
+  --space-lg:20px; --space-xl:24px; --space-2xl:32px; --space-3xl:40px; --space-4xl:48px; --space-5xl:64px;
+  --space-fluid-s:clamp(12px,1.43vw,20px);
+  --space-fluid-m:clamp(20px,2.6vw,28px);   /* white card padding */
+  --space-fluid-l:clamp(24px,3vw,36px);
+  --space-fluid-xl:clamp(28px,4vw,44px);
+
+  /* --- Static steps (old names; the Claude Design bundle reads them, removed in step 6). */
   --space-1:4px;
   --space-2:6px;
   --space-3:8px;
@@ -23,7 +31,7 @@
   --hero-y:clamp(48px,8vw,104px); /* @kind spacing */
   --case-hero-y:clamp(48px,8vw,96px); /* @kind spacing */
   --band-y:clamp(28px,4vw,40px); /* @kind spacing */            /* meta bar */
-  --card-p:clamp(20px,2.6vw,28px); /* @kind spacing */          /* white card */
+  --card-p:var(--space-fluid-m); /* @kind spacing */          /* white card; alias */
   --card-p-lg:clamp(22px,3vw,34px); /* @kind spacing */         /* model / offer card */
   --gap-col:clamp(24px,4vw,72px); /* @kind spacing */           /* hero two-column */
   --gap-col-lg:clamp(20px,3.5vw,56px); /* @kind spacing */      /* work row */

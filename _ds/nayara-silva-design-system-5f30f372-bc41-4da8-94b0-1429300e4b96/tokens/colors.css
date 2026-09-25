@@ -1,56 +1,66 @@
 :root{
-  /* --- Paper stack: three warm greys, no pure white page ---------------- */
-  --paper:#f2f1ee;          /* default page */
-  --paper-2:#eceae5;        /* alternating band, one step darker */
-  --paper-3:var(--paper-2); /* outline-button hover fill, skeleton bar (A1: was #edebe6) */
-  --white:#fff;             /* cards and tiles only, never a page */
+  /* --- 1. Primitives. Values only; pages never use these names. -------- */
+  --sand-0:#ffffff;     --sand-50:#f2f1ee;   --sand-100:#eceae5;
+  --sand-200:#dedbd5;   --sand-300:#d3d0c9;  --sand-400:#b8b5ae;
+  --slate-300:#a4a8ae;  --slate-400:#8c9096; --slate-550:#5f646b;
+  --slate-600:#5a5f66;  --slate-700:#4e535a; --slate-800:#3a3e44;
+  --slate-950:#101114;  /* shadows only */
+  --slate-200:#c8cdd8;  /* dark mockup text; goes in B-7 */
+  --blue-200:#a8cbdf;   --blue-500:#3d84ad;  --blue-600:#2f6d92;
+  --red-600:#c0392b;    --green-700:#3f6b4a; --clay-700:#8a4a2a;
 
-  /* --- Ink ------------------------------------------------------------- */
-  --ink:#3a3e44;            /* text, solid buttons, dark sections */
-  --ink-2:#4e535a;          /* running prose on paper */
-  --ink-4:#5a5f66;          /* secondary prose, captions */
-  --ink-6:#5f646b;          /* eyebrows, metadata */
-  --ink-7:#8c9096;          /* arrows, disabled-ish, mono labels */
-  --on-ink:var(--paper);    /* paper on the dark section */
-  --on-ink-muted:#a4a8ae;   /* prose on the dark section */
+  /* --- 2. Roles. Pages use only these. -------------------------------- */
+  --surface-page:var(--sand-50);            /* page background */
+  --surface-band:var(--sand-100);           /* alternate band */
+  --surface-hover:var(--sand-100);          /* hover fill, current item, skeleton bar */
+  --surface-card:var(--sand-0);             /* card or tile, never a page */
+  --surface-inverse:var(--slate-800);       /* dark band, solid button */
+  --surface-note:color-mix(in srgb,var(--blue-200) 30%,var(--sand-50)); /* note or callout ground on paper */
+  --surface-accent-tint:color-mix(in srgb,var(--blue-600) 12%,var(--sand-0)); /* wireframe highlight */
 
-  /* --- Blue: the chromatic accent, with red for micro details ---------- */
-  --rust:#2f6d92;           /* eyebrows on case studies, hover ink, prices */
-  --rust-hover:#3d84ad;     /* the lighter blue used for link hover on index pages */
-  --baby:#a8cbdf;           /* pale blue: fills on ink grounds only, never text on paper */
-  --note:color-mix(in srgb, var(--baby) 30%, var(--paper)); /* soft blue ground for notes and callouts on paper */
-  --red:#c0392b;            /* micro accents only — the nav mark */
+  --text-strong:var(--slate-800);           /* headings, strong text */
+  --text-body:var(--slate-700);             /* running prose, card prose */
+  --text-muted:var(--slate-600);            /* captions, nav links, secondary */
+  --text-meta:var(--slate-550);             /* eyebrows, metadata; folds into --text-muted in B-1 */
+  --text-subtle:var(--slate-400);           /* arrows, placeholders; not text after B-2 */
+  --text-on-inverse:var(--sand-50);         /* text on the dark band */
+  --text-on-inverse-muted:var(--slate-300); /* prose on the dark band */
+  --text-on-inverse-mock:var(--slate-200);  /* dark mockup text; goes in B-7 */
 
-  /* --- Hairlines ------------------------------------------------------- */
-  --line:#dedbd5;           /* default 1px rule and card border */
-  --line-2:var(--line);     /* grid gutter fill behind joined cards (A3: was #e0ded7) */
-  --line-3:#d3d0c9;         /* outline button / pill border */
-  --line-4:var(--paper-2);  /* inner rule inside a white card (A2: was #edebe6) */
-  --line-ink:var(--ink);    /* the emphatic rule that opens a block */
-  --line-mid:#b8b5ae;       /* item rule inside a section: steps, stats, sub-sections */
+  --accent:var(--blue-600);                 /* case eyebrows, link hover, highlights */
+  --accent-hover:var(--blue-500);           /* folds into --accent in B-3 */
+  --accent-soft:var(--blue-200);            /* pale blue, ink grounds only */
+  --brand-mark:var(--red-600);              /* the nav star */
 
-  /* --- Semantic, used as 10px uppercase labels ------------------------- */
-  --gained:#3f6b4a;         /* "Gained", availability dot */
-  --traded:#8a4a2a;         /* "Traded away", "Risk 01" */
+  --border-subtle:var(--sand-100);          /* inner rule in a white card, soft chip border */
+  --border:var(--sand-200);                 /* default rule, card border, grid gutter */
+  --border-control:var(--sand-300);         /* pill, control; folds into --border in B-5 */
+  --border-strong:var(--sand-400);          /* item rule inside a section */
+  --border-emphatic:var(--slate-800);       /* opens a block; divider between case sections */
 
-  /* --- Dark mockup text ---------------------------------------------- */
-  --term-fg:#c8cdd8;
+  --status-gain:var(--green-700);           /* "Gained", availability dot */
+  --status-cost:var(--clay-700);            /* "Traded away", "Risk 01" */
+  --focus-ring:var(--slate-800);
 
-  /* --- Shadows: the only place the darkest ink survives ---------------- */
-  --shadow-ink:#101114;
+  --shadow-sm:0 1px 2px color-mix(in srgb,var(--slate-950) 5%,transparent);          /* mock tiles */
+  --shadow-md:0 2px 10px -2px color-mix(in srgb,var(--slate-950) 16%,transparent);   /* floating cards */
+  --shadow-lg:0 18px 44px -26px color-mix(in srgb,var(--slate-950) 34%,transparent); /* menus, popovers */
 
-  /* --- Semantic aliases ----------------------------------------------- */
-  --surface-page:var(--paper);
-  --surface-band:var(--paper-2);
-  --surface-card:var(--white);
-  --surface-inverse:var(--ink);
-  --text-strong:var(--ink);
-  --text-body:var(--ink-2);
-  --text-muted:var(--ink-4);
-  --text-meta:var(--ink-6);
-  --text-accent:var(--rust);
-  --border-default:var(--line);
-  --border-strong:var(--line-ink);
-  --border-control:var(--line-3);
-  --focus-ring:var(--ink);
+  /* --- 3. Temporary aliases: old name to role. Removed in step 6, once the
+         Claude Design bundle reads the role names. ---------------------- */
+  --paper:var(--surface-page);        --paper-2:var(--surface-band);
+  --paper-3:var(--surface-hover);     --white:var(--surface-card);
+  --ink:var(--text-strong);           --ink-2:var(--text-body);
+  --ink-4:var(--text-muted);          --ink-6:var(--text-meta);
+  --ink-7:var(--text-subtle);         --on-ink:var(--text-on-inverse);
+  --on-ink-muted:var(--text-on-inverse-muted);  --term-fg:var(--text-on-inverse-mock);
+  --rust:var(--accent);               --rust-hover:var(--accent-hover);
+  --baby:var(--accent-soft);          --note:var(--surface-note);
+  --red:var(--brand-mark);
+  --line:var(--border);               --line-2:var(--border);
+  --line-3:var(--border-control);     --line-4:var(--border-subtle);
+  --line-mid:var(--border-strong);    --line-ink:var(--border-emphatic);
+  --gained:var(--status-gain);        --traded:var(--status-cost);
+  --text-accent:var(--accent);        --border-default:var(--border);
+  --shadow-ink:var(--slate-950);
 }

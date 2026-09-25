@@ -21,8 +21,12 @@
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <style id="boot-style">
-  html { background:var(--paper); color:var(--ink); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--surface-page); color:var(--text-strong); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -32,14 +36,14 @@
 <script>document.documentElement.classList.add('booting');</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--paper);z-index:9999">
-  <div style="height:57px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
-  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--surface-page);z-index:9999">
+  <div style="height:57px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 var(--space-2xl);gap:var(--space-sm)"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) var(--space-2xl) 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--line);animation:none"></i>
-    <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
-    <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
-    <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--border);animation:none"></i>
+    <i style="width:min(92%,620px);height:14px;margin-top:var(--space-fluid-l)"></i>
+    <i style="width:min(86%,580px);height:14px;margin-top:var(--space-sm)"></i>
+    <i style="width:min(64%,430px);height:14px;margin-top:var(--space-sm)"></i>
   </div>
 </div>
 <script>
@@ -74,14 +78,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&amp;display=swap" rel="stylesheet">
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
   * { box-sizing: border-box; }
   summary::-webkit-details-marker { display: none; }
   html, body { overflow-x: clip; max-width: 100%; }
   @media (max-width: 720px) { [data-tools-note] { max-width: none !important; flex: 1 1 100% !important; } }
-  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: var(--rust); }
-  ::selection { background: var(--ink); color: var(--paper); }
+  a { color: var(--text-strong); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--accent); }
+  ::selection { background: var(--surface-inverse); color: var(--text-on-inverse); }
   @keyframes lineUp { from { transform: translateY(1.05em); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); filter: blur(3px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
@@ -92,139 +96,139 @@
 
   <dc-import name="Nav" hint-size="100%,57px" style="position:sticky;top:0;z-index:50"></dc-import>
 
-  <main style="max-width:1400px;margin:0 auto;padding:0 32px">
+  <main style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl)">
 
-    <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
+    <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,72px);align-items:center">
         <div style="min-width:0">
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:clamp(20px,3vw,32px)">About</div>
-          <h1 style="font-weight:500;font-size:clamp(34px,5.2vw,68px);line-height:0.94;letter-spacing:-0.045em;margin:0 0 clamp(24px,3vw,36px);max-width:19ch;text-wrap:balance">
+          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:clamp(20px,3vw,32px)">About</div>
+          <h1 style="font-weight:500;font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-l);max-width:19ch;text-wrap:balance">
             <span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">I set the direction, and I ship it.</span></span>
           </h1>
-          <div style="height:1px;background:var(--line);margin-bottom:clamp(24px,3vw,36px)"></div>
-          <p style="margin: 0 0 16px; font-size: clamp(16px,1.15vw,18px); font-weight: 400; line-height: 1.5; letter-spacing: -0.015em; text-wrap: pretty; animation: fadeUp 1.2s cubic-bezier(.19,1,.22,1) .5s both; max-width: 62ch">Nine years on B2B and B2C products in fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks. I've led a design team, been the only designer, and worked on systems as often as screens.</p>
-          <p style="margin:0;max-width:62ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-4);text-wrap:pretty;animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .62s both">Lately, AI-native products: entry points, conversation patterns, streaming and recovery states, and the design system that keeps them coherent across web and mobile. I prototype in code, agree component contracts with engineering, and ship the edge cases. Figma since 2017; this past year, mostly Claude Design, from idea to shipped PR.</p>
+          <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
+          <p style="margin: 0 0 var(--space-md); font-size: var(--font-size-sublead); font-weight: 400; line-height: var(--leading-snug); letter-spacing: -0.015em; text-wrap: pretty; animation: fadeUp 1.2s cubic-bezier(.19,1,.22,1) .5s both; max-width: 62ch">Nine years on B2B and B2C products in fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks. I've led a design team, been the only designer, and worked on systems as often as screens.</p>
+          <p style="margin:0;max-width:62ch;font-size:var(--font-size-sublead);font-weight:400;line-height:var(--leading-snug);letter-spacing:-0.015em;color:var(--text-muted);text-wrap:pretty;animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .62s both">Lately, AI-native products: entry points, conversation patterns, streaming and recovery states, and the design system that keeps them coherent across web and mobile. I prototype in code, agree component contracts with engineering, and ship the edge cases. Figma since 2017; this past year, mostly Claude Design, from idea to shipped PR.</p>
         </div>
-        <div style="min-width:0;justify-self:center;width:100%;max-width:440px;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);background:var(--white);animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .74s both">
+        <div style="min-width:0;justify-self:center;width:100%;max-width:440px;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--border);background:var(--surface-card);animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .74s both">
           <img src="assets/nayara-portrait.png" alt="Nayara Marques" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%">
         </div>
       </div>
     </section>
 
-    <section style="background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding:clamp(44px,7vw,88px) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
-      <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(24px,3vw,36px)">How I work</h2>
-      <p style="margin:0 0 clamp(22px,3vw,30px);font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;text-wrap:pretty">I design products end to end, and lately I design AI into them.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,72px);align-items:start;border-top:1px solid var(--line);padding-top:clamp(22px,3vw,30px)">
+    <section style="background:var(--surface-band);box-shadow:0 0 0 100vmax var(--surface-band);clip-path:inset(0 -100vmax);padding:clamp(44px,7vw,88px) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)">
+      <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-fluid-l)">How I work</h2>
+      <p style="margin:0 0 clamp(22px,3vw,30px);font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);text-wrap:pretty">I design products end to end, and lately I design AI into them.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,72px);align-items:start;border-top:1px solid var(--border);padding-top:clamp(22px,3vw,30px)">
         <div style="min-width:0">
-          <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">As AI makes creation effortless, the hard part is keeping things coherent. Design becomes governance: defining what good means and holding the product to it as the team grows.</p>
-          <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">I've worked in global teams since 2021, across time zones and cultures. It made me good at async, at writing things down, and at working with people who don't share my context. English, Portuguese and Spanish.</p>
+          <p style="margin:0 0 var(--space-md);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">As AI makes creation effortless, the hard part is keeping things coherent. Design becomes governance: defining what good means and holding the product to it as the team grows.</p>
+          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I've worked in global teams since 2021, across time zones and cultures. It made me good at async, at writing things down, and at working with people who don't share my context. English, Portuguese and Spanish.</p>
         </div>
         <div style="min-width:0">
           <div style="padding:0 0 clamp(18px,2.2vw,22px)">
-            <div style="display:flex;gap:16px;align-items:baseline;margin-bottom:10px"><span style="flex:0 0 28px;font-size:14px;font-weight:600;letter-spacing:0.06em;line-height:1.5;font-variant-numeric:tabular-nums;color:var(--rust)">01</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;line-height:1.5;text-transform:uppercase;color:var(--ink)">End to end</span></div>
-            <p style="margin:0 0 8px;padding-left:44px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">Research, flows, interaction and motion specs, handed over as one piece of work, not a file per stage.</p>
-            <p style="margin:0;padding-left:44px;font-size:14px;line-height:1.6;color:var(--ink-6)"><a href="card-insurance.html" style="font-size:14px;line-height:1.6;color:var(--ink-6);text-decoration:none;border-bottom:1px solid var(--line-3);transition:color .2s ease" style-hover="color:var(--rust)">Card insurance</a> · <a href="advisors-platform.html" style="font-size:14px;line-height:1.6;color:var(--ink-6);text-decoration:none;border-bottom:1px solid var(--line-3);transition:color .2s ease" style-hover="color:var(--rust)">Advisors platform</a></p>
+            <div style="display:flex;gap:var(--space-md);align-items:baseline;margin-bottom:10px"><span style="flex:0 0 28px;font-size:var(--font-size-sm);font-weight:600;letter-spacing:0.06em;line-height:var(--leading-snug);font-variant-numeric:tabular-nums;color:var(--accent)">01</span><span style="font-size:var(--font-size-sm);font-weight:600;letter-spacing:0.06em;line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-strong)">End to end</span></div>
+            <p style="margin:0 0 var(--space-xs);padding-left:44px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Research, flows, interaction and motion specs, handed over as one piece of work, not a file per stage.</p>
+            <p style="margin:0;padding-left:44px;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta)"><a href="card-insurance.html" style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-decoration:none;border-bottom:1px solid var(--border-control);transition:color .2s ease" style-hover="color:var(--accent)">Card insurance</a> · <a href="advisors-platform.html" style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-decoration:none;border-bottom:1px solid var(--border-control);transition:color .2s ease" style-hover="color:var(--accent)">Advisors platform</a></p>
           </div>
-          <div style="padding:clamp(18px,2.2vw,22px) 0;border-top:1px solid var(--line)">
-            <div style="display:flex;gap:16px;align-items:baseline;margin-bottom:10px"><span style="flex:0 0 28px;font-size:14px;font-weight:600;letter-spacing:0.06em;line-height:1.5;font-variant-numeric:tabular-nums;color:var(--rust)">02</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;line-height:1.5;text-transform:uppercase;color:var(--ink)">Every state</span></div>
-            <p style="margin:0 0 8px;padding-left:44px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">All states covered, and tested where testing is possible.</p>
-            <p style="margin:0;padding-left:44px;font-size:14px;line-height:1.6;color:var(--ink-6)"><a href="composer-spec.html" style="font-size:14px;line-height:1.6;color:var(--ink-6);text-decoration:none;border-bottom:1px solid var(--line-3);transition:color .2s ease" style-hover="color:var(--rust)">Composer spec</a> · 26 frames, six state families</p>
+          <div style="padding:clamp(18px,2.2vw,22px) 0;border-top:1px solid var(--border)">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline;margin-bottom:10px"><span style="flex:0 0 28px;font-size:var(--font-size-sm);font-weight:600;letter-spacing:0.06em;line-height:var(--leading-snug);font-variant-numeric:tabular-nums;color:var(--accent)">02</span><span style="font-size:var(--font-size-sm);font-weight:600;letter-spacing:0.06em;line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-strong)">Every state</span></div>
+            <p style="margin:0 0 var(--space-xs);padding-left:44px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">All states covered, and tested where testing is possible.</p>
+            <p style="margin:0;padding-left:44px;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta)"><a href="composer-spec.html" style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-decoration:none;border-bottom:1px solid var(--border-control);transition:color .2s ease" style-hover="color:var(--accent)">Composer spec</a> · 26 frames, six state families</p>
           </div>
-          <div style="padding:clamp(18px,2.2vw,22px) 0;border-top:1px solid var(--line)">
-            <div style="display:flex;gap:16px;align-items:baseline;margin-bottom:10px"><span style="flex:0 0 28px;font-size:14px;font-weight:600;letter-spacing:0.06em;line-height:1.5;font-variant-numeric:tabular-nums;color:var(--rust)">03</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;line-height:1.5;text-transform:uppercase;color:var(--ink)">A system in code</span></div>
-            <p style="margin:0 0 8px;padding-left:44px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">Built in Claude Design with a developer, and maintained together as the product grows.</p>
-            <p style="margin:0;padding-left:44px;font-size:14px;line-height:1.6;color:var(--ink-6)"><a href="design-system.html" style="font-size:14px;line-height:1.6;color:var(--ink-6);text-decoration:none;border-bottom:1px solid var(--line-3);transition:color .2s ease" style-hover="color:var(--rust)">Design system</a> · four layers, 48 components</p>
+          <div style="padding:clamp(18px,2.2vw,22px) 0;border-top:1px solid var(--border)">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline;margin-bottom:10px"><span style="flex:0 0 28px;font-size:var(--font-size-sm);font-weight:600;letter-spacing:0.06em;line-height:var(--leading-snug);font-variant-numeric:tabular-nums;color:var(--accent)">03</span><span style="font-size:var(--font-size-sm);font-weight:600;letter-spacing:0.06em;line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-strong)">A system in code</span></div>
+            <p style="margin:0 0 var(--space-xs);padding-left:44px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Built in Claude Design with a developer, and maintained together as the product grows.</p>
+            <p style="margin:0;padding-left:44px;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta)"><a href="design-system.html" style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-decoration:none;border-bottom:1px solid var(--border-control);transition:color .2s ease" style-hover="color:var(--accent)">Design system</a> · four layers, 48 components</p>
           </div>
-          <div style="padding:clamp(18px,2.2vw,22px) 0;border-top:1px solid var(--line)">
-            <div style="display:flex;gap:16px;align-items:baseline;margin-bottom:10px"><span style="flex:0 0 28px;font-size:14px;font-weight:600;letter-spacing:0.06em;line-height:1.5;font-variant-numeric:tabular-nums;color:var(--rust)">04</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;line-height:1.5;text-transform:uppercase;color:var(--ink)">Willing to be wrong</span></div>
-            <p style="margin:0 0 8px;padding-left:44px;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">Research decides, even when it kills the thing the team already built.</p>
-            <p style="margin:0;padding-left:44px;font-size:14px;line-height:1.6;color:var(--ink-6)"><a href="fleet-optimizer.html" style="font-size:14px;line-height:1.6;color:var(--ink-6);text-decoration:none;border-bottom:1px solid var(--line-3);transition:color .2s ease" style-hover="color:var(--rust)">Fleet optimizer</a></p>
+          <div style="padding:clamp(18px,2.2vw,22px) 0;border-top:1px solid var(--border)">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline;margin-bottom:10px"><span style="flex:0 0 28px;font-size:var(--font-size-sm);font-weight:600;letter-spacing:0.06em;line-height:var(--leading-snug);font-variant-numeric:tabular-nums;color:var(--accent)">04</span><span style="font-size:var(--font-size-sm);font-weight:600;letter-spacing:0.06em;line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-strong)">Willing to be wrong</span></div>
+            <p style="margin:0 0 var(--space-xs);padding-left:44px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Research decides, even when it kills the thing the team already built.</p>
+            <p style="margin:0;padding-left:44px;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta)"><a href="fleet-optimizer.html" style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-decoration:none;border-bottom:1px solid var(--border-control);transition:color .2s ease" style-hover="color:var(--accent)">Fleet optimizer</a></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section style="padding:clamp(48px,7vw,88px) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
-      <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(24px,3vw,36px)">Background</h2>
+    <section style="padding:clamp(48px,7vw,88px) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)">
+      <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-fluid-l)">Background</h2>
       <div style="min-width:0">
-        <div style="padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid var(--line);">
+        <div style="padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid var(--border);">
           <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;margin-bottom:10px">
-            <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">Senior Product Designer</h3>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">2023 to present</span>
+            <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">Senior Product Designer</h3>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">2023 to present</span>
           </div>
-          <div style="font-size:14px;font-weight:600;letter-spacing:normal;color:var(--ink-2);margin-bottom:10px">Clade · New York, NY</div>
-          <p style="margin:0;max-width:64ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">Fintech connecting LPs and GPs. Restructured Figma, defined the UI, then planned and built the design system in code. Discovery, research and prototypes toward a better market fit.</p>
+          <div style="font-size:var(--font-size-sm);font-weight:600;letter-spacing:normal;color:var(--text-body);margin-bottom:10px">Clade · New York, NY</div>
+          <p style="margin:0;max-width:64ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">Fintech connecting LPs and GPs. Restructured Figma, defined the UI, then planned and built the design system in code. Discovery, research and prototypes toward a better market fit.</p>
         </div>
-        <div style="padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid var(--line);">
+        <div style="padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid var(--border);">
           <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;margin-bottom:10px">
-            <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">Senior Product Designer</h3>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">2021 to 2023</span>
+            <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">Senior Product Designer</h3>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">2021 to 2023</span>
           </div>
-          <div style="font-size:14px;font-weight:600;letter-spacing:normal;color:var(--ink-2);margin-bottom:10px">Loadsmart · Chicago, IL</div>
-          <p style="margin:0;max-width:64ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">Helping private fleets find loads for spare capacity, sponsored by The Home Depot. Ran qualitative and quantitative research and took the findings to product strategy with the PM and VP of Product.</p>
+          <div style="font-size:var(--font-size-sm);font-weight:600;letter-spacing:normal;color:var(--text-body);margin-bottom:10px">Loadsmart · Chicago, IL</div>
+          <p style="margin:0;max-width:64ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">Helping private fleets find loads for spare capacity, sponsored by The Home Depot. Ran qualitative and quantitative research and took the findings to product strategy with the PM and VP of Product.</p>
         </div>
-        <div style="padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid var(--line);">
+        <div style="padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid var(--border);">
           <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;margin-bottom:10px">
-            <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">Design Lead</h3>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">2019 to 2021</span>
+            <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">Design Lead</h3>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">2019 to 2021</span>
           </div>
-          <div style="font-size:14px;font-weight:600;letter-spacing:normal;color:var(--ink-2);margin-bottom:10px">BTG Pactual · São Paulo, SP</div>
-          <p style="margin:0;max-width:64ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">Three roles in three years (consultant, senior, lead) across three business areas. First designer on BTG+, the digital bank. Led five designers on the advisors platform for four business verticals.</p>
+          <div style="font-size:var(--font-size-sm);font-weight:600;letter-spacing:normal;color:var(--text-body);margin-bottom:10px">BTG Pactual · São Paulo, SP</div>
+          <p style="margin:0;max-width:64ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">Three roles in three years (consultant, senior, lead) across three business areas. First designer on BTG+, the digital bank. Led five designers on the advisors platform for four business verticals.</p>
         </div>
-        <div style="padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+        <div style="padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
           <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;margin-bottom:10px">
-            <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">Consultant &amp; in-house</h3>
-            <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">2010 to 2019</span>
+            <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">Consultant &amp; in-house</h3>
+            <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">2010 to 2019</span>
           </div>
-          <div style="font-size:14px;font-weight:600;letter-spacing:normal;color:var(--ink-2);margin-bottom:10px">CCEE · Itaú · Ativa · Loopkey</div>
-          <p style="margin:0;max-width:64ch;font-size:14px;line-height:1.6;color:var(--ink-4);text-wrap:pretty">Electricity auctions, bank credit-loan tools under untouchable legacy UI, a digital investment platform and a smart-lock app, mostly as the solo designer. Before that, six years as a graphic designer and art director.</p>
+          <div style="font-size:var(--font-size-sm);font-weight:600;letter-spacing:normal;color:var(--text-body);margin-bottom:10px">CCEE · Itaú · Ativa · Loopkey</div>
+          <p style="margin:0;max-width:64ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty">Electricity auctions, bank credit-loan tools under untouchable legacy UI, a digital investment platform and a smart-lock app, mostly as the solo designer. Before that, six years as a graphic designer and art director.</p>
         </div>
         <div style="margin-top:28px">
           <details data-picker="" style="position:relative;display:inline-block">
-            <summary style="list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border:1px solid var(--line);color:var(--ink);border-radius:2px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease,border-color .2s ease" style-hover="background:var(--paper-2);border-color:var(--line-ink)">Résumé <span style="color:var(--red)">↓</span></summary>
-            <div style="position:absolute;top:calc(100% + 8px);left:0;min-width:190px;background:var(--paper);border:1px solid var(--line);box-shadow:0 18px 44px -26px color-mix(in srgb,var(--shadow-ink) 34%,transparent);z-index:30">
-              <a href="assets/nayara-marques-resume.pdf" download style="display:flex;justify-content:space-between;gap:16px;padding:13px 16px;border-bottom:1px solid var(--paper-2);text-decoration:none;color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--paper-2)">PDF <span style="color:var(--ink-6)">↓</span></a>
-              <a href="assets/nayara-marques-resume.md" download style="display:flex;justify-content:space-between;gap:16px;padding:13px 16px;text-decoration:none;color:var(--ink);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--paper-2)">Markdown <span style="color:var(--ink-6)">↓</span></a>
+            <summary style="list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);border:1px solid var(--border);color:var(--text-strong);border-radius:var(--radius-sm);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;white-space:nowrap;transition:background .2s ease,border-color .2s ease" style-hover="background:var(--surface-band);border-color:var(--border-emphatic)">Résumé <span style="color:var(--brand-mark)">↓</span></summary>
+            <div style="position:absolute;top:calc(100% + 8px);left:0;min-width:190px;background:var(--surface-page);border:1px solid var(--border);box-shadow:var(--shadow-lg);z-index:30">
+              <a href="assets/nayara-marques-resume.pdf" download style="display:flex;justify-content:space-between;gap:var(--space-md);padding:13px var(--space-md);border-bottom:1px solid var(--border-subtle);text-decoration:none;color:var(--text-strong);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">PDF <span style="color:var(--text-meta)">↓</span></a>
+              <a href="assets/nayara-marques-resume.md" download style="display:flex;justify-content:space-between;gap:var(--space-md);padding:13px var(--space-md);text-decoration:none;color:var(--text-strong);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">Markdown <span style="color:var(--text-meta)">↓</span></a>
             </div>
           </details>
         </div>
       </div>
     </section>
 
-    <section style="background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax);padding:clamp(48px,7vw,88px) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--line)">
-      <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(24px,3vw,36px)">Tools &amp; range</h2>
-      <div style="display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line)">
-      <div style="flex:1 1 560px;min-width:0;background:var(--paper);padding:clamp(18px,2.4vw,26px) clamp(18px,2.6vw,30px)">
-        <div style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:clamp(14px,3vw,26px);align-items:baseline;padding:12px 0;">
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Design</div>
-          <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">Figma · design systems · prototyping · user research · usability testing · workshop facilitation · IA · interaction · visual design</div>
+    <section style="background:var(--surface-band);box-shadow:0 0 0 100vmax var(--surface-band);clip-path:inset(0 -100vmax);padding:clamp(48px,7vw,88px) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)">
+      <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-fluid-l)">Tools &amp; range</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:1px;background:var(--border);border:1px solid var(--border)">
+      <div style="flex:1 1 560px;min-width:0;background:var(--surface-page);padding:clamp(18px,2.4vw,26px) clamp(18px,2.6vw,30px)">
+        <div style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:clamp(14px,3vw,26px);align-items:baseline;padding:var(--space-sm) 0;">
+          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">Design</div>
+          <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Figma · design systems · prototyping · user research · usability testing · workshop facilitation · IA · interaction · visual design</div>
         </div>
-        <div style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:clamp(14px,3vw,26px);align-items:baseline;padding:12px 0;border-top:1px solid var(--line);">
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">In code</div>
-          <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">HTML/CSS/JS · React · design tokens · Git · GitHub · CI · design-to-code, through to the PR</div>
+        <div style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:clamp(14px,3vw,26px);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
+          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">In code</div>
+          <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">HTML/CSS/JS · React · design tokens · Git · GitHub · CI · design-to-code, through to the PR</div>
         </div>
-        <div style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:clamp(14px,3vw,26px);align-items:baseline;padding:12px 0;border-top:1px solid var(--line);">
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">AI-native</div>
-          <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">Claude Design, idea to prototype · Claude Code, shipping to the repo · Lovable · v0 · spec-driven authoring · component automation · validation systems</div>
+        <div style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:clamp(14px,3vw,26px);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
+          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">AI-native</div>
+          <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Claude Design, idea to prototype · Claude Code, shipping to the repo · Lovable · v0 · spec-driven authoring · component automation · validation systems</div>
         </div>
-        <div style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:clamp(14px,3vw,26px);align-items:baseline;padding:12px 0;border-top:1px solid var(--line);">
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6)">Data &amp; ops</div>
-          <div style="font-size:14px;font-weight:500;letter-spacing:normal;line-height:1.6;color:var(--ink);text-wrap:pretty">Mixpanel · Maze · Useberry · Google Tag Manager · Notion · Jira · Shortcut</div>
+        <div style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:clamp(14px,3vw,26px);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
+          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta)">Data &amp; ops</div>
+          <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Mixpanel · Maze · Useberry · Google Tag Manager · Notion · Jira · Shortcut</div>
         </div>
       </div>
-      <div data-tools-note="" style="flex:1 1 280px;min-width:0;max-width:340px;background:var(--paper);padding:clamp(20px,2.6vw,26px)">
-        <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:14px">On tools</div>
-        <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">This is what I have used, not a requirement. AI has collapsed the learning curve on tooling; the judgement underneath transfers.</p>
+      <div data-tools-note="" style="flex:1 1 280px;min-width:0;max-width:340px;background:var(--surface-page);padding:clamp(20px,2.6vw,26px)">
+        <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:14px">On tools</div>
+        <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">This is what I have used, not a requirement. AI has collapsed the learning curve on tooling; the judgement underneath transfers.</p>
       </div>
       </div>
     </section>
 
 
-    <section style="background:var(--ink);color:var(--paper);box-shadow:0 0 0 100vmax var(--ink);clip-path:inset(0 -100vmax);padding:clamp(56px,9vw,120px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
-      <h2 style="font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1;letter-spacing:-0.042em;margin:0;text-wrap:balance">Let's work together.</h2>
+    <section style="background:var(--surface-inverse);color:var(--text-on-inverse);box-shadow:0 0 0 100vmax var(--surface-inverse);clip-path:inset(0 -100vmax);padding:clamp(56px,9vw,120px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
+      <h2 style="font-weight:500;font-size:var(--font-size-2xl-cta);line-height:var(--leading-none);letter-spacing:-0.042em;margin:0;text-wrap:balance">Let's work together.</h2>
       <div>
-        <p style="margin:0 0 26px;font-size:16px;line-height:1.7;color:var(--on-ink-muted);text-wrap:pretty">Senior, lead and founding design roles, or consulting. Most interested in AI-forward companies early enough that decisions are still open, and small enough that I work with the people making them. Remote, across time zones.</p>
-        <a href="contact.html" style="display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--paper);color:var(--ink);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--rust);color:var(--white)">
+        <p style="margin:0 0 26px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty">Senior, lead and founding design roles, or consulting. Most interested in AI-forward companies early enough that decisions are still open, and small enough that I work with the people making them. Remote, across time zones.</p>
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--surface-page);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--accent);color:var(--surface-card)">
           Get in touch <span>→</span>
         </a>
       </div>

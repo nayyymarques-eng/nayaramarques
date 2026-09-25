@@ -8,8 +8,8 @@ scan   lists every literal colour in a CSS context, grouped as
        EXACT (equals a token: applied automatically), NEAR (closest token and its distance:
        needs the owner's decision), ALLOWED (COL-02 exceptions).
 apply  replaces EXACT matches, plus the NEAR ones listed in decisions.json:
-       {"#e9e7e2": "paper-2", "#e8e6e1": {"border": "line-4", "default": "paper-3"},
-        "#e4eef4": "color-mix(in srgb, var(--rust) 12%, var(--white))", "#cccccc": "keep"}
+       {"#e9e7e2": "surface-band", "#e8e6e1": {"border": "border-subtle", "default": "surface-hover"},
+        "#e4eef4": "surface-accent-tint", "#cccccc": "keep"}
        It never rewrites custom-property definitions, never swaps in a token that the same file
        redefines, and adds the tokens stylesheet to any page that lacks it.
 Only CSS contexts are touched (style / style-before / style-after / style-hover attributes,
@@ -46,10 +46,30 @@ def rgb(h):
     return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 
+PRIMITIVE = re.compile(r'^(?:sand|slate|blue|red|green|clay)-\d+$')
+
+
 def load_tokens():
+    """hex -> role names. Resolves var() chains, so roles match by value; never offers a primitive
+    or a temporary alias (the names after the "Temporary aliases" comment)."""
+    text = open(TOKENS).read()
+    alias_block = text.split('Temporary aliases', 1)[1] if 'Temporary aliases' in text else ''
+    aliases = set(re.findall(r'--([a-z0-9-]+)\s*:', alias_block))
+    decl = dict(re.findall(r'--([a-z0-9-]+):\s*([^;]+?)\s*;', text))
+
+    def resolve(v, depth=0):
+        m = re.match(r'^var\(--([a-z0-9-]+)\)$', v.strip())
+        if m and depth < 10 and m.group(1) in decl:
+            return resolve(decl[m.group(1)], depth + 1)
+        return v.strip()
+
     toks = {}
-    for name, val in re.findall(r'--([a-z0-9-]+):\s*(#[0-9a-fA-F]{3,6})\s*;', open(TOKENS).read()):
-        toks.setdefault(norm(val), []).append(name)
+    for name, val in decl.items():
+        if name in aliases or PRIMITIVE.match(name):
+            continue
+        val = resolve(val)
+        if re.match(r'^#[0-9a-fA-F]{3,6}$', val):
+            toks.setdefault(norm(val), []).append(name)
     return toks
 
 
@@ -62,24 +82,22 @@ def prop_of(s, pos):
 
 
 def pick(names, prop):
-    """Several tokens can share a value (ink / line-ink). Choose by the job the property does."""
-    names = [n for n in names if not n.startswith('term-')] or names
+    """Several roles can share a value (text-strong / border-emphatic). Choose by the job the property does."""
     if prop.startswith('border') or prop == 'outline':
-        pref = ('line',)
+        pref = ('border', 'border-subtle', 'border-strong', 'border-emphatic')
     elif prop in ('color', 'fill', 'stroke'):
-        pref = ('ink', 'on-ink', 'rust', 'red', 'gained', 'traded')
+        pref = ('text-strong', 'text-body', 'text-muted', 'text-on-inverse', 'accent', 'status-gain', 'status-cost')
     else:
-        pref = ('paper', 'white', 'ink', 'line')
+        pref = ('surface-page', 'surface-band', 'surface-card', 'surface-inverse')
     for p in pref:
-        for n in names:
-            if n == p or n.startswith(p + '-') or n.startswith(p):
-                return n
+        if p in names:
+            return p
     return names[0]
 
 
 def nearest(h):
     r = rgb(h)
-    site = [t for t, ns in TOKENS_BY_HEX.items() if any(not n.startswith('term-') for n in ns)]  # terminal tokens are for the CI mock only
+    site = [t for t, ns in TOKENS_BY_HEX.items() if any(n != 'text-on-inverse-mock' for n in ns)]  # the mock text colour is for mockups only
     best = min(site, key=lambda t: sum((a - b) ** 2 for a, b in zip(r, rgb(t))))
     dist = max(abs(a - b) for a, b in zip(r, rgb(best)))
     return best, dist

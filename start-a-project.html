@@ -21,8 +21,12 @@
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <style id="boot-style">
-  html { background:var(--paper); color:var(--ink); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--surface-page); color:var(--text-strong); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -32,14 +36,14 @@
 <script>document.documentElement.classList.add('booting');</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--paper);z-index:9999">
-  <div style="height:57px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
-  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--surface-page);z-index:9999">
+  <div style="height:57px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 var(--space-2xl);gap:var(--space-sm)"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) var(--space-2xl) 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--line);animation:none"></i>
-    <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
-    <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
-    <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--border);animation:none"></i>
+    <i style="width:min(92%,620px);height:14px;margin-top:var(--space-fluid-l)"></i>
+    <i style="width:min(86%,580px);height:14px;margin-top:var(--space-sm)"></i>
+    <i style="width:min(64%,430px);height:14px;margin-top:var(--space-sm)"></i>
   </div>
 </div>
 <script>
@@ -74,13 +78,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
 <style>
   html { -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
   * { box-sizing: border-box; }
-  a { color: var(--rust); text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: var(--rust-hover); }
-  ::selection { background: var(--ink); color: var(--paper); }
-  input, select, textarea { font-family: Archivo, system-ui, sans-serif; font-size: 16px; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 2px; padding: 12px 14px; width: 100%; }
-  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--line-ink); outline-offset: 2px; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--accent-hover); }
+  ::selection { background: var(--surface-inverse); color: var(--text-on-inverse); }
+  input, select, textarea { font-family: var(--font-sans); font-size: var(--font-size-md); color: var(--text-strong); background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: var(--space-sm) 14px; width: 100%; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--border-emphatic); outline-offset: 2px; }
   @keyframes lineUp { from { transform: translateY(104%); filter: blur(5px); } to { transform: none; filter: blur(0); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
 </style>
@@ -92,39 +96,39 @@
 
   <main style="flex:1;width:100%">
 
-    <section style="max-width:1400px;margin:0 auto;min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 32px">
-      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:var(--rust);margin-bottom:clamp(20px,3vw,32px)">Start a project</div>
-      <h1 style="font-weight:500;font-size:clamp(34px,5.2vw,68px);line-height:0.94;letter-spacing:-0.045em;margin:0 0 clamp(20px,3vw,28px);max-width:15ch;text-wrap:balance">
+    <section style="max-width:1400px;margin:0 auto;min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) var(--space-2xl)">
+      <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--accent);margin-bottom:clamp(20px,3vw,32px)">Start a project</div>
+      <h1 style="font-weight:500;font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 clamp(20px,3vw,28px);max-width:15ch;text-wrap:balance">
         <span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Six questions, then a call.</span></span>
       </h1>
-      <div style="height:1px;background:var(--line);margin-bottom:clamp(20px,3vw,28px)"></div>
-      <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);text-wrap:pretty">So the call can be about which model fits and what it costs. About two minutes.</p>
+      <div style="height:1px;background:var(--border);margin-bottom:clamp(20px,3vw,28px)"></div>
+      <p style="margin:0;max-width:58ch;font-size:var(--font-size-sublead);font-weight:400;line-height:var(--leading-snug);letter-spacing:-0.015em;color:var(--text-body);text-wrap:pretty">So the call can be about which model fits and what it costs. About two minutes.</p>
     </section>
 
-    <section style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(36px,5vw,64px) 32px">
+    <section style="background:var(--surface-band);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
         <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);align-items:flex-start">
-          <div style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:var(--ink-6)">The brief</div>
+          <div style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-meta)">The brief</div>
           <div style="flex:1 1 460px;min-width:0;max-width:640px">
             <div style="display:grid;gap:22px">
 
-              <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">Your name and company</span>
+              <label style="display:grid;gap:var(--space-xs)">
+                <span style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body)">Your name and company</span>
                 <input ref="{{ f1 }}" type="text" placeholder="Name · Company" autocomplete="organization">
               </label>
 
-              <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">Email</span>
+              <label style="display:grid;gap:var(--space-xs)">
+                <span style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body)">Email</span>
                 <input ref="{{ f2 }}" type="email" placeholder="you@company.com" autocomplete="email">
               </label>
 
-              <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">What are you building, and what is in the way?</span>
+              <label style="display:grid;gap:var(--space-xs)">
+                <span style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body)">What are you building, and what is in the way?</span>
                 <textarea ref="{{ f3 }}" rows="4" placeholder="A few sentences is plenty."></textarea>
               </label>
 
-              <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">Where the work stands</span>
+              <label style="display:grid;gap:var(--space-xs)">
+                <span style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body)">Where the work stands</span>
                 <select ref="{{ f4 }}">
                   <option>An idea, nothing built</option>
                   <option>Something built, not yet shipped</option>
@@ -133,8 +137,8 @@
                 </select>
               </label>
 
-              <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">When you want to start</span>
+              <label style="display:grid;gap:var(--space-xs)">
+                <span style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body)">When you want to start</span>
                 <select ref="{{ f5 }}">
                   <option>As soon as possible</option>
                   <option>Within a month</option>
@@ -143,8 +147,8 @@
                 </select>
               </label>
 
-              <label style="display:grid;gap:8px">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;color:var(--ink-2)">Budget you have in mind</span>
+              <label style="display:grid;gap:var(--space-xs)">
+                <span style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body)">Budget you have in mind</span>
                 <select ref="{{ f6 }}">
                   <option>Not decided yet</option>
                   <option>Under $10k</option>
@@ -153,12 +157,12 @@
                   <option>Over $50k</option>
                   <option>Monthly retainer</option>
                 </select>
-                <span style="font-size:14px;line-height:1.6;color:var(--ink-6)">A range is fine. It tells me which model to propose, or that none fits.</span>
+                <span style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta)">A range is fine. It tells me which model to propose, or that none fits.</span>
               </label>
 
-              <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;padding-top:6px">
-                <button type="button" onClick="{{ send }}" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:Archivo,sans-serif;padding:14px 24px;background:var(--ink);color:var(--paper);border:1px solid var(--line-ink);border-radius:2px;font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--rust);border-color:var(--rust)">Send the brief →</button>
-                <span style="font-size:14px;line-height:1.6;color:var(--ink-6)">{{ status }}</span>
+              <div style="display:flex;flex-wrap:wrap;gap:var(--space-md);align-items:center;padding-top:6px">
+                <button type="button" onClick="{{ send }}" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:Archivo,sans-serif;padding:14px var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border:1px solid var(--border-emphatic);border-radius:var(--radius-sm);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--accent);border-color:var(--accent)">Send the brief →</button>
+                <span style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta)">{{ status }}</span>
               </div>
 
             </div>
@@ -168,23 +172,23 @@
     </section>
 
     <section>
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(36px,5vw,64px) 32px">
+      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
         <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);align-items:flex-start">
-          <div style="flex:0 0 200px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:var(--ink-6)">What happens next</div>
+          <div style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-meta)">What happens next</div>
           <div style="flex:1 1 460px;min-width:0;max-width:66ch">
-            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)">
-              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:var(--rust)">01</span>
-              <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink);text-wrap:pretty">I reply within two working days, with a time or the reason it is not a fit.</p>
+            <div style="display:flex;gap:var(--space-md);align-items:baseline;padding:var(--space-md) 0;border-top:1px solid var(--border)">
+              <span style="flex:0 0 28px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);color:var(--accent)">01</span>
+              <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">I reply within two working days, with a time or the reason it is not a fit.</p>
             </div>
-            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)">
-              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:var(--rust)">02</span>
-              <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink);text-wrap:pretty">A thirty-minute call. I ask what you have tried, you ask what you like. No deck.</p>
+            <div style="display:flex;gap:var(--space-md);align-items:baseline;padding:var(--space-md) 0;border-top:1px solid var(--border)">
+              <span style="flex:0 0 28px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);color:var(--accent)">02</span>
+              <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">A thirty-minute call. I ask what you have tried, you ask what you like. No deck.</p>
             </div>
-            <div style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-              <span style="flex:0 0 28px;font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;color:var(--rust)">03</span>
-              <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink);text-wrap:pretty">A written proposal within three days: model, scope, price and exclusions.</p>
+            <div style="display:flex;gap:var(--space-md);align-items:baseline;padding:var(--space-md) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+              <span style="flex:0 0 28px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);color:var(--accent)">03</span>
+              <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">A written proposal within three days: model, scope, price and exclusions.</p>
             </div>
-            <p style="margin:20px 0 0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty">Prefer to just write? <a href="contact.html">Email me directly</a>.</p>
+            <p style="margin:var(--space-lg) 0 0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty">Prefer to just write? <a href="contact.html">Email me directly</a>.</p>
           </div>
         </div>
       </div>

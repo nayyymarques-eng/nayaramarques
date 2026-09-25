@@ -20,9 +20,9 @@ If the change is meant to move only specific colours (a token merge, a hex → t
 
 1. **Source.** `python3 harness/check_source.py`. It must end `0 failure(s)`. Warnings (CNT-04 em dashes) never block; list only the ones in files you touched.
 2. **Fresh files.** The preview server caches. Before checking, reload every page and shared component without cache:
-   `for (const f of PAGES) await fetch('/'+f+'.html',{cache:'reload'})`, and the same for `*.dc.html` and `_ds/.../tokens/colors.css`. A stale copy once made a fixed page look broken and a broken page look fixed.
+   `for (const f of PAGES) await fetch('/'+f+'.html',{cache:'reload'})`, and the same for `*.dc.html` and every `_ds/.../tokens/*.css`. A stale copy once made a fixed page look broken and a broken page look fixed.
 3. **Rendered, desktop.** For every page in `PAGES` (below): navigate, wait about 2.5s for the runtime, run
-   `eval(await (await fetch('/harness/check_pages.js')).text())`. Each must return `pass`.
+   `eval(await (await fetch('/harness/check_pages.js')).text())`. Each must return `pass`. A trailing `[warn COL-08 …]` lists text below WCAG AA contrast; it does not fail the page until COL-08 is promoted (CLAUDE.md), but report it.
 4. **Rendered, phone.** `resize_window` preset `mobile`, repeat step 3 on the pages you changed plus `index.html`, then preset `desktop` again.
 5. **Fingerprint** (if taken): on each page run `('compare', [<rgb triples allowed to change>])`. Anything reported as UNEXPECTED is a regression until explained.
 6. **Links.** Every local `href`/`src` points to a file that exists (a short Python walk over `*.html` is enough).

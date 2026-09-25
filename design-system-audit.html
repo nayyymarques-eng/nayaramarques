@@ -31,29 +31,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
   * { box-sizing: border-box; }
-  ::selection { background: var(--ink); color: var(--paper); }
+  ::selection { background: var(--surface-inverse); color: var(--text-on-inverse); }
   @keyframes lineUp { from { transform: translateY(104%); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
 
 :root{
-  /* Colours come from the design-system tokens. */
-  --font-sans:Archivo,system-ui,sans-serif;
-  --weight-regular:400; --weight-medium:500; --weight-semibold:600;
-  --size-display:clamp(34px,5.2vw,68px); --size-mega:clamp(28px,4vw,52px); --size-title:clamp(24px,3.4vw,44px);
-  --size-statement:clamp(20px,2.6vw,30px); --size-lead:clamp(19px,2.2vw,26px);
-  --size-body-lg:20px; --size-body:16px; --size-small:14px; --size-micro:12px; --size-label:11px; --size-eyebrow:10px;
-  --track-display:-0.045em; --track-mega:-0.042em; --track-title:-0.036em; --track-statement:-0.03em;
-  --track-lead:-0.026em; --track-label:0.12em; --track-eyebrow:0.14em;
-  --leading-display:0.94; --leading-title:1.06; --leading-lead:1.16; --leading-body:1.7; --leading-small:1.6;
-  --space-1:4px; --space-3:8px; --space-5:12px; --space-7:16px; --space-9:20px; --space-11:24px;
-  --space-14:32px; --space-16:36px; --space-18:44px;
-  --radius:2px; --radius-pill:999px;
-  --section-y:clamp(40px,6vw,72px); --section-y-lg:clamp(44px,7vw,88px); --section-y-xl:clamp(48px,8vw,110px);
-  --card-p:clamp(20px,2.6vw,28px); --page-max:1400px;
+  /* Tokens come from the design-system token files; only the page's own values live here. */
+  --size-micro:12px;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 
@@ -61,21 +53,21 @@
 html{scroll-padding-top:70px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 *,*::before,*::after{box-sizing:inherit}
-.audit{background:var(--surface-page);color:var(--text-body);font:var(--weight-regular) var(--size-body)/var(--leading-body) var(--font-sans)}
-.wrap{max-width:var(--page-max);margin:0 auto;padding:0 var(--space-14)}
-@media (max-width:640px){.wrap{padding:0 var(--space-9)}}
-.audit section{padding:var(--section-y-lg) 0;border-top:1px solid var(--line)}
+.audit{background:var(--surface-page);color:var(--text-body);font:var(--weight-regular) var(--font-size-md)/var(--leading-body) var(--font-sans)}
+.wrap{max-width:var(--page-max);margin:0 auto;padding:0 var(--space-2xl)}
+@media (max-width:640px){.wrap{padding:0 var(--space-lg)}}
+.audit section{padding:var(--section-y-lg) 0;border-top:1px solid var(--border)}
 .band{background:var(--surface-band)}
 .audit h1,.audit h2,.audit h3{color:var(--text-strong);font-weight:var(--weight-medium);margin:0}
-h1{font-size:var(--size-display);line-height:var(--leading-display);letter-spacing:var(--track-display);max-width:17ch;text-wrap:balance}
-h2{font-size:var(--size-title);line-height:var(--leading-title);letter-spacing:var(--track-title);max-width:22ch;text-wrap:balance}
-h3{font-size:var(--size-statement);line-height:1.22;letter-spacing:var(--track-statement)}
-.audit p{margin:0 0 var(--space-9);max-width:62ch}
-.eyebrow{font-size:var(--size-eyebrow);font-weight:var(--weight-semibold);letter-spacing:var(--track-eyebrow);
-  text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-9)}
-.eyebrow.accent{color:var(--text-accent)}
-.lead{font-size:var(--size-lead);line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--text-body);max-width:44ch}
-.audit p.sub{font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);max-width:58ch;margin:0;text-wrap:pretty}
+h1{font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);max-width:17ch;text-wrap:balance}
+h2{font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);max-width:22ch;text-wrap:balance}
+h3{font-size:var(--font-size-xl);line-height:1.22;letter-spacing:var(--tracking-heading)}
+.audit p{margin:0 0 var(--space-lg);max-width:62ch}
+.eyebrow{font-size:var(--font-size-2xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-lg)}
+.eyebrow.accent{color:var(--accent)}
+.lead{font-size:var(--font-size-xl-lead);line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--text-body);max-width:44ch}
+.audit p.sub{font-size:var(--font-size-sublead);font-weight:400;line-height:var(--leading-snug);letter-spacing:-0.015em;color:var(--text-body);max-width:58ch;margin:0;text-wrap:pretty}
 
 
 
@@ -83,61 +75,61 @@ h3{font-size:var(--size-statement);line-height:1.22;letter-spacing:var(--track-s
 
 
 
-.hero{padding-top:var(--section-y-xl);padding-bottom:var(--section-y)}
-.audit a.btn{display:inline-block;font-size:var(--size-label);font-weight:var(--weight-semibold);letter-spacing:var(--track-label);
-  text-transform:uppercase;text-decoration:none;padding:14px 24px;border-radius:var(--radius);
+.hero{padding-top:var(--section-y-xl);padding-bottom:clamp(40px,6vw,72px)}
+.audit a.btn{display:inline-block;font-size:var(--font-size-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-label);
+  text-transform:uppercase;text-decoration:none;padding:14px var(--space-xl);border-radius:var(--radius-sm);
   background:var(--text-strong);color:var(--surface-page);border:1px solid var(--text-strong)}
-.audit a.btn.outline{background:transparent;color:var(--text-strong);border-color:var(--line)}
-.audit a.btn:hover{background:var(--rust);border-color:var(--rust);color:var(--white)}
+.audit a.btn.outline{background:transparent;color:var(--text-strong);border-color:var(--border)}
+.audit a.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--surface-card)}
 .btn:focus-visible{outline:2px solid var(--text-strong);outline-offset:2px}
-.actions{display:flex;flex-wrap:wrap;gap:var(--space-5);margin-top:var(--space-11)}
-.audit p.under{font-size:var(--size-small);color:var(--text-meta);margin:var(--space-14) 0 0;max-width:62ch}
+.actions{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-xl)}
+.audit p.under{font-size:var(--font-size-sm);color:var(--text-meta);margin:var(--space-2xl) 0 0;max-width:62ch}
 .under a{display:inline-block}
-.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:var(--space-14) 0 0}
+.grid{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);margin:var(--space-2xl) 0 0}
 .grid.four{grid-template-columns:repeat(4,1fr)} .grid.two{grid-template-columns:repeat(2,1fr)}
 @media (max-width:980px){.grid.four{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:720px){.grid.four,.grid.two{grid-template-columns:1fr}}
-.cell{background:var(--surface-card);padding:var(--card-p)}
-.cell p{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body);margin:0}
-.cell p+p{margin-top:var(--space-5)}
-.cell p.stat,.stat{font-size:var(--size-title);line-height:1;letter-spacing:var(--track-title);color:var(--text-strong);font-weight:var(--weight-regular);margin-bottom:var(--space-3)}
-.label{font-size:var(--size-label);font-weight:var(--weight-semibold);letter-spacing:var(--track-label);text-transform:uppercase;margin:0 0 var(--space-5)}
-.label.gained{color:var(--rust)} .label.traded{color:var(--ink-6)} .label.meta{color:var(--text-meta)}
-ul.deliver{list-style:none;margin:var(--space-14) 0 0;padding:0;border-top:1px solid var(--line)}
-ul.deliver li{border-bottom:1px solid var(--line);padding:var(--space-11) 0;display:grid;grid-template-columns:minmax(180px,22%) 1fr;gap:var(--space-11)}
-@media (max-width:720px){ul.deliver li{grid-template-columns:1fr;gap:var(--space-3)}}
-ul.deliver b{color:var(--text-strong);font-weight:var(--weight-medium);font-size:var(--size-body)}
-ul.deliver span{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body)}
-ol.steps{list-style:none;counter-reset:s;margin:var(--space-14) 0 0;padding:0;border-top:1px solid var(--line)}
-ol.steps li{counter-increment:s;border-bottom:1px solid var(--line);padding:var(--space-11) 0;display:grid;grid-template-columns:44px 1fr;gap:var(--space-9)}
-ol.steps li::before{content:counter(s,decimal-leading-zero);font-size:var(--size-label);font-weight:var(--weight-semibold);
-  letter-spacing:var(--track-label);color:var(--text-accent);padding-top:5px}
-ol.steps b{display:block;color:var(--text-strong);font-weight:var(--weight-medium);margin-bottom:var(--space-1)}
-ol.steps span{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body)}
-.price{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:var(--space-14)}
+.cell{background:var(--surface-card);padding:var(--space-fluid-m)}
+.cell p{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);margin:0}
+.cell p+p{margin-top:var(--space-sm)}
+.cell p.stat,.stat{font-size:var(--font-size-2xl);line-height:var(--leading-none);letter-spacing:var(--tracking-title);color:var(--text-strong);font-weight:var(--weight-regular);margin-bottom:var(--space-xs)}
+.label{font-size:var(--font-size-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-label);text-transform:uppercase;margin:0 0 var(--space-sm)}
+.label.gained{color:var(--accent)} .label.traded{color:var(--text-meta)} .label.meta{color:var(--text-meta)}
+ul.deliver{list-style:none;margin:var(--space-2xl) 0 0;padding:0;border-top:1px solid var(--border)}
+ul.deliver li{border-bottom:1px solid var(--border);padding:var(--space-xl) 0;display:grid;grid-template-columns:minmax(180px,22%) 1fr;gap:var(--space-xl)}
+@media (max-width:720px){ul.deliver li{grid-template-columns:1fr;gap:var(--space-xs)}}
+ul.deliver b{color:var(--text-strong);font-weight:var(--weight-medium);font-size:var(--font-size-md)}
+ul.deliver span{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)}
+ol.steps{list-style:none;counter-reset:s;margin:var(--space-2xl) 0 0;padding:0;border-top:1px solid var(--border)}
+ol.steps li{counter-increment:s;border-bottom:1px solid var(--border);padding:var(--space-xl) 0;display:grid;grid-template-columns:44px 1fr;gap:var(--space-lg)}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font-size:var(--font-size-xs);font-weight:var(--weight-semibold);
+  letter-spacing:var(--tracking-label);color:var(--accent);padding-top:5px}
+ol.steps b{display:block;color:var(--text-strong);font-weight:var(--weight-medium);margin-bottom:var(--space-2xs)}
+ol.steps span{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:var(--space-2xl)}
 @media (max-width:720px){.price{grid-template-columns:1fr}}
-.price>div{background:var(--surface-card);padding:var(--card-p)}
-.price .big{font-size:var(--size-mega);line-height:1;letter-spacing:var(--track-mega);color:var(--text-strong);font-weight:var(--weight-medium);margin:0}
-.tick{list-style:none;margin:var(--space-9) 0 0;padding:0}
-.tick li{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body);padding:var(--space-3) 0 var(--space-3) var(--space-11);position:relative}
-.tick li::before{content:"—";position:absolute;left:0;color:var(--text-accent)}
-.inverse{background:var(--surface-inverse);color:var(--on-ink-muted)}
-.inverse h2{color:var(--on-ink)} .inverse p{color:var(--on-ink-muted)} .inverse .eyebrow{color:var(--on-ink-muted)}
-.inverse .btn,.audit .inverse a.btn{background:var(--on-ink);color:var(--ink);border-color:var(--on-ink)}
-.audit .inverse a.btn:hover{background:var(--rust);border-color:var(--rust);color:var(--white)}
-details{border-bottom:1px solid var(--line);padding:var(--space-11) 0}
-details:first-of-type{border-top:1px solid var(--line);margin-top:var(--space-14)}
-summary{cursor:pointer;color:var(--text-strong);font-weight:var(--weight-medium);list-style:none;display:flex;justify-content:space-between;gap:var(--space-9)}
+.price>div{background:var(--surface-card);padding:var(--space-fluid-m)}
+.price .big{font-size:var(--font-size-2xl-cta);line-height:var(--leading-none);letter-spacing:var(--track-mega);color:var(--text-strong);font-weight:var(--weight-medium);margin:0}
+.tick{list-style:none;margin:var(--space-lg) 0 0;padding:0}
+.tick li{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);padding:var(--space-xs) 0 var(--space-xs) var(--space-xl);position:relative}
+.tick li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+.inverse{background:var(--surface-inverse);color:var(--text-on-inverse-muted)}
+.inverse h2{color:var(--text-on-inverse)} .inverse p{color:var(--text-on-inverse-muted)} .inverse .eyebrow{color:var(--text-on-inverse-muted)}
+.inverse .btn,.audit .inverse a.btn{background:var(--text-on-inverse);color:var(--text-strong);border-color:var(--text-on-inverse)}
+.audit .inverse a.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--surface-card)}
+details{border-bottom:1px solid var(--border);padding:var(--space-xl) 0}
+details:first-of-type{border-top:1px solid var(--border);margin-top:var(--space-2xl)}
+summary{cursor:pointer;color:var(--text-strong);font-weight:var(--weight-medium);list-style:none;display:flex;justify-content:space-between;gap:var(--space-lg)}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--text-accent);font-weight:var(--weight-semibold)}
+summary::after{content:"+";color:var(--accent);font-weight:var(--weight-semibold)}
 details[open] summary::after{content:"–"}
-details p{font-size:var(--size-small);line-height:var(--leading-small);color:var(--text-body);margin:var(--space-7) 0 0;max-width:70ch}
+details p{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);margin:var(--space-md) 0 0;max-width:70ch}
 summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 .author{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-18);align-items:start}
-@media (max-width:900px){.author{grid-template-columns:1fr;gap:var(--space-11)}}
-.foot{border-top:1px solid var(--line);padding-top:var(--space-14);padding-bottom:var(--space-14);font-size:var(--size-micro);color:var(--text-meta)}
+@media (max-width:900px){.author{grid-template-columns:1fr;gap:var(--space-xl)}}
+.foot{border-top:1px solid var(--border);padding-top:var(--space-2xl);padding-bottom:var(--space-2xl);font-size:var(--size-micro);color:var(--text-meta)}
 .foot a{color:var(--text-meta)}
-.audit a{color:var(--text-accent)}
+.audit a{color:var(--accent)}
 </style>
 </helmet>
 
@@ -149,7 +141,7 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 <header class="wrap hero">
   <p class="eyebrow accent">Audit design system</p>
   <h1><span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Is AI following your design system?</span></span></h1>
-  <div style="height:1px;background:var(--line);margin:clamp(20px,3vw,28px) 0"></div>
+  <div style="height:1px;background:var(--border);margin:clamp(20px,3vw,28px) 0"></div>
   <p class="sub">An agent builds from what your system gives it. Where it is clear, the agent reuses your parts. Where it is not, it guesses: raw values, rebuilt components, parts nobody asked for. The audit shows where AI follows your system, where it invents, and what each gap costs.</p>
   <div class="actions">
     <a class="btn" href="#book">Book an audit</a>
@@ -162,17 +154,17 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <div class="wrap">
     <p class="eyebrow">Why now</p>
     <h2>If AI writes your UI, your design system is the budget</h2>
-    <p style="margin-top:var(--space-9)">When components and tokens are reachable, an agent writes less, reuses more and needs fewer corrections. When they are not, you pay for every guess in tokens, review and rework.</p>
+    <p style="margin-top:var(--space-lg)">When components and tokens are reachable, an agent writes less, reuses more and needs fewer corrections. When they are not, you pay for every guess in tokens, review and rework.</p>
     <div class="grid two">
       <div class="cell">
         <p class="label meta">Storybook's benchmark</p>
         <p class="stat">27%</p>
-        <p style="margin-top:var(--space-5)">fewer tokens to build the same UI when the agent can read the component library, with 2.76 times faster generation and 12.8% more reuse.</p>
+        <p style="margin-top:var(--space-sm)">fewer tokens to build the same UI when the agent can read the component library, with 2.76 times faster generation and 12.8% more reuse.</p>
       </div>
       <div class="cell">
         <p class="label meta">My own site, measured</p>
         <p class="stat">44%</p>
-        <p style="margin-top:var(--space-5)">shorter: the same case-study screen is 21,229 characters written raw and 11,961 built from components. About 2,300 tokens saved on one screen.</p>
+        <p style="margin-top:var(--space-sm)">shorter: the same case-study screen is 21,229 characters written raw and 11,961 built from components. About 2,300 tokens saved on one screen.</p>
       </div>
     </div>
   </div>
@@ -182,12 +174,12 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <div class="wrap">
     <p class="eyebrow">The cost of drift</p>
     <h2>Every value an agent guesses, you pay for twice</h2>
-    <p style="margin-top:var(--space-9)">Once when it is written, again when someone catches it in review. Drift is a throughput problem, not a tidiness one.</p>
+    <p style="margin-top:var(--space-lg)">Once when it is written, again when someone catches it in review. Drift is a throughput problem, not a tidiness one.</p>
     <div class="grid two">
-      <div class="cell"><p class="label traded">Tokens</p><h3>Raw values are long</h3><p style="margin-top:var(--space-5)">A component call is one line. The same part by hand is forty, and you pay for all forty every time.</p></div>
-      <div class="cell"><p class="label traded">Review</p><h3>Guesses land on a person</h3><p style="margin-top:var(--space-5)">An off-scale value looks right and reads wrong. Catching and fixing it costs more than generating it.</p></div>
-      <div class="cell"><p class="label traded">Consistency</p><h3>Near-misses ship</h3><p style="margin-top:var(--space-5)">Nine near-identical greys. A button rebuilt because the real one was hard to find. Nothing fails a test; the product feels loose.</p></div>
-      <div class="cell"><p class="label traded">Accessibility</p><h3>Conditions slip quietly</h3><p style="margin-top:var(--space-5)">Contrast below the minimum, motion that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></div>
+      <div class="cell"><p class="label traded">Tokens</p><h3>Raw values are long</h3><p style="margin-top:var(--space-sm)">A component call is one line. The same part by hand is forty, and you pay for all forty every time.</p></div>
+      <div class="cell"><p class="label traded">Review</p><h3>Guesses land on a person</h3><p style="margin-top:var(--space-sm)">An off-scale value looks right and reads wrong. Catching and fixing it costs more than generating it.</p></div>
+      <div class="cell"><p class="label traded">Consistency</p><h3>Near-misses ship</h3><p style="margin-top:var(--space-sm)">Nine near-identical greys. A button rebuilt because the real one was hard to find. Nothing fails a test; the product feels loose.</p></div>
+      <div class="cell"><p class="label traded">Accessibility</p><h3>Conditions slip quietly</h3><p style="margin-top:var(--space-sm)">Contrast below the minimum, motion that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></div>
     </div>
   </div>
 </section>
@@ -196,7 +188,7 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <div class="wrap">
     <p class="eyebrow">What the audit checks</p>
     <h2>Five pillars, one report</h2>
-    <p style="margin-top:var(--space-9)">They answer three questions: how AI reads your system, whether it follows it, and what it does when something is missing. Tested on Primer, Radix Themes, Carbon and Chakra UI: every one had findings worth fixing.</p>
+    <p style="margin-top:var(--space-lg)">They answer three questions: how AI reads your system, whether it follows it, and what it does when something is missing. Tested on Primer, Radix Themes, Carbon and Chakra UI: every one had findings worth fixing.</p>
     <ul class="deliver">
       <li><b>Values</b><span>Every hard-coded value in your components, checked against your tokens: equal to a token nobody found, or on no scale. Plus unused and duplicate tokens.</span></li>
       <li><b>People</b><span>Contrast on every declared pair, in every theme. Reduced motion, high contrast, visible focus, and right-to-left if you need it.</span></li>
@@ -211,12 +203,12 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
   <div class="wrap">
     <p class="eyebrow">What the audit finds</p>
     <h2>Four kinds of finding, and only two are mechanical</h2>
-    <p style="margin-top:var(--space-9)">Each costs something different to fix.</p>
+    <p style="margin-top:var(--space-lg)">Each costs something different to fix.</p>
     <div class="grid two">
-      <div class="cell"><p class="label gained">Mechanical</p><h3>A value that equals a token</h3><p style="margin-top:var(--space-5)">The decision exists; someone typed the number. Find, replace, and prove with a before-and-after render that nothing moved.</p></div>
-      <div class="cell"><p class="label traded">Needs a decision</p><h3>A value on no scale</h3><p style="margin-top:var(--space-5)">An optical nudge or drift: only your team can say. Grouped by where they cluster, so deciding takes minutes.</p></div>
-      <div class="cell"><p class="label gained">Affects people</p><h3>Contrast and motion</h3><p style="margin-top:var(--space-5)">Contrast in every theme, and motion against the reduced-motion setting. Teams fix these first.</p></div>
-      <div class="cell"><p class="label traded">Getting worse</p><h3>What AI invents</h3><p style="margin-top:var(--space-5)">A coding agent fills gaps by guessing. The audit shows what it made up and what it could not find.</p></div>
+      <div class="cell"><p class="label gained">Mechanical</p><h3>A value that equals a token</h3><p style="margin-top:var(--space-sm)">The decision exists; someone typed the number. Find, replace, and prove with a before-and-after render that nothing moved.</p></div>
+      <div class="cell"><p class="label traded">Needs a decision</p><h3>A value on no scale</h3><p style="margin-top:var(--space-sm)">An optical nudge or drift: only your team can say. Grouped by where they cluster, so deciding takes minutes.</p></div>
+      <div class="cell"><p class="label gained">Affects people</p><h3>Contrast and motion</h3><p style="margin-top:var(--space-sm)">Contrast in every theme, and motion against the reduced-motion setting. Teams fix these first.</p></div>
+      <div class="cell"><p class="label traded">Getting worse</p><h3>What AI invents</h3><p style="margin-top:var(--space-sm)">A coding agent fills gaps by guessing. The audit shows what it made up and what it could not find.</p></div>
     </div>
   </div>
 </section>
@@ -225,15 +217,15 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 
 <section class="band">
   <div class="wrap author">
-    <div style="width:100%;max-width:560px;aspect-ratio:4/3;overflow:hidden;background:var(--paper-2)">
+    <div style="width:100%;max-width:560px;aspect-ratio:4/3;overflow:hidden;background:var(--surface-band)">
       <img src="assets/nayara-portrait.png" alt="Nayara Marques" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
     </div>
     <div>
       <p class="eyebrow">Who runs it</p>
-      <h2 style="margin-bottom:var(--space-11)">I design systems, and I ship them</h2>
+      <h2 style="margin-bottom:var(--space-xl)">I design systems, and I ship them</h2>
       <p>Nine years designing products, lately also writing the code. Based in Barcelona, on US East Coast hours. Fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks.</p>
       <p>I built the design system for an AI platform in private capital markets, in Claude Design: 48 components, 9 templates, tokens as the single source of truth, validation that catches AI drift. The audit is that method, applied to your system.</p>
-      <p style="margin:0"><a href="work.html" style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;text-decoration:none;color:var(--rust)">See the work →</a></p>
+      <p style="margin:0"><a href="work.html" style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;text-decoration:none;color:var(--accent)">See the work →</a></p>
     </div>
   </div>
 </section><section class="inverse" id="book">
@@ -243,7 +235,7 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
     <div class="price">
       <div>
         <p class="big">5 days</p>
-        <p style="margin-top:var(--space-5)">From the day access arrives. Fixed scope. Priced on the call.</p>
+        <p style="margin-top:var(--space-sm)">From the day access arrives. Fixed scope. Priced on the call.</p>
         <div class="actions"><a class="btn" href="contact.html">Book an audit</a></div>
       </div>
       <div>
@@ -254,7 +246,7 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
           <li>A 30-minute call</li>
           <li>React, CSS, Sass or CSS-in-JS</li>
         </ul>
-        <p class="label meta" style="margin-top:var(--space-11)">What is not</p>
+        <p class="label meta" style="margin-top:var(--space-xl)">What is not</p>
         <ul class="tick">
           <li>Fixing the drift. If you want that, the fee comes off a project engagement.</li>
         </ul>

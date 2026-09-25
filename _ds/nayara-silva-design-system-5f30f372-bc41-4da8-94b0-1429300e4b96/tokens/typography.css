@@ -1,16 +1,36 @@
 :root{
-  /* --- Sizes. Every headline in the source is a clamp(); the min/max are
+  /* --- Scale. Pages use these names. -------------------------------- */
+  --font-sans:Archivo,system-ui,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --font-size-2xs:10px;                        /* eyebrow */
+  --font-size-xs:11px;                         /* label, button, marker */
+  --font-size-sm:14px;                         /* caption, card prose, chip */
+  --font-size-md:16px;                         /* running prose */
+  --font-size-lg:20px;                         /* hero deck, standfirst; becomes clamp(18px,1.43vw,20px) in B-8 */
+  --font-size-sublead:clamp(16px,1.15vw,18px); /* sub-lead; folds into lg in B-8 */
+  --font-size-xl-lead:clamp(19px,2.2vw,26px);  /* lead; lead and statement meet in B-8 */
+  --font-size-xl:clamp(20px,2.6vw,30px);       /* statement, section title */
+  --font-size-2xl:clamp(24px,3.4vw,44px);      /* case / card title, big stat */
+  --font-size-2xl-cta:clamp(28px,4vw,52px);    /* dark CTA headline; folds into 2xl in B-8 */
+  --font-size-3xl:clamp(34px,5.2vw,68px);      /* page h1 */
+
+  --leading-none:1; --leading-heading:1.2; --leading-label:1.4; --leading-snug:1.5;
+
+  --tracking-display:-0.045em; --tracking-title:-0.036em; --tracking-heading:-0.03em;
+  --tracking-lead:-0.018em; --tracking-label:0.12em; --tracking-eyebrow:0.14em;
+
+  /* --- Sizes (old names, aliases of the scale; removed in step 6). Every headline in the source is a clamp(); the min/max are
          tokenised so the pair can be reused verbatim. ------------------- */
-  --size-display:clamp(34px,5.2vw,68px);      /* page h1 */
-  --size-mega:clamp(28px,4vw,52px);       /* dark CTA headline */
-  --size-title:clamp(24px,3.4vw,44px);      /* case / card title, big stat */
-  --size-statement:clamp(20px,2.6vw,30px);  /* statement line, section h3 */
-  --size-lead:clamp(19px,2.2vw,26px);       /* lead paragraph, card h3 */
-  --size-body-lg:20px;                      /* hero deck, standfirst */
-  --size-body:16px;                         /* running prose */
-  --size-small:14px;                        /* captions, card prose, chips */
-  --size-label:11px;                        /* button + link labels, markers */
-  --size-eyebrow:10px;                      /* uppercase section labels */
+  --size-display:var(--font-size-3xl);      /* page h1 */
+  --size-mega:var(--font-size-2xl-cta);       /* dark CTA headline */
+  --size-title:var(--font-size-2xl);      /* case / card title, big stat */
+  --size-statement:var(--font-size-xl);  /* statement line, section h3 */
+  --size-lead:var(--font-size-xl-lead);       /* lead paragraph, card h3 */
+  --size-body-lg:var(--font-size-lg);                      /* hero deck, standfirst */
+  --size-body:var(--font-size-md);                         /* running prose */
+  --size-small:var(--font-size-sm);                        /* captions, card prose, chips */
+  --size-label:var(--font-size-xs);                        /* button + link labels, markers */
+  --size-eyebrow:var(--font-size-2xs);                      /* uppercase section labels */
 
   /* --- Weights. 500 is the headline weight; the brand never sets 700. -- */
   --weight-regular:400; /* @kind other */
@@ -18,18 +38,18 @@
   --weight-semibold:600; /* @kind other */
 
   /* --- Tracking. Tighter as type grows, wide only for uppercase. ------- */
-  --track-display:-0.045em; /* @kind other */
+  --track-display:var(--tracking-display); /* @kind other */
   --track-mega:-0.042em; /* @kind other */
-  --track-title:-0.036em; /* @kind other */
-  --track-statement:-0.03em; /* @kind other */
+  --track-title:var(--tracking-title); /* @kind other */
+  --track-statement:var(--tracking-heading); /* @kind other */
   --track-lead:-0.026em; /* @kind other */
-  --track-body-lg:-0.018em; /* @kind other */
-  --track-label:0.12em; /* @kind other */
-  --track-eyebrow:0.14em; /* @kind other */
+  --track-body-lg:var(--tracking-lead); /* @kind other */
+  --track-label:var(--tracking-label); /* @kind other */
+  --track-eyebrow:var(--tracking-eyebrow); /* @kind other */
 
   /* --- Leading --------------------------------------------------------- */
   --leading-display:0.94; /* @kind other */
-  --leading-mega:1; /* @kind other */
+  --leading-mega:var(--leading-none); /* @kind other */
   --leading-title:1.06; /* @kind other */
   --leading-lead:1.16; /* @kind other */
   --leading-statement:1.22; /* @kind other */

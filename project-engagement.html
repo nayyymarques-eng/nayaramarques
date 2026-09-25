@@ -21,8 +21,12 @@
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <style id="boot-style">
-  html { background:var(--paper); color:var(--ink); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--surface-page); color:var(--text-strong); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -32,14 +36,14 @@
 <script>document.documentElement.classList.add('booting');</script>
 </head>
 <body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--paper);z-index:9999">
-  <div style="height:57px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:12px"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
-  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) 32px 0">
+<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--surface-page);z-index:9999">
+  <div style="height:57px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 var(--space-2xl);gap:var(--space-sm)"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(56px,10vw,128px) var(--space-2xl) 0">
     <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--line);animation:none"></i>
-    <i style="width:min(92%,620px);height:14px;margin-top:clamp(24px,3vw,36px)"></i>
-    <i style="width:min(86%,580px);height:14px;margin-top:12px"></i>
-    <i style="width:min(64%,430px);height:14px;margin-top:12px"></i>
+    <i style="width:100%;max-width:960px;height:1px;margin:clamp(24px,4vw,44px) 0 0;background:var(--border);animation:none"></i>
+    <i style="width:min(92%,620px);height:14px;margin-top:var(--space-fluid-l)"></i>
+    <i style="width:min(86%,580px);height:14px;margin-top:var(--space-sm)"></i>
+    <i style="width:min(64%,430px);height:14px;margin-top:var(--space-sm)"></i>
   </div>
 </div>
 <script>
@@ -74,14 +78,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: Archivo, system-ui, sans-serif; }
+  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
   * { box-sizing: border-box; }
   summary::-webkit-details-marker { display: none; }
   details > summary span[data-faq]::before { content: "+"; }
   details[open] > summary span[data-faq]::before { content: "\2013"; }
-  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  a:hover { color: var(--rust); }
-  ::selection { background: var(--ink); color: var(--paper); }
+  a { color: var(--text-strong); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  a:hover { color: var(--accent); }
+  ::selection { background: var(--surface-inverse); color: var(--text-on-inverse); }
   @keyframes lineUp { from { transform: translateY(1.05em); filter: blur(5px); } 55% { filter: blur(0.8px); } to { transform: translateY(0); filter: blur(0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); filter: blur(3px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
@@ -94,203 +98,203 @@
 
   <main style="flex:1">
 
-    <section style="max-width:1400px;margin:0 auto;min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 32px">
-      <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:clamp(20px,3vw,32px)">Engagement model 01</div>
-      <h1 style="font-size:clamp(34px,5.2vw,68px);font-weight:500;line-height:0.94;letter-spacing:-0.045em;margin:0 0 clamp(22px,3vw,32px);max-width:none">
+    <section style="max-width:1400px;margin:0 auto;min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) var(--space-2xl)">
+      <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:clamp(20px,3vw,32px)">Engagement model 01</div>
+      <h1 style="font-size:var(--font-size-3xl);font-weight:500;line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 clamp(22px,3vw,32px);max-width:none">
         <span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Project engagements</span></span>
       </h1>
-      <div style="height:1px;background:var(--line);transform-origin:left;margin-bottom:clamp(24px,3vw,36px)"></div>
+      <div style="height:1px;background:var(--border);transform-origin:left;margin-bottom:var(--space-fluid-l)"></div>
       <div>
-        <p style="margin:0;max-width:58ch;font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);text-wrap:pretty;animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .5s both">An idea, a pitch or a problem, and nothing built yet? I take it from a conversation to something people can use.</p>
+        <p style="margin:0;max-width:58ch;font-size:var(--font-size-sublead);font-weight:400;line-height:var(--leading-snug);letter-spacing:-0.015em;color:var(--text-body);text-wrap:pretty;animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .5s both">An idea, a pitch or a problem, and nothing built yet? I take it from a conversation to something people can use.</p>
         
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(30px,4vw,44px);animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .74s both">
-        <a href="start-a-project.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--ink);color:var(--paper);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--rust);color:var(--white)">Send a short brief <span>→</span></a>
-        <a href="embedded-partner.html" style="white-space:nowrap;display:inline-flex;align-items:center;padding:14px 24px;border:1px solid var(--line);color:var(--ink);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:border-color .2s ease,background .2s ease" style-hover="border-color:var(--line-ink);background:var(--paper-3)">Already have a team?</a>
+        <a href="start-a-project.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--accent);color:var(--surface-card)">Send a short brief <span>→</span></a>
+        <a href="embedded-partner.html" style="white-space:nowrap;display:inline-flex;align-items:center;padding:14px var(--space-xl);border:1px solid var(--border);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:border-color .2s ease,background .2s ease" style-hover="border-color:var(--border-emphatic);background:var(--surface-hover)">Already have a team?</a>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line);background:var(--paper-2)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px">
-        <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(24px,3vw,36px)">How the engagement is shaped</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)">
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Typical duration</div>
-            <div style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em;line-height:1.22;margin-bottom:10px">6 to 10 weeks</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)">Long enough to test and build, short enough to stay urgent.</p>
+    <section style="border-top:1px solid var(--border);background:var(--surface-band)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl)">
+        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-fluid-l)">How the engagement is shaped</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--border);border-left:1px solid var(--border)">
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-sm)">Typical duration</div>
+            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:1.22;margin-bottom:10px">6 to 10 weeks</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Long enough to test and build, short enough to stay urgent.</p>
           </div>
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Commitment</div>
-            <div style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em;line-height:1.22;margin-bottom:10px">Part-time</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)">Two to three days a week, one weekly review.</p>
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-sm)">Commitment</div>
+            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:1.22;margin-bottom:10px">Part-time</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Two to three days a week, one weekly review.</p>
           </div>
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Scope</div>
-            <div style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em;line-height:1.22;margin-bottom:10px">Agreed up front</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)">Modules chosen before we start, each with one outcome.</p>
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-sm)">Scope</div>
+            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:1.22;margin-bottom:10px">Agreed up front</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Modules chosen before we start, each with one outcome.</p>
           </div>
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:12px">Best for</div>
-            <div style="font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-0.03em;line-height:1.22;margin-bottom:10px">A defined outcome</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)">One thing that has to exist by a date.</p>
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-sm)">Best for</div>
+            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:1.22;margin-bottom:10px">A defined outcome</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">One thing that has to exist by a date.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px">
+    <section style="border-top:1px solid var(--border)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl)">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,64px);align-items:start;margin-bottom:clamp(28px,3.5vw,44px)">
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0">What we assemble</h2>
-          <p style="margin:0;max-width:56ch;font-size:20px;font-weight:500;line-height:1.45;letter-spacing:-0.018em;text-wrap:pretty">Six modules; most projects use three or four. Knowing which to leave out saves you a month.</p>
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0">What we assemble</h2>
+          <p style="margin:0;max-width:56ch;font-size:var(--font-size-lg);font-weight:500;line-height:1.45;letter-spacing:var(--tracking-lead);text-wrap:pretty">Six modules; most projects use three or four. Knowing which to leave out saves you a month.</p>
         </div>
 
         <div style="display:grid;gap:0">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">01</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Product strategy</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">What to build and what to cut, argued in writing, not assumed. I synthesise with Claude instead of by hand.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Include it when</span>The scope is contested, or someone above you needs convincing.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">01</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Product strategy</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">What to build and what to cut, argued in writing, not assumed. I synthesise with Claude instead of by hand.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:7px">Include it when</span>The scope is contested, or someone above you needs convincing.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">02</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Research</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Interviews with people from your market, turned into a recommendation you can act on.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Include it when</span>You are guessing about people unlike you, and being wrong is expensive. Skip it if you are the user.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">02</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Research</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Interviews with people from your market, turned into a recommendation you can act on.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:7px">Include it when</span>You are guessing about people unlike you, and being wrong is expensive. Skip it if you are the user.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">03</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Exploration</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Directions to choose between: rough and wide when structure is open, close to final when it is taste.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Include it when</span>The obvious answer might not be the right one.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">03</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Exploration</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Directions to choose between: rough and wide when structure is open, close to final when it is taste.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:7px">Include it when</span>The obvious answer might not be the right one.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">04</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Prototype and test</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Working HTML, CSS and JS on your data, tested with real users, then changed by what they did.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Include it when</span>Behaviour is the risk: anything that reads fine as a static frame and falls apart in use.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">04</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Prototype and test</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Working HTML, CSS and JS on your data, tested with real users, then changed by what they did.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:7px">Include it when</span>Behaviour is the risk: anything that reads fine as a static frame and falls apart in use.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">05</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Design system</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Tokens, specified states and a validation layer that holds after I leave.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Include it when</span>More than one person will build on this.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">05</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Design system</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Tokens, specified states and a validation layer that holds after I leave.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:7px">Include it when</span>More than one person will build on this.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(18px,2.2vw,26px) 0">
-            <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:11px;font-weight:600;color:var(--ink-6);letter-spacing:0.12em">06</span><h3 style="margin:0;font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Shipping</h3></div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Front-end code in your repo, reviewed in your process. AI does least here, on purpose: shipping is judgement and accountability.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-6);text-wrap:pretty"><span style="display:block;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin-bottom:7px">Include it when</span>You want it live, not just approved. Skip it if your engineers prefer a spec.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(12px,3vw,48px);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(18px,2.2vw,26px) 0">
+            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);letter-spacing:var(--tracking-label)">06</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16">Shipping</h3></div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Front-end code in your repo, reviewed in your process. AI does least here, on purpose: shipping is judgement and accountability.</p>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-meta);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin-bottom:7px">Include it when</span>You want it live, not just approved. Skip it if your engineers prefer a spec.</p>
           </div>
         </div>
 
-        <p style="margin:clamp(24px,3vw,32px) 0 0;max-width:62ch;font-size:16px;line-height:1.7;color:var(--ink-2);text-wrap:pretty">AI sits inside most of these, so the work takes weeks, not quarters. The expensive part is knowing which to skip.</p>
+        <p style="margin:clamp(24px,3vw,32px) 0 0;max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">AI sits inside most of these, so the work takes weeks, not quarters. The expensive part is knowing which to skip.</p>
       </div>
     </section>
 
     <section>
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,72px);align-items:start;position:relative" style-before="content:'';position:absolute;top:0;left:32px;right:32px;height:1px;background:var(--line)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,5vw,72px);align-items:start;position:relative" style-before="content:'';position:absolute;top:0;left:32px;right:32px;height:1px;background:var(--border)">
         <div>
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 22px">Investment</h2>
-          <div style="background:var(--paper-2);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px)">
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:12px 0">
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:4px">A decision</div><div style="font-size:14px;color:var(--ink-2);line-height:1.6">Two to three weeks, ending in a recommendation</div></div>
-              <div style="font-size:14px;font-weight:600;color:var(--rust);white-space:nowrap">On the call</div>
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 22px">Investment</h2>
+          <div style="background:var(--surface-band);border:1px solid var(--border);padding:clamp(18px,2.4vw,26px)">
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0">
+              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">A decision</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">Two to three weeks, ending in a recommendation</div></div>
+              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
             </div>
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line)">
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Something tested</div><div style="font-size:14px;color:var(--ink-2);line-height:1.6">Four to six weeks, ending in a proven prototype</div></div>
-              <div style="font-size:14px;font-weight:600;color:var(--rust);white-space:nowrap">On the call</div>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border)">
+              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">Something tested</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">Four to six weeks, ending in a proven prototype</div></div>
+              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
             </div>
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line)">
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Something shipped</div><div style="font-size:14px;color:var(--ink-2);line-height:1.6">Six to ten weeks, ending in production code</div></div>
-              <div style="font-size:14px;font-weight:600;color:var(--rust);white-space:nowrap">On the call</div>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border)">
+              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">Something shipped</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">Six to ten weeks, ending in production code</div></div>
+              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
             </div>
-            <p style="margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--ink-2)">Priced on the call, once I know the modules, and agreed in writing before we start. <a href="start-a-project.html" style="color:var(--rust)">Send a short brief →</a> and I will bring a figure.</p>
+            <p style="margin:var(--space-md) 0 0;padding-top:14px;border-top:1px solid var(--border);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Priced on the call, once I know the modules, and agreed in writing before we start. <a href="start-a-project.html" style="color:var(--accent)">Send a short brief →</a> and I will bring a figure.</p>
           </div>
         </div>
         <div>
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 22px">What I need from you</h2>
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 22px">What I need from you</h2>
           <div style="display:grid;gap:0">
-            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)"><span style="font-size:11px;font-weight:600;color:var(--ink-6);flex-shrink:0;padding-top:2px">01</span><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink)">One decision-maker who can say yes, available weekly.</p></div>
-            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)"><span style="font-size:11px;font-weight:600;color:var(--ink-6);flex-shrink:0;padding-top:2px">02</span><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink)">For research: five or six people from your market.</p></div>
-            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)"><span style="font-size:11px;font-weight:600;color:var(--ink-6);flex-shrink:0;padding-top:2px">03</span><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink)">Whatever exists: notes, a deck, a spreadsheet, a half-built thing. Messy is fine.</p></div>
-            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span style="font-size:11px;font-weight:600;color:var(--ink-6);flex-shrink:0;padding-top:2px">04</span><p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink)">For shipping: a repository to push to.</p></div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);flex-shrink:0;padding-top:var(--space-3xs)">01</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">One decision-maker who can say yes, available weekly.</p></div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);flex-shrink:0;padding-top:var(--space-3xs)">02</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">For research: five or six people from your market.</p></div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);flex-shrink:0;padding-top:var(--space-3xs)">03</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">Whatever exists: notes, a deck, a spreadsheet, a half-built thing. Messy is fine.</p></div>
+            <div style="display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-meta);flex-shrink:0;padding-top:var(--space-3xs)">04</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">For shipping: a repository to push to.</p></div>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px;position:relative" style-before="content:'';position:absolute;top:0;left:32px;right:32px;height:1px;background:var(--line)">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,64px);align-items:start;margin-bottom:clamp(24px,3vw,36px)">
-          <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0">What this does not include</h2>
-          <p style="margin:0;max-width:56ch;font-size:20px;font-weight:500;line-height:1.45;letter-spacing:-0.018em;text-wrap:pretty">Both can be arranged; say so on the call.</p>
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl);position:relative" style-before="content:'';position:absolute;top:0;left:32px;right:32px;height:1px;background:var(--border)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,4vw,64px);align-items:start;margin-bottom:var(--space-fluid-l)">
+          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0">What this does not include</h2>
+          <p style="margin:0;max-width:56ch;font-size:var(--font-size-lg);font-weight:500;line-height:1.45;letter-spacing:var(--tracking-lead);text-wrap:pretty">Both can be arranged; say so on the call.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)">
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px)">
-            <div style="font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16;margin-bottom:10px">Backend engineering</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">I write the front-end. Server-side belongs to your team or a developer you bring in.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)">
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px)">
+            <div style="font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16;margin-bottom:10px">Backend engineering</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">I write the front-end. Server-side belongs to your team or a developer you bring in.</p>
           </div>
-          <div style="background:var(--paper);padding:clamp(18px,2.2vw,24px)">
-            <div style="font-size:clamp(19px,2.2vw,26px);font-weight:500;letter-spacing:-0.026em;line-height:1.16;margin-bottom:10px">Brand identity</div>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">A different discipline. I design inside your brand, or a plain one, and can refer you.</p>
+          <div style="background:var(--surface-page);padding:clamp(18px,2.2vw,24px)">
+            <div style="font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:-0.026em;line-height:1.16;margin-bottom:10px">Brand identity</div>
+            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">A different discipline. I design inside your brand, or a plain one, and can refer you.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px;position:relative" style-before="content:'';position:absolute;top:0;left:32px;right:32px;height:1px;background:var(--line)">
-        <h2 style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);margin:0 0 clamp(20px,2.4vw,28px)">Relevant work</h2>
-        <a href="ai-surfaces.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust);padding-left:10px">
-          <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">Where AI lives in an institutional investment platform</h3>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">AI platform</span>
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl);position:relative" style-before="content:'';position:absolute;top:0;left:32px;right:32px;height:1px;background:var(--border)">
+        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);margin:0 0 clamp(20px,2.4vw,28px)">Relevant work</h2>
+        <a href="ai-surfaces.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:10px">
+          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">Where AI lives in an institutional investment platform</h3>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">AI platform</span>
         </a>
-        <a href="fleet-optimizer.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-bottom:1px solid var(--line);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust);padding-left:10px">
-          <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">Capacity matching for private truck fleets</h3>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">Loadsmart</span>
+        <a href="fleet-optimizer.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:10px">
+          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">Capacity matching for private truck fleets</h3>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">Loadsmart</span>
         </a>
-        <a href="advisors-platform.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-bottom:1px solid var(--line);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--rust);padding-left:10px">
-          <h3 style="font-size:clamp(20px,2.6vw,30px);font-weight:500;line-height:1.22;letter-spacing:-0.03em;margin:0">An advisors platform for four business verticals</h3>
-          <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-6);flex-shrink:0">BTG Pactual</span>
+        <a href="advisors-platform.html" style="display:flex;flex-wrap:wrap;gap:clamp(12px,3vw,32px);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:clamp(14px,2vw,20px) 0;border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:10px">
+          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);margin:0">An advisors platform for four business verticals</h3>
+          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-meta);flex-shrink:0">BTG Pactual</span>
         </a>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line);background:var(--paper-2)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) 32px">
-                <div style="font-size:10px;font-weight:600;letter-spacing:0.14em;line-height:1.4;text-transform:uppercase;color:var(--ink-6);margin-bottom:20px">Questions</div>
-        <h2 style="margin:0 0 clamp(24px,3.4vw,40px);font-size:clamp(24px,3.4vw,44px);font-weight:500;line-height:1.06;letter-spacing:-0.036em;max-width:22ch;text-wrap:balance">What teams ask before a project</h2>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line);border-top:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">Can you work with our engineers, or do you replace them? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">With them. My front-end code lands in your repo, through your review. Backend, infrastructure and scale stay theirs.</p>
+    <section style="border-top:1px solid var(--border);background:var(--surface-band)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,6vw,80px) var(--space-2xl)">
+                <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-meta);margin-bottom:var(--space-lg)">Questions</div>
+        <h2 style="margin:0 0 clamp(24px,3.4vw,40px);font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);max-width:22ch;text-wrap:balance">What teams ask before a project</h2>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border);border-top:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">Can you work with our engineers, or do you replace them? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">With them. My front-end code lands in your repo, through your review. Backend, infrastructure and scale stay theirs.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">What if the work says the idea is wrong? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Then I tell you, with the evidence, and we decide together. I have redirected a build after testing before; that engagement saved more than it cost.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">What if the work says the idea is wrong? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Then I tell you, with the evidence, and we decide together. I have redirected a build after testing before; that engagement saved more than it cost.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">Do we own the work? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Yes: design files, code and documentation. I only ask to reference the work publicly, anonymised if you prefer.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">Do we own the work? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Yes: design files, code and documentation. I only ask to reference the work publicly, anonymised if you prefer.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">Is AI writing our product? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">No. Claude Code and Claude Design speed up exploration and implementation. Every decision, review and shipped line is mine.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">Is AI writing our product? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">No. Claude Code and Claude Design speed up exploration and implementation. Every decision, review and shipped line is mine.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">Can you start immediately? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Yes. A short brief and one call usually mean starting within two weeks.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">Can you start immediately? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Yes. A short brief and one call usually mean starting within two weeks.</p>
           </details>
-          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--line)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:var(--ink)">What if we need more after the project ends? <span data-faq="" style="flex:none;font-weight:600;color:var(--rust)"></span></summary>
-            <p style="margin:16px 0 0;max-width:70ch;font-size:14px;line-height:1.6;color:var(--ink-2);text-wrap:pretty">Some teams continue as an <a href="embedded-partner.html" style="color:var(--rust)">embedded partner</a>. Others take the system and run. Both are fine.</p>
+          <details style="padding:clamp(20px,2.6vw,26px) 0;border-bottom:1px solid var(--border)">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:-0.01em;color:var(--text-strong)">What if we need more after the project ends? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
+            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Some teams continue as an <a href="embedded-partner.html" style="color:var(--accent)">embedded partner</a>. Others take the system and run. Both are fine.</p>
           </details>
         <div style="margin-top:clamp(28px,4vw,40px)">
-          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--ink);color:var(--paper);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--rust)">Send a short brief <span aria-hidden="true">→</span></a>
+          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--accent)">Send a short brief <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <section style="border-top:1px solid var(--line);background:var(--ink);color:var(--paper)">
-      <div style="max-width:1400px;margin:0 auto;padding:clamp(48px,8vw,110px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
-        <h2 style="font-size:clamp(28px,4vw,52px);font-weight:500;line-height:1;letter-spacing:-0.042em;margin:0;text-wrap:balance">Tell me what you're building.</h2>
+    <section style="border-top:1px solid var(--border);background:var(--surface-inverse);color:var(--text-on-inverse)">
+      <div style="max-width:1400px;margin:0 auto;padding:clamp(48px,8vw,110px) var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
+        <h2 style="font-size:var(--font-size-2xl-cta);font-weight:500;line-height:var(--leading-none);letter-spacing:-0.042em;margin:0;text-wrap:balance">Tell me what you're building.</h2>
         <div>
-          <p style="margin:0 0 26px;font-size:16px;line-height:1.7;color:var(--on-ink-muted);text-wrap:pretty">A 30-minute call, no deck. Bring the idea as it stands; I'll tell you honestly if I'm the right person, and what I'd do first.</p>
-          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:var(--paper);color:var(--ink);border-radius:2px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--rust);color:var(--white)">Send a short brief <span>→</span></a>
+          <p style="margin:0 0 26px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty">A 30-minute call, no deck. Bring the idea as it stands; I'll tell you honestly if I'm the right person, and what I'd do first.</p>
+          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:14px var(--space-xl);background:var(--surface-page);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--accent);color:var(--surface-card)">Send a short brief <span>→</span></a>
         </div>
       </div>
     </section>

@@ -1,18 +1,22 @@
 :root{
-  /* Corners are effectively square. 2px is the only radius on the site;
-     999px appears once, on a 6px availability dot. */
-  --radius:2px;
-  --radius-pill:999px;
+  /* Corners. Site controls and cards are near square (sm); recreated product
+     mockups use md; dots and pills use full. */
+  --radius-sm:2px;
+  --radius-md:8px;
+  --radius-full:999px;
   --radius-none:0;
+  --radius:var(--radius-sm);          /* alias, removed in step 6 */
+  --radius-pill:var(--radius-full);   /* alias, removed in step 6 */
 
-  --border-hairline:1px solid var(--line); /* @kind other */
-  --border-hairline-strong:1px solid var(--line-ink); /* @kind other */
-  --border-control-1:1px solid var(--line-3); /* @kind other */
+  --border-hairline:1px solid var(--border); /* @kind other */
+  --border-hairline-strong:1px solid var(--border-emphatic); /* @kind other */
+  --border-control-1:1px solid var(--border-control); /* @kind other */
 
-  /* There are NO box-shadows in this brand. The one shadow in the source is
-     a layout device, not a shade: a 100vmax spread that bleeds a band's
-     background past the centred container. Reuse it, do not soften it. */
-  --bleed-shadow-paper:0 0 0 100vmax var(--paper); /* @kind shadow */
-  --bleed-shadow-band:0 0 0 100vmax var(--paper-2); /* @kind shadow */
+  /* Elevation: three shades, --shadow-sm / -md / -lg in colors.css (they mix
+     from the colour primitives). The bleed shadow below is a layout device, not
+     a shade: a 100vmax spread that carries a band's background past the centred
+     container. Reuse it, do not soften it. */
+  --bleed-shadow-paper:0 0 0 100vmax var(--surface-page); /* @kind shadow */
+  --bleed-shadow-band:0 0 0 100vmax var(--surface-band); /* @kind shadow */
   --bleed-clip:inset(0 -100vmax); /* @kind other */
 }

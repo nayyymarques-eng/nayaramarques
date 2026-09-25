@@ -7,25 +7,25 @@
 
   var css = [
     '[data-case-index]{position:absolute;z-index:6;pointer-events:none}',
-    '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:clamp(28px,4vw,56px) 0 0;padding:12px 16px;background:var(--white);border:1px solid var(--line);border-radius:2px;pointer-events:auto}',
-    '[data-case-index] a{display:grid;grid-template-columns:22px 1fr;gap:6px;padding:7px 0 7px 12px;border-left:1px solid var(--line);',
-    'font-size:var(--size-eyebrow,10px);font-weight:600;letter-spacing:var(--track-eyebrow,0.14em);line-height:1.4;text-transform:uppercase;',
-    'color:var(--ink-7);text-decoration:none;transition:color .25s ease,border-color .25s ease}',
-    '[data-case-index] a:hover{color:var(--ink-4)}',
-    '[data-case-index] a[aria-current="step"]{color:var(--ink);border-left:2px solid var(--rust);padding-left:11px}',
-    '[data-case-index] a[aria-current="step"] span:first-child{color:var(--rust)}',
-    '[data-case-index] a.done{color:var(--ink-4)}',
+    '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:clamp(28px,4vw,56px) 0 0;padding:var(--space-sm) var(--space-md);background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-sm);pointer-events:auto}',
+    '[data-case-index] a{display:grid;grid-template-columns:22px 1fr;gap:6px;padding:7px 0 7px var(--space-sm);border-left:1px solid var(--border);',
+    'font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;',
+    'color:var(--text-subtle);text-decoration:none;transition:color .25s ease,border-color .25s ease}',
+    '[data-case-index] a:hover{color:var(--text-muted)}',
+    '[data-case-index] a[aria-current="step"]{color:var(--text-strong);border-left:2px solid var(--accent);padding-left:11px}',
+    '[data-case-index] a[aria-current="step"] span:first-child{color:var(--accent)}',
+    '[data-case-index] a.done{color:var(--text-muted)}',
     // the rail text is replaced by the index; it stays in the page (transparent) so screen readers keep the heading
     // the section title in the body is the largest heading in a case, at every width: number in the accent, name in ink
-    '[data-case-eyebrow]{display:block;margin:0 0 16px;font-size:var(--size-statement,clamp(20px,2.6vw,30px));font-weight:500;line-height:1.22;letter-spacing:var(--track-statement,-0.03em);color:var(--ink)}',
-    '[data-case-eyebrow] span{color:var(--rust);margin-right:0.45em}',
+    '[data-case-eyebrow]{display:block;margin:0 0 var(--space-md);font-size:var(--font-size-xl);font-weight:500;line-height:1.22;letter-spacing:var(--tracking-heading);color:var(--text-strong)}',
+    '[data-case-eyebrow] span{color:var(--accent);margin-right:0.45em}',
     '@media ' + WIDE + '{html.has-case-index [data-rail-indexed]{color:transparent!important;user-select:none}',
     // the body sits on the details band's 4-column grid: index in column 1, content and dividers from column 2
     'html.has-case-index [data-case-band]{--case-gap:clamp(20px,3vw,36px);column-gap:var(--case-gap)!important;',
     '--case-col:calc((100% - 3 * var(--case-gap)) / 4);--case-divider-left:calc(var(--case-col) + var(--case-gap))}',
     'html.has-case-index [data-case-band]>[data-rail-indexed]{flex:0 0 var(--case-col)!important}}',
-    // card titles (DecisionCard and hand-built cards read --size-lead) step down below the section title
-    '[data-case-band]{--size-lead:var(--size-body-lg,20px);--leading-lead:1.3;--track-lead:var(--track-body-lg,-0.018em)}',
+    // card titles (DecisionCard reads --size-lead, hand-built cards --font-size-xl-lead) step down below the section title
+    '[data-case-band]{--size-lead:var(--font-size-lg);--font-size-xl-lead:var(--font-size-lg);--leading-lead:1.3;--track-lead:var(--tracking-lead)}',
     // narrow screens: no index column, but the section title stays the largest heading;
     // the old small rail is hidden visually and kept for screen readers
     '@media not all and ' + WIDE + '{[data-case-index]{display:none!important}'
@@ -95,7 +95,7 @@
     // (at least 1.5x more space above than below; here 56px above a sub-section, 12px below)
     bands.forEach(function (band) {
       [].forEach.call(band.querySelectorAll('h3'), function (h) {
-        if (h.closest('x-import, [style*="var(--white)"]')) return; // card titles keep the card's spacing
+        if (h.closest('x-import, [style*="var(--surface-card)"], [style*="var(--white)"]')) return; // card titles keep the card's spacing (the system bundle still writes --white)
         h.style.marginBottom = '12px';
         // the block that starts with this heading: climb while the heading is its first child
         var top = h;
@@ -109,7 +109,7 @@
         top.style.marginTop = '56px';
         var ruled = parseFloat(getComputedStyle(top).borderTopWidth) > 0;
         top.style.paddingTop = ruled ? '20px' : '0px';
-        if (ruled) top.style.borderTopColor = 'var(--line-mid)'; // sub-section rules are the middle weight
+        if (ruled) top.style.borderTopColor = 'var(--border-strong)'; // sub-section rules are the middle weight
       });
     });
     host.insertBefore(nav, host.firstChild);
