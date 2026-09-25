@@ -19,7 +19,7 @@ Sources of truth, in order: `_ds/…/tokens/*.css` (values) → this file (decis
 - **COL-05** No new colour. If no token fits the job, stop and propose one: name, value, job. Do not approximate.
 - **COL-06** Pages use roles, never primitives (`--sand-*`, `--slate-*`, `--blue-*`, `--red-*`, `--green-*`, `--clay-*`). *(check_source; warning until the aliases go)*
 - **COL-07** Pages never use the old alias names listed under the token table. *(check_source; warning until the aliases go)*
-- **COL-08** Text passes WCAG AA on its ground: 4.5:1, or 3:1 for large text. *(check_pages; warning until the consolidation's B-2 and B-14 land)*
+- **COL-08** Text passes WCAG AA on its ground: 4.5:1, or 3:1 for large text; arrows and other symbol-only text 3:1. *(check_pages)*
 
 Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line-*`, `--rust`, `--text-meta`, `--border-control`, `--size-*`, `--track-*`, `--space-1…18`, `--card-p`) remain only as aliases for the Claude Design bundle until it is regenerated on the roles; never write them in new code.
 

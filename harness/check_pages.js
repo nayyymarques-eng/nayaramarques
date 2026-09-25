@@ -10,8 +10,8 @@
  *   LAY-05  an edge-to-edge line between two sections of the same background (same background = one section: use an in-flow divider)
  *   COL-08  text contrast below WCAG AA on its ground: 4.5, or 3.0 for large text (24px+, or 18.66px+ bold).
  *           The ground is the composited background of the nearest ancestors (images and gradients are
- *           skipped, as are [data-mock] figures and hidden text). Reported as "warn" until the
- *           consolidation's B-2 and B-14 land, then it fails like the rest (COL08_FAILS).
+ *           skipped, as are [data-mock] figures and hidden text). Symbol-only text (arrows) is an icon:
+ *           3:1.
  *   Boundaries marked data-rule="none" are skipped (e.g. the home hero).
  */
 (() => {
@@ -72,7 +72,7 @@
     prev = c;
   }
   // COL-08 contrast
-  const COL08_FAILS = false;
+  const COL08_FAILS = true;
   const rgba = c => { const m = (c.match(/[\d.]+/g) || []).map(Number); if (/^color\(srgb/.test(c)) { m[0] *= 255; m[1] *= 255; m[2] *= 255; } return [m[0], m[1], m[2], m.length > 3 ? m[3] : 1]; };
   const over = (top, bot) => { const a = top[3]; return [0, 1, 2].map(i => top[i] * a + bot[i] * (1 - a)).concat(1); };
   const lum = c => { const f = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2]); };
