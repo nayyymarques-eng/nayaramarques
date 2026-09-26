@@ -18,8 +18,8 @@
 
   /* Elevation: five levels, --elevation-inset (-1), none (0), --elevation-1/2/3,
      in colors.css (they mix from the one shadow hue). The ink band is the only
-     full-bleed band left; it carries its colour past the centred container with
-     the bleed shadow below. Reuse it, do not soften it. */
+     full-bleed band left; it carries its colour past the centred container
+     with the bleed shadow below. Reuse it, do not soften it. */
   --bleed-shadow-inverse:0 0 0 100vmax var(--surface-inverse); /* @kind shadow */
   --bleed-clip:inset(0 -100vmax); /* @kind other */
 }

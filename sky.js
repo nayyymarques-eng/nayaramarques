@@ -28,10 +28,25 @@
     sky.classList.toggle('is-static', reduce.matches);
   }
   var ticking = false;
+  // Sticky case section heads (LAY-08) read as transparent: each paints the exact piece of sky behind it.
+  // --sky-h is the sky's height; per head, --hx is its left edge and --hy the sky's offset at its top.
+  function heads() {
+    var hs = document.querySelectorAll('.case-head');
+    if (!hs.length) return;
+    document.documentElement.style.setProperty('--sky-h', sky.style.height || (window.innerHeight + 'px'));
+    var y = window.scrollY, k = reduce.matches ? 1 : speed();
+    for (var i = 0; i < hs.length; i++) {
+      var r = hs[i].getBoundingClientRect();
+      if (r.bottom < -50 || r.top > window.innerHeight + 50) continue;
+      hs[i].style.setProperty('--hx', r.left.toFixed(1) + 'px');
+      hs[i].style.setProperty('--hy', (reduce.matches ? -(r.top + y) : -y * k - r.top).toFixed(1) + 'px');
+    }
+  }
   function move() {
     ticking = false;
-    if (reduce.matches) { sky.style.transform = 'none'; return; }
-    sky.style.transform = 'translate3d(0,' + (-window.scrollY * speed()).toFixed(1) + 'px,0)';
+    if (reduce.matches) sky.style.transform = 'none';
+    else sky.style.transform = 'translate3d(0,' + (-window.scrollY * speed()).toFixed(1) + 'px,0)';
+    heads();
   }
   function both() { size(); move(); }
 

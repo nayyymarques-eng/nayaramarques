@@ -38,16 +38,34 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .eyebrow--accent{color:var(--accent)}
 /* A tag is a label, not a control: level 0, no border, a faint ink tint, a pill. */
 .tag{display:inline-block;align-self:flex-start;padding:5px 11px;border-radius:var(--radius-full);background:var(--surface-tag);
-  font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-tag);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
+  font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-tag);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body);white-space:nowrap} /* body ink: AA on its tint at the sky's darkest point */
 .tags{display:flex;flex-wrap:wrap;gap:var(--space-xs)}
-/* A badge marks a state inside product UI (Composer, In context): a pill, a dark slate fill, white text. One variant. */
+/* A badge marks a state inside product UI (Composer, In context): a pill, a dark slate fill, white text; the accent fill
+   tells one state apart from the rest (Composer). */
 .badge{display:inline-block;padding:3px 8px;border-radius:var(--radius-full);background:var(--text-body);color:var(--surface-card);
   font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-tag);line-height:var(--leading-label);text-transform:uppercase;white-space:nowrap}
+.badge--accent{background:var(--accent)}
 /* A separate place you leave your work to reach (another page): a dashed outline, light, never a dark block. */
 .elsewhere{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:96px;padding:18px var(--space-md);
   background:var(--surface-card);border:1.5px dashed var(--text-muted);border-radius:var(--radius-sm)}
 .elsewhere__path{display:flex;flex-direction:column;align-items:center;gap:6px;margin:6px 0 8px;color:var(--text-muted)}
 .elsewhere__path::before{content:"";width:0;height:14px;border-left:1.5px dashed var(--text-muted)}
+/* ---------- Flows read horizontally (FLW-01) ----------
+   A step is a small white object with the soft level-1 shade; the emphasised step is solid accent. A chain is one line
+   of steps with → between them; on a narrow screen it scrolls inside its own block, never the page. */
+.chip{display:inline-flex;align-items:center;flex:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-sm);background:var(--surface-card);
+  box-shadow:var(--elevation-1);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap}
+.chip--emph{background:var(--accent);color:var(--surface-card);font-weight:500}
+.chain{display:flex;flex-wrap:nowrap;gap:var(--space-xs);align-items:center;padding:2px 4px 6px}
+.chain-block{overflow-x:auto;overflow-y:hidden;contain:inline-size}
+/* A row of states or stages inside a figure: small white steps with the soft level-1 shade, → between them,
+   one line that scrolls inside its frame on a phone. The emphasised step carries an accent ring. */
+.steps-scroll{overflow-x:auto;overflow-y:hidden;contain:inline-size}
+.steps{display:grid;grid-template-columns:repeat(var(--steps,4),minmax(150px,1fr));gap:22px;padding:4px}
+.steps>*{position:relative}
+.steps>*+*::before{content:"→";position:absolute;left:-17px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--text-muted)}
+.step{background:var(--surface-card);border:0;border-radius:var(--radius-sm);box-shadow:var(--elevation-1)}
+.step--emph{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 45%,transparent),var(--elevation-1)}
 /* Compared options (FLW-02): the considered one says why, in the traded colour; the decided one is Chosen, solid accent.
    Nothing is struck through: both stay fully readable. */
 .tag--considered{color:var(--status-cost);background:color-mix(in srgb,var(--status-cost) 10%,var(--surface-card));letter-spacing:var(--tracking-label)}
@@ -71,6 +89,22 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .hero__eyebrow{display:flex;flex-wrap:wrap;align-items:flex-end;align-content:flex-end;column-gap:var(--space-md);height:calc(var(--font-size-eyebrow) * 1.4);
   margin:0 0 var(--space-md);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:1.4;text-transform:uppercase;color:var(--accent)}
 .hero h1{margin-top:0}
+
+/* ---------- Case section head (LAY-08) ----------
+   The title (case-index.js puts "05 The solution" in it) and the one-line intro below it, ending in the one divider.
+   From 861px, when it reaches the top it sticks under the nav. It reads as transparent: its band paints the exact piece
+   of sky behind it (sky.js sets --hx, --hy and --sky-h), so the page's colour shows through while the content scrolling
+   under it stays hidden, with no ghost text and no box edge. The next section's head pushes it out (sticky within its
+   own section). The case index sits above it. */
+.case-head [data-case-eyebrow]{margin:0 0 10px}
+.case-head>p{margin:0 !important}
+.case-head{margin-bottom:var(--space-xl)}
+@media (min-width:861px){
+  .case-head{position:sticky;top:var(--nav-h);z-index:5;padding-top:var(--space-lg);isolation:isolate}
+  .case-head::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc(-1 * var(--hx, 0px));width:100vw;
+    background:var(--sky-ground);background-size:100vw var(--sky-h, 100vh);background-position:0 var(--hy, 0px);background-repeat:no-repeat}
+  .case-head::after{content:"";display:block;height:1px;margin-top:18px;background:var(--border-divider)}
+}
 
 /* ---------- Glass: the case details, like the home's composer ----------
    Frosted, the same inner shade, a light bottom edge. Content width, lg radius; level -1 in spirit. */

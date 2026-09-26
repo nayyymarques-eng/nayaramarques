@@ -3,10 +3,10 @@
 // jumps to its section. Below 861px the page keeps its own sticky rails. Colours are tokens only.
 (function () {
   var WIDE = '(min-width: 861px)';
-  var TOP = 80; // matches the rails' sticky offset under the nav
+  var TOP = 80; // the index sticks just under the nav
 
   var css = [
-    '[data-case-index]{position:absolute;z-index:6;pointer-events:none}',
+    '[data-case-index]{position:absolute;z-index:7;pointer-events:none}', // above the sticky section heads
     // the index is plain text on the sky: no card, no rules. Its numbers line up with the nav's star.
     '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:var(--space-fluid-xl) 0 0;padding:0;max-width:240px;pointer-events:auto}',
     '[data-case-index] a{display:grid;grid-template-columns:22px 1fr;gap:var(--space-xs);padding:var(--space-xs) 0;',
@@ -21,11 +21,6 @@
     '[data-case-eyebrow]{display:block;margin:0 0 var(--space-md);font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);color:var(--text-heading)}',
     '[data-case-eyebrow] span{color:var(--accent);margin-right:0.45em}',
     '@media ' + WIDE + '{html.has-case-index [data-rail-indexed]{color:transparent!important;user-select:none}',
-    // section titles stick while you read (LAY-08): a white card with the level-1 shade, opaque, just under the nav.
-    // The content scrolls up behind it; the negative side margins keep the title text aligned with the body.
-    '[data-case-eyebrow]{position:sticky;top:70px;z-index:5;margin-left:-20px;margin-right:-20px;padding:14px 20px;',
-    'html.has-case-index [data-case-eyebrow]{max-width:none}',
-    'background:var(--surface-card);border-radius:var(--radius-md);box-shadow:var(--elevation-1)}',
     // the body sits on the details band's 4-column grid: index in column 1, content and dividers from column 2
     'html.has-case-index [data-case-band]{--case-gap:clamp(20px,3vw,36px);column-gap:var(--case-gap)!important;',
     '--case-col:calc((100% - 3 * var(--case-gap)) / 4);--case-divider-left:calc(var(--case-col) + var(--case-gap))}',
@@ -70,6 +65,8 @@
       bands[i].setAttribute('data-case-band', '');
       // the section's eyebrow, shown above its content on wide screens
       var col = h.nextElementSibling;
+      // the section's head is in the markup (.case-head: the title and its one-line intro, ending in a divider)
+      var head = col && col.querySelector(':scope > .case-head');
       if (col && !col.querySelector('[data-case-eyebrow]')) {
         var eb = document.createElement('p');
         eb.setAttribute('data-case-eyebrow', '');
@@ -77,7 +74,7 @@
         eb.innerHTML = '<span></span>';
         eb.firstChild.textContent = m[1];
         eb.appendChild(document.createTextNode(m[2]));
-        col.insertBefore(eb, col.firstChild);
+        (head || col).insertBefore(eb, (head || col).firstChild);
       }
       bands[i].style.scrollMarginTop = (TOP - 20) + 'px';
       var li = document.createElement('li');
@@ -110,7 +107,11 @@
                top.parentElement.firstElementChild === top &&
                parseFloat(getComputedStyle(top).borderTopWidth) === 0) top = top.parentElement;
         var prev = top.previousElementSibling;
-        if (!prev || prev.hasAttribute('data-case-eyebrow')) return; // first thing under the section title
+        if (prev && prev.classList.contains('case-head') && matchMedia(WIDE).matches && parseFloat(getComputedStyle(top).borderTopWidth) > 0) {
+          top.style.borderTopColor = 'transparent'; // the head already ends in the divider: one line, not two
+          top.style.paddingTop = '0px';
+        }
+        if (!prev || prev.hasAttribute('data-case-eyebrow') || prev.classList.contains('case-head')) return; // first thing under the section head
         prev.style.marginBottom = '0px';
         top.style.marginTop = '56px';
         var ruled = parseFloat(getComputedStyle(top).borderTopWidth) > 0;
@@ -121,6 +122,7 @@
     host.insertBefore(nav, host.firstChild);
     document.documentElement.classList.add('has-case-index');
 
+
     // span from the first numbered section to the end of the last one
     function place() {
       var h = host.getBoundingClientRect();
@@ -130,18 +132,9 @@
       nav.style.left = (r.left - h.left) + 'px';
       nav.style.width = Math.min(r.width, 240) + 'px'; // a narrow list; the body column keeps its place
       // the card's top lines up with the first section title
-      ol.style.marginTop = 'calc(' + getComputedStyle(bands[0]).paddingTop + ' + 14px)'; // + the pinned title's own top padding
+      ol.style.marginTop = getComputedStyle(bands[0]).paddingTop;
       nav.style.top = (first.top - h.top) + 'px';
       nav.style.height = (last.bottom - first.top) + 'px';
-      // one width for every pinned title: from its column to the body's right edge, whatever the column's measure
-      var wide = matchMedia(WIDE).matches;
-      bands.forEach(function (band) {
-        var eb = band.querySelector('[data-case-eyebrow]');
-        if (!eb) return;
-        if (!wide) { eb.style.width = ''; return; }
-        var col = eb.parentElement.getBoundingClientRect();
-        eb.style.width = (band.getBoundingClientRect().right - col.left + 40) + 'px';
-      });
     }
 
     var current = -1;

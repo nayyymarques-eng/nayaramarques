@@ -7,6 +7,7 @@
   --sky-0:#ffffff;      --sky-25:#f7fafb;    --sky-50:#edf4f7;    /* card, raised action, page */
   --sky-100:#e8f0f4;    --sky-150:#e4eff3;   --sky-200:#e1eef4;   /* well, hover, note */
   --sky-250:#e9f1f5;    --sky-300:#e2ecf2;   --sky-400:#d8e6ee;   /* the sky's gradient stops */
+  --sky-450:#d4e2eb;                                              /* the darkest point the sky reaches, measured (COL-08) */
   --mist-50:#f3f7f9;    --mist-100:#edf3f6;  --mist-200:#e6eef2;  /* grounds inside a white surface */
   --mist-300:#e4edf1;   --mist-400:#d5e1e7;  --mist-500:#bccdd6;  /* rules inside a white surface */
   --slate-950:#102a33;  --slate-900:#1d3a45;                      /* ink */
@@ -83,17 +84,19 @@
   --terminal-text:var(--graphite-200);      --terminal-error:var(--coral-300);
 
   /* --- 3. The sky. One continuous gradient behind every page (sky.js moves it
-         at 0.3 of the scroll). The darkest point it reaches is --sky-deepest:
-         text on the sky must pass AA on it (check_pages COL-08). --------- */
+         at 0.3 of the scroll). The darkest point it reaches is --sky-deepest,
+         measured from a render: text on the sky must pass AA on it
+         (check_pages COL-08). The depth blobs are kept light enough that the
+         muted text and the accent pass there (SKY-03). ------------------- */
   --sky-ground:
-    radial-gradient(60% 18% at 12% 3%,color-mix(in srgb,var(--blue-150) 55%,transparent),transparent 100%),
-    radial-gradient(50% 16% at 92% 12%,color-mix(in srgb,var(--blue-400) 14%,transparent),transparent 100%),
+    radial-gradient(60% 18% at 12% 3%,color-mix(in srgb,var(--blue-150) 40%,transparent),transparent 100%),
+    radial-gradient(50% 16% at 92% 12%,color-mix(in srgb,var(--blue-400) 10%,transparent),transparent 100%),
     radial-gradient(55% 16% at 22% 22%,color-mix(in srgb,var(--peach-100) 34%,transparent),transparent 100%),
-    radial-gradient(60% 20% at 85% 42%,color-mix(in srgb,var(--blue-350) 24%,transparent),transparent 100%),
-    radial-gradient(60% 20% at 18% 62%,color-mix(in srgb,var(--blue-450) 20%,transparent),transparent 100%),
-    radial-gradient(70% 20% at 72% 82%,color-mix(in srgb,var(--blue-550) 18%,transparent),transparent 100%),
+    radial-gradient(60% 20% at 85% 42%,color-mix(in srgb,var(--blue-350) 12%,transparent),transparent 100%),
+    radial-gradient(60% 20% at 18% 62%,color-mix(in srgb,var(--blue-450) 7%,transparent),transparent 100%),
+    radial-gradient(70% 20% at 72% 82%,color-mix(in srgb,var(--blue-550) 5%,transparent),transparent 100%),
     linear-gradient(180deg,var(--sky-50) 0%,var(--sky-250) 35%,var(--sky-300) 65%,var(--sky-400) 100%);
-  --sky-deepest:var(--sky-400);
+  --sky-deepest:var(--sky-450);
 
   /* --- 4. Temporary aliases: old name to role. Removed in step 6, once the
          Claude Design bundle reads the role names. ---------------------- */
