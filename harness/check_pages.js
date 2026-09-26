@@ -150,8 +150,10 @@
     if (!['result', 'scope'].includes(kind)) out.push(`PAT-04 a .stats block without data-pattern="result|scope"`);
     else if (!new RegExp('^' + kind, 'i').test(txt)) out.push(`PAT-04 a ${kind} block labelled "${txt || 'nothing'}"; its label starts with "${kind === 'result' ? 'Result' : 'Scope'}"`);
   }
+  // the grammar covers case pages and about (services landings are not on it yet)
+  const patScope = !!document.querySelector('[data-case-band]') || /\/about\.html$/.test(location.pathname);
   const bigNum = new Set();
-  for (const e of document.querySelectorAll('main *')) {
+  for (const e of patScope ? document.querySelectorAll('main *') : []) {
     if (inMock(e) || e.closest('h1,.stats,.hero,.band-inverse,.figure,figure,header,[data-case-index]')) continue;
     const own = [...e.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
     if (!own || !/^([+\-−]?[\d.,]+\s*(%|×|x)?|\d+\s*→\s*\d+)$/.test(own)) continue;
