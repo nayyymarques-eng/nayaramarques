@@ -220,6 +220,8 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .illo-send{flex:none;width:18px;height:18px;border-radius:var(--radius-sm);background:var(--accent);display:grid;place-items:center;color:var(--surface-card)}
 .illo-send svg{width:10px;height:10px;display:block}
 .illo-caret{flex:none;width:1px;height:11px;background:var(--text-strong)}
+/* Narrow cells (the grid gives the window 400 to 460px below 1100px): tighter padding, rows may wrap. */
+@media (max-width:1100px){.illo-window--case{padding:var(--space-md)}.illo-window--case .illo-cols{gap:var(--space-sm)}.illo-window--case .illo-row:not(.illo-row--keep){flex-wrap:wrap}}
 .illo-slot{box-shadow:none;border:var(--stroke-diagram) dashed var(--accent);color:var(--accent)}
 
 /* ---------- The ink band: architecture, straight, edge to edge (SHP-01) ---------- */
