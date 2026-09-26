@@ -87,7 +87,9 @@ CLAUDE.md: token table rewritten; LAY-02/03 retired; LAY-05, 07, 08, 09 rewritte
 
 Warnings left: COL-07 `--track-lead` (pre-existing, ai-surfaces and composer-spec); FLW-02 strike-through in product mockups (ai-surfaces redline, card-insurance "Not taken"); CNT-04 "Not taken —" (a mockup); CNT-10 three phrases kept for your decision (below); RET-03 the dashed "another page" panel on home and work (intended, `.elsewhere`).
 
-## Copy for your approval (`data-new-copy`)
+## Copy (approved by Nayara, 2026-09-25)
+Approved on 2026-09-25: the new strings and the drafted section intros below. The `data-new-copy` markers were removed from every page in round 2 (commit list at the end).
+
 | Key | Page | String |
 |---|---|---|
 | hero-eyebrow | home | Senior Product Designer and Design Engineer |
@@ -106,7 +108,7 @@ Warnings left: COL-07 `--track-lead` (pre-existing, ai-surfaces and composer-spe
 | fleet-chosen | fleet | Chosen |
 | art-legend-pass | audit | Pass |
 
-### Section intros (draft, `data-new-copy="sec-intro-<page>-<nn>"`, not approved)
+### Section intros (approved 2026-09-25)
 Every rail section now opens with `p[data-sec-intro]`. These are the drafted texts; "extended" means the old sentence is kept and continued.
 
 | Page | § | Kind | Was | Draft |
@@ -150,7 +152,6 @@ Every rail section now opens with `p[data-sec-intro]`. These are the drafted tex
 | card-insurance | 07 | new |  | Four lessons: two about the product, on placement and transparency, and two about the practice of testing early. |
 | card-insurance | 08 | extended | From the survey to handover for build. Not covered: | The case runs from the survey to handover for build. What came after that is not covered: |
 
-To withdraw every draft intro at once, search for `data-new-copy="sec-intro-`.
 
 ### Copy removed or changed (no new words)
 - **Process narration (CNT-10):** card-insurance 4.3 "Contracting, claim and cancellation, mapped before any screen." → "Contracting, claim and cancellation."; card-insurance 6.1 intro (above) and the caption "The placement change. Made before build." removed with the old figure.
