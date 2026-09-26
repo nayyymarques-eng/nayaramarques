@@ -47,9 +47,9 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .badge--accent{background:var(--accent)}
 /* A separate place you leave your work to reach (another page): a dashed outline, light, never a dark block. */
 .elsewhere{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:96px;padding:18px var(--space-md);
-  background:var(--surface-card);border:1.5px dashed var(--text-muted);border-radius:var(--radius-sm)}
+  background:var(--surface-card);border:var(--stroke-diagram) dashed var(--text-muted);border-radius:var(--radius-sm)}
 .elsewhere__path{display:flex;flex-direction:column;align-items:center;gap:6px;margin:6px 0 8px;color:var(--text-muted)}
-.elsewhere__path::before{content:"";width:0;height:14px;border-left:1.5px dashed var(--text-muted)}
+.elsewhere__path::before{content:"";width:0;height:14px;border-left:var(--stroke-diagram) dashed var(--text-muted)}
 /* ---------- Flows read horizontally (FLW-01) ----------
    A step is a small white object with the soft level-1 shade; the emphasised step is solid accent. A chain is one line
    of steps with → between them; on a narrow screen it scrolls inside its own block, never the page. */
@@ -188,6 +188,37 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
    A solid ink block inside is softened to a raised light surface: emphasis by depth, not darkness. */
 .illo-window{position:relative;isolation:isolate;background:var(--surface-well);border:0;border-radius:var(--radius-lg);box-shadow:var(--elevation-inset-2)}
 .illo-emph{background:var(--surface-card);color:var(--text-strong);border:0;border-radius:var(--radius-sm);box-shadow:var(--elevation-action)}
+/* Case-card windows (home and Work): drawn at real size, never scaled, at most 480px wide (ILL-02). Every word the
+   drawing says is the label style; product UI inside carries [data-mock] and keeps its own sentence case. Surfaces
+   inside the window are level 1 with the small radius (DEP-03); one line weight (--stroke-diagram); skeleton bars
+   stand for text, so they are flat and square (ILL-05). */
+.illo-window--case{width:100%;max-width:480px;justify-self:center;padding:var(--space-lg);display:flex;flex-direction:column;gap:var(--space-md);
+  font-size:var(--font-size-2xs);line-height:var(--leading-label);color:var(--text-body)}
+.illo-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-md);align-items:start}
+.illo-col{display:flex;flex-direction:column;gap:var(--space-xs);min-width:0}
+.illo-label{margin:0;font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
+.illo-label--ink{color:var(--text-strong)}
+.illo-label--accent{color:var(--accent)}
+.illo-label--core{font-size:var(--font-size-diagram-core);font-weight:700;color:var(--text-strong)}
+.illo-label--heading{font-size:var(--font-size-diagram-heading);color:var(--text-strong)}
+.illo-ui{background:var(--surface-card);border-radius:var(--radius-sm);box-shadow:var(--elevation-1);padding:var(--space-xs) 10px;min-width:0;color:var(--text-body)}
+.illo-ui--flat{box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border)}
+.illo-row{display:flex;align-items:center;gap:var(--space-xs);min-width:0}
+.illo-row>.illo-end{margin-left:auto}
+.illo-rule{border-top:var(--stroke-diagram) solid var(--border);padding-top:var(--space-xs)}
+.illo-bar{height:5px;background:var(--surface-hover)}
+.illo-bar--ink{background:var(--border)}
+.illo-dot{flex:none;width:6px;height:6px;border-radius:var(--radius-full);background:var(--accent)}
+.illo-dot--quiet{background:var(--border)}
+.illo-icon{flex:none;width:12px;height:12px;display:block;color:var(--text-subtle)}
+.illo-pills{display:flex;flex-wrap:wrap;gap:var(--space-2xs)}
+.illo-pill{padding:3px 8px;border-radius:var(--radius-full);background:var(--surface-tag);color:var(--text-body)}
+.illo-pill--accent{background:var(--accent);color:var(--surface-card)}
+.illo-window .tag{font-size:var(--font-size-diagram);letter-spacing:var(--tracking-eyebrow);padding:3px 8px;white-space:normal}
+.illo-send{flex:none;width:18px;height:18px;border-radius:var(--radius-sm);background:var(--accent);display:grid;place-items:center;color:var(--surface-card)}
+.illo-send svg{width:10px;height:10px;display:block}
+.illo-caret{flex:none;width:1px;height:11px;background:var(--text-strong)}
+.illo-slot{box-shadow:none;border:var(--stroke-diagram) dashed var(--accent);color:var(--accent)}
 
 /* ---------- The ink band: architecture, straight, edge to edge (SHP-01) ---------- */
 .band-inverse{position:relative;isolation:isolate;background:var(--surface-inverse);color:var(--text-on-inverse);box-shadow:var(--bleed-shadow-inverse);clip-path:var(--bleed-clip);border:0;border-radius:0}

@@ -12,6 +12,10 @@
   --radius:var(--radius-sm);          /* alias, removed in step 6 */
   --radius-pill:var(--radius-full);   /* alias, removed in step 6 */
 
+  /* The one line weight inside illustrations and figures: rules, outlines, connectors, dashed paths
+     (ILL-05). Proposal, illo round 1 (2026-09-26): awaiting Nayara's verdict. */
+  --stroke-diagram:1px;
+
   --border-hairline:1px solid var(--border); /* @kind other */
   --border-hairline-strong:1px solid var(--border-emphatic); /* @kind other */
   --border-control-1:1px solid var(--border); /* @kind other */
