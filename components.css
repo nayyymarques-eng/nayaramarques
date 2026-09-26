@@ -231,7 +231,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 /* Narrow cells (the grid gives the window 400 to 460px below 1100px): tighter padding, rows may wrap. */
 @media (max-width:1100px){.illo-window--case{padding:var(--space-md)}.illo-window--case .illo-cols{gap:var(--space-sm)}.illo-window--case .illo-row:not(.illo-row--keep){flex-wrap:wrap}}
 .illo-slot{box-shadow:none;border:var(--stroke-diagram) dashed var(--accent);color:var(--accent)}
-/* proposal (visual round 2): .illo-ba, a case window that shows one change, read left to right. The side before is
+/* approved by Nayara 2026-09-26 (visual round 2): .illo-ba, a case window that shows one change, read left to right. The side before is
    quiet (outlines, muted, no shade); an arrow; the side after is the focal point (level-1 UI, the one accent, the
    core label). Considered: .illo-cols (two equal columns with no reading order or arrow, so the eye had no start);
    .chain (a flow of blocks on a page, not inside a window). Awaiting Nayara. */

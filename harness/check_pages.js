@@ -23,6 +23,7 @@
  *           which kind it is (Result… for data-pattern="result", Scope… for data-pattern="scope")
  *   PAT-05  case cards are not stacked: a .cards group with more than one column, a gap other than 12px (--gap-cards),
  *           or a card narrower than its group
+ *   ILL-07  a case window has at most 8 labels outside [data-mock] and the accent on one side only
  *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window) is not the label style as rendered: under 9.5px,
  *           not uppercase, not 0.14em, or lighter than 600. In a figure's picture, uppercase labels must be the label
  *           style (9.5, 10.5 or 12.5px, 0.14em, 600). Product UI is exempt with [data-mock].
@@ -364,5 +365,21 @@
     if (why.length) { const k = own.slice(0, 30); ill.set(k, `ILL-02 "${k}" ${why.join(', ')}; the label style is uppercase, 600, 0.14em, 9.5px (mark product UI [data-mock])`); }
   }
   out.push(...ill.values());
+
+  // ILL-07 a case window (home, Work) shows one change read left to right (.illo-ba): at most 8 labels outside
+  // product UI ([data-mock]), and the accent on one side only.
+  const acc = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  const accProbe = document.createElement('i'); accProbe.style.color = acc; document.body.appendChild(accProbe);
+  const accRgb = getComputedStyle(accProbe).color; accProbe.remove();
+  document.querySelectorAll('.illo-window--case').forEach((w, n) => {
+    if (!w.getClientRects().length || getComputedStyle(w).display === 'none') return;
+    const labels = [...w.querySelectorAll('*')].filter(e => !e.closest('[data-mock]') && [...e.childNodes].some(c => c.nodeType === 3 && /[A-Za-z0-9]/.test(c.textContent)));
+    if (labels.length > 8) out.push(`ILL-07 case window ${n + 1} has ${labels.length} labels (at most 8)`);
+    const sides = [...w.querySelectorAll('.illo-side')];
+    if (sides.length) {
+      const lit = sides.filter(sd => [...sd.querySelectorAll('*')].some(e => { const c = getComputedStyle(e); return c.color === accRgb || c.backgroundColor === accRgb || c.borderTopColor === accRgb; }));
+      if (lit.length > 1) out.push(`ILL-07 case window ${n + 1} carries the accent on both sides (one side only)`);
+    } else out.push(`ILL-07 case window ${n + 1} is not a before/after (.illo-ba)`);
+  });
   return location.pathname + ' :: ' + (out.length ? out.join(' ; ') : 'pass');
 })()
