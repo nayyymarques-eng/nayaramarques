@@ -116,9 +116,13 @@
   @media (max-width: 640px) { .hx__lede br { display: none; } }
   @media (prefers-reduced-motion: reduce) { .hx__caret { display: none; } .hx__thread li { animation: none; } }
   /* The sticker: a small card (a terminal) follows the cursor only while it is over the chat. */
+  /* Stiff, digital (Nayara, 2026-09-26): it moves with the cursor, no trail, no tilt. It enters in four beats, top to
+     bottom like a terminal printing its lines (steps(), 400ms), and leaves at once. Reduced motion: it appears at once. */
   .hx-sticker { position: fixed; left: 0; top: 0; z-index: 60; width: 196px; pointer-events: none; opacity: 0; transform: translate3d(-999px, -999px, 0);
-    transition: opacity .18s var(--ease-out); background: var(--brand-mark); border-radius: var(--radius-md); padding: 6px; box-shadow: var(--elevation-sticker); }
-  .hx-sticker.is-on { opacity: 1; }
+    background: var(--brand-mark); border-radius: var(--radius-md); padding: 6px; box-shadow: var(--elevation-sticker); }
+  .hx-sticker.is-on { opacity: 1; animation: hx-sticker-in 400ms steps(4, jump-start) both; }
+  @keyframes hx-sticker-in { from { clip-path: inset(-24px -24px 100% -24px); } to { clip-path: inset(-24px -24px -24px -24px); } }
+  @media (prefers-reduced-motion: reduce) { .hx-sticker.is-on { animation: none; } }
   .hx-sticker__term { background: var(--terminal-surface); border-radius: var(--radius-sm); overflow: hidden; }
   .hx-sticker__bar { display: flex; align-items: center; gap: 4px; padding: 5px 7px; background: var(--terminal-chrome); }
   .hx-sticker__bar i { width: 6px; height: 6px; border-radius: 50%; background: var(--terminal-dot); }
@@ -450,7 +454,7 @@
       </div></div>
         </div>
 
-      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--space-fluid-xl) 0;border-top:1px solid var(--border-emphatic);border-bottom:1px solid var(--border)">
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--space-fluid-xl) 0;border-top:1px solid var(--border-emphatic)">
           <a href="card-insurance.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
           <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
             <span style="color:var(--accent)">06</span><span>BTG Pactual</span><span>2020</span>
@@ -523,6 +527,23 @@
       </div>
     </section>
 
+    <!-- Who built it (Nayara, 2026-09-26): the services pages' "Who runs it" block (.ld-split, .ld-portrait), same markup and
+         portrait, with copy for the home page drawn from About. -->
+    <section class="ld-wrap section" aria-labelledby="ld-who" style="padding-bottom:var(--section-y-lg)">
+      <div class="ld-split">
+        <div class="ld-portrait">
+          <img src="assets/nayara-portrait.png" alt="Nayara Marques" width="440" height="550">
+        </div>
+        <div>
+          <p class="eyebrow" data-new-copy="home-who">Who built it</p>
+          <h2 class="h2" id="ld-who" data-new-copy="home-who">I set the direction, and I ship it</h2>
+          <p data-new-copy="home-who">Nine years on B2B and B2C products. I've led a design team, been the only designer, and worked on systems as often as screens.</p>
+          <p data-new-copy="home-who">Lately, AI-native products: entry points, conversation patterns, streaming and recovery states, and the design system that keeps them coherent. I prototype in code, agree component contracts with engineering, and ship the edge cases.</p>
+          <a class="action action--link" href="about.html" data-new-copy="home-who">More about me <span class="action__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
     <section class="band-inverse">
       <div style="max-width:1400px;margin:0 auto;padding:var(--section-y-lg) var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--section-y);align-items:start">
         <h2 style="font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-none);letter-spacing:var(--tracking-display);margin:0;text-wrap:balance">Looking for someone who ships the whole thing?</h2>
@@ -586,33 +607,28 @@
     })();
   }
   setTimeout(typeLine, 900);
-  // the sticker follows the cursor over the composer, trailing a little and tilting with the movement
+  // the sticker moves with the cursor over the chat: stiff, no trail, no tilt (its entrance is in the CSS)
   function S() { return document.querySelector('.hx-sticker'); }
-  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var x = 0, y = 0, tx = 0, ty = 0, on = false, raf = 0;
-  function loop() {
-    var k = still ? 1 : 0.2; x += (tx - x) * k; y += (ty - y) * k;
-    var tilt = still ? 0 : Math.max(-8, Math.min(8, (tx - x) * 0.25));
-    var st = S(); if (!st) return;
-    st.style.transform = 'translate3d(' + (x + 16).toFixed(1) + 'px,' + (y + 18).toFixed(1) + 'px,0) rotate(' + tilt.toFixed(2) + 'deg)';
-    raf = on || Math.abs(tx - x) > 0.5 ? requestAnimationFrame(loop) : 0;
+  var tx = 0, ty = 0, on = false, raf = 0;
+  function place() {
+    raf = 0; var st = S(); if (!st) return;
+    st.style.transform = 'translate3d(' + Math.round(tx + 16) + 'px,' + Math.round(ty + 18) + 'px,0)';
   }
   function hide() { on = false; var st = S(); if (st) st.classList.remove('is-on'); }
   document.addEventListener('pointerleave', hide); window.addEventListener('blur', hide); window.addEventListener('scroll', function () { if (on) hide(); }, { passive: true });
   document.addEventListener('pointermove', function (ev) {
     var over = ev.target.closest && ev.target.closest('.hx__chat');
-    tx = ev.clientX; ty = ev.clientY;
-    if (over && !on) { x = tx; y = ty; }
-    on = !!over; var st = S(); if (!st) return; st.classList.toggle('is-on', on);
-    // keep it on screen near the right edge
-    if (tx + 16 + 200 > innerWidth) tx = innerWidth - 216;
-    if (!raf) raf = requestAnimationFrame(loop);
+    tx = Math.min(ev.clientX, innerWidth - 216); ty = ev.clientY; // keep it on screen near the right edge
+    var st = S(); if (!st) return;
+    if (over && !on) place();                       // appear where the cursor is, never slide in
+    on = !!over; st.classList.toggle('is-on', on);
+    if (on && !raf) raf = requestAnimationFrame(place);
   }, { passive: true });
   // touch screens have no hover: a tap shows it under the finger for a few seconds
   document.addEventListener('click', function (ev) {
     var over = ev.target.closest && ev.target.closest('.hx__chat'); if (!over || ev.pointerType === 'mouse') return;
     var st = S(); if (!st) return;
-    x = tx = Math.min(ev.clientX, innerWidth - 216); y = ty = ev.clientY; on = true; st.classList.add('is-on'); loop();
+    tx = Math.min(ev.clientX, innerWidth - 216); ty = ev.clientY; place(); on = true; st.classList.add('is-on');
     clearTimeout(st._t); st._t = setTimeout(function () { on = false; st.classList.remove('is-on'); }, 3200);
   });
 })();
@@ -625,7 +641,7 @@
 
    ¯\_(ツ)_/¯</pre>
   </div>
-  <p>Sorry, it isn’t built. I can build yours.</p>
+  <p>Sorry, it isn’t built.<br>I can build yours.</p>
 </div>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
