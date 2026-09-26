@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-26 (afternoon)
+- Illustrations approved, all of it ("amazing job"): the six before/after case windows and their labels, the token card ("~2,300 tokens saved on one screen"), `--stroke-diagram` 1px, square skeleton bars, the window parts joining the system; before/after becomes the rule for case windows. · the word-heavy windows · ILL-05, ILL-07 (check_pages)
 - Home and Work case illustrations: too many words. Each illustration explains one main idea of its case, simply, built on how eyes read (one focal point, few words, the idea visible before it is read). · the word-heavy windows · ILL (to be written)
 - The audit card highlights how many tokens the design system saved on a single screen (about 2,300, her own measurement, now allowed alongside 44%). · 44% as the headline · CNT-06 list extended
 - About, Tools & range: organised like a footer, sections side by side, each a short vertical list; same position on the page. · one long dotted line per row · by eye
