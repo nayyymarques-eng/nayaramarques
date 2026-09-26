@@ -1,55 +1,104 @@
 :root{
+  /* Theme: sky (approved 2026-09-25). One light and one hue: a soft blue-white
+     page under a grained day sky, blue-slate ink, one teal-blue accent. Every
+     shadow is the same sky blue, lit from above. */
+
   /* --- 1. Primitives. Values only; pages never use these names. -------- */
-  --sand-0:#ffffff;     --sand-50:#f2f1ee;   --sand-100:#eceae5;
-  --sand-200:#dedbd5;   --sand-400:#b8b5ae;
-  --slate-300:#a4a8ae;  --slate-500:#7f8389; --slate-550:#5f646b;  /* slate-500: B-2, arrows and icons at 3:1 */
-  --slate-700:#4e535a; --slate-800:#3a3e44;
-  --slate-950:#101114;  /* shadows only */
-  --blue-200:#a8cbdf;   --blue-600:#2d6b90;
-  --red-600:#c0392b;    --green-700:#3f6b4a; --clay-700:#8a4a2a;
+  --sky-0:#ffffff;      --sky-25:#f7fafb;    --sky-50:#edf4f7;    /* card, raised action, page */
+  --sky-100:#e8f0f4;    --sky-150:#e4eff3;   --sky-200:#e1eef4;   /* well, hover, note */
+  --sky-250:#e9f1f5;    --sky-300:#e2ecf2;   --sky-400:#d8e6ee;   /* the sky's gradient stops */
+  --mist-50:#f3f7f9;    --mist-100:#edf3f6;  --mist-200:#e6eef2;  /* grounds inside a white surface */
+  --mist-300:#e4edf1;   --mist-400:#d5e1e7;  --mist-500:#bccdd6;  /* rules inside a white surface */
+  --slate-950:#102a33;  --slate-900:#1d3a45;                      /* ink */
+  --slate-700:#3b5560;  --slate-600:#4a626d;                      /* body and heading ink, muted */
+  --slate-500:#687f8a;  --slate-300:#a9c3cf;                      /* arrows and icons at 3:1, prose on ink */
+  --blue-700:#185868;   --blue-600:#1f6a80;  --blue-500:#2a86a1;  /* accent, and its pressed/hover steps */
+  --blue-200:#a8cbdf;   --blue-150:#a6d6e2;                       /* pale blue on ink; sky light */
+  --blue-400:#3484a2;   --blue-350:#78b4ce;  --blue-450:#5c96b8;  --blue-550:#3c78a0; /* sky depth */
+  --blue-shade-1:#286e8c; --blue-shade-2:#3282a5;                 /* the one shadow hue */
+  --peach-100:#fae2d0;                                            /* the warm light near the top of the sky */
+  --red-600:#c0392b;    --red-900:#781e14;                        /* the nav star; its sticker's shade */
+  --green-700:#3f6b4a;  --clay-700:#8a4a2a;
+  --graphite-900:#1b1e27; --graphite-800:#232732; --graphite-600:#3d424f; /* the home sticker's terminal */
+  --graphite-400:#8b8f96; --graphite-200:#c8cdd8; --coral-300:#ff8a7a;
+  --black:#000000;                                                /* shadows on the ink band only */
 
   /* --- 2. Roles. Pages use only these. -------------------------------- */
-  --surface-page:var(--sand-50);            /* page background */
-  --surface-band:var(--sand-100);           /* alternate band */
-  --surface-hover:var(--sand-100);          /* hover fill, current item, skeleton bar */
-  --surface-card:var(--sand-0);             /* card or tile, never a page */
-  --surface-inverse:var(--slate-800);       /* dark band, solid button */
-  --surface-note:color-mix(in srgb,var(--blue-200) 30%,var(--sand-50)); /* note or callout ground on paper */
-  --surface-accent-tint:color-mix(in srgb,var(--blue-600) 12%,var(--sand-0)); /* wireframe highlight */
+  --surface-page:var(--sky-50);             /* the page, under the sky layer */
+  --surface-well:var(--sky-100);            /* level -1: case details, next case, illustration windows */
+  --surface-hover:var(--sky-150);           /* hover fill, current menu item */
+  --surface-card:var(--sky-0);              /* level 1 and 2 surfaces: cards, figures, plan cards */
+  --surface-raised:var(--sky-25);           /* the primary action's fill */
+  --surface-inverse:var(--slate-950);       /* the ink band */
+  --surface-note:var(--sky-200);            /* note or callout ground on the sky (eyebrow in --accent) */
+  --surface-tag:color-mix(in srgb,var(--slate-950) 5.5%,transparent); /* a tag: a faint ink tint, no border */
+  --surface-accent-tint:color-mix(in srgb,var(--blue-600) 12%,var(--sky-0)); /* wireframe highlight */
 
-  --text-strong:var(--slate-800);           /* headings, strong text */
+  --text-strong:var(--slate-950);           /* strong text, labels in ink, actions */
+  --text-heading:var(--slate-700);          /* h1 to h3: the softer heading ink */
   --text-body:var(--slate-700);             /* running prose, card prose */
-  --text-muted:var(--slate-550);            /* captions, nav links, secondary, eyebrows, metadata (B-1: was #5a5f66) */
-  --text-subtle:var(--slate-500);           /* arrows, icons; never text (B-2: was #8c9096) */
-  --text-on-inverse:var(--sand-50);         /* text on the dark band */
-  --text-on-inverse-muted:var(--slate-300); /* prose on the dark band, text in dark mockups */
+  --text-muted:var(--slate-600);            /* captions, nav links, secondary, eyebrows, metadata */
+  --text-subtle:var(--slate-500);           /* arrows, icons; never text */
+  --text-on-inverse:var(--sky-50);          /* text on the ink band */
+  --text-on-inverse-muted:var(--slate-300); /* prose on the ink band, text in dark mockups */
 
-  --accent:var(--blue-600);                 /* case eyebrows, link hover, highlights */
+  --accent:var(--blue-600);                 /* case eyebrows, links, arrows, ordinals, the Link action */
+  --accent-strong:var(--blue-700);          /* the Link action on hover */
   --accent-soft:var(--blue-200);            /* pale blue, ink grounds only */
-  --brand-mark:var(--red-600);              /* the nav star */
+  --brand-mark:var(--red-600);              /* the nav star and name; nothing else */
 
-  --border-subtle:var(--sand-100);          /* inner rule in a white card, soft chip border */
-  --border:var(--sand-200);                 /* default rule, card border, control and pill border, grid gutter */
-  --border-strong:var(--sand-400);          /* item rule inside a section */
-  --border-emphatic:var(--slate-800);       /* opens a block; divider between case sections */
+  /* On the sky, rules fade and depth does the work. Inside a white surface
+     ([data-surface], .card, .figure …) lines come back with real contrast: see §4. */
+  --border-subtle:color-mix(in srgb,var(--slate-950) 5%,transparent);  /* inner rule, soft chip border */
+  --border:color-mix(in srgb,var(--slate-950) 7%,transparent);         /* section divider, default rule */
+  --border-strong:color-mix(in srgb,var(--slate-950) 10%,transparent); /* item rule inside a section */
+  --border-emphatic:color-mix(in srgb,var(--slate-950) 18%,transparent); /* opens a block; case section divider */
 
   --status-gain:var(--green-700);           /* "Gained", availability dot */
   --status-cost:var(--clay-700);            /* "Traded away", "Risk 01" */
-  --focus-ring:var(--slate-800);
+  --focus-ring:var(--blue-600);
 
-  --shadow-sm:0 1px 2px color-mix(in srgb,var(--slate-950) 5%,transparent);          /* mock tiles */
-  --shadow-md:0 2px 10px -2px color-mix(in srgb,var(--slate-950) 16%,transparent);   /* floating cards */
-  --shadow-lg:0 18px 44px -26px color-mix(in srgb,var(--slate-950) 34%,transparent); /* menus, popovers */
+  /* Elevation: one hue, one light from above. Higher is softer and wider, never darker. */
+  --elevation-inset:inset 0 1px 2px color-mix(in srgb,var(--blue-shade-1) 6%,transparent),inset 0 6px 16px -10px color-mix(in srgb,var(--blue-shade-2) 18%,transparent); /* level -1: a well */
+  --elevation-inset-deep:inset 0 2px 3px color-mix(in srgb,var(--blue-shade-1) 10%,transparent),inset 0 10px 24px -10px color-mix(in srgb,var(--blue-shade-2) 30%,transparent); /* a well you press (next case, on hover) */
+  --elevation-1:0 1px 2px color-mix(in srgb,var(--blue-shade-1) 5%,transparent),0 6px 18px -10px color-mix(in srgb,var(--blue-shade-2) 22%,transparent);  /* resting: cards */
+  --elevation-2:0 1px 3px color-mix(in srgb,var(--blue-shade-1) 5%,transparent),0 14px 32px -16px color-mix(in srgb,var(--blue-shade-2) 26%,transparent); /* raised: evidence, hovered link cards */
+  --elevation-3:0 2px 4px color-mix(in srgb,var(--blue-shade-1) 5%,transparent),0 22px 44px -20px color-mix(in srgb,var(--blue-shade-2) 30%,transparent); /* floating: header, menus */
+  --elevation-action:0 1px 2px color-mix(in srgb,var(--blue-shade-1) 10%,transparent),0 10px 24px -12px color-mix(in srgb,var(--blue-shade-1) 45%,transparent);
+  --elevation-action-hover:0 2px 4px color-mix(in srgb,var(--blue-shade-1) 10%,transparent),0 16px 32px -14px color-mix(in srgb,var(--blue-shade-1) 50%,transparent);
+  --elevation-action-inverse:0 10px 24px -12px color-mix(in srgb,var(--black) 45%,transparent); /* the Inverse action on the ink band */
+  --elevation-sticker:0 14px 30px -14px color-mix(in srgb,var(--red-900) 60%,transparent);
+  --shadow-sm:var(--elevation-1);           /* old names, kept: small = resting */
+  --shadow-md:var(--elevation-2);           /* medium = raised */
+  --shadow-lg:var(--elevation-3);           /* large = floating */
 
-  /* --- 3. Temporary aliases: old name to role. Removed in step 6, once the
+  /* The home sticker's terminal: a recreated product surface, not site UI. */
+  --terminal-surface:var(--graphite-900);   --terminal-chrome:var(--graphite-800);
+  --terminal-dot:var(--graphite-600);       --terminal-meta:var(--graphite-400);
+  --terminal-text:var(--graphite-200);      --terminal-error:var(--coral-300);
+
+  /* --- 3. The sky. One continuous gradient behind every page (sky.js moves it
+         at 0.3 of the scroll). The darkest point it reaches is --sky-deepest:
+         text on the sky must pass AA on it (check_pages COL-08). --------- */
+  --sky-ground:
+    radial-gradient(60% 18% at 12% 3%,color-mix(in srgb,var(--blue-150) 55%,transparent),transparent 100%),
+    radial-gradient(50% 16% at 92% 12%,color-mix(in srgb,var(--blue-400) 14%,transparent),transparent 100%),
+    radial-gradient(55% 16% at 22% 22%,color-mix(in srgb,var(--peach-100) 34%,transparent),transparent 100%),
+    radial-gradient(60% 20% at 85% 42%,color-mix(in srgb,var(--blue-350) 24%,transparent),transparent 100%),
+    radial-gradient(60% 20% at 18% 62%,color-mix(in srgb,var(--blue-450) 20%,transparent),transparent 100%),
+    radial-gradient(70% 20% at 72% 82%,color-mix(in srgb,var(--blue-550) 18%,transparent),transparent 100%),
+    linear-gradient(180deg,var(--sky-50) 0%,var(--sky-250) 35%,var(--sky-300) 65%,var(--sky-400) 100%);
+  --sky-deepest:var(--sky-400);
+
+  /* --- 4. Temporary aliases: old name to role. Removed in step 6, once the
          Claude Design bundle reads the role names. ---------------------- */
-  --paper:var(--surface-page);        --paper-2:var(--surface-band);
+  --paper:var(--surface-page);        --paper-2:var(--surface-page);  /* bands are retired: paper-2 is the page */
   --paper-3:var(--surface-hover);     --white:var(--surface-card);
   --ink:var(--text-strong);           --ink-2:var(--text-body);
   --ink-4:var(--text-muted);          --ink-6:var(--text-meta);
   --ink-7:var(--text-subtle);         --on-ink:var(--text-on-inverse);
   --on-ink-muted:var(--text-on-inverse-muted);  --term-fg:var(--text-on-inverse-muted);
-  --rust:var(--accent);               --rust-hover:var(--accent);
+  --rust:var(--accent);               --rust-hover:var(--accent-strong);
   --baby:var(--accent-soft);          --note:var(--surface-note);
   --red:var(--brand-mark);
   --line:var(--border);               --line-2:var(--border);
@@ -58,8 +107,22 @@
   --gained:var(--status-gain);        --traded:var(--status-cost);
   --text-accent:var(--accent);        --border-default:var(--border);
   --text-meta:var(--text-muted);      /* B-1 */
-  --accent-hover:var(--accent);       /* B-3 */
+  --accent-hover:var(--accent-strong);
   --border-control:var(--border);     /* B-5 */
   --text-on-inverse-mock:var(--text-on-inverse-muted); /* B-7 */
   --shadow-ink:var(--slate-950);
+  --surface-band:var(--surface-page); /* retired: one sky, no alternating bands (SKY-02) */
+}
+
+/* Inside a white surface, lines come back with real contrast and the wireframe
+   grounds step to the surface's own family (RULES §2.7). Scoped, not redefined:
+   the same role names, resolved against the surface that holds them. A custom
+   property resolves where it is declared, so the aliases are restated here. */
+[data-surface],.card,.link-card,.figure,.plan-card,.accordion{
+  --border-subtle:var(--mist-300);    --line-4:var(--mist-300);
+  --border:var(--mist-400);           --line:var(--mist-400);   --line-2:var(--mist-400);
+  --border-control:var(--mist-400);   --line-3:var(--mist-400); --border-default:var(--mist-400);
+  --border-strong:var(--mist-500);    --line-mid:var(--mist-500);
+  --surface-page:var(--mist-50);      --paper:var(--mist-50);   --paper-2:var(--mist-50);
+  --surface-hover:var(--mist-100);    --paper-3:var(--mist-100);
 }
