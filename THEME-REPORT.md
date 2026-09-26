@@ -201,3 +201,22 @@ Morning report: `_review/round-2.html` (screenshots in `_review/round-2-img/`); 
 | `f1cc11a` | PAT-04 page check scoped to cases and about |
 | `dd9f265` | New labels marked `data-new-copy` |
 | (last) | Round 2 report and this summary |
+
+## Round 3 (2026-09-26): stacked cards, the inactive gap, AI surfaces, home
+Report: `_review/round-3.html` (screenshots in `_review/round-3-img/`, before and after). Not linked from the site.
+
+- **Home:** the sticker moves with the cursor, stiff (no trail, tilt or spring), enters in four `steps()` beats over 400ms and leaves at once; appears at once with reduced motion; its line is on two lines. The rule under the last case is gone (one divider above "Where I've built"). A "Who built it" block, the services "Who runs it" markup with the portrait, sits before the call to action; copy from About, marked `home-who`.
+- **Cases:** every card job is stacked, one per row, full width, 12px apart. Constraints (`Constraint A` eyebrow), steps (ordinal eyebrow in the accent) and outcomes became DecisionCards. `.cards--2` and `.stages` are retired. Findings, principles and references stay rows. "What this case doesn't cover" takes one inactive style from `components.css` (`[data-pattern="gap"]`) on all six cases.
+- **AI surfaces:** placement figure tagged "Chat centralised · previous work" / "Chat distributed · proposed solution" (stacks on phones); analysis figure named "Analysis mode" and explained; inline-edit figure removed; the report side labelled "Report · Editing mode"; the three editing modes named. "Scope of the spec" removed here and on Composer spec. Copy marked `ai-surfaces-r3` and `composer-spec-r3` (Composer spec's drift sentence moved into a third Mapped for AI card).
+- **Rules and checks:** CLAUDE.md §7 rewritten (PAT-01, -03, -05, -06, new PAT-07), CRD-01, LAY-05a, LAY-08, new MOT-03, NUM, RET, CMP-01. check_source: PAT-01 jobs, PAT-03 card eyebrows, PAT-05 retired classes, PAT-07 gap section. check_pages: PAT-05 stacked, PAT-07 inactive.
+- **Checks:** check_source 0 failures (8 older warnings). check_pages passes on all 16 pages at 1400 and 375, and on the eight changed pages with reduced motion.
+- **Open questions:** twelve, in the report, each with a recommendation. `DECISIONS.md` (main checkout) was not touched; log this round's verdicts there after approval.
+
+| Commit | Step |
+|---|---|
+| `20cfa7c` | Home: sticker, divider, Who built it |
+| `5f5708a` | Stacked cards and the inactive gap (four cases, components.css) |
+| `66688d7` | AI surfaces and Composer spec |
+| `0269f1c` | Checks |
+| `7f96151` | CLAUDE.md |
+| (last) | Round 3 report and this summary |
