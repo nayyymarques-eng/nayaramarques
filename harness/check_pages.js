@@ -8,7 +8,8 @@
  *   SEC-01  a line runs edge to edge (dividers are in flow, at content width; the ink band is the only full-bleed band)
  *   SEC-03  two lines at one boundary
  *   SKY-02  something full width paints its own ground (only the sky and the ink band may)
- *   HERO-01 the h1 is not at the hero's fixed height (header + --hero-top + one eyebrow line + 16px), within 2px
+ *   HERO-01 the h1 is not at the hero's fixed height (header + --hero-top + one eyebrow line + 16px), within 2px.
+ *           The home is the one exception (HERO-02): its hero fills the first screen, centred.
  *   TYP-01  an eyebrow or label is under 11px (in-diagram labels, tags and product mockups excepted)
  *   ACT-01  an action is uppercase, or boxed without being one of the three variants
  *   ACT-02  more than one primary action on the page
@@ -37,12 +38,13 @@
   const grounds = new Set();
   for (const e of document.querySelectorAll('body *')) {
     if (e.closest('header,[data-sky],#boot,.band-inverse,script,style,template') || inMock(e)) continue;
+    const inSurface = !!e.closest('.card,.link-card,.figure,figure,.well,.glass,.plan-card,.accordion,.note,[data-surface],[data-case-index]');
     const cs = getComputedStyle(e);
     if (cs.display === 'none' || cs.position === 'fixed') continue;
     const r = e.getBoundingClientRect();
     if (!r.width) continue;
     const top = r.top + scrollY, bot = r.bottom + scrollY;
-    for (const ps of ['::before', '::after']) {
+    for (const ps of inSurface ? [] : ['::before', '::after']) {
       const p = getComputedStyle(e, ps);
       if (!p.content || p.content === 'none' || p.position !== 'absolute' || parseFloat(p.height) > 2) continue;
       if (/rgba\(0, 0, 0, 0\)/.test(p.backgroundColor)) continue;
@@ -52,11 +54,13 @@
       lines.push({ y, l: left, r: right });
     }
     const clear = /rgba\(0, 0, 0, 0\)/.test(cs.backgroundColor) && cs.backgroundImage === 'none';
+    if (!inSurface) {
     if (r.height <= 2 && !clear) lines.push({ y: top, l: r.left, r: r.right });
     if (parseFloat(cs.borderTopWidth) > 0 && cs.borderTopStyle !== 'none' && !/rgba\(0, 0, 0, 0\)/.test(cs.borderTopColor)) lines.push({ y: top, l: r.left, r: r.right });
     if (parseFloat(cs.borderBottomWidth) > 0 && cs.borderBottomStyle !== 'none' && !/rgba\(0, 0, 0, 0\)/.test(cs.borderBottomColor)) lines.push({ y: bot - 1, l: r.left, r: r.right });
+    }
     // SKY-02: full-width ground
-    if (!clear && r.width >= W * 0.97 && r.height > 3 && !e.closest('.card,.link-card,.figure,.well,.glass,.plan-card,.accordion,[data-surface]'))
+    if (!clear && r.width >= W * 0.97 && r.height > 3 && !e.closest('.card,.link-card,.figure,.well,.glass,.plan-card,.accordion,[data-surface],[data-case-eyebrow],.case-head'))
       grounds.add(`SKY-02 a full-width element paints its own ground, near "${near(top)}"`);
   }
   out.push(...grounds);
@@ -74,7 +78,8 @@
   // HERO-01
   const h1 = document.querySelector('main h1, h1');
   const header = document.querySelector('header');
-  if (h1 && header) {
+  const home = !!document.querySelector('.hx') || /\/(index\.html)?$/.test(location.pathname); // HERO-02: the home is the one exception
+  if (h1 && header && !home) {
     const expect = header.getBoundingClientRect().bottom + probe('height:calc(var(--hero-top) + var(--font-size-eyebrow) * 1.4 + var(--space-md))').h;
     const got = h1.getBoundingClientRect().top;
     if (scrollY === 0 && Math.abs(got - expect) > 2) out.push(`HERO-01 the h1 sits at ${got.toFixed(1)}px, the hero line is ${expect.toFixed(1)}px`);

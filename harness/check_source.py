@@ -27,18 +27,16 @@ FUNC = re.compile(r'\b(?:rgba?|hsla?|oklch)\(')
 # Checks added in the consolidation are reported as warnings until the pages are clean,
 # then promoted to failures (the rule leaves this set). COL-06 and COL-07 become failures in
 # step 6, once the Claude Design bundle reads the role names and the aliases are removed.
-NEW_AS_WARN = {'COL-06', 'COL-07'}
+NEW_AS_WARN = {'COL-06', 'COL-07', 'ACT-02', 'RET-03', 'FLW-02'}
 
 # Token layers in tokens/colors.css: primitives (values only), roles (what pages use), and the
 # temporary aliases (old names). Pages use roles.
-PRIMITIVE = re.compile(r'var\(--((?:sand|slate|blue|red|green|clay)-\d+)\)')
+PRIMITIVE = re.compile(r'var\(--((?:sand|sky|mist|slate|blue|blue-shade|peach|red|green|clay|graphite|coral)-\d+|black)\)')
 OLD_NONCOLOUR = re.compile(r'var\(--((?:size|track)-[a-z-]+|space-\d+|card-p|radius|radius-pill|leading-mega)[,)]')
 
 # Known exceptions (COL-02). Keep this list short; every entry needs a reason.
 ALLOW = {
     ('*', '#e0c3bd'): 'loading screen placeholder, paints before tokens load',
-    ('card-insurance.html', '#cccccc'): 'recreated bank-app screen, not site UI',
-    ('card-insurance.html', '#c4c4c4'): 'recreated bank-app screen, not site UI',
 }
 
 PAGES = sorted(p for p in glob.glob(ROOT + '*.html') if not p.endswith('.dc.html'))
@@ -64,7 +62,7 @@ for f in glob.glob(TOKEN_DIR + '*.css'):
         COLOR_TOKEN_NAMES |= names
 # the colour aliases: everything declared after the "Temporary aliases" comment
 _colors = open(TOKEN_DIR + 'colors.css').read()
-_alias_block = _colors.split('Temporary aliases', 1)[1] if 'Temporary aliases' in _colors else ''
+_alias_block = _colors.split('Temporary aliases', 1)[1].split('}', 1)[0] if 'Temporary aliases' in _colors else ''
 ALIASES = set(re.findall(r'--([a-z0-9-]+)\s*:', _alias_block))
 
 for path in FILES:
@@ -96,9 +94,18 @@ for path in FILES:
     for k, n in sorted(old.items()):
         add('COL-07', path, f'uses the old name --{k} ({n}x); use its role name', True)
 
-    # COL-03 every page loads the colour tokens
-    if is_page and 'tokens/colors.css' not in t:
-        add('COL-03', path, 'page does not load tokens/colors.css')
+    # COL-03 every page loads the token files in order, then components.css; SKY-01 and the sky
+    if is_page:
+        order = ['tokens/colors.css', 'tokens/typography.css', 'tokens/spacing.css', 'tokens/borders.css',
+                 'tokens/motion.css', 'tokens/base.css', 'components.css']
+        pos = [t.find('href="' + ('_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/' if o.startswith('tokens') else '') + o + '"') for o in order]
+        missing = [o for o, i in zip(order, pos) if i < 0]
+        if missing:
+            add('COL-03', path, 'page does not load ' + ', '.join(missing))
+        elif pos != sorted(pos):
+            add('COL-03', path, 'token files load out of order: colors, typography, spacing, borders, motion, base, components.css')
+        if 'src="./sky.js"' not in t:
+            add('SKY-01', path, 'page does not load sky.js (the one sky behind every page)')
 
     # COL-04 no page redefines a design-system token (any tokens/*.css file)
     for block in re.findall(r':root\s*\{([^}]*)\}', t):
@@ -115,9 +122,61 @@ for path in FILES:
         if re.search(r'border-(?:top|bottom):1px', m.group(1)):
             add('LAY-02', path, 'full-bleed band uses a content-width border; use style-before/style-after')
 
+    # --- Theme sky rules (CLAUDE.md §6) ------------------------------------------------------------------
+    attrs = [m.group(0) for m in re.finditer(r'\s(?:style|style-before|style-after|style-hover)="[^"]*"', t)]
+    blocks = STYLE.findall(t)
+    styles_all = ' '.join(attrs) + ' ' + ' '.join(blocks)
+    # SKY-02 no page or section paints its own ground: the bands and their bleed are retired
+    if re.search(r'100vmax var\(--surface-(?:page|band)\)|var\(--surface-band\)', styles_all):
+        add('SKY-02', path, 'a section paints its own ground (surface-band or a page-coloured bleed); the sky is the only ground')
+    for blk in blocks:
+        if re.search(r'(?:^|[\s}])body\s*\{[^}]*background\s*:', blk):
+            add('SKY-02', path, 'a <style> gives body a background; the body stays transparent over the sky')
+    # SEC-01 dividers are in flow, at content width: never a line to the viewport edge
+    for a_ in attrs:
+        if a_.lstrip().startswith(('style-before', 'style-after')) and 'left:-100vmax' in a_:
+            add('SEC-01', path, 'an edge-to-edge line (left:-100vmax); a divider stops at the content edge')
+    # CRD-01 grouped cards stand apart; no hairline grid on a filled gutter
+    for a_ in attrs:
+        if re.search(r'(?:^|[;"])gap:1px(?:;|")', a_) and re.search(r'background:var\(--border', a_):
+            add('CRD-01', path, 'a hairline grid (gap:1px on a filled gutter); use .card or .link-card, 12px apart')
+    # ACT-01 exactly three action variants, sentence case
+    for m in re.finditer(r'<(a|button|summary)\b([^>]*)>', t):
+        tag_attrs = m.group(2)
+        st = re.search(r'\sstyle="([^"]*)"', tag_attrs)
+        st = st.group(1) if st else ''
+        if 'text-transform:uppercase' in st and ('padding:var(--space-md) var(--space-xl)' in st or 'height:44px' in st or 'padding:14px 24px' in st):
+            add('ACT-01', path, 'an uppercase, boxed action; use .action--primary, --link or --inverse (sentence case)')
+        c = re.search(r'\sclass="([^"]*)"', tag_attrs)
+        if c and re.search(r'(?:^|\s)action(?:\s|$)', c.group(1)):
+            v = re.findall(r'action--([a-z-]+)', c.group(1))
+            if len(v) != 1 or v[0] not in ('primary', 'link', 'inverse'):
+                add('ACT-01', path, f'an action with variant {v or "none"}; exactly one of primary, link, inverse')
+    if is_page and len(re.findall(r'class="[^"]*\baction--primary\b', t)) > 1:
+        add('ACT-02', path, 'more than one primary action on the page; one primary, then links', True)
+    # RET retired patterns
+    if name not in ('Nav.dc.html', '404.html', 'index.html') and 'var(--brand-mark)' in styles_all:
+        add('RET-01', path, 'red outside the nav mark, the section bar and the home sticker; arrows and ordinals take the accent')
+    if re.search(r'\[data-illo\][^{]*\{[^}]*opacity:\s*\.5', ' '.join(blocks)):
+        add('RET-02', path, 'illustrations dimmed to 50%; illustration windows are at full strength')
+    if re.search(r'border(?:-[a-z]+)?:\s*1px dashed', styles_all):
+        add('RET-03', path, 'a dashed frame; a figure is one white surface (a separate place is .elsewhere)', True)
+    if 'text-decoration:line-through' in styles_all:
+        add('FLW-02', path, 'struck-through text: label a considered option with its reason (.tag--considered); product mockups excepted', True)
+    # HERO-01 the first section in <main> is the hero
+    if is_page and '<main' in t:
+        main_tag = re.search(r'<main\b([^>]*)>', t).group(1)
+        mm = re.search(r'<main\b[^>]*>\s*(?:<!--[\s\S]*?-->\s*)*<(?:section|div)\b([^>]*)>', t)
+        if 'class="hero' not in main_tag and not (mm and re.search(r'class="[^"]*\bhero\b', mm.group(1))):
+            add('HERO-01', path, 'the first section in <main> is not the hero (.hero): nav, --hero-top, eyebrow, 16px, h1')
+
     if not is_page:
         continue
     text = prose(t)
+
+    # CNT-10 the design process is not news
+    for m in re.finditer(r'[^.]{0,50}\b(before (?:the )?build(?:ing)?|before any (?:of it was built|build|screen)|before it was built|made before|decided before|before the first screen)\b[^.]{0,30}', text, re.I):
+        add('CNT-10', path, f'process narrated as news: "{m.group(0).strip()[:80]}"')
 
     # CNT-01 no prices
     if re.search(r'fixed price|fixed fee|[$€£]\s?\d', text, re.I) and name not in ('start-a-project.html', 'index.html', 'work.html'):
@@ -136,7 +195,7 @@ for path in FILES:
             continue
         add('CNT-04', path, f'em dash in prose: "{s[:70]}"')
 
-WARN = {'CNT-04'}   # needs a person's judgement: reported, never blocks a deploy
+WARN = {'CNT-04', 'CNT-10'}   # needs a person's judgement: reported, never blocks a deploy
 errors = [f for f in findings if f[0] not in WARN and not f[3]]
 warns = [f for f in findings if f[0] in WARN or f[3]]
 for rule, name, detail, new in errors + warns:
