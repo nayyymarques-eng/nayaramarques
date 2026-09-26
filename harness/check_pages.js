@@ -24,7 +24,8 @@
  *   PAT-05  case cards are not stacked: a .cards group with more than one column, a gap other than 12px (--gap-cards),
  *           or a card narrower than its group
  *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window) is not the label style as rendered: under 9.5px,
- *           not uppercase, not 0.14em, or lighter than 600. Product UI inside a drawing is exempt with [data-mock].
+ *           not uppercase, not 0.14em, or lighter than 600. In a figure's picture, uppercase labels must be the label
+ *           style (9.5, 10.5 or 12.5px, 0.14em, 600). Product UI is exempt with [data-mock].
  *   PAT-07  a gap row ("What this case doesn't cover") without the inactive style: dashed rule, no elevation, muted text
  */
 (() => {
@@ -233,12 +234,16 @@
   // ILL-02 text inside a drawing (svg, [data-illo], .illo-window) is the label style: at least 9.5px as rendered
   // (scaling counts), uppercase at 0.14em and 600 or bolder. Product UI inside a drawing carries [data-mock] and is exempt.
   const ill = new Map();
-  for (const e of document.querySelectorAll('svg text, svg tspan, [data-illo] *, .illo-window *')) {
-    if (e.closest('[data-mock],header,nav,.hx-sticker')) continue;
+  for (const e of document.querySelectorAll('svg text, svg tspan, [data-illo] *, .illo-window *, .figure *')) {
+    if (e.closest('[data-mock],header,nav,.hx-sticker,figcaption,.figure__caption')) continue;
+    // in a figure's picture (a wireframe) product text keeps sentence case; its uppercase labels are the label style
+    const drawing = !!e.closest('svg,[data-illo],.illo-window');
+    if (!drawing && getComputedStyle(e).textTransform !== 'uppercase') continue;
     const own = [...e.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
     if (!own || !/[A-Za-z0-9]/.test(own)) continue;
     const cs = getComputedStyle(e);
-    if (!visible(e, cs)) continue;
+    // a row still waiting for its entrance is transparent, not absent: check it anyway
+    if (cs.display === 'none' || cs.visibility === 'hidden' || !e.getClientRects().length || e.closest('[hidden]')) continue;
     let scale = 1;
     if (e instanceof SVGElement) { const s = e.ownerSVGElement, vb = s && s.viewBox.baseVal; if (vb && vb.width) scale = s.getBoundingClientRect().width / vb.width; }
     else for (let a = e; a && a !== document.body; a = a.parentElement) {
@@ -256,6 +261,7 @@
     // so a long vertical label clears the top rule. Recorded as an open proposal (illo round 1), not yet a rule.
     const floor = e.closest('.ld-art') && innerWidth <= 480 ? 8.5 : 9.45;
     if (fs < floor) why.push(`${fs.toFixed(1)}px`);
+    else if (!drawing && ![9.5, 10.5, 12.5].some(v => Math.abs(fs - v) < 0.1)) why.push(`${fs.toFixed(1)}px (9.5, core 10.5, heading 12.5)`);
     if (!up) why.push('not uppercase');
     else if (/[A-Za-z]/.test(own) && Math.abs(ls - 0.14) > 0.006) why.push(`tracking ${ls.toFixed(2)}em`);
     if (parseInt(cs.fontWeight, 10) < 600) why.push(`weight ${cs.fontWeight}`);

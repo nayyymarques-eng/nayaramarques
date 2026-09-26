@@ -214,7 +214,9 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .illo-pills{display:flex;flex-wrap:wrap;gap:var(--space-2xs)}
 .illo-pill{padding:3px 8px;border-radius:var(--radius-full);background:var(--surface-tag);color:var(--text-body)}
 .illo-pill--accent{background:var(--accent);color:var(--surface-card)}
-.illo-window .tag{font-size:var(--font-size-diagram);letter-spacing:var(--tracking-eyebrow);padding:3px 8px;white-space:normal}
+.illo-window .tag{padding:3px 8px;white-space:normal}
+/* A tag inside a drawing or a figure's picture is one of its labels: the label style (ILL-02). */
+:is(.illo-window,.figure>:not(figcaption,.figure__caption)) .tag{font-size:var(--font-size-diagram);letter-spacing:var(--tracking-eyebrow)}
 .illo-send{flex:none;width:18px;height:18px;border-radius:var(--radius-sm);background:var(--accent);display:grid;place-items:center;color:var(--surface-card)}
 .illo-send svg{width:10px;height:10px;display:block}
 .illo-caret{flex:none;width:1px;height:11px;background:var(--text-strong)}
