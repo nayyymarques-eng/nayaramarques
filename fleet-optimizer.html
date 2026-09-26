@@ -166,9 +166,11 @@
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">03 — Constraints</h2>
         <div style="flex:1 1 460px;min-width:0"><p data-sec-intro>The limits the work ran under, starting with a design sprint that no fleet manager could join.</p>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="A" title="No users in the design sprint." measure="70ch" hint-size="100%,80px">No fleet manager could join; every output was a hypothesis until tested.</x-import>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="B" title="Distributed by four time zones." measure="70ch" hint-size="100%,80px">Online, with participants in the US, Peru, Brazil and Argentina.</x-import>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="C" title="An experimental vertical." last="{{ true }}" measure="70ch" hint-size="100%,80px">Investment depended on evidence. The company could change strategy, and later did.</x-import>
+          <div class="cards">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint A" title="No users in the design sprint" hint-size="100%,200px">No fleet manager could join; every output was a hypothesis until tested.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint B" title="Distributed by four time zones" hint-size="100%,200px">Online, with participants in the US, Peru, Brazil and Argentina.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint C" title="An experimental vertical" hint-size="100%,200px">Investment depended on evidence. The company could change strategy, and later did.</x-import>
+          </div>
         </div>
       </div>
 
@@ -177,7 +179,7 @@
         <div style="flex:1 1 460px;min-width:0">
           <p data-sec-intro>Four stages: interviews, the sprint I facilitated, a comparison test, and the decisions the test produced.</p>
 
-          <ol class="stages" data-pattern="step" style="margin-bottom:var(--section-y)"><li class="stage"><span class="stage__n">01</span><span class="stage__title">Interviews</span><p>Six people from fleet teams, 30 minutes each. They reset the team's priority.</p></li><li class="stage"><span class="stage__n">02</span><span class="stage__title">Design sprint</span><p>Online, across four countries, with no fleet manager. It produced View Matches, pictured above.</p></li><li class="stage"><span class="stage__n">03</span><span class="stage__title">Comparison test</span><p>Six participants saw the platform and the current email in turn and picked one. Tactical staff and managers split, which the sprint hadn't modelled.</p></li></ol>
+          <div class="cards" style="margin-bottom:var(--section-y)"><x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="step" eyebrow="01" title="Interviews" hint-size="100%,200px">Six people from fleet teams, 30 minutes each. They reset the team's priority.</x-import><x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="step" eyebrow="02" title="Design sprint" hint-size="100%,200px">Online, across four countries, with no fleet manager. It produced View Matches, pictured above.</x-import><x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="step" eyebrow="03" title="Comparison test" hint-size="100%,200px">Six participants saw the platform and the current email in turn and picked one. Tactical staff and managers split, which the sprint hadn't modelled.</x-import></div>
 
           <p class="eyebrow">Key decisions</p>
           <div class="cards">
@@ -201,7 +203,7 @@
               <div class="figure__caption"><div class="eyebrow" style="margin-bottom:var(--space-2xs)">After</div><p>Lane first, price and CTA up front, feedback at the end.</p></div>
             </div>
           </div>
-          <div class="cards cards--2" style="margin-top:var(--space-fluid-xl)">
+          <div class="cards" style="margin-top:var(--space-fluid-xl)">
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="feature" title="Lane, not fleet number" hint-size="100%,160px">Subject and first line name origin and destination. No record to open.</x-import>
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="feature" title="Price and CTA up front" hint-size="100%,160px">Accepting is a price decision, so it comes first.</x-import>
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="feature" title="Recurrency stated" hint-size="100%,160px">One-off load or weekly lane: the email says which.</x-import>
@@ -235,7 +237,7 @@
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">07 — What I learned</h2>
         <div style="flex:1 1 460px;min-width:0"><p data-sec-intro>Four lessons, two about the product and two about the practice of running research and a design sprint.</p>
-          <div class="cards cards--2">
+          <div class="cards">
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the product" title="Comparison beats evaluation" hint-size="100%,240px">"Is this good?" gets agreement. "Which of these two?" gets a decision.</x-import>
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the product" title="The least glamorous surface often carries the business" hint-size="100%,240px">A worse portfolio piece, a better product decision. Use the channel users already check.</x-import>
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the practice" title="A sprint without users is a hypothesis generator" hint-size="100%,240px">It aligned four countries in a week. Now I write the test for its output before it starts.</x-import>

@@ -221,10 +221,12 @@
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">03 — Constraints</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch"><p data-sec-intro>Part of the product belonged to someone else: the insurer set its rules. These are the limits every screen was designed within.</p>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="A" title="A third-party insurer." measure="70ch" hint-size="100%,80px">Coverage, pricing and claim rules belonged to Too Seguros. Some claims had to finish outside the app.</x-import>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="B" title="Regulated language." measure="70ch" hint-size="100%,80px">Terms can't be paraphrased. Transparency had to come from structure, not rewriting.</x-import>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="C" title="Free and paid products in one checkout." measure="70ch" hint-size="100%,80px">One assistance came free with the plan, which made checkout awkward.</x-import>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="D" title="Card conversion is sacred." last="{{ true }}" measure="70ch" hint-size="100%,80px">Anything added to card request risked the retail business's key metric.</x-import>
+          <div class="cards">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint A" title="A third-party insurer" hint-size="100%,200px">Coverage, pricing and claim rules belonged to Too Seguros. Some claims had to finish outside the app.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint B" title="Regulated language" hint-size="100%,200px">Terms can't be paraphrased. Transparency had to come from structure, not rewriting.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint C" title="Free and paid products in one checkout" hint-size="100%,200px">One assistance came free with the plan, which made checkout awkward.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint D" title="Card conversion is sacred" hint-size="100%,200px">Anything added to card request risked the retail business's key metric.</x-import>
+          </div>
 </div>
       </div>
 
@@ -378,7 +380,7 @@
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y-lg)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">07 — What I learned</h2>
         <div style="flex:1 1 460px;min-width:0"><p data-sec-intro>Four lessons: two about the product, on placement and transparency, and two about the practice of testing early.</p>
-          <div class="cards cards--2">
+          <div class="cards">
 
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the product" title="Test the entry point, not just the screens" hint-size="100%,220px">The screens worked in both journeys. Placement was the decision, and only testing the full flow from two starts surfaced it.</x-import>
 

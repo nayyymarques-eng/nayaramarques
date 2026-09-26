@@ -190,7 +190,7 @@
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p data-sec-intro>Three business directors asked for it. Their advisors called the platform incomplete, with features scattered across tools, and it hurt their performance.</p>
           <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I ran Phase 1, research to concept. Promoted to Design Lead, I built the Phase 2 team: four designers, one module each, with me still designing.</p>
-          <div class="cards cards--2" style="margin-top:var(--space-2xl)">
+          <div class="cards" style="margin-top:var(--space-2xl)">
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="term" title="B2B" hint-size="100%,160px">Independent offices selling BTG products.</x-import>
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="term" title="B2C" hint-size="100%,160px">Advisors inside the bank, facing clients directly.</x-import>
             <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="term" title="Wealth" hint-size="100%,160px">Advisors managing large fortunes, the bank's biggest specialty.</x-import>
@@ -217,9 +217,11 @@
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">03 — Constraints</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch"><p data-sec-intro>One product had to serve four verticals, each with its own director and its own idea of what the first release should hold.</p>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="A" title="Four verticals, four directors, one product." measure="70ch" hint-size="100%,80px">Each vertical defined the MVP differently, and each director could veto.</x-import>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="B" title="No project manager at the start." measure="70ch" hint-size="100%,80px">Nobody owned definition and prioritisation, so I took it on. Hence the workshops.</x-import>
-          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="C" title="Board approval gated every step." last="{{ true }}" measure="70ch" hint-size="100%,80px">The concept had to read clearly to directors, not just designers.</x-import>
+          <div class="cards">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint A" title="Four verticals, four directors, one product" hint-size="100%,200px">Each vertical defined the MVP differently, and each director could veto.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint B" title="No project manager at the start" hint-size="100%,200px">Nobody owned definition and prioritisation, so I took it on. Hence the workshops.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint C" title="Board approval gated every step" hint-size="100%,200px">The concept had to read clearly to directors, not just designers.</x-import>
+          </div>
 </div>
       </div>
 
@@ -228,7 +230,7 @@
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p data-sec-intro>Two phases: Concept Design to win approval, then Detailed Design to make it buildable. Three principles ran through both: <strong style="font-weight:600">customizable, multitasking, propositional</strong>.</p>
 
-          <ol class="stages" data-pattern="step" style="margin-bottom:var(--space-2xl)"><li class="stage"><span class="stage__n">Phase 1</span><span class="stage__title">Concept</span><p>research → concept design → concept test → refinement → project definition → business approval</p><p>Me, with tech leads and business directors</p></li><li class="stage"><span class="stage__n">Phase 2</span><span class="stage__title">Detailed</span><p>detailed design → usability test → refinement → design spec → handover → business approval</p><p>Me as design lead, plus 4 product designers</p></li></ol>
+          <div class="cards" style="margin-bottom:var(--space-2xl)"><x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="step" eyebrow="Phase 1" title="Concept" hint-size="100%,200px">research → concept design → concept test → refinement → project definition → business approval<br>Me, with tech leads and business directors</x-import><x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="step" eyebrow="Phase 2" title="Detailed" hint-size="100%,200px">detailed design → usability test → refinement → design spec → handover → business approval<br>Me as design lead, plus 4 product designers</x-import></div>
 
           <div class="cards">
 
