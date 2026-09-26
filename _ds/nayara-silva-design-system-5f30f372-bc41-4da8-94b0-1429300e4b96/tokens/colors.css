@@ -51,16 +51,19 @@
      ([data-surface], .card, .figure …) lines come back with real contrast: see §4. */
   --border-subtle:color-mix(in srgb,var(--slate-950) 5%,transparent);  /* inner rule, soft chip border */
   --border:color-mix(in srgb,var(--slate-950) 7%,transparent);         /* section divider, default rule */
-  --border-strong:color-mix(in srgb,var(--slate-950) 10%,transparent); /* item rule inside a section */
-  --border-emphatic:color-mix(in srgb,var(--slate-950) 18%,transparent); /* opens a block; case section divider */
+  --border-divider:color-mix(in srgb,var(--slate-950) 9%,transparent); /* THE divider: opens every section, between case sections, item rules (SEC-01) */
+  --border-strong:var(--border-divider);    /* item rule inside a section: the one divider */
+  --border-emphatic:var(--border-divider);  /* retired: the dark emphatic rule is now the one light divider */
 
   --status-gain:var(--green-700);           /* "Gained", availability dot */
   --status-cost:var(--clay-700);            /* "Traded away", "Risk 01" */
   --focus-ring:var(--blue-600);
 
   /* Elevation: one hue, one light from above. Higher is softer and wider, never darker. */
-  --elevation-inset:inset 0 1px 2px color-mix(in srgb,var(--blue-shade-1) 6%,transparent),inset 0 6px 16px -10px color-mix(in srgb,var(--blue-shade-2) 18%,transparent); /* level -1: a well */
-  --elevation-inset-deep:inset 0 2px 3px color-mix(in srgb,var(--blue-shade-1) 10%,transparent),inset 0 10px 24px -10px color-mix(in srgb,var(--blue-shade-2) 30%,transparent); /* a well you press (next case, on hover) */
+  --elevation-inset-1:inset 0 1px 2px color-mix(in srgb,var(--blue-shade-1) 6%,transparent),inset 0 6px 16px -10px color-mix(in srgb,var(--blue-shade-2) 18%,transparent);   /* level -1, soft recess: notes, case details, the next case */
+  --elevation-inset-2:inset 0 1px 2px color-mix(in srgb,var(--blue-shade-1) 12%,transparent),inset 0 10px 22px -14px color-mix(in srgb,var(--blue-shade-2) 32%,transparent); /* level -2, deep recess: windows you look into (illustrations, the home composer) */
+  --elevation-inset:var(--elevation-inset-1);  /* old name */
+  --edge-glass:inset 0 -1px 0 color-mix(in srgb,var(--sky-0) 55%,transparent),0 1px 0 color-mix(in srgb,var(--sky-0) 70%,transparent); /* the light edge of a glass surface */
   --elevation-1:0 1px 2px color-mix(in srgb,var(--blue-shade-1) 5%,transparent),0 6px 18px -10px color-mix(in srgb,var(--blue-shade-2) 22%,transparent);  /* resting: cards */
   --elevation-2:0 1px 3px color-mix(in srgb,var(--blue-shade-1) 5%,transparent),0 14px 32px -16px color-mix(in srgb,var(--blue-shade-2) 26%,transparent); /* raised: evidence, hovered link cards */
   --elevation-3:0 2px 4px color-mix(in srgb,var(--blue-shade-1) 5%,transparent),0 22px 44px -20px color-mix(in srgb,var(--blue-shade-2) 30%,transparent); /* floating: header, menus */
@@ -68,6 +71,8 @@
   --elevation-action-hover:0 2px 4px color-mix(in srgb,var(--blue-shade-1) 10%,transparent),0 16px 32px -14px color-mix(in srgb,var(--blue-shade-1) 50%,transparent);
   --elevation-action-inverse:0 10px 24px -12px color-mix(in srgb,var(--black) 45%,transparent); /* the Inverse action on the ink band */
   --elevation-sticker:0 14px 30px -14px color-mix(in srgb,var(--red-900) 60%,transparent);
+  /* Glass: the home composer and the case details. Frosted, the same inner shade, a light bottom edge. */
+  --surface-glass:linear-gradient(180deg,color-mix(in srgb,var(--sky-0) 26%,transparent),color-mix(in srgb,var(--sky-0) 48%,transparent));
   --shadow-sm:var(--elevation-1);           /* old names, kept: small = resting */
   --shadow-md:var(--elevation-2);           /* medium = raised */
   --shadow-lg:var(--elevation-3);           /* large = floating */
@@ -122,7 +127,7 @@
   --border-subtle:var(--mist-300);    --line-4:var(--mist-300);
   --border:var(--mist-400);           --line:var(--mist-400);   --line-2:var(--mist-400);
   --border-control:var(--mist-400);   --line-3:var(--mist-400); --border-default:var(--mist-400);
-  --border-strong:var(--mist-500);    --line-mid:var(--mist-500);
+  --border-strong:var(--mist-500);    --line-mid:var(--mist-500);   --border-divider:var(--mist-400);
   --surface-page:var(--mist-50);      --paper:var(--mist-50);   --paper-2:var(--mist-50);
   --surface-hover:var(--mist-100);    --paper-3:var(--mist-100);
 }

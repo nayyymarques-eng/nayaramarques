@@ -1,7 +1,26 @@
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{margin:0;background:var(--surface-page);color:var(--text-strong);font-family:var(--font-sans)}
+:root{
+  /* A fine grain, drawn once. It textures the sky and what sits IN the page (the
+     ink band, wells, the note); white surfaces stay clean, the sharpest plane. */
+  --texture-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E"); /* @kind other */
+  --texture-grain-size:160px 160px; /* @kind other */
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;background:var(--surface-page)}
+/* The body is transparent: the one sky layer (sky.js) sits behind it. No page
+   or section paints its own ground (SKY-02). */
+body{margin:0;background:transparent;color:var(--text-strong);font-family:var(--font-sans)}
 *{box-sizing:border-box}
+/* Headings take the softer heading ink; size and weight carry the hierarchy (TYP-03). */
+h1,h2,h3{color:var(--text-heading)}
 a{color:var(--text-strong);text-decoration-thickness:1px;text-underline-offset:4px}
 a:hover{color:var(--accent)}
 ::selection{background:var(--surface-inverse);color:var(--text-on-inverse)}
 :focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+code,pre,kbd,samp{font-family:var(--font-mono)}
+
+/* ---- The sky (SKY-01) --------------------------------------------------
+   Planes at different speeds read as depth: the far plane is one continuous
+   gradient moving at --sky-speed of the scroll (sky.js); the content moves at 1.
+   Transform only. Under reduced motion it is sized to the page and scrolls with it. */
+[data-sky]{position:fixed;left:0;top:0;width:100%;height:100vh;z-index:-2;pointer-events:none;will-change:transform;background:var(--sky-ground)}
+[data-sky].is-static{position:absolute;will-change:auto}
+[data-sky]::after{content:"";position:absolute;inset:0;opacity:.09;mix-blend-mode:multiply;background-image:var(--texture-grain);background-size:var(--texture-grain-size)}

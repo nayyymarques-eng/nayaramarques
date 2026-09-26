@@ -56,6 +56,7 @@
   --content-flex:460px; /* @kind spacing */                      /* flex-basis of the content column */
 
   /* --- Theme sky ------------------------------------------------------- */
+  --hero-top:clamp(64px,7vw,96px); /* @kind spacing */          /* nav to eyebrow, on every page (HERO-01) */
   --gap-cards:12px; /* @kind spacing */                        /* grouped cards and link cards stand apart */
   --action-h:44px; /* @kind spacing */                         /* the three action variants */
   --action-px:20px; /* @kind spacing */

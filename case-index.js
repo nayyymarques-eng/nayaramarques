@@ -7,9 +7,9 @@
 
   var css = [
     '[data-case-index]{position:absolute;z-index:6;pointer-events:none}',
-    '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:var(--space-fluid-xl) 0 0;padding:var(--space-sm) var(--space-md);background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-sm);pointer-events:auto}',
+    '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:var(--space-fluid-xl) 0 0;padding:var(--space-sm) var(--space-md);background:var(--surface-card);border:0;border-radius:var(--radius-md);box-shadow:var(--elevation-1);pointer-events:auto}',
     '[data-case-index] a{display:grid;grid-template-columns:22px 1fr;gap:var(--space-xs);padding:var(--space-xs) 0 var(--space-xs) var(--space-sm);border-left:1px solid var(--border);',
-    'font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;',
+    'font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;',
     'color:var(--text-muted);text-decoration:none;transition:color .25s ease,border-color .25s ease}',
     '[data-case-index] a:hover{color:var(--text-muted)}',
     '[data-case-index] a[aria-current="step"]{color:var(--text-strong);border-left:2px solid var(--accent);padding-left:var(--space-sm)}',
@@ -17,7 +17,7 @@
     '[data-case-index] a.done{color:var(--text-muted)}',
     // the rail text is replaced by the index; it stays in the page (transparent) so screen readers keep the heading
     // the section title in the body is the largest heading in a case, at every width: number in the accent, name in ink
-    '[data-case-eyebrow]{display:block;margin:0 0 var(--space-md);font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);color:var(--text-strong)}',
+    '[data-case-eyebrow]{display:block;margin:0 0 var(--space-md);font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);color:var(--text-heading)}',
     '[data-case-eyebrow] span{color:var(--accent);margin-right:0.45em}',
     '@media ' + WIDE + '{html.has-case-index [data-rail-indexed]{color:transparent!important;user-select:none}',
     // the body sits on the details band's 4-column grid: index in column 1, content and dividers from column 2
@@ -54,6 +54,7 @@
     nav.setAttribute('data-case-index', '');
     nav.setAttribute('aria-label', 'Case sections');
     var ol = document.createElement('ol');
+    ol.setAttribute('data-surface', ''); // a white surface: its rules come back with real contrast
     nav.appendChild(ol);
 
     var links = rails.map(function (h, i) {
@@ -95,7 +96,7 @@
     // (at least 1.5x more space above than below; here 56px above a sub-section, 12px below)
     bands.forEach(function (band) {
       [].forEach.call(band.querySelectorAll('h3'), function (h) {
-        if (h.closest('x-import, [style*="var(--surface-card)"], [style*="var(--white)"]')) return; // card titles keep the card's spacing (the system bundle still writes --white)
+        if (h.closest('x-import, .card, .link-card, .figure, [data-surface], [style*="var(--surface-card)"], [style*="var(--white)"]')) return; // card titles keep the card's spacing (the system bundle still writes --white)
         h.style.marginBottom = '12px';
         // the block that starts with this heading: climb while the heading is its first child
         var top = h;
@@ -122,7 +123,9 @@
       var last = bands[bands.length - 1].getBoundingClientRect();
       var r = rails[0].getBoundingClientRect();
       nav.style.left = (r.left - h.left) + 'px';
-      nav.style.width = r.width + 'px';
+      nav.style.width = Math.min(r.width, 250) + 'px'; // a narrow card; the body column keeps its place
+      // the card's top lines up with the first section title
+      ol.style.marginTop = getComputedStyle(bands[0]).paddingTop;
       nav.style.top = (first.top - h.top) + 'px';
       nav.style.height = (last.bottom - first.top) + 'px';
     }

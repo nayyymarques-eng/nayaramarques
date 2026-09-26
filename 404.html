@@ -5,18 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found — Nayara Marques</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/base.css">
+<link rel="stylesheet" href="components.css">
+<script src="./sky.js" defer></script>
 <style>
   html { -webkit-font-smoothing: antialiased; }
-  body { margin:0; min-height:100vh; display:flex; flex-direction:column; background:var(--surface-page); color:var(--text-strong); font-family:var(--font-sans); }
+  body { margin:0; min-height:100vh; display:flex; flex-direction:column; }
   * { box-sizing:border-box; }
   a[data-btn="primary"]:hover { background:var(--accent); color:var(--text-on-inverse); }
   a[data-btn="secondary"]:hover { background:var(--surface-hover); color:var(--text-strong); }
@@ -38,13 +37,13 @@
   </header>
 
   <main style="flex:1;max-width:1400px;width:100%;margin:0 auto;padding:var(--section-y-lg) var(--space-2xl)">
-    <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-fluid-m)">404</div>
+    <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-fluid-m)">404</div>
     <h1 style="font-weight:500;font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-l);max-width:14ch;text-wrap:balance">This page doesn't exist.</h1>
     <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
     <p style="margin:0 0 var(--space-fluid-xl);max-width:58ch;font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-strong);text-wrap:pretty">The link may be old, or I may have moved something. The six case studies are all on the work index.</p>
     <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm)">
-      <a href="work.html" style="padding:var(--space-md) var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase" data-btn="primary">Selected work →</a>
-      <a href="index.html" style="padding:var(--space-md) var(--space-xl);border:1px solid var(--border);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase" data-btn="secondary">Home</a>
+      <a class="action action--primary" href="work.html" data-btn="primary">Selected work →</a>
+      <a class="action action--link" href="index.html" data-btn="secondary">Home</a>
     </div>
   </main>
 
