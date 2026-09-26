@@ -24,6 +24,14 @@
  *   PAT-05  case cards are not stacked: a .cards group with more than one column, a gap other than 12px (--gap-cards),
  *           or a card narrower than its group
  *   PAT-07  a gap row ("What this case doesn't cover") without the inactive style: dashed rule, no elevation, muted text
+ *   SEC-04  a top-level section's content does not sit --section-y below its top line and --section-y above its bottom
+ *           line (within 2px each). Lines are the section dividers, the ink band's and the case details' edges, the
+ *           next-case well and the footer divider. Content box = the first and last visible box (text, a surface, an
+ *           image, a bordered row), never margins. Heroes, the ink band and the footer keep their own padding; the space
+ *           under a hero with no line (the home) is the hero's (HERO-02); a well right after a section takes that
+ *           section's space above it.
+ *   SEC-05  a top-level section's content does not start on the page gutter (within 1px); on a wide case page, on the
+ *           case body column (column 2 of the details grid). Content inside a surface is inset by the surface.
  */
 (() => {
   const W = innerWidth;
@@ -188,6 +196,94 @@
       active.add(`PAT-07 gap row "${k}" is not in the inactive style (dashed rule, no elevation, muted text, hollow marker)`);
   }
   out.push(...active);
+
+
+  // SEC-04, SEC-05 top-level sections: equal padding from one token, content on the gutter
+  // (rows still waiting for their scroll reveal are measured where they land)
+  {
+    const settle = document.createElement('style');
+    settle.textContent = '[data-reveal] *:not([data-illo] *){opacity:1!important;transform:none!important;filter:none!important}';
+    document.head.appendChild(settle);
+    const Y = scrollY, tr = c => /rgba\(0, 0, 0, 0\)/.test(c) || c === 'transparent';
+    const root = getComputedStyle(document.documentElement);
+    const G = Math.max(0, (W - (parseFloat(root.getPropertyValue('--page-max')) || 1400)) / 2) + (parseFloat(root.getPropertyValue('--page-gutter')) || 32);
+    const SY = probe('height:var(--section-y)').h;
+    const main = document.querySelector('main');
+    const on = e => { const r = e.getBoundingClientRect(); if (r.width < 1 || r.height < 1) return false; for (let a = e; a && a !== document.body; a = a.parentElement) { const q = getComputedStyle(a); if (q.display === 'none' || q.visibility === 'hidden' || parseFloat(q.opacity) === 0) return false; } return true; };
+    const blocks = [];
+    const add = e => { if (!e || /^(SCRIPT|STYLE|TEMPLATE)$/.test(e.tagName) || e.matches('[data-case-index]')) return; const bands = e.querySelectorAll(':scope > [data-case-band]'); if (bands.length) bands.forEach(b => blocks.push(b)); else blocks.push(e); };
+    if (main && main.matches('.hero')) blocks.push(main); else if (main) [...main.children].forEach(add);
+    for (let s = main && main.nextElementSibling; s; s = s.nextElementSibling) { if (s.matches('section')) add(s); const f = s.matches('footer') ? s : s.querySelector && s.querySelector('footer'); if (f) blocks.push(f.firstElementChild || f); }
+    const kindOf = b => b.matches('.hero') ? 'hero' : b.matches('.case-details') ? 'opening' : b.matches('.band-inverse') ? 'band' : b.closest('footer') ? 'footer' : b.matches('.well') ? 'well' : 'section';
+    const linesOf = e => {
+      const r = e.getBoundingClientRect(), o = [];
+      for (const ps of ['::before', '::after']) {
+        const q = getComputedStyle(e, ps);
+        if (!q.content || q.content === 'none' || q.position !== 'absolute' || parseFloat(q.height) > 2 || tr(q.backgroundColor)) continue;
+        const h = parseFloat(q.height) || 1, l = r.left + (parseFloat(q.left) || 0), rr = r.right - (parseFloat(q.right) || 0);
+        if (q.top === '0px') o.push({ y: r.top + Y, h, w: rr - l, top: true }); else if (q.bottom === '0px') o.push({ y: r.bottom + Y - h, h, w: rr - l });
+      }
+      const q = getComputedStyle(e);
+      if (parseFloat(q.borderTopWidth) > 0 && q.borderTopStyle !== 'none' && !tr(q.borderTopColor)) o.push({ y: r.top + Y, h: parseFloat(q.borderTopWidth), w: r.width, top: true });
+      return o;
+    };
+    const B = [], drawers = new Set(), bounds = [];
+    for (const b of blocks) {
+      if (!on(b)) continue;
+      const r = b.getBoundingClientRect(), k = kindOf(b);
+      for (const c of [b, b.firstElementChild].filter(Boolean)) {
+        const ls = linesOf(c).filter(l => (c === b || l.top) && l.w > r.width * 0.5);
+        if (ls.length) drawers.add(c);
+        ls.forEach(l => bounds.push({ y: l.y, y2: l.y + l.h, t: 'line' }));
+      }
+      if (k !== 'section') { bounds.push({ y: r.top + Y, y2: r.top + Y, t: k + '-top', own: k === 'well' ? b : null }); bounds.push({ y: r.bottom + Y, y2: r.bottom + Y, t: k + '-bottom', own: k === 'well' ? b : null }); }
+      B.push({ b, k, r });
+    }
+    bounds.sort((a, c) => a.y - c.y);
+    const edged = q => ['Top', 'Right', 'Bottom', 'Left'].some(s => parseFloat(q['border' + s + 'Width']) > 0 && q['border' + s + 'Style'] !== 'none' && !tr(q['border' + s + 'Color']));
+    const boxesOf = rootEl => {
+      const out = [];
+      const walk = e => {
+        for (const c of e.children) {
+          if (/^(SCRIPT|STYLE|TEMPLATE|BR)$/.test(c.tagName) || c.matches('[data-case-index],[data-rail-indexed]')) continue;
+          if (c.parentElement && c.parentElement.matches('details:not([open])') && c.tagName !== 'SUMMARY') continue;
+          const q = getComputedStyle(c);
+          if (q.display === 'none' || q.position === 'fixed') continue;
+          if (!on(c)) { if (q.display === 'contents' || c.getBoundingClientRect().height === 0) walk(c); continue; }
+          const r = c.getBoundingClientRect(), box = { t: r.top + Y, b: r.bottom + Y, l: r.left };
+          if ((edged(q) && !drawers.has(c)) || !tr(q.backgroundColor) || q.backgroundImage !== 'none' || (q.boxShadow && q.boxShadow !== 'none') ||
+              c.matches('.card,.figure,figure,.well,.glass,.note,.link-card,[data-surface],[data-illo],.plan-card,.accordion,img,svg,video,canvas,iframe,picture')) { out.push(box); continue; }
+          if ([...c.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) out.push(box);
+          walk(c);
+        }
+      };
+      walk(rootEl);
+      return out;
+    };
+    const wideCase = document.documentElement.classList.contains('has-case-index') && matchMedia('(min-width: 861px)').matches;
+    const pads = new Set(), cols = new Set();
+    for (const x of B) {
+      if (x.k !== 'section' && x.k !== 'well') continue;
+      const bx = x.k === 'well' ? [{ t: x.r.top + Y, b: x.r.bottom + Y, l: x.r.left }] : boxesOf(x.b);
+      if (!bx.length) continue;
+      const top = Math.min(...bx.map(b => b.t)), bot = Math.max(...bx.map(b => b.b)), left = Math.min(...bx.map(b => b.l));
+      const U = bounds.filter(u => u.own !== x.b);
+      let above = U.filter(u => u.y2 <= top + 0.5).pop(); const below = U.find(u => u.y >= bot - 0.5);
+      if (above && (above.t === 'hero-bottom' || (x.k === 'well' && above.t !== 'band-bottom'))) above = null;
+      const name = (x.b.querySelector('[data-case-eyebrow],h2:not([data-rail-indexed]),.eyebrow,h3') || x.b).textContent.trim().replace(/\s+/g, ' ').slice(0, 30);
+      const pt = above ? top - above.y2 : null, pb = below ? below.y - bot : null;
+      const bad = [];
+      if (pt !== null && Math.abs(pt - SY) > 2) bad.push(`${pt.toFixed(0)}px above`);
+      if (pb !== null && Math.abs(pb - SY) > 2) bad.push(`${pb.toFixed(0)}px below`);
+      if (!bad.length && pt !== null && pb !== null && Math.abs(pt - pb) > 2) bad.push(`${pt.toFixed(0)}px above and ${pb.toFixed(0)}px below`);
+      if (bad.length) pads.add(`SEC-04 "${name}": content ${bad.join(', ')}; --section-y is ${SY.toFixed(0)}px, above and below`);
+      let expect = G;
+      if (x.b.matches('[data-case-band]') && wideCase) { const gap = parseFloat(getComputedStyle(x.b).columnGap) || 0; expect = x.r.left + (x.r.width - 3 * gap) / 4 + gap; }
+      if (Math.abs(left - expect) > 1) cols.add(`SEC-05 "${name}": content starts at ${left.toFixed(0)}px, the ${expect === G ? 'gutter' : 'case body column'} is ${expect.toFixed(0)}px`);
+    }
+    out.push(...pads, ...cols);
+    settle.remove();
+  }
 
   // COL-08 contrast
   const rgba = c => { const m = (c.match(/[\d.]+/g) || []).map(Number); if (/^color\(srgb/.test(c)) { m[0] *= 255; m[1] *= 255; m[2] *= 255; } return [m[0], m[1], m[2], m.length > 3 ? m[3] : 1]; };
