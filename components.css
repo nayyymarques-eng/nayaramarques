@@ -100,7 +100,7 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
 
 /* ---------- Content patterns (PAT, CLAUDE.md §7) ----------
-   proposal (CMP-03, round 2): one structure per job, the job named on the element as data-pattern="<job>". Rows and cards are
+   approved by Nayara 2026-09-26 (round 2): one structure per job, the job named on the element as data-pattern="<job>". Rows and cards are
    the design-system ListRow and DecisionCard, set through that attribute (CMP-02); .stages and .stats are new site parts.
    Considered: ListRow and DecisionCard for steps and numbers (a row cannot sit in a horizontal sequence; a card would lift a
    number to level 1, and numbers are text, level 0), the figure .steps (a picture of states inside a figure, with arrows).
