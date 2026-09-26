@@ -21,6 +21,9 @@
  *           (card titles, row leads, step titles), by rendered size
  *   PAT-04  a big number (24px or more, a bare figure) outside .stats, or a .stats block whose label does not say
  *           which kind it is (Result… for data-pattern="result", Scope… for data-pattern="scope")
+ *   PAT-05  case cards are not stacked: a .cards group with more than one column, a gap other than 12px (--gap-cards),
+ *           or a card narrower than its group
+ *   PAT-07  a gap row ("What this case doesn't cover") without the inactive style: dashed rule, no elevation, muted text
  */
 (() => {
   const W = innerWidth;
@@ -135,7 +138,7 @@
     }
     const subPx = subs.filter(h => h.classList.contains('subsection')).map(px);
     const cap = subPx.length ? Math.min(...subPx) : secPx;
-    const items = [...document.querySelectorAll('[data-case-band] [data-surface="card"] h3, [data-case-band] [data-pattern] > p > strong:first-child, [data-case-band] .stage__title')].filter(e => shown(e) && !inMock(e));
+    const items = [...document.querySelectorAll('[data-case-band] [data-surface="card"] h3, [data-case-band] [data-pattern] > p > strong:first-child')].filter(e => shown(e) && !inMock(e));
     const big = new Set();
     // an item title stays below the section title and never above a sub-section (it may equal one on phones)
     for (const e of items) if (px(e) >= secPx || px(e) > cap) big.add(`HIER-01 item title "${e.textContent.trim().slice(0, 30)}" at ${px(e)}px; below the section title (${secPx}px) and at most the sub-section (${cap}px)`);
@@ -160,6 +163,31 @@
     if (px(e) >= 24 && shown(e)) bigNum.add(`PAT-04 a big number "${own}" at ${px(e)}px outside .stats`);
   }
   out.push(...bigNum);
+
+  // PAT-05 cards are stacked: one per row, full content width, 12px apart (CRD-01)
+  const gapPx = probe('height:var(--gap-cards)').h;
+  const unstacked = new Set();
+  for (const g of document.querySelectorAll('[data-case-band] .cards')) {
+    if (!shown(g) || inMock(g)) continue;
+    const cs = getComputedStyle(g), kids = [...g.children].filter(shown);
+    const cols = cs.display.includes('grid') ? cs.gridTemplateColumns.split(' ').filter(Boolean).length : 0;
+    const gw = g.getBoundingClientRect().width;
+    const k = g.textContent.trim().replace(/\s+/g, ' ').slice(0, 30);
+    if (cols !== 1) unstacked.add(`PAT-05 a card group with ${cols || 'no grid'} column(s), near "${k}"; cards are stacked, one per row`);
+    else if (kids.length > 1 && Math.abs(parseFloat(cs.rowGap) - gapPx) > 0.5) unstacked.add(`PAT-05 cards ${cs.rowGap} apart, near "${k}"; 12px (--gap-cards)`);
+    for (const c of kids) if (Math.abs(c.getBoundingClientRect().width - gw) > 1) unstacked.add(`PAT-05 a card narrower than its group, near "${k}"; full content width`);
+  }
+  out.push(...unstacked);
+  // PAT-07 what the case doesn't cover reads as inactive: a dashed rule, no elevation, muted text, a hollow marker
+  const muted = probe('color:var(--text-muted)').color;
+  const active = new Set();
+  for (const r of document.querySelectorAll('[data-pattern="gap"]')) {
+    if (!shown(r)) continue;
+    const cs = getComputedStyle(r), p = r.querySelector('p'), k = r.textContent.trim().slice(0, 30);
+    if (cs.borderTopStyle !== 'dashed' || cs.boxShadow !== 'none' || !/rgba\(0, 0, 0, 0\)/.test(cs.backgroundColor) || (p && getComputedStyle(p).color !== muted) || getComputedStyle(r, '::before').content === 'none')
+      active.add(`PAT-07 gap row "${k}" is not in the inactive style (dashed rule, no elevation, muted text, hollow marker)`);
+  }
+  out.push(...active);
 
   // COL-08 contrast
   const rgba = c => { const m = (c.match(/[\d.]+/g) || []).map(Number); if (/^color\(srgb/.test(c)) { m[0] *= 255; m[1] *= 255; m[2] *= 255; } return [m[0], m[1], m[2], m.length > 3 ? m[3] : 1]; };

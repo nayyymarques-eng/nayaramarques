@@ -39,9 +39,12 @@ ALLOW = {
     ('*', '#e0c3bd'): 'loading screen placeholder, paints before tokens load',
 }
 
-# Content patterns (CLAUDE.md §7): each job has one structure.
-PAT_JOBS = {j: 'ListRow' for j in ('finding', 'constraint', 'principle', 'outcome', 'reference', 'gap')}
-PAT_JOBS.update({j: 'DecisionCard' for j in ('problem', 'decision', 'feature', 'term', 'lesson')})
+# Content patterns (CLAUDE.md §7): each job has one structure. Round 3 (2026-09-26): constraints, steps and outcomes
+# joined the cards, and every card is stacked (PAT-05); gaps are inactive rows (PAT-07).
+PAT_JOBS = {j: 'ListRow' for j in ('finding', 'principle', 'reference', 'gap')}
+PAT_JOBS.update({j: 'DecisionCard' for j in ('problem', 'constraint', 'step', 'decision', 'feature', 'term', 'outcome', 'lesson')})
+# the eyebrow is a card's marker where the job has one (PAT-03)
+PAT_EYEBROW = {'problem': r'Problem [A-Z]', 'constraint': r'Constraint [A-Z]', 'step': r'\d{2}|Phase \d+'}
 
 PAGES = sorted(p for p in glob.glob(ROOT + '*.html') if not p.endswith('.dc.html'))
 FILES = sorted(glob.glob(ROOT + '*.html'))
@@ -192,16 +195,32 @@ for path in FILES:
                 add('PAT-01', path, f'unknown job data-pattern="{job}" on {comp} "{title}"')
             elif PAT_JOBS[job] != comp:
                 add('PAT-01', path, f'data-pattern="{job}" is a {PAT_JOBS[job]} job, drawn here as a {comp} ("{title}")')
-            # PAT-03 markers: ordinals only on steps; letters only on constraints (they are cited by decisions)
+            # PAT-03 markers: ordinals only on steps; letters only on problems and constraints (decisions cite them)
+            eb = re.search(r'\seyebrow="([^"]*)"', attrs)
+            if comp == 'DecisionCard' and job in PAT_EYEBROW and not (eb and re.fullmatch(PAT_EYEBROW[job], eb.group(1))):
+                add('PAT-03', path, f'a {job} card "{title}" with eyebrow "{eb.group(1) if eb else ""}"; its marker is the eyebrow ({PAT_EYEBROW[job]})')
             mk = re.search(r'\smarker="([^"]*)"', attrs)
             if comp == 'ListRow' and mk and mk.group(1):
                 if re.fullmatch(r'\d+', mk.group(1)):
                     add('PAT-03', path, f'an ordinal marker "{mk.group(1)}" on a {job} row; ordinals only where order matters (.stages)')
-                elif job != 'constraint':
-                    add('PAT-03', path, f'a marker "{mk.group(1)}" on a {job} row; letters are for constraints only, other rows carry no marker')
-        for m in re.finditer(r'<(?:ol|ul|div)\b[^>]*class="(stages|stats|tags)\b[^"]*"[^>]*>', t):
+                else:
+                    add('PAT-03', path, f'a marker "{mk.group(1)}" on a {job} row; rows carry no marker (constraints are cards, their letter is the eyebrow)')
+        # PAT-05 cards are stacked: one per row, full content width. The two-up grid and the horizontal steps are retired.
+        for m in re.finditer(r'class="[^"]*\b(cards--2|stages|stage)\b[^"]*"', t):
+            add('PAT-05', path, f'.{m.group(1)} is retired: cards are stacked, one per row, in .cards (steps are DecisionCards with data-pattern="step")')
+        # PAT-07 the section that says what the case doesn't cover holds gap rows only
+        gm = re.search(r"<h2 data-rail[^>]*>\d\d — What this case doesn(?:'|&#39;|’)t cover</h2>(.*?)(?=<h2 data-rail|</section>)", t, re.S)
+        if not gm:
+            add('PAT-07', path, "no rail section \"What this case doesn't cover\" (LAY-07)")
+        else:
+            for m in re.finditer(r'<x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3\.(\w+)"([^>]*)>', gm.group(1)):
+                if m.group(1) != 'ListRow' or 'data-pattern="gap"' not in m.group(2):
+                    add('PAT-07', path, f"a {m.group(1)} in \"What this case doesn't cover\" that is not a gap row; gaps are ListRow data-pattern=\"gap\" (the inactive style)")
+        for m in re.finditer(r'data-pattern="gap"', t[:gm.start()] if gm else t):
+            add('PAT-07', path, "a gap row outside \"What this case doesn't cover\"")
+        for m in re.finditer(r'<(?:ol|ul|div)\b[^>]*class="(stats|tags)\b[^"]*"[^>]*>', t):
             job = re.search(r'\sdata-pattern="([a-z]+)"', m.group(0))
-            want = {'stages': ('step',), 'stats': ('result', 'scope'), 'tags': ('finding',)}[m.group(1)]
+            want = {'stats': ('result', 'scope'), 'tags': ('finding', 'term')}[m.group(1)]
             if not job or job.group(1) not in want:
                 add('PAT-04' if m.group(1) == 'stats' else 'PAT-01', path,
                     f'.{m.group(1)} needs data-pattern="{"|".join(want)}"' + (' (a big number is a Result or a Scope count, and says which)' if m.group(1) == 'stats' else ''))
