@@ -4,6 +4,9 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 
 Format: date · decision · what it replaces or rules out · enforced by.
 
+## 2026-09-26 (evening)
+- Content round 1 approved as a whole and deployed ("approve all and deploy now"): the 234 rewritten sentences on the six cases and About, About's calls to action, Tools & range as columns, the label spacing. The fact questions in the content report are fixed in a next small round. · the old wording · content-clarity skill
+
 ## 2026-09-26 (afternoon)
 - Illustrations approved, all of it ("amazing job"): the six before/after case windows and their labels, the token card ("~2,300 tokens saved on one screen"), `--stroke-diagram` 1px, square skeleton bars, the window parts joining the system; before/after becomes the rule for case windows. · the word-heavy windows · ILL-05, ILL-07 (check_pages)
 - Home and Work case illustrations: too many words. Each illustration explains one main idea of its case, simply, built on how eyes read (one focal point, few words, the idea visible before it is read). · the word-heavy windows · ILL (to be written)
