@@ -71,11 +71,14 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .tag--considered{color:var(--status-cost);background:color-mix(in srgb,var(--status-cost) 10%,var(--surface-card));letter-spacing:var(--tracking-label)}
 .tag--chosen{color:var(--surface-card);background:var(--accent);letter-spacing:var(--tracking-label)}
 
-/* ---------- Sections (SEC-01, SEC-02) ----------
+/* ---------- Sections (SEC-01, SEC-02, SEC-04) ----------
    A divider opens every section: an in-flow 1px rule at content width, never edge
-   to edge. The subtitle sits below its heading, never beside it. */
-.section{position:relative;padding-top:var(--section-gap)}
-.section>:first-child{border-top:1px solid var(--border-divider);padding-top:var(--section-pad)}
+   to edge. The subtitle sits below its heading, never beside it. The content sits
+   --section-y below the divider and --section-y above the next one (SEC-04); the
+   space under a hero is the hero's own (HERO-01). */
+.section{position:relative;padding-bottom:var(--section-y)}
+.section>:first-child{border-top:1px solid var(--border-divider);padding-top:var(--section-y)}
+.hero+.section{padding-top:var(--section-gap)}
 .section-head{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-md);margin-bottom:var(--stack-lg)}
 .section-head .eyebrow{margin:0}
 .section-head>p:not(.eyebrow){margin:0;max-width:46ch;font-size:var(--font-size-lg);line-height:var(--leading-snug);color:var(--text-body);text-wrap:pretty}
@@ -134,7 +137,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
    Frosted, the same inner shade, a light bottom edge. Content width, lg radius; level -1 in spirit. */
 .glass{background:var(--surface-glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:var(--elevation-inset-1),var(--edge-glass);border:0;border-radius:var(--radius-lg)}
 .glass--deep{box-shadow:var(--elevation-inset-2),var(--edge-glass)}
-.case-details{padding:var(--space-fluid-l);margin-block:var(--stack-sm) var(--space-fluid-l)}
+.case-details{padding:var(--space-fluid-l);margin-block:var(--stack-sm) 0} /* section 01 below keeps --section-y (SEC-04) */
 
 /* ---------- Cards: level 1, equal padding on every side (CRD-01) ---------- */
 .card{background:var(--surface-card);border:0;border-radius:var(--radius-md);box-shadow:var(--elevation-1)}
@@ -176,8 +179,10 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
   background-image:var(--texture-grain);background-size:var(--texture-grain-size)}
 .well--press{transition:box-shadow var(--dur-hover-slow) var(--ease-standard)}
 .well--press:hover{box-shadow:var(--elevation-inset-2)}
-/* the next case (design-system NextCase) sits in a well: its own rules give way to the well */
-.well--next{--line:transparent;--line-ink:transparent;margin-block:var(--stack-sm);padding-block:0}
+/* the next case (design-system NextCase) sits in a well: its own rules give way to the well.
+   A top-level block (SEC-04): the section above gives the space over it; after the ink band it takes --section-y itself. */
+.well--next{--line:transparent;--line-ink:transparent;margin-block:0 var(--section-y);padding-block:0}
+.band-inverse+.well--next{margin-top:var(--section-y)}
 .well--next>*{padding-bottom:var(--space-fluid-l)}
 
 /* ---------- The note: a soft recess (-1) on a light ground, grained ---------- */
@@ -242,10 +247,10 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-layers--2{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:1080px){.ld-layers,.ld-layers--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:620px){.ld-layers,.ld-layers--3,.ld-layers--2{grid-template-columns:minmax(0,1fr)}}
-.ld-layers>.card{padding:clamp(20px,2.4vw,28px)}
-.ld-layers .eyebrow{margin-bottom:10px}
+.ld-layers>.card,.ld-card--half{padding:clamp(20px,2.4vw,28px)}
+.ld-layers .eyebrow,.ld-card--half .eyebrow{margin-bottom:10px}
 .ld-layers h3{margin:0 0 var(--space-xs);font-size:19px;font-weight:500;line-height:1.2;letter-spacing:-0.02em}
-.ld-layers p:not(.eyebrow):not(.ld-big){margin:0;font-size:var(--font-size-action);line-height:1.6;color:var(--text-body);text-wrap:pretty}
+:is(.ld-layers,.ld-card--half) p:not(.eyebrow):not(.ld-big){margin:0;font-size:var(--font-size-action);line-height:1.6;color:var(--text-body);text-wrap:pretty}
 .ld-card--half{max-width:560px}
 .ld-layers--auto{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
 .ld-big{margin:0 0 var(--space-xs);font-size:clamp(26px,3vw,36px);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--text-heading)}
@@ -259,9 +264,10 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .link-cards .link-card{height:100%;padding:clamp(20px,2.4vw,28px)}
 .link-card .eyebrow{margin:0 0 10px}
 .link-card h3{margin:0;font-size:19px;font-weight:500;line-height:1.25;letter-spacing:-0.02em;text-wrap:balance}
-.ld-split{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,96px);align-items:center}
+/* two equal columns with the case rows' gap, so the text column lines up with the home's case illustrations (SEC-05) */
+.ld-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-fluid-xl);align-items:center}
 @media (max-width:860px){.ld-split{grid-template-columns:minmax(0,1fr)}}
-.ld-portrait{width:100%;max-width:440px;aspect-ratio:4/5;margin:0 auto}
+.ld-portrait{width:100%;max-width:440px;aspect-ratio:4/5;margin:0} /* starts on the column edge, never centred in it (SEC-05) */
 .ld-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
 .ld-split p:not(.eyebrow){margin:0 0 var(--space-lg);max-width:60ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
 .ld-split .h2{margin-bottom:clamp(20px,3vw,28px)}
@@ -270,7 +276,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-facts dt{margin:0 0 6px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
 .ld-facts dd{margin:0;font-size:var(--font-size-action);line-height:var(--leading-snug);color:var(--text-strong)}
 .ld-facts dd a{color:var(--accent);text-decoration:none}
-.ld-band{margin-top:clamp(64px,9vw,128px)}
+.ld-band{margin-top:0} /* the section above gives the space (SEC-04) */
 .ld-band__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);align-items:start;padding-block:clamp(56px,8vw,104px)}
 .ld-band h2{margin:0;font-size:clamp(28px,4vw,52px);font-weight:500;line-height:1;letter-spacing:-0.042em;max-width:18ch;text-wrap:balance}
 .ld-band p:not(.eyebrow){margin:0 0 var(--space-xl);max-width:56ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty}

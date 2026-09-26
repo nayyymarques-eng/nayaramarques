@@ -83,6 +83,8 @@
     [data-reveal] { padding-top: var(--space-2xl) !important; padding-bottom: var(--space-3xl) !important; gap: var(--space-xl) !important; }
   }
   @media (max-width: 720px) { [data-illo] { display: none !important; } }
+  /* SEC-04: the last case row gives its bottom padding to the section, so the list ends --section-y above the divider */
+  #work [data-reveal]:last-child { padding-bottom: 0 !important; }
   /* The home hero: one hero anatomy (HERO-01), top-aligned; intro on the left, the chat on the right. */
   /* The home is the one exception to the hero anatomy (HERO-02): its hero fills the first screen and centres the intro
      and the chat vertically. Every other page keeps the fixed eyebrow and title height. */
@@ -171,7 +173,7 @@
     </section>
 
     <section id="work" data-rule="none">
-      <div style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl) var(--section-y-lg)">
+      <div style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl) var(--section-y)">
 <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--space-fluid-xl) 0;border-top:0">
           <a href="ai-surfaces.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
           <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
@@ -529,7 +531,7 @@
 
     <!-- Who built it (Nayara, 2026-09-26): the services pages' "Who runs it" block (.ld-split, .ld-portrait), same markup and
          portrait, with copy for the home page drawn from About. -->
-    <section class="ld-wrap section" aria-labelledby="ld-who" style="padding-bottom:var(--section-y-lg)">
+    <section class="ld-wrap section" aria-labelledby="ld-who">
       <div class="ld-split">
         <div class="ld-portrait">
           <img src="assets/nayara-portrait.png" alt="Nayara Marques" width="440" height="550">
@@ -680,13 +682,16 @@ class Component extends DCLogic {
 
     rows.forEach((row) => {
       row.style.position = 'relative';
+      const ruled = parseFloat(getComputedStyle(row).borderTopWidth) > 0; // the first row has none: no line under the hero (LAY-05a)
       row.style.borderTopColor = 'transparent';
-      const rule = document.createElement('span');
-      // the one light divider (SEC-01); it used to take the row's border colour, which was ink on the first row
-      rule.style.cssText = 'position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--border-divider)' +
-        ';transform:scaleX(0);transform-origin:left center;will-change:transform';
-      row.insertBefore(rule, row.firstChild);
-      row._rule = rule;
+      if (ruled) {
+        const rule = document.createElement('span');
+        // the one light divider (SEC-01); it used to take the row's border colour, which was ink on the first row
+        rule.style.cssText = 'position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--border-divider)' +
+          ';transform:scaleX(0);transform-origin:left center;will-change:transform';
+        row.insertBefore(rule, row.firstChild);
+        row._rule = rule;
+      }
       parts(row).forEach((el) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(14px)';

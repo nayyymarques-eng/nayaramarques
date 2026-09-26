@@ -81,6 +81,9 @@
     [data-reveal] { padding-top: var(--space-2xl) !important; padding-bottom: var(--space-3xl) !important; gap: var(--space-xl) !important; }
   }
   @media (max-width: 720px) { [data-illo] { display: none !important; } }
+  /* SEC-04: the list's first and last rows give their outer padding to the section, so it sits --section-y inside its lines */
+  [data-reveal]:first-child { padding-top: 0 !important; }
+  [data-reveal]:last-child { padding-bottom: 0 !important; }
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -100,9 +103,9 @@
       <p style="margin:0;max-width:58ch;font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty;animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .5s both">AI platforms, investment banking and logistics. Each follows one structure: problem, constraints, decisions and trade-offs, solution, impact, and what I'd do differently.</p>
     </section>
 
-    <section style="padding:var(--section-y) 0 var(--section-y-lg)">
+    <section style="padding:var(--section-y) 0">
 
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--space-fluid-xl) 0;border-top:1px solid var(--border-emphatic)">
+      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--space-fluid-xl) 0;border-top:0">
           <a href="ai-surfaces.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
           <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
             <span style="color:var(--accent)">01</span><span>AI platform · private capital markets</span><span>2024—26</span>
@@ -384,7 +387,7 @@
       </div></div>
         </div>
 
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--space-fluid-xl) 0;border-top:1px solid var(--border-emphatic);border-bottom:1px solid var(--border)">
+      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--space-fluid-xl) 0;border-top:1px solid var(--border-emphatic)">
           <a href="card-insurance.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
           <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
             <span style="color:var(--accent)">06</span><span>BTG Pactual</span><span>2020</span>
@@ -483,7 +486,8 @@ class Component extends DCLogic {
 
     rows.forEach((row) => {
       row.style.position = 'relative';
-      const color = getComputedStyle(row).borderTopColor;
+      const rs = getComputedStyle(row);
+      const color = parseFloat(rs.borderTopWidth) ? rs.borderTopColor : 'transparent'; // a row without a top rule draws none (LAY-05a)
       row.style.borderTopColor = 'transparent';
       const rule = document.createElement('span');
       rule.style.cssText = 'position:absolute;left:0;right:0;top:-1px;height:1px;background:' + color +
