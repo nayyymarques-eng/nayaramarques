@@ -103,8 +103,8 @@
   .fh-step { position: relative; display: flex; flex-direction: column; gap: 6px; min-height: 72px; padding: var(--space-sm); border-radius: var(--radius-sm); background: var(--surface-card); font-size: var(--font-size-sm); line-height: 1.35; color: var(--text-body); box-shadow: var(--elevation-1); }
   .fh-flow--considered .fh-step { box-shadow: 0 0 0 1px var(--border); }
   .fh-step + .fh-step::before { content: "→"; position: absolute; left: -17px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--text-muted); }
-  .fh-n { font-size: var(--font-size-eyebrow); font-weight: 600; letter-spacing: var(--tracking-tag); color: var(--text-muted); font-variant-numeric: tabular-nums; }
-  .fh-kicker { display: block; margin-bottom: 2px; font-size: var(--font-size-eyebrow); font-weight: 600; letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--accent); }
+  .fh-n { font-size: var(--font-size-diagram); font-weight: 600; letter-spacing: var(--tracking-eyebrow); color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .fh-kicker { display: block; margin-bottom: 2px; font-size: var(--font-size-diagram); font-weight: 600; letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--accent); }
   .fh-flow--considered .fh-risk { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--status-cost) 55%, transparent); }
   .fh-flag { color: var(--status-cost); }
   .fh-conv { background: var(--accent); color: var(--surface-card); font-weight: 500; }
@@ -189,7 +189,7 @@
             <div style="background:var(--surface-card)"><div style="padding:var(--space-xl) var(--space-xl) var(--space-xl);background:var(--surface-page)">
               <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--space-lg)">
                 <div class="step" style="padding:var(--space-md)">
-                  <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">Fixed bundle</div>
+                  <div style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">Fixed bundle</div>
                   <div style="border:1px solid var(--border);padding:var(--space-sm);margin-bottom:var(--space-sm)">
                     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-sm);margin-bottom:var(--space-sm)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">One package</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">One price</span></div>
                     <div style="display:flex;flex-direction:column;gap:var(--space-xs)">
@@ -202,14 +202,14 @@
                   <p style="margin:0;font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-muted)">Limits sit in the clauses. No part has a visible cost, so nothing can be compared or dropped.</p>
                 </div>
                 <div class="step step--emph" style="padding:var(--space-md)">
-                  <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)">Modules, priced at the point of choice</div>
+                  <div style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)">Modules, priced at the point of choice</div>
                   <div style="display:flex;flex-direction:column;gap:var(--space-xs);margin-bottom:var(--space-sm)">
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);border:1px solid var(--border-emphatic);padding:var(--space-xs) var(--space-sm)"><span style="font-size:var(--font-size-xs);color:var(--text-strong)">Module · limit stated</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">+ R$</span></div>
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);border:1px solid var(--border);padding:var(--space-xs) var(--space-sm)"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Module · limit stated</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-body)">+ R$</span></div>
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);border:1px solid var(--border);padding:var(--space-xs) var(--space-sm)"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Module · limit stated</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-body)">+ R$</span></div>
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);opacity:.5"><span style="font-size:var(--font-size-xs);color:var(--text-body);text-decoration:line-through">Not taken</span><span style="font-size:var(--font-size-xs);color:var(--text-muted)">—</span></div>
                   </div>
-                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border)"><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Premium</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--accent)">Moves as you choose</span></div>
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border)"><span style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Premium</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--accent)">Moves as you choose</span></div>
                 </div>
               </div>
             </div></div>
