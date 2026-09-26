@@ -4,6 +4,13 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 
 Format: date · decision · what it replaces or rules out · enforced by.
 
+## 2026-09-26 (afternoon)
+- Home and Work case illustrations: too many words. Each illustration explains one main idea of its case, simply, built on how eyes read (one focal point, few words, the idea visible before it is read). · the word-heavy windows · ILL (to be written)
+- The audit card highlights how many tokens the design system saved on a single screen (about 2,300, her own measurement, now allowed alongside 44%). · 44% as the headline · CNT-06 list extended
+- About, Tools & range: organised like a footer, sections side by side, each a short vertical list; same position on the page. · one long dotted line per row · by eye
+- About: both calls to action from the home page; content cleaned up (less metaphor, very direct, with details); the section top padding that looks too big is fixed. · · SEC-04
+- Case pages speak from the user's side: who is doing what, what the design does for them, why ("Analysis mode. When the user is reading a report, they don't need to leave the page..."). Text must read fluidly with no gaps; the content-clarity skill does the loop (read, find gaps, rewrite, read again until no gaps). · product-first captions, metaphors, jumps · content-clarity skill
+
 ## 2026-09-26
 - Every top-level section has the same padding above and below its content, one value site-wide from a token, so content sits centred between its dividers. Columns line up: every section's content starts on the same left edge (the page gutter) and uses the same column grid. · uneven section padding (content sitting high), the home portrait offset from the text column · SEC-04, SEC-05 (check_pages; round 4, theme-sky)
 - Round 3 approved, recommendations followed: all 18 lines of new copy (home "Who built it"; AI surfaces 5.1 to 5.3 and 09; Composer spec 06 and 09); principles are stacked cards too (card insurance; About's rows wait for a links line in DecisionCard); findings and references stay rows; step ordinals in the accent; the inactive gap is a hollow dot with a dashed rule; Composer spec gains the Routed card; "Who built it" sits after "Where I've built" and links to About; the sticker enters in four beats over 400ms; the placement figure stacks on phones; `.tags data-pattern="term"` for the editing modes. Claude Design follow-ups: an `inactive` prop on ListRow, a links line on DecisionCard. · the round 3 proposals · PAT-01, PAT-05, PAT-07, MOT-03
