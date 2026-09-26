@@ -25,8 +25,10 @@
     'html.has-case-index [data-case-band]{--case-gap:clamp(20px,3vw,36px);column-gap:var(--case-gap)!important;',
     '--case-col:calc((100% - 3 * var(--case-gap)) / 4);--case-divider-left:calc(var(--case-col) + var(--case-gap))}',
     'html.has-case-index [data-case-band]>[data-rail-indexed]{flex:0 0 var(--case-col)!important}}',
-    // card titles (DecisionCard reads --size-lead, hand-built cards --font-size-xl-lead) step down below the section title
-    '[data-case-band]{--size-lead:var(--font-size-lg);--font-size-xl-lead:var(--font-size-lg);--leading-lead:var(--leading-heading);--track-lead:var(--tracking-lead)}',
+    // card titles (DecisionCard reads --size-lead, hand-built cards --font-size-xl-lead) step down to the item title:
+    // 16px, 600, below the sub-section (17) and the section title (20). Section 20/600 > sub-section 17/600 > item 16/600.
+    '[data-case-band]{--size-lead:var(--font-size-md);--font-size-xl-lead:var(--font-size-md);--leading-lead:var(--leading-heading);--track-lead:var(--tracking-lead)}',
+    '[data-case-band] [data-surface="card"]{--weight-medium:var(--weight-semibold)}',
     // narrow screens: no index column, but the section title stays the largest heading;
     // the old small rail is hidden visually and kept for screen readers
     '@media not all and ' + WIDE + '{[data-case-index]{display:none!important}'

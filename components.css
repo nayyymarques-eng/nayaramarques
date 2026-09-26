@@ -93,6 +93,10 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 /* ---------- Case section title and intro (LAY-08) ----------
    The title in the body (case-index.js writes "05 The solution") is small and firm; the section's intro below it is an
    ordinary paragraph, at most 600px wide. Neither is sticky. The title's type is set in case-index.js. */
+/* Sub-section (LAY-08 (4)): a noun phrase, no number. Smaller than the section title, bold like it, with a short accent
+   bar as its marker (flat, level 0: a mark in the label grammar, never a surface). Numbers belong to the section title only. */
+.subsection{display:flex;align-items:baseline;gap:10px;margin:0 0 12px;font-size:var(--font-size-subsection);font-weight:600;line-height:1.3;letter-spacing:-0.01em;color:var(--text-heading);text-wrap:balance}
+.subsection::before{content:"";flex:none;width:12px;height:2px;border-radius:var(--radius-full);background:var(--accent);transform:translateY(-0.32em)}
 p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
 
 /* ---------- Glass: the case details, like the home's composer ----------

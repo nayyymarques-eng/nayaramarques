@@ -11,6 +11,7 @@
   --font-size-sm:14px;                         /* caption, card prose, chip */
   --font-size-action:15px;                     /* the three action variants */
   --font-size-md:16px;                         /* running prose */
+  --font-size-subsection:clamp(16px,1.25vw,17px); /* case sub-section title (h3.subsection): below the section title (18–20), above the item title (16) */
   --font-size-lg:clamp(18px,1.43vw,20px);      /* hero deck, standfirst, sub-lead, sub-section title (B-8) */
   --font-size-xl:clamp(20px,2vw,28px);         /* lead, statement, section title (B-8) */
   --font-size-xl-lead:var(--font-size-xl);     /* card titles: case-index.js steps them down to lg inside case bodies */

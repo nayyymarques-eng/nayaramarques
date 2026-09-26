@@ -242,7 +242,7 @@
             </figure>
           </sc-if>
 
-          <h3 style="margin:var(--section-y) 0 var(--space-sm);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">5.1</span>Decision map</h3>
+          <h3 class="subsection">Decision map</h3>
           <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Most drift was not invention but a reasonable component in the wrong job: a filter drawn as navigation, a status pill used as a count, a hand-built menu. The map names the job, the right component, and the plausible substitute people kept choosing.</p>
           <figure class="figure">
             <div style="background:var(--surface-card);padding:var(--space-xl) var(--space-xl) var(--space-xl);overflow-x:auto">
@@ -287,7 +287,7 @@
             <figcaption class="figure__caption" data-caption><strong>Five rows from the map.</strong> Naming the wrong answer changed behaviour more than naming the right one.</figcaption>
           </figure>
 
-          <h3 style="margin:var(--section-y) 0 var(--space-sm);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">5.2</span>Register</h3>
+          <h3 class="subsection">Register</h3>
           <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The register is how a part the catalogue lacks reaches a designer: drawn, tagged and written up with its picture, spec and rejected components. The same part in two projects is one row with two sightings.</p>
           <sc-if value="{{ diagrams }}" hint-placeholder-val="{{ true }}">
             <figure class="figure">
@@ -324,7 +324,7 @@
               <figcaption class="figure__caption" data-caption><strong>Four states and three tests.</strong> The row travels; the build never waits for it.</figcaption>
             </figure>
           </sc-if>
-          <h3 style="margin:var(--section-y) 0 var(--space-sm);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">5.3</span>AI use while exploring</h3>
+          <h3 class="subsection">AI use while exploring</h3>
           <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Most ideas here start with an AI tool exploring, and an exploration looks finished long before anyone decides it. That is where drift starts.</p>
           <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">So every component carries its job, where not to use it and what to use instead. An agent reuses what fits and tags what does not: anything it invents arrives as a register row, not a screen.</p>
           <div style="margin-top:var(--space-fluid-m);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-xl);align-items:stretch">
@@ -364,14 +364,14 @@
           </figure>
 
           <div style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg);margin-bottom:var(--section-y)">
-            <h3 style="margin:0 0 var(--space-sm);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">6.1</span>Self-check and override</h3>
+            <h3 class="subsection">Self-check and override</h3>
             <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The rules end in a short, mechanical check: no colour literals; radii, control heights, font sizes and spacing only from their legal sets; no raw table, button, input or select; shadows only on floating layers. A rule that needs interpretation comes back as a question.</p>
             <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">On overriding a component: layout properties are yours; anything encoding what the element <em>is</em> (background, colour, border, radius, height, padding, type) is not. A missing variant is a variant discussion. This rule stopped the catalogue being forked at the call site.</p>
             <p style="margin:0;max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">A pass-or-fail system is also cheaper to hand a model: fewer gaps, fewer invented parts, fewer screens generated twice.</p>
           </div>
 
           <div style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">
-            <h3 style="margin:0 0 var(--space-sm);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">6.2</span>Published gaps</h3>
+            <h3 class="subsection">Published gaps</h3>
             <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The <strong style="color:var(--text-strong);font-weight:600">undecided</strong> list (page width, grid, breakpoints, layering, the success, warning and info colours, validation timing, table density) says: ask, do not invent. The <strong style="color:var(--text-strong);font-weight:600">not built</strong> list, from a mobile nav drawer to charts, says: name the gap, do not ship a lookalike.</p>
             <p style="margin:0;max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The least intuitive decision changed the most. An approximation reads as a decision; naming the gap keeps an unfinished system honest.</p>
           </div>
