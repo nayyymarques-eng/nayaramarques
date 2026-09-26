@@ -79,26 +79,53 @@
 <style>
   summary::-webkit-details-marker { display: none; }
   html, body { overflow-x: clip; max-width: 100%; }
-  @keyframes roleIn { from { opacity: 0; transform: translateY(calc(0.22em + 14px)); filter: blur(3px); } to { opacity: 1; transform: translateY(0.22em); filter: blur(0); } }
-  @keyframes glyphIn { from { opacity: .25; filter: blur(1.6px); transform: translateY(-0.035em); } to { opacity: 1; filter: blur(0); transform: translateY(0); } }
-  @keyframes cornerA { 0% { transform: translate3d(-30%, -26%, 0) scale(1); } 25% { transform: translate3d(34%, -22%, 0) scale(1.16); } 50% { transform: translate3d(30%, 24%, 0) scale(0.94); } 75% { transform: translate3d(-28%, 26%, 0) scale(1.2); } 100% { transform: translate3d(-30%, -26%, 0) scale(1); } }
-  @keyframes cornerB { 0% { transform: translate3d(32%, 24%, 0) scale(1.12); } 25% { transform: translate3d(-30%, 26%, 0) scale(0.92); } 50% { transform: translate3d(-34%, -24%, 0) scale(1.22); } 75% { transform: translate3d(28%, -26%, 0) scale(1); } 100% { transform: translate3d(32%, 24%, 0) scale(1.12); } }
-  @keyframes cornerC { 0% { transform: translate3d(-20%, 22%, 0) scale(1.1); } 33% { transform: translate3d(26%, -18%, 0) scale(1.28); } 66% { transform: translate3d(-24%, -20%, 0) scale(0.98); } 100% { transform: translate3d(-20%, 22%, 0) scale(1.1); } }
-  @keyframes softOut { 0% { transform: translateY(0); filter: blur(0); opacity: 1; } 40% { opacity: 0.55; } 100% { transform: translateY(-26%); filter: blur(3px); opacity: 0; } }
-  @keyframes softIn  { 0% { transform: translateY(26%); filter: blur(3px); opacity: 0; } 55% { opacity: 0.85; } 100% { transform: translateY(0); filter: blur(0); opacity: 1; } }
   @media (max-width: 720px) {
     [data-reveal] { padding-top: var(--space-2xl) !important; padding-bottom: var(--space-3xl) !important; gap: var(--space-xl) !important; }
   }
   @media (max-width: 720px) { [data-illo] { display: none !important; } }
-  @media (hover: hover) {
-    [data-illo] { transition: opacity .5s cubic-bezier(.19,1,.22,1) !important; opacity: .5 !important; }
-    a:hover ~ [data-illo], [data-illo]:hover { opacity: 1 !important; }
-  }
-  @media (max-width: 720px) {
-    /* name and role stay side by side at every width — the type shrinks to fit instead of stacking */
-    [data-hero] { height: 1em !important; flex-wrap: nowrap !important; font-size: min(calc((100vw - 76px) / 12.4), clamp(34px, 5.2vw, 68px)) !important; }
-    [data-hero] [data-role-slot] { margin-left: 0 !important; }
-  }
+  /* The home hero: one hero anatomy (HERO-01), top-aligned; intro on the left, the chat on the right. */
+  /* The home is the one exception to the hero anatomy (HERO-02): its hero fills the first screen and centres the intro
+     and the chat vertically. Every other page keeps the fixed eyebrow and title height. */
+  .hx { min-height: min(calc(100vh - var(--nav-h)), 860px); padding-top: var(--space-2xl); padding-bottom: var(--space-2xl); display: grid; align-content: center; }
+  .hx__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3.5vw, 56px); align-items: center; }
+  .hx__name { margin: 0 0 var(--space-md); font-size: clamp(40px, 5.4vw, 68px); font-weight: 500; line-height: 1; letter-spacing: var(--tracking-display); white-space: nowrap; }
+  .hx__lede { margin: 0; font-size: clamp(16px, 1.25vw, 18px); line-height: 1.55; color: var(--text-body); }
+  .hx__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px var(--space-lg); margin-top: clamp(28px, 3.4vw, 40px); }
+  /* the chat: the hover area is the chat itself, with a small margin */
+  .hx__chat { display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-xs); margin: calc(-1 * var(--space-xs)); }
+  .hx__thread { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; min-height: 176px; justify-content: flex-end; }
+  .hx__thread li { align-self: flex-start; max-width: 88%; padding: 10px 14px; border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 4px; background: var(--surface-card);
+    box-shadow: var(--elevation-1); font-size: var(--font-size-action); line-height: 1.45; color: var(--text-body);
+    animation: hx-in var(--dur-entrance) var(--ease-out) both; transition: opacity .6s var(--ease-in-out-soft); }
+  .hx__thread li.is-old { opacity: .45; }
+  /* the conversation ends: the thread leaves together, in one soft blur and fade, then starts clean */
+  .hx__thread li.is-leaving { opacity: 0 !important; filter: blur(8px); transition: opacity var(--dur-archive) var(--ease-in-out-soft), filter var(--dur-archive) var(--ease-in-out-soft); }
+  @keyframes hx-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  /* the composer: a glass window you look into (deep recess, -2) */
+  .hx__composer { position: relative; cursor: text; display: flex; align-items: center; gap: var(--space-sm); padding: 10px 10px 10px 14px; border-radius: var(--radius-lg); }
+  .hx__avatar { flex: none; width: 18px; height: 18px; display: grid; place-items: center; }
+  .hx__avatar svg { width: 16px; height: 16px; }
+  .hx__input { flex: 1; min-width: 0; min-height: 24px; font-size: var(--font-size-md); line-height: 24px; color: var(--text-strong); white-space: nowrap; overflow: hidden; text-overflow: clip; }
+  .hx__caret { display: inline-block; width: 1.5px; height: 18px; margin-left: 1px; vertical-align: -3px; background: var(--accent); animation: hx-caret 1.05s steps(1) infinite; }
+  @keyframes hx-caret { 50% { opacity: 0; } }
+  .hx__send { flex: none; width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; color: var(--surface-card); background: var(--accent); opacity: .35; transition: opacity var(--dur-hover-slow) var(--ease-out); }
+  .hx__send svg { width: 15px; height: 15px; }
+  .hx__chat.is-ready .hx__send { opacity: 1; }
+  #work { scroll-margin-top: 72px; }
+  @media (max-width: 860px) { .hx__grid { grid-template-columns: minmax(0, 1fr); } .hx__name { white-space: normal; } .hx__thread { min-height: 0; } }
+  @media (max-width: 640px) { .hx__lede br { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .hx__caret { display: none; } .hx__thread li { animation: none; } }
+  /* The sticker: a small card (a terminal) follows the cursor only while it is over the chat. */
+  .hx-sticker { position: fixed; left: 0; top: 0; z-index: 60; width: 196px; pointer-events: none; opacity: 0; transform: translate3d(-999px, -999px, 0);
+    transition: opacity .18s var(--ease-out); background: var(--brand-mark); border-radius: var(--radius-md); padding: 6px; box-shadow: var(--elevation-sticker); }
+  .hx-sticker.is-on { opacity: 1; }
+  .hx-sticker__term { background: var(--terminal-surface); border-radius: var(--radius-sm); overflow: hidden; }
+  .hx-sticker__bar { display: flex; align-items: center; gap: 4px; padding: 5px 7px; background: var(--terminal-chrome); }
+  .hx-sticker__bar i { width: 6px; height: 6px; border-radius: 50%; background: var(--terminal-dot); }
+  .hx-sticker__bar span { margin-left: 4px; font: 9px/1 var(--font-mono); color: var(--terminal-meta); }
+  .hx-sticker pre { margin: 0; padding: 8px 9px 10px; font: 11px/1.45 var(--font-mono); color: var(--terminal-text); white-space: pre; }
+  .hx-sticker pre b { color: var(--terminal-error); font-weight: 600; }
+  .hx-sticker p { margin: 6px 4px 2px; font-size: 12px; line-height: 1.35; font-weight: 500; color: var(--surface-card); }
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -109,56 +136,38 @@
 
   <main style="flex:1">
 
-    <section class="hero" style="position:relative;max-width:1400px;margin:0 auto;padding:clamp(80px,10.5vw,152px) var(--space-2xl) clamp(80px,10.5vw,152px)">
-      <div aria-hidden="true" style="position:absolute;top:-80px;bottom:0;left:-100vmax;right:-100vmax;overflow:hidden;pointer-events:none;z-index:0">
-        <span style="position:absolute;left:18%;top:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--accent-soft) 62%,transparent), transparent 68%);filter:blur(34px);animation:cornerA 9s cubic-bezier(.45,0,.55,1) infinite"></span>
-        <span style="position:absolute;right:18%;bottom:-25%;width:34%;height:150%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--accent) 32%,transparent), transparent 70%);filter:blur(54px);animation:cornerB 12s cubic-bezier(.45,0,.55,1) infinite"></span>
-        <span style="position:absolute;left:36%;top:-30%;width:32%;height:160%;border-radius:50%;background:radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--surface-band) 98%,transparent), transparent 66%);filter:blur(38px);animation:cornerC 15s cubic-bezier(.45,0,.55,1) infinite"></span>
-        <span style="position:absolute;inset:0;opacity:0.075;mix-blend-mode:multiply;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:180px 180px"></span>
-        <span style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(to bottom, transparent 0%, color-mix(in srgb,var(--surface-band) 70%,transparent) 55%, var(--surface-band) 100%)"></span>
-      </div>
-      <div style="position:relative;z-index:1">
-      <div style="margin-bottom:var(--space-fluid-s)">
-        <h1 data-hero="" style="font-size:var(--font-size-3xl);font-weight:500;line-height:var(--leading-none);letter-spacing:var(--tracking-display);margin:0;display:flex;align-items:baseline;height:1em">
-          <span style="display:block;overflow:hidden;padding:0.1em 0.04em 0.2em;margin:-0.1em -0.04em -0.2em"><span style="display:block;line-height:var(--leading-none);white-space:nowrap;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">nayara</span></span>
-          <span data-mark-slot="" aria-hidden="true" style="flex:none;width:0.66em;height:0.66em;margin:0 0.24em;align-self:center;position:relative">
-        <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true" style="display:block;overflow:visible">
-          <path d="M 50 2 C 54 34 66 46 98 50 C 66 54 54 66 50 98 C 46 66 34 54 2 50 C 34 46 46 34 50 2" fill="#c0392b"></path>
-        </svg>
-          </span>
-          <span data-role-slot="" style="position:relative;width:0;height:0;margin-left:0"><span data-role-word="" style="position:absolute;left:0;bottom:0;line-height:var(--leading-none);color:var(--accent);white-space:nowrap;font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:var(--tracking-lead);font-size:1.18em;transform:translateY(0.22em);animation:roleIn 1.4s cubic-bezier(.19,1,.22,1) .18s both">Product Designer</span></span>
-        </h1>
-      </div>
-      <div style="padding-top: 0px">
-        <div style="display:flex;flex-direction:column;gap:var(--space-md);animation:fadeUp 1.3s cubic-bezier(.19,1,.22,1) .86s both">
-          
-          <p style="margin:0;font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);text-wrap:pretty;max-width:58ch">Product designer working AI-native on B2B and B2C products in fintech, logistics and energy. I design the thing and help get it built.</p>
-          <p style="margin:0;font-size:var(--font-size-xs);font-weight:600;line-height:var(--leading-label);letter-spacing:var(--tracking-label);color:var(--text-muted)">CLADE · BTG PACTUAL · LOADSMART · ITAÚ</p>
-        </div>
-        
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-fluid-xl);animation:fadeUp 1.3s cubic-bezier(.19,1,.22,1) 1.16s both">
-        <a class="action action--primary" href="contact.html">
-          Get in touch <span class="action__arrow" aria-hidden="true">→</span>
-        </a>
-        <details data-picker="" style="position:relative;display:inline-block">
-          <summary class="action action--link">Résumé <span class="action__arrow" aria-hidden="true">↓</span></summary>
-          <div style="position:absolute;top:calc(100% + 8px);left:0;min-width:190px;z-index:30;background:var(--surface-card);border-radius:var(--radius-md);box-shadow:var(--elevation-3);overflow:hidden" data-surface>
-            <a href="assets/nayara-marques-resume.pdf" download style="display:flex;justify-content:space-between;gap:var(--space-md);padding:var(--space-sm) var(--space-md);border-bottom:1px solid var(--border-subtle);text-decoration:none;color:var(--text-strong);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">PDF <span style="color:var(--text-muted)">↓</span></a>
-            <a href="assets/nayara-marques-resume.md" download style="display:flex;justify-content:space-between;gap:var(--space-md);padding:var(--space-sm) var(--space-md);text-decoration:none;color:var(--text-strong);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">Markdown <span style="color:var(--text-muted)">↓</span></a>
+    <!-- The home hero (Nayara, 2026-09-25): intro on the left, a chat on the right. The star is the sender; lines type
+         into a glass composer at reading pace and are sent into the thread. The chat is decorative (aria-hidden). -->
+    <section class="hero hx ld-wrap">
+      <div class="hx__grid">
+        <div class="hx__intro">
+          <p class="hero__eyebrow" data-new-copy="hero-eyebrow">Senior Product Designer and Design Engineer</p>
+          <h1 class="hx__name">Nayara Marques</h1>
+          <p class="hx__lede" data-new-copy="hero-lede">I design the thing, and help get it built. <br>AI-native products in fintech, logistics and energy.</p>
+          <div class="hx__actions">
+            <a class="action action--primary" href="#work" data-new-copy="hero-cta">See cases</a>
+            <details data-picker="" style="position:relative;display:inline-block">
+              <summary class="action action--link">Résumé <span class="action__arrow" aria-hidden="true">↓</span></summary>
+              <div style="position:absolute;top:calc(100% + 8px);left:0;min-width:190px;z-index:30;background:var(--surface-card);border-radius:var(--radius-md);box-shadow:var(--elevation-3);overflow:hidden" data-surface>
+                <a href="assets/nayara-marques-resume.pdf" download style="display:flex;justify-content:space-between;gap:var(--space-md);padding:var(--space-sm) var(--space-md);border-bottom:1px solid var(--border-subtle);text-decoration:none;color:var(--text-strong);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">PDF <span style="color:var(--text-muted)">↓</span></a>
+                <a href="assets/nayara-marques-resume.md" download style="display:flex;justify-content:space-between;gap:var(--space-md);padding:var(--space-sm) var(--space-md);text-decoration:none;color:var(--text-strong);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .18s ease" style-hover="background:var(--surface-band)">Markdown <span style="color:var(--text-muted)">↓</span></a>
+              </div>
+            </details>
           </div>
-        </details>
+        </div>
+        <div class="hx__chat" aria-hidden="true" data-new-copy="chat-lines">
+          <ol class="hx__thread"></ol>
+          <div class="hx__composer glass glass--deep">
+            <span class="hx__avatar"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="#c0392b" d="M 50 2 C 54 34 66 46 98 50 C 66 54 54 66 50 98 C 46 66 34 54 2 50 C 34 46 46 34 50 2"/></svg></span>
+            <span class="hx__input"><span class="hx__typed"></span><span class="hx__caret"></span></span>
+            <span class="hx__send"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
       </div>
-      </div>
-
     </section>
 
     <section id="work" data-rule="none">
       <div style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl) var(--section-y-lg)">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-lg);flex-wrap:wrap;margin-bottom:var(--space-fluid-s);padding-bottom:var(--space-md)">
-          <h2 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0">Selected work</h2>
-          <span style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent)" data-count="">Six case studies</span>
-        </div>
 <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--space-fluid-xl) 0;border-top:0">
           <a href="ai-surfaces.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
           <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
@@ -177,30 +186,31 @@
         <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:var(--space-md);border-bottom:1px solid var(--border-emphatic);font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-muted)"><span>Placement</span><span>Four entry points, one language</span></div>
         <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2xl);padding:var(--space-xl) 0;min-height:0">
           <div style="display:flex;flex-direction:column">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">Centralised</div>
+            <div style="font-size:var(--font-size-diagram-heading);font-weight:600;letter-spacing:var(--tracking-label);line-height:1.3;text-transform:uppercase;color:var(--text-strong);margin-bottom:var(--space-md)">Centralised</div>
             <div style="display:flex;flex-direction:column;gap:var(--space-sm)">
               <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm) var(--space-sm);display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Dashboard</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
               <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm) var(--space-sm);display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Reports</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
               <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm) var(--space-sm);display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Documents</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
               <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm) var(--space-sm);display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Meeting notes</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;color:var(--text-subtle)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
             </div>
-            <div class="illo-emph" style="margin-top:var(--space-md);padding:var(--space-md);text-align:center">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-strong);margin-bottom:var(--space-xs)">One AI panel</div>
-              <div style="font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-body)">Knows nothing about where you were</div>
+            <div class="elsewhere__path"><span data-new-copy="placement-path" style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase">Leave the surface</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div>
+            <div class="elsewhere">
+              <div style="font-size:var(--font-size-diagram-core);font-weight:700;letter-spacing:var(--tracking-eyebrow);line-height:1.5;text-transform:uppercase;color:var(--text-strong);margin-bottom:6px">One AI panel</div>
+              <div style="font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-muted)">Knows nothing about where you were</div>
             </div>
             <div style="margin-top:auto;padding-top:var(--space-md);font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-muted)">Leave the surface, describe it again.</div>
           </div>
           <div style="display:flex;flex-direction:column">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)">Distributed</div>
+            <div style="font-size:var(--font-size-diagram-heading);font-weight:600;letter-spacing:var(--tracking-label);line-height:1.3;text-transform:uppercase;color:var(--text-strong);margin-bottom:var(--space-md)">Distributed</div>
             <div style="display:flex;flex-direction:column;gap:var(--space-sm)">
-              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-xs)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Dashboard</span><span style="margin-left:auto;font-size:var(--font-size-2xs);letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-muted)">Composer</span></div><div style="height:5px;width:64%;background:var(--surface-hover)"></div></div>
-              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-xs)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Reports</span><span style="margin-left:auto;font-size:var(--font-size-2xs);letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-muted)">In context</span></div><div style="height:5px;width:78%;background:var(--surface-hover)"></div></div>
-              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-xs)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Documents</span><span style="margin-left:auto;font-size:var(--font-size-2xs);letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-muted)">In context</span></div><div style="height:5px;width:56%;background:var(--surface-hover)"></div></div>
-              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-xs)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Meeting notes</span><span style="margin-left:auto;font-size:var(--font-size-2xs);letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-snug);text-transform:uppercase;color:var(--text-muted)">In context</span></div><div style="height:5px;width:70%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-xs)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Dashboard</span><span class="badge" style="margin-left:auto">Composer</span></div><div style="height:5px;width:64%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-xs)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Reports</span><span class="badge" style="margin-left:auto">In context</span></div><div style="height:5px;width:78%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-xs)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Documents</span><span class="badge" style="margin-left:auto">In context</span></div><div style="height:5px;width:56%;background:var(--surface-hover)"></div></div>
+              <div style="background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-sm)"><div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-xs)"><span style="width:7px;height:7px;background:var(--accent)"></span><span style="font-size:var(--font-size-xs);color:var(--text-body)">Meeting notes</span><span class="badge" style="margin-left:auto">In context</span></div><div style="height:5px;width:70%;background:var(--surface-hover)"></div></div>
             </div>
             <div style="margin-top:var(--space-md);background:var(--surface-card);border:1px solid var(--border-subtle);padding:var(--space-md);display:flex;align-items:center;gap:var(--space-sm)">
               <div style="flex:1;height:5px;background:var(--surface-hover)"></div>
-              <span class="illo-emph" style="width:1px;height:13px"></span>
+              <span style="width:1px;height:13px;background:var(--text-strong)"></span>
               <span style="width:22px;height:22px;background:var(--accent);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;display:block;color:var(--surface-card)"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></span>
             </div>
             <div style="margin-top:auto;padding-top:var(--space-md);font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-strong)">The question is asked where the work is.</div>
@@ -298,7 +308,7 @@
             <div style="flex:1;display:flex;flex-direction:column;gap:var(--space-xs)"><div style="height:6px;background:var(--border)"></div><div style="height:6px;width:82%;background:var(--border)"></div><div style="height:6px;width:54%;background:var(--border)"></div></div>
             <div style="margin-top:var(--space-md);border:1px solid var(--border-emphatic);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-sm) var(--space-sm) var(--space-sm);display:flex;align-items:center;gap:var(--space-sm)">
               <div style="flex:1;height:5px;background:var(--border)"></div>
-              <span class="illo-emph" style="width:1px;height:13px"></span>
+              <span style="width:1px;height:13px;background:var(--text-strong)"></span>
               <span style="width:22px;height:22px;background:var(--accent);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;display:block;color:var(--surface-card)"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></span>
             </div>
             <div style="margin-top:var(--space-sm);font-size:var(--font-size-2xs);line-height:var(--leading-snug);color:var(--text-muted)">Send goes live on the first character.</div>
@@ -474,7 +484,7 @@
             <div style="background:var(--surface-card);border:1px solid var(--border);padding:var(--space-md)">
               <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;line-height:var(--leading-snug);color:var(--text-muted);margin-bottom:var(--space-sm)">Where the flow sits</div>
               <div style="display:flex;align-items:center;gap:var(--space-sm);flex-wrap:wrap">
-                <span style="font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-muted);border:1px solid var(--border-subtle);padding:var(--space-xs) var(--space-sm);white-space:nowrap;text-decoration:line-through">Inside card signup</span>
+                <span style="font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-muted);border:1px solid var(--border-subtle);padding:var(--space-xs) var(--space-sm);white-space:nowrap">Inside card signup</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;display:block;flex:none;color:var(--accent)"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                 <span style="font-size:var(--font-size-xs);line-height:var(--leading-snug);color:var(--text-strong);border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);white-space:nowrap">After the card is approved</span>
               </div>
@@ -535,86 +545,94 @@
 
 </div>
 </x-dc>
+<script>
+/* The home chat (an easter egg). Each line types into the composer at a reading pace, is sent up into the thread,
+   and stays; older messages fade, the thread keeps three. The star is the sender. Elements are looked up on each
+   step because the page's component runtime may re-render. Reduced motion: the thread is shown, still. */
+(function () {
+  var lines = [
+    'Hi. Welcome in.',
+    'Quick tour? Six case studies, right below.',
+    'Hiring for AI? Start with the first three.',
+    'Need a design system built? Services, up top.',
+    'Or skip the tour and say hi. Contact\u2019s in the corner.',
+    'Still here? The cursor and I appreciate it. \uD83D\uDE1B'
+  ];
+  function $(q) { return document.querySelector(q); }
+  function bubble(text) {
+    var t = $('.hx__thread'); if (!t) return;
+    var li = document.createElement('li'); li.textContent = text; t.appendChild(li);
+    var all = t.querySelectorAll('li');
+    all.forEach(function (x, k) { x.classList.toggle('is-old', k < all.length - 1); });
+    while (t.children.length > 3) t.removeChild(t.firstChild);
+  }
+  function archive(done) {
+    var t = $('.hx__thread'); if (!t) return done();
+    var items = [].slice.call(t.children);
+    items.forEach(function (li) { li.classList.add('is-leaving'); });
+    setTimeout(function () { t.innerHTML = ''; done(); }, 900);
+  }
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { setTimeout(function () { lines.slice(0, 3).forEach(bubble); }, 300); return; }
+  var i = 0;
+  function typeLine() {
+    var text = lines[i], n = 0;
+    (function step() {
+      var e = $('.hx__typed'), chat = $('.hx__chat'); if (!e) return setTimeout(step, 200);
+      if (n <= text.length) { e.textContent = text.slice(0, n++); chat.classList.toggle('is-ready', n > 1); return setTimeout(step, 55 + Math.random() * 35); }
+      setTimeout(function () {                       // a beat, then send
+        e.textContent = ''; chat.classList.remove('is-ready'); bubble(text);
+        var read = Math.max(2600, text.length * 70);  // time to read what was just sent
+        i = i + 1;
+        if (i < lines.length) return setTimeout(typeLine, read);
+        i = 0;                                          // the conversation is over: archive it, then start clean
+        setTimeout(function () { archive(function () { setTimeout(typeLine, 1400); }); }, read + 1200);
+      }, 700);
+    })();
+  }
+  setTimeout(typeLine, 900);
+  // the sticker follows the cursor over the composer, trailing a little and tilting with the movement
+  function S() { return document.querySelector('.hx-sticker'); }
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var x = 0, y = 0, tx = 0, ty = 0, on = false, raf = 0;
+  function loop() {
+    var k = still ? 1 : 0.2; x += (tx - x) * k; y += (ty - y) * k;
+    var tilt = still ? 0 : Math.max(-8, Math.min(8, (tx - x) * 0.25));
+    var st = S(); if (!st) return;
+    st.style.transform = 'translate3d(' + (x + 16).toFixed(1) + 'px,' + (y + 18).toFixed(1) + 'px,0) rotate(' + tilt.toFixed(2) + 'deg)';
+    raf = on || Math.abs(tx - x) > 0.5 ? requestAnimationFrame(loop) : 0;
+  }
+  function hide() { on = false; var st = S(); if (st) st.classList.remove('is-on'); }
+  document.addEventListener('pointerleave', hide); window.addEventListener('blur', hide); window.addEventListener('scroll', function () { if (on) hide(); }, { passive: true });
+  document.addEventListener('pointermove', function (ev) {
+    var over = ev.target.closest && ev.target.closest('.hx__chat');
+    tx = ev.clientX; ty = ev.clientY;
+    if (over && !on) { x = tx; y = ty; }
+    on = !!over; var st = S(); if (!st) return; st.classList.toggle('is-on', on);
+    // keep it on screen near the right edge
+    if (tx + 16 + 200 > innerWidth) tx = innerWidth - 216;
+    if (!raf) raf = requestAnimationFrame(loop);
+  }, { passive: true });
+  // touch screens have no hover: a tap shows it under the finger for a few seconds
+  document.addEventListener('click', function (ev) {
+    var over = ev.target.closest && ev.target.closest('.hx__chat'); if (!over || ev.pointerType === 'mouse') return;
+    var st = S(); if (!st) return;
+    x = tx = Math.min(ev.clientX, innerWidth - 216); y = ty = ev.clientY; on = true; st.classList.add('is-on'); loop();
+    clearTimeout(st._t); st._t = setTimeout(function () { on = false; st.classList.remove('is-on'); }, 3200);
+  });
+})();
+</script>
+<div class="hx-sticker" aria-hidden="true" data-new-copy="sticker">
+  <div class="hx-sticker__term">
+    <div class="hx-sticker__bar"><i></i><i></i><i></i><span>nayara@portfolio</span></div>
+    <pre>$ send --message
+<b>404:</b> chat not found
+
+   ¯\_(ツ)_/¯</pre>
+  </div>
+  <p>Sorry, it isn’t built. I can build yours.</p>
+</div>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  rotateTitle() {
-    // Name fixed, role churns between two faces. The role lives in a zero-size
-    // slot so nothing it does can move the name, and each letter eases in on its
-    // own when its glyph changes.
-    const FACE = {
-      'Product Designer': "font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:var(--tracking-lead);font-size:1.18em;transform:translateY(0.22em)",
-      'Builder': "font-family:'Chakra Petch',Archivo,sans-serif;font-weight:600;letter-spacing:var(--tracking-lead);font-size:0.92em;transform:translateY(0.2em)"
-    };
-    const WORDS = ['Product Designer', 'Builder'];
-    const HOLD = 2000, STEP = 165, TICK = 110, BAND = 3;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const root = this.el || document;
-    const pool = 'abcdefghijklmnopqrstuvwxyz';
-    const AZ = (c) => /[a-z]/i.test(c);
-    const hash = (a, b) => { let x = (a * 374761393 + b * 668265263) >>> 0; x = (x ^ (x >>> 13)) * 1274126177 >>> 0; return (x ^ (x >>> 16)) >>> 0; };
-    const glyph = (i, tick, ref) => { const c = pool[hash(i + 7, tick) % 26]; return ref === ref.toUpperCase() && ref !== ' ' ? c.toUpperCase() : c; };
-
-    const skin = (node, word) => {
-      if (node._face === word) return;
-      node._face = word;
-      node._spans = null;
-      node.style.cssText = 'position:absolute;left:0;bottom:0;line-height:var(--leading-none);color:var(--accent);white-space:nowrap;' + FACE[word];
-    };
-    const paint = (node, str) => {
-      let spans = node._spans;
-      if (!spans || spans.length !== str.length) {
-        node.textContent = '';
-        spans = [];
-        for (let i = 0; i < str.length; i++) {
-          const s = document.createElement('span');
-          s.style.cssText = 'display:inline-block;white-space:pre';
-          s.textContent = str[i] === ' ' ? '\u00a0' : str[i];
-          node.appendChild(s);
-          spans.push(s);
-        }
-        node._spans = spans;
-        return;
-      }
-      for (let i = 0; i < str.length; i++) {
-        const ch = str[i] === ' ' ? '\u00a0' : str[i];
-        if (spans[i].textContent === ch) continue;
-        spans[i].textContent = ch;
-        spans[i].style.animation = 'none';
-        void spans[i].offsetWidth;
-        spans[i].style.animation = 'glyphIn .26s cubic-bezier(.19,1,.22,1)';
-      }
-    };
-    const churn = (from, to, t) => {
-      const len = Math.max(from.length, to.length);
-      const head = Math.floor(t / STEP), tick = Math.floor(t / TICK);
-      let s = '';
-      for (let i = 0; i < len; i++) {
-        if (i < head - BAND) { if (i < to.length) s += to[i]; }
-        else if (i <= head) { const ref = to[i] || from[i] || 'a'; s += AZ(ref) ? glyph(i, tick, ref) : ref; }
-        else if (i < from.length) s += from[i];
-      }
-      return s || to;
-    };
-
-    const t0 = performance.now();
-    const loop = () => {
-      this._raf = requestAnimationFrame(loop);
-      const node = root.querySelector('[data-role-word]');
-      if (!node) return;
-      if (!node._face) node._face = WORDS[0];
-      const now = performance.now() - t0;
-      let acc = 1800, idx = 0; // the load reveal holds the first word a beat longer
-      for (;;) {
-        const from = WORDS[idx % WORDS.length], to = WORDS[(idx + 1) % WORDS.length];
-        const dur = (Math.max(from.length, to.length) + BAND + 1) * STEP;
-        if (now < acc + HOLD) { skin(node, from); paint(node, from); break; }
-        if (now < acc + HOLD + dur) { skin(node, to); paint(node, churn(from, to, now - acc - HOLD)); break; }
-        acc += HOLD + dur; idx++;
-      }
-    };
-    this._raf = requestAnimationFrame(loop);
-  }
-
   scaleIllos() {
     // The index illustrations are live 880x660 markup, not baked images, so they
     // follow the palette. Scale each one to whatever width its cell ends up.
@@ -636,7 +654,6 @@ class Component extends DCLogic {
   componentDidMount() {
     if (this._wired) return;
     this._wired = true;
-    this.rotateTitle();
     this.scaleIllos();
     const EASE = 'cubic-bezier(.19,1,.22,1)';
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -651,10 +668,10 @@ class Component extends DCLogic {
 
     rows.forEach((row) => {
       row.style.position = 'relative';
-      const color = getComputedStyle(row).borderTopColor;
       row.style.borderTopColor = 'transparent';
       const rule = document.createElement('span');
-      rule.style.cssText = 'position:absolute;left:0;right:0;top:-1px;height:1px;background:' + color +
+      // the one light divider (SEC-01); it used to take the row's border colour, which was ink on the first row
+      rule.style.cssText = 'position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--border-divider)' +
         ';transform:scaleX(0);transform-origin:left center;will-change:transform';
       row.insertBefore(rule, row.firstChild);
       row._rule = rule;

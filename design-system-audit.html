@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +20,8 @@
 <meta name="twitter:description" content="Is AI following your design system? A five-day audit of how agents read your system, where they follow it, and where they invent.">
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
+<script src="./sky.js" defer></script>
+<script src="./art.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -27,249 +29,206 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Audit design system — Nayara Marques</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&amp;display=swap" rel="stylesheet">
+<meta name="description" content="Is AI following your design system? A five-day audit of how agents read your system, where they follow it, and where they invent.">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/base.css">
+<link rel="stylesheet" href="components.css">
 <style>
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
-  * { box-sizing: border-box; }
-
-:root{
-  /* Tokens come from the design-system token files; only the page's own values live here. */
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-
-
-html{scroll-padding-top:70px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-*,*::before,*::after{box-sizing:inherit}
-.audit{background:var(--surface-page);color:var(--text-body);font:var(--weight-regular) var(--font-size-md)/var(--leading-body) var(--font-sans)}
-.wrap{max-width:var(--page-max);margin:0 auto;padding:0 var(--space-2xl)}
-@media (max-width:640px){.wrap{padding:0 var(--space-lg)}}
-.audit section{padding:var(--section-y-lg) 0;border-top:1px solid var(--border)}
-.band{background:var(--surface-band)}
-.audit h1,.audit h2,.audit h3{color:var(--text-strong);font-weight:var(--weight-medium);margin:0}
-h1{font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);max-width:17ch;text-wrap:balance}
-h2{font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);max-width:22ch;text-wrap:balance}
-h3{font-size:var(--font-size-xl);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading)}
-.audit p{margin:0 0 var(--space-lg);max-width:62ch}
-.eyebrow{font-size:var(--font-size-2xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-eyebrow);
-  text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-lg)}
-.eyebrow.accent{color:var(--accent)}
-.lead{font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--track-lead);color:var(--text-body);max-width:44ch}
-.audit p.sub{font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);max-width:58ch;margin:0;text-wrap:pretty}
-
-
-
-
-
-
-
-.hero{padding-top:var(--section-y-xl);padding-bottom:var(--section-y)}
-.audit a.btn{display:inline-block;font-size:var(--font-size-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-label);
-  text-transform:uppercase;text-decoration:none;padding:var(--space-md) var(--space-xl);border-radius:var(--radius-sm);
-  background:var(--text-strong);color:var(--surface-page);border:1px solid var(--text-strong)}
-.audit a.btn.outline{background:transparent;color:var(--text-strong);border-color:var(--border)}
-.audit a.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--text-on-inverse)}
-.audit a.btn.outline:hover{background:var(--surface-hover);border-color:var(--border);color:var(--text-strong)}
-.btn:focus-visible{outline:2px solid var(--text-strong);outline-offset:2px}
-.actions{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-xl)}
-.audit p.under{font-size:var(--font-size-sm);color:var(--text-muted);margin:var(--space-2xl) 0 0;max-width:62ch}
-.under a{display:inline-block}
-.grid{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);margin:var(--space-2xl) 0 0}
-.grid.four{grid-template-columns:repeat(4,1fr)} .grid.two{grid-template-columns:repeat(2,1fr)}
-@media (max-width:980px){.grid.four{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:720px){.grid.four,.grid.two{grid-template-columns:1fr}}
-.cell{background:var(--surface-card);padding:var(--space-fluid-m)}
-.cell p{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);margin:0}
-.cell p+p{margin-top:var(--space-sm)}
-.cell p.stat,.stat{font-size:var(--font-size-2xl);line-height:var(--leading-none);letter-spacing:var(--tracking-title);color:var(--text-strong);font-weight:var(--weight-regular);margin-bottom:var(--space-xs)}
-.label{font-size:var(--font-size-xs);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-label);text-transform:uppercase;margin:0 0 var(--space-sm)}
-.label.gained{color:var(--accent)} .label.traded{color:var(--text-muted)} .label.meta{color:var(--text-muted)}
-ul.deliver{list-style:none;margin:var(--space-2xl) 0 0;padding:0;border-top:1px solid var(--border)}
-ul.deliver li{border-bottom:1px solid var(--border);padding:var(--space-xl) 0;display:grid;grid-template-columns:minmax(180px,22%) 1fr;gap:var(--space-xl)}
-@media (max-width:720px){ul.deliver li{grid-template-columns:1fr;gap:var(--space-xs)}}
-ul.deliver b{color:var(--text-strong);font-weight:var(--weight-medium);font-size:var(--font-size-md)}
-ul.deliver span{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)}
-ol.steps{list-style:none;counter-reset:s;margin:var(--space-2xl) 0 0;padding:0;border-top:1px solid var(--border)}
-ol.steps li{counter-increment:s;border-bottom:1px solid var(--border);padding:var(--space-xl) 0;display:grid;grid-template-columns:44px 1fr;gap:var(--space-lg)}
-ol.steps li::before{content:counter(s,decimal-leading-zero);font-size:var(--font-size-xs);font-weight:var(--weight-semibold);
-  letter-spacing:var(--tracking-label);color:var(--accent);padding-top:var(--space-2xs)}
-ol.steps b{display:block;color:var(--text-strong);font-weight:var(--weight-medium);margin-bottom:var(--space-2xs)}
-ol.steps span{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)}
-.price{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:var(--space-2xl)}
-@media (max-width:720px){.price{grid-template-columns:1fr}}
-.price>div{background:var(--surface-card);padding:var(--space-fluid-m)}
-.price .big{font-size:var(--font-size-2xl);line-height:var(--leading-none);letter-spacing:var(--tracking-display);color:var(--text-strong);font-weight:var(--weight-medium);margin:0}
-.tick{list-style:none;margin:var(--space-lg) 0 0;padding:0}
-.tick li{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);padding:var(--space-xs) 0 var(--space-xs) var(--space-xl);position:relative}
-.tick li::before{content:"—";position:absolute;left:0;color:var(--accent)}
-.inverse{background:var(--surface-inverse);color:var(--text-on-inverse-muted)}
-.inverse h2{color:var(--text-on-inverse)} .inverse > .wrap > p{color:var(--text-on-inverse-muted)} .price p{color:var(--text-body)} .inverse .eyebrow{color:var(--text-on-inverse-muted)}
-.inverse .btn,.audit .inverse a.btn{background:var(--surface-page);color:var(--text-strong);border-color:var(--surface-page)}
-.audit .inverse a.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--text-on-inverse)}
-details{border-bottom:1px solid var(--border);padding:var(--space-xl) 0}
-details:first-of-type{border-top:1px solid var(--border);margin-top:var(--space-2xl)}
-summary{cursor:pointer;color:var(--text-strong);font-weight:var(--weight-medium);list-style:none;display:flex;justify-content:space-between;gap:var(--space-lg)}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--accent);font-weight:var(--weight-semibold)}
-details[open] summary::after{content:"–"}
-details p{font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);margin:var(--space-md) 0 0;max-width:70ch}
-summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
-.author{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-18);align-items:start}
-@media (max-width:900px){.author{grid-template-columns:1fr;gap:var(--space-xl)}}
-.foot{border-top:1px solid var(--border);padding-top:var(--space-2xl);padding-bottom:var(--space-2xl);font-size:var(--font-size-xs);color:var(--text-muted)}
-.foot a{color:var(--text-muted)}
-.audit a{color:var(--accent)}
+  /* This page's illustration timing (ILL-01): a 12s scene, travel linear, marks persist, then fade back together. */
+  .ld-runner[data-run="a"] { animation-name: ld-a-run; }
+  @keyframes ld-a-run { 0% { offset-distance: 0%; opacity: 0; } 3% { opacity: 1; } 50% { offset-distance: 100%; opacity: 1; } 53% { opacity: 0; } 100% { offset-distance: 100%; opacity: 0; } }
+  .ld-mark[data-m="a0"] { animation-name: ld-m-a0; }
+  @keyframes ld-m-a0 { 0%, 6.1% { opacity: 0; } 8.6%, 80% { opacity: 1; } 94%, 100% { opacity: 0; } }
+  .ld-mark[data-m="a1"] { animation-name: ld-m-a1; }
+  @keyframes ld-m-a1 { 0%, 17.0% { opacity: 0; } 19.5%, 80% { opacity: 1; } 94%, 100% { opacity: 0; } }
+  .ld-mark[data-m="a2"] { animation-name: ld-m-a2; }
+  @keyframes ld-m-a2 { 0%, 27.8% { opacity: 0; } 30.3%, 80% { opacity: 1; } 94%, 100% { opacity: 0; } }
+  .ld-mark[data-m="a3"] { animation-name: ld-m-a3; }
+  @keyframes ld-m-a3 { 0%, 38.7% { opacity: 0; } 41.2%, 80% { opacity: 1; } 94%, 100% { opacity: 0; } }
+  .ld-mark[data-m="a4"] { animation-name: ld-m-a4; }
+  @keyframes ld-m-a4 { 0%, 49.5% { opacity: 0; } 52.0%, 80% { opacity: 1; } 94%, 100% { opacity: 0; } }
+  .ld-resolve[data-m="a4"] { animation-name: ld-r-a; }
+  @keyframes ld-r-a { 0%, 49.5% { opacity: .35; } 53.0%, 80% { opacity: 1; } 94%, 100% { opacity: .35; } }
 </style>
 </helmet>
 
+
 <div style="min-height:100vh;display:flex;flex-direction:column;overflow-x:clip">
 
-  <dc-import name="Nav" hint-size="100%,58px"></dc-import>
+  <dc-import name="Nav" hint-size="100%,57px" style="position:sticky;top:0;z-index:50"></dc-import>
 
-  <main class="audit" style="flex:1">
-<header class="wrap hero">
-  <p class="eyebrow accent">Audit design system</p>
-  <h1><span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Is AI following your design system?</span></span></h1>
-  <div style="height:1px;background:var(--border);margin:var(--space-fluid-m) 0"></div>
-  <p class="sub">An agent builds from what your system gives it. Where it is clear, the agent reuses your parts. Where it is not, it guesses: raw values, rebuilt components, parts nobody asked for. The audit shows where AI follows your system, where it invents, and what each gap costs.</p>
-  <div class="actions">
-    <a class="btn" href="#book">Book an audit</a>
-    <a class="btn outline" href="#why">Why it pays</a>
-  </div>
-  <p class="under">For teams with a design system in code. No system yet: <a href="design-system-build.html">I build it from scratch</a>.</p>
-</header>
+  <main style="flex:1;width:100%">
 
-<section class="band" id="why">
-  <div class="wrap">
-    <p class="eyebrow">Why now</p>
-    <h2>If AI writes your UI, your design system is the budget</h2>
-    <p style="margin-top:var(--space-lg)">When components and tokens are reachable, an agent writes less, reuses more and needs fewer corrections. When they are not, you pay for every guess in tokens, review and rework.</p>
-    <div class="grid two">
-      <div class="cell">
-        <p class="label meta">Storybook's benchmark</p>
-        <p class="stat">27%</p>
-        <p style="margin-top:var(--space-sm)">fewer tokens to build the same UI when the agent can read the component library, with 2.76 times faster generation and 12.8% more reuse.</p>
+    <!-- 1. Hero -->
+    <section class="hero ld-wrap" aria-labelledby="ld-title">
+      <div class="ld-hero">
+        <div>
+          <p class="hero__eyebrow">Audit design system</p>
+          <h1 id="ld-title">Is AI following your design system?</h1>
+          <p class="ld-lede">An agent builds from what your system gives it. Where it is clear, the agent reuses your parts. Where it is not, it guesses: raw values, rebuilt components, parts nobody asked for. The audit shows where AI follows your system, where it invents, and what each gap costs.</p>
+          <div class="ld-actions">
+            <a class="action action--primary" href="#book">Book an audit <span class="action__arrow" aria-hidden="true">→</span></a>
+            <a class="action action--link" href="#why">Why it pays</a>
+          </div>
+          <p class="ld-under">For teams with a design system in code. No system yet: <a href="design-system-build.html">I build it from scratch</a>.</p>
+        </div>
+        <!-- proposal: hero illustration B (audit). Five pillars checked in order; each marks pass (filled) or flags drift (accent outline, dashed); resolves to REPORT. Considered: DecisionCard, ListRow (text layouts, not a picture). -->
+        <div class="ld-art">
+          <figure style="--vbw:480" role="img" aria-label="Five pillars checked in order, each marked pass or flagged for drift, resolving to one report: values, people, structure, content, agent readiness."><svg class="ld-art__svg" viewBox="20 10 480 480" aria-hidden="true" focusable="false"><path class="ld-art__line" d="M 74 266 H 134 A 44 44 0 0 0 178 222 V 44"></path><path class="ld-art__line ld-art__line--drift ld-mark" data-m="a0" d="M 74 266 H 134 A 44 44 0 0 0 178 222 V 44"></path><text class="ld-art__num ld-art__num--quiet" x="40" y="270">01</text><text class="ld-art__num ld-mark" data-m="a0" x="40" y="270">01</text><text class="ld-art__label" transform="rotate(-90 169 210)" x="169" y="210">Values</text><path class="ld-art__line" d="M 74 316 H 206 A 44 44 0 0 0 250 272 V 44"></path><path class="ld-art__line ld-art__line--on ld-mark" data-m="a1" d="M 74 316 H 206 A 44 44 0 0 0 250 272 V 44"></path><text class="ld-art__num ld-art__num--quiet" x="40" y="320">02</text><text class="ld-art__num ld-mark" data-m="a1" x="40" y="320">02</text><text class="ld-art__label" transform="rotate(-90 241 260)" x="241" y="260">People</text><path class="ld-art__line" d="M 74 366 H 278 A 44 44 0 0 0 322 322 V 44"></path><path class="ld-art__line ld-art__line--drift ld-mark" data-m="a2" d="M 74 366 H 278 A 44 44 0 0 0 322 322 V 44"></path><text class="ld-art__num ld-art__num--quiet" x="40" y="370">03</text><text class="ld-art__num ld-mark" data-m="a2" x="40" y="370">03</text><text class="ld-art__label" transform="rotate(-90 313 310)" x="313" y="310">Structure</text><path class="ld-art__line" d="M 74 416 H 350 A 44 44 0 0 0 394 372 V 44"></path><path class="ld-art__line ld-art__line--on ld-mark" data-m="a3" d="M 74 416 H 350 A 44 44 0 0 0 394 372 V 44"></path><text class="ld-art__num ld-art__num--quiet" x="40" y="420">04</text><text class="ld-art__num ld-mark" data-m="a3" x="40" y="420">04</text><text class="ld-art__label" transform="rotate(-90 385 360)" x="385" y="360">Content</text><path class="ld-art__line" d="M 74 466 H 422 A 44 44 0 0 0 466 422 V 44"></path><path class="ld-art__line ld-art__line--on ld-mark" data-m="a4" d="M 74 466 H 422 A 44 44 0 0 0 466 422 V 44"></path><text class="ld-art__num ld-art__num--quiet" x="40" y="470">05</text><text class="ld-art__num ld-mark" data-m="a4" x="40" y="470">05</text><text class="ld-art__label" transform="rotate(-90 457 410)" x="457" y="410">Agent readiness</text><path class="ld-art__line ld-art__line--rule" d="M 134 44 H 466"></path><circle class="ld-art__ring ld-art__ring--tip" cx="178" cy="44" r="4"></circle><circle class="ld-art__flag ld-mark" data-m="a0" cx="178" cy="44" r="6.4"></circle><circle class="ld-art__ring ld-art__ring--tip" cx="250" cy="44" r="4"></circle><circle class="ld-art__dot ld-mark" data-m="a1" cx="250" cy="44" r="4.6"></circle><circle class="ld-art__ring ld-art__ring--tip" cx="322" cy="44" r="4"></circle><circle class="ld-art__flag ld-mark" data-m="a2" cx="322" cy="44" r="6.4"></circle><circle class="ld-art__ring ld-art__ring--tip" cx="394" cy="44" r="4"></circle><circle class="ld-art__dot ld-mark" data-m="a3" cx="394" cy="44" r="4.6"></circle><circle class="ld-art__ring ld-art__ring--tip" cx="466" cy="44" r="6"></circle><circle class="ld-art__dot ld-mark" data-m="a4" cx="466" cy="44" r="6.6"></circle><text class="ld-art__core ld-resolve" data-m="a4" style="text-anchor:end" x="472" y="26">Report</text><g><circle class="ld-art__dot" cx="44" cy="22" r="4"></circle><text class="ld-art__key" x="54" y="26" data-new-copy="art-legend-pass">Pass</text><circle class="ld-art__flag" cx="112" cy="22" r="5.4"></circle><text class="ld-art__key" x="128" y="26">Drift</text></g><circle class="ld-art__dot ld-runner" data-run="a" style="offset-path:path('M 134 44 H 466')" r="4.6"></circle></svg></figure>
+        </div>
       </div>
-      <div class="cell">
-        <p class="label meta">My own site, measured</p>
-        <p class="stat">44%</p>
-        <p style="margin-top:var(--space-sm)">shorter: the same case-study screen is 21,229 characters written raw and 11,961 built from components. About 2,300 tokens saved on one screen.</p>
+    </section>
+
+    <!-- 2. Why now -->
+    <section class="ld-wrap section" id="why" aria-labelledby="ld-why">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Why now</p>
+          <h2 class="h2" id="ld-why">If AI writes your UI, your design system is the budget</h2>
+        </div>
+        <p>When components and tokens are reachable, an agent writes less, reuses more and needs fewer corrections. When they are not, you pay for every guess in tokens, review and rework.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <p class="eyebrow">The cost of drift</p>
-    <h2>Every value an agent guesses, you pay for twice</h2>
-    <p style="margin-top:var(--space-lg)">Once when it is written, again when someone catches it in review. Drift is a throughput problem, not a tidiness one.</p>
-    <div class="grid two">
-      <div class="cell"><p class="label traded">Tokens</p><h3>Raw values are long</h3><p style="margin-top:var(--space-sm)">A component call is one line. The same part by hand is forty, and you pay for all forty every time.</p></div>
-      <div class="cell"><p class="label traded">Review</p><h3>Guesses land on a person</h3><p style="margin-top:var(--space-sm)">An off-scale value looks right and reads wrong. Catching and fixing it costs more than generating it.</p></div>
-      <div class="cell"><p class="label traded">Consistency</p><h3>Near-misses ship</h3><p style="margin-top:var(--space-sm)">Nine near-identical greys. A button rebuilt because the real one was hard to find. Nothing fails a test; the product feels loose.</p></div>
-      <div class="cell"><p class="label traded">Accessibility</p><h3>Conditions slip quietly</h3><p style="margin-top:var(--space-sm)">Contrast below the minimum, motion that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="band" id="what">
-  <div class="wrap">
-    <p class="eyebrow">What the audit checks</p>
-    <h2>Five pillars, one report</h2>
-    <p style="margin-top:var(--space-lg)">They answer three questions: how AI reads your system, whether it follows it, and what it does when something is missing. Tested on Primer, Radix Themes, Carbon and Chakra UI: every one had findings worth fixing.</p>
-    <ul class="deliver">
-      <li><b>Values</b><span>Every hard-coded value in your components, checked against your tokens: equal to a token nobody found, or on no scale. Plus unused and duplicate tokens.</span></li>
-      <li><b>People</b><span>Contrast on every declared pair, in every theme. Reduced motion, high contrast, visible focus, and right-to-left if you need it.</span></li>
-      <li><b>Structure</b><span>Components rebuilt by hand, parts used outside their contract, styling that changes what a component is.</span></li>
-      <li><b>Content</b><span>Unsourced numbers and claims, and words your voice rules ban. An agent repeats what the system teaches it.</span></li>
-      <li><b>Agent readiness</b><span>What a coding agent has to invent: decisions it made up, and names it expected but could not find.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <p class="eyebrow">What the audit finds</p>
-    <h2>Four kinds of finding, and only two are mechanical</h2>
-    <p style="margin-top:var(--space-lg)">Each costs something different to fix.</p>
-    <div class="grid two">
-      <div class="cell"><p class="label gained">Mechanical</p><h3>A value that equals a token</h3><p style="margin-top:var(--space-sm)">The decision exists; someone typed the number. Find, replace, and prove with a before-and-after render that nothing moved.</p></div>
-      <div class="cell"><p class="label traded">Needs a decision</p><h3>A value on no scale</h3><p style="margin-top:var(--space-sm)">An optical nudge or drift: only your team can say. Grouped by where they cluster, so deciding takes minutes.</p></div>
-      <div class="cell"><p class="label gained">Affects people</p><h3>Contrast and motion</h3><p style="margin-top:var(--space-sm)">Contrast in every theme, and motion against the reduced-motion setting. Teams fix these first.</p></div>
-      <div class="cell"><p class="label traded">Getting worse</p><h3>What AI invents</h3><p style="margin-top:var(--space-sm)">A coding agent fills gaps by guessing. The audit shows what it made up and what it could not find.</p></div>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="band">
-  <div class="wrap author">
-    <div style="width:100%;max-width:560px;aspect-ratio:4/3;overflow:hidden;background:var(--surface-band)">
-      <img src="assets/nayara-portrait.png" alt="Nayara Marques" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%">
-    </div>
-    <div>
-      <p class="eyebrow">Who runs it</p>
-      <h2 style="margin-bottom:var(--space-xl)">I design systems, and I ship them</h2>
-      <p>Nine years designing products, lately also writing the code. Based in Barcelona, on US East Coast hours. Fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks.</p>
-      <p>I built the design system for an AI platform in private capital markets, in Claude Design: 48 components, 9 templates, tokens as the single source of truth, validation that catches AI drift. The audit is that method, applied to your system.</p>
-      <p style="margin:0"><a href="work.html" style="font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;text-decoration:none;color:var(--accent)">See the work →</a></p>
-    </div>
-  </div>
-</section><section class="inverse" id="book">
-  <div class="wrap">
-    <p class="eyebrow">The audit</p>
-    <h2>Priced on the call. Two audits a month.</h2>
-    <div class="price">
-      <div>
-        <p class="big">5 days</p>
-        <p style="margin-top:var(--space-sm)">From the day access arrives. Fixed scope. Priced on the call.</p>
-        <div class="actions"><a class="btn" href="contact.html">Book an audit</a></div>
+      <div class="card ld-card--half">
+        <p class="eyebrow">My own site, measured</p>
+        <p class="ld-big">44%</p>
+        <p>shorter: the same case-study screen is 21,229 characters written raw and 11,961 built from components. About 2,300 tokens saved on one screen.</p>
       </div>
-      <div>
-        <p class="label meta">What is included</p>
-        <ul class="tick">
-          <li>Drift list, contrast report, conditions check</li>
-          <li>Fixes ranked by cost and gain</li>
-          <li>A 30-minute call</li>
-          <li>React, CSS, Sass or CSS-in-JS</li>
-        </ul>
-        <p class="label meta" style="margin-top:var(--space-xl)">What is not</p>
-        <ul class="tick">
-          <li>Fixing the drift. If you want that, the fee comes off a project engagement.</li>
-        </ul>
+    </section>
+
+    <!-- 3. The cost of drift -->
+    <section class="ld-wrap section" aria-labelledby="ld-cost">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The cost of drift</p>
+          <h2 class="h2" id="ld-cost">Every value an agent guesses, you pay for twice</h2>
+        </div>
+        <p>Once when it is written, again when someone catches it in review. Drift is a throughput problem, not a tidiness one.</p>
       </div>
-    </div>
-  </div>
-</section>
+      <ul class="ld-layers">
+        <li class="card"><p class="eyebrow">Tokens</p><h3>Raw values are long</h3><p>A component call is one line. The same part by hand is forty, and you pay for all forty every time.</p></li>
+        <li class="card"><p class="eyebrow">Review</p><h3>Guesses land on a person</h3><p>An off-scale value looks right and reads wrong. Catching and fixing it costs more than generating it.</p></li>
+        <li class="card"><p class="eyebrow">Consistency</p><h3>Near-misses ship</h3><p>Nine near-identical greys. A button rebuilt because the real one was hard to find. Nothing fails a test; the product feels loose.</p></li>
+        <li class="card"><p class="eyebrow">Accessibility</p><h3>Conditions slip quietly</h3><p>Contrast below the minimum, motion that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></li>
+      </ul>
+    </section>
 
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Questions</p>
-    <h2>What teams ask before booking</h2>
-    <details><summary>Our system is in Figma, not in code.</summary><p>Then the audit compares the design file with what ships. Tell me what you have and I will say what the report can cover.</p></details>
-    <details><summary>We use Storybook. Does this replace it?</summary><p>No, it runs on top. Storybook shows each component works; the audit checks whether screens built with it follow the system, plus contrast, reduced motion and high contrast.</p></details>
-    <details><summary>Can you sign an NDA, or work from an export?</summary><p>Yes to both. Without repository access, an export of the design system and a few product screens is enough for the drift list.</p></details>
-    <details><summary>What if the audit finds very little?</summary><p>Then the report says so and names what it checked. The four public systems all scored high on tokens and still had findings worth fixing.</p></details>
-    <details><summary>Who does the work?</summary><p>I do. The scan is automated. I check every finding by hand, because scans are wrong often enough to matter, then rank the fixes and write the report.</p></details>
-    <div class="actions"><a class="btn" href="#book">Book an audit</a></div>
-  </div>
-</section>
+    <!-- 4. What the audit checks: what you get -->
+    <section class="ld-wrap section" id="what" aria-labelledby="ld-checks">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What the audit checks</p>
+          <h2 class="h2" id="ld-checks">Five pillars, one report</h2>
+        </div>
+        <p>They answer three questions: how AI reads your system, whether it follows it, and what it does when something is missing. Tested on Primer, Radix Themes, Carbon and Chakra UI: every one had findings worth fixing.</p>
+      </div>
+      <ol class="ld-layers ld-layers--auto">
+        <li class="card"><h3>Values</h3><p>Every hard-coded value in your components, checked against your tokens: equal to a token nobody found, or on no scale. Plus unused and duplicate tokens.</p></li>
+        <li class="card"><h3>People</h3><p>Contrast on every declared pair, in every theme. Reduced motion, high contrast, visible focus, and right-to-left if you need it.</p></li>
+        <li class="card"><h3>Structure</h3><p>Components rebuilt by hand, parts used outside their contract, styling that changes what a component is.</p></li>
+        <li class="card"><h3>Content</h3><p>Unsourced numbers and claims, and words your voice rules ban. An agent repeats what the system teaches it.</p></li>
+        <li class="card"><h3>Agent readiness</h3><p>What a coding agent has to invent: decisions it made up, and names it expected but could not find.</p></li>
+      </ol>
+    </section>
 
+    <!-- 5. What the audit finds -->
+    <section class="ld-wrap section" aria-labelledby="ld-finds">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What the audit finds</p>
+          <h2 class="h2" id="ld-finds">Four kinds of finding, and only two are mechanical</h2>
+        </div>
+        <p>Each costs something different to fix.</p>
+      </div>
+      <ul class="ld-layers">
+        <li class="card"><p class="eyebrow eyebrow--accent">Mechanical</p><h3>A value that equals a token</h3><p>The decision exists; someone typed the number. Find, replace, and prove with a before-and-after render that nothing moved.</p></li>
+        <li class="card"><p class="eyebrow">Needs a decision</p><h3>A value on no scale</h3><p>An optical nudge or drift: only your team can say. Grouped by where they cluster, so deciding takes minutes.</p></li>
+        <li class="card"><p class="eyebrow eyebrow--accent">Affects people</p><h3>Contrast and motion</h3><p>Contrast in every theme, and motion against the reduced-motion setting. Teams fix these first.</p></li>
+        <li class="card"><p class="eyebrow">Getting worse</p><h3>What AI invents</h3><p>A coding agent fills gaps by guessing. The audit shows what it made up and what it could not find.</p></li>
+      </ul>
+    </section>
+
+    <!-- 6. The audit: one plan card -->
+    <section class="ld-wrap section" id="book" aria-labelledby="ld-plan">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The audit</p>
+          <h2 class="h2" id="ld-plan">Priced on the call. Two audits a month.</h2>
+        </div>
+      </div>
+      <div class="plans plans--1">
+        <article class="plan-card" aria-labelledby="ld-plan-1">
+          <h3 id="ld-plan-1">5 days</h3>
+          <p>From the day access arrives. Fixed scope. Priced on the call.</p>
+          <p class="eyebrow">What is included</p>
+          <ul>
+            <li>Drift list, contrast report, conditions check</li>
+            <li>Fixes ranked by cost and gain</li>
+            <li>A 30-minute call</li>
+            <li>React, CSS, Sass or CSS-in-JS</li>
+          </ul>
+          <p class="eyebrow">What is not</p>
+          <ul class="plan-card__not">
+            <li>Fixing the drift. If you want that, the fee comes off a project engagement.</li>
+          </ul>
+          <div class="plan-card__foot">
+            <span class="plan-card__price">Priced on the call</span>
+            <a class="action action--link" href="contact.html" aria-label="Book an audit">Book an audit <span class="action__arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 7. Questions -->
+    <section class="ld-wrap section" aria-labelledby="ld-faq">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Questions</p>
+          <h2 class="h2" id="ld-faq">What teams ask before booking</h2>
+        </div>
+      </div>
+      <div class="accordions">
+        <details class="accordion"><summary>Our system is in Figma, not in code. <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Then the audit compares the design file with what ships. Tell me what you have and I will say what the report can cover.</p></details>
+        <details class="accordion"><summary>We use Storybook. Does this replace it? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>No, it runs on top. Storybook shows each component works; the audit checks whether screens built with it follow the system, plus contrast, reduced motion and high contrast.</p></details>
+        <details class="accordion"><summary>Can you sign an NDA, or work from an export? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Yes to both. Without repository access, an export of the design system and a few product screens is enough for the drift list.</p></details>
+        <details class="accordion"><summary>What if the audit finds very little? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Then the report says so and names what it checked. The four public systems all scored high on tokens and still had findings worth fixing.</p></details>
+        <details class="accordion"><summary>Who does the work? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>I do. The scan is automated. I check every finding by hand, because scans are wrong often enough to matter, then rank the fixes and write the report.</p></details>
+      </div>
+    </section>
+
+    <!-- 8. Who runs it -->
+    <section class="ld-wrap section" aria-labelledby="ld-who">
+      <div class="ld-split">
+        <div class="ld-portrait">
+          <img src="assets/nayara-portrait.png" alt="Nayara Marques" width="440" height="550">
+        </div>
+        <div>
+          <p class="eyebrow">Who runs it</p>
+          <h2 class="h2" id="ld-who">I design systems, and I ship them</h2>
+          <p>Nine years designing products, lately also writing the code. Based in Barcelona, on US East Coast hours. Fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks.</p>
+          <p>I built the design system for an AI platform in private capital markets, in Claude Design: 48 components, 9 templates, tokens as the single source of truth, validation that catches AI drift. The audit is that method, applied to your system.</p>
+          <a class="action action--link" href="work.html">See the work <span class="action__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <dc-import name="Foot" hint-size="100%,76px"></dc-import>
+  <!-- 9. Call to action band -->
+  <section class="band-inverse ld-band" aria-labelledby="ld-cta">
+    <div class="ld-wrap ld-band__grid">
+      <h2 id="ld-cta">Is AI following your design system?</h2>
+      <div>
+        <p>The audit shows where AI follows your system, where it invents, and what each gap costs.</p>
+        <a class="action action--inverse" href="contact.html">Book an audit <span class="action__arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Foot" hint-size="100%,80px"></dc-import>
 
 </div>
 </x-dc>
