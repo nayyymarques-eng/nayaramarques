@@ -39,6 +39,10 @@ ALLOW = {
     ('*', '#e0c3bd'): 'loading screen placeholder, paints before tokens load',
 }
 
+# Content patterns (CLAUDE.md §7): each job has one structure.
+PAT_JOBS = {j: 'ListRow' for j in ('finding', 'constraint', 'principle', 'outcome', 'reference', 'gap')}
+PAT_JOBS.update({j: 'DecisionCard' for j in ('problem', 'decision', 'feature', 'term', 'lesson')})
+
 PAGES = sorted(p for p in glob.glob(ROOT + '*.html') if not p.endswith('.dc.html'))
 FILES = sorted(glob.glob(ROOT + '*.html'))
 
@@ -169,6 +173,41 @@ for path in FILES:
         mm = re.search(r'<main\b[^>]*>\s*(?:<!--[\s\S]*?-->\s*)*<(?:section|div)\b([^>]*)>', t)
         if 'class="hero' not in main_tag and not (mm and re.search(r'class="[^"]*\bhero\b', mm.group(1))):
             add('HERO-01', path, 'the first section in <main> is not the hero (.hero): nav, --hero-top, eyebrow, 16px, h1')
+
+    # --- Content patterns (CLAUDE.md §7, PAT) ------------------------------------------------------------
+    # PAT-02 numbers belong to the section title only: no "5.2" sub-section numbers
+    for m in re.finditer(r'<h3\b[^>]*>\s*(?:<span[^>]*>)?\s*(\d+\.\d+)\b', t):
+        add('PAT-02', path, f'a numbered sub-section ("{m.group(1)}"); sub-sections are h3.subsection with no number')
+    if is_page and 'case-index.js' in t:
+        # PAT-01 every row, card, step list and number block on a case page names its job, and the job fits the structure
+        for m in re.finditer(r'<x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3\.(ListRow|DecisionCard)"([^>]*)>', t):
+            comp, attrs = m.group(1), m.group(2)
+            job = re.search(r'\sdata-pattern="([a-z]+)"', attrs)
+            title = (re.search(r'\stitle="([^"]*)"', attrs) or re.search(r'()', '')).group(1)[:40]
+            if not job:
+                add('PAT-01', path, f'{comp} "{title}" has no data-pattern; name its job (CLAUDE.md §7)')
+                continue
+            job = job.group(1)
+            if job not in PAT_JOBS:
+                add('PAT-01', path, f'unknown job data-pattern="{job}" on {comp} "{title}"')
+            elif PAT_JOBS[job] != comp:
+                add('PAT-01', path, f'data-pattern="{job}" is a {PAT_JOBS[job]} job, drawn here as a {comp} ("{title}")')
+            # PAT-03 markers: ordinals only on steps; letters only on constraints (they are cited by decisions)
+            mk = re.search(r'\smarker="([^"]*)"', attrs)
+            if comp == 'ListRow' and mk and mk.group(1):
+                if re.fullmatch(r'\d+', mk.group(1)):
+                    add('PAT-03', path, f'an ordinal marker "{mk.group(1)}" on a {job} row; ordinals only where order matters (.stages)')
+                elif job != 'constraint':
+                    add('PAT-03', path, f'a marker "{mk.group(1)}" on a {job} row; letters are for constraints only, other rows carry no marker')
+        for m in re.finditer(r'<(?:ol|ul|div)\b[^>]*class="(stages|stats|tags)\b[^"]*"[^>]*>', t):
+            job = re.search(r'\sdata-pattern="([a-z]+)"', m.group(0))
+            want = {'stages': ('step',), 'stats': ('result', 'scope'), 'tags': ('finding',)}[m.group(1)]
+            if not job or job.group(1) not in want:
+                add('PAT-04' if m.group(1) == 'stats' else 'PAT-01', path,
+                    f'.{m.group(1)} needs data-pattern="{"|".join(want)}"' + (' (a big number is a Result or a Scope count, and says which)' if m.group(1) == 'stats' else ''))
+        # PAT-04 big numbers only inside .stats: an inline 2xl block holding a bare number is a hand-drawn stat
+        for m in re.finditer(r'<(?:div|span|p)\s+style="[^"]*font-size:var\(--font-size-(?:2xl|3xl|xl)\)[^"]*">\s*([+\-−]?[\d.,]+\s*(?:%|×|x)?|\d+\s*→\s*\d+)\s*</', t):
+            add('PAT-04', path, f'a big number "{m.group(1)}" outside .stats; use .stats with data-pattern="result|scope"')
 
     if not is_page:
         continue

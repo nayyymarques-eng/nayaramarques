@@ -77,8 +77,8 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 
 ## 3. Components (CMP)
 - **CMP-01** Reuse before drawing.
-  - Design-system components: `<x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.<Name>">`. `DecisionCard` (eyebrow, title, body; optional `gained`, `traded`; pass `data-surface="card"` so it is a level-1 card), `ListRow` (marker, title, body; `last="{{ true }}"` on the final row), `NextCase` (title, href, tag; wrap it in `<div class="well well--press well--next">`).
-  - Site components (`components.css`): `.action` + `--primary` / `--link` / `--inverse` (with `.action__arrow`), `.eyebrow`, `.tag` (+ `--considered`, `--chosen`), `.badge` (+ `--accent`), `.card`, `.cards`, `.link-card` (+ `__arrow`), `.figure` (+ `--col`, `.figure__caption`), `.well` (+ `--press`, `--next`), `.glass` (+ `--deep`), `.note`, `.illo-window`, `.illo-emph`, `.elsewhere` (+ `__path`), `.chip` (+ `--emph`), `.chain`, `.chain-block`, `.steps`, `.step` (+ `--emph`), `.band-inverse`, `.hero`, `.hero__eyebrow`, `.section`, `.section-head`, `.h2`; the landing template (`.ld-*`, `.plans`/`.plan-card`, `.accordions`/`.accordion`, `.link-cards`) and the B illustration (`.ld-art*`, timing per page).
+  - Design-system components: `<x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.<Name>">`, with `data-pattern` naming the job (§7). `DecisionCard` (eyebrow, title, body; optional `gained`, `traded`; pass `data-surface="card"` so it is a level-1 card), `ListRow` (marker, title, body; `last="{{ true }}"` on the final row), `NextCase` (title, href, tag; wrap it in `<div class="well well--press well--next">`).
+  - Site components (`components.css`): `.action` + `--primary` / `--link` / `--inverse` (with `.action__arrow`), `.eyebrow`, `.tag` (+ `--considered`, `--chosen`), `.badge` (+ `--accent`), `.card`, `.cards`, `.link-card` (+ `__arrow`), `.figure` (+ `--col`, `.figure__caption`), `.well` (+ `--press`, `--next`), `.glass` (+ `--deep`), `.note`, `.illo-window`, `.illo-emph`, `.elsewhere` (+ `__path`), `.chip` (+ `--emph`), `.chain`, `.chain-block`, `.steps`, `.step` (+ `--emph`), `.subsection`, `.cards--2`, `.stages` / `.stage`, `.stats` / `.stat` (the content patterns, §7; proposals until Nayara's verdict), `.band-inverse`, `.hero`, `.hero__eyebrow`, `.section`, `.section-head`, `.h2`; the landing template (`.ld-*`, `.plans`/`.plan-card`, `.accordions`/`.accordion`, `.link-cards`) and the B illustration (`.ld-art*`, timing per page).
   - Site components (`*.dc.html`): `Nav`, `Foot`, via `<dc-import name="…">`. Section rails: `<h2 data-rail>`. Scripts: `sky.js` (every page), `case-index.js` (cases), `art.js` (illustrations).
 - **CMP-02** Change a component through its props or attributes, never by copying its markup into a page.
 - **CMP-03** Nothing fits? Draw it, mark it `<!-- proposal: what it does, components considered, why each was wrong -->`, and tell Nayara. It joins the system only after her verdict.
@@ -180,3 +180,49 @@ Nayara: new tokens (new role names included); merging values that differ; any co
 | The dark emphatic rule | The one light divider |
 | Struck-through considered options | Considered · reason / Chosen tags |
 | Pinned title cards, the red section bar, sticky section heads | The section title and its intro, in the body |
+
+## 7. Content patterns (PAT) and numbers (NUM)
+Every block of content on a case page (and on about) does one job, and each job has one structure. Name the job on the element as `data-pattern="<job>"`; the structure follows from it. Before drawing a list, a card or a number, find its job in this table. A job that is not here is a proposal (CMP-03). *(Proposed 2026-09-25, round 2; the structures `.stages` and `.stats` and the job names wait for Nayara's verdict.)*
+
+| Job | What it holds | Structure | Marker | Component |
+|---|---|---|---|---|
+| Problem | a pain the work answers | card, two to a row | letter in the eyebrow (`Problem A`), because decisions cite it | `DecisionCard data-pattern="problem"` in `.cards.cards--2` |
+| Finding | an observed fact from research, an audit or a survey | row | none; a count, when there is one, is the lead (`6 of 6`, `90%`, `10`); bare labels with no body are tags (`ul.tags`) | `ListRow data-pattern="finding"` |
+| Constraint | a limit the work ran under | row | letter A to D, because decisions cite it (`Constraint D`) | `ListRow data-pattern="constraint" marker="A"` |
+| Principle | a rule agreed up front, a way of working | row | none | `ListRow data-pattern="principle"` (about: the same look, by hand) |
+| Step | a stage in a sequence in time | horizontal steps | ordinal `01`, `02` (or `Phase 1`): order matters | `ol.stages data-pattern="step"` > `li.stage` (`.stage__n`, `.stage__title`, `p`) |
+| Decision | a choice, with what it gained and what it traded | card, one to a row | `Decision 01` in the order taken | `DecisionCard data-pattern="decision"` (gained, traded) in `.cards` |
+| Feature | a part of what was built and what it does | card, two to a row | none (a one-word eyebrow may name it) | `DecisionCard data-pattern="feature"` |
+| Term | a name the reader needs, and what it means (a mode, a vertical) | card, two to a row | none | `DecisionCard data-pattern="term"` |
+| Result | a measured outcome | big number and caption | the number itself | `.stats data-pattern="result"`, label starts "Result" |
+| Scope | a count of what exists, not an outcome | big number and caption | the number itself | `.stats data-pattern="scope"`, label starts "Scope" |
+| Outcome | a change the work made or is expected to make, in words | row | none | `ListRow data-pattern="outcome"` |
+| Reference | a source or a benchmark the work drew on | row | none | `ListRow data-pattern="reference"` |
+| Lesson | a thought taken forward | card, two to a row | eyebrow `On the product` / `On the practice` | `DecisionCard data-pattern="lesson"` |
+| Gap | what the case does not cover, and why | row | none | `ListRow data-pattern="gap"` |
+| Note | an aside beside the story | soft recess | `Note ·` label | `.note` |
+| Evidence | a picture, a table, a flow | figure, level 2 | caption with a bold lead | `.figure`, flows `.fh` / `.chain` |
+| Action | what the reader can do next | action, link card, the next case | arrow | `.action`, `.link-card`, `NextCase` |
+
+- **PAT-01** Every `ListRow`, `DecisionCard`, `.stages`, `.stats` and `.tags` on a case page carries a `data-pattern` from the table, and the job matches the structure: row jobs are rows, card jobs are cards. Same job, same structure, on every page. *(check_source)*
+- **PAT-02** Sub-sections carry no number (`5.2`); numbers belong to the section title. *(check_source, check_pages HIER-01)*
+- **PAT-03** Rows carry a marker only when it means something: letters on constraints. No ordinals on rows (`01`, `02` in a list of parallel items mean nothing). *(check_source)*
+- **PAT-04** Big numbers (24px and up, a bare figure) appear only in `.stats`, as a Result or a Scope count, and the block's label says which (its `.eyebrow`, or the sub-section right above it, starts with "Result" or "Scope"). A number that is a finding is a finding row. *(check_source, check_pages)*
+- **PAT-05** Rows or cards: rows for lists read top to bottom (any length, body first); cards for two to four titled claims read side by side, or a decision with its costs. A card never holds a single sentence with no title.
+- **PAT-06** Rows share one look: the lead on its own line (16/600, ink), the body under it, a `--border` rule between rows, the constraint letter in the accent. Cards share one look: level 1, the eyebrow, the title 16/600, the body; decisions add Gained / Traded away.
+
+### Numbers (NUM): what each numeric display means
+| Display | Means | Allowed |
+|---|---|---|
+| `04 The decision` | a section's place in the case | section titles and the case index only |
+| `5.2` | (retired) | nowhere (PAT-02) |
+| `01` `02` on a step | order in time | `.stages`, flows (`.fh-n`), lifecycle figures |
+| `Decision 01` | a decision, in the order taken; cited elsewhere | DecisionCard eyebrows |
+| `A` `B` (`Problem A`, `Constraint D`) | a name to cite, not an order | problems and constraints only |
+| `48` big, with a caption | a Scope count: what exists | `.stats data-pattern="scope"` |
+| `+250%`, `90%`, `4 → 1` big | a Result: measured | `.stats data-pattern="result"`; values only from CNT-06 or already on the page |
+| `6 of 6`, `90%` as a row lead | a Finding: how many sources say so | finding rows |
+| numbers in a sentence | a fact in prose | anywhere; values follow CNT-06 |
+| `4 of 18`, `R$ 11,90`, a counter | part of a product mockup | inside `[data-mock]`, figures and illustrations only |
+- **NUM-01** Never change a number's value or add a number that is not already in the case (CNT-06). Moving a number to the structure its job needs is allowed and listed for Nayara.
+- **NUM-02** A Scope count never sits next to a Result without its label: a reader must never take a count of what exists for an outcome.

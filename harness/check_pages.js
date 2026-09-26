@@ -17,6 +17,10 @@
  *   COL-08  text contrast below WCAG AA on its ground: 4.5, or 3.0 for large text (24px+, or 18.66px+ bold).
  *           Text on the sky is measured against the sky's darkest point (--sky-deepest). Images, gradients and
  *           glass are skipped, as are [data-mock] figures and hidden text. Symbol-only text (arrows) is an icon: 3:1.
+ *   HIER-01 case headings out of order: section title > sub-section (h3.subsection, 600, no number) > item title
+ *           (card titles, row leads, step titles), by rendered size
+ *   PAT-04  a big number (24px or more, a bare figure) outside .stats, or a .stats block whose label does not say
+ *           which kind it is (Result… for data-pattern="result", Scope… for data-pattern="scope")
  */
 (() => {
   const W = innerWidth;
@@ -115,6 +119,45 @@
     const loops = document.getAnimations().filter(a => a.playState === 'running' && a.effect && a.effect.getComputedTiming().iterations === Infinity);
     if (loops.length) out.push(`MOT-01 ${loops.length} animation(s) still loop with reduced motion on`);
   }
+
+  // HIER-01 case heading hierarchy (CLAUDE.md LAY-08)
+  const px = e => parseFloat(getComputedStyle(e).fontSize);
+  const shown = e => { const r = e.getBoundingClientRect(); return r.width > 1 && r.height > 1; };
+  const sec = [...document.querySelectorAll('[data-case-eyebrow]')].filter(shown);
+  if (sec.length) {
+    const secPx = Math.min(...sec.map(px));
+    const subs = [...document.querySelectorAll('[data-case-band] h3')].filter(h => shown(h) && !inMock(h) && !h.closest('[data-surface],.card,.figure,figure,.note,.stats'));
+    for (const h of subs) {
+      const k = h.textContent.trim().slice(0, 30);
+      if (!h.classList.contains('subsection') && getComputedStyle(h).textTransform !== 'uppercase') out.push(`HIER-01 an h3 in a case body that is neither a sub-section nor a label: "${k}"`);
+      if (/^\s*\d+\.\d+/.test(h.textContent)) out.push(`HIER-01 a numbered sub-section: "${k}"`);
+      if (h.classList.contains('subsection') && (px(h) >= secPx || parseInt(getComputedStyle(h).fontWeight) < 600)) out.push(`HIER-01 sub-section "${k}" at ${px(h)}px/${getComputedStyle(h).fontWeight}; below the section title (${secPx}px), weight 600`);
+    }
+    const subPx = subs.filter(h => h.classList.contains('subsection')).map(px);
+    const cap = subPx.length ? Math.min(...subPx) : secPx;
+    const items = [...document.querySelectorAll('[data-case-band] [data-surface="card"] h3, [data-case-band] [data-pattern] > p > strong:first-child, [data-case-band] .stage__title')].filter(e => shown(e) && !inMock(e));
+    const big = new Set();
+    // an item title stays below the section title and never above a sub-section (it may equal one on phones)
+    for (const e of items) if (px(e) >= secPx || px(e) > cap) big.add(`HIER-01 item title "${e.textContent.trim().slice(0, 30)}" at ${px(e)}px; below the section title (${secPx}px) and at most the sub-section (${cap}px)`);
+    out.push(...big);
+  }
+
+  // PAT-04 big numbers are a Result or a Scope count, in .stats, and say which
+  for (const s of document.querySelectorAll('.stats')) {
+    const kind = s.dataset.pattern;
+    const lab = s.querySelector(':scope > .eyebrow') || (s.previousElementSibling && s.previousElementSibling.matches('h3,.eyebrow') ? s.previousElementSibling : null);
+    const txt = lab ? lab.textContent.trim() : '';
+    if (!['result', 'scope'].includes(kind)) out.push(`PAT-04 a .stats block without data-pattern="result|scope"`);
+    else if (!new RegExp('^' + kind, 'i').test(txt)) out.push(`PAT-04 a ${kind} block labelled "${txt || 'nothing'}"; its label starts with "${kind === 'result' ? 'Result' : 'Scope'}"`);
+  }
+  const bigNum = new Set();
+  for (const e of document.querySelectorAll('main *')) {
+    if (inMock(e) || e.closest('h1,.stats,.hero,.band-inverse,.figure,figure,header,[data-case-index]')) continue;
+    const own = [...e.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
+    if (!own || !/^([+\-−]?[\d.,]+\s*(%|×|x)?|\d+\s*→\s*\d+)$/.test(own)) continue;
+    if (px(e) >= 24 && shown(e)) bigNum.add(`PAT-04 a big number "${own}" at ${px(e)}px outside .stats`);
+  }
+  out.push(...bigNum);
 
   // COL-08 contrast
   const rgba = c => { const m = (c.match(/[\d.]+/g) || []).map(Number); if (/^color\(srgb/.test(c)) { m[0] *= 255; m[1] *= 255; m[2] *= 255; } return [m[0], m[1], m[2], m.length > 3 ? m[3] : 1]; };
