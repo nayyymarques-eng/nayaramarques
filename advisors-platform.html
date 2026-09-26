@@ -76,6 +76,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>An advisors platform for four business verticals — Nayara Marques</title>
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/styles.css">
+<script src="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/_ds_bundle.js"></script>
 <style>
   @media (max-width: 860px) {
     [data-rail] {
@@ -188,11 +190,11 @@
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p data-sec-intro>Three business directors asked for it. Their advisors called the platform incomplete, with features scattered across tools, and it hurt their performance.</p>
           <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I ran Phase 1, research to concept. Promoted to Design Lead, I built the Phase 2 team: four designers, one module each, with me still designing.</p>
-          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards);margin-top:var(--space-2xl)">
-            <div class="card" style="padding:var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">B2B</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Independent offices selling BTG products.</p></div>
-            <div class="card" style="padding:var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">B2C</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Advisors inside the bank, facing clients directly.</p></div>
-            <div class="card" style="padding:var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">Wealth</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Advisors managing large fortunes, the bank's biggest specialty.</p></div>
-            <div class="card" style="padding:var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">Advisors</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A separate structure from an acquired bank.</p></div>
+          <div class="cards cards--2" style="margin-top:var(--space-2xl)">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="term" title="B2B" hint-size="100%,160px">Independent offices selling BTG products.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="term" title="B2C" hint-size="100%,160px">Advisors inside the bank, facing clients directly.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="term" title="Wealth" hint-size="100%,160px">Advisors managing large fortunes, the bank's biggest specialty.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="term" title="Advisors" hint-size="100%,160px">A separate structure from an acquired bank.</x-import>
           </div>
         <div style="margin-top:var(--space-2xl)">
       <div data-zoom="" data-caption="The modular dashboard, advisor view: tabs across the top, tool rail on the left." style="aspect-ratio:16/10;position:relative;overflow:hidden;cursor:zoom-in"><image-slot id="advisors-hero" src="assets/p48-0.png" fit="contain" shape="rect" placeholder="Hero — modular dashboard, advisor view" style="max-width:100%;width:100%;height:100%"></image-slot></div>
@@ -208,37 +210,17 @@
           <p data-sec-intro>Advisors were doing the integration work the software should have done. What the interviews found, across three of the four verticals.</p>
           <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I interviewed 12 advisors across B2B, B2C and Advisors. Wealth was left out of the first concept to keep scope honest.</p>
           <p style="margin:0 0 var(--space-xl);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The hypothesis held: the information behind each decision was split across Portal Admin, Excel, Notes, Research and Power BI.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs)">
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">Wrong information</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">Information not updated</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">No useful filters</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">No opportunity curation</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">Inefficient customer support</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">Too many channels</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">Incomplete client profile</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">Control outside the platform</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">Multitasking</span>
-            <span style="font-size:var(--font-size-xs);padding:var(--space-xs) var(--space-sm);border:1px solid var(--border);background:var(--surface-card);color:var(--text-body)">Accessibility</span>
-          </div>
+          <ul class="tags" data-pattern="finding" style="list-style:none;margin:0;padding:0"><li class="tag">Wrong information</li><li class="tag">Information not updated</li><li class="tag">No useful filters</li><li class="tag">No opportunity curation</li><li class="tag">Inefficient customer support</li><li class="tag">Too many channels</li><li class="tag">Incomplete client profile</li><li class="tag">Control outside the platform</li><li class="tag">Multitasking</li><li class="tag">Accessibility</li></ul>
         </div>
       </div>
 
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">03 — Constraints</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch"><p data-sec-intro>One product had to serve four verticals, each with its own director and its own idea of what the first release should hold.</p>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">A</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Four verticals, four directors, one product.</strong> Each vertical defined the MVP differently, and each director could veto.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">B</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">No project manager at the start.</strong> Nobody owned definition and prioritisation, so I took it on. Hence the workshops.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">C</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Board approval gated every step.</strong> The concept had to read clearly to directors, not just designers.</p>
-          </div>
-        </div>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="A" title="Four verticals, four directors, one product." measure="70ch" hint-size="100%,80px">Each vertical defined the MVP differently, and each director could veto.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="B" title="No project manager at the start." measure="70ch" hint-size="100%,80px">Nobody owned definition and prioritisation, so I took it on. Hence the workshops.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="C" title="Board approval gated every step." last="{{ true }}" measure="70ch" hint-size="100%,80px">The concept had to read clearly to directors, not just designers.</x-import>
+</div>
       </div>
 
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
@@ -246,64 +228,22 @@
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p data-sec-intro>Two phases: Concept Design to win approval, then Detailed Design to make it buildable. Three principles ran through both: <strong style="font-weight:600">customizable, multitasking, propositional</strong>.</p>
 
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--gap-cards);margin-bottom:var(--space-2xl)">
-            <div class="card" style="padding:var(--space-lg) var(--space-lg)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-sm)">Phase 1 · Concept</div>
-              <p style="margin:0 0 var(--space-sm);font-size:var(--font-size-xs);line-height:var(--leading-label);color:var(--text-muted)">research → concept design → concept test → refinement → project definition → business approval</p>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-muted)">Me, with tech leads and business directors</p>
-            </div>
-            <div class="card" style="padding:var(--space-lg) var(--space-lg)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-sm)">Phase 2 · Detailed</div>
-              <p style="margin:0 0 var(--space-sm);font-size:var(--font-size-xs);line-height:var(--leading-label);color:var(--text-muted)">detailed design → usability test → refinement → design spec → handover → business approval</p>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-muted)">Me as design lead, plus 4 product designers</p>
-            </div>
-          </div>
+          <ol class="stages" data-pattern="step" style="margin-bottom:var(--space-2xl)"><li class="stage"><span class="stage__n">Phase 1</span><span class="stage__title">Concept</span><p>research → concept design → concept test → refinement → project definition → business approval</p><p>Me, with tech leads and business directors</p></li><li class="stage"><span class="stage__n">Phase 2</span><span class="stage__title">Detailed</span><p>detailed design → usability test → refinement → design spec → handover → business approval</p><p>Me as design lead, plus 4 product designers</p></li></ol>
 
-          <div style="display:grid;gap:var(--space-xl)">
+          <div class="cards">
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 01</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Design 21 concept features, present 9</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I covered the whole workday, then showed the board only the nine that carried the argument.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A concept broad enough to test as a real workday, tight enough to approve in one meeting.</p></div>
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Twelve features went unshown; some resurfaced later as surprises.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 01" title="Design 21 concept features, present 9" gained="A concept broad enough to test as a real workday, tight enough to approve in one meeting." traded="Twelve features went unshown; some resurfaced later as surprises." hint-size="100%,300px">I covered the whole workday, then showed the board only the nine that carried the argument.</x-import>
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 02</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">A modular dashboard instead of four products</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">No variant per vertical: each office configures its own widgets. One codebase, four workflows.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">90% acceptance in the concept test, and one thing four directors could say yes to.</p></div>
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Configurability is expensive to build and easy to get lost in. Complexity moved to engineering and first-run setup.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 02" title="A modular dashboard instead of four products" gained="90% acceptance in the concept test, and one thing four directors could say yes to." traded="Configurability is expensive to build and easy to get lost in. Complexity moved to engineering and first-run setup." hint-size="100%,300px">No variant per vertical: each office configures its own widgets. One codebase, four workflows.</x-import>
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 03</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Run the prioritisation myself, as two workshops</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Workshop 1: feature map and impact-versus-effort matrix with tech, business and design leads. Workshop 2: each vertical proposed an MVP; we merged them into one.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">One agreed MVP, with tradeoffs settled in the room, not relitigated every sprint.</p></div>
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Weeks of my design time went to product management.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 03" title="Run the prioritisation myself, as two workshops" gained="One agreed MVP, with tradeoffs settled in the room, not relitigated every sprint." traded="Weeks of my design time went to product management." hint-size="100%,300px">Workshop 1: feature map and impact-versus-effort matrix with tech, business and design leads. Workshop 2: each vertical proposed an MVP; we merged them into one.</x-import>
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 04</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Recruit advisors into the design process permanently</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">My team set up an "Advisors + Design Group" of volunteer advisors. It became the research pool for all of BTG design.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Bi-weekly usability tests with real advisors, no re-recruiting.</p></div>
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A self-selecting group skews enthusiastic, so we recruited outside it for bigger decisions.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 04" title="Recruit advisors into the design process permanently" gained="Bi-weekly usability tests with real advisors, no re-recruiting." traded="A self-selecting group skews enthusiastic, so we recruited outside it for bigger decisions." hint-size="100%,300px">My team set up an "Advisors + Design Group" of volunteer advisors. It became the research pool for all of BTG design.</x-import>
 
           </div>
         </div>
       </div>
+
 
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">05 — The solution</h2>
@@ -330,11 +270,7 @@
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding:var(--section-y) 0" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">06 — Impact</h2>
         <div style="flex:1 1 460px;min-width:0"><p data-sec-intro>Results from the concept test and the approval that followed. They are test scores, not results from a shipped product.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:var(--gap-cards);margin-bottom:var(--space-2xl)">
-            <div class="card" style="padding:var(--space-xl)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">90%</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">feature acceptance in the concept test, 9 advisors across 3 verticals</p></div>
-            <div class="card" style="padding:var(--space-xl)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">85%</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">acceptance for tabs, read as browser tabs</p></div>
-            <div class="card" style="padding:var(--space-xl)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">4 → 1</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">verticals aligned on one prioritised MVP</p></div>
-          </div>
+          <div class="stats" data-pattern="result" style="margin-bottom:var(--space-2xl)"><p class="eyebrow">Results</p><ul class="stats__grid"><li class="stat"><span class="stat__n">90%</span><span class="stat__caption">feature acceptance in the concept test, 9 advisors across 3 verticals</span></li><li class="stat"><span class="stat__n">85%</span><span class="stat__caption">acceptance for tabs, read as browser tabs</span></li><li class="stat"><span class="stat__n">4 → 1</span><span class="stat__caption">verticals aligned on one prioritised MVP</span></li></ul></div>
           <p style="margin:0;max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The board approved the concept. Two findings changed the build: the side menu needed text labels, and the client page was too sparse for people used to dense data.</p>
         </div>
       </div>
@@ -352,23 +288,11 @@
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p data-sec-intro>The case runs from the first interviews to board approval. What happened after that is not covered:</p>
-          <div style="display:flex;gap:var(--space-md);align-items:baseline;padding:var(--space-md) 0;border-top:1px solid var(--border)">
-            <span style="flex:0 0 22px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);color:var(--accent)">01</span>
-            <p style="margin:0;max-width:70ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="font-weight:600;color:var(--text-strong)">Adoption and business outcomes.</strong> The 90% and 85% are concept-test scores, not shipped results. I left before usage could be measured.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);align-items:baseline;padding:var(--space-md) 0;border-top:1px solid var(--border)">
-            <span style="flex:0 0 22px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);color:var(--accent)">02</span>
-            <p style="margin:0;max-width:70ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="font-weight:600;color:var(--text-strong)">The Wealth vertical.</strong> Wealth was left out of the first MVP and never researched here. The modular dashboard may not hold for it.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);align-items:baseline;padding:var(--space-md) 0;border-top:1px solid var(--border)">
-            <span style="flex:0 0 22px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);color:var(--accent)">03</span>
-            <p style="margin:0;max-width:70ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="font-weight:600;color:var(--text-strong)">Module-level design.</strong> The concept, structure and prioritisation are mine; the detailed work inside each module belongs to the four designers I led.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);align-items:baseline;padding:var(--space-md) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-            <span style="flex:0 0 22px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);color:var(--accent)">04</span>
-            <p style="margin:0;max-width:70ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="font-weight:600;color:var(--text-strong)">What shipped against the spec.</strong> Three modules were in build when I left. I can’t show what changed after handover.</p>
-          </div>
-        </div>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="Adoption and business outcomes." measure="70ch" hint-size="100%,80px">The 90% and 85% are concept-test scores, not shipped results. I left before usage could be measured.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="The Wealth vertical." measure="70ch" hint-size="100%,80px">Wealth was left out of the first MVP and never researched here. The modular dashboard may not hold for it.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="Module-level design." measure="70ch" hint-size="100%,80px">The concept, structure and prioritisation are mine; the detailed work inside each module belongs to the four designers I led.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="What shipped against the spec." last="{{ true }}" measure="70ch" hint-size="100%,80px">Three modules were in build when I left. I can’t show what changed after handover.</x-import>
+</div>
       </div>
 
     </section>

@@ -76,6 +76,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Card Insurance — Nayara Marques</title>
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/styles.css">
+<script src="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/_ds_bundle.js"></script>
 <style>
   @media (max-width: 860px) {
     [data-rail] {
@@ -176,10 +178,10 @@
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
           <p data-sec-intro>Almost everyone already had card insurance. Almost nobody was happy with it, and the survey said what was wrong.</p>
           <p style="margin:0 0 var(--space-xl);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">A survey of 30 BTG Pactual customers:</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:var(--gap-cards);margin-bottom:var(--space-xl)">
-            <div class="card" style="padding:var(--space-xl)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">90%</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">already have card insurance on at least one card</p></div>
-            <div class="card" style="padding:var(--space-xl)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">65%</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">are unhappy with at least one assistance in their package</p></div>
-            <div class="card" style="padding:var(--space-xl)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">80%</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">would like to modularise their package</p></div>
+          <div style="margin-bottom:var(--space-xl)">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="finding" title="90%" measure="70ch" hint-size="100%,80px">already have card insurance on at least one card</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="finding" title="65%" measure="70ch" hint-size="100%,80px">are unhappy with at least one assistance in their package</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="finding" title="80%" last="{{ true }}" measure="70ch" hint-size="100%,80px">would like to modularise their package</x-import>
           </div>
           <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The category sells fixed bundles with no visible cost per part. The goal: modules customers pick, each showing its limit and price effect, plus a claim they can follow in the app.</p>
 
@@ -219,23 +221,11 @@
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">03 — Constraints</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch"><p data-sec-intro>Part of the product belonged to someone else: the insurer set its rules. These are the limits every screen was designed within.</p>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">A</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">A third-party insurer.</strong> Coverage, pricing and claim rules belonged to Too Seguros. Some claims had to finish outside the app.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">B</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Regulated language.</strong> Terms can't be paraphrased. Transparency had to come from structure, not rewriting.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">C</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Free and paid products in one checkout.</strong> One assistance came free with the plan, which made checkout awkward.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">D</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Card conversion is sacred.</strong> Anything added to card request risked the retail business's key metric.</p>
-          </div>
-        </div>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="A" title="A third-party insurer." measure="70ch" hint-size="100%,80px">Coverage, pricing and claim rules belonged to Too Seguros. Some claims had to finish outside the app.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="B" title="Regulated language." measure="70ch" hint-size="100%,80px">Terms can't be paraphrased. Transparency had to come from structure, not rewriting.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="C" title="Free and paid products in one checkout." measure="70ch" hint-size="100%,80px">One assistance came free with the plan, which made checkout awkward.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="constraint" marker="D" title="Card conversion is sacred." last="{{ true }}" measure="70ch" hint-size="100%,80px">Anything added to card request risked the retail business's key metric.</x-import>
+</div>
       </div>
 
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
@@ -244,25 +234,23 @@
           <p data-sec-intro>Four stages: principles, benchmark, flows, and the decisions testing produced. The principles came first, agreed with engineering.</p>
           <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">Design principles</h3>
           <p style="margin:0 0 var(--space-lg);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Agreed in a workshop with the PM, tech lead and developers. They settled most later arguments.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:var(--gap-cards);margin-bottom:var(--section-y)">
-            <div class="card" style="padding:var(--space-lg) var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">Simplicity</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A fluid process, not an endless shelf of products.</p></div>
-            <div class="card" style="padding:var(--space-lg) var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">Personalisation</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Coverage matched to the customer's life, at a premium they'll pay.</p></div>
-            <div class="card" style="padding:var(--space-lg) var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">Transparency</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">No hidden clauses. Conditions explained where the decision is made.</p></div>
+          <div style="margin-bottom:var(--section-y)">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="principle" title="Simplicity" measure="70ch" hint-size="100%,80px">A fluid process, not an endless shelf of products.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="principle" title="Personalisation" measure="70ch" hint-size="100%,80px">Coverage matched to the customer's life, at a premium they'll pay.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="principle" title="Transparency" last="{{ true }}" measure="70ch" hint-size="100%,80px">No hidden clauses. Conditions explained where the decision is made.</x-import>
           </div>
 
           <div style="margin-bottom:var(--section-y)">
             <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">Benchmark</h3>
             <p style="margin:0 0 var(--space-lg);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Seven insurers reviewed for contracting, customisation and claims. Three shaped our structure.</p>
             <!-- The benchmark as plain text (Nayara, 2026-09-25): the screenshot carousel is retired. The three that shaped the structure (Decision 01) carry a label. -->
-            <ul style="list-style:none;margin:0;padding:0;max-width:var(--measure-list)">
-              <li style="padding:var(--space-md) 0;border-top:1px solid var(--border);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:500">Hedvig:</strong> inviting a friend visibly lowers the monthly price</li>
-              <li style="padding:var(--space-md) 0;border-top:1px solid var(--border);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:500">Wrisk:</strong> a custom policy built from plain-language questions, one at a time <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></li>
-              <li style="padding:var(--space-md) 0;border-top:1px solid var(--border);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:500">Pulse:</strong> a base module with paid extensions, shared with the household</li>
-              <li style="padding:var(--space-md) 0;border-top:1px solid var(--border);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:500">Lemonade:</strong> contracting written in plain, friendly language <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></li>
-              <li style="padding:var(--space-md) 0;border-top:1px solid var(--border);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:500">DeadHappy:</strong> underwriting as a short conversation, ending in a stated payout and price</li>
-              <li style="padding:var(--space-md) 0;border-top:1px solid var(--border);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:500">Cuvva:</strong> sliders raise coverage item by item, with the price updating instantly <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></li>
-              <li style="padding:var(--space-md) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:500">Santander:</strong> coverage chosen before purchase, with the instalment updating live</li>
-            </ul>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Hedvig" measure="70ch" hint-size="100%,80px">inviting a friend visibly lowers the monthly price</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Wrisk" measure="70ch" hint-size="100%,80px">a custom policy built from plain-language questions, one at a time <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Pulse" measure="70ch" hint-size="100%,80px">a base module with paid extensions, shared with the household</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Lemonade" measure="70ch" hint-size="100%,80px">contracting written in plain, friendly language <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="DeadHappy" measure="70ch" hint-size="100%,80px">underwriting as a short conversation, ending in a stated payout and price</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Cuvva" measure="70ch" hint-size="100%,80px">sliders raise coverage item by item, with the price updating instantly <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Santander" last="{{ true }}" measure="70ch" hint-size="100%,80px">coverage chosen before purchase, with the instalment updating live</x-import>
           </div>
           <div style="margin-bottom:var(--section-y)">
             <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">User flows</h3>
@@ -288,37 +276,13 @@
             <div style="border-top:1px solid var(--border)"></div>
           </div>
           <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">Key decisions</h3>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-xl);align-items:stretch">
+          <div class="cards">
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 01</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Three plans, then one free assistance to choose</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Not an open configurator: the customer picks one of three plans, then one assistance module. Personalisation where it matters, three options where it doesn't. Shaped by Cuvva, Wrisk and Lemonade.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The modularity customers asked for, without pricing every part themselves.</p></div>
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">True à-la-carte pricing. The 80% get structured choice, not a blank slate.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 01" title="Three plans, then one free assistance to choose" gained="The modularity customers asked for, without pricing every part themselves." traded="True à-la-carte pricing. The 80% get structured choice, not a blank slate." hint-size="100%,300px">Not an open configurator: the customer picks one of three plans, then one assistance module. Personalisation where it matters, three options where it doesn't. Shaped by Cuvva, Wrisk and Lemonade.</x-import>
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 02</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Design all three flows, not just the sale</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Easy cancellation is part of transparency, and the claim is where the product earns or loses trust.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A product that holds up after purchase, with a clear line where the insurer takes over.</p></div>
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Scope. Claims and cancellation took time the business wanted spent on conversion.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 02" title="Design all three flows, not just the sale" gained="A product that holds up after purchase, with a clear line where the insurer takes over." traded="Scope. Claims and cancellation took time the business wanted spent on conversion." hint-size="100%,300px">Easy cancellation is part of transparency, and the claim is where the product earns or loses trust.</x-import>
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 03</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Take the insurance out of card signup, because the test said so</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I tested both entry points with 10 active customers. The card request risked conversion, mixed free and paid products in one checkout, and was already crowded.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Insurance became a pending task after card success, with a permanent home in card settings.</p></div>
-                <div><div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The highest-intent moment in the funnel, traded to protect card conversion.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 03" title="Take the insurance out of card signup, because the test said so" gained="Insurance became a pending task after card success, with a permanent home in card settings." traded="The highest-intent moment in the funnel, traded to protect card conversion." hint-size="100%,300px">I tested both entry points with 10 active customers. The card request risked conversion, mixed free and paid products in one checkout, and was already crowded.</x-import>
 
           </div>
         </div>
@@ -414,31 +378,15 @@
       <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y-lg)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">07 — What I learned</h2>
         <div style="flex:1 1 460px;min-width:0"><p data-sec-intro>Four lessons: two about the product, on placement and transparency, and two about the practice of testing early.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-xl);align-items:stretch">
+          <div class="cards cards--2">
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the product</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Test the entry point, not just the screens</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The screens worked in both journeys. Placement was the decision, and only testing the full flow from two starts surfaced it.</p>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the product" title="Test the entry point, not just the screens" hint-size="100%,220px">The screens worked in both journeys. Placement was the decision, and only testing the full flow from two starts surfaced it.</x-import>
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the product</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">In regulated products, transparency is a layout problem</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">You can't rewrite the clause, but you can decide what the customer reads before the price.</p>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the product" title="In regulated products, transparency is a layout problem" hint-size="100%,220px">You can't rewrite the clause, but you can decide what the customer reads before the price.</x-import>
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the practice</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Principles agreed early are cheaper than arguments later</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Written with engineering before the first screen, they framed the case for moving the flow in terms everyone had agreed. I still open projects this way.</p>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the practice" title="Principles agreed early are cheaper than arguments later" hint-size="100%,220px">Written with engineering before the first screen, they framed the case for moving the flow in terms everyone had agreed. I still open projects this way.</x-import>
 
-            <div class="card" style="padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the practice</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">A small test beats a long debate</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Ten sessions settled a conversion question that would otherwise have been argued from opinion, or found after launch.</p>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the practice" title="A small test beats a long debate" hint-size="100%,220px">Ten sessions settled a conversion question that would otherwise have been argued from opinion, or found after launch.</x-import>
 
           </div>
         </div>
@@ -451,22 +399,10 @@
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
         <div style="flex:1 1 460px;min-width:0">
           <p data-sec-intro>The case runs from the survey to handover for build. What came after that is not covered:</p>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);max-width:70ch">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">01</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Post-launch numbers.</strong> Attach, claim and cancellation rates. I left before they were measurable.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);max-width:70ch">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">02</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">The claim and cancellation screens.</strong> Designed, but not shown. The handoff to Too Seguros mid-claim was never tested with customers.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);max-width:70ch">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">03</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Pricing.</strong> Set by the insurer. Willingness to pay was surveyed, never tested against real prices; the Pleno and Superior figures above are placeholders.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;position:relative;max-width:70ch">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">04</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Research depth.</strong> Thirty survey responses and ten moderated sessions: enough to settle placement, not to claim anything statistical. No accessibility review was run.</p>
-          </div>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="Post-launch numbers." measure="70ch" hint-size="100%,80px">Attach, claim and cancellation rates. I left before they were measurable.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="The claim and cancellation screens." measure="70ch" hint-size="100%,80px">Designed, but not shown. The handoff to Too Seguros mid-claim was never tested with customers.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="Pricing." measure="70ch" hint-size="100%,80px">Set by the insurer. Willingness to pay was surveyed, never tested against real prices; the Pleno and Superior figures above are placeholders.</x-import>
+<x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="Research depth." last="{{ true }}" measure="70ch" hint-size="100%,80px">Thirty survey responses and ten moderated sessions: enough to settle placement, not to claim anything statistical. No accessibility review was run.</x-import>
         </div>
       </div>
     </section>

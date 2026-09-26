@@ -99,6 +99,37 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .subsection::before{content:"";flex:none;width:12px;height:2px;border-radius:var(--radius-full);background:var(--accent);transform:translateY(-0.32em)}
 p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
 
+/* ---------- Content patterns (PAT, CLAUDE.md §7) ----------
+   proposal (CMP-03, round 2): one structure per job, the job named on the element as data-pattern="<job>". Rows and cards are
+   the design-system ListRow and DecisionCard, set through that attribute (CMP-02); .stages and .stats are new site parts.
+   Considered: ListRow and DecisionCard for steps and numbers (a row cannot sit in a horizontal sequence; a card would lift a
+   number to level 1, and numbers are text, level 0), the figure .steps (a picture of states inside a figure, with arrows).
+     rows   finding · constraint · principle · outcome · reference · gap   ListRow, a lead on its own line, then the body
+     cards  problem · decision · feature · term · lesson                    DecisionCard, level 1
+     stages step                                                            .stages, ordinals because order matters
+     stats  result · scope                                                  .stats, the only big numbers, labelled by kind */
+:is([data-pattern="finding"],[data-pattern="constraint"],[data-pattern="principle"],[data-pattern="outcome"],[data-pattern="reference"],[data-pattern="gap"])>p>strong:first-child{display:block;margin-bottom:var(--space-2xs);line-height:var(--leading-snug)}
+/* a marker only where it means something: a constraint's letter, cited by the decisions. Empty markers take no room. */
+:is([data-pattern="finding"],[data-pattern="constraint"],[data-pattern="principle"],[data-pattern="outcome"],[data-pattern="reference"],[data-pattern="gap"])>span:empty,
+[data-pattern][data-surface="card"]>div:empty{display:none}
+[data-pattern="constraint"]>span:first-child{min-width:1.2em;font-weight:600;color:var(--accent)}
+/* card grids: parallel cards two to a row; decisions (long, with gained and traded) one to a row */
+.cards--2{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+/* Steps: a sequence in time. The ordinal says the order; the rule on top is the one divider. */
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:var(--space-fluid-m);list-style:none;margin:0;padding:0}
+.stage{margin:0;border-top:1px solid var(--border-divider);padding-top:var(--space-md)}
+.stage__n{display:block;margin-bottom:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--accent)}
+.stage__title{display:block;margin:0 0 var(--space-xs);font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong)}
+.stage p{margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+.stage p+p{margin-top:var(--space-xs)}
+/* Stats: big numbers, only for a Result (measured) or a Scope count (what exists). The label says which (PAT-04). */
+.stats{margin:0}
+.stats>.eyebrow{margin:0 0 var(--space-md)}
+.stats__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:var(--space-fluid-m);list-style:none;margin:0;padding:0}
+.stat{margin:0;border-top:1px solid var(--border-divider);padding-top:var(--space-sm)}
+.stat__n{display:block;font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);color:var(--text-heading);font-variant-numeric:tabular-nums}
+.stat__caption{display:block;margin-top:var(--space-xs);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+
 /* ---------- Glass: the case details, like the home's composer ----------
    Frosted, the same inner shade, a light bottom edge. Content width, lg radius; level -1 in spirit. */
 .glass{background:var(--surface-glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:var(--elevation-inset-1),var(--edge-glass);border:0;border-radius:var(--radius-lg)}
