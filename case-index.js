@@ -6,7 +6,7 @@
   var TOP = 80; // the index sticks just under the nav
 
   var css = [
-    '[data-case-index]{position:absolute;z-index:7;pointer-events:none}', // above the sticky section heads
+    '[data-case-index]{position:absolute;z-index:6;pointer-events:none}',
     // the index is plain text on the sky: no card, no rules. Its numbers line up with the nav's star.
     '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:var(--space-fluid-xl) 0 0;padding:0;max-width:240px;pointer-events:auto}',
     '[data-case-index] a{display:grid;grid-template-columns:22px 1fr;gap:var(--space-xs);padding:var(--space-xs) 0;',
@@ -18,7 +18,7 @@
     '[data-case-index] a.done{color:var(--text-muted)}',
     // the rail text is replaced by the index; it stays in the page (transparent) so screen readers keep the heading
     // the section title in the body is the largest heading in a case, at every width: number in the accent, name in ink
-    '[data-case-eyebrow]{display:block;margin:0 0 var(--space-md);font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);color:var(--text-heading)}',
+    '[data-case-eyebrow]{display:block;margin:0 0 10px;font-size:clamp(18px,1.5vw,20px);font-weight:600;line-height:1.3;letter-spacing:-0.01em;color:var(--text-heading)}',
     '[data-case-eyebrow] span{color:var(--accent);margin-right:0.45em}',
     '@media ' + WIDE + '{html.has-case-index [data-rail-indexed]{color:transparent!important;user-select:none}',
     // the body sits on the details band's 4-column grid: index in column 1, content and dividers from column 2
@@ -65,8 +65,6 @@
       bands[i].setAttribute('data-case-band', '');
       // the section's eyebrow, shown above its content on wide screens
       var col = h.nextElementSibling;
-      // the section's head is in the markup (.case-head: the title and its one-line intro, ending in a divider)
-      var head = col && col.querySelector(':scope > .case-head');
       if (col && !col.querySelector('[data-case-eyebrow]')) {
         var eb = document.createElement('p');
         eb.setAttribute('data-case-eyebrow', '');
@@ -74,7 +72,7 @@
         eb.innerHTML = '<span></span>';
         eb.firstChild.textContent = m[1];
         eb.appendChild(document.createTextNode(m[2]));
-        (head || col).insertBefore(eb, (head || col).firstChild);
+        col.insertBefore(eb, col.firstChild);
       }
       bands[i].style.scrollMarginTop = (TOP - 20) + 'px';
       var li = document.createElement('li');
@@ -107,11 +105,7 @@
                top.parentElement.firstElementChild === top &&
                parseFloat(getComputedStyle(top).borderTopWidth) === 0) top = top.parentElement;
         var prev = top.previousElementSibling;
-        if (prev && prev.classList.contains('case-head') && matchMedia(WIDE).matches && parseFloat(getComputedStyle(top).borderTopWidth) > 0) {
-          top.style.borderTopColor = 'transparent'; // the head already ends in the divider: one line, not two
-          top.style.paddingTop = '0px';
-        }
-        if (!prev || prev.hasAttribute('data-case-eyebrow') || prev.classList.contains('case-head')) return; // first thing under the section head
+        if (!prev || prev.hasAttribute('data-case-eyebrow') || prev.hasAttribute('data-sec-intro')) return; // first thing under the section title
         prev.style.marginBottom = '0px';
         top.style.marginTop = '56px';
         var ruled = parseFloat(getComputedStyle(top).borderTopWidth) > 0;

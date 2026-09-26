@@ -78,7 +78,7 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .section>:first-child{border-top:1px solid var(--border-divider);padding-top:var(--section-pad)}
 .section-head{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-md);margin-bottom:var(--stack-lg)}
 .section-head .eyebrow{margin:0}
-.section-head>p{margin:0;max-width:46ch;font-size:var(--font-size-lg);line-height:var(--leading-snug);color:var(--text-body);text-wrap:pretty}
+.section-head>p:not(.eyebrow){margin:0;max-width:46ch;font-size:var(--font-size-lg);line-height:var(--leading-snug);color:var(--text-body);text-wrap:pretty}
 .h2{margin:0;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);color:var(--text-heading);max-width:22ch;text-wrap:balance}
 
 /* ---------- One hero anatomy on every page (HERO-01) ----------
@@ -90,21 +90,10 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
   margin:0 0 var(--space-md);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:1.4;text-transform:uppercase;color:var(--accent)}
 .hero h1{margin-top:0}
 
-/* ---------- Case section head (LAY-08) ----------
-   The title (case-index.js puts "05 The solution" in it) and the one-line intro below it, ending in the one divider.
-   From 861px, when it reaches the top it sticks under the nav. It reads as transparent: its band paints the exact piece
-   of sky behind it (sky.js sets --hx, --hy and --sky-h), so the page's colour shows through while the content scrolling
-   under it stays hidden, with no ghost text and no box edge. The next section's head pushes it out (sticky within its
-   own section). The case index sits above it. */
-.case-head [data-case-eyebrow]{margin:0 0 10px}
-.case-head>p{margin:0 !important}
-.case-head{margin-bottom:var(--space-xl)}
-@media (min-width:861px){
-  .case-head{position:sticky;top:var(--nav-h);z-index:5;padding-top:var(--space-lg);isolation:isolate}
-  .case-head::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc(-1 * var(--hx, 0px));width:100vw;
-    background:var(--sky-ground);background-size:100vw var(--sky-h, 100vh);background-position:0 var(--hy, 0px);background-repeat:no-repeat}
-  .case-head::after{content:"";display:block;height:1px;margin-top:18px;background:var(--border-divider)}
-}
+/* ---------- Case section title and intro (LAY-08) ----------
+   The title in the body (case-index.js writes "05 The solution") is small and firm; the section's intro below it is an
+   ordinary paragraph, at most 600px wide. Neither is sticky. The title's type is set in case-index.js. */
+p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
 
 /* ---------- Glass: the case details, like the home's composer ----------
    Frosted, the same inner shade, a light bottom edge. Content width, lg radius; level -1 in spirit. */
@@ -198,7 +187,7 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .accordion__chev{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;color:var(--accent);background:var(--surface-tag);transition:transform var(--dur-hover-slow) var(--ease-in-out-soft)}
 .accordion__chev svg{display:block;width:12px;height:12px}
 .accordion[open] .accordion__chev{transform:rotate(180deg)}
-.accordion p{margin:0;padding:0 clamp(18px,2.2vw,24px) clamp(18px,2.2vw,24px);max-width:70ch;font-size:var(--font-size-action);line-height:1.65;color:var(--text-body);text-wrap:pretty}
+.accordion p:not(.eyebrow){margin:0;padding:0 clamp(18px,2.2vw,24px) clamp(18px,2.2vw,24px);max-width:70ch;font-size:var(--font-size-action);line-height:1.65;color:var(--text-body);text-wrap:pretty}
 .accordion a{color:var(--accent)}
 
 /* ---------- Landing template (services pages) ---------- */
@@ -221,7 +210,7 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .ld-layers>.card{padding:clamp(20px,2.4vw,28px)}
 .ld-layers .eyebrow{margin-bottom:10px}
 .ld-layers h3{margin:0 0 var(--space-xs);font-size:19px;font-weight:500;line-height:1.2;letter-spacing:-0.02em}
-.ld-layers p{margin:0;font-size:var(--font-size-action);line-height:1.6;color:var(--text-body);text-wrap:pretty}
+.ld-layers p:not(.eyebrow):not(.ld-big){margin:0;font-size:var(--font-size-action);line-height:1.6;color:var(--text-body);text-wrap:pretty}
 .ld-card--half{max-width:560px}
 .ld-layers--auto{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
 .ld-big{margin:0 0 var(--space-xs);font-size:clamp(26px,3vw,36px);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--text-heading)}
@@ -249,7 +238,7 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .ld-band{margin-top:clamp(64px,9vw,128px)}
 .ld-band__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);align-items:start;padding-block:clamp(56px,8vw,104px)}
 .ld-band h2{margin:0;font-size:clamp(28px,4vw,52px);font-weight:500;line-height:1;letter-spacing:-0.042em;max-width:18ch;text-wrap:balance}
-.ld-band p{margin:0 0 var(--space-xl);max-width:56ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty}
+.ld-band p:not(.eyebrow){margin:0 0 var(--space-xl);max-width:56ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty}
 
 /* ---------- Illustrations, B (ILL-01..03) ----------
    A mechanism with states: pending (quiet line), passing (the accent dot), done (marked in the accent).

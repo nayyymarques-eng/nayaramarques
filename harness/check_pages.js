@@ -60,7 +60,7 @@
     if (parseFloat(cs.borderBottomWidth) > 0 && cs.borderBottomStyle !== 'none' && !/rgba\(0, 0, 0, 0\)/.test(cs.borderBottomColor)) lines.push({ y: bot - 1, l: r.left, r: r.right });
     }
     // SKY-02: full-width ground
-    if (!clear && r.width >= W * 0.97 && r.height > 3 && !e.closest('.card,.link-card,.figure,.well,.glass,.plan-card,.accordion,[data-surface],[data-case-eyebrow],.case-head'))
+    if (!clear && r.width >= W * 0.97 && r.height > 3 && !e.closest('.card,.link-card,.figure,.well,.glass,.plan-card,.accordion,[data-surface],[data-case-eyebrow]'))
       grounds.add(`SKY-02 a full-width element paints its own ground, near "${near(top)}"`);
   }
   out.push(...grounds);
