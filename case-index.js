@@ -7,12 +7,13 @@
 
   var css = [
     '[data-case-index]{position:absolute;z-index:6;pointer-events:none}',
-    '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:var(--space-fluid-xl) 0 0;padding:var(--space-sm) var(--space-md);background:var(--surface-card);border:0;border-radius:var(--radius-md);box-shadow:var(--elevation-1);pointer-events:auto}',
-    '[data-case-index] a{display:grid;grid-template-columns:22px 1fr;gap:var(--space-xs);padding:var(--space-xs) 0 var(--space-xs) var(--space-sm);border-left:1px solid var(--border);',
+    // the index is plain text on the sky: no card, no rules. Its numbers line up with the nav's star.
+    '[data-case-index] ol{position:sticky;top:' + TOP + 'px;list-style:none;margin:var(--space-fluid-xl) 0 0;padding:0;max-width:240px;pointer-events:auto}',
+    '[data-case-index] a{display:grid;grid-template-columns:22px 1fr;gap:var(--space-xs);padding:var(--space-xs) 0;',
     'font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;',
-    'color:var(--text-muted);text-decoration:none;transition:color .25s ease,border-color .25s ease}',
+    'color:var(--text-muted);text-decoration:none;transition:color .25s ease}',
     '[data-case-index] a:hover{color:var(--text-muted)}',
-    '[data-case-index] a[aria-current="step"]{color:var(--text-strong);border-left:2px solid var(--accent);padding-left:var(--space-sm)}',
+    '[data-case-index] a[aria-current="step"]{color:var(--text-strong)}',
     '[data-case-index] a[aria-current="step"] span:first-child{color:var(--accent)}',
     '[data-case-index] a.done{color:var(--text-muted)}',
     // the rail text is replaced by the index; it stays in the page (transparent) so screen readers keep the heading
@@ -20,6 +21,11 @@
     '[data-case-eyebrow]{display:block;margin:0 0 var(--space-md);font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);color:var(--text-heading)}',
     '[data-case-eyebrow] span{color:var(--accent);margin-right:0.45em}',
     '@media ' + WIDE + '{html.has-case-index [data-rail-indexed]{color:transparent!important;user-select:none}',
+    // section titles stick while you read (LAY-08): a white card with the level-1 shade, opaque, just under the nav.
+    // The content scrolls up behind it; the negative side margins keep the title text aligned with the body.
+    '[data-case-eyebrow]{position:sticky;top:70px;z-index:5;margin-left:-20px;margin-right:-20px;padding:14px 20px;',
+    'html.has-case-index [data-case-eyebrow]{max-width:none}',
+    'background:var(--surface-card);border-radius:var(--radius-md);box-shadow:var(--elevation-1)}',
     // the body sits on the details band's 4-column grid: index in column 1, content and dividers from column 2
     'html.has-case-index [data-case-band]{--case-gap:clamp(20px,3vw,36px);column-gap:var(--case-gap)!important;',
     '--case-col:calc((100% - 3 * var(--case-gap)) / 4);--case-divider-left:calc(var(--case-col) + var(--case-gap))}',
@@ -54,7 +60,6 @@
     nav.setAttribute('data-case-index', '');
     nav.setAttribute('aria-label', 'Case sections');
     var ol = document.createElement('ol');
-    ol.setAttribute('data-surface', ''); // a white surface: its rules come back with real contrast
     nav.appendChild(ol);
 
     var links = rails.map(function (h, i) {
@@ -123,11 +128,20 @@
       var last = bands[bands.length - 1].getBoundingClientRect();
       var r = rails[0].getBoundingClientRect();
       nav.style.left = (r.left - h.left) + 'px';
-      nav.style.width = Math.min(r.width, 250) + 'px'; // a narrow card; the body column keeps its place
+      nav.style.width = Math.min(r.width, 240) + 'px'; // a narrow list; the body column keeps its place
       // the card's top lines up with the first section title
-      ol.style.marginTop = getComputedStyle(bands[0]).paddingTop;
+      ol.style.marginTop = 'calc(' + getComputedStyle(bands[0]).paddingTop + ' + 14px)'; // + the pinned title's own top padding
       nav.style.top = (first.top - h.top) + 'px';
       nav.style.height = (last.bottom - first.top) + 'px';
+      // one width for every pinned title: from its column to the body's right edge, whatever the column's measure
+      var wide = matchMedia(WIDE).matches;
+      bands.forEach(function (band) {
+        var eb = band.querySelector('[data-case-eyebrow]');
+        if (!eb) return;
+        if (!wide) { eb.style.width = ''; return; }
+        var col = eb.parentElement.getBoundingClientRect();
+        eb.style.width = (band.getBoundingClientRect().right - col.left + 40) + 'px';
+      });
     }
 
     var current = -1;

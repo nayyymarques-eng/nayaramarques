@@ -5,6 +5,7 @@
   --font-size-2xs:10px;                        /* labels inside product mockups; tags */
   --font-size-diagram:9.5px;                   /* every label inside an illustration (ILL-02) */
   --font-size-diagram-core:10.5px;             /* the result word at the centre of an illustration */
+  --font-size-diagram-heading:12.5px;          /* a column heading inside an illustration (Centralised, Distributed) */
   --font-size-eyebrow:11px;                    /* THE eyebrow: 11px, 600, 0.14em, uppercase (TYP-01) */
   --font-size-xs:11px;                         /* label, button, marker */
   --font-size-sm:14px;                         /* caption, card prose, chip */

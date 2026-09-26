@@ -40,6 +40,18 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .tag{display:inline-block;align-self:flex-start;padding:5px 11px;border-radius:var(--radius-full);background:var(--surface-tag);
   font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-tag);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
 .tags{display:flex;flex-wrap:wrap;gap:var(--space-xs)}
+/* A badge marks a state inside product UI (Composer, In context): a pill, a dark slate fill, white text. One variant. */
+.badge{display:inline-block;padding:3px 8px;border-radius:var(--radius-full);background:var(--text-body);color:var(--surface-card);
+  font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-tag);line-height:var(--leading-label);text-transform:uppercase;white-space:nowrap}
+/* A separate place you leave your work to reach (another page): a dashed outline, light, never a dark block. */
+.elsewhere{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:96px;padding:18px var(--space-md);
+  background:var(--surface-card);border:1.5px dashed var(--text-muted);border-radius:var(--radius-sm)}
+.elsewhere__path{display:flex;flex-direction:column;align-items:center;gap:6px;margin:6px 0 8px;color:var(--text-muted)}
+.elsewhere__path::before{content:"";width:0;height:14px;border-left:1.5px dashed var(--text-muted)}
+/* Compared options (FLW-02): the considered one says why, in the traded colour; the decided one is Chosen, solid accent.
+   Nothing is struck through: both stay fully readable. */
+.tag--considered{color:var(--status-cost);background:color-mix(in srgb,var(--status-cost) 10%,var(--surface-card));letter-spacing:var(--tracking-label)}
+.tag--chosen{color:var(--surface-card);background:var(--accent);letter-spacing:var(--tracking-label)}
 
 /* ---------- Sections (SEC-01, SEC-02) ----------
    A divider opens every section: an in-flow 1px rule at content width, never edge
@@ -156,9 +168,9 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .accordion a{color:var(--accent)}
 
 /* ---------- Landing template (services pages) ---------- */
-.ld-wrap{max-width:var(--page-max);margin:0 auto;padding:0 var(--page-gutter)}
-@media (max-width:480px){.ld-wrap{padding:0 20px}}
-.ld-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center;padding:clamp(40px,7vw,96px) 0 clamp(8px,2vw,24px)}
+.ld-wrap{max-width:var(--page-max);margin:0 auto;padding-inline:var(--page-gutter)}
+/* the landing hero sits on the one hero anatomy: top-aligned, never centred (HERO-01) */
+.ld-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:start;padding:0 0 clamp(8px,2vw,24px)}
 .ld-hero h1{margin:0 0 clamp(20px,3vw,28px);font-size:var(--font-size-3xl);font-weight:500;line-height:0.98;letter-spacing:var(--tracking-display);max-width:15ch;text-wrap:balance}
 .ld-lede{margin:0;max-width:52ch;font-size:clamp(16px,1.2vw,18px);line-height:1.55;color:var(--text-body);text-wrap:pretty}
 .ld-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);margin-top:clamp(28px,4vw,40px)}
@@ -176,6 +188,8 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .ld-layers .eyebrow{margin-bottom:10px}
 .ld-layers h3{margin:0 0 var(--space-xs);font-size:19px;font-weight:500;line-height:1.2;letter-spacing:-0.02em}
 .ld-layers p{margin:0;font-size:var(--font-size-action);line-height:1.6;color:var(--text-body);text-wrap:pretty}
+.ld-card--half{max-width:560px}
+.ld-layers--auto{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
 .ld-big{margin:0 0 var(--space-xs);font-size:clamp(26px,3vw,36px);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--text-heading)}
 .ld-when{margin-top:var(--space-md) !important;padding-top:14px;border-top:1px solid var(--border);font-size:var(--font-size-sm) !important;color:var(--text-muted) !important}
 .ld-when .eyebrow{display:block;margin:0 0 6px}

@@ -200,8 +200,8 @@
 
           <h3 style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg);margin-bottom:var(--space-xl);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">4.4</span>Key decisions</h3>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-xl);align-items:stretch">
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 01" title="Test the new thing against the thing it replaces" gained="A clear answer, not polite approval: staff who work the loads chose the email; only managers chose the platform." traded="A sprint's worth of investment in a platform we shelved. An uncomfortable result to present, and the right one." hint-size="100%,380px">The sprint's winner was View Matches, a site for uploading capacity and receiving load matches. I tested it against the existing email instead of on its own.</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="Decision 02" title="Improve the email first, keep the platform for later" gained="Response rate up 250%, against four replies in the previous six months." traded="Investing in a channel we don't own. Every future feature has to survive an inbox." hint-size="100%,380px">We rebuilt the email around the lane and kept View Matches on the roadmap for managers.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" eyebrow="Decision 01" title="Test the new thing against the thing it replaces" gained="A clear answer, not polite approval: staff who work the loads chose the email; only managers chose the platform." traded="A sprint's worth of investment in a platform we shelved. An uncomfortable result to present, and the right one." hint-size="100%,380px">The sprint's winner was View Matches, a site for uploading capacity and receiving load matches. I tested it against the existing email instead of on its own.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" eyebrow="Decision 02" title="Improve the email first, keep the platform for later" gained="Response rate up 250%, against four replies in the previous six months." traded="Investing in a channel we don't own. Every future feature has to survive an inbox." hint-size="100%,380px">We rebuilt the email around the lane and kept View Matches on the roadmap for managers.</x-import>
           </div>
         </div>
       </div>
@@ -251,9 +251,9 @@
             <p style="margin:0 0 var(--space-xl);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Staff who work the loads chose the email; only managers chose the platform. Recommending the email meant shelving a platform the team had already designed.</p>
             <div class="card" style="display:flex;flex-wrap:wrap;gap:var(--space-md);align-items:center;padding:var(--space-lg) var(--space-lg)">
               <span style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);flex-shrink:0">What shipped</span>
-              <span style="font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-decoration:line-through">View Matches platform</span>
+              <span class="tag tag--considered" data-new-copy="fleet-considered">Considered · only managers chose it</span><span style="font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">View Matches platform</span>
               <span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span>
-              <span style="font-size:var(--font-size-sm);line-height:var(--leading-small);font-weight:600;color:var(--text-strong)">Redesigned match email</span>
+              <span class="tag tag--chosen" data-new-copy="fleet-chosen">Chosen</span><span style="font-size:var(--font-size-sm);line-height:var(--leading-small);font-weight:600;color:var(--text-strong)">Redesigned match email</span>
             </div>
           </div>
 
@@ -272,10 +272,10 @@
         <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">07 — What I learned</h2>
         <div style="flex:1 1 460px;min-width:0">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-xl);align-items:stretch">
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="On the product" title="Comparison beats evaluation" hint-size="100%,240px">"Is this good?" gets agreement. "Which of these two?" gets a decision.</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="On the product" title="The least glamorous surface often carries the business" hint-size="100%,240px">A worse portfolio piece, a better product decision. Use the channel users already check.</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="On the practice" title="A sprint without users is a hypothesis generator" hint-size="100%,240px">It aligned four countries in a week. Now I write the test for its output before it starts.</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" eyebrow="On the practice" title="Six interviews can redirect a roadmap" hint-size="100%,240px">Days of research moved the plan before any build. Size research to the decision.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" eyebrow="On the product" title="Comparison beats evaluation" hint-size="100%,240px">"Is this good?" gets agreement. "Which of these two?" gets a decision.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" eyebrow="On the product" title="The least glamorous surface often carries the business" hint-size="100%,240px">A worse portfolio piece, a better product decision. Use the channel users already check.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" eyebrow="On the practice" title="A sprint without users is a hypothesis generator" hint-size="100%,240px">It aligned four countries in a week. Now I write the test for its output before it starts.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" eyebrow="On the practice" title="Six interviews can redirect a roadmap" hint-size="100%,240px">Days of research moved the plan. Size research to the decision.</x-import>
           </div>
         </div>
       </div>

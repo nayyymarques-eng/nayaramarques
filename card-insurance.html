@@ -91,34 +91,31 @@
   /* 6.1 Flow placement. Flows read horizontally, left to right, on one shared six-column grid (FLW-01), so the moment of
      card conversion lines up: step 6 in the considered flow, step 2 in the chosen one. The considered flow is labelled with its
      reason, never struck through; the decided one is labelled Chosen (FLW-02). Narrow screens scroll inside the frame. */
-  .figure > .fh-scroll { overflow-x: auto; overflow-y: hidden; border-radius: var(--radius-sm); display: grid; gap: var(--space-xs); }
-  .fh-head { display: flex; justify-content: space-between; gap: var(--space-md); padding: var(--space-lg) var(--space-lg) var(--space-sm); font-size: var(--font-size-eyebrow); font-weight: 600; letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--text-muted); }
-  .fh-flow { min-width: 900px; border-radius: var(--radius-md); padding: 18px var(--space-lg) var(--space-md); background: var(--surface-well); box-shadow: var(--elevation-inset-1); }
-  .fh-flow--chosen { background: var(--surface-page); }
-  .fh-label { display: flex; align-items: baseline; gap: var(--space-sm); margin-bottom: var(--space-lg); }
+  .figure > .fh-scroll { overflow-x: auto; overflow-y: hidden; contain: inline-size; border-radius: var(--radius-sm); display: grid; gap: var(--space-xs); padding: 4px; }
+  .fh-flow { min-width: 900px; border-radius: var(--radius-md); padding: 18px var(--space-lg) var(--space-md); }
+  .fh-flow--considered { background: transparent; }
+  .fh-flow--chosen { background: var(--surface-page); box-shadow: var(--elevation-inset-1); }
+  .fh-label { display: flex; align-items: baseline; gap: var(--space-sm); margin-bottom: 14px; }
   .fh-name { font-size: var(--font-size-action); font-weight: 500; color: var(--text-strong); }
-  .fh-tag { font-size: var(--font-size-2xs); font-weight: 600; letter-spacing: var(--tracking-label); text-transform: uppercase; padding: 4px 9px; border-radius: var(--radius-full); }
-  .fh-tag--considered { color: var(--status-cost); background: color-mix(in srgb, var(--status-cost) 10%, var(--surface-card)); }
-  .fh-tag--chosen { color: var(--surface-card); background: var(--accent); }
   .fh-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px; }
-  .fh-step { position: relative; display: flex; flex-direction: column; gap: 6px; min-height: 72px; padding: var(--space-sm); border-radius: var(--radius-sm); background: var(--surface-card); font-size: var(--font-size-sm); line-height: 1.35; color: var(--text-body); }
+  .fh-step { position: relative; display: flex; flex-direction: column; gap: 6px; min-height: 72px; padding: var(--space-sm); border-radius: var(--radius-sm); background: var(--surface-card); font-size: var(--font-size-sm); line-height: 1.35; color: var(--text-body); box-shadow: var(--elevation-1); }
+  .fh-flow--considered .fh-step { box-shadow: 0 0 0 1px var(--border); }
   .fh-step + .fh-step::before { content: "→"; position: absolute; left: -17px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--text-muted); }
   .fh-n { font-size: var(--font-size-eyebrow); font-weight: 600; letter-spacing: var(--tracking-tag); color: var(--text-muted); font-variant-numeric: tabular-nums; }
-  .fh-risk { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--status-cost) 55%, transparent); }
+  .fh-kicker { display: block; margin-bottom: 2px; font-size: var(--font-size-eyebrow); font-weight: 600; letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--accent); }
+  .fh-flow--considered .fh-risk { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--status-cost) 55%, transparent); }
   .fh-flag { color: var(--status-cost); }
   .fh-conv { background: var(--accent); color: var(--surface-card); font-weight: 500; }
   .fh-conv .fh-n { color: color-mix(in srgb, var(--surface-card) 80%, transparent); }
   /* conversion arriving late is the pale accent; ink text keeps it AA */
-  .fh-conv--late { background: color-mix(in srgb, var(--accent) 45%, var(--surface-card)); color: var(--text-strong); }
+  .fh-flow--considered .fh-conv--late { background: color-mix(in srgb, var(--accent) 45%, var(--surface-card)); color: var(--text-strong); box-shadow: none; }
   .fh-conv--late .fh-n { color: var(--text-strong); }
-  .fh-after { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent); }
-  /* the pending task is not the next step: its marker replaces the arrow */
-  .fh-pending::before { content: none !important; }
-  .fh-pending__label { position: absolute; left: -8px; top: -20px; font-size: var(--font-size-eyebrow); font-weight: 600; letter-spacing: var(--tracking-tag); text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+  .fh-after { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent), var(--elevation-1); }
+  .fh-pending { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent), var(--elevation-1); }
+  .fh-area { background: color-mix(in srgb, var(--accent) 7%, var(--surface-card)); }
   .fh-note { margin: 14px 2px 0; font-size: var(--font-size-sm); line-height: var(--leading-snug); color: var(--text-muted); max-width: 70ch; }
   .fp-risks-lead { margin: 28px 0 var(--space-xs); font-size: var(--font-size-md); line-height: var(--leading-body); color: var(--text-body); }
   .fp-risks { margin: 0; padding-left: var(--space-lg); display: grid; gap: 6px; font-size: var(--font-size-md); line-height: var(--leading-snug); color: var(--text-body); }
-  @media (max-width: 760px) { .fh-head { flex-direction: column; gap: var(--space-2xs); } }
 </style>
 <script src="./image-slot.js"></script>
 <script src="./case-index.js"></script>
@@ -270,7 +267,7 @@
           </div>
           <div style="margin-bottom:var(--section-y)">
             <h3 style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg);margin-bottom:var(--space-md);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">4.3</span>User flows</h3>
-            <p style="margin:0 0 var(--space-2xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Contracting, claim and cancellation, mapped before any screen.</p>
+            <p style="margin:0 0 var(--space-2xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Contracting, claim and cancellation, mapped.</p>
             
             <div style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)">
               <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Contracting</div>
@@ -359,24 +356,22 @@
 
           <div style="border-top:1px solid var(--border);padding-top:var(--space-lg);margin-bottom:var(--section-y)">
             <h3 style="margin-bottom:var(--space-md);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">6.1</span>Flow placement</h3>
-            <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Insurance inside the card request put three things at risk (below). Contracting moved to card settings, with a pending task after card success, before any of it was built.</p>
+            <p data-new-copy="fp-intro" style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Insurance inside the card request put three things at risk (below). Contracting moved to card settings, as a pending task after card success.</p>
 
           <!-- proposal: horizontal flow figure (Nayara, 2026-09-25). Flows read left to right on one shared six-column grid, so card conversion lines up: step 6 in the considered flow, step 2 in the chosen one. The considered flow is labelled with its reason, never struck through. Considered: FlowChain (a wrapping row of chips, no shared grid), the case figure (holds an image, not aligned flows). -->
           <figure class="figure fh">
-            <div class="fh-head"><span>Where contracting lives</span><span>Tested from both entry points</span></div>
             <div class="fh-scroll">
-              <div class="fh-flow">
-                <div class="fh-label"><span class="tag fh-tag fh-tag--considered" data-new-copy="flow-tag-considered">Considered · too risky for conversion</span><span class="fh-name">Inside the card request</span></div>
+              <div class="fh-flow fh-flow--considered">
+                <div class="fh-label"><span class="tag tag--considered" data-new-copy="flow-tag-considered">Considered · too risky for conversion</span><span class="fh-name">Inside the card request</span></div>
                 <ol class="fh-steps"><li class="fh-step"><span class="fh-n">01</span><span>Request the card</span></li><li class="fh-step"><span class="fh-n">02</span><span>Benefits</span></li><li class="fh-step"><span class="fh-n">03</span><span>Invest+</span></li><li class="fh-step"><span class="fh-n">04</span><span>Virtual card</span></li><li class="fh-step fh-risk"><span class="fh-n">05</span><span>Insurance plans <span class="fh-flag">+ paid checkout</span></span></li><li class="fh-step fh-conv fh-conv--late"><span class="fh-n">06</span><span>Card conversion</span></li></ol>
                 <p class="fh-note">One journey, five tasks, ending in the metric retail was measured on.</p>
               </div>
               <div class="fh-flow fh-flow--chosen">
-                <div class="fh-label"><span class="tag fh-tag fh-tag--chosen" data-new-copy="flow-tag-chosen">Chosen</span><span class="fh-name">Insurance page in card settings</span></div>
-                <ol class="fh-steps"><li class="fh-step"><span class="fh-n">01</span><span>Request the card</span></li><li class="fh-step fh-conv"><span class="fh-n">02</span><span>Card conversion</span></li><li class="fh-step fh-after fh-pending"><span class="fh-pending__label"><span aria-hidden="true">↳</span> Pending task</span><span class="fh-n">03</span><span>Card settings → Seguro do cartão</span></li><li class="fh-step fh-after"><span class="fh-n">04</span><span>Contract · claim · cancel, one place</span></li></ol>
+                <div class="fh-label"><span class="tag tag--chosen" data-new-copy="flow-tag-chosen">Chosen</span><span class="fh-name">Insurance page in card settings</span></div>
+                <ol class="fh-steps"><li class="fh-step"><span class="fh-n">01</span><span>Request the card</span></li><li class="fh-step fh-conv"><span class="fh-n">02</span><span>Card conversion</span></li><li class="fh-step fh-pending"><span class="fh-n">03</span><span><span class="fh-kicker">Pending task</span><span data-new-copy="flow-step-card-insurance">Card insurance</span></span></li><li class="fh-step fh-after"><span class="fh-n">04</span><span>Card settings</span></li><li class="fh-step fh-after fh-area"><span class="fh-n">05</span><span><span class="fh-kicker">Seguro do cartão</span>Contract · claim · cancel, one place</span></li></ol>
                 <p class="fh-note">Conversion completes first. Insurance gets a permanent home, and paid never sits beside free.</p>
               </div>
             </div>
-            <figcaption><strong>The placement change.</strong> Made before build.</figcaption>
           </figure>
           <p class="fp-risks-lead" data-new-copy="fp-risks-lead">Inside the card request, insurance put three things at risk:</p>
           <ul class="fp-risks">
@@ -437,7 +432,7 @@
             <div class="card" style="padding:var(--space-fluid-m)">
               <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the practice</div>
               <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Principles agreed early are cheaper than arguments later</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Written with engineering before the first screen, they framed the case for moving the flow in terms everyone had agreed. I still open projects this way.</p>
+              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Written with engineering, they framed the case for moving the flow in terms everyone had agreed. I still open projects this way.</p>
             </div>
 
             <div class="card" style="padding:var(--space-fluid-m)">
