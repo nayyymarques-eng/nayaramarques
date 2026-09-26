@@ -220,3 +220,18 @@ Report: `_review/round-3.html` (screenshots in `_review/round-3-img/`, before an
 | `0269f1c` | Checks |
 | `7f96151` | CLAUDE.md |
 | (last) | Round 3 report and this summary |
+
+## Round 4 (2026-09-26): one section padding, one column
+Report: `_review/round-4.html` (screenshots in `_review/round-4-img/`; measurements in `_review/round-4-before.json` and `-after.json`). Not linked from the site.
+
+- **Rule:** SEC-04, every top-level section has `--section-y` (36 to 64px) above and below its content, on every page. SEC-05: content starts on the gutter (on wide case pages, on column 2 of the details grid); two-part blocks split into equal halves. Heroes, the ink band and the footer keep their own padding. No new token; `--section-pad` is now unused and `--section-gap` stays only under a landing hero.
+- **Fixes:** `.section` puts `--section-y` on both sides of its divider (was 48–88 above, 32–56 below); the ink band and the next-case well lose their own margins; case details glass no bottom margin; last case sections, About and Contact from `--section-y-lg` to `--section-y`; trailing padding and margins removed on last children. "Where I've built" went from 64/148 to 63/64 at 1400px. `.ld-split` in equal halves, portrait on the gutter (was 62px in). The audit's half card gets card padding. `contact.html` lost a stale duplicate copy that hid the footer (also broken on `main`). The first home and work rows draw no reveal rule.
+- **Checks:** check_pages SEC-04 and SEC-05 (both reported a deliberate break). `harness/check.py` PASS; reduced motion pass on all 16 pages.
+- **Open questions:** five, in the report (one space under every hero, one ink band padding, the three cases without an ink band, the well's new spacing, the services split).
+
+| Commit | Step |
+|---|---|
+| `e8ac2da` | Before table, DECISIONS |
+| `d9d70e6` | One section padding on every page; portrait on the gutter |
+| `010a2eb` | SEC-04, SEC-05 in CLAUDE.md, with checks |
+| (last) | Round 4 report, this summary, PROGRESS |
