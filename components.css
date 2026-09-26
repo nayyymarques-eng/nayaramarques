@@ -132,6 +132,9 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .stat{margin:0;border-top:1px solid var(--border-divider);padding-top:var(--space-sm)}
 .stat__n{display:block;font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);color:var(--text-heading);font-variant-numeric:tabular-nums}
 .stat__caption{display:block;margin-top:var(--space-xs);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+/* proposal (visual round 2): .stats__note, one supporting line under a Result that gives its basis (the audit card). */
+.stats__grid:has(+.stats__note){margin-bottom:var(--space-sm)}
+.stats__note{margin:0;font-size:var(--font-size-action);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty}
 
 /* ---------- Glass: the case details, like the home's composer ----------
    Frosted, the same inner shade, a light bottom edge. Content width, lg radius; level -1 in spirit. */
@@ -228,6 +231,21 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 /* Narrow cells (the grid gives the window 400 to 460px below 1100px): tighter padding, rows may wrap. */
 @media (max-width:1100px){.illo-window--case{padding:var(--space-md)}.illo-window--case .illo-cols{gap:var(--space-sm)}.illo-window--case .illo-row:not(.illo-row--keep){flex-wrap:wrap}}
 .illo-slot{box-shadow:none;border:var(--stroke-diagram) dashed var(--accent);color:var(--accent)}
+/* proposal (visual round 2): .illo-ba, a case window that shows one change, read left to right. The side before is
+   quiet (outlines, muted, no shade); an arrow; the side after is the focal point (level-1 UI, the one accent, the
+   core label). Considered: .illo-cols (two equal columns with no reading order or arrow, so the eye had no start);
+   .chain (a flow of blocks on a page, not inside a window). Awaiting Nayara. */
+.illo-window--case:has(.illo-ba){min-height:272px;justify-content:center}
+.illo-ba{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:var(--space-sm)}
+.illo-ba__to{width:16px;height:16px;color:var(--text-subtle)}
+.illo-side{display:flex;flex-direction:column;gap:var(--space-xs);min-width:0}
+.illo-side>:not(.illo-label)+.illo-label{margin-top:var(--space-2xs)}
+.illo-ui--ghost .illo-bar{background:var(--border)}
+.illo-sign{font-size:var(--font-size-diagram-heading);font-weight:600;color:var(--text-muted);align-self:center}
+.illo-ui--ghost{background:transparent;box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border);color:var(--text-muted)}
+.illo-send--quiet{background:var(--surface-hover);color:var(--text-subtle)}
+.illo-bar--short{width:40%}
+.illo-bar--mid{width:64%}
 
 /* ---------- The ink band: architecture, straight, edge to edge (SHP-01) ---------- */
 .band-inverse{position:relative;isolation:isolate;background:var(--surface-inverse);color:var(--text-on-inverse);box-shadow:var(--bleed-shadow-inverse);clip-path:var(--bleed-clip);border:0;border-radius:0}
