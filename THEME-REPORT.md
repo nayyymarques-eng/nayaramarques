@@ -179,3 +179,25 @@ Every rail section now opens with `p[data-sec-intro]`. These are the drafted tex
 - **contact.html** carries a duplicated page block (a second `<x-dc>`), from before this work; both copies were changed the same way.
 - The exploration's `kit.html` and the `index-before-*` prototypes were not ported (not site pages).
 - Pre-existing COL-07 warnings (`--track-lead`) were left.
+
+## Round 2 (2026-09-25): headings, content patterns, numbers
+Morning report: `_review/round-2.html` (screenshots in `_review/round-2-img/`); type study: `_review/type-scale.html`. Neither is linked from the site.
+
+- **Copy:** approved; every `data-new-copy` marker removed. Three new labels from this round carry `data-new-copy` again until you approve them: "Scope" (design-system 01), "Results" (advisors 06, fleet 6.2).
+- **Headings:** section title unchanged (NN in the accent, 20/600). Sub-sections lost the N.N number and take a 12 × 2px accent bar, 17/600 (16 on phones), new token `--font-size-subsection`. Card titles step down to 16/600. LAY-08/09 rewritten; HIER-01 (check_pages) and PAT-02 (check_source) enforce it.
+- **Content patterns:** CLAUDE.md §7 names 17 jobs and one structure each, set on the element as `data-pattern`. Rows (ListRow): finding, constraint, principle, outcome, reference, gap. Cards (DecisionCard): problem, decision, feature, term, lesson. Steps: `.stages`. Numbers: `.stats` as Result or Scope, labelled. Applied to the six cases and about; services untouched. Hand-built rows and cards on advisors and card-insurance are now the design-system components (the bundle loads there). 21 list, card and number structures became 5 (plus two kept for your call). 35 sub-section numbers and 42 ordinals on parallel rows are gone.
+- **Numbers:** NUM table in CLAUDE.md §7. No value changed, none added; design-system's 10 and 5 moved from the numbers block into the audit findings.
+- **Checks:** check_source PAT-01..04; check_pages HIER-01, PAT-04. check_source ends with 0 failures (8 warnings, all older); check_pages passes on all 16 pages at 1400 and 375, and on the seven changed pages with reduced motion.
+- **Proposals (CMP-03), waiting for your verdict:** `.subsection`, `.stages`, `.stats`, `.cards--2`, and `data-pattern` on ListRow and DecisionCard.
+- **Open questions:** in the report, each with a recommendation.
+
+| Commit | Step |
+|---|---|
+| `17911e0` | Copy approved; markers removed |
+| `629af55` | Heading hierarchy |
+| `6ccbbd9` | Content patterns applied |
+| `fb8828a` | Rules and checks (PAT, NUM, HIER) |
+| `859af4f` | Type scale study |
+| `f1cc11a` | PAT-04 page check scoped to cases and about |
+| `dd9f265` | New labels marked `data-new-copy` |
+| (last) | Round 2 report and this summary |
