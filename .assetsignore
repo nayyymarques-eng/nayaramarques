@@ -7,3 +7,8 @@ wrangler.jsonc
 .wrangler
 harness
 CLAUDE.md
+PROGRESS.md
+DECISIONS.md
+QUALITY.md
+docs
+_review

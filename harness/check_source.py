@@ -41,8 +41,9 @@ ALLOW = {
 
 # Content patterns (CLAUDE.md §7): each job has one structure. Round 3 (2026-09-26): constraints, steps and outcomes
 # joined the cards, and every card is stacked (PAT-05); gaps are inactive rows (PAT-07).
-PAT_JOBS = {j: 'ListRow' for j in ('finding', 'principle', 'reference', 'gap')}
-PAT_JOBS.update({j: 'DecisionCard' for j in ('problem', 'constraint', 'step', 'decision', 'feature', 'term', 'outcome', 'lesson')})
+PAT_JOBS = {j: 'ListRow' for j in ('finding', 'reference', 'gap')}
+# principle joined the cards on 2026-09-26 (round 3 verdict); about's hand-built principle rows carry links and wait for a links line in DecisionCard
+PAT_JOBS.update({j: 'DecisionCard' for j in ('problem', 'constraint', 'step', 'decision', 'feature', 'term', 'outcome', 'lesson', 'principle')})
 # the eyebrow is a card's marker where the job has one (PAT-03)
 PAT_EYEBROW = {'problem': r'Problem [A-Z]', 'constraint': r'Constraint [A-Z]', 'step': r'\d{2}|Phase \d+'}
 

@@ -5,12 +5,13 @@ Sources of truth, in order: `_ds/…/tokens/*.css` (values) → this file (decis
 The site wears the **sky theme** (approved 2026-09-25): one grained blue sky behind every page, one light and one hue, depth that means where a surface sits. Its rules are in §6.
 
 ## 0. Workflow
+0. Start: read `PROGRESS.md` (state, what waits on Nayara, next steps) and `DECISIONS.md` (her verdicts; never bring back what they rule out).
 1. Before editing: name the rule IDs your change touches.
 2. Edit. Reuse tokens and components (§1, §3). Never hand-write a value a token already has.
-3. Check source: `python3 harness/check_source.py`. Must end with `0 failure(s)`. Read warnings; fix the ones in files you touched.
-4. Check rendered pages: start the `site` preview (`.claude/launch.json`, port 8787), open each changed page, run
-   `eval(await (await fetch('/harness/check_pages.js')).text())`. Must return `pass` at 1400px and at 375px wide, and once with reduced motion on.
-5. Show Nayara the change in the preview. Deploy only when she says so: `/deploy`.
+3. Check: `python3 harness/check.py` (source rules, then every page in headless Chrome at 1400px and 375px; add page names to check only those). Must end with `PASS`. Read the warnings; fix the ones in files you touched. By hand: `harness/check_source.py`, and in the `site` preview `eval(await (await fetch('/harness/check_pages.js')).text())`, which must return `pass` at 1400px and 375px, and once with reduced motion on.
+4. Show Nayara the change in the preview. Deploy only when she says so: `/deploy`.
+5. A verdict from Nayara goes into `DECISIONS.md` the same day. If a machine can check it, it also becomes a rule here and a check in `harness/`, so she never has to give it twice.
+6. End: update `PROGRESS.md` (the three blocks, and the `Updated:` line) before you stop.
 
 ## 1. Colour (COL)
 - **COL-01** No literal colour in any CSS context: `style`, `style-before`, `style-after`, `style-hover`, `<style>`, CSS strings in x-dc and inline scripts. Use `var(--token)`. `rgba()`, `hsl()`, `oklch()` count as literals; use `color-mix(in srgb, var(--role) N%, transparent)`. *(check_source)*
@@ -199,7 +200,7 @@ Every block of content on a case page (and on about) does one job, and each job 
 | Outcome | a change the work made or is expected to make, in words | stacked card | none | `DecisionCard data-pattern="outcome"` in `.cards` |
 | Lesson | a thought taken forward | stacked card | eyebrow `On the product` / `On the practice` | `DecisionCard data-pattern="lesson"` in `.cards` |
 | Finding | an observed fact from research, an audit or a survey | row | none; a count, when there is one, is the lead (`6 of 6`, `90%`, `10`); bare labels with no body are tags (`ul.tags`) | `ListRow data-pattern="finding"` |
-| Principle | a rule agreed up front, a way of working | row | none | `ListRow data-pattern="principle"` (about: the same look, by hand) |
+| Principle | a rule agreed up front, a way of working | stacked card | none | `DecisionCard data-pattern="principle"` (about: hand-built rows with evidence links, until DecisionCard can carry a links line) |
 | Reference | a source or a benchmark the work drew on | row | none | `ListRow data-pattern="reference"` |
 | Gap | what the case does not cover, and why | inactive row | a hollow muted dot | `ListRow data-pattern="gap"`, only in "What this case doesn't cover" |
 | Result | a measured outcome | big number and caption | the number itself | `.stats data-pattern="result"`, label starts "Result" |
