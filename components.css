@@ -116,8 +116,12 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 [data-case-band]>h2[data-rail]+div>p:not([data-case-eyebrow]){max-width:var(--measure-prose-wide)}
 [data-case-band] :is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"]){max-width:none!important}
 [data-case-band] div:has(>*>:is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"])){max-width:none!important}
-[data-case-band] :is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"])>p,
-[data-case-band] [data-surface="card"] p{max-width:var(--measure-list)}
+[data-case-band] :is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"])>p{max-width:var(--measure-list)}
+/* Text inside a box fills the box (Nayara 2026-09-27): cards, figure captions and accordions carry no measure of their own;
+   the box is the measure. Rows and running prose keep theirs. */
+[data-surface="card"] p,[data-surface="card"] :is(h3,h4){max-width:none!important}
+/* ...and lines run to the box edge: no pretty/balance rewrapping inside boxes (it shortened whole paragraphs). */
+:is([data-surface="card"],.plan-card,.case-details,.accordion,.figure__caption,.figure>figcaption,.note) :is(p,dd,li){text-wrap:wrap}
 
 /* ---------- Content patterns (PAT, CLAUDE.md §7) ----------
    approved by Nayara 2026-09-26 (round 2), restacked in round 3: one structure per job, the job named on the element as
@@ -180,7 +184,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .case-details__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-fluid-l);margin:0}
 .case-details__list>div{min-width:0}
 .case-details dt{margin:0 0 var(--space-sm);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
-.case-details dd{margin:0;font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty}
+.case-details dd{margin:0;font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong)}
 @media (max-width:860px){.case-details__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg)}}
 @media (max-width:560px){
   .case-details{padding:var(--space-md) var(--space-lg)}
@@ -215,7 +219,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .figure{margin:0;min-width:0;background:var(--surface-card);border:0;border-radius:var(--radius-lg);box-shadow:var(--elevation-2);padding:var(--figure-inset)}
 .figure>:not(figcaption,.figure__caption){border:0;border-radius:var(--radius-sm);box-shadow:none;overflow:hidden}
 /* one caption style everywhere, inside the same white card: 15px at 1.5, the bold lead in ink, the rest in body */
-.figure>figcaption,.figure__caption{flex:1;background:none;border:0;border-radius:0;padding:var(--space-md) var(--space-sm) 10px;max-width:70ch;
+.figure>figcaption,.figure__caption{flex:1;background:none;border:0;border-radius:0;padding:var(--space-md) var(--space-sm) 10px;max-width:none;
   font-size:var(--font-size-action);line-height:var(--leading-snug);color:var(--text-body);text-wrap:pretty}
 .figure__caption p{margin:0}
 .figure__caption p+p{margin-top:var(--space-xs)}
@@ -452,7 +456,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .plan-card{display:flex;flex-direction:column;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--elevation-2);padding:var(--card-p-lg)}
 .plan-card .tag{margin:0 0 var(--space-lg)}
 .plan-card h3{margin:0 0 10px;font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead)} /* one h3 size (TYP-04) */
-.plan-card>p:not(.tag):not(.eyebrow){margin:0 0 var(--space-xl);max-width:46ch;font-size:var(--font-size-md);line-height:1.6;color:var(--text-body);text-wrap:pretty}
+.plan-card>p:not(.tag):not(.eyebrow){margin:0 0 var(--space-xl);max-width:none;font-size:var(--font-size-md);line-height:1.6;color:var(--text-body);text-wrap:pretty}
 .plan-card>.eyebrow{margin:0 0 var(--space-xs)}
 .plan-card ul{list-style:none;margin:0 0 28px;padding:0;border-top:1px solid var(--border)}
 .plan-card li{display:flex;gap:var(--space-sm);align-items:baseline;padding:var(--space-sm) 0;border-bottom:1px solid var(--border);font-size:var(--font-size-action);line-height:var(--leading-snug);color:var(--text-body)}
@@ -470,7 +474,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .accordion__chev{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;color:var(--accent);background:var(--surface-tag);transition:transform var(--dur-hover-slow) var(--ease-in-out-soft)}
 .accordion__chev svg{display:block;width:12px;height:12px}
 .accordion[open] .accordion__chev{transform:rotate(180deg)}
-.accordion p:not(.eyebrow){margin:0;padding:0 clamp(18px,2.2vw,24px) clamp(18px,2.2vw,24px);max-width:70ch;font-size:var(--font-size-action);line-height:1.65;color:var(--text-body);text-wrap:pretty}
+.accordion p:not(.eyebrow){margin:0;padding:0 clamp(18px,2.2vw,24px) clamp(18px,2.2vw,24px);max-width:none;font-size:var(--font-size-action);line-height:1.65;color:var(--text-body);text-wrap:pretty}
 .accordion a{color:var(--accent)}
 
 /* ---------- Landing template (services pages) ---------- */
