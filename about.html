@@ -193,11 +193,11 @@
 
     <section style="padding:var(--section-y) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--border-divider)">
       <h2 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-md)">Tools &amp; range</h2>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--gap-cards)">
-      <!-- Tools & range, footer-style (Nayara 2026-09-26): one column per area, one item per line. The grid is .ld-layers
+      <div class="ld-cols4"><!-- the tools note spans columns 1 to 3, "On tools" column 4 (SEC-06, round 5) -->
+      <!-- Tools & range, footer-style (Nayara 2026-09-26): one column per area, one item per line. The grid is .ld-layers--cols
            (components.css: 4 columns, 2 below 1080px, 1 below 620px); the columns are plain lists inside the existing note. -->
-      <div class="note" style="flex:1 1 560px;min-width:0;padding:var(--space-fluid-m)">
-        <div class="ld-layers" style="row-gap:var(--space-xl)">
+      <div class="note ld-cols4__wide" style="min-width:0;padding:var(--space-fluid-m)">
+        <div class="ld-layers ld-layers--cols" style="row-gap:var(--space-xl)">
           <div style="min-width:0">
             <h3 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-sm)">Design</h3>
             <ul style="list-style:none;margin:0;padding:0">
@@ -249,7 +249,7 @@
           </div>
         </div>
       </div>
-      <div class="note" data-tools-note="" style="flex:1 1 280px;min-width:0;max-width:340px;padding:var(--space-fluid-m)">
+      <div class="note" data-tools-note="" style="min-width:0;padding:var(--space-fluid-m)">
         <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)">On tools</div>
         <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">I have used all the tools listed here, but a team does not need to use the same ones. With AI, I learn a new tool quickly, and my design decisions don't depend on which tool I use.</p>
       </div>

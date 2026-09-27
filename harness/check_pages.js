@@ -16,9 +16,10 @@
  *   TYP-04  one size per heading level outside case bodies: every visible h2 at --font-size-h2, every h3 at --font-size-h3;
  *           every subtitle (the hero lede, a section-head subtitle, the ink band's subtitle) at --font-size-lead.
  *           Labels (uppercase), case bodies (LAY-08 keeps its own scale), drawings and product mockups are excepted.
- *   SEC-06  a wide component (card, card group, accordion, row list, figure, stats, in-section divider) does not end on a
- *           line of the column grid: the full content width, or half of it (2 of 4 columns); in a case body, the body
- *           column. At most two card widths on a page: big (full) and small (half).
+ *   SEC-06  a wide component (card, card group, accordion, row list, figure, note, stats, in-section divider) does not end
+ *           on a line of the four-column grid (the end of column 1, 2, 3 or 4 of the content; in a case body, of the body
+ *           column). Cards come in two widths only: big (the full width) and small (half). Grid cells follow their grid;
+ *           heroes, the ink band, drawings, scrollers and anything inside a surface are out of scope.
  *   MOT-01  with reduced motion on, something still loops or the sky still moves
  *   COL-08  text contrast below WCAG AA on its ground: 4.5, or 3.0 for large text (24px+, or 18.66px+ bold).
  *           Text on the sky is measured against the sky's darkest point (--sky-deepest). Images, gradients and
@@ -314,6 +315,70 @@
     }
     out.push(...pads, ...cols);
     settle.remove();
+  }
+
+  // SEC-06 wide components end on the column grid: the full content width, or half of it (2 of 4 columns); in a case body
+  // (wide screens) the body column. Cards come in two widths only: big (full) and small (half). Heroes, the ink band, drawings,
+  // case windows and anything inside a surface are out of scope (a surface insets its own content).
+  {
+    const root = getComputedStyle(document.documentElement);
+    const G = Math.max(0, (W - (parseFloat(root.getPropertyValue('--page-max')) || 1400)) / 2) + (parseFloat(root.getPropertyValue('--page-gutter')) || 32);
+    const wideCase = document.documentElement.classList.contains('has-case-index') && matchMedia('(min-width: 861px)').matches;
+    const SURF = '.card,.link-card,.figure,figure,.well,.glass,.plan-card,.accordion,.note,[data-surface],.illo-window,.step,.chip';
+    const colOf = e => {
+      const band = e.closest('[data-case-band]');
+      let L = G, R = W - G;
+      if (band) {
+        const r = band.getBoundingClientRect();
+        R = r.right;
+        if (wideCase) { const gap = parseFloat(getComputedStyle(band).columnGap) || 0; L = r.left + (r.width - 3 * gap) / 4 + gap; }
+        else L = r.left;
+      }
+      return { L, R };
+    };
+    // inside a scroller or a clipping frame (below <main>; the page wrapper's clip is LAY-01's)
+    const scrolls = e => { for (let a = e.parentElement; a && a !== document.body && a.tagName !== 'MAIN'; a = a.parentElement) if (/auto|scroll|hidden|clip/.test(getComputedStyle(a).overflowX)) return true; return false; };
+    // form controls and links keep their own measure: a field's border, a link's underline are not dividers
+    const control = e => !!e.closest('label,form,fieldset,[role="radiogroup"],[role="group"]') || !!e.querySelector('input,textarea,select') || getComputedStyle(e).display.startsWith('inline');
+    const outOfScope = e => inMock(e) || !!e.closest('header,footer,.hero,.band-inverse,[data-case-index],.ld-art,.illo-window,.hx') || scrolls(e);
+    // a cell of a grid follows its grid: the grid (or the section around it) is what ends on a line
+    const cell = e => { const p = e.parentElement; if (!p) return false; const q = getComputedStyle(p); return q.display.includes('grid') && q.gridTemplateColumns.split(' ').filter(Boolean).length > 1; };
+    const nestedIn = e => { const p = e.parentElement && e.parentElement.closest(SURF); return !!p; };
+    const ends = new Set(), widths = new Set();
+    const judge = (e, what) => {
+      const r = e.getBoundingClientRect();
+      if (r.width < 40 || r.height < 1 || !visible(e, getComputedStyle(e))) return;
+      const { L, R } = colOf(e), g = gapPx, col = (R - L - 3 * g) / 4;
+      const lines = [1, 2, 3].map(k => L + k * col + (k - 1) * g); // the ends of columns 1 to 3 (a gap wider than 12px moves a line by at most half of it)
+      const onFull = Math.abs(r.right - R) <= 1.5, onLine = lines.some(x => Math.abs(r.right - x) <= 24);
+      const k = (e.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 30);
+      if (!onFull && !onLine) ends.add(`SEC-06 ${what} "${k}" ends at ${r.right.toFixed(0)}px; the column grid ends at ${lines.map(x => x.toFixed(0)).join(', ')} or ${R.toFixed(0)}px`);
+      return { r, L, R };
+    };
+    // cards: two widths, and they end on the grid
+    const CARD = '.card,.link-card,.plan-card,[data-surface="card"],.accordion';
+    for (const c of document.querySelectorAll(CARD)) {
+      if (outOfScope(c) || nestedIn(c)) continue;
+      const j = judge(c, 'a card'); if (!j) continue;
+      const full = j.R - j.L, w = j.r.width;
+      if (!(Math.abs(w - full) <= 1.5 || (w >= full / 2 - 24 && w <= full / 2 + 1))) widths.add(`SEC-06 a card ${w.toFixed(0)}px wide, near "${(c.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 30)}"; cards are big (${full.toFixed(0)}px) or small (half)`);
+    }
+    // other wide components
+    for (const e of document.querySelectorAll('.figure,figure,.note,.stats,.ld-list,[data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"],.accordions,.cards,.plans,.ld-layers,.link-cards')) {
+      if (outOfScope(e) || nestedIn(e) || cell(e)) continue;
+      judge(e, e.matches('[data-pattern]') ? 'a row' : 'a component');
+    }
+    // in-section dividers: a visible rule, not inside a surface
+    for (const e of document.querySelectorAll('main *')) {
+      if (outOfScope(e) || e.closest(SURF) || e.matches(SURF) || cell(e) || control(e)) continue;
+      const cs = getComputedStyle(e);
+      const ruled = ['Top', 'Bottom'].some(sd => parseFloat(cs['border' + sd + 'Width']) > 0 && cs['border' + sd + 'Style'] !== 'none' && !/rgba\(0, 0, 0, 0\)/.test(cs['border' + sd + 'Color']));
+      if (!ruled) continue;
+      const r = e.getBoundingClientRect(), { L, R } = colOf(e);
+      if (r.width < (R - L) * 0.3) continue; // short rules inside a row (a label, a key) are part of their row
+      judge(e, 'a divider');
+    }
+    out.push(...ends, ...widths);
   }
 
   // COL-08 contrast

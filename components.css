@@ -102,6 +102,18 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .subsection::before{content:"";flex:none;width:12px;height:2px;border-radius:var(--radius-full);background:var(--accent);transform:translateY(-0.32em)}
 p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
 
+/* ---------- Widths in a case body (SEC-06, round 5) ----------
+   Components end on the column grid: in a case body, the body column (columns 2 to 4 on wide screens). So the body column has
+   no max-width of its own (pages used to cap it at 62ch or 66ch, so cards, rows, figures and rules ended at different places);
+   prose keeps its measure instead: paragraphs 66ch, text inside rows and cards 70ch. ListRow's measure prop is overridden here
+   so every row rule ends where the cards end. */
+[data-case-band]>h2[data-rail]+div{max-width:none!important}
+[data-case-band]>h2[data-rail]+div>p:not([data-case-eyebrow]){max-width:var(--measure-prose-wide)}
+[data-case-band] :is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"]){max-width:none!important}
+[data-case-band] div:has(>*>:is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"])){max-width:none!important}
+[data-case-band] :is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"])>p,
+[data-case-band] [data-surface="card"] p{max-width:var(--measure-list)}
+
 /* ---------- Content patterns (PAT, CLAUDE.md §7) ----------
    approved by Nayara 2026-09-26 (round 2), restacked in round 3: one structure per job, the job named on the element as
    data-pattern="<job>". Cards and rows are the design-system DecisionCard and ListRow, set through that attribute (CMP-02);
@@ -164,7 +176,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 /* ---------- Figures: one surface (CRD-03) ----------
    A white card at level 2, the image inset by 8px (radius sm), the caption on the same card.
    One per row when it is evidence. */
-.figure{margin:0;background:var(--surface-card);border:0;border-radius:var(--radius-lg);box-shadow:var(--elevation-2);padding:var(--figure-inset)}
+.figure{margin:0;min-width:0;background:var(--surface-card);border:0;border-radius:var(--radius-lg);box-shadow:var(--elevation-2);padding:var(--figure-inset)}
 .figure>:not(figcaption,.figure__caption){border:0;border-radius:var(--radius-sm);box-shadow:none;overflow:hidden}
 /* one caption style everywhere, inside the same white card: 15px at 1.5, the bold lead in ink, the rest in body */
 .figure>figcaption,.figure__caption{flex:1;background:none;border:0;border-radius:0;padding:var(--space-md) var(--space-sm) 10px;max-width:70ch;
@@ -257,9 +269,8 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 
 /* ---------- Plan cards: an offer you choose between, level 2 ---------- */
 .plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards)}
-.plans--3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.plans--1{grid-template-columns:minmax(0,760px)}
-@media (max-width:1000px){.plans--3{grid-template-columns:minmax(0,1fr)}}
+/* two card widths (SEC-06): big (the content width) and small (half). A single offer card is small; there is no three-up. */
+.plans--1{grid-template-columns:minmax(0,calc((100% - var(--gap-cards)) / 2))}
 @media (max-width:760px){.plans{grid-template-columns:minmax(0,1fr)}}
 .plan-card{display:flex;flex-direction:column;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--elevation-2);padding:var(--card-p-lg)}
 .plan-card .tag{margin:0 0 var(--space-lg)}
@@ -274,7 +285,8 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .plan-card__price{font-size:var(--font-size-sm);font-weight:500;color:var(--text-strong)}
 
 /* ---------- Accordion cards: a question you open, level 1 ---------- */
-.accordions{display:grid;gap:var(--gap-cards);max-width:880px}
+.accordions{display:grid;gap:var(--gap-cards);max-width:calc((100% - var(--gap-cards)) / 2)} /* small: ends on the half line with the single offer card (SEC-06) */
+@media (max-width:760px){.accordions{max-width:none}}
 .accordion{background:var(--surface-card);border-radius:var(--radius-md);box-shadow:var(--elevation-1)}
 .accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);padding:clamp(18px,2.2vw,24px);
   font-size:var(--font-size-md);font-weight:500;line-height:1.45;letter-spacing:-0.01em;color:var(--text-strong);border-radius:var(--radius-md)}
@@ -297,21 +309,29 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 @media (max-width:860px){.ld-hero{grid-template-columns:minmax(0,1fr)}}
 .ld-after{margin:clamp(24px,3vw,32px) 0 0;max-width:66ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
 .ld-after a,.card a:not(.action){color:var(--accent)}
-.ld-layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0}
-.ld-layers--3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.ld-layers--2{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:1080px){.ld-layers,.ld-layers--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:620px){.ld-layers,.ld-layers--3,.ld-layers--2{grid-template-columns:minmax(0,1fr)}}
+/* two card widths (SEC-06): landing cards are small, two to a row (2 of the 4 columns each); one per row on phones.
+   the three-up, four-up and auto variants are retired (round 5). */
+.ld-layers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0}
+@media (max-width:620px){.ld-layers{grid-template-columns:minmax(0,1fr)}}
+/* text columns, not cards (About's Tools & range, footer-style): four across, two below 1080px, one below 620px */
+.ld-layers--cols{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1080px){.ld-layers--cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.ld-layers--cols{grid-template-columns:minmax(0,1fr)}}
+/* a block on the four-column grid (SEC-06): a wide part over columns 1 to 3, a narrow one in column 4; stacked below 860px */
+.ld-cols4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap-cards)}
+.ld-cols4__wide{grid-column:span 3}
+@media (max-width:860px){.ld-cols4{grid-template-columns:minmax(0,1fr)}.ld-cols4__wide{grid-column:auto}}
 .ld-layers>.card,.ld-card--half{padding:clamp(20px,2.4vw,28px)}
 .ld-layers .eyebrow,.ld-card--half .eyebrow{margin-bottom:10px}
 .ld-layers h3{margin:0 0 var(--space-xs);font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead)}
 :is(.ld-layers,.ld-card--half) p:not(.eyebrow):not(.ld-big){margin:0;font-size:var(--font-size-action);line-height:1.6;color:var(--text-body);text-wrap:pretty}
-.ld-card--half{max-width:560px}
-.ld-layers--auto{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
+.ld-card--half{max-width:calc((100% - var(--gap-cards)) / 2)} /* small (SEC-06) */
+@media (max-width:620px){.ld-card--half{max-width:none}}
 .ld-big{margin:0 0 var(--space-xs);font-size:clamp(26px,3vw,36px);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--text-heading)}
 .ld-when{margin-top:var(--space-md) !important;padding-top:14px;border-top:1px solid var(--border);font-size:var(--font-size-sm) !important;color:var(--text-muted) !important}
 .ld-when .eyebrow{display:block;margin:0 0 6px}
-.ld-list{list-style:none;margin:0;padding:0;max-width:820px;border-top:1px solid var(--border-strong)}
+.ld-list{list-style:none;margin:0;padding:0;max-width:calc((100% - var(--gap-cards)) / 2);border-top:1px solid var(--border-strong)}
+@media (max-width:760px){.ld-list{max-width:none}}
 .ld-list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:var(--space-sm);padding:var(--space-md) 0;border-bottom:1px solid var(--border-strong);font-size:var(--font-size-md);line-height:1.6;color:var(--text-strong)}
 .ld-list li>span{font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);color:var(--accent);padding-top:3px;font-variant-numeric:tabular-nums}
 /* proposal (round 5): .ld-list--quiet, a disclaimer list ("What this does not include" on the services pages). Low emphasis, the
@@ -322,8 +342,8 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-list--quiet li{display:flex;gap:var(--space-sm);align-items:baseline;border-bottom:1px dashed var(--border);color:var(--text-muted)}
 .ld-list--quiet li::before{content:"";flex:none;width:7px;height:7px;border:1px solid var(--text-subtle);border-radius:var(--radius-full);transform:translateY(-1px)}
 .ld-list--quiet li strong{display:block;margin-bottom:var(--space-3xs);font-weight:500;color:var(--text-body)}
-.link-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0}
-@media (max-width:1000px){.link-cards{grid-template-columns:minmax(0,1fr)}}
+.link-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0} /* small cards, two to a row (SEC-06) */
+@media (max-width:620px){.link-cards{grid-template-columns:minmax(0,1fr)}}
 .link-cards .link-card{height:100%;padding:clamp(20px,2.4vw,28px)}
 .link-card .eyebrow{margin:0 0 10px}
 .link-card h3{margin:0;font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-wrap:balance}

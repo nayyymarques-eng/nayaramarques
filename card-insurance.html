@@ -349,8 +349,8 @@
           <div style="border-top:1px solid var(--border);padding-top:var(--space-lg)">
             <h3 class="subsection">Price display</h3>
             <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Customers understood the three plans, but were slow to notice how the price changed between them. So a short animation went into the build: when the customer switches plan, the price and limits update in place.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-fluid-l);align-items:flex-start">
-            <div class="card" style="flex:0 1 360px;min-width:0;padding:var(--space-xl)">
+          <div class="ld-split" style="align-items:start"><!-- a small card (half) and its note in the other half (SEC-06, round 5) -->
+            <div class="card" style="min-width:0;padding:var(--space-xl)">
               <div style="font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-strong);margin-bottom:var(--space-md)">Planos</div>
               <div style="display:flex;gap:var(--space-xl);border-bottom:1px solid var(--border);margin-bottom:var(--space-lg)">
                 <sc-for list="{{ planTabs }}" as="tab" hint-placeholder-count="3">
@@ -371,7 +371,7 @@
                 </div>
               </div>
             </div>
-            <p style="flex:1 1 260px;min-width:0;max-width:46ch;margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Switch plan in the figure to see the price and limits update.</p>
+            <p style="min-width:0;max-width:46ch;margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Switch plan in the figure to see the price and limits update.</p>
           </div>
           </div>
         </div>
