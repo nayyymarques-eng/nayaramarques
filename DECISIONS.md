@@ -5,6 +5,8 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-27 (evening, mobile review on her phone)
+- Home on phones: no sticker (no hover effect on touch screens); the star starts in the hero above "Senior Product Designer" and the nav star is hidden until the hero star scrolls under the nav, then the nav star fades in; the name fills more of the width (12vw, one line). · the nav star at the top, the tap sticker · by eye
+- Home on phones is one view: more space above the title, the chat at the bottom of the screen with padding under it; the cases come after a scroll. The sticker note stays fully on screen. · the hero ending under the chat (same evening) · HERO-02
 - Round 6 deployed on her word ("deploy it"), with Claude's recommendations: the six phone ledes as written, eyebrow gap 12px, the home chat frame without an outline, desktop dividers unchanged, `.figure--proto`, `.flow-scroll`, `.case-details__list` and the phone/desk ledes join the system. Home on phones: less space under the chat (the hero no longer fills the screen). · · CNT-11, HERO-02
 - Dividers on phones keep equal space above and below (some sections lost the top or bottom padding). · uneven gaps around dividers on phones · SEC-04 (check at 375px)
 - Product prototypes (the composer and other mockups in figures) keep their desktop shape on phones and scroll sideways inside their frame, instead of reflowing. · mockups that wrap on phones · by eye, LAY-06

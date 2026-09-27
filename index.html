@@ -120,12 +120,27 @@
      types. The thread is anchored to the composer and scrolls up inside the frame; what leaves the top fades out. The frame
      holds three two-line messages. */
   @media (max-width: 860px) {
-    .hx { min-height: 0; } /* phones: the hero ends under the chat, it does not fill the screen (Nayara 2026-09-27) */
+    /* Phones: the hero is one view (Nayara 2026-09-27): the intro at the hero line, the chat at the bottom of the screen with
+       space under it; the cases start after a scroll. svh keeps it inside Safari's visible area. */
+    .hx { min-height: calc(100svh - var(--nav-h)); padding-top: var(--hero-top); padding-bottom: var(--space-xl); display: flex; flex-direction: column; }
+    .hx__grid { flex: 1; grid-template-rows: auto 1fr; align-items: stretch; }
+    .hx__chat { align-self: end; }
     .hx__thread { height: 212px; min-height: 0; overflow: hidden;
       -webkit-mask-image: linear-gradient(to bottom, transparent, var(--text-strong) var(--space-2xl)); mask-image: linear-gradient(to bottom, transparent, var(--text-strong) var(--space-2xl)); }
     .hx__thread li { flex: none; }
   }
   @media (max-width: 640px) { .hx__lede br { display: none; } }
+  /* Phones (Nayara 2026-09-27): the star starts in the hero, above the label, and the nav star is hidden; once the hero star
+     scrolls under the nav, the nav star fades in. The name fills more of the width. No sticker on touch screens. */
+  .hx__star { display: none; }
+  [data-nav-mark] { transition: opacity var(--dur-entrance) var(--ease-out), transform var(--dur-entrance) var(--ease-out); }
+  @media (max-width: 860px) {
+    .hx__star { display: block; width: 28px; height: 28px; margin-bottom: var(--space-lg); }
+    html:not([data-star-docked]) [data-nav-mark] { opacity: 0; transform: scale(.6); }
+    .hx__name { font-size: min(12vw, 68px); white-space: nowrap; }
+  }
+  @media (hover: none) { .hx-sticker { display: none; } }
+  @media (prefers-reduced-motion: reduce) { [data-nav-mark] { transition: none; } }
   @media (prefers-reduced-motion: reduce) { .hx__caret { display: none; } .hx__thread li { animation: none; } }
   /* The sticker: a small red note follows the cursor only while it is over the chat (Nayara, 2026-09-27: no terminal,
      a confident line; it fades in and out softly, nothing more). Reduced motion: it appears and leaves at once. */
@@ -150,6 +165,7 @@
     <section class="hero hx ld-wrap">
       <div class="hx__grid">
         <div class="hx__intro">
+          <span class="hx__star" data-hero-star="" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;overflow:visible"><path d="M 50 2 C 54 34 66 46 98 50 C 66 54 54 66 50 98 C 46 66 34 54 2 50 C 34 46 46 34 50 2" fill="#c0392b"></path></svg></span>
           <p class="hero__eyebrow">Senior Product Designer</p>
           <h1 class="hx__name">Nayara Marques</h1>
           <p class="hx__lede">I design the thing, and help get it built. <br>AI-native products in fintech, logistics and energy.</p>
@@ -387,19 +403,22 @@
   document.addEventListener('pointerleave', hide); window.addEventListener('blur', hide); window.addEventListener('scroll', function () { if (on) hide(); }, { passive: true });
   document.addEventListener('pointermove', function (ev) {
     var over = ev.target.closest && ev.target.closest('.hx__chat');
-    tx = Math.min(ev.clientX, innerWidth - 216); ty = ev.clientY; // keep it on screen near the right edge
     var st = S(); if (!st) return;
+    tx = Math.min(ev.clientX, innerWidth - st.offsetWidth - 32); ty = ev.clientY; // keep the whole note on screen near the right edge
     if (over && !on) place();                       // appear where the cursor is, never slide in
     on = !!over; st.classList.toggle('is-on', on);
     if (on && !raf) raf = requestAnimationFrame(place);
   }, { passive: true });
-  // touch screens have no hover: a tap shows it under the finger for a few seconds
-  document.addEventListener('click', function (ev) {
-    var over = ev.target.closest && ev.target.closest('.hx__chat'); if (!over || ev.pointerType === 'mouse') return;
-    var st = S(); if (!st) return;
-    tx = Math.min(ev.clientX, innerWidth - 216); ty = ev.clientY; place(); on = true; st.classList.add('is-on');
-    clearTimeout(st._t); st._t = setTimeout(function () { on = false; st.classList.remove('is-on'); }, 3200);
-  });
+  // phones: the nav star appears once the hero star has scrolled under the nav (an attribute: the runtime rewrites className)
+  (function () {
+    var root = document.documentElement;
+    function check() { var hs = document.querySelector('[data-hero-star]');
+      var docked = !hs || hs.getBoundingClientRect().bottom < 57;
+      if (docked) root.setAttribute('data-star-docked', ''); else root.removeAttribute('data-star-docked'); }
+    addEventListener('scroll', check, { passive: true });
+    addEventListener('resize', check); addEventListener('load', check); check(); setTimeout(check, 600); setTimeout(check, 1500);
+  })();
+  // touch screens have no hover, and no sticker (Nayara 2026-09-27)
 })();
 </script>
 <div class="hx-sticker" aria-hidden="true">
