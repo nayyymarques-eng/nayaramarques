@@ -120,7 +120,11 @@
      types. The thread is anchored to the composer and scrolls up inside the frame; what leaves the top fades out. The frame
      holds three two-line messages. */
   @media (max-width: 860px) {
-    .hx { min-height: 0; } /* phones: the hero ends under the chat, it does not fill the screen (Nayara 2026-09-27) */
+    /* Phones: the hero is one view (Nayara 2026-09-27): the intro at the hero line, the chat at the bottom of the screen with
+       space under it; the cases start after a scroll. svh keeps it inside Safari's visible area. */
+    .hx { min-height: calc(100svh - var(--nav-h)); padding-top: var(--hero-top); padding-bottom: var(--space-xl); display: flex; flex-direction: column; }
+    .hx__grid { flex: 1; grid-template-rows: auto 1fr; align-items: stretch; }
+    .hx__chat { align-self: end; }
     .hx__thread { height: 212px; min-height: 0; overflow: hidden;
       -webkit-mask-image: linear-gradient(to bottom, transparent, var(--text-strong) var(--space-2xl)); mask-image: linear-gradient(to bottom, transparent, var(--text-strong) var(--space-2xl)); }
     .hx__thread li { flex: none; }
@@ -387,8 +391,8 @@
   document.addEventListener('pointerleave', hide); window.addEventListener('blur', hide); window.addEventListener('scroll', function () { if (on) hide(); }, { passive: true });
   document.addEventListener('pointermove', function (ev) {
     var over = ev.target.closest && ev.target.closest('.hx__chat');
-    tx = Math.min(ev.clientX, innerWidth - 216); ty = ev.clientY; // keep it on screen near the right edge
     var st = S(); if (!st) return;
+    tx = Math.min(ev.clientX, innerWidth - st.offsetWidth - 32); ty = ev.clientY; // keep the whole note on screen near the right edge
     if (over && !on) place();                       // appear where the cursor is, never slide in
     on = !!over; st.classList.toggle('is-on', on);
     if (on && !raf) raf = requestAnimationFrame(place);
@@ -397,7 +401,7 @@
   document.addEventListener('click', function (ev) {
     var over = ev.target.closest && ev.target.closest('.hx__chat'); if (!over || ev.pointerType === 'mouse') return;
     var st = S(); if (!st) return;
-    tx = Math.min(ev.clientX, innerWidth - 216); ty = ev.clientY; place(); on = true; st.classList.add('is-on');
+    tx = Math.min(ev.clientX, innerWidth - st.offsetWidth - 32); ty = ev.clientY; place(); on = true; st.classList.add('is-on');
     clearTimeout(st._t); st._t = setTimeout(function () { on = false; st.classList.remove('is-on'); }, 3200);
   });
 })();
