@@ -4,6 +4,9 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 
 Format: date · decision · what it replaces or rules out · enforced by.
 
+## 2026-09-27
+- AI surfaces, edit chat figure: in the chat there is no inline edit. The report is a plain report and the focus is the chat; the AI proposes the change in the chat (old line to new) and the user accepts it there with an "Accept change" button. Inline edit stays its own figure (report and meeting notes, tag "Inline edit"), both inside edit mode at the same time. · the inline suggestion inside the chat figure, "One change proposed in Summary. It is waiting in the report", "Go to change" · by eye
+
 ## 2026-09-26 (evening)
 - Content round 1 approved as a whole and deployed ("approve all and deploy now"): the 234 rewritten sentences on the six cases and About, About's calls to action, Tools & range as columns, the label spacing. The fact questions in the content report are fixed in a next small round. · the old wording · content-clarity skill
 
