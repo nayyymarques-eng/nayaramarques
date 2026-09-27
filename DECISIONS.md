@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-27
+- AI surfaces round 5 review approved: the new edit-mode paragraph, both captions and Why lines, and the two mockup lines (markers cleared). · drafts · CNT-11
 - AI surfaces, edit chat figure on phones: the "Report · Editing mode" panel sits on top of the edit chat, so the reader first sees they are in the report's editing mode, then the chat; desktop keeps chat left, report right. The inline suggestions keep the "Inline edit" tag; the chat has "Accept change" only, no "Keep mine". · chat above the report on phones · by eye (rule in the page `<style>`)
 - AI surfaces, edit chat figure: in the chat there is no inline edit. The report is a plain report and the focus is the chat; the AI proposes the change in the chat (old line to new) and the user accepts it there with an "Accept change" button. Inline edit stays its own figure (report and meeting notes, tag "Inline edit"), both inside edit mode at the same time. · the inline suggestion inside the chat figure, "One change proposed in Summary. It is waiting in the report", "Go to change" · by eye
 
