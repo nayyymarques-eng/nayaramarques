@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-27 (evening, mobile review on her phone)
+- Text on boxes fills the width: cards, plan cards, figure captions and accordions have no measure of their own (CRD-05). · the 70ch and 46ch caps inside boxes · CRD-05
 - Home on phones: no sticker (no hover effect on touch screens); the star starts in the hero above "Senior Product Designer" and the nav star is hidden until the hero star scrolls under the nav, then the nav star fades in; the name fills more of the width (12vw, one line). · the nav star at the top, the tap sticker · by eye
 - Home on phones is one view: more space above the title, the chat at the bottom of the screen with padding under it; the cases come after a scroll. The sticker note stays fully on screen. · the hero ending under the chat (same evening) · HERO-02
 - Round 6 deployed on her word ("deploy it"), with Claude's recommendations: the six phone ledes as written, eyebrow gap 12px, the home chat frame without an outline, desktop dividers unchanged, `.figure--proto`, `.flow-scroll`, `.case-details__list` and the phone/desk ledes join the system. Home on phones: less space under the chat (the hero no longer fills the screen). · · CNT-11, HERO-02
