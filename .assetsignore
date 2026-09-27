@@ -12,3 +12,6 @@ DECISIONS.md
 QUALITY.md
 docs
 _review
+netlify.toml
+dist
+THEME-REPORT.md
