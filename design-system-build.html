@@ -89,56 +89,56 @@
           <p class="eyebrow">What gets built</p>
           <h2 class="h2" id="ld-built">Four layers, in this order</h2>
         </div>
-        <p data-new-copy="dsb-layers-lead">Each layer is a set of parts. Each part is held by a rule, and most rules by a check that runs on every change.</p>
+        <p>Each layer is a set of parts. Each part is held by a rule, and most rules by a check that runs on every change.</p>
       </div>
       <ol class="ld-layers">
         <li class="card">
           <h3>Foundations</h3>
           <p>Colour, type, space, radius and motion as tokens named for their job, so an agent picks the right one, not the nearest number. Contrast checked on every pair.</p>
           <ul class="ld-list ld-list--points">
-            <li data-new-copy="dsb-layers-foundations-1"><p><strong>Tokens named for their job</strong>Page background, body text, muted text, the rule between sections. Pages use the role, never the raw value, and a check fails any hard-coded colour.</p></li>
-            <li data-new-copy="dsb-layers-foundations-2"><p><strong>Scales, not free values</strong>Type sizes, spacing, radii and elevations each come as a short, fixed set. A value between two steps is a finding for the owner.</p></li>
-            <li data-new-copy="dsb-layers-foundations-3"><p><strong>Contrast, measured rendered</strong>Text is measured against the ground it actually sits on, on the rendered page, and fails below AA.</p></li>
-            <li data-new-copy="dsb-layers-foundations-4"><p><strong>One source</strong>The token files in the repo are the source. The design tool is updated from them, never the other way round.</p></li>
+            <li><p><strong>Tokens named for their job</strong>Page background, body text, muted text, the rule between sections. Pages use the role, never the raw value, and a check fails any hard-coded colour.</p></li>
+            <li><p><strong>Scales, not free values</strong>Type sizes, spacing, radii and elevations each come as a short, fixed set. A value between two steps is a finding for the owner.</p></li>
+            <li><p><strong>Contrast, measured rendered</strong>Text is measured against the ground it actually sits on, on the rendered page, and fails below AA.</p></li>
+            <li><p><strong>One source</strong>The token files in the repo are the source. The design tool is updated from them, never the other way round.</p></li>
           </ul>
         </li>
         <li class="card">
           <h3>Components and templates</h3>
           <p>The parts your product uses, in code, with states, limits and usage rules. Templates for repeating screens, so AI starts from what exists.</p>
           <ul class="ld-list ld-list--points">
-            <li data-new-copy="dsb-layers-components-1"><p><strong>Reuse before drawing</strong>An agent looks for an existing component first, and changes it only through its props, never by copying its markup.</p></li>
-            <li data-new-copy="dsb-layers-components-2"><p><strong>One structure per job</strong>A problem, a step, a decision and a result each have one component, so the same kind of content looks the same on every page.</p></li>
-            <li data-new-copy="dsb-layers-components-3"><p><strong>Limits written as rules</strong>One filled button per view, two card widths, big numbers only for results. Each rule has an ID and one line you can pass or fail.</p></li>
-            <li data-new-copy="dsb-layers-components-4"><p><strong>Templates with a fixed order</strong>Repeating screens start from a template whose sections come in a set order, so a new page starts complete.</p></li>
+            <li><p><strong>Reuse before drawing</strong>An agent looks for an existing component first, and changes it only through its props, never by copying its markup.</p></li>
+            <li><p><strong>One structure per job</strong>A problem, a step, a decision and a result each have one component, so the same kind of content looks the same on every page.</p></li>
+            <li><p><strong>Limits written as rules</strong>One filled button per view, two card widths, big numbers only for results. Each rule has an ID and one line you can pass or fail.</p></li>
+            <li><p><strong>Templates with a fixed order</strong>Repeating screens start from a template whose sections come in a set order, so a new page starts complete.</p></li>
           </ul>
         </li>
         <li class="card">
           <h3>Drift review</h3>
           <p>What AI invents is tagged and reviewed: it becomes a component with rules, or is replaced by one that exists. Drift is caught in the pull request, not in a redesign a year later.</p>
           <ul class="ld-list ld-list--points">
-            <li data-new-copy="dsb-layers-drift-1"><p><strong>Proposals, marked</strong>When nothing fits, the agent draws the part and marks it as a proposal: what it does, the components it considered, and why each was wrong.</p></li>
-            <li data-new-copy="dsb-layers-drift-2"><p><strong>Four verdicts</strong>The owner rules on each proposal: promote it to the system, fold it into the component that already does the job, keep it on its page, or retire it.</p></li>
-            <li data-new-copy="dsb-layers-drift-3"><p><strong>Exact swaps, automatic</strong>A hard-coded value that equals a token is swapped without asking. One a few steps off goes to the owner, with the nearest token and a recommendation.</p></li>
-            <li data-new-copy="dsb-layers-drift-4"><p><strong>Checks on every change</strong>The source rules run first, then every page is rendered at desktop and phone width. A change is done when both pass.</p></li>
+            <li><p><strong>Proposals, marked</strong>When nothing fits, the agent draws the part and marks it as a proposal: what it does, the components it considered, and why each was wrong.</p></li>
+            <li><p><strong>Four verdicts</strong>The owner rules on each proposal: promote it to the system, fold it into the component that already does the job, keep it on its page, or retire it.</p></li>
+            <li><p><strong>Exact swaps, automatic</strong>A hard-coded value that equals a token is swapped without asking. One a few steps off goes to the owner, with the nearest token and a recommendation.</p></li>
+            <li><p><strong>Checks on every change</strong>The source rules run first, then every page is rendered at desktop and phone width. A change is done when both pass.</p></li>
           </ul>
         </li>
         <li class="card">
           <h3>Docs an agent can read</h3>
           <p>A docs site your team browses and a coding agent parses: every part, its contract, and what to use instead.</p>
           <ul class="ld-list ld-list--points">
-            <li data-new-copy="dsb-layers-docs-1"><p><strong>One rules file</strong>Every rule has an ID, one line and the check that holds it, so a person and an agent read the same thing.</p></li>
-            <li data-new-copy="dsb-layers-docs-2"><p><strong>A table from job to token</strong>An agent looks up the job (page background, muted text) and gets the token, instead of matching a colour by eye.</p></li>
-            <li data-new-copy="dsb-layers-docs-3"><p><strong>A decisions log</strong>Every verdict is written down the same day, with what it rules out, so a rejected idea does not come back.</p></li>
-            <li data-new-copy="dsb-layers-docs-4"><p><strong>A progress file</strong>What is done, what waits on the owner and what comes next, so the next session starts where the last one stopped.</p></li>
+            <li><p><strong>One rules file</strong>Every rule has an ID, one line and the check that holds it, so a person and an agent read the same thing.</p></li>
+            <li><p><strong>A table from job to token</strong>An agent looks up the job (page background, muted text) and gets the token, instead of matching a colour by eye.</p></li>
+            <li><p><strong>A decisions log</strong>Every verdict is written down the same day, with what it rules out, so a rejected idea does not come back.</p></li>
+            <li><p><strong>A progress file</strong>What is done, what waits on the owner and what comes next, so the next session starts where the last one stopped.</p></li>
           </ul>
         </li>
       </ol>
-      <p class="eyebrow" style="margin:var(--space-fluid-xl) 0 var(--space-md)" data-new-copy="dsb-layers-loop-label">How the system is refined</p>
+      <p class="eyebrow" style="margin:var(--space-fluid-xl) 0 var(--space-md)">How the system is refined</p>
       <ol class="ld-list">
-        <li data-new-copy="dsb-layers-loop-1"><span>01</span>The owner rules on something that was built, and the verdict is written down the same day.</li>
-        <li data-new-copy="dsb-layers-loop-2"><span>02</span>If a machine can check it, the verdict becomes a rule with an ID and one line you can pass or fail.</li>
-        <li data-new-copy="dsb-layers-loop-3"><span>03</span>The rule gets a check. Checks run on every change: the source first, then the rendered pages at desktop and phone width.</li>
-        <li data-new-copy="dsb-layers-loop-4"><span>04</span>What AI invents stays a proposal until the owner rules on it, and that verdict starts the loop again.</li>
+        <li><span>01</span>The owner rules on something that was built, and the verdict is written down the same day.</li>
+        <li><span>02</span>If a machine can check it, the verdict becomes a rule with an ID and one line you can pass or fail.</li>
+        <li><span>03</span>The rule gets a check. Checks run on every change: the source first, then the rendered pages at desktop and phone width.</li>
+        <li><span>04</span>What AI invents stays a proposal until the owner rules on it, and that verdict starts the loop again.</li>
       </ol>
     </section>
 
