@@ -58,7 +58,7 @@
 .rv-scroll{overflow-x:auto}
 .rv-phones{display:flex;gap:var(--space-2xl);flex-wrap:wrap;align-items:flex-start}
 .rv-phone{width:375px;max-width:100%;padding:var(--space-md);border-radius:var(--radius-lg);box-shadow:var(--elevation-inset-1);position:relative;isolation:isolate}
-.rv-phone .rv-title{font-size:var(--font-size-2xl)}
+.rv-phone .rv-title{font-size:min(var(--font-size-h2),24px)} /* the h2 clamp at 375px */
 .rv-phone>article{padding:var(--space-lg) 0;border-bottom:1px solid var(--border-divider)}
 .rv-phone>article:last-child{border-bottom:0}
 .rv-phone .xi{margin-top:var(--space-lg)}
@@ -229,6 +229,9 @@ html:not(.xi-motion) .xi .xi-ring,html:not(.xi-motion) .xi .xi-spark,html:not(.x
   .xi-ba{gap:var(--space-xs);min-height:0;grid-template-columns:minmax(0,.62fr) auto minmax(0,1.38fr)}
   .xi-to{width:28px}.xi-to .xi-dot{--run:20px}
   .xi-hide-narrow{display:none !important}
+  .xi-stack-narrow{flex-direction:column;align-items:stretch !important}
+  .xi-stack-narrow>*{margin-top:0 !important;flex:none !important}
+  .xi-stack-narrow>.illo-sign{align-self:center}
 }
 </style>
 </head>
@@ -636,7 +639,7 @@ html:not(.xi-motion) .xi .xi-ring,html:not(.xi-motion) .xi .xi-spark,html:not(.x
     </div>
     <div class="xi xi--a" id="p4" aria-hidden="true"><div class="xi-ba">
       <div class="xi-side">
-        <div class="xi-row" style="align-items:flex-start;gap:6px">
+        <div class="xi-row xi-stack-narrow" style="align-items:flex-start;gap:6px">
           <div class="xi-layer" data-depth="0.3" style="flex:1"><div class="xi-fl" style="--f:1"><div class="xi-ghost xi-col" style="gap:5px;padding:8px 10px;flex:1"><p class="illo-label">Design tool</p><span class="illo-bar" style="width:70%"></span><span class="illo-bar" style="width:48%"></span><span class="illo-bar" style="width:82%"></span></div></div></div>
           <span class="illo-sign" style="align-self:center">≠</span>
           <div class="xi-layer" data-depth="0.55" style="flex:1;margin-top:18px"><div class="xi-fl" style="--f:3"><div class="xi-ghost xi-col" style="gap:5px;padding:8px 10px;flex:1"><p class="illo-label">Code</p><span class="illo-bar" style="width:52%"></span><span class="illo-bar" style="width:76%"></span><span class="illo-bar" style="width:38%"></span></div></div></div>
@@ -904,6 +907,30 @@ html:not(.xi-motion) .xi .xi-ring,html:not(.xi-motion) .xi .xi-spark,html:not(.x
       </div>
     </div></div>
   </div>
+</section>
+
+<section class="rv-case" id="phone">
+  <h2><b>375</b>Phone width, direction A</h2>
+  <p class="rv-idea">Today the windows are hidden below 900px and the card stands alone. Direction A can stay on phones: under the card text, at the full 343px column, the before side narrows and the gaps close (a container query, no scaling, labels stay 9.5px). Same markup as above, cloned into two 375px frames.</p>
+  <div class="rv-phones" style="margin-top:var(--space-xl)">
+    <div class="rv-phone"><article><div class="rv-meta"><span>01</span><span>AI platform · private capital markets</span><span>2026</span></div><h3 class="rv-title">Where AI lives in an institutional investment platform</h3><div data-phone-from="p1"></div></article><article><div class="rv-meta"><span>02</span><span>Loadsmart</span><span>2021—23</span></div><h3 class="rv-title">Capacity matching for private truck fleets</h3><div data-phone-from="p2"></div></article><article><div class="rv-meta"><span>03</span><span>AI platform · private capital markets</span><span>2026</span></div><h3 class="rv-title">Specifying an AI composer, frame by frame</h3><div data-phone-from="p3"></div></article></div>
+    <div class="rv-phone"><article><div class="rv-meta"><span>04</span><span>AI platform · private capital markets</span><span>2026—</span></div><h3 class="rv-title">A design system AI can build from</h3><div data-phone-from="p4"></div></article><article><div class="rv-meta"><span>05</span><span>BTG Pactual</span><span>2019—21</span></div><h3 class="rv-title">An advisors platform for four business verticals</h3><div data-phone-from="p5"></div></article><article><div class="rv-meta"><span>06</span><span>BTG Pactual</span><span>2020</span></div><h3 class="rv-title">Modular card insurance in a banking app</h3><div data-phone-from="p6"></div></article></div>
+  </div>
+</section>
+
+<section class="rv-case" id="rules">
+  <h2><b>§6</b>Rules each direction would change</h2>
+  <p class="rv-idea">Nothing here is new colour: every value is a token. The core label moves from 10.5px to <code>--font-size-diagram-heading</code> (12.5px, 700) in all three, because the scenes are larger; say if it should stay 10.5.</p>
+  <div class="rv-scroll" style="margin-top:var(--space-xl)"><table class="rv-table" data-surface="">
+    <tr><th>Rule</th><th>Today</th><th>A · Afloat</th><th>B · In the product</th><th>C · Line to object</th></tr>
+    <tr><td>ILL-06 window</td><td>A −2 recess, at most 480px, shown from 900px</td><td>No window: objects on the sky; at most 560px; shown at every width</td><td>The frame becomes the product surface at +2 and parts break out of it; at most 600px; from 900px only</td><td>No window; at most 560px; shown at every width</td></tr>
+    <tr><td>ILL-07 labels</td><td>At most 8 outside <code>[data-mock]</code></td><td>Unchanged (2 to 6 per case, today's words)</td><td>Fewer outside (2 to 4); more words inside <code>[data-mock]</code>: Report, Draft, Ask, Edit, Review, Loads, Reply, Forward, Sent, Model, Components, Reused, In review, Office, Card protection, Continue (new copy, for your read)</td><td>Unchanged; each label shown twice (outline, then solid)</td></tr>
+    <tr><td>ILL-01 motion</td><td>Static on the home</td><td>12s scene, holds about 5.8s resolved, soft fade; plus a continuous 6s float (a second exception next to variant O)</td><td>12s scene; a cursor that moves off the drawn structure (needs an exception to "motion travels only along the drawn structure")</td><td>12s scene; motion stays on drawn lines: closest to the rule as written</td></tr>
+    <tr><td>DEP-01 to 03</td><td>Frame −2, UI at 1 inside</td><td>Levels 1, 2, 3 straight on the sky with no frame; siblings at two levels on purpose (forward = picked or new)</td><td>Frame +2, menus and toasts +3 over it (evidence level)</td><td>Outline (0) turns into 1 or 2 as the state changes</td></tr>
+    <tr><td>SKY-01, MOT-01</td><td>One parallax plane (the sky)</td><td>A second plane: layers move 0.35 to 1.8 × 22px with the scroll; off under reduced motion</td><td>No parallax</td><td>No parallax</td></tr>
+    <tr><td>New parts (CMP-03)</td><td>—</td><td><code>.xi</code> scene, <code>.xi-card</code>, <code>.xi-ghost</code>, <code>.xi-dash</code>, <code>.xi-to</code> with dot, <code>[data-depth]</code>, <code>.xi-fl</code>, spark</td><td>As A, plus <code>.xi-cursor</code>, <code>.xi-ring</code>, the mini parts (toggle, tile, chip)</td><td>As A, plus the merge and tree connectors</td></tr>
+    <tr><td>Scripts</td><td><code>art.js</code> pauses <code>.ld-art</code></td><td colspan="3"><code>art.js</code> watches <code>.xi</code> too; A adds the scroll parallax (transform only); B places the cursor on its targets</td></tr>
+  </table></div>
 </section>
 
 <!-- CASES -->
