@@ -130,6 +130,9 @@
 .xi-reply{gap:6px;padding:6px 8px;border-radius:var(--radius-md)}
 .xi-avatar{flex:none;width:20px;height:20px;border-radius:var(--radius-full);background:var(--surface-accent-tint)}
 .xi-b-reply{position:relative}
+.xi-gp{display:inline-block;padding:0;height:12px;border-radius:var(--radius-full)}
+.xi-mrow{display:flex;align-items:center;gap:8px;padding:6px;border-radius:var(--radius-sm)}
+.xi-bubble{display:block;padding:8px 10px;border-radius:var(--radius-md);background:var(--surface-hover)}
 /* ---------- motion (only on screen, only with motion allowed) ---------- */
 @keyframes xi-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @keyframes xi-travel{0%,7%{transform:translateX(0);opacity:0}9%{opacity:1}17%{transform:translateX(var(--run));opacity:1}20%,100%{transform:translateX(var(--run));opacity:0}}
@@ -151,7 +154,7 @@
   42%,86%{opacity:1;transform:translate(var(--x2),var(--y2)) scale(1)}
   94%,100%{opacity:0;transform:translate(var(--x2),var(--y2))}}
 @keyframes xi-caret{50%{opacity:0}}
-@keyframes xi-away{0%,8%{opacity:1;transform:none}20%,94%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.3)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.3)}}
+@keyframes xi-away{0%,7%{opacity:1;transform:none}17%{opacity:1;transform:translate(calc(var(--tx) * .85),calc(var(--ty) * .85)) scale(.75)}21%,100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.3)}}
 @keyframes xi-back{0%,94%{opacity:0}100%{opacity:1}}
 @keyframes xi-solid{0%,17%{opacity:0}26%,90%{opacity:1}98%,100%{opacity:0}}
 @keyframes xi-slide{0%,20%{transform:translateX(0)}30%,90%{transform:translateX(var(--kx))}98%,100%{transform:translateX(var(--kx))}}
@@ -466,6 +469,112 @@ html:not(.xi-motion) .xi .xi-ring,html:not(.xi-motion) .xi .xi-spark,html:not(.x
   </div>
 </section>
 
+<section class="rv-case" id="c3">
+  <h2><b>03</b>Composer</h2>
+  <p class="rv-idea">The one idea: one bar offered every AI feature at once; its first layer was emptied to four parts (field, plus, model, send) and the rest moved one layer down.</p>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>03</span><span>AI platform · private capital markets</span><span>2026</span></div>
+      <h3 class="rv-title">Specifying an AI composer, frame by frame</h3>
+      <p class="rv-what"><b>A · Afloat.</b> The crowded bar hangs at the back with two stray features drifting off it; the clean composer floats forward and assembles part by part, and a small menu rises behind the plus: the features, one layer down.</p>
+    </div>
+    <div class="xi xi--a" id="p3" aria-hidden="true"><div class="xi-ba">
+      <div class="xi-side">
+        <div class="xi-layer" data-depth="0.35"><div class="xi-fl" style="--f:2"><div class="xi-ghost xi-col" style="gap:8px;padding:10px"><div class="illo-pills" style="gap:4px"><span class="xi-ghost xi-gp" style="width:34px"></span><span class="xi-ghost xi-gp" style="width:22px"></span><span class="xi-ghost xi-gp" style="width:28px"></span><span class="xi-ghost xi-gp" style="width:40px"></span><span class="xi-ghost xi-gp" style="width:24px"></span><span class="xi-ghost xi-gp" style="width:30px"></span><span class="xi-ghost xi-gp" style="width:36px"></span><span class="xi-ghost xi-gp" style="width:26px"></span></div><div class="xi-row"><div class="illo-bar" style="flex:1"></div><span class="illo-send illo-send--quiet"><svg><use href="#i-up"/></svg></span></div></div></div></div>
+        <div class="xi-layer" data-depth="0.7" style="position:absolute;left:-10px;top:-18px"><div class="xi-fl" style="--f:4"><span class="xi-ghost xi-gp" style="display:block;width:30px"></span></div></div>
+        <div class="xi-layer" data-depth="0.7" style="position:absolute;right:-6px;bottom:22px"><div class="xi-fl" style="--f:1"><span class="xi-ghost xi-gp" style="display:block;width:38px"></span></div></div>
+        <p class="illo-label">Everything at once</p>
+      </div>
+      <div class="xi-to"><span class="xi-dot"></span><svg><use href="#i-arrow"/></svg></div>
+      <div class="xi-side" style="gap:14px">
+        <div class="xi-layer" data-depth="1.1" style="margin-top:78px"><div class="xi-fl" style="--f:0;position:relative">
+          <div class="xi-layer" data-depth="1.6" style="position:absolute;left:-6px;bottom:calc(100% + 8px);width:58%"><div class="xi-card xi-card--3 xi-col xi-a-in" data-mock="" style="--i:5;padding:6px;gap:2px;border-radius:var(--radius-md)">
+            <div class="xi-mrow"><svg class="xi-ico"><use href="#i-doc"/></svg><span class="illo-bar illo-bar--ink" style="width:54%"></span></div>
+            <div class="xi-mrow"><svg class="xi-ico"><use href="#i-chart"/></svg><span class="illo-bar illo-bar--ink" style="width:40%"></span></div>
+            <div class="xi-mrow"><svg class="xi-ico"><use href="#i-note"/></svg><span class="illo-bar illo-bar--ink" style="width:62%"></span></div>
+          </div></div>
+          <div class="xi-card xi-card--2 xi-row" data-mock="" style="padding:8px 8px 8px 12px;gap:12px;border-radius:var(--radius-md);min-height:46px">
+            <span class="xi-a-pop" style="--i:0"><svg class="xi-ico" style="color:var(--text-strong);width:14px;height:14px"><use href="#i-plus"/></svg></span>
+            <span class="xi-a-pop" style="--i:1;display:flex"><span class="illo-caret xi-caret"></span></span>
+            <span style="flex:1"></span>
+            <span class="xi-pillm xi-a-pop" style="--i:2">Model<svg class="xi-ico" style="width:10px;height:10px;color:inherit"><use href="#i-down"/></svg></span>
+            <span class="illo-send xi-a-pop" style="--i:3;width:22px;height:22px"><svg><use href="#i-up"/></svg></span>
+          </div>
+          <span class="xi-spark" style="--i:1;right:-8px;top:-6px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
+        </div></div>
+        <p class="illo-label xi-core xi-a-in" style="--i:4">Field, plus, model, send</p>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>03</span><span>AI platform · private capital markets</span><span>2026</span></div>
+      <h3 class="rv-title">Specifying an AI composer, frame by frame</h3>
+      <p class="rv-what"><b>B · In the product.</b> The composer at the foot of a thread. The cursor opens the plus; the features sit in a menu that breaks out of the panel, and picking one attaches it to the field as a small chip. The first layer stays four parts.</p>
+    </div>
+    <div class="xi xi--b" aria-hidden="true"><div class="xi-ba" style="grid-template-columns:minmax(0,140px) auto minmax(0,1fr)">
+      <div class="xi-side"><div class="xi-ghost xi-col" style="gap:8px;padding:8px"><div class="illo-pills" style="gap:4px"><span class="xi-ghost xi-gp" style="width:34px"></span><span class="xi-ghost xi-gp" style="width:22px"></span><span class="xi-ghost xi-gp" style="width:28px"></span><span class="xi-ghost xi-gp" style="width:40px"></span><span class="xi-ghost xi-gp" style="width:24px"></span><span class="xi-ghost xi-gp" style="width:30px"></span><span class="xi-ghost xi-gp" style="width:36px"></span><span class="xi-ghost xi-gp" style="width:26px"></span></div><div class="xi-row"><div class="illo-bar" style="flex:1"></div><span class="illo-send illo-send--quiet"><svg><use href="#i-up"/></svg></span></div></div><p class="illo-label">Everything at once</p></div>
+      <div class="xi-to"><span class="xi-dot"></span><svg><use href="#i-arrow"/></svg></div>
+      <div class="xi-side" style="gap:14px">
+        <div class="xi-stage" style="position:relative">
+          <div class="xi-card xi-card--2 xi-card--lg xi-col" data-mock="" style="padding:14px;gap:10px">
+            <div class="xi-row" style="justify-content:flex-end"><span class="xi-bubble" style="width:52%"><span class="illo-bar illo-bar--ink" style="display:block;width:80%"></span></span></div>
+            <div class="xi-col" style="gap:6px;padding-right:18%"><span class="illo-bar illo-bar--ink" style="width:86%"></span><span class="illo-bar illo-bar--ink" style="width:70%"></span><span class="illo-bar illo-bar--ink" style="width:78%"></span></div>
+            <div style="height:64px"></div>
+            <div class="xi-row" style="padding:7px 7px 7px 10px;gap:10px;border-radius:var(--radius-md);box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border-divider)">
+              <span class="xi-b-plus" style="display:flex"><svg class="xi-ico" style="color:var(--text-strong);width:14px;height:14px"><use href="#i-plus"/></svg></span>
+              <span class="xi-pillm xi-a-pop" style="--i:10"><svg class="xi-ico" style="width:10px;height:10px;color:inherit"><use href="#i-doc"/></svg>Report</span>
+              <span class="illo-caret xi-caret"></span>
+              <span style="flex:1"></span>
+              <span class="xi-pillm">Model<svg class="xi-ico" style="width:10px;height:10px;color:inherit"><use href="#i-down"/></svg></span>
+              <span class="illo-send" style="width:22px;height:22px"><svg><use href="#i-up"/></svg></span>
+            </div>
+          </div>
+          <div class="xi-card xi-card--3 xi-col xi-a-pop" data-mock="" style="--i:2.6;position:absolute;left:-18px;bottom:56px;width:176px;padding:6px;gap:2px;border-radius:var(--radius-md);transform-origin:12% 100%">
+            <div class="xi-mrow"><svg class="xi-ico"><use href="#i-chat"/></svg><span class="illo-bar illo-bar--ink" style="width:50%"></span></div>
+            <div class="xi-mrow xi-b-item" style="position:relative"><span class="xi-tint xi-a-on" style="--i:5.5;border-radius:var(--radius-sm)"></span><svg class="xi-ico" style="position:relative"><use href="#i-doc"/></svg><span class="illo-bar illo-bar--ink" style="position:relative;width:62%"></span></div>
+            <div class="xi-mrow"><svg class="xi-ico"><use href="#i-chart"/></svg><span class="illo-bar illo-bar--ink" style="width:44%"></span></div>
+            <div class="xi-mrow"><svg class="xi-ico"><use href="#i-note"/></svg><span class="illo-bar illo-bar--ink" style="width:56%"></span></div>
+          </div>
+          <span class="xi-ring" data-at=".xi-b-plus" style="--rd:0s"></span>
+          <span class="xi-ring" data-at=".xi-b-item" style="--rd:1.68s"></span>
+          <span class="xi-spark" data-at=".xi-b-plus" style="--i:1.4;margin:-2px 0 0 44px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
+          <span class="xi-cursor" data-t0="150,40" data-t1=".xi-b-plus" data-t2=".xi-b-item"><svg viewBox="0 0 16 20"><use href="#i-cursor"/></svg></span>
+        </div>
+        <p class="illo-label xi-core">Field, plus, model, send</p>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>03</span><span>AI platform · private capital markets</span><span>2026</span></div>
+      <h3 class="rv-title">Specifying an AI composer, frame by frame</h3>
+      <p class="rv-what"><b>C · Line to object.</b> Each feature pill on the crowded bar lifts off, runs the arrow and folds into the plus; the clean bar then solidifies around it. Emptying the first layer, shown as a motion.</p>
+    </div>
+    <div class="xi xi--c" aria-hidden="true"><div class="xi-ba">
+      <div class="xi-side"><div class="xi-ghost xi-col" style="gap:8px;padding:10px"><div class="illo-pills" style="gap:4px"><span class="xi-ghost xi-gp" style="width:34px"><span class="xi-ghost xi-gp xi-a-away" data-to=".xi-c-plus" style="--i:0;position:absolute;inset:0;opacity:0"></span></span><span class="xi-ghost xi-gp" style="width:22px"><span class="xi-ghost xi-gp xi-a-away" data-to=".xi-c-plus" style="--i:1;position:absolute;inset:0;opacity:0"></span></span><span class="xi-ghost xi-gp" style="width:28px"><span class="xi-ghost xi-gp xi-a-away" data-to=".xi-c-plus" style="--i:2;position:absolute;inset:0;opacity:0"></span></span><span class="xi-ghost xi-gp" style="width:40px"><span class="xi-ghost xi-gp xi-a-away" data-to=".xi-c-plus" style="--i:3;position:absolute;inset:0;opacity:0"></span></span><span class="xi-ghost xi-gp" style="width:24px"><span class="xi-ghost xi-gp xi-a-away" data-to=".xi-c-plus" style="--i:4;position:absolute;inset:0;opacity:0"></span></span><span class="xi-ghost xi-gp" style="width:30px"><span class="xi-ghost xi-gp xi-a-away" data-to=".xi-c-plus" style="--i:5;position:absolute;inset:0;opacity:0"></span></span><span class="xi-ghost xi-gp" style="width:36px"><span class="xi-ghost xi-gp xi-a-away" data-to=".xi-c-plus" style="--i:6;position:absolute;inset:0;opacity:0"></span></span><span class="xi-ghost xi-gp" style="width:26px"><span class="xi-ghost xi-gp xi-a-away" data-to=".xi-c-plus" style="--i:7;position:absolute;inset:0;opacity:0"></span></span></div><div class="xi-row"><div class="illo-bar" style="flex:1"></div><span class="illo-send illo-send--quiet"><svg><use href="#i-up"/></svg></span></div></div><p class="illo-label">Everything at once</p></div>
+      <div class="xi-to"><span class="xi-dot"></span><svg><use href="#i-arrow"/></svg></div>
+      <div class="xi-side" style="gap:14px">
+        <div style="position:relative">
+          <div class="xi-ghost xi-row" style="padding:8px 8px 8px 12px;gap:12px;border-radius:var(--radius-md);min-height:46px"><svg class="xi-ico" style="width:14px;height:14px"><use href="#i-plus"/></svg><span class="illo-bar" style="flex:1"></span><span class="xi-ghost" style="width:22px;height:22px;padding:0"></span></div>
+          <div class="xi-card xi-card--2 xi-row xi-a-solid" data-mock="" style="--i:1;position:absolute;inset:0;padding:8px 8px 8px 12px;gap:12px;border-radius:var(--radius-md)">
+            <span class="xi-c-plus" style="display:flex"><svg class="xi-ico" style="color:var(--text-strong);width:14px;height:14px"><use href="#i-plus"/></svg></span>
+            <span class="illo-caret"></span><span style="flex:1"></span>
+            <span class="xi-pillm">Model<svg class="xi-ico" style="width:10px;height:10px;color:inherit"><use href="#i-down"/></svg></span>
+            <span class="illo-send xi-a-pop" style="--i:3;width:22px;height:22px"><svg><use href="#i-up"/></svg></span>
+          </div>
+          <span class="xi-ring" data-at=".xi-c-plus" style="--rd:-0.6s"></span>
+          <span class="xi-spark" style="--i:2;right:-8px;top:-8px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
+        </div>
+        <p class="illo-label xi-core xi-a-in" style="--i:3">Field, plus, model, send</p>
+      </div>
+    </div></div>
+  </div>
+</section>
+
 <!-- CASES -->
 </main>
 
@@ -517,6 +626,13 @@ html:not(.xi-motion) .xi .xi-ring,html:not(.xi-motion) .xi .xi-spark,html:not(.x
     });
     document.querySelectorAll('.xi [data-at]').forEach(function (r) {
       var stage = r.offsetParent; if (!stage) return; var p = pt(stage, r.dataset.at); r.style.left = p[0] + 'px'; r.style.top = p[1] + 'px';
+    });
+    document.querySelectorAll('.xi [data-to]').forEach(function (el) {
+      var root = el.closest('.xi'), t = root.querySelector(el.dataset.to); if (!t) return;
+      function abs(n) { var x = 0, y = 0; while (n && n !== root) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; } return [x, y]; }
+      var a = abs(el), b = abs(t);
+      el.style.setProperty('--tx', (b[0] + t.offsetWidth / 2 - a[0] - el.offsetWidth / 2).toFixed(1) + 'px');
+      el.style.setProperty('--ty', (b[1] + t.offsetHeight / 2 - a[1] - el.offsetHeight / 2).toFixed(1) + 'px');
     });
   }
   window.addEventListener('resize', place);
