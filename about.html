@@ -79,7 +79,6 @@
 <style>
   summary::-webkit-details-marker { display: none; }
   html, body { overflow-x: clip; max-width: 100%; }
-  @media (max-width: 720px) { [data-tools-note] { max-width: none !important; flex: 1 1 100% !important; } }
 </style>
 </helmet>
 
@@ -192,66 +191,46 @@
     </section>
 
     <section style="padding:var(--section-y) 0;position:relative" style-after="content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--border-divider)">
-      <h2 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-md)">Tools &amp; range</h2>
-      <div class="ld-cols4"><!-- the tools note spans columns 1 to 3, "On tools" column 4 (SEC-06, round 5) -->
-      <!-- Tools & range, footer-style (Nayara 2026-09-26): one column per area, one item per line. The grid is .ld-layers--cols
-           (components.css: 4 columns, 2 below 1080px, 1 below 620px); the columns are plain lists inside the existing note. -->
-      <div class="note ld-cols4__wide" style="min-width:0;padding:var(--space-fluid-m)">
+      <h2 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-md)">Tools</h2>
+      <!-- Tools only (Nayara 2026-09-27): skills and the "On tools" note removed. Old list: Design (Figma, Design systems, Prototyping, User research, Usability testing, Workshop facilitation, Information architecture, Interaction design, Visual design) · In code (HTML, CSS, JavaScript, React, Design tokens, Git and GitHub, CI, Design to code, through to the PR) · AI-native (Claude Design, idea to prototype, Claude Code, shipping PRs, Lovable, v0, Spec-driven authoring, Component automation, Validation systems) · Data & ops (Mixpanel, Maze, Useberry, Google Tag Manager, Notion, Jira, Shortcut). -->
+      <div class="note" data-new-copy="about-r5-tools" style="min-width:0;padding:var(--space-fluid-m)">
         <div class="ld-layers ld-layers--cols" style="row-gap:var(--space-xl)">
           <div style="min-width:0">
             <h3 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-sm)">Design</h3>
             <ul style="list-style:none;margin:0;padding:0">
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Figma</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Design systems</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Prototyping</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">User research</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Usability testing</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Workshop facilitation</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Information architecture</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Interaction design</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Visual design</li>
+              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Claude Design</li>
+              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Lovable</li>
+              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">v0</li>
             </ul>
           </div>
           <div style="min-width:0">
-            <h3 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-sm)">In code</h3>
+            <h3 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-sm)">Code</h3>
             <ul style="list-style:none;margin:0;padding:0">
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">HTML, CSS, JavaScript</li>
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">React</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Design tokens</li>
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Git and GitHub</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">CI</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Design to code, through to the PR</li>
+              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Claude Code</li>
             </ul>
           </div>
           <div style="min-width:0">
-            <h3 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-sm)">AI-native</h3>
+            <h3 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-sm)">Research &amp; data</h3>
             <ul style="list-style:none;margin:0;padding:0">
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Claude Design, idea to prototype</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Claude Code, shipping PRs</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Lovable</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">v0</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Spec-driven authoring</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Component automation</li>
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Validation systems</li>
-            </ul>
-          </div>
-          <div style="min-width:0">
-            <h3 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-sm)">Data &amp; ops</h3>
-            <ul style="list-style:none;margin:0;padding:0">
-              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Mixpanel</li>
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Maze</li>
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Useberry</li>
+              <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Mixpanel</li>
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Google Tag Manager</li>
+            </ul>
+          </div>
+          <div style="min-width:0">
+            <h3 style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-sm)">Team</h3>
+            <ul style="list-style:none;margin:0;padding:0">
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Notion</li>
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Jira</li>
               <li style="font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);padding:var(--space-3xs) 0">Shortcut</li>
             </ul>
           </div>
         </div>
-      </div>
-      <div class="note" data-tools-note="" style="min-width:0;padding:var(--space-fluid-m)">
-        <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)">On tools</div>
-        <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">I have used all the tools listed here, but a team does not need to use the same ones. With AI, I learn a new tool quickly, and my design decisions don't depend on which tool I use.</p>
       </div>
       </div>
     </section>
