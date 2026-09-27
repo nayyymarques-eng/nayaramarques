@@ -137,6 +137,17 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 [data-pattern="gap"]{--ink:var(--text-body);--ink-2:var(--text-muted);--weight-semibold:500;border-top-style:dashed!important;box-shadow:none}
 :last-child>[data-pattern="gap"]{border-bottom-style:dashed!important} /* only the last row draws a bottom rule */
 [data-pattern="gap"]::before{content:"";flex:none;width:7px;height:7px;margin-top:9px;border:1px solid var(--text-subtle);border-radius:var(--radius-full)}
+/* proposal (round 5): .ref-row, a reference row with a picture and a badge (card insurance's benchmark). The row look of PAT-06
+   (the lead on its own line, 16/600 ink, the body under it, a --border rule between rows) plus a small picture of the source on
+   the left (sm radius, a rounded rectangle, never a disc: SHP-02) and, where it applies, a badge on its own line under the text.
+   Considered: ListRow (text marker only, no picture slot; a badge could only sit inline), DecisionCard (heavier than a reference). */
+.ref-rows{border-bottom:1px solid var(--border)}
+.ref-row{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:var(--space-lg);align-items:start;padding:18px 0;border-top:1px solid var(--border)}
+.ref-row__pic{grid-row:1 / span 2;display:block;width:56px;height:84px;object-fit:cover;object-position:top;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:var(--surface-card)}
+.ref-row>p{margin:0;max-width:var(--measure-list);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+.ref-row>p>strong{color:var(--text-strong);font-weight:600}
+.ref-row__badge{grid-column:2;justify-self:start;margin-top:var(--space-xs)}
+
 /* Stats: big numbers, only for a Result (measured) or a Scope count (what exists). The label says which (PAT-04). */
 .stats{margin:0}
 .stats>.eyebrow{margin:0 0 var(--space-md)}
@@ -341,6 +352,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-list--quiet{border-top:1px dashed var(--border)}
 .ld-list--quiet li{display:flex;gap:var(--space-sm);align-items:baseline;border-bottom:1px dashed var(--border);color:var(--text-muted)}
 .ld-list--quiet li::before{content:"";flex:none;width:7px;height:7px;border:1px solid var(--text-subtle);border-radius:var(--radius-full);transform:translateY(-1px)}
+.ld-list--quiet li>p{margin:0}
 .ld-list--quiet li strong{display:block;margin-bottom:var(--space-3xs);font-weight:500;color:var(--text-body)}
 .link-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0} /* small cards, two to a row (SEC-06) */
 @media (max-width:620px){.link-cards{grid-template-columns:minmax(0,1fr)}}

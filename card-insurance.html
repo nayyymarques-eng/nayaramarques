@@ -245,14 +245,52 @@
           <div style="margin-bottom:var(--section-y)">
             <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">Benchmark</h3>
             <p style="margin:0 0 var(--space-lg);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">I reviewed seven insurers for how customers buy, customise and claim. Three of them shaped the plan-and-assistance structure described below.</p>
-            <!-- The benchmark as plain text (Nayara, 2026-09-25): the screenshot carousel is retired. The three that shaped the structure (Decision 01) carry a label. -->
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Hedvig" measure="70ch" hint-size="100%,80px">inviting a friend visibly lowers the monthly price</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Wrisk" measure="70ch" hint-size="100%,80px">a custom policy built from plain-language questions, one at a time <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Pulse" measure="70ch" hint-size="100%,80px">a base module with paid extensions, shared with the household</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Lemonade" measure="70ch" hint-size="100%,80px">contracting written in plain, friendly language <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="DeadHappy" measure="70ch" hint-size="100%,80px">underwriting as a short conversation, ending in a stated payout and price</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Cuvva" measure="70ch" hint-size="100%,80px">sliders raise coverage item by item, with the price updating instantly <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Santander" last="{{ true }}" measure="70ch" hint-size="100%,80px">coverage chosen before purchase, with the instalment updating live</x-import>
+            <!-- The benchmark as rows (Nayara, 2026-09-25: no carousel). Round 5: each row has a small picture of the insurer's app on the
+                 left (cropped from the retired benchmark screenshots, assets/c8-0 to c8-6, one screen each), a sentence on what it does
+                 that mattered here, and "Shaped the structure" as a badge on its own line for the three behind Decision 01.
+                 proposal: .ref-row, a reference row with a picture and a badge. Considered: ListRow (its marker is text only, so there is
+                 no slot for a picture, and a badge could only sit inline in the text), DecisionCard (a card is heavier than a reference),
+                 .figure (evidence at level 2, one per row: too big for seven references). Old copy, one fragment per row:
+                 Hedvig: inviting a friend visibly lowers the monthly price
+                 Wrisk: a custom policy built from plain-language questions, one at a time
+                 Pulse: a base module with paid extensions, shared with the household
+                 Lemonade: contracting written in plain, friendly language
+                 DeadHappy: underwriting as a short conversation, ending in a stated payout and price
+                 Cuvva: sliders raise coverage item by item, with the price updating instantly
+                 Santander: coverage chosen before purchase, with the instalment updating live -->
+            <div class="ref-rows">
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-hedvig.png" alt="Hedvig's app" width="56" height="84" loading="lazy">
+              <p><strong>Hedvig</strong> <span data-new-copy="bench-hedvig">Hedvig lowers the monthly price when a customer invites a friend, and the new price shows at once.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-wrisk.png" alt="Wrisk's app" width="56" height="84" loading="lazy">
+              <p><strong>Wrisk</strong> <span data-new-copy="bench-wrisk">Wrisk builds each policy from plain-language questions asked one at a time, so the cover fits the customer without a long form.</span></p>
+              <span class="badge ref-row__badge" data-new-copy="bench-badge">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-pulse.png" alt="Pulse's app" width="56" height="84" loading="lazy">
+              <p><strong>Pulse</strong> <span data-new-copy="bench-pulse">Pulse sells a base module with paid extensions, and the customer can share the cover with their household.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-lemonade.png" alt="Lemonade's app" width="56" height="84" loading="lazy">
+              <p><strong>Lemonade</strong> <span data-new-copy="bench-lemonade">Lemonade writes its contract in plain, friendly language, so the customer can read what they are buying.</span></p>
+              <span class="badge ref-row__badge" data-new-copy="bench-badge">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-deadhappy.png" alt="DeadHappy's app" width="56" height="84" loading="lazy">
+              <p><strong>DeadHappy</strong> <span data-new-copy="bench-deadhappy">DeadHappy underwrites through a short conversation that ends with the payout and the price stated plainly.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-cuvva.png" alt="Cuvva's app" width="56" height="84" loading="lazy">
+              <p><strong>Cuvva</strong> <span data-new-copy="bench-cuvva">Cuvva lets the customer raise cover item by item with sliders, and the price updates as they move.</span></p>
+              <span class="badge ref-row__badge" data-new-copy="bench-badge">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-santander.png" alt="Santander's app" width="56" height="84" loading="lazy">
+              <p><strong>Santander</strong> <span data-new-copy="bench-santander">Santander has the customer choose their cover before buying, and the instalment updates as they choose.</span></p>
+            </div>
+            </div>
           </div>
           <div style="margin-bottom:var(--section-y)">
             <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">User flows</h3>

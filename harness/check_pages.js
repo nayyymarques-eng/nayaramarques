@@ -125,7 +125,7 @@
       if (cs.textTransform === 'uppercase' && boxed && h >= 30) out.push(`ACT-01 uppercase action "${e.textContent.trim().slice(0, 30)}"`);
       else if (boxed && h >= 36 && h <= 64 && !isVariant && !e.closest('header,[data-case-index]')) out.push(`ACT-01 a boxed action outside the three variants: "${e.textContent.trim().slice(0, 30)}"`);
     }
-    if (cs.textTransform === 'uppercase' && parseFloat(cs.fontSize) < 10.95 && !inMock(e) && !e.closest('.tag,header,[data-case-index] a span,.figure') &&
+    if (cs.textTransform === 'uppercase' && parseFloat(cs.fontSize) < 10.95 && !inMock(e) && !e.closest('.tag,.badge,header,[data-case-index] a span,.figure') &&
         [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) && visible(e, cs)) {
       const k = e.textContent.trim().slice(0, 30);
       small.set(k, `TYP-01 label at ${parseFloat(cs.fontSize)}px, the eyebrow is 11px: "${k}"`);

@@ -208,7 +208,7 @@ Every block of content on a case page (and on about) does one job, and each job 
 | Lesson | a thought taken forward | stacked card | eyebrow `On the product` / `On the practice` | `DecisionCard data-pattern="lesson"` in `.cards` |
 | Finding | an observed fact from research, an audit or a survey | row | none; a count, when there is one, is the lead (`6 of 6`, `90%`, `10`); bare labels with no body are tags (`ul.tags`) | `ListRow data-pattern="finding"` |
 | Principle | a rule agreed up front, a way of working | stacked card | none | `DecisionCard data-pattern="principle"` (about: hand-built rows with evidence links, until DecisionCard can carry a links line) |
-| Reference | a source or a benchmark the work drew on | row | none | `ListRow data-pattern="reference"` |
+| Reference | a source or a benchmark the work drew on | row; with a picture of the source, a small rounded rectangle on the left (sm radius, never a disc), and a `.badge` on its own line under the text when it marks a role ("Shaped the structure") | none | `ListRow data-pattern="reference"`; with a picture, `.ref-row data-pattern="reference"` (proposal, round 5: ListRow has no picture slot) |
 | Gap | what the case does not cover, and why | inactive row | a hollow muted dot | `ListRow data-pattern="gap"`, only in "What this case doesn't cover" |
 | Result | a measured outcome | big number and caption | the number itself | `.stats data-pattern="result"`, label starts "Result" |
 | Scope | a count of what exists, not an outcome | big number and caption | the number itself | `.stats data-pattern="scope"`, label starts "Scope" |
