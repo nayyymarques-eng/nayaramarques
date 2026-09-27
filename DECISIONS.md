@@ -11,6 +11,7 @@ Format: date · decision · what it replaces or rules out · enforced by.
 - Subtitles (the hero lede on cases) are too big on phones; people will not read that much on a phone. · the lede size on phones · TYP-04
 - Case details (Role, Users, Timeframe, Built) on phones: cleaned up in the footer/Tools style, compact; check the inner shade shows. · the tall stacked box · by eye
 - Home on phones: the chat does not work there; give it a frame with a fixed height and position so it does not push the page down. · the growing chat · by eye
+- Eyebrow to heading: one distance everywhere ("sync the eyebrow bottom spacing, sync everywhere"; "Who runs it" sat far above its h2, "Questions" close). Built as `--space-sm` (12px, box to box, the distance DecisionCard already draws), set once in `components.css`; heroes keep HERO-01's 16px. The value is the agent's choice, hers to confirm (the other option is `--space-xs`, 8px). · per-component eyebrow margins (0 to 28px) · TYP-05 (check_pages)
 
 ## 2026-09-27 (after deploy)
 - Build page, "Four layers": deployed as written on her word ("DEPLOY"): the lead, four parts per card, and "How the system is refined" in four steps; "the owner" stays; the loop stays in this section; the in-card list stays local to this page. · the thin four cards · CNT-11
