@@ -172,7 +172,7 @@ Nayara: new tokens (new role names included); merging values that differ; any co
 ### Motion (MOT)
 - **MOT-01** Reduced motion removes every loop, travel and parallax; illustrations show their resolved state; the chat shows its thread, still. *(check_pages, with reduced motion on)*
 - **MOT-02** Animate `transform` and `opacity` only, on loops and entrances. Entrances are one-off, 400 to 600ms, `--ease-out`; the case scenes are entrances too (ILL-01). The home sticker is the one exception (MOT-03).
-- **MOT-03** The home sticker is stiff and digital: it moves with the cursor, with no trail, tilt, bob or spring; it enters in four discrete beats (`steps(4)`, 400ms, revealed top to bottom like a terminal printing its lines) and leaves at once. Reduced motion: it appears at once. Its line reads "Sorry, it isn't built." / "I can build yours." on two lines. *(by eye; 2026-09-26)*
+- **MOT-03** The home sticker is a small red note (`--brand-mark`, text `--surface-card`), no terminal: it moves with the cursor, with no trail, tilt, bob or spring, and fades in and out softly (opacity, `--dur-entrance`, `--ease-out`). Reduced motion: it appears and leaves at once. Its line is confident, two short lines (Nayara 2026-09-27). *(by eye)*
 
 ### Retired (RET): do not reintroduce
 | Old | Now |
@@ -191,7 +191,7 @@ Nayara: new tokens (new role names included); merging values that differ; any co
 | Pinned title cards, the red section bar, sticky section heads | The section title and its intro, in the body |
 | Cards two to a row (`.cards--2`), horizontal step boxes (`.stages`), constraint and outcome rows | Stacked cards, one per row (PAT-05, 2026-09-26) |
 | "What this case doesn't cover" in the same look as the content | The inactive gap row (PAT-07, 2026-09-26) |
-| A trailing, tilting, soft-fading home sticker | Stiff, with a stepped entrance (MOT-03) |
+| A trailing, tilting home sticker; the terminal sticker with a stepped entrance | A red note that follows the cursor and fades softly (MOT-03) |
 
 ## 7. Content patterns (PAT) and numbers (NUM)
 Every block of content on a case page (and on about) does one job, and each job has one structure. Name the job on the element as `data-pattern="<job>"`; the structure follows from it. Before drawing a list, a card or a number, find its job in this table. A job that is not here is a proposal (CMP-03). *(Approved by Nayara 2026-09-26: the jobs, `.stats`, `.subsection`, `data-pattern` on ListRow and DecisionCard, the labels Scope and Results, and `--font-size-subsection`. Round 3, same day: every card job is stacked, and constraints, steps and outcomes joined the cards, so a reader scanning fast meets one structure; gaps are inactive rows.)*

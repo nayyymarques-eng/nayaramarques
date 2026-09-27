@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-27 (round 5, from her review of the live site)
+- Home sticker: no terminal, just the red note; a soft fade in and out; a more confident line ("I didn't build it, but I can build yours" felt submissive). · the terminal, the stepped entrance, "Sorry, it isn't built. I can build yours." · MOT-03
 - Audit copy approved: the heading "Two audits a month" and the "What is not" line "If you want that, it becomes a project engagement." · the price wording · CNT-01
 - Round 5 layout approved ("everything approved"): all new copy (About intro, Kinds of engagement, the FAQ line, the seven benchmark sentences), two-up landing grids, Contact's third card alone on its row, `--font-size-lead` and `--font-size-h3`, `.ld-list--quiet` and `.ref-row` join the system; "Priced on the call" removed everywhere (the site does not discuss price); benchmark rows use the standard `.tag`, `.badge` stays for states inside product mockups; About Tools: tools only, no note, no skills. · round 5 proposals, price lines · TYP-04, SEC-06, PAT-08, CNT-01 (check_source), harness/verdicts.json
 - Headings in sync: one fixed size per heading level site-wide; every subtitle (the lead under a page title, the hero lede on cases and About) the same size, smaller than now, and short on About's intro. · leads at different, too-large sizes · TYP, HIER (to write, with checks)

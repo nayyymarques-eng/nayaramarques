@@ -118,21 +118,14 @@
   @media (max-width: 860px) { .hx__grid { grid-template-columns: minmax(0, 1fr); } .hx__name { white-space: normal; } .hx__thread { min-height: 0; } }
   @media (max-width: 640px) { .hx__lede br { display: none; } }
   @media (prefers-reduced-motion: reduce) { .hx__caret { display: none; } .hx__thread li { animation: none; } }
-  /* The sticker: a small card (a terminal) follows the cursor only while it is over the chat. */
-  /* Stiff, digital (Nayara, 2026-09-26): it moves with the cursor, no trail, no tilt. It enters in four beats, top to
-     bottom like a terminal printing its lines (steps(), 400ms), and leaves at once. Reduced motion: it appears at once. */
-  .hx-sticker { position: fixed; left: 0; top: 0; z-index: 60; width: 196px; pointer-events: none; opacity: 0; transform: translate3d(-999px, -999px, 0);
-    background: var(--brand-mark); border-radius: var(--radius-md); padding: 6px; box-shadow: var(--elevation-sticker); }
-  .hx-sticker.is-on { opacity: 1; animation: hx-sticker-in 400ms steps(4, jump-start) both; }
-  @keyframes hx-sticker-in { from { clip-path: inset(-24px -24px 100% -24px); } to { clip-path: inset(-24px -24px -24px -24px); } }
-  @media (prefers-reduced-motion: reduce) { .hx-sticker.is-on { animation: none; } }
-  .hx-sticker__term { background: var(--terminal-surface); border-radius: var(--radius-sm); overflow: hidden; }
-  .hx-sticker__bar { display: flex; align-items: center; gap: 4px; padding: 5px 7px; background: var(--terminal-chrome); }
-  .hx-sticker__bar i { width: 6px; height: 6px; border-radius: 50%; background: var(--terminal-dot); }
-  .hx-sticker__bar span { margin-left: 4px; font: 9px/1 var(--font-mono); color: var(--terminal-meta); }
-  .hx-sticker pre { margin: 0; padding: 8px 9px 10px; font: 11px/1.45 var(--font-mono); color: var(--terminal-text); white-space: pre; }
-  .hx-sticker pre b { color: var(--terminal-error); font-weight: 600; }
-  .hx-sticker p { margin: 6px 4px 2px; font-size: 12px; line-height: 1.35; font-weight: 500; color: var(--surface-card); }
+  /* The sticker: a small red note follows the cursor only while it is over the chat (Nayara, 2026-09-27: no terminal,
+     a confident line; it fades in and out softly, nothing more). Reduced motion: it appears and leaves at once. */
+  .hx-sticker { position: fixed; left: 0; top: 0; z-index: 60; max-width: 240px; pointer-events: none; opacity: 0; transform: translate3d(-999px, -999px, 0);
+    background: var(--brand-mark); border-radius: var(--radius-md); padding: var(--space-sm) var(--space-md); box-shadow: var(--elevation-sticker);
+    transition: opacity var(--dur-entrance) var(--ease-out); }
+  .hx-sticker.is-on { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .hx-sticker { transition: none; } }
+  .hx-sticker p { margin: 0; font-size: var(--font-size-sm); line-height: var(--leading-label); font-weight: 500; color: var(--surface-card); }
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -374,7 +367,7 @@
     })();
   }
   setTimeout(typeLine, 900);
-  // the sticker moves with the cursor over the chat: stiff, no trail, no tilt (its entrance is in the CSS)
+  // the sticker moves with the cursor over the chat: stiff, no trail, no tilt (its fade is in the CSS)
   function S() { return document.querySelector('.hx-sticker'); }
   var tx = 0, ty = 0, on = false, raf = 0;
   function place() {
@@ -401,14 +394,8 @@
 })();
 </script>
 <div class="hx-sticker" aria-hidden="true">
-  <div class="hx-sticker__term">
-    <div class="hx-sticker__bar"><i></i><i></i><i></i><span>nayara@portfolio</span></div>
-    <pre>$ send --message
-<b>404:</b> chat not found
-
-   ¯\_(ツ)_/¯</pre>
-  </div>
-  <p>Sorry, it isn’t built.<br>I can build yours.</p>
+  <!-- Was a terminal ("$ send --message / 404: chat not found / shrug") with "Sorry, it isn’t built. I can build yours." -->
+  <p data-new-copy="home-sticker">This one’s a mock-up.<br>I build the ones that ship.</p>
 </div>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
