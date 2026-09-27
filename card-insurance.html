@@ -94,6 +94,12 @@
      card conversion lines up: step 6 in the considered flow, step 2 in the chosen one. The considered flow is labelled with its
      reason, never struck through; the decided one is labelled Chosen (FLW-02). Narrow screens scroll inside the frame. */
   .figure > .fh-scroll { overflow-x: auto; overflow-y: hidden; contain: inline-size; border-radius: var(--radius-sm); display: grid; gap: var(--space-xs); padding: 4px; }
+  /* Phones (round 6, FLW-01): the flows run to the screen edge; the figure gives up its white card so nothing cuts them
+     short of the edge, and the first flow still starts on the gutter. */
+  @media (max-width: 760px) {
+    .figure.fh { background: none; box-shadow: none; border-radius: 0; padding: 0; }
+    .figure > .fh-scroll { margin-inline: calc(-1 * var(--page-gutter)); padding: 4px var(--page-gutter); border-radius: 0; }
+  }
   .fh-flow { min-width: 900px; border-radius: var(--radius-md); padding: 18px var(--space-lg) var(--space-md); }
   .fh-flow--considered { background: transparent; }
   .fh-flow--chosen { background: var(--surface-page); box-shadow: var(--elevation-inset-1); }
@@ -134,28 +140,17 @@
       <div class="hero__eyebrow" style="color:var(--accent)"><span><span>BTG Pactual</span> · São Paulo · 2020</span></div>
       <h1 style="font-weight:500;font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-l);max-width:22ch;text-wrap:balance">Modular card insurance in a banking app</h1>
       <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
-      <p style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Customers of BTG+, the bank's app, could only buy card insurance as a fixed bundle at one price. I designed a modular version: the customer chooses a level of cover for card theft and misuse, and adds an assistance, a service such as pet care or home repairs. My usability test then showed that selling it during the card request put card sign-ups at risk, so the whole flow moved to the card's settings.</p>
+      <p class="hero__lede hero__lede--desk" style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Customers of BTG+, the bank's app, could only buy card insurance as a fixed bundle at one price. I designed a modular version: the customer chooses a level of cover for card theft and misuse, and adds an assistance, a service such as pet care or home repairs. My usability test then showed that selling it during the card request put card sign-ups at risk, so the whole flow moved to the card's settings.</p>
+      <p class="hero__lede hero__lede--phone" data-lead data-new-copy="lede-phone-card-insurance" style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Card insurance in BTG+ was a fixed bundle at one price. I designed a modular version, and my usability test moved it out of the card request into the card's settings, to protect card sign-ups.</p>
     </section>
 
     <section class="glass case-details">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-fluid-l)">
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Role</div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7)">Senior Product Designer.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Team</div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7)">PM, tech lead, developers, and Too Seguros as insurer.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Context</div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7)">BTG+, the bank's digital product. October 2020.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Contribution</div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">survey · benchmark · user flows · prototyping · usability testing · flow strategy</p>
-        </div>
-      </div>
+      <dl class="case-details__list">
+        <div><dt>Role</dt><dd>Senior Product Designer.</dd></div>
+        <div><dt>Team</dt><dd>PM, tech lead, developers, and Too Seguros as insurer.</dd></div>
+        <div><dt>Context</dt><dd>BTG+, the bank's digital product. October 2020.</dd></div>
+        <div><dt>Contribution</dt><dd>survey · benchmark · user flows · prototyping · usability testing · flow strategy</dd></div>
+      </dl>
     </section>
 
     <section style="display:grid">
@@ -289,22 +284,25 @@
             <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">User flows</h3>
             <p style="margin:0 0 var(--space-2xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The three flows: buying the insurance, making a claim and cancelling.</p>
             
-            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)">
+            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)"><div class="flow-scroll">
               <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Contracting</div>
               <div class="chain"><span class="chip">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip chip--emph">The card is active?</span></div>
               <div style="display:grid;gap:var(--space-md);margin-top:var(--space-md);margin-left:var(--space-sm);padding-left:var(--space-xl);border-left:2px solid var(--border)">
                 <div class="chain"><span style="flex:0 0 34px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--accent)">Yes</span><span class="chip">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip" style="font-weight:600">Insurance Page</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Select the package</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Select the assistance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Success</span></div>
                 <div class="chain"><span style="flex:0 0 34px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--accent)">No</span><span class="chip" style="font-weight:600">Request a credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Activate the card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Insurance offer</span><span style="font-size:var(--font-size-sm);color:var(--text-muted);margin-left:var(--space-2xs)">rejoins “Select the package”</span></div>
               </div>
+              </div>
             </div>
-            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)">
+            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)"><div class="flow-scroll">
               <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Claim</div>
               <div class="chain"><span class="chip">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Insurance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Claim</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Contact info · insured info and document needed</span></div>
               <p style="margin:var(--space-sm) 0 0;max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The customer finishes the claim by phone with Too Seguros, the insurer, so the flow shows clearly the point where the app hands over.</p>
+              </div>
             </div>
-            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)">
+            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)"><div class="flow-scroll">
               <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Cancel</div>
               <div class="chain"><span class="chip">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Insurance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Cancel</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Reason</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Success</span></div>
+              </div>
             </div>
             <div style="border-top:1px solid var(--border)"></div>
           </div>
@@ -356,7 +354,7 @@
 
           <!-- proposal: horizontal flow figure (Nayara, 2026-09-25). Flows read left to right on one shared six-column grid, so card conversion lines up: step 6 in the considered flow, step 2 in the chosen one. The considered flow is labelled with its reason, never struck through. Considered: FlowChain (a wrapping row of chips, no shared grid), the case figure (holds an image, not aligned flows). -->
           <figure class="figure fh">
-            <div class="fh-scroll">
+            <div class="fh-scroll flow-scroll">
               <div class="fh-flow fh-flow--considered">
                 <div class="fh-label"><span class="tag tag--considered">Considered · too risky for conversion</span><span class="fh-name">Inside the card request</span></div>
                 <ol class="fh-steps"><li class="fh-step"><span class="fh-n">01</span><span>Request the card</span></li><li class="fh-step"><span class="fh-n">02</span><span>Benefits</span></li><li class="fh-step"><span class="fh-n">03</span><span>Invest+</span></li><li class="fh-step"><span class="fh-n">04</span><span>Virtual card</span></li><li class="fh-step fh-risk"><span class="fh-n">05</span><span>Insurance plans <span class="fh-flag">+ paid checkout</span></span></li><li class="fh-step fh-conv fh-conv--late"><span class="fh-n">06</span><span>Card conversion</span></li></ol>

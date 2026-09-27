@@ -118,28 +118,17 @@
       </div>
       <h1 style="font-size:var(--font-size-3xl);font-weight:500;line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-l);max-width:30ch;text-wrap:balance">Where AI lives in an institutional investment platform</h1>
       <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
-      <p style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">The platform's AI lived on a separate chat page and answered every question the same way. I moved it into the surfaces where allocators and fund managers already work (the dashboard, reports, documents and meeting notes) and gave it two modes: analysis, for asking about what is on screen, and edit, for changing it with a review step. The composer (the box where users type to the AI), the two modes and the review step are now components in the design system, so engineers and AI tools build the next AI screen from them instead of drawing new ones.</p>
+      <p class="hero__lede hero__lede--desk" style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">The platform's AI lived on a separate chat page and answered every question the same way. I moved it into the surfaces where allocators and fund managers already work (the dashboard, reports, documents and meeting notes) and gave it two modes: analysis, for asking about what is on screen, and edit, for changing it with a review step. The composer (the box where users type to the AI), the two modes and the review step are now components in the design system, so engineers and AI tools build the next AI screen from them instead of drawing new ones.</p>
+      <p class="hero__lede hero__lede--phone" data-lead data-new-copy="lede-phone-ai-surfaces" style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">The platform's AI lived on a separate chat page. I moved it into the screens where allocators and fund managers already work, with two modes: analysis, to ask about the screen, and edit, to change it.</p>
     </section>
 
     <section class="glass case-details">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-fluid-l)">
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Role</div>
-          <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small)">Senior Product Designer. Interaction design, working prototypes, delivery spec.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Users</div>
-          <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small)">Institutional allocators and fund managers: time-poor, sceptical of automation.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Timeframe</div>
-          <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small)">2026, ongoing.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Built</div>
-          <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small)">In Claude Design on the current design system, handed to engineering through Claude Code.</p>
-        </div>
-      </div>
+      <dl class="case-details__list">
+        <div><dt>Role</dt><dd>Senior Product Designer. Interaction design, working prototypes, delivery spec.</dd></div>
+        <div><dt>Users</dt><dd>Institutional allocators and fund managers: time-poor, sceptical of automation.</dd></div>
+        <div><dt>Timeframe</dt><dd>2026, ongoing.</dd></div>
+        <div><dt>Built</dt><dd>In Claude Design on the current design system, handed to engineering through Claude Code.</dd></div>
+      </dl>
     </section>
 
     <section style="display:grid">
@@ -262,7 +251,7 @@
           <div style="padding:var(--section-y) 0 var(--space-fluid-xl);border-bottom:1px solid var(--border)"><h3 class="subsection">Analysis mode</h3>
           <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Analysis mode is for reading: comparing figures or checking a report. The composer is shown on top of the page (the dashboard, a team view or a report) and already knows what is on it, so the user can ask straight away and carry on reading.</p>
           <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Asking a question never changes the page. For a longer conversation, the user can expand the composer into a full chat that stays attached to the page. Every answer shows its sources: allocators and fund managers make decisions with real money, and an answer they cannot check is worse than no answer.</p>
-          <div class="figure figure--col" style="min-width:0;display:flex;flex-direction:column;margin-bottom:var(--space-fluid-xl)">
+          <div class="figure figure--col figure--proto" style="min-width:0;display:flex;flex-direction:column;margin-bottom:var(--space-fluid-xl)">
                             <div><div class="card" style="position:relative;padding:var(--space-xl) var(--space-xl) var(--space-xl);overflow:hidden">
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--space-2xs) var(--space-md);font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md);padding-bottom:var(--space-sm);border-bottom:1px solid var(--border-emphatic)"><span style="color:var(--text-strong)">Analysis mode</span><span>Report · Q3 manager review · 4 of 18</span></div>
       <div class="sk-d" style="width:56%;height:12px;margin-bottom:var(--space-md)"></div>
@@ -330,7 +319,7 @@
           <p style="margin:0 0 var(--space-lg);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The user opens it from the toolbar of the file they are editing. Inside edit mode there are two ways to edit, and both are open at the same time. Inline, the user refines the AI output line by line, right in the text. In the edit chat beside the file, they describe a larger change in their own words, and the AI proposes it in the chat, where they accept it. Either way, the user sees the new wording next to the original before anything changes. Nothing is saved until the user has reviewed it, and every accepted change is saved as a version they can go back to.</p>
           <p style="margin:0 0 var(--space-sm);max-width:var(--measure-prose);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Edit mode works the same way in reports, documents and meeting notes, so users learn it once.</p>
           <div class="tags" data-pattern="term" style="margin:0 0 var(--space-fluid-l)"><span class="tag">Report editing mode</span><span class="tag">Document editing mode</span><span class="tag">Meeting notes editing mode</span></div>
-          <div class="figure figure--col" style="margin:0 0 var(--space-fluid-xl)"><div><div style="padding:var(--space-xl) var(--space-fluid-s) var(--space-xl);background:var(--surface-page)">
+          <div class="figure figure--col figure--proto" style="margin:0 0 var(--space-fluid-xl)"><div><div style="padding:var(--space-xl) var(--space-fluid-s) var(--space-xl);background:var(--surface-page)">
       <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);align-items:stretch">
         <div class="card" style="flex:1 1 260px;min-width:0;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-xs);padding:var(--space-sm) var(--space-sm);border-bottom:1px solid var(--border-emphatic)"><span style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Report · Editing mode</span><span style="font-size:var(--font-size-2xs);color:var(--text-muted);white-space:nowrap">Q3 portfolio review</span></div>
@@ -433,7 +422,7 @@
     </section>
     
     <section class="band-inverse" style="padding:var(--section-y-lg) 0">
-      <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-on-inverse-muted);margin-bottom:var(--space-fluid-m)">AI product design</div>
+      <div data-eyebrow style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-on-inverse-muted)">AI product design</div>
       <h2 style="margin:0 0 var(--space-fluid-m);max-width:26ch;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-none);letter-spacing:var(--tracking-display);color:var(--text-on-inverse);text-wrap:balance">Let’s build AI into a product with the structure to grow it.</h2>
       <p style="margin:0 0 var(--space-fluid-l);max-width:58ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-on-inverse-muted);text-wrap:pretty">Adding AI changes how a product behaves as well as how it looks. I design where the AI appears, specify every state it can be in, and leave components with rules that the team can build on.</p>
       <a class="action action--inverse" href="contact.html">Let’s talk <span class="action__arrow" aria-hidden="true">→</span></a>

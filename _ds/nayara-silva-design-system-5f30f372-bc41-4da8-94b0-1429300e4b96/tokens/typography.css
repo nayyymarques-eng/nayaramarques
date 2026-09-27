@@ -13,7 +13,7 @@
   --font-size-md:16px;                         /* running prose */
   --font-size-subsection:clamp(16px,1.25vw,17px); /* case sub-section title (h3.subsection): below the section title (18–20), above the item title (16) */
   --font-size-lg:clamp(18px,1.43vw,20px);      /* a step of the scale; pages use --font-size-h3 (titles) or --font-size-lead (subtitles), round 5 */
-  --font-size-lead:clamp(16px,1.29vw,18px);    /* THE lead (TYP-04): every subtitle, under a page title (the hero lede), a section heading or the ink band's headline; 18px from 1400px, 16px on phones */
+  --font-size-lead:clamp(15px,1.29vw,18px);    /* THE lead (TYP-04): every subtitle, under a page title (the hero lede), a section heading or the ink band's headline; 18px from 1400px, 15px on phones (round 6: 16 read too big on a phone) */
   --font-size-h3:var(--font-size-lg);          /* an h3 outside case bodies: card, plan, layer and link-card titles, About's roles (TYP-04) */
   --font-size-xl:clamp(20px,2vw,28px);         /* a step of the scale (the old statement size); no page uses it for a subtitle since round 5 */
   --font-size-xl-lead:var(--font-size-xl);     /* card titles: case-index.js steps them down to lg inside case bodies */
