@@ -41,9 +41,8 @@ del{color:var(--muted)}
 <div class="q"><p><code>ai-surfaces-r5-chat-mock</code>, <code>ai-surfaces-r5-chat-accept</code> (chat mockup)</p><p>"Here is the new summary:" · Summary: <del>Exposure rose in Q3.</del> → Exposure rose 4% in Q3, led by two managers. (both lines already on the page) · button "Accept change"</p></div>
 <div class="q"><p><code>ai-surfaces-r5-inline-mock</code> (mockup text in the new figure)</p><p>Report · Editing mode, "Q3 portfolio review": <del>Returns were mixed across the portfolio.</del> → Private credit held up, while buyout funds lagged.</p><p>Meeting notes · Editing mode, "Manager call": <del>Follow up with the manager.</del> → Send the revised allocation question before the committee date. (reused from the figure removed in round 3)</p><p>Tag on each suggestion: "Inline edit" (the chat figure keeps "From edit chat", so the two sources read apart).</p></div>
 
-<h2>Questions</h2>
-<div class="q"><p>1. The inline suggestions are tagged "Inline edit"; the chat figure no longer shows an inline suggestion. Keep the tag? Recommendation: keep it.</p></div>
-<div class="q"><p>2. Only "Accept change" in the chat, as you named it. Add a secondary "Keep mine" there too? Recommendation: no, the user can simply ask again.</p></div>
+<h2>Questions (answered 2026-09-27)</h2>
+<p>Both answered with the recommendations: the inline suggestions keep the "Inline edit" tag; the chat has "Accept change" only. On phones the report panel now sits above the edit chat; desktop keeps chat left, report right.</p>
 
 <h2>Check</h2>
 <p><code>python3 harness/check.py ai-surfaces.html</code>: PASS at 1400px and 375px. One warning on this page, FLW-02 strike-through, which the rule excepts for product mockups showing a deletion.</p>

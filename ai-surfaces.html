@@ -86,6 +86,8 @@
   @keyframes dotPulse { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
   /* the placement figure: previous work above the proposed solution on a phone, so both tags and every badge stay whole */
   @media (max-width: 600px) { #fig-placement > div { grid-template-columns: minmax(0, 1fr) !important; } #fig-placement > div > div:nth-child(2) { height: 1px; } }
+  /* the edit chat figure: on a phone the panels stack with the report on top, so the reader sees the report's editing mode first, then the chat (Nayara 2026-09-27) */
+  @media (max-width: 700px) { #fig-edit-chat .card { flex-basis: 100% !important; } #fig-edit-chat [data-panel="report"] { order: -1; } }
   @media (max-width: 860px) {
     [data-rail] {
       flex: 1 1 100% !important;
@@ -348,7 +350,7 @@
         </div>
       </div>
     </div></div><!-- proposal: caption banner. One block under a figure: what it shows, then why. Replaces the caps title, caption line and Why line. --><div class="figure__caption" data-caption><p data-new-copy="ai-surfaces-r5-inline-caption"><strong>Inline edit, inside edit mode.</strong> The report and the meeting notes are AI output. With edit mode open, the user refines them line by line: the AI suggests a new line over the old one, and the user accepts it or keeps their own.</p><p data-new-copy="ai-surfaces-r5-inline-why"><strong>Why:</strong> Other people act on these files, so the user decides on each line before it becomes the record.</p></div></div>
-          <div class="figure figure--col"><div><div style="padding:var(--space-xl) var(--space-fluid-s) var(--space-xl);background:var(--surface-page)">
+          <div class="figure figure--col" id="fig-edit-chat"><div><div style="padding:var(--space-xl) var(--space-fluid-s) var(--space-xl);background:var(--surface-page)">
       <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);align-items:stretch">
         <div class="card" style="flex:3 1 260px;min-width:0;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-xs);padding:var(--space-sm) var(--space-sm);border-bottom:1px solid var(--border-emphatic)"><span style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent)">Edit chat</span><span style="font-size:var(--font-size-2xs);color:var(--text-muted);white-space:nowrap">Q3 manager review</span></div>
@@ -360,7 +362,7 @@
           </div>
           <div style="border-top:1px solid var(--border);background:var(--surface-page);padding:var(--space-sm) var(--space-sm)"><div style="border:1px solid var(--border-emphatic);border-radius:var(--radius-md);background:var(--surface-card);padding:var(--space-xs) var(--space-xs) var(--space-xs) var(--space-sm);display:flex;align-items:center;gap:var(--space-xs)"><i data-lucide="sparkles" style="width:12px;height:12px;display:block;flex:none;color:var(--accent)"></i><span style="flex:1;min-width:0;font-size:var(--font-size-2xs);color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Change this report…</span><span style="flex:none;width:20px;height:20px;background:var(--surface-inverse);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center"><i data-lucide="arrow-up" style="width:11px;height:11px;display:block;flex:none;color:var(--surface-card)"></i></span></div></div>
         </div>
-        <div class="card" style="flex:2 1 220px;min-width:0;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden">
+        <div class="card" data-panel="report" style="flex:2 1 220px;min-width:0;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-xs);padding:var(--space-sm) var(--space-sm);border-bottom:1px solid var(--border-emphatic)"><span style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Report · Editing mode</span></div>
           <div style="padding:var(--space-sm) var(--space-sm) var(--space-md);display:flex;flex-direction:column;gap:var(--space-xs);flex:1"><div class="sk-d" style="width:48%;height:8px;margin-bottom:var(--space-2xs)"></div><div class="sk" style="height:5px"></div><div class="sk" style="width:88%;height:5px"></div><div class="sk" style="width:70%;height:5px;margin-bottom:var(--space-xs)"></div><div class="sk" style="height:5px"></div><div class="sk" style="width:76%;height:5px"></div><div class="sk" style="width:64%;height:5px"></div><div class="sk" style="width:82%;height:5px"></div></div>
         </div>
