@@ -12,7 +12,13 @@
  *           The home is the one exception (HERO-02): its hero fills the first screen, centred.
  *   TYP-01  an eyebrow or label is under 11px (in-diagram labels, tags and product mockups excepted)
  *   ACT-01  an action is uppercase, or boxed without being one of the three variants
- *   ACT-02  more than one primary action on the page
+ *   ACT-02  more than one primary action outside offer cards, or more than one inside one offer card (.plan-card)
+ *   TYP-04  one size per heading level outside case bodies: every visible h2 at --font-size-h2, every h3 at --font-size-h3;
+ *           every subtitle (the hero lede, a section-head subtitle, the ink band's subtitle) at --font-size-lead.
+ *           Labels (uppercase), case bodies (LAY-08 keeps its own scale), drawings and product mockups are excepted.
+ *   SEC-06  a wide component (card, card group, accordion, row list, figure, stats, in-section divider) does not end on a
+ *           line of the column grid: the full content width, or half of it (2 of 4 columns); in a case body, the body
+ *           column. At most two card widths on a page: big (full) and small (half).
  *   MOT-01  with reduced motion on, something still loops or the sky still moves
  *   COL-08  text contrast below WCAG AA on its ground: 4.5, or 3.0 for large text (24px+, or 18.66px+ bold).
  *           Text on the sky is measured against the sky's darkest point (--sky-deepest). Images, gradients and
@@ -125,7 +131,28 @@
     }
   }
   out.push(...small.values());
-  if (primaries > 1) out.push(`ACT-02 ${primaries} primary actions on the page; one, then links`);
+  // ACT-02 one filled action per view: one outside offer cards (the hero's), and at most one inside each offer card
+  const cardPrim = [...document.querySelectorAll('.plan-card')].map(c => [...c.querySelectorAll('.action--primary')].filter(a => visible(a, getComputedStyle(a))).length);
+  const loose = primaries - cardPrim.reduce((a, b) => a + b, 0);
+  if (loose > 1) out.push(`ACT-02 ${loose} primary actions outside offer cards; one, then links`);
+  if (cardPrim.some(n => n > 1)) out.push('ACT-02 an offer card with more than one primary action');
+
+  // TYP-04 one size per heading level, one lead size (outside case bodies, whose scale is LAY-08's)
+  {
+    const size = css => { const d = document.createElement('div'); d.style.cssText = 'position:absolute;visibility:hidden;' + css; document.body.appendChild(d); const v = parseFloat(getComputedStyle(d).fontSize); d.remove(); return v; };
+    const W2 = size('font-size:var(--font-size-h2)'), W3 = size('font-size:var(--font-size-h3)'), WL = size('font-size:var(--font-size-lead)');
+    const skip = e => inMock(e) || e.closest('header,footer,[data-case-band],[data-case-index],figure,.figure,.illo-window,[data-surface="card"],.hx-sticker') || getComputedStyle(e).textTransform === 'uppercase' || !visible(e, getComputedStyle(e));
+    const typ = new Set();
+    for (const h of document.querySelectorAll('main h2, body > section h2, .band-inverse h2')) if (!skip(h) && Math.abs(parseFloat(getComputedStyle(h).fontSize) - W2) > 0.5) typ.add(`TYP-04 h2 "${h.textContent.trim().slice(0, 30)}" at ${parseFloat(getComputedStyle(h).fontSize)}px; every h2 is --font-size-h2 (${W2}px)`);
+    for (const h of document.querySelectorAll('main h3, body > section h3')) if (!skip(h) && !h.classList.contains('subsection') && Math.abs(parseFloat(getComputedStyle(h).fontSize) - W3) > 0.5) typ.add(`TYP-04 h3 "${h.textContent.trim().slice(0, 30)}" at ${parseFloat(getComputedStyle(h).fontSize)}px; every h3 is --font-size-h3 (${W3}px)`);
+    const leads = [];
+    const h1 = document.querySelector('main h1');
+    if (h1) { let n = h1.nextElementSibling; while (n && n.tagName !== 'P') n = n.nextElementSibling; if (n) leads.push(n); }
+    leads.push(...document.querySelectorAll('.section-head>p:not(.eyebrow), .ld-lede, [data-lead]'));
+    for (const b of document.querySelectorAll('.band-inverse')) { const p = [...b.querySelectorAll('p')].find(p => !p.closest('.eyebrow') && getComputedStyle(p).textTransform !== 'uppercase' && p.getBoundingClientRect().top >= (b.querySelector('h2') || b).getBoundingClientRect().top); if (p) leads.push(p); }
+    for (const p of leads) if (!skip(p) && Math.abs(parseFloat(getComputedStyle(p).fontSize) - WL) > 0.5) typ.add(`TYP-04 subtitle "${p.textContent.trim().slice(0, 30)}" at ${parseFloat(getComputedStyle(p).fontSize)}px; every subtitle is --font-size-lead (${WL}px)`);
+    out.push(...typ);
+  }
 
   // MOT-01
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {

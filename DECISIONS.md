@@ -4,6 +4,17 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 
 Format: date · decision · what it replaces or rules out · enforced by.
 
+## 2026-09-27 (round 5, from her review of the live site)
+- Headings in sync: one fixed size per heading level site-wide; every subtitle (the lead under a page title, the hero lede on cases and About) the same size, smaller than now, and short on About's intro. · leads at different, too-large sizes · TYP, HIER (to write, with checks)
+- "Start a conversation" (Build card) and "Book an audit" (Audit card) are Primary actions. · Link actions on service cards · ACT (ACT-02 to reword: one primary per card)
+- Wide components respect the column grid: cards, accordions and lists on one page share widths that end on a column line (the audit card and the Questions accordions ended at different widths). · free widths per component · SEC-05 (extend, with a check)
+- Project engagement: no Investment section (A decision, Something tested, Something shipped): all engagements are priced the same way and the site does not talk about price. · the three investment cards and the pricing note · CNT-01 (to reword)
+- "What this does not include" (services pages) is a plain list, a disclaimer, low emphasis: no cards. · two cards · by eye
+- Embedded partner: keep showing the kinds of engagement (lighter, core, full week), lighter, no cards, no price lines. · three investment cards · by eye
+- Card sizes: two widths at most (small, big), and cards of the same job look the same (constraint cards and design-principle cards had different widths). Rules and dividers inside a section end on the same line as the cards (the design principles' line and the process line ended at different places). · per-block widths · PAT-05, SEC-05 (to extend)
+- Benchmark rows (card insurance): a small rounded-rectangle picture on the left (not a round avatar); "Shaped the structure" becomes a badge on its own line under the description; the description says what the insurer does that mattered, as a clear sentence, not a fragment. · bare fragments with an inline uppercase label · PAT (reference rows with a thumbnail and a badge)
+- AI surfaces, edit mode: brings back inline editing, reversing the 2026-09-26 removal. Edit mode has two ways to edit at the same time, one feature: inline, line by line, on an AI output (show a report and a meeting note, each with the inline accept / keep mine), and the edit chat. The figures make that difference clear. · report plus edit chat only · by eye
+
 ## 2026-09-26 (evening)
 - Content round 1 approved as a whole and deployed ("approve all and deploy now"): the 234 rewritten sentences on the six cases and About, About's calls to action, Tools & range as columns, the label spacing. The fact questions in the content report are fixed in a next small round. · the old wording · content-clarity skill
 

@@ -81,7 +81,7 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .hero+.section{padding-top:var(--section-gap)}
 .section-head{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-md);margin-bottom:var(--stack-lg)}
 .section-head .eyebrow{margin:0}
-.section-head>p:not(.eyebrow){margin:0;max-width:46ch;font-size:var(--font-size-lg);line-height:var(--leading-snug);color:var(--text-body);text-wrap:pretty}
+.section-head>p:not(.eyebrow){margin:0;max-width:46ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty} /* the lead (TYP-04) */
 .h2{margin:0;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);color:var(--text-heading);max-width:22ch;text-wrap:balance}
 
 /* ---------- One hero anatomy on every page (HERO-01) ----------
@@ -187,6 +187,8 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .well--next{--line:transparent;--line-ink:transparent;margin-block:0 var(--section-y);padding-block:0}
 .band-inverse+.well--next{margin-top:var(--section-y)}
 .well--next>*{padding-bottom:var(--space-fluid-l)}
+/* NextCase's title is an h2: the one h2 size (TYP-04), through the bundle's own size variable (CMP-02) */
+.well--next{--size-title:var(--font-size-h2)}
 
 /* ---------- The note: a soft recess (-1) on a light ground, grained ---------- */
 .note{position:relative;isolation:isolate;background:var(--surface-note);border-radius:var(--radius-md);border:0;box-shadow:var(--elevation-inset-1)}
@@ -261,7 +263,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 @media (max-width:760px){.plans{grid-template-columns:minmax(0,1fr)}}
 .plan-card{display:flex;flex-direction:column;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--elevation-2);padding:var(--card-p-lg)}
 .plan-card .tag{margin:0 0 var(--space-lg)}
-.plan-card h3{margin:0 0 10px;font-size:clamp(22px,2.4vw,28px);font-weight:500;line-height:1.12;letter-spacing:-0.026em}
+.plan-card h3{margin:0 0 10px;font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead)} /* one h3 size (TYP-04) */
 .plan-card>p:not(.tag):not(.eyebrow){margin:0 0 var(--space-xl);max-width:46ch;font-size:var(--font-size-md);line-height:1.6;color:var(--text-body);text-wrap:pretty}
 .plan-card>.eyebrow{margin:0 0 var(--space-xs)}
 .plan-card ul{list-style:none;margin:0 0 28px;padding:0;border-top:1px solid var(--border)}
@@ -288,7 +290,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 /* the landing hero sits on the one hero anatomy: top-aligned, never centred (HERO-01) */
 .ld-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:start;padding:0 0 clamp(8px,2vw,24px)}
 .ld-hero h1{margin:0 0 clamp(20px,3vw,28px);font-size:var(--font-size-3xl);font-weight:500;line-height:0.98;letter-spacing:var(--tracking-display);max-width:15ch;text-wrap:balance}
-.ld-lede{margin:0;max-width:52ch;font-size:clamp(16px,1.2vw,18px);line-height:1.55;color:var(--text-body);text-wrap:pretty}
+.ld-lede{margin:0;max-width:52ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty} /* the lead (TYP-04) */
 .ld-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);margin-top:clamp(28px,4vw,40px)}
 .ld-under{margin:var(--space-md) 0 0;font-size:var(--font-size-sm);color:var(--text-muted)}
 .ld-under a{color:var(--accent)}
@@ -302,7 +304,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 @media (max-width:620px){.ld-layers,.ld-layers--3,.ld-layers--2{grid-template-columns:minmax(0,1fr)}}
 .ld-layers>.card,.ld-card--half{padding:clamp(20px,2.4vw,28px)}
 .ld-layers .eyebrow,.ld-card--half .eyebrow{margin-bottom:10px}
-.ld-layers h3{margin:0 0 var(--space-xs);font-size:19px;font-weight:500;line-height:1.2;letter-spacing:-0.02em}
+.ld-layers h3{margin:0 0 var(--space-xs);font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead)}
 :is(.ld-layers,.ld-card--half) p:not(.eyebrow):not(.ld-big){margin:0;font-size:var(--font-size-action);line-height:1.6;color:var(--text-body);text-wrap:pretty}
 .ld-card--half{max-width:560px}
 .ld-layers--auto{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
@@ -316,7 +318,7 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 @media (max-width:1000px){.link-cards{grid-template-columns:minmax(0,1fr)}}
 .link-cards .link-card{height:100%;padding:clamp(20px,2.4vw,28px)}
 .link-card .eyebrow{margin:0 0 10px}
-.link-card h3{margin:0;font-size:19px;font-weight:500;line-height:1.25;letter-spacing:-0.02em;text-wrap:balance}
+.link-card h3{margin:0;font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-wrap:balance}
 /* two equal columns with the case rows' gap, so the text column lines up with the home's case illustrations (SEC-05) */
 .ld-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-fluid-xl);align-items:center}
 @media (max-width:860px){.ld-split{grid-template-columns:minmax(0,1fr)}}
@@ -331,8 +333,8 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-facts dd a{color:var(--accent);text-decoration:none}
 .ld-band{margin-top:0} /* the section above gives the space (SEC-04) */
 .ld-band__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);align-items:start;padding-block:clamp(56px,8vw,104px)}
-.ld-band h2{margin:0;font-size:clamp(28px,4vw,52px);font-weight:500;line-height:1;letter-spacing:-0.042em;max-width:18ch;text-wrap:balance}
-.ld-band p:not(.eyebrow){margin:0 0 var(--space-xl);max-width:56ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty}
+.ld-band h2{margin:0;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);max-width:18ch;text-wrap:balance} /* one h2 size (TYP-04) */
+.ld-band p:not(.eyebrow){margin:0 0 var(--space-xl);max-width:56ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-on-inverse-muted);text-wrap:pretty}
 
 /* ---------- Illustrations, B (ILL-01..03) ----------
    A mechanism with states: pending (quiet line), passing (the accent dot), done (marked in the accent).
