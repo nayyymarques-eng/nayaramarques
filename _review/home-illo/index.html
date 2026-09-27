@@ -133,6 +133,27 @@
 .xi-gp{display:inline-block;padding:0;height:12px;border-radius:var(--radius-full)}
 .xi-mrow{display:flex;align-items:center;gap:8px;padding:6px;border-radius:var(--radius-sm)}
 .xi-bubble{display:block;padding:8px 10px;border-radius:var(--radius-md);background:var(--surface-hover)}
+.xi-mini-btn{display:block;width:26px;height:10px;border-radius:var(--radius-sm);background:var(--text-strong)}
+.xi-mini-input{display:block;width:32px;height:10px;border-radius:var(--radius-sm);box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border-divider)}
+.xi-mini-toggle{display:block;width:18px;height:10px;border-radius:var(--radius-full);background:var(--accent);position:relative}
+.xi-mini-toggle::after{content:"";position:absolute;right:1px;top:1px;width:8px;height:8px;border-radius:var(--radius-full);background:var(--surface-card)}
+.xi-mini-tag{display:block;width:24px;height:9px;border-radius:var(--radius-full);background:var(--surface-tag)}
+.xi-mini-card{display:block;width:26px;height:16px;border-radius:var(--radius-sm);box-shadow:var(--elevation-1),inset 0 0 0 var(--stroke-diagram) var(--border-subtle)}
+.xi-mini-new{display:block;width:24px;height:12px;border-radius:var(--radius-sm);border:var(--stroke-diagram) dashed var(--accent)}
+.xi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.xi-tile{display:grid;place-items:center;height:30px;border-radius:var(--radius-sm);background:var(--surface-hover)}
+.xi-drag{width:44px;transform:translate(var(--tx,0),var(--ty,0))}
+@keyframes xi-drag{0%,16%{opacity:0;transform:scale(.6)}21%{opacity:1;transform:none}27%{transform:none}38%,92%{opacity:1;transform:translate(var(--tx),var(--ty))}98%,100%{opacity:0;transform:translate(var(--tx),var(--ty))}}
+@keyframes xi-run{0%,7%{opacity:0;transform:none}9%{opacity:1}17%{opacity:1;transform:translate(var(--tx),var(--ty))}20%,100%{opacity:0;transform:translate(var(--tx),var(--ty))}}
+@keyframes xi-down{0%,40%{opacity:0;transform:none}42%{opacity:1}50%{opacity:1;transform:translate(var(--tx),var(--ty))}53%,100%{opacity:0;transform:translate(var(--tx),var(--ty))}}
+html.xi-motion .xi .xi-drag{animation:xi-drag var(--dur-scene) var(--ease-standard) infinite both}
+html.xi-motion .xi .xi-dot.xi-run{animation:xi-run var(--dur-scene) var(--ease-linear) infinite both}
+html.xi-motion .xi .xi-dot.xi-down{animation:xi-down var(--dur-scene) var(--ease-linear) infinite both}
+.xi-merge{position:relative;align-self:stretch;min-height:150px}
+.xi-merge svg{position:absolute;left:0;top:50%;width:64px;height:150px;margin-top:-75px;overflow:visible}
+.xi-merge .xi-dot{position:absolute;left:-3px}
+.xi-merge .xi-dot:nth-of-type(1){top:calc(50% - 41px) !important}.xi-merge .xi-dot:nth-of-type(2){top:calc(50% + 35px) !important}
+.xi-line{fill:none;stroke:var(--text-subtle);stroke-width:var(--stroke-diagram);opacity:.7;vector-effect:non-scaling-stroke}
 /* ---------- motion (only on screen, only with motion allowed) ---------- */
 @keyframes xi-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @keyframes xi-travel{0%,7%{transform:translateX(0);opacity:0}9%{opacity:1}17%{transform:translateX(var(--run));opacity:1}20%,100%{transform:translateX(var(--run));opacity:0}}
@@ -570,6 +591,114 @@ html:not(.xi-motion) .xi .xi-ring,html:not(.xi-motion) .xi .xi-spark,html:not(.x
           <span class="xi-spark" style="--i:2;right:-8px;top:-8px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
         </div>
         <p class="illo-label xi-core xi-a-in" style="--i:3">Field, plus, model, send</p>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="rv-case" id="c4">
+  <h2><b>04</b>Design system</h2>
+  <p class="rv-idea">The one idea: the design tool and the code said different things; now there is one source AI builds from, and whatever AI invents goes to review.</p>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>04</span><span>AI platform · private capital markets</span><span>2026—</span></div>
+      <h3 class="rv-title">A design system AI can build from</h3>
+      <p class="rv-what"><b>A · Afloat.</b> The design tool and the code hang at the back, out of step (one sits lower than the other). One source floats forward; its parts float around it, each checked as reused, and one new part drifts into the dashed review slot.</p>
+    </div>
+    <div class="xi xi--a" id="p4" aria-hidden="true"><div class="xi-ba">
+      <div class="xi-side">
+        <div class="xi-row" style="align-items:flex-start;gap:6px">
+          <div class="xi-layer" data-depth="0.3" style="flex:1"><div class="xi-fl" style="--f:1"><div class="xi-ghost xi-col" style="gap:5px;padding:8px 10px;flex:1"><p class="illo-label">Design tool</p><span class="illo-bar" style="width:70%"></span><span class="illo-bar" style="width:48%"></span><span class="illo-bar" style="width:82%"></span></div></div></div>
+          <span class="illo-sign" style="align-self:center">≠</span>
+          <div class="xi-layer" data-depth="0.55" style="flex:1;margin-top:18px"><div class="xi-fl" style="--f:3"><div class="xi-ghost xi-col" style="gap:5px;padding:8px 10px;flex:1"><p class="illo-label">Code</p><span class="illo-bar" style="width:52%"></span><span class="illo-bar" style="width:76%"></span><span class="illo-bar" style="width:38%"></span></div></div></div>
+        </div>
+      </div>
+      <div class="xi-to"><span class="xi-dot"></span><svg><use href="#i-arrow"/></svg></div>
+      <div class="xi-side" style="gap:12px">
+        <div class="xi-layer" data-depth="1.1"><div class="xi-fl" style="--f:0;position:relative;margin:0 28px 0 8px">
+          <div class="xi-card xi-card--2 xi-col xi-a-in" style="--i:0;gap:7px;padding:12px 12px 12px 14px;border-radius:var(--radius-md)">
+            <span class="xi-mark" style="top:12px;bottom:12px"></span>
+            <p class="illo-label xi-core">One source</p>
+            <span class="illo-bar illo-bar--ink" style="width:72%"></span><span class="illo-bar illo-bar--ink" style="width:56%"></span><span class="illo-bar illo-bar--ink" style="width:84%"></span>
+          </div>
+          <div class="xi-layer" data-depth="1.7" style="position:absolute;right:-30px;top:-18px"><div class="xi-fl" style="--f:2"><span class="xi-card xi-row xi-a-pop" data-mock="" style="--i:2;padding:5px 6px;gap:5px;border-radius:var(--radius-sm)"><span class="xi-mini-btn"></span><span class="xi-check" style="width:11px;height:11px"><svg><use href="#i-check"/></svg></span></span></div></div>
+          <div class="xi-layer" data-depth="1.7" style="position:absolute;right:-38px;top:30px"><div class="xi-fl" style="--f:4"><span class="xi-card xi-row xi-a-pop" data-mock="" style="--i:3;padding:5px 6px;gap:5px;border-radius:var(--radius-sm)"><span class="xi-mini-toggle"></span><span class="xi-check" style="width:11px;height:11px"><svg><use href="#i-check"/></svg></span></span></div></div>
+          <div class="xi-layer" data-depth="1.7" style="position:absolute;right:-24px;bottom:-14px"><div class="xi-fl" style="--f:1"><span class="xi-card xi-row xi-a-pop" data-mock="" style="--i:4;padding:5px 6px;gap:5px;border-radius:var(--radius-sm)"><span class="xi-mini-input"></span><span class="xi-check" style="width:11px;height:11px"><svg><use href="#i-check"/></svg></span></span></div></div>
+        </div></div>
+        <div class="xi-layer" data-depth="0.9" style="margin:4px 28px 0 8px"><div class="xi-fl" style="--f:3;position:relative">
+          <div class="illo-slot xi-row" style="justify-content:center;padding:8px 10px;border-radius:var(--radius-sm);gap:8px"><span class="xi-card xi-a-pop" data-mock="" style="--i:6;padding:4px 6px;display:flex"><span class="xi-mini-new"></span></span><p class="illo-label illo-label--accent">New part to review</p></div>
+          <span class="xi-spark" style="--i:5;left:18px;top:-6px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
+        </div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>04</span><span>AI platform · private capital markets</span><span>2026—</span></div>
+      <h3 class="rv-title">A design system AI can build from</h3>
+      <p class="rv-what"><b>B · In the product.</b> The one source as a library: parts in a grid, each reused. A part AI just drew appears outside the grid; the cursor carries it into the review tray, where it waits with an In review tag instead of shipping.</p>
+    </div>
+    <div class="xi xi--b" aria-hidden="true"><div class="xi-ba" style="grid-template-columns:minmax(0,140px) auto minmax(0,1fr)">
+      <div class="xi-side"><div class="xi-row" style="align-items:flex-start;gap:4px"><div class="xi-ghost xi-col" style="gap:5px;padding:8px 10px;flex:1;padding:7px 8px"><p class="illo-label">Design tool</p><span class="illo-bar" style="width:70%"></span><span class="illo-bar" style="width:48%"></span><span class="illo-bar" style="width:82%"></span></div><span class="illo-sign" style="align-self:center">≠</span><div class="xi-ghost xi-col" style="gap:5px;padding:8px 10px;flex:1;padding:7px 8px;margin-top:14px"><p class="illo-label">Code</p><span class="illo-bar" style="width:52%"></span><span class="illo-bar" style="width:76%"></span><span class="illo-bar" style="width:38%"></span></div></div></div>
+      <div class="xi-to"><span class="xi-dot"></span><svg><use href="#i-arrow"/></svg></div>
+      <div class="xi-side" style="gap:14px">
+        <div class="xi-stage" style="position:relative">
+          <div class="xi-card xi-card--2 xi-card--lg xi-col" data-mock="" style="padding:14px;gap:10px">
+            <div class="xi-row" style="gap:8px"><span class="xi-mark" style="position:static;width:2px;height:12px"></span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">Components</span><span class="xi-end xi-pillm">Reused</span></div>
+            <div class="xi-grid">
+              <span class="xi-tile"><span class="xi-mini-btn"></span></span>
+              <span class="xi-tile"><span class="xi-mini-input"></span></span>
+              <span class="xi-tile"><span class="xi-mini-toggle"></span></span>
+              <span class="xi-tile"><span class="xi-mini-tag"></span></span>
+              <span class="xi-tile"><span class="xi-mini-card"></span></span>
+              <span class="xi-tile"><span class="xi-avatar" style="width:14px;height:14px"></span></span>
+            </div>
+            <div class="xi-row xi-tray" style="gap:8px;padding:8px;border-radius:var(--radius-sm);border:var(--stroke-diagram) dashed var(--accent)">
+              <span class="xi-b-slot" style="width:44px;height:30px;flex:none"></span>
+              <span class="xi-col" style="gap:4px;flex:1"><span class="illo-bar illo-bar--ink" style="width:64%"></span><span class="illo-bar" style="width:40%"></span></span>
+              <span class="xi-pillm xi-a-pop" style="--i:10;background:var(--surface-accent-tint);color:var(--accent-strong)">In review</span>
+            </div>
+          </div>
+          <span class="xi-tile xi-drag xi-b-new" data-to=".xi-b-slot" style="position:absolute;right:-26px;top:26px;box-shadow:var(--elevation-3);background:var(--surface-card)"><span class="xi-mini-new"></span></span>
+          <span class="xi-spark" style="--i:-4;right:-34px;top:16px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
+          <span class="xi-ring" data-at=".xi-b-new" style="--rd:0s"></span>
+          <span class="xi-cursor" data-t0="40,70" data-t1=".xi-b-new" data-t2=".xi-b-slot"><svg viewBox="0 0 16 20"><use href="#i-cursor"/></svg></span>
+        </div>
+        <div class="xi-col" style="gap:4px"><p class="illo-label xi-core">One source</p><p class="illo-label illo-label--accent">New part to review</p></div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>04</span><span>AI platform · private capital markets</span><span>2026—</span></div>
+      <h3 class="rv-title">A design system AI can build from</h3>
+      <p class="rv-what"><b>C · Line to object.</b> Two drawn lines leave the design tool and the code and meet in one point; the outline there becomes the one source. A second, dashed line then carries a new part down to the review slot, which lights in the accent.</p>
+    </div>
+    <div class="xi xi--c" aria-hidden="true"><div class="xi-ba" style="grid-template-columns:minmax(0,.7fr) 64px minmax(0,1.3fr);gap:0 var(--space-xs)">
+      <div class="xi-side" style="gap:14px">
+        <div class="xi-ghost xi-col" style="gap:5px;padding:8px 10px;flex:1;flex:none"><p class="illo-label">Design tool</p><span class="illo-bar" style="width:70%"></span><span class="illo-bar" style="width:48%"></span><span class="illo-bar" style="width:82%"></span></div>
+        <span class="illo-sign" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)">≠</span>
+        <div class="xi-ghost xi-col" style="gap:5px;padding:8px 10px;flex:1;flex:none"><p class="illo-label">Code</p><span class="illo-bar" style="width:52%"></span><span class="illo-bar" style="width:76%"></span><span class="illo-bar" style="width:38%"></span></div>
+      </div>
+      <div class="xi-merge">
+        <svg viewBox="0 0 64 150" preserveAspectRatio="none"><path class="xi-line" d="M0 37 L64 44 M0 113 L64 44"/></svg>
+        <span class="xi-dot xi-run" style="top:34px;--tx:64px;--ty:7px"></span>
+        <span class="xi-dot xi-run" style="top:110px;--tx:64px;--ty:-69px"></span>
+      </div>
+      <div class="xi-side" style="gap:0">
+        <div style="position:relative">
+          <div class="xi-ghost xi-col" style="gap:7px;padding:12px 12px 12px 14px;border-radius:var(--radius-md)"><p class="illo-label">One source</p><span class="illo-bar" style="width:72%"></span><span class="illo-bar" style="width:56%"></span><span class="illo-bar" style="width:84%"></span></div>
+          <div class="xi-card xi-card--2 xi-col xi-a-solid" style="--i:1;position:absolute;inset:0;gap:7px;padding:12px 12px 12px 14px;border-radius:var(--radius-md)"><span class="xi-mark" style="top:12px;bottom:12px"></span><p class="illo-label xi-core">One source</p><span class="illo-bar illo-bar--ink" style="width:72%"></span><span class="illo-bar illo-bar--ink" style="width:56%"></span><span class="illo-bar illo-bar--ink" style="width:84%"></span></div>
+        </div>
+        <div style="position:relative;height:30px;margin-left:28px;border-left:var(--stroke-diagram) dashed var(--text-subtle)"><span class="xi-dot xi-down" style="position:absolute;left:-3.5px;top:0;--tx:0px;--ty:24px"></span></div>
+        <div style="position:relative">
+          <div class="xi-dash xi-row" style="justify-content:center;padding:8px 10px;gap:8px"><p class="illo-label">New part to review</p></div>
+          <div class="illo-slot xi-row xi-a-solid" style="--i:8;position:absolute;inset:0;justify-content:center;padding:8px 10px;gap:8px;border-radius:var(--radius-sm);background:var(--surface-card)"><span class="xi-mini-new"></span><p class="illo-label illo-label--accent">New part to review</p></div>
+          <span class="xi-spark" style="--i:4;right:-8px;top:-8px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
+        </div>
       </div>
     </div></div>
   </div>
