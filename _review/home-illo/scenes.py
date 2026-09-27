@@ -258,7 +258,7 @@ def c6():
     return scene('c6', bundle(), after, lab('Fixed bundle') + lab('One price'), (lab('Modules', 'core') + lab('Pick what you need'), 11), product=True, cols='minmax(0,120px) auto minmax(0,1fr)')
 
 
-SCENES = [c1(), c2(), c3(), c4_loop(), c5(), c6()]
+SCENES = [c1(), c2(), c3(), c4_product(), c5(), c6()]  # 04: option 2, Nayara 2026-09-27
 CASE4_OPTIONS = [('Option 1 · Line to object', c4_loop()), ('Option 2 · In the product', c4_product())]
 
 

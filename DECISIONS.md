@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-27
+- Case 04 scene: option 2 (in the product) chosen; its mock words approved (Library, Live, Drift, Add). · option 1, the drawn loop · ILL-06, ILL-07 (check_pages)
 - Home and Work case illustrations, from the exploration `_review/home-illo/` (per case, home order): 01 C (line to object); 02 C, with "The platform" and "The email" aligned on one line; 03 A (afloat); 04 redo around the cycle of building from a live design system (build from the live system, create, drift analysis, back into the system), two options on the review page; 05 B (in the product), with the parts aligned through the animation; 06 B, with benefit icons (travel, lounge, health, purchases, protection). For all: much less motion, only a one-off entrance when the scene scrolls into view (steps of 400 to 600ms, ease-out); no loops, no float, no parallax; reduced motion shows the end state. A composer bar sitting offset outside its card is a defect: bars align with their card's edges. · the case windows (a recess with a frame), looping scenes, floating and parallax layers, parts breaking out of their card · ILL-01, ILL-06, ILL-07 (check_pages ILL-01 no loop in a scene, ILL-07 labels on one line)
 
 ## 2026-09-26 (evening)
