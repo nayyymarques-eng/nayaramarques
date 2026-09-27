@@ -154,6 +154,21 @@ html.xi-motion .xi .xi-dot.xi-down{animation:xi-down var(--dur-scene) var(--ease
 .xi-merge .xi-dot{position:absolute;left:-3px}
 .xi-merge .xi-dot:nth-of-type(1){top:calc(50% - 41px) !important}.xi-merge .xi-dot:nth-of-type(2){top:calc(50% + 35px) !important}
 .xi-line{fill:none;stroke:var(--text-subtle);stroke-width:var(--stroke-diagram);opacity:.7;vector-effect:non-scaling-stroke}
+.xi-w4{flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;min-width:0}
+.xi-wg{height:46px;padding:8px;border-radius:var(--radius-sm);display:flex;flex-direction:column;justify-content:center}
+.xi-wg--flat{box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border-subtle);background:var(--surface-card)}
+.xi-bars{display:flex;align-items:flex-end;gap:3px;height:24px}
+.xi-bars i{display:block;width:6px;background:var(--border)}
+.xi-bars i:last-child{background:var(--accent)}
+.xi-navsel{position:absolute;left:8px;right:8px;top:36px;height:22px;border-radius:var(--radius-sm);background:var(--surface-accent-tint);transform:translate(var(--sx),var(--sy))}
+.xi-merge--4 svg{height:128px;margin-top:-64px}
+.xi-merge--4 .xi-dot{top:auto}
+.xi-merge--4 .xi-dot:nth-of-type(1){top:calc(50% - 57px) !important}
+.xi-merge--4 .xi-dot:nth-of-type(2){top:calc(50% - 23px) !important}
+.xi-merge--4 .xi-dot:nth-of-type(3){top:calc(50% + 11px) !important}
+.xi-merge--4 .xi-dot:nth-of-type(4){top:calc(50% + 45px) !important}
+.xi-a-shift{transform:translate(var(--sx),var(--sy))}
+.xi-a-slide{transform:translateX(var(--kx))}
 /* ---------- motion (only on screen, only with motion allowed) ---------- */
 @keyframes xi-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @keyframes xi-travel{0%,7%{transform:translateX(0);opacity:0}9%{opacity:1}17%{transform:translateX(var(--run));opacity:1}20%,100%{transform:translateX(var(--run));opacity:0}}
@@ -699,6 +714,111 @@ html:not(.xi-motion) .xi .xi-ring,html:not(.xi-motion) .xi .xi-spark,html:not(.x
           <div class="illo-slot xi-row xi-a-solid" style="--i:8;position:absolute;inset:0;justify-content:center;padding:8px 10px;gap:8px;border-radius:var(--radius-sm);background:var(--surface-card)"><span class="xi-mini-new"></span><p class="illo-label illo-label--accent">New part to review</p></div>
           <span class="xi-spark" style="--i:4;right:-8px;top:-8px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
         </div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="rv-case" id="c5">
+  <h2><b>05</b>Advisors platform</h2>
+  <p class="rv-idea">The one idea: four business verticals, each with its own tools, came together on one platform where every office sets its own widgets.</p>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>05</span><span>BTG Pactual</span><span>2019—21</span></div>
+      <h3 class="rv-title">An advisors platform for four business verticals</h3>
+      <p class="rv-what"><b>A · Afloat.</b> The four verticals drift apart at the back, each on its own. One dashboard floats forward; its widgets sit a little above it, at their own depth, and a new widget settles into the empty slot: one platform, set per office.</p>
+    </div>
+    <div class="xi xi--a" id="p5" aria-hidden="true"><div class="xi-ba">
+      <div class="xi-side" style="gap:10px"><div class="xi-layer" data-depth="0.3" style="margin-left:0px"><div class="xi-fl" style="--f:1"><div class="xi-ghost" style="display:inline-block;padding:6px 10px"><p class="illo-label">B2B</p></div></div></div><div class="xi-layer" data-depth="0.55" style="margin-left:22px"><div class="xi-fl" style="--f:3"><div class="xi-ghost" style="display:inline-block;padding:6px 10px"><p class="illo-label">B2C</p></div></div></div><div class="xi-layer" data-depth="0.35" style="margin-left:8px"><div class="xi-fl" style="--f:0"><div class="xi-ghost" style="display:inline-block;padding:6px 10px"><p class="illo-label">Wealth</p></div></div></div><div class="xi-layer" data-depth="0.6" style="margin-left:30px"><div class="xi-fl" style="--f:2"><div class="xi-ghost" style="display:inline-block;padding:6px 10px"><p class="illo-label">Advisors</p></div></div></div></div>
+      <div class="xi-to"><span class="xi-dot"></span><svg><use href="#i-arrow"/></svg></div>
+      <div class="xi-side" style="gap:12px">
+        <div class="xi-layer" data-depth="1"><div class="xi-fl" style="--f:0">
+          <div class="xi-card xi-card--2 xi-row xi-a-in" data-mock="" style="--i:0;align-items:stretch;gap:8px;padding:10px;border-radius:var(--radius-md)">
+            <div class="xi-col" style="flex:none;width:26px;gap:8px;padding:2px 8px 0 2px;border-right:var(--stroke-diagram) solid var(--border-subtle)"><span class="illo-dot"></span><span class="illo-dot illo-dot--quiet"></span><span class="illo-dot illo-dot--quiet"></span><span class="illo-dot illo-dot--quiet"></span></div>
+            <div class="xi-w4">
+              <div class="xi-layer" data-depth="1.5"><div class="xi-fl" style="--f:2"><div class="xi-card xi-wg xi-a-pop" style="--i:1"><span class="xi-bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></span></div></div></div>
+              <div class="xi-layer" data-depth="1.3"><div class="xi-fl" style="--f:4"><div class="xi-card xi-wg xi-a-pop" style="--i:2"><span class="xi-col" style="gap:4px"><span class="illo-bar illo-bar--ink" style="width:70%"></span><span class="illo-bar" style="width:86%"></span><span class="illo-bar" style="width:60%"></span></span></div></div></div>
+              <div class="xi-layer" data-depth="1.3"><div class="xi-fl" style="--f:1"><div class="xi-card xi-wg xi-a-pop" style="--i:3"><span class="xi-col" style="gap:5px"><span class="illo-bar illo-bar--ink" style="width:40%;height:8px"></span><span class="illo-bar" style="width:70%"></span></span></div></div></div>
+              <div style="position:relative"><div class="illo-slot xi-wg" style="display:grid;place-items:center;background:transparent"><svg class="xi-ico xi-ico--acc"><use href="#i-plus"/></svg></div><div class="xi-card xi-card--3 xi-wg xi-a-pop" style="--i:7;position:absolute;inset:0"><span class="xi-bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></span></div><span class="xi-spark" style="--i:4;right:-10px;top:-10px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span></div>
+            </div>
+          </div>
+        </div></div>
+        <div class="xi-col" style="gap:4px"><p class="illo-label xi-core xi-a-in" style="--i:5">One platform</p><p class="illo-label xi-a-in" style="--i:6">Widgets per office</p></div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>05</span><span>BTG Pactual</span><span>2019—21</span></div>
+      <h3 class="rv-title">An advisors platform for four business verticals</h3>
+      <p class="rv-what"><b>B · In the product.</b> The platform itself: a modular menu down the side and a configurable dashboard. The cursor switches office; the marker slides, two widgets trade places for that office, and a widget is added to the empty slot.</p>
+    </div>
+    <div class="xi xi--b" aria-hidden="true"><div class="xi-ba" style="grid-template-columns:minmax(0,110px) auto minmax(0,1fr)">
+      <div class="xi-side" style="gap:6px"><div class="xi-ghost" style="padding:6px 10px"><p class="illo-label">B2B</p></div><div class="xi-ghost" style="padding:6px 10px"><p class="illo-label">B2C</p></div><div class="xi-ghost" style="padding:6px 10px"><p class="illo-label">Wealth</p></div><div class="xi-ghost" style="padding:6px 10px"><p class="illo-label">Advisors</p></div></div>
+      <div class="xi-to"><span class="xi-dot"></span><svg><use href="#i-arrow"/></svg></div>
+      <div class="xi-side" style="gap:14px">
+        <div class="xi-stage" style="position:relative">
+          <div class="xi-card xi-card--2 xi-card--lg xi-row" data-mock="" style="align-items:stretch;padding:0;gap:0;overflow:visible">
+            <div class="xi-col" style="flex:none;width:92px;padding:12px 8px;gap:4px;border-right:var(--stroke-diagram) solid var(--border-subtle);position:relative">
+              <span class="xi-row" style="gap:6px;padding:0 4px 8px"><span class="xi-avatar" style="width:14px;height:14px"></span><span class="illo-bar illo-bar--ink" style="width:40px"></span></span>
+              <span class="xi-navsel xi-a-shift" style="--i:2.8;--sx:0px;--sy:44px"></span>
+              <span class="xi-mrow" style="position:relative;padding:5px 6px"><span class="illo-dot"></span><span class="illo-bar illo-bar--ink" style="width:34px"></span></span>
+              <span class="xi-mrow" style="position:relative;padding:5px 6px"><span class="illo-dot illo-dot--quiet"></span><span class="illo-bar illo-bar--ink" style="width:28px"></span></span>
+              <span class="xi-mrow xi-b-office" style="position:relative;padding:5px 6px"><span class="illo-dot illo-dot--quiet"></span><span class="illo-bar illo-bar--ink" style="width:38px"></span></span>
+              <span class="xi-mrow" style="position:relative;padding:5px 6px"><span class="illo-dot illo-dot--quiet"></span><span class="illo-bar illo-bar--ink" style="width:30px"></span></span>
+            </div>
+            <div class="xi-col" style="flex:1;padding:12px;gap:10px;min-width:0">
+              <div class="xi-row"><span class="illo-bar illo-bar--ink" style="width:34%"></span><span class="xi-end xi-pillm">Office</span></div>
+              <div class="xi-w4" style="gap:8px">
+                <div class="xi-wg xi-wg--flat xi-a-shift" style="--i:3.4;--sx:calc(100% + 8px);--sy:0px"><span class="xi-bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></span></div>
+                <div class="xi-wg xi-wg--flat xi-a-shift" style="--i:3.4;--sx:calc(-100% - 8px);--sy:0px"><span class="xi-col" style="gap:4px"><span class="illo-bar illo-bar--ink" style="width:70%"></span><span class="illo-bar" style="width:86%"></span><span class="illo-bar" style="width:60%"></span></span></div>
+                <div class="xi-wg xi-wg--flat"><span class="xi-col" style="gap:5px"><span class="illo-bar illo-bar--ink" style="width:40%;height:8px"></span><span class="illo-bar" style="width:70%"></span></span></div>
+                <div style="position:relative"><div class="illo-slot xi-wg xi-b-add" style="display:grid;place-items:center;background:transparent"><svg class="xi-ico xi-ico--acc"><use href="#i-plus"/></svg></div><div class="xi-card xi-card--3 xi-wg xi-a-pop" style="--i:10;position:absolute;inset:-4px -14px 4px 4px"><span class="xi-bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></span></div></div>
+              </div>
+            </div>
+          </div>
+          <span class="xi-ring" data-at=".xi-b-office" style="--rd:0s"></span>
+          <span class="xi-ring" data-at=".xi-b-add" style="--rd:1.68s"></span>
+          <span class="xi-spark" data-at=".xi-b-add" style="--i:1.4;margin:-26px 0 0 30px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
+          <span class="xi-cursor" data-t0="120,-30" data-t1=".xi-b-office" data-t2=".xi-b-add"><svg viewBox="0 0 16 20"><use href="#i-cursor"/></svg></span>
+        </div>
+        <div class="xi-col" style="gap:4px"><p class="illo-label xi-core">One platform</p><p class="illo-label">Widgets per office</p></div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="rv-row">
+    <div>
+      <div class="rv-meta"><span>05</span><span>BTG Pactual</span><span>2019—21</span></div>
+      <h3 class="rv-title">An advisors platform for four business verticals</h3>
+      <p class="rv-what"><b>C · Line to object.</b> A drawn line leaves each vertical and all four meet at one outline. It becomes the platform, and each line's dot lights one widget as it lands: four verticals, one place, each with its own part.</p>
+    </div>
+    <div class="xi xi--c" aria-hidden="true"><div class="xi-ba" style="grid-template-columns:minmax(0,.55fr) 64px minmax(0,1.45fr);gap:0 var(--space-xs)">
+      <div class="xi-side" style="gap:8px"><div class="xi-ghost" style="padding:6px 10px;height:26px"><p class="illo-label">B2B</p></div><div class="xi-ghost" style="padding:6px 10px;height:26px"><p class="illo-label">B2C</p></div><div class="xi-ghost" style="padding:6px 10px;height:26px"><p class="illo-label">Wealth</p></div><div class="xi-ghost" style="padding:6px 10px;height:26px"><p class="illo-label">Advisors</p></div></div>
+      <div class="xi-merge xi-merge--4">
+        <svg viewBox="0 0 64 128" preserveAspectRatio="none"><path class="xi-line" d="M0 13 L64 44 M0 47 L64 44 M0 81 L64 44 M0 115 L64 44"/></svg>
+        <span class="xi-dot xi-run" style="--i:0;top:10px;--tx:64px;--ty:31px"></span>
+        <span class="xi-dot xi-run" style="--i:1;top:44px;--tx:64px;--ty:-3px"></span>
+        <span class="xi-dot xi-run" style="--i:2;top:78px;--tx:64px;--ty:-37px"></span>
+        <span class="xi-dot xi-run" style="--i:3;top:112px;--tx:64px;--ty:-71px"></span>
+      </div>
+      <div class="xi-side" style="gap:12px">
+        <div style="position:relative">
+          <div class="xi-ghost xi-row" style="align-items:stretch;gap:8px;padding:10px;border-radius:var(--radius-md)"><div style="flex:none;width:26px;border-right:var(--stroke-diagram) solid var(--border-divider)"></div><div class="xi-w4"><div class="xi-ghost xi-wg"></div><div class="xi-ghost xi-wg"></div><div class="xi-ghost xi-wg"></div><div class="xi-ghost xi-wg"></div></div></div>
+          <div class="xi-card xi-card--2 xi-row xi-a-solid" data-mock="" style="--i:0.5;position:absolute;inset:0;align-items:stretch;gap:8px;padding:10px;border-radius:var(--radius-md)">
+            <div class="xi-col" style="flex:none;width:26px;gap:8px;padding:2px 8px 0 2px;border-right:var(--stroke-diagram) solid var(--border-subtle)"><span class="illo-dot"></span><span class="illo-dot"></span><span class="illo-dot"></span><span class="illo-dot"></span></div>
+            <div class="xi-w4">
+              <div class="xi-wg xi-wg--flat xi-a-pop" style="--i:2"><span class="xi-bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></span></div>
+              <div class="xi-wg xi-wg--flat xi-a-pop" style="--i:2.7"><span class="xi-col" style="gap:4px"><span class="illo-bar illo-bar--ink" style="width:70%"></span><span class="illo-bar" style="width:86%"></span><span class="illo-bar" style="width:60%"></span></span></div>
+              <div class="xi-wg xi-wg--flat xi-a-pop" style="--i:3.4"><span class="xi-col" style="gap:5px"><span class="illo-bar illo-bar--ink" style="width:40%;height:8px"></span><span class="illo-bar" style="width:70%"></span></span></div>
+              <div class="xi-wg xi-a-pop" style="--i:4.1;box-shadow:inset 0 0 0 var(--stroke-diagram) var(--accent)"><span class="xi-bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i></span></div>
+            </div>
+          </div>
+          <span class="xi-spark" style="--i:3;right:-8px;bottom:-8px"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span>
+        </div>
+        <div class="xi-col" style="gap:4px"><p class="illo-label xi-core xi-a-in" style="--i:5">One platform</p><p class="illo-label xi-a-in" style="--i:6">Widgets per office</p></div>
       </div>
     </div></div>
   </div>
