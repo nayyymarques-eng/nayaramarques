@@ -12,7 +12,14 @@
  *           The home is the one exception (HERO-02): its hero fills the first screen, centred.
  *   TYP-01  an eyebrow or label is under 11px (in-diagram labels, tags and product mockups excepted)
  *   ACT-01  an action is uppercase, or boxed without being one of the three variants
- *   ACT-02  more than one primary action on the page
+ *   ACT-02  more than one primary action outside offer cards, or more than one inside one offer card (.plan-card)
+ *   TYP-04  one size per heading level outside case bodies: every visible h2 at --font-size-h2, every h3 at --font-size-h3;
+ *           every subtitle (the hero lede, a section-head subtitle, the ink band's subtitle) at --font-size-lead.
+ *           Labels (uppercase), case bodies (LAY-08 keeps its own scale), drawings and product mockups are excepted.
+ *   SEC-06  a wide component (card, card group, accordion, row list, figure, note, stats, in-section divider) does not end
+ *           on a line of the four-column grid (the end of column 1, 2, 3 or 4 of the content; in a case body, of the body
+ *           column). Cards come in two widths only: big (the full width) and small (half). Grid cells follow their grid;
+ *           heroes, the ink band, drawings, scrollers and anything inside a surface are out of scope.
  *   MOT-01  with reduced motion on, something still loops or the sky still moves
  *   COL-08  text contrast below WCAG AA on its ground: 4.5, or 3.0 for large text (24px+, or 18.66px+ bold).
  *           Text on the sky is measured against the sky's darkest point (--sky-deepest). Images, gradients and
@@ -23,12 +30,16 @@
  *           which kind it is (Result… for data-pattern="result", Scope… for data-pattern="scope")
  *   PAT-05  case cards are not stacked: a .cards group with more than one column, a gap other than 12px (--gap-cards),
  *           or a card narrower than its group
- *   ILL-07  a case window has at most 8 labels outside [data-mock] and the accent on one side only
- *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window) is not the label style as rendered: under 9.5px,
+ *   ILL-01  an animation inside a case scene (.scene) loops; case scenes move once, on entrance
+ *   ILL-07  a case scene has at most 8 labels outside [data-mock], the accent on the side after only, both sides' labels on one line,
+ *           its two pictures share one top and one bottom (within 1px); all scenes on a page share left, right and
+ *           width (1px), each centred on its row (2px) and inside the row's padding
+ *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window, .scene) is not the label style as rendered: under 9.5px,
  *           not uppercase, not 0.14em, or lighter than 600. In a figure's picture, uppercase labels must be the label
  *           style (9.5, 10.5 or 12.5px, 0.14em, 600). Product UI is exempt with [data-mock].
  *   PAT-07  a gap row ("What this case doesn't cover") without the inactive style: dashed rule, no elevation, muted text
- *   SEC-04  a top-level section's content does not sit --section-y below its top line and --section-y above its bottom
+ *   SEC-04  a top-level section's content does not sit --section-y below its top line and --section-y above its bottom;
+ *           a case row (home, Work) does not sit --section-y from the divider between rows
  *           line (within 2px each). Lines are the section dividers, the ink band's and the case details' edges, the
  *           next-case well and the footer divider. Content box = the first and last visible box (text, a surface, an
  *           image, a bordered row), never margins. Heroes, the ink band and the footer keep their own padding; the space
@@ -118,14 +129,35 @@
       if (cs.textTransform === 'uppercase' && boxed && h >= 30) out.push(`ACT-01 uppercase action "${e.textContent.trim().slice(0, 30)}"`);
       else if (boxed && h >= 36 && h <= 64 && !isVariant && !e.closest('header,[data-case-index]')) out.push(`ACT-01 a boxed action outside the three variants: "${e.textContent.trim().slice(0, 30)}"`);
     }
-    if (cs.textTransform === 'uppercase' && parseFloat(cs.fontSize) < 10.95 && !inMock(e) && !e.closest('.tag,header,[data-case-index] a span,.figure') &&
+    if (cs.textTransform === 'uppercase' && parseFloat(cs.fontSize) < 10.95 && !inMock(e) && !e.closest('.tag,.badge,header,[data-case-index] a span,.figure') &&
         [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) && visible(e, cs)) {
       const k = e.textContent.trim().slice(0, 30);
       small.set(k, `TYP-01 label at ${parseFloat(cs.fontSize)}px, the eyebrow is 11px: "${k}"`);
     }
   }
   out.push(...small.values());
-  if (primaries > 1) out.push(`ACT-02 ${primaries} primary actions on the page; one, then links`);
+  // ACT-02 one filled action per view: one outside offer cards (the hero's), and at most one inside each offer card
+  const cardPrim = [...document.querySelectorAll('.plan-card')].map(c => [...c.querySelectorAll('.action--primary')].filter(a => visible(a, getComputedStyle(a))).length);
+  const loose = primaries - cardPrim.reduce((a, b) => a + b, 0);
+  if (loose > 1) out.push(`ACT-02 ${loose} primary actions outside offer cards; one, then links`);
+  if (cardPrim.some(n => n > 1)) out.push('ACT-02 an offer card with more than one primary action');
+
+  // TYP-04 one size per heading level, one lead size (outside case bodies, whose scale is LAY-08's)
+  {
+    const size = css => { const d = document.createElement('div'); d.style.cssText = 'position:absolute;visibility:hidden;' + css; document.body.appendChild(d); const v = parseFloat(getComputedStyle(d).fontSize); d.remove(); return v; };
+    const W2 = size('font-size:var(--font-size-h2)'), W3 = size('font-size:var(--font-size-h3)'), WL = size('font-size:var(--font-size-lead)');
+    const skip = e => inMock(e) || e.closest('header,footer,[data-case-band],[data-case-index],figure,.figure,.illo-window,[data-surface="card"],.hx-sticker') || getComputedStyle(e).textTransform === 'uppercase' || !visible(e, getComputedStyle(e));
+    const typ = new Set();
+    for (const h of document.querySelectorAll('main h2, body > section h2, .band-inverse h2')) if (!skip(h) && Math.abs(parseFloat(getComputedStyle(h).fontSize) - W2) > 0.5) typ.add(`TYP-04 h2 "${h.textContent.trim().slice(0, 30)}" at ${parseFloat(getComputedStyle(h).fontSize)}px; every h2 is --font-size-h2 (${W2}px)`);
+    for (const h of document.querySelectorAll('main h3, body > section h3')) if (!skip(h) && !h.classList.contains('subsection') && Math.abs(parseFloat(getComputedStyle(h).fontSize) - W3) > 0.5) typ.add(`TYP-04 h3 "${h.textContent.trim().slice(0, 30)}" at ${parseFloat(getComputedStyle(h).fontSize)}px; every h3 is --font-size-h3 (${W3}px)`);
+    const leads = [];
+    const h1 = document.querySelector('main h1');
+    if (h1) { let n = h1.nextElementSibling; while (n && n.tagName !== 'P') n = n.nextElementSibling; if (n) leads.push(n); }
+    leads.push(...document.querySelectorAll('.section-head>p:not(.eyebrow), .ld-lede, [data-lead]'));
+    for (const b of document.querySelectorAll('.band-inverse')) { const p = [...b.querySelectorAll('p')].find(p => !p.closest('.eyebrow') && getComputedStyle(p).textTransform !== 'uppercase' && p.getBoundingClientRect().top >= (b.querySelector('h2') || b).getBoundingClientRect().top); if (p) leads.push(p); }
+    for (const p of leads) if (!skip(p) && Math.abs(parseFloat(getComputedStyle(p).fontSize) - WL) > 0.5) typ.add(`TYP-04 subtitle "${p.textContent.trim().slice(0, 30)}" at ${parseFloat(getComputedStyle(p).fontSize)}px; every subtitle is --font-size-lead (${WL}px)`);
+    out.push(...typ);
+  }
 
   // MOT-01
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -285,8 +317,82 @@
       if (x.b.matches('[data-case-band]') && wideCase) { const gap = parseFloat(getComputedStyle(x.b).columnGap) || 0; expect = x.r.left + (x.r.width - 3 * gap) / 4 + gap; }
       if (Math.abs(left - expect) > 1) cols.add(`SEC-05 "${name}": content starts at ${left.toFixed(0)}px, the ${expect === G ? 'gutter' : 'case body column'} is ${expect.toFixed(0)}px`);
     }
+    // SEC-04 case rows (home, Work; 2026-09-27): between two rows, the content sits --section-y from the divider on both sides
+    const rows = [...document.querySelectorAll('[data-case-row]')].filter(on);
+    rows.forEach((row, i) => {
+      const bx = boxesOf(row).filter(b => b.b - b.t > 2); if (!bx.length) return; // a drawn rule is a line, not content
+      const top = Math.min(...bx.map(b => b.t)), bot = Math.max(...bx.map(b => b.b)), r = row.getBoundingClientRect();
+      const name = (row.querySelector('h2,h3') || row).textContent.trim().replace(/\s+/g, ' ').slice(0, 30), bad = [];
+      if (i > 0) { const pt = top - (r.top + Y + (parseFloat(getComputedStyle(row).borderTopWidth) || 0)); if (Math.abs(pt - SY) > 2) bad.push(`${pt.toFixed(0)}px below its divider`); }
+      if (i < rows.length - 1) { const pb = rows[i + 1].getBoundingClientRect().top + Y - bot; if (Math.abs(pb - SY) > 2) bad.push(`${pb.toFixed(0)}px above the next divider`); }
+      if (bad.length) pads.add(`SEC-04 case row "${name}": content ${bad.join(', ')}; case rows take --section-y (${SY.toFixed(0)}px)`);
+    });
     out.push(...pads, ...cols);
     settle.remove();
+  }
+
+  // SEC-06 wide components end on the column grid: the full content width, or half of it (2 of 4 columns); in a case body
+  // (wide screens) the body column. Cards come in two widths only: big (full) and small (half). Heroes, the ink band, drawings,
+  // case windows and anything inside a surface are out of scope (a surface insets its own content).
+  {
+    const root = getComputedStyle(document.documentElement);
+    const G = Math.max(0, (W - (parseFloat(root.getPropertyValue('--page-max')) || 1400)) / 2) + (parseFloat(root.getPropertyValue('--page-gutter')) || 32);
+    const wideCase = document.documentElement.classList.contains('has-case-index') && matchMedia('(min-width: 861px)').matches;
+    const SURF = '.card,.link-card,.figure,figure,.well,.glass,.plan-card,.accordion,.note,[data-surface],.illo-window,.step,.chip';
+    const colOf = e => {
+      const band = e.closest('[data-case-band]');
+      let L = G, R = W - G;
+      if (band) {
+        const r = band.getBoundingClientRect();
+        R = r.right;
+        if (wideCase) { const gap = parseFloat(getComputedStyle(band).columnGap) || 0; L = r.left + (r.width - 3 * gap) / 4 + gap; }
+        else L = r.left;
+      }
+      return { L, R };
+    };
+    // inside a scroller or a clipping frame (below <main>; the page wrapper's clip is LAY-01's)
+    const scrolls = e => { for (let a = e.parentElement; a && a !== document.body && a.tagName !== 'MAIN'; a = a.parentElement) if (/auto|scroll|hidden|clip/.test(getComputedStyle(a).overflowX)) return true; return false; };
+    // form controls and links keep their own measure: a field's border, a link's underline are not dividers
+    const control = e => !!e.closest('label,form,fieldset,[role="radiogroup"],[role="group"]') || !!e.querySelector('input,textarea,select') || getComputedStyle(e).display.startsWith('inline');
+    const outOfScope = e => inMock(e) || !!e.closest('header,footer,.hero,.band-inverse,[data-case-index],.ld-art,.illo-window,.hx') || scrolls(e);
+    // a cell of a grid follows its grid: the grid (or the section around it) is what ends on a line
+    const cell = e => { const p = e.parentElement; if (!p) return false; const q = getComputedStyle(p); return q.display.includes('grid') && q.gridTemplateColumns.split(' ').filter(Boolean).length > 1; };
+    const nestedIn = e => { const p = e.parentElement && e.parentElement.closest(SURF); return !!p; };
+    const ends = new Set(), widths = new Set();
+    const judge = (e, what) => {
+      const r = e.getBoundingClientRect();
+      if (r.width < 40 || r.height < 1 || !visible(e, getComputedStyle(e))) return;
+      const { L, R } = colOf(e), g = gapPx, col = (R - L - 3 * g) / 4;
+      const lines = [1, 2, 3].map(k => L + k * col + (k - 1) * g); // the ends of columns 1 to 3 (a gap wider than 12px moves a line by at most half of it)
+      const onFull = Math.abs(r.right - R) <= 1.5, onLine = lines.some(x => Math.abs(r.right - x) <= 24);
+      const k = (e.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 30);
+      if (!onFull && !onLine) ends.add(`SEC-06 ${what} "${k}" ends at ${r.right.toFixed(0)}px; the column grid ends at ${lines.map(x => x.toFixed(0)).join(', ')} or ${R.toFixed(0)}px`);
+      return { r, L, R };
+    };
+    // cards: two widths, and they end on the grid
+    const CARD = '.card,.link-card,.plan-card,[data-surface="card"],.accordion';
+    for (const c of document.querySelectorAll(CARD)) {
+      if (outOfScope(c) || nestedIn(c)) continue;
+      const j = judge(c, 'a card'); if (!j) continue;
+      const full = j.R - j.L, w = j.r.width;
+      if (!(Math.abs(w - full) <= 1.5 || (w >= full / 2 - 24 && w <= full / 2 + 1))) widths.add(`SEC-06 a card ${w.toFixed(0)}px wide, near "${(c.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 30)}"; cards are big (${full.toFixed(0)}px) or small (half)`);
+    }
+    // other wide components
+    for (const e of document.querySelectorAll('.figure,figure,.note,.stats,.ld-list,[data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"],.accordions,.cards,.plans,.ld-layers,.link-cards')) {
+      if (outOfScope(e) || nestedIn(e) || cell(e)) continue;
+      judge(e, e.matches('[data-pattern]') ? 'a row' : 'a component');
+    }
+    // in-section dividers: a visible rule, not inside a surface
+    for (const e of document.querySelectorAll('main *')) {
+      if (outOfScope(e) || e.closest(SURF) || e.matches(SURF) || cell(e) || control(e)) continue;
+      const cs = getComputedStyle(e);
+      const ruled = ['Top', 'Bottom'].some(sd => parseFloat(cs['border' + sd + 'Width']) > 0 && cs['border' + sd + 'Style'] !== 'none' && !/rgba\(0, 0, 0, 0\)/.test(cs['border' + sd + 'Color']));
+      if (!ruled) continue;
+      const r = e.getBoundingClientRect(), { L, R } = colOf(e);
+      if (r.width < (R - L) * 0.3) continue; // short rules inside a row (a label, a key) are part of their row
+      judge(e, 'a divider');
+    }
+    out.push(...ends, ...widths);
   }
 
   // COL-08 contrast
@@ -366,20 +472,70 @@
   }
   out.push(...ill.values());
 
-  // ILL-07 a case window (home, Work) shows one change read left to right (.illo-ba): at most 8 labels outside
-  // product UI ([data-mock]), and the accent on one side only.
+  // ILL-01 a case scene moves once, on entrance: no animation inside .scene loops
+  const sceneLoops = document.getAnimations().filter(a => a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('.scene') && a.effect.getComputedTiming().iterations === Infinity);
+  if (sceneLoops.length) out.push(`ILL-01 ${sceneLoops.length} animation(s) loop inside a case scene (entrance only)`);
+
+  // ILL-07 a case scene (home, Work; .scene, 2026-09-27) shows one change read left to right: a picture and a caption
+  // on each side ([data-side="before"|"after"]), at most 8 labels outside product UI ([data-mock]), the accent on the
+  // side after only, and the labels of both sides starting on one line.
   const acc = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
   const accProbe = document.createElement('i'); accProbe.style.color = acc; document.body.appendChild(accProbe);
   const accRgb = getComputedStyle(accProbe).color; accProbe.remove();
-  document.querySelectorAll('.illo-window--case').forEach((w, n) => {
+  const tr = c => /rgba\(0, 0, 0, 0\)/.test(c) || c === 'transparent';
+  document.querySelectorAll('.scene').forEach((w, n) => {
     if (!w.getClientRects().length || getComputedStyle(w).display === 'none') return;
     const labels = [...w.querySelectorAll('*')].filter(e => !e.closest('[data-mock]') && [...e.childNodes].some(c => c.nodeType === 3 && /[A-Za-z0-9]/.test(c.textContent)));
-    if (labels.length > 8) out.push(`ILL-07 case window ${n + 1} has ${labels.length} labels (at most 8)`);
-    const sides = [...w.querySelectorAll('.illo-side')];
-    if (sides.length) {
-      const lit = sides.filter(sd => [...sd.querySelectorAll('*')].some(e => { const c = getComputedStyle(e); return c.color === accRgb || c.backgroundColor === accRgb || c.borderTopColor === accRgb; }));
-      if (lit.length > 1) out.push(`ILL-07 case window ${n + 1} carries the accent on both sides (one side only)`);
-    } else out.push(`ILL-07 case window ${n + 1} is not a before/after (.illo-ba)`);
+    // a label drawn twice (an outline, then the solid object over it) counts once
+    const words = new Set(labels.map(e => e.textContent.trim().toLowerCase()));
+    if (words.size > 8) out.push(`ILL-07 case scene ${n + 1} has ${words.size} labels (at most 8)`);
+    const before = [...w.querySelectorAll('[data-side="before"]')], after = [...w.querySelectorAll('[data-side="after"]')];
+    if (!before.length || !after.length) { out.push(`ILL-07 case scene ${n + 1} is not a before/after ([data-side])`); return; }
+    const lit = el => [el, ...el.querySelectorAll('*')].some(e => { const c = getComputedStyle(e); return c.color === accRgb || c.backgroundColor === accRgb || c.borderTopColor === accRgb; });
+    if (before.some(lit)) out.push(`ILL-07 case scene ${n + 1} carries the accent on the side before (after only)`);
+    // the two pictures share one top and one bottom: the union of the drawn surfaces on each side (outlines, cards,
+    // tinted or shaded boxes), leaving out the cursor, its rings, the sparks and the travelling dots
+    const extent = pic => {
+      let t = Infinity, b = -Infinity;
+      for (const e of pic.querySelectorAll('*')) {
+        if (e.closest('.sc-cursor,.sc-ring,.sc-spark,.sc-dot,svg')) continue;
+        const q = getComputedStyle(e);
+        const drawn = !tr(q.backgroundColor) || (q.boxShadow && q.boxShadow !== 'none') || ['Top', 'Bottom', 'Left', 'Right'].some(k => parseFloat(q['border' + k + 'Width']) > 0 && q['border' + k + 'Style'] !== 'none');
+        if (!drawn) continue;
+        const r = e.getBoundingClientRect(); if (r.height < 1) continue;
+        t = Math.min(t, r.top); b = Math.max(b, r.bottom);
+      }
+      return [t, b];
+    };
+    const pics = [w.querySelector('.scene__pic[data-side="before"]'), w.querySelector('.scene__pic[data-side="after"]')];
+    if (pics[0] && pics[1]) {
+      const [e0, e1] = pics.map(extent);
+      if (Math.abs(e0[0] - e1[0]) > 1 || Math.abs(e0[1] - e1[1]) > 1) out.push(`ILL-07 case scene ${n + 1}: the sides are not aligned (before ${e0[0].toFixed(0)} to ${e0[1].toFixed(0)}, after ${e1[0].toFixed(0)} to ${e1[1].toFixed(0)}; same top and bottom)`);
+    }
+    const caps = w.querySelectorAll('.scene__cap');
+    if (caps.length === 2 && Math.abs(caps[0].getBoundingClientRect().top - caps[1].getBoundingClientRect().top) > 1) out.push(`ILL-07 case scene ${n + 1}: the labels of the two sides do not start on one line`);
   });
+  // ILL-07 one scene box (2026-09-27): every case scene on a page shares its left edge, right edge and width (within 1px),
+  // sits centred on its row's content box (within 2px) and stays inside the row's padding (rows measured where they land)
+  {
+    const settle = document.createElement('style');
+    settle.textContent = '[data-reveal],[data-reveal] *:not([data-illo] *){opacity:1!important;transform:none!important;filter:none!important}';
+    document.head.appendChild(settle);
+    const sc = [...document.querySelectorAll('[data-case-row] .scene')].filter(e => e.getClientRects().length && getComputedStyle(e).display !== 'none');
+    if (sc.length > 1) {
+      const rs = sc.map(e => e.getBoundingClientRect());
+      const spread = k => Math.max(...rs.map(r => r[k])) - Math.min(...rs.map(r => r[k]));
+      const off = ['left', 'right', 'width'].filter(k => spread(k) > 1);
+      if (off.length) out.push(`ILL-07 case scenes do not share one box: ${off.map(k => `${k} varies ${spread(k).toFixed(0)}px`).join(', ')}`);
+    }
+    sc.forEach(e => {
+      const row = e.closest('[data-case-row]'), q = getComputedStyle(row), w = row.getBoundingClientRect(), r = e.getBoundingClientRect();
+      const ct = w.top + parseFloat(q.paddingTop), cb = w.bottom - parseFloat(q.paddingBottom), above = r.top - ct, below = cb - r.bottom;
+      const name = e.dataset.scene || '';
+      if (above < -1 || below < -1) out.push(`ILL-07 case scene ${name} overflows its row's padding (${above.toFixed(0)}px above, ${below.toFixed(0)}px below)`);
+      else if (Math.abs(above - below) > 2) out.push(`ILL-07 case scene ${name} is not centred on its row (${above.toFixed(0)}px above, ${below.toFixed(0)}px below)`);
+    });
+    settle.remove();
+  }
   return location.pathname + ' :: ' + (out.length ? out.join(' ; ') : 'pass');
 })()

@@ -94,5 +94,37 @@
     "who": "Nayara",
     "when": "2026-09-25",
     "note": "Group A approval (consolidation plan A10): no page imports it; 19 colour literals across the unused files"
+  },
+  {
+    "fingerprint": "class|components.css|ref-row",
+    "value": "round-5",
+    "verdict": "promote",
+    "who": "Nayara",
+    "when": "2026-09-27",
+    "note": "Round 5 approval: a reference row with a picture of the source (sm radius) and a .tag on its own line; card insurance benchmark"
+  },
+  {
+    "fingerprint": "class|components.css|ld-list--quiet",
+    "value": "round-5",
+    "verdict": "promote",
+    "who": "Nayara",
+    "when": "2026-09-27",
+    "note": "Round 5 approval: the quiet disclaimer list (\"What this does not include\"), the inactive look of gap rows"
+  },
+  {
+    "fingerprint": "token|typography.css|--font-size-lead",
+    "value": "round-5",
+    "verdict": "promote",
+    "who": "Nayara",
+    "when": "2026-09-27",
+    "note": "Round 5 approval: the one subtitle size (TYP-04)"
+  },
+  {
+    "fingerprint": "token|typography.css|--font-size-h3",
+    "value": "round-5",
+    "verdict": "promote",
+    "who": "Nayara",
+    "when": "2026-09-27",
+    "note": "Round 5 approval: the one h3 size outside case bodies (TYP-04)"
   }
 ]

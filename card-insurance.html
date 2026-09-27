@@ -134,7 +134,7 @@
       <div class="hero__eyebrow" style="color:var(--accent)"><span><span>BTG Pactual</span> · São Paulo · 2020</span></div>
       <h1 style="font-weight:500;font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-l);max-width:22ch;text-wrap:balance">Modular card insurance in a banking app</h1>
       <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
-      <p style="margin:0;max-width:58ch;font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Customers of BTG+, the bank's app, could only buy card insurance as a fixed bundle at one price. I designed a modular version: the customer chooses a level of cover for card theft and misuse, and adds an assistance, a service such as pet care or home repairs. My usability test then showed that selling it during the card request put card sign-ups at risk, so the whole flow moved to the card's settings.</p>
+      <p style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Customers of BTG+, the bank's app, could only buy card insurance as a fixed bundle at one price. I designed a modular version: the customer chooses a level of cover for card theft and misuse, and adds an assistance, a service such as pet care or home repairs. My usability test then showed that selling it during the card request put card sign-ups at risk, so the whole flow moved to the card's settings.</p>
     </section>
 
     <section class="glass case-details">
@@ -245,14 +245,45 @@
           <div style="margin-bottom:var(--section-y)">
             <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">Benchmark</h3>
             <p style="margin:0 0 var(--space-lg);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">I reviewed seven insurers for how customers buy, customise and claim. Three of them shaped the plan-and-assistance structure described below.</p>
-            <!-- The benchmark as plain text (Nayara, 2026-09-25): the screenshot carousel is retired. The three that shaped the structure (Decision 01) carry a label. -->
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Hedvig" measure="70ch" hint-size="100%,80px">inviting a friend visibly lowers the monthly price</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Wrisk" measure="70ch" hint-size="100%,80px">a custom policy built from plain-language questions, one at a time <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Pulse" measure="70ch" hint-size="100%,80px">a base module with paid extensions, shared with the household</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Lemonade" measure="70ch" hint-size="100%,80px">contracting written in plain, friendly language <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="DeadHappy" measure="70ch" hint-size="100%,80px">underwriting as a short conversation, ending in a stated payout and price</x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Cuvva" measure="70ch" hint-size="100%,80px">sliders raise coverage item by item, with the price updating instantly <span style="margin-left:var(--space-xs);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);white-space:nowrap">Shaped the structure</span></x-import>
-            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="reference" title="Santander" last="{{ true }}" measure="70ch" hint-size="100%,80px">coverage chosen before purchase, with the instalment updating live</x-import>
+            <!-- The benchmark as rows (Nayara, 2026-09-25: no carousel). Round 5: each row has a small picture of the insurer's app on the
+                 left (cropped from the retired benchmark screenshots, assets/c8-0 to c8-6, one screen each), a sentence on what it does
+                 that mattered here, and "Shaped the structure" as a tag on its own line for the three behind Decision 01.
+                 .ref-row (approved by Nayara 2026-09-27), a reference row with a picture and a tag. Considered: ListRow (its marker is text only, so there is
+                 no slot for a picture, and a tag could only sit inline in the text), DecisionCard (a card is heavier than a reference),
+                 .figure (evidence at level 2, one per row: too big for seven references). -->
+            <div class="ref-rows">
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-hedvig.png" alt="Hedvig's app" width="56" height="84" loading="lazy">
+              <p><strong>Hedvig</strong> <span>Hedvig lowers the monthly price when a customer invites a friend, and the new price shows at once.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-wrisk.png" alt="Wrisk's app" width="56" height="84" loading="lazy">
+              <p><strong>Wrisk</strong> <span>Wrisk builds each policy from plain-language questions asked one at a time, so the cover fits the customer without a long form.</span></p>
+              <span class="tag ref-row__tag">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-pulse.png" alt="Pulse's app" width="56" height="84" loading="lazy">
+              <p><strong>Pulse</strong> <span>Pulse sells a base module with paid extensions, and the customer can share the cover with their household.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-lemonade.png" alt="Lemonade's app" width="56" height="84" loading="lazy">
+              <p><strong>Lemonade</strong> <span>Lemonade writes its contract in plain, friendly language, so the customer can read what they are buying.</span></p>
+              <span class="tag ref-row__tag">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-deadhappy.png" alt="DeadHappy's app" width="56" height="84" loading="lazy">
+              <p><strong>DeadHappy</strong> <span>DeadHappy underwrites through a short conversation that ends with the payout and the price stated plainly.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-cuvva.png" alt="Cuvva's app" width="56" height="84" loading="lazy">
+              <p><strong>Cuvva</strong> <span>Cuvva lets the customer raise cover item by item with sliders, and the price updates as they move.</span></p>
+              <span class="tag ref-row__tag">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-santander.png" alt="Santander's app" width="56" height="84" loading="lazy">
+              <p><strong>Santander</strong> <span>Santander has the customer choose their cover before buying, and the instalment updates as they choose.</span></p>
+            </div>
+            </div>
           </div>
           <div style="margin-bottom:var(--section-y)">
             <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">User flows</h3>
@@ -349,8 +380,8 @@
           <div style="border-top:1px solid var(--border);padding-top:var(--space-lg)">
             <h3 class="subsection">Price display</h3>
             <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Customers understood the three plans, but were slow to notice how the price changed between them. So a short animation went into the build: when the customer switches plan, the price and limits update in place.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-fluid-l);align-items:flex-start">
-            <div class="card" style="flex:0 1 360px;min-width:0;padding:var(--space-xl)">
+          <div class="ld-split" style="align-items:start"><!-- a small card (half) and its note in the other half (SEC-06, round 5) -->
+            <div class="card" style="min-width:0;padding:var(--space-xl)">
               <div style="font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-strong);margin-bottom:var(--space-md)">Planos</div>
               <div style="display:flex;gap:var(--space-xl);border-bottom:1px solid var(--border);margin-bottom:var(--space-lg)">
                 <sc-for list="{{ planTabs }}" as="tab" hint-placeholder-count="3">
@@ -371,7 +402,7 @@
                 </div>
               </div>
             </div>
-            <p style="flex:1 1 260px;min-width:0;max-width:46ch;margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Switch plan in the figure to see the price and limits update.</p>
+            <p style="min-width:0;max-width:46ch;margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Switch plan in the figure to see the price and limits update.</p>
           </div>
           </div>
         </div>
