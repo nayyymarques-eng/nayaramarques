@@ -125,7 +125,7 @@ Nayara: new tokens (new role names included); merging values that differ; any co
 
 ### Actions (ACT)
 - **ACT-01** Exactly three variants, identical geometry (12px radius, 44px tall, 20px side padding, 15px, weight 500, sentence case): **Primary** (a raised light surface, ink text, a soft shade below; hover lifts), **Link** (accent text, no fill, an arrow that moves 3px on hover), **Inverse** (paper fill, ink text, on the ink band). Uppercase is for labels and eyebrows only, never an action. *(check_source, check_pages)*
-- **ACT-02** One filled action per view, then links. *(check_pages; check_source warns at more than one primary per page)*
+- **ACT-02** One filled action per view, then links. A view is the hero, or one offer card (`.plan-card`): the hero has one Primary, and each offer card may have one Primary for its own offer ("Start a conversation" on Build and hand over, "Book an audit"; Nayara, round 5). Everything else is a Link. *(check_pages; check_source warns at more than one primary outside offer cards, or in one card)*
 
 ### Illustrations (ILL)
 - **ILL-01** An illustration shows a mechanism with states: pending (quiet line), passing (the accent dot), done (marked in the accent). Marks persist; it ends resolved and holds about 3s; it resets softly (a fade, never a reverse). Motion travels only along the drawn structure. A 10 to 12s scene; travel linear, marks and fades `--ease-in-out-soft`. Loops pause off screen (`art.js`). Continuous emission (variant O) is the one exception.

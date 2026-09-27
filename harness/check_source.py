@@ -160,8 +160,14 @@ for path in FILES:
             v = re.findall(r'action--([a-z-]+)', c.group(1))
             if len(v) != 1 or v[0] not in ('primary', 'link', 'inverse'):
                 add('ACT-01', path, f'an action with variant {v or "none"}; exactly one of primary, link, inverse')
-    if is_page and len(re.findall(r'class="[^"]*\baction--primary\b', t)) > 1:
-        add('ACT-02', path, 'more than one primary action on the page; one primary, then links', True)
+    # ACT-02 one primary per view: one outside offer cards (the hero's), at most one inside each offer card (.plan-card)
+    if is_page:
+        prim = r'class="[^"]*\baction--primary\b'
+        cards = re.findall(r'<article class="plan-card"[\s\S]*?</article>', t)
+        if len(re.findall(prim, t)) - sum(len(re.findall(prim, c)) for c in cards) > 1:
+            add('ACT-02', path, 'more than one primary action outside offer cards; one primary, then links', True)
+        if any(len(re.findall(prim, c)) > 1 for c in cards):
+            add('ACT-02', path, 'an offer card with more than one primary action', True)
     # RET retired patterns
     if name not in ('Nav.dc.html', '404.html', 'index.html') and 'var(--brand-mark)' in styles_all:
         add('RET-01', path, 'red outside the nav mark, the section bar and the home sticker; arrows and ordinals take the accent')
