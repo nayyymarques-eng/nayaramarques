@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-27 (evening, mobile review on her phone)
+- Round 6 deployed on her word ("deploy it"), with Claude's recommendations: the six phone ledes as written, eyebrow gap 12px, the home chat frame without an outline, desktop dividers unchanged, `.figure--proto`, `.flow-scroll`, `.case-details__list` and the phone/desk ledes join the system. Home on phones: less space under the chat (the hero no longer fills the screen). · · CNT-11, HERO-02
 - Dividers on phones keep equal space above and below (some sections lost the top or bottom padding). · uneven gaps around dividers on phones · SEC-04 (check at 375px)
 - Product prototypes (the composer and other mockups in figures) keep their desktop shape on phones and scroll sideways inside their frame, instead of reflowing. · mockups that wrap on phones · by eye, LAY-06
 - Flows scroll sideways on phones and reach the screen edge: no mask or frame cutting them short of the edge. · the clipped flow scroller · FLW-01

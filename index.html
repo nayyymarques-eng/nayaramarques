@@ -120,6 +120,7 @@
      types. The thread is anchored to the composer and scrolls up inside the frame; what leaves the top fades out. The frame
      holds three two-line messages. */
   @media (max-width: 860px) {
+    .hx { min-height: 0; } /* phones: the hero ends under the chat, it does not fill the screen (Nayara 2026-09-27) */
     .hx__thread { height: 212px; min-height: 0; overflow: hidden;
       -webkit-mask-image: linear-gradient(to bottom, transparent, var(--text-strong) var(--space-2xl)); mask-image: linear-gradient(to bottom, transparent, var(--text-strong) var(--space-2xl)); }
     .hx__thread li { flex: none; }
