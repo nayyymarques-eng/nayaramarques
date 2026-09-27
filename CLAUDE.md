@@ -86,7 +86,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 - **CMP-04** Never edit `_ds/…/_ds_bundle.js`, `_ds_manifest.json` or `readme.md`; they are generated. The files in `tokens/` are the source: change them here, then run `ds-sync`. What the bundle draws itself (DecisionCard's radius, ListRow, NextCase's rules) takes the theme through tokens and props; anything more is a Claude Design follow-up.
 
 ## 4. Content (CNT)
-- **CNT-01** No prices. Every offer says "Priced on the call". Budget ranges in the `start-a-project` form are allowed. *(check_source)*
+- **CNT-01** The site does not discuss price: no figures, no fees, no Investment sections. Project engagement and Embedded partner say nothing about price at all (Nayara, round 5: every engagement is priced the same way, on a call). The "Priced on the call" lines still on the other offer cards (Build, Audit) wait for her word. Budget ranges in the `start-a-project` form are allowed. *(check_source: price figures anywhere; any price wording on the two engagement pages)*
 - **CNT-02** The name is Nayara Marques. *(check_source)*
 - **CNT-03** On AI case and services pages the client is "an AI platform in private capital markets". Add no new "Clade" mentions anywhere. *(check_source)*
 - **CNT-04** No em dashes in prose. Allowed only in rail numbers (`01 — Title`) and page titles (`Page — Nayara Marques`). Use commas, colons, full stops, parentheses; ranges read "3 to 6 months". *(check_source, warning)*

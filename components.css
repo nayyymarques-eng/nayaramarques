@@ -314,6 +314,14 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-list{list-style:none;margin:0;padding:0;max-width:820px;border-top:1px solid var(--border-strong)}
 .ld-list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:var(--space-sm);padding:var(--space-md) 0;border-bottom:1px solid var(--border-strong);font-size:var(--font-size-md);line-height:1.6;color:var(--text-strong)}
 .ld-list li>span{font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);color:var(--accent);padding-top:3px;font-variant-numeric:tabular-nums}
+/* proposal (round 5): .ld-list--quiet, a disclaimer list ("What this does not include" on the services pages). Low emphasis, the
+   inactive look of a case's gap rows (PAT-07): a hollow muted dot, the lead in body ink at 500 on its own line, the text muted
+   (AA on the sky), dashed rules, no surface. Considered: .ld-layers--2 cards (too much weight for a disclaimer, Nayara round 5),
+   the plain .ld-list (numbered, ink text: reads as a requirement), ListRow data-pattern="gap" (case pages only, PAT-07). */
+.ld-list--quiet{border-top:1px dashed var(--border)}
+.ld-list--quiet li{display:flex;gap:var(--space-sm);align-items:baseline;border-bottom:1px dashed var(--border);color:var(--text-muted)}
+.ld-list--quiet li::before{content:"";flex:none;width:7px;height:7px;border:1px solid var(--text-subtle);border-radius:var(--radius-full);transform:translateY(-1px)}
+.ld-list--quiet li strong{display:block;margin-bottom:var(--space-3xs);font-weight:500;color:var(--text-body)}
 .link-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0}
 @media (max-width:1000px){.link-cards{grid-template-columns:minmax(0,1fr)}}
 .link-cards .link-card{height:100%;padding:clamp(20px,2.4vw,28px)}
@@ -331,6 +339,8 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-facts dt{margin:0 0 6px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
 .ld-facts dd{margin:0;font-size:var(--font-size-action);line-height:var(--leading-snug);color:var(--text-strong)}
 .ld-facts dd a{color:var(--accent);text-decoration:none}
+.ld-facts--3{grid-template-columns:repeat(3,minmax(0,1fr))} /* the kinds of engagement (embedded partner, round 5) */
+@media (max-width:760px){.ld-facts--3{grid-template-columns:minmax(0,1fr)}}
 .ld-band{margin-top:0} /* the section above gives the space (SEC-04) */
 .ld-band__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);align-items:start;padding-block:clamp(56px,8vw,104px)}
 .ld-band h2{margin:0;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);max-width:18ch;text-wrap:balance} /* one h2 size (TYP-04) */

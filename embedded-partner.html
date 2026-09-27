@@ -110,39 +110,18 @@
       </ol>
     </section>
 
-    <!-- 4. Investment: plan cards -->
-    <section class="ld-wrap section" aria-labelledby="ld-invest">
+    <!-- 4. Kinds of engagement (round 5): a light list, no cards and no price (CNT-01). Reuses .ld-facts, the label-and-line list
+         of "Who you'd be working with", here on the sky. Old: an "Investment" heading, three plan cards with "Priced on the call"
+         and "A flat monthly fee for the agreed days. Priced on the call, once I know the shape of the work. Send a short brief and I will bring a figure." -->
+    <section class="ld-wrap section" aria-labelledby="ld-kinds">
       <div class="section-head">
-        <h2 class="h2" id="ld-invest">Investment</h2>
+        <h2 class="h2" id="ld-kinds" data-new-copy="kinds-title">Kinds of engagement</h2>
       </div>
-      <!-- proposal: plan card (see LANDING-NOTES). -->
-      <div class="plans plans--3">
-        <article class="plan-card" aria-labelledby="ld-plan-1">
-          <h3 id="ld-plan-1">Lighter week</h3>
-          <p>One workstream, monthly retainer</p>
-          <div class="plan-card__foot">
-            <span class="plan-card__price">Priced on the call</span>
-            <a class="action action--link" href="contact.html" aria-label="Book an intro call: Lighter week">Book an intro call <span class="action__arrow" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-        <article class="plan-card" aria-labelledby="ld-plan-2">
-          <h3 id="ld-plan-2">Core week</h3>
-          <p>Product design plus the system</p>
-          <div class="plan-card__foot">
-            <span class="plan-card__price">Priced on the call</span>
-            <a class="action action--link" href="contact.html" aria-label="Book an intro call: Core week">Book an intro call <span class="action__arrow" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-        <article class="plan-card" aria-labelledby="ld-plan-3">
-          <h3 id="ld-plan-3">Full week</h3>
-          <p>Design lead, or your only designer</p>
-          <div class="plan-card__foot">
-            <span class="plan-card__price">Priced on the call</span>
-            <a class="action action--link" href="contact.html" aria-label="Book an intro call: Full week">Book an intro call <span class="action__arrow" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-      </div>
-      <p class="ld-after">A flat monthly fee for the agreed days. Priced on the call, once I know the shape of the work. <a href="start-a-project.html">Send a short brief →</a> and I will bring a figure.</p>
+      <dl class="ld-facts ld-facts--3">
+        <div><dt>Lighter week</dt><dd>One workstream, monthly retainer</dd></div>
+        <div><dt>Core week</dt><dd>Product design plus the system</dd></div>
+        <div><dt>Full week</dt><dd>Design lead, or your only designer</dd></div>
+      </dl>
     </section>
 
     <!-- 5. What I need from you -->
@@ -163,9 +142,10 @@
         <h2 class="h2" id="ld-not">What this does not include</h2>
         <p>Both can be arranged; say so on the call.</p>
       </div>
-      <ul class="ld-layers ld-layers--2">
-        <li class="card"><h3>Backend engineering</h3><p>I write the front-end. Server-side belongs to your team or a developer you bring in.</p></li>
-        <li class="card"><h3>Brand identity</h3><p>A different discipline. I design inside your brand, or a plain one, and can refer you.</p></li>
+      <!-- round 5: a disclaimer, so a plain quiet list (.ld-list--quiet), no cards -->
+      <ul class="ld-list ld-list--quiet">
+        <li><span><strong>Backend engineering</strong> I write the front-end. Server-side belongs to your team or a developer you bring in.</span></li>
+        <li><span><strong>Brand identity</strong> A different discipline. I design inside your brand, or a plain one, and can refer you.</span></li>
       </ul>
     </section>
 
@@ -194,7 +174,7 @@
         <details class="accordion"><summary>We already have designers. Does that work? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Often better. I take the system and front-end, or the lead, so they can stay on product depth. I've led designers and supported them.</p></details>
         <details class="accordion"><summary>What happens when the engagement ends? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>The system is the handover: tokens, component docs and validation in CI keep the standard without me.</p></details>
         <details class="accordion"><summary>Is AI writing our product? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>No. Claude Code and Claude Design speed up exploration and implementation. Every decision, review and shipped line is mine, gated by the same checks as any engineer's.</p></details>
-        <details class="accordion"><summary>Could this become a full-time role? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Yes. I'm open to senior and lead roles, and embedding is a good way to start that conversation. No fee for converting.</p></details>
+        <details class="accordion"><summary>Could this become a full-time role? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><!-- round 5, CNT-01: old copy ended "No fee for converting." --><p data-new-copy="faq-convert">Yes. I'm open to senior and lead roles, and embedding is a good way to start that conversation.</p></details>
         <details class="accordion"><summary>Which time zones do you cover? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Remote worldwide, in English, Spanish and Portuguese, on hours that overlap yours. I travel for onsites when it matters.</p></details>
       </div>
     </section>
