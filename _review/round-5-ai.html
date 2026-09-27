@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Round 5: edit mode</title><meta name="robots" content="noindex">
+<style>
+:root{--bg:#f7f8f9;--card:#ffffff;--ink:#16252c;--body:#34464f;--muted:#5b6c74;--rule:#dde3e6;--accent:#1f6a80;--gain:#2f6b45;--cost:#9a4a2b}
+html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:56px 32px 96px}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.1;font-weight:500;margin:8px 0 16px}
+h2{font-size:22px;font-weight:600;margin:56px 0 12px;padding-top:24px;border-top:1px solid var(--rule)}
+p,li{color:var(--body);max-width:72ch}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.ba>div{background:var(--card);border-radius:10px;padding:8px;box-shadow:0 1px 3px rgba(20,40,50,.08)}
+.ba img{display:block;width:100%;height:auto;border-radius:6px}
+.phone{grid-template-columns:repeat(2,minmax(0,300px))}
+.k{display:inline-block;margin:2px 4px 8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cost)}.k--after{color:var(--gain)}
+.q{background:var(--card);border-radius:10px;padding:14px 18px;margin:10px 0;box-shadow:0 1px 2px rgba(20,40,50,.06)}
+.q p{margin:0}.q code{font-size:12px;color:var(--muted)}
+del{color:var(--muted)}
+@media (max-width:700px){.ba,.phone{grid-template-columns:1fr}}
+</style></head><body><main>
+<p class="eyebrow">Round 5 · AI surfaces · 2026-09-27</p>
+<h1>Edit mode: one feature, two ways to edit</h1>
+<p>Your verdict: edit mode showed only the chat, and the inline edit had been lost. Now edit mode shows both ways of editing, open at the same time: <strong>inline</strong>, line by line on an AI output (a report and meeting notes), and the <strong>edit chat</strong> (the existing figure). Branch <code>round-5-ai-edit</code>, only <code>ai-surfaces.html</code> changed. Not deployed.</p>
+
+<h2>Desktop, 1400px</h2>
+<div class="ba"><div><span class="k">Before</span><img src="round-5-ai/before-edit-mode-1400.jpg" alt="Edit mode before: text, tags, one edit chat figure"></div><div><span class="k k--after">After</span><img src="round-5-ai/after-edit-mode-1400.jpg" alt="Edit mode after: text, tags, inline edit figure with report and meeting notes, then edit chat figure"></div></div>
+
+<h2>Phone, 375px</h2>
+<div class="ba phone"><div><span class="k">Before</span><img src="round-5-ai/before-edit-mode-375.jpg" alt="Edit mode before, phone"></div><div><span class="k k--after">After</span><img src="round-5-ai/after-edit-mode-375.jpg" alt="Edit mode after, phone: panels stack"></div></div>
+
+<h2>New copy for approval</h2>
+<p>Each line carries <code>data-new-copy</code> on the page until you approve it.</p>
+<div class="q"><p><code>ai-surfaces-r5-edit-ways</code> (second paragraph of Edit mode; first and last sentences unchanged)</p><p><del>An edit chat opens beside the file, where they describe the change they want. The AI proposes the change inside the text…</del></p><p>Inside edit mode there are two ways to edit, and both are open at the same time. Inline, the user refines the AI output line by line, right in the text. In the edit chat beside the file, they describe a larger change in their own words. Either way, the AI proposes the change inside the text, next to the original wording, and the user accepts it, keeps their own version or asks again.</p></div>
+<div class="q"><p><code>ai-surfaces-r5-inline-caption</code></p><p><strong>Inline edit, inside edit mode.</strong> The report and the meeting notes are AI output. With edit mode open, the user refines them line by line: the AI suggests a new line over the old one, and the user accepts it or keeps their own.</p></div>
+<div class="q"><p><code>ai-surfaces-r5-inline-why</code></p><p><strong>Why:</strong> Other people act on these files, so the user decides on each line before it becomes the record.</p></div>
+<div class="q"><p><code>ai-surfaces-r5-chat-caption</code> (replaces "Report editing mode. When the user is editing a report, the edit chat sits…")</p><p><strong>Edit chat, inside edit mode.</strong> In the same edit mode, the edit chat sits on the left and the report stays open on the right. The user describes a change, and the AI proposes it inside the report text, where the user accepts it or keeps their own wording. Inline edits and the edit chat work at the same time.</p></div>
+<div class="q"><p><code>ai-surfaces-r5-inline-mock</code> (mockup text in the new figure)</p><p>Report · Editing mode, "Q3 portfolio review": <del>Returns were mixed across the portfolio.</del> → Private credit held up, while buyout funds lagged.</p><p>Meeting notes · Editing mode, "Manager call": <del>Follow up with the manager.</del> → Send the revised allocation question before the committee date. (reused from the figure removed in round 3)</p><p>Tag on each suggestion: "Inline edit" (the chat figure keeps "From edit chat", so the two sources read apart).</p></div>
+
+<h2>Questions</h2>
+<div class="q"><p>1. The inline suggestions are tagged "Inline edit", the chat one "From edit chat". Keep that difference, or tag all three "From edit chat" as the figure had it? Recommendation: keep the difference, it is what tells the two ways apart.</p></div>
+<div class="q"><p>2. On phones the chat caption still says "on the left / on the right" while the panels stack (as before this round). Leave, or say "beside"? Recommendation: "beside".</p></div>
+
+<h2>Check</h2>
+<p><code>python3 harness/check.py ai-surfaces.html</code>: PASS at 1400px and 375px. One warning on this page, FLW-02 strike-through, which the rule excepts for product mockups showing a deletion.</p>
+</main></body></html>
