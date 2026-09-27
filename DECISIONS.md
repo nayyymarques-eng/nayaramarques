@@ -4,6 +4,9 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 
 Format: date · decision · what it replaces or rules out · enforced by.
 
+## 2026-09-27 (round 5, home and Work illustrations)
+- Case scenes: the side before and the side after share one top and one bottom (case 05's four verticals span the product card exactly). Case rows breathe more: `--section-y` above and below each row's content, at every width (was `--space-fluid-xl`, 28 to 44px, and 32/40px on phones). The home hero eyebrow reads "Senior Product Designer" (drops "and Design Engineer"; product designer is enough). · before sides centred at their own height; compact rows; the "design engineer" title · ILL-07 (check_pages: sides within 1px), SEC-04 (check_pages: case rows), the eyebrow `data-new-copy="home-eyebrow"`
+
 ## 2026-09-27 (round 5, from her review of the live site)
 - Home sticker: no terminal, just the red note; a soft fade in and out; a more confident line ("I didn't build it, but I can build yours" felt submissive). · the terminal, the stepped entrance, "Sorry, it isn't built. I can build yours." · MOT-03
 - Audit copy approved: the heading "Two audits a month" and the "What is not" line "If you want that, it becomes a project engagement." · the price wording · CNT-01

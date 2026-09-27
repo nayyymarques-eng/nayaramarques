@@ -263,7 +263,11 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
   grid-template-rows:auto auto;column-gap:var(--space-lg);row-gap:var(--space-sm);align-items:center;width:100%;max-width:560px;justify-self:center;
   container-type:inline-size;font-size:var(--font-size-2xs);line-height:var(--leading-label);color:var(--text-body)}
 .scene--product{max-width:600px}
-.scene__pic{position:relative;grid-row:1;min-width:0}
+.scene__pic{position:relative;grid-row:1;min-width:0;align-self:stretch}
+/* the two sides share one top and one bottom (ILL-07, 2026-09-27): the side before stretches to the side after */
+.scene__pic[data-side="before"]{display:flex;flex-direction:column}
+.scene__pic[data-side="after"]{display:flex;flex-direction:column;justify-content:center}
+.scene__to{align-self:center}
 .scene__pic[data-side="before"]{grid-column:1}.scene__pic[data-side="after"]{grid-column:3}
 .scene__to{grid-row:1;grid-column:2;position:relative;width:48px;height:16px;color:var(--text-subtle)}
 .scene__to::before{content:"";position:absolute;left:0;right:5px;top:50%;border-top:var(--stroke-diagram) solid currentColor}

@@ -31,12 +31,14 @@
  *   PAT-05  case cards are not stacked: a .cards group with more than one column, a gap other than 12px (--gap-cards),
  *           or a card narrower than its group
  *   ILL-01  an animation inside a case scene (.scene) loops; case scenes move once, on entrance
- *   ILL-07  a case scene has at most 8 labels outside [data-mock], the accent on the side after only, both sides' labels on one line
+ *   ILL-07  a case scene has at most 8 labels outside [data-mock], the accent on the side after only, both sides' labels on one line,
+ *           and its two pictures share one top and one bottom (within 1px)
  *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window, .scene) is not the label style as rendered: under 9.5px,
  *           not uppercase, not 0.14em, or lighter than 600. In a figure's picture, uppercase labels must be the label
  *           style (9.5, 10.5 or 12.5px, 0.14em, 600). Product UI is exempt with [data-mock].
  *   PAT-07  a gap row ("What this case doesn't cover") without the inactive style: dashed rule, no elevation, muted text
- *   SEC-04  a top-level section's content does not sit --section-y below its top line and --section-y above its bottom
+ *   SEC-04  a top-level section's content does not sit --section-y below its top line and --section-y above its bottom;
+ *           a case row (home, Work) does not sit --section-y from the divider between rows
  *           line (within 2px each). Lines are the section dividers, the ink band's and the case details' edges, the
  *           next-case well and the footer divider. Content box = the first and last visible box (text, a surface, an
  *           image, a bordered row), never margins. Heroes, the ink band and the footer keep their own padding; the space
@@ -314,6 +316,16 @@
       if (x.b.matches('[data-case-band]') && wideCase) { const gap = parseFloat(getComputedStyle(x.b).columnGap) || 0; expect = x.r.left + (x.r.width - 3 * gap) / 4 + gap; }
       if (Math.abs(left - expect) > 1) cols.add(`SEC-05 "${name}": content starts at ${left.toFixed(0)}px, the ${expect === G ? 'gutter' : 'case body column'} is ${expect.toFixed(0)}px`);
     }
+    // SEC-04 case rows (home, Work; 2026-09-27): between two rows, the content sits --section-y from the divider on both sides
+    const rows = [...document.querySelectorAll('[data-case-row]')].filter(on);
+    rows.forEach((row, i) => {
+      const bx = boxesOf(row).filter(b => b.b - b.t > 2); if (!bx.length) return; // a drawn rule is a line, not content
+      const top = Math.min(...bx.map(b => b.t)), bot = Math.max(...bx.map(b => b.b)), r = row.getBoundingClientRect();
+      const name = (row.querySelector('h2,h3') || row).textContent.trim().replace(/\s+/g, ' ').slice(0, 30), bad = [];
+      if (i > 0) { const pt = top - (r.top + Y + (parseFloat(getComputedStyle(row).borderTopWidth) || 0)); if (Math.abs(pt - SY) > 2) bad.push(`${pt.toFixed(0)}px below its divider`); }
+      if (i < rows.length - 1) { const pb = rows[i + 1].getBoundingClientRect().top + Y - bot; if (Math.abs(pb - SY) > 2) bad.push(`${pb.toFixed(0)}px above the next divider`); }
+      if (bad.length) pads.add(`SEC-04 case row "${name}": content ${bad.join(', ')}; case rows take --section-y (${SY.toFixed(0)}px)`);
+    });
     out.push(...pads, ...cols);
     settle.remove();
   }
@@ -469,6 +481,7 @@
   const acc = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
   const accProbe = document.createElement('i'); accProbe.style.color = acc; document.body.appendChild(accProbe);
   const accRgb = getComputedStyle(accProbe).color; accProbe.remove();
+  const tr = c => /rgba\(0, 0, 0, 0\)/.test(c) || c === 'transparent';
   document.querySelectorAll('.scene').forEach((w, n) => {
     if (!w.getClientRects().length || getComputedStyle(w).display === 'none') return;
     const labels = [...w.querySelectorAll('*')].filter(e => !e.closest('[data-mock]') && [...e.childNodes].some(c => c.nodeType === 3 && /[A-Za-z0-9]/.test(c.textContent)));
@@ -479,6 +492,25 @@
     if (!before.length || !after.length) { out.push(`ILL-07 case scene ${n + 1} is not a before/after ([data-side])`); return; }
     const lit = el => [el, ...el.querySelectorAll('*')].some(e => { const c = getComputedStyle(e); return c.color === accRgb || c.backgroundColor === accRgb || c.borderTopColor === accRgb; });
     if (before.some(lit)) out.push(`ILL-07 case scene ${n + 1} carries the accent on the side before (after only)`);
+    // the two pictures share one top and one bottom: the union of the drawn surfaces on each side (outlines, cards,
+    // tinted or shaded boxes), leaving out the cursor, its rings, the sparks and the travelling dots
+    const extent = pic => {
+      let t = Infinity, b = -Infinity;
+      for (const e of pic.querySelectorAll('*')) {
+        if (e.closest('.sc-cursor,.sc-ring,.sc-spark,.sc-dot,svg')) continue;
+        const q = getComputedStyle(e);
+        const drawn = !tr(q.backgroundColor) || (q.boxShadow && q.boxShadow !== 'none') || ['Top', 'Bottom', 'Left', 'Right'].some(k => parseFloat(q['border' + k + 'Width']) > 0 && q['border' + k + 'Style'] !== 'none');
+        if (!drawn) continue;
+        const r = e.getBoundingClientRect(); if (r.height < 1) continue;
+        t = Math.min(t, r.top); b = Math.max(b, r.bottom);
+      }
+      return [t, b];
+    };
+    const pics = [w.querySelector('.scene__pic[data-side="before"]'), w.querySelector('.scene__pic[data-side="after"]')];
+    if (pics[0] && pics[1]) {
+      const [e0, e1] = pics.map(extent);
+      if (Math.abs(e0[0] - e1[0]) > 1 || Math.abs(e0[1] - e1[1]) > 1) out.push(`ILL-07 case scene ${n + 1}: the sides are not aligned (before ${e0[0].toFixed(0)} to ${e0[1].toFixed(0)}, after ${e1[0].toFixed(0)} to ${e1[1].toFixed(0)}; same top and bottom)`);
+    }
     const caps = w.querySelectorAll('.scene__cap');
     if (caps.length === 2 && Math.abs(caps[0].getBoundingClientRect().top - caps[1].getBoundingClientRect().top) > 1) out.push(`ILL-07 case scene ${n + 1}: the labels of the two sides do not start on one line`);
   });

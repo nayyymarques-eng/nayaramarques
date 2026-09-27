@@ -77,7 +77,7 @@ def scene(key, before, after, cap_before='', cap_after='', to=None, product=Fals
 
 # ---------- 01 AI surfaces: C, line to object ----------
 def c1():
-    before = (f'<div class="sc-dash sc-col" style="align-items:center;gap:8px;padding:18px 10px">{send(quiet=True)}'
+    before = (f'<div class="sc-dash sc-col" style="flex:1;align-items:center;justify-content:center;gap:8px;padding:18px 10px">{send(quiet=True)}'
               '<span class="illo-bar" style="width:60%;background:var(--border-divider)"></span>'
               '<span class="illo-bar" style="width:40%;background:var(--border-divider)"></span></div>')
     rows = ''
@@ -94,11 +94,11 @@ def screens(fly=False):
     out = ''
     for i, (l, t, ws) in enumerate([(0, 0, (60, 80, 44)), (12, 24, (70, 50, 84)), (24, 48, (54, 76, 40))]):
         bars = ''.join(f'<span class="illo-bar" style="width:{w}%"></span>' for w in ws)
-        out += f'<div class="sc-ghost sc-scr" style="left:{l}%;top:{t}px"><span class="sc-scr__nav"></span><span class="sc-col" style="flex:1;gap:6px">{bars}</span></div>'
+        out += f'<div class="sc-ghost sc-scr" style="left:{l}%;top:{t}px;height:calc(100% - 48px)"><span class="sc-scr__nav"></span><span class="sc-col" style="flex:1;gap:6px">{bars}</span></div>'
     if fly:
         for i, (l, t) in enumerate([(0, 0), (12, 24), (24, 48)]):
-            out += f'<div class="sc-ghost sc-scr sc-a-away" data-to=".sc-c2-email" style="--s:{1 + i * .4};left:{l}%;top:{t}px"></div>'
-    return f'<div style="position:relative;height:122px">{out}</div>'
+            out += f'<div class="sc-ghost sc-scr sc-a-away" data-to=".sc-c2-email" style="--s:{1 + i * .4};left:{l}%;top:{t}px;height:calc(100% - 48px)"></div>'
+    return f'<div style="position:relative;flex:1;min-height:0">{out}</div>'
 
 
 def c2():
@@ -116,10 +116,8 @@ def c2():
 # ---------- 03 Composer: A, afloat (static depth, one entrance) ----------
 def c3(fly=False):
     gp = ''.join(f'<span class="sc-ghost sc-gp" style="width:{w}px"></span>' for w in (34, 22, 28, 40, 24, 30, 36, 26))
-    before = (f'<div class="sc-ghost sc-col" style="gap:8px;padding:10px"><div class="illo-pills" style="gap:4px">{gp}</div>'
-              f'<div class="sc-row"><span class="illo-bar" style="flex:1"></span>{send(quiet=True)}</div></div>'
-              '<span class="sc-ghost sc-gp" style="position:absolute;left:-10px;top:-20px;width:30px"></span>'
-              '<span class="sc-ghost sc-gp" style="position:absolute;right:-6px;bottom:-18px;width:38px"></span>')
+    before = (f'<div class="sc-ghost sc-col" style="flex:1;justify-content:space-between;gap:8px;padding:10px"><div class="illo-pills" style="gap:4px">{gp}</div>'
+              f'<div class="sc-row"><span class="illo-bar" style="flex:1"></span>{send(quiet=True)}</div></div>')
     menu = ''.join(f'<div class="sc-mrow">{ico(i)}<span class="illo-bar illo-bar--ink" style="width:{w}%"></span></div>' for i, w in (('doc', 54), ('chart', 40), ('note', 62)))
     after = (f'<div style="position:relative;padding-top:92px">'
              f'<div class="sc-card sc-card--3 sc-card--md sc-col sc-a-in" data-mock="" style="--s:7;position:absolute;left:0;top:0;width:58%;padding:6px;gap:2px">{menu}</div>'
@@ -136,8 +134,8 @@ def c3(fly=False):
 def panels(stack=True):
     def pan(t, ws):
         bars = ''.join(f'<span class="illo-bar" style="width:{w}%"></span>' for w in ws)
-        return f'<div class="sc-ghost sc-col" style="gap:5px;padding:8px 10px">{lab(t)}{bars}</div>'
-    return f'<div class="sc-col" style="gap:4px">{pan("Design tool", (70, 48, 82))}<span class="illo-sign">≠</span>{pan("Code", (52, 76, 38))}</div>'
+        return f'<div class="sc-ghost sc-col" style="flex:1;gap:5px;padding:8px 10px">{lab(t)}{bars}</div>'
+    return f'<div class="sc-col" style="flex:1;gap:4px">{pan("Design tool", (70, 48))}<span class="illo-sign">≠</span>{pan("Code", (52, 76))}</div>'
 
 
 def link(d, s):
@@ -193,7 +191,7 @@ def widget(kind):
 
 
 def c5():
-    before = '<div class="sc-col" style="gap:6px">' + ''.join(f'<div class="sc-ghost" style="padding:6px 10px">{lab(v)}</div>' for v in ('B2B', 'B2C', 'Wealth', 'Advisors')) + '</div>'
+    before = '<div class="sc-col" style="flex:1;gap:6px">' + ''.join(f'<div class="sc-ghost sc-row" style="flex:1;padding:6px 10px">{lab(v)}</div>' for v in ('B2B', 'B2C', 'Wealth', 'Advisors')) + '</div>'
     nav = ''
     for i, w in enumerate((34, 28, 38, 30)):
         state = ''
@@ -230,7 +228,7 @@ def bundle():
     bars = ''.join(f'<span class="illo-bar" style="width:{w + 24}%"></span>' for _, w, _ in BENEFITS)
     tag = ('<span class="sc-ghost sc-row" style="display:inline-flex;gap:6px;padding:4px 10px 4px 8px;border-radius:var(--radius-full);margin-top:8px">'
            '<span style="width:5px;height:5px;border-radius:var(--radius-full);box-shadow:inset 0 0 0 var(--stroke-diagram) var(--text-subtle)"></span><span class="illo-bar" style="width:26px"></span></span>')
-    return f'<div class="sc-ghost sc-col" style="gap:8px;padding:12px 10px">{bars}</div>{tag}'
+    return f'<div class="sc-ghost sc-col" style="flex:1;justify-content:space-evenly;gap:8px;padding:12px 10px">{bars}</div>{tag}'
 
 
 def c6():
