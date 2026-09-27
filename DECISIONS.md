@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-27 (after deploy)
+- Embedded partner, Kinds of engagement: a bulleted list, a title per kind and its one line under it, scannable (`.ld-list--points`, the page list with a filled dot). · three label-and-line columns · by eye
 - Case details (Role, Users, Timeframe, Built) and About's Tools share one look, the Tools one: eyebrow labels, values 500 in strong ink, the note ground (a shade deeper than the sky so the box reads over the parallax), md radius, the same padding. The facts well on Embedded partner ("Who you'd be working with") takes the same look. · the frosted glass case details, the facts well at 15px · by eye
 
 ## 2026-09-27 (round 5, home and Work illustrations)

@@ -497,6 +497,11 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-list--quiet li::before{content:"";flex:none;width:7px;height:7px;border:1px solid var(--text-subtle);border-radius:var(--radius-full);transform:translateY(-1px)}
 .ld-list--quiet li>p{margin:0}
 .ld-list--quiet li strong{display:block;margin-bottom:var(--space-3xs);font-weight:500;color:var(--text-body)}
+/* Points: the same list, a filled dot and a title per item, for parallel items with no order (kinds of engagement). */
+.ld-list--points li{display:flex;gap:var(--space-sm);align-items:baseline}
+.ld-list--points li::before{content:"";flex:none;width:7px;height:7px;background:var(--accent);border-radius:var(--radius-full);transform:translateY(-1px)}
+.ld-list--points li>p{margin:0}
+.ld-list--points li strong{display:block;margin-bottom:var(--space-3xs);font-weight:600;color:var(--text-strong)}
 .link-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0} /* small cards, two to a row (SEC-06) */
 @media (max-width:620px){.link-cards{grid-template-columns:minmax(0,1fr)}}
 .link-cards .link-card{height:100%;padding:clamp(20px,2.4vw,28px)}
