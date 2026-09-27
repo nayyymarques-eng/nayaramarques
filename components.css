@@ -556,3 +556,9 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-art.is-offscreen *{animation-play-state:paused !important}
 /* reduced motion shows the resolved state, still (ILL-03) */
 @media (prefers-reduced-motion:reduce){.ld-mark,.ld-resolve{opacity:1}.ld-runner{display:none}}
+/* proposal: layer parts (design-system-build "What gets built", 2026-09-27). The Points list (.ld-list--points) inside a layer card:
+   full card width, the card's body size, the card's inner rule, no rule under the last part. Considered: .plan-card ul (an offer's
+   inclusions, no title per item), ListRow (a case-page row with its own surface rules), a second row of cards (a card inside a card, DEP-03). */
+.ld-layers .ld-list{max-width:none;margin-top:var(--space-lg);border-top-color:var(--border)}
+.ld-layers .ld-list li{padding:var(--space-sm) 0;font-size:var(--font-size-action);border-bottom-color:var(--border)}
+.ld-layers .ld-list li:last-child{border-bottom:0;padding-bottom:0}

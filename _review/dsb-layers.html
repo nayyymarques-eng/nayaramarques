@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review: Four layers, deeper</title>
+<link rel="stylesheet" href="../_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css"><link rel="stylesheet" href="../_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css"><link rel="stylesheet" href="../_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css"><link rel="stylesheet" href="../_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
+<style>
+body{margin:0;padding:var(--space-2xl) var(--space-md);background:var(--surface-page);color:var(--text-body);font-family:var(--font-sans);line-height:var(--leading-snug)}
+main{max-width:1100px;margin:0 auto}
+h1{color:var(--text-heading);font-size:var(--font-size-2xl);font-weight:500;margin:0 0 var(--space-sm)}
+h2{color:var(--text-heading);font-size:var(--font-size-lg);font-weight:500;margin:var(--space-2xl) 0 var(--space-sm)}
+table{border-collapse:collapse;width:100%;background:var(--surface-card)}
+td{padding:var(--space-xs) var(--space-sm);border-bottom:1px solid var(--border);vertical-align:top;font-size:var(--font-size-sm)}
+td:first-child{white-space:nowrap;color:var(--text-muted)}
+img{max-width:100%;border:1px solid var(--border);border-radius:var(--radius-sm);display:block}
+.shots{display:grid;grid-template-columns:2fr 1fr;gap:var(--space-md);align-items:start}
+@media (max-width:700px){.shots{grid-template-columns:1fr}}
+ul{padding-left:var(--space-lg)}
+</style></head><body><main>
+<h1>Build page: "Four layers, in this order", deeper</h1>
+<p>Nayara, 2026-09-27: go deeper on this section, the refinements and rules, and what the parts are. The four cards and their order stay, with their text unchanged. Each card gains a Points list (<code>.ld-list--points</code>) of four parts, a bold lead and one line. Under the cards, a numbered list (<code>.ld-list</code>) shows the loop that refines the system. A lead goes under the heading.</p>
+<ul>
+<li>22 new lines, all marked <code>data-new-copy="dsb-layers-*"</code> (CNT-11). No numbers, no prices, no em dashes.</li>
+<li>One component proposal (CMP-03), in <code>components.css</code>: the Points list inside a layer card takes the full card width, the card's body size (15px) and the card's inner rule (<code>--border</code>), no rule under the last part. No new tokens or colours.</li>
+<li><code>python3 harness/check.py design-system-build.html</code>: PASS at 1400px and 375px.</li>
+</ul>
+<h2>Screenshots (reduced motion)</h2>
+<div class="shots"><img src="dsb-layers/layers-1400.png" alt="The section at 1400px"><img src="dsb-layers/layers-375.png" alt="The section at 375px"></div>
+<h2>New lines for approval</h2>
+<table><tr><td><code>dsb-layers-lead</code></td><td>Each layer is a set of parts. Each part is held by a rule, and most rules by a check that runs on every change.</td></tr>
+<tr><td><code>dsb-layers-foundations-1</code></td><td><b>Tokens named for their job</b> Page background, body text, muted text, the rule between sections. Pages use the role, never the raw value, and a check fails any hard-coded colour.</td></tr>
+<tr><td><code>dsb-layers-foundations-2</code></td><td><b>Scales, not free values</b> Type sizes, spacing, radii and elevations each come as a short, fixed set. A value between two steps is a finding for the owner.</td></tr>
+<tr><td><code>dsb-layers-foundations-3</code></td><td><b>Contrast, measured rendered</b> Text is measured against the ground it actually sits on, on the rendered page, and fails below AA.</td></tr>
+<tr><td><code>dsb-layers-foundations-4</code></td><td><b>One source</b> The token files in the repo are the source. The design tool is updated from them, never the other way round.</td></tr>
+<tr><td><code>dsb-layers-components-1</code></td><td><b>Reuse before drawing</b> An agent looks for an existing component first, and changes it only through its props, never by copying its markup.</td></tr>
+<tr><td><code>dsb-layers-components-2</code></td><td><b>One structure per job</b> A problem, a step, a decision and a result each have one component, so the same kind of content looks the same on every page.</td></tr>
+<tr><td><code>dsb-layers-components-3</code></td><td><b>Limits written as rules</b> One filled button per view, two card widths, big numbers only for results. Each rule has an ID and one line you can pass or fail.</td></tr>
+<tr><td><code>dsb-layers-components-4</code></td><td><b>Templates with a fixed order</b> Repeating screens start from a template whose sections come in a set order, so a new page starts complete.</td></tr>
+<tr><td><code>dsb-layers-drift-1</code></td><td><b>Proposals, marked</b> When nothing fits, the agent draws the part and marks it as a proposal: what it does, the components it considered, and why each was wrong.</td></tr>
+<tr><td><code>dsb-layers-drift-2</code></td><td><b>Four verdicts</b> The owner rules on each proposal: promote it to the system, fold it into the component that already does the job, keep it on its page, or retire it.</td></tr>
+<tr><td><code>dsb-layers-drift-3</code></td><td><b>Exact swaps, automatic</b> A hard-coded value that equals a token is swapped without asking. One a few steps off goes to the owner, with the nearest token and a recommendation.</td></tr>
+<tr><td><code>dsb-layers-drift-4</code></td><td><b>Checks on every change</b> The source rules run first, then every page is rendered at desktop and phone width. A change is done when both pass.</td></tr>
+<tr><td><code>dsb-layers-docs-1</code></td><td><b>One rules file</b> Every rule has an ID, one line and the check that holds it, so a person and an agent read the same thing.</td></tr>
+<tr><td><code>dsb-layers-docs-2</code></td><td><b>A table from job to token</b> An agent looks up the job (page background, muted text) and gets the token, instead of matching a colour by eye.</td></tr>
+<tr><td><code>dsb-layers-docs-3</code></td><td><b>A decisions log</b> Every verdict is written down the same day, with what it rules out, so a rejected idea does not come back.</td></tr>
+<tr><td><code>dsb-layers-docs-4</code></td><td><b>A progress file</b> What is done, what waits on the owner and what comes next, so the next session starts where the last one stopped.</td></tr>
+<tr><td><code>dsb-layers-loop-label</code></td><td>How the system is refined</td></tr>
+<tr><td><code>dsb-layers-loop-1</code></td><td>The owner rules on something that was built, and the verdict is written down the same day.</td></tr>
+<tr><td><code>dsb-layers-loop-2</code></td><td>If a machine can check it, the verdict becomes a rule with an ID and one line you can pass or fail.</td></tr>
+<tr><td><code>dsb-layers-loop-3</code></td><td>The rule gets a check. Checks run on every change: the source first, then the rendered pages at desktop and phone width.</td></tr>
+<tr><td><code>dsb-layers-loop-4</code></td><td>What AI invents stays a proposal until the owner rules on it, and that verdict starts the loop again.</td></tr></table>
+<h2>Questions for Nayara</h2>
+<ul>
+<li>Approve, edit or cut each line above. The layer cards say "the owner": your client's team, or you on the monthly plan. Change to "your team" if you prefer.</li>
+<li>The loop sits under the cards as a numbered list with the label "How the system is refined". Alternative: a separate section after this one, with its own heading.</li>
+<li>The Points list inside cards: promote (joins the system), or keep local to this page.</li>
+</ul>
+</main></body></html>
