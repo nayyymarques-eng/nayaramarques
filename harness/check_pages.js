@@ -30,8 +30,9 @@
  *           which kind it is (Result… for data-pattern="result", Scope… for data-pattern="scope")
  *   PAT-05  case cards are not stacked: a .cards group with more than one column, a gap other than 12px (--gap-cards),
  *           or a card narrower than its group
- *   ILL-07  a case window has at most 8 labels outside [data-mock] and the accent on one side only
- *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window) is not the label style as rendered: under 9.5px,
+ *   ILL-01  an animation inside a case scene (.scene) loops; case scenes move once, on entrance
+ *   ILL-07  a case scene has at most 8 labels outside [data-mock], the accent on the side after only, both sides' labels on one line
+ *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window, .scene) is not the label style as rendered: under 9.5px,
  *           not uppercase, not 0.14em, or lighter than 600. In a figure's picture, uppercase labels must be the label
  *           style (9.5, 10.5 or 12.5px, 0.14em, 600). Product UI is exempt with [data-mock].
  *   PAT-07  a gap row ("What this case doesn't cover") without the inactive style: dashed rule, no elevation, muted text
@@ -458,20 +459,28 @@
   }
   out.push(...ill.values());
 
-  // ILL-07 a case window (home, Work) shows one change read left to right (.illo-ba): at most 8 labels outside
-  // product UI ([data-mock]), and the accent on one side only.
+  // ILL-01 a case scene moves once, on entrance: no animation inside .scene loops
+  const sceneLoops = document.getAnimations().filter(a => a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('.scene') && a.effect.getComputedTiming().iterations === Infinity);
+  if (sceneLoops.length) out.push(`ILL-01 ${sceneLoops.length} animation(s) loop inside a case scene (entrance only)`);
+
+  // ILL-07 a case scene (home, Work; .scene, 2026-09-27) shows one change read left to right: a picture and a caption
+  // on each side ([data-side="before"|"after"]), at most 8 labels outside product UI ([data-mock]), the accent on the
+  // side after only, and the labels of both sides starting on one line.
   const acc = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
   const accProbe = document.createElement('i'); accProbe.style.color = acc; document.body.appendChild(accProbe);
   const accRgb = getComputedStyle(accProbe).color; accProbe.remove();
-  document.querySelectorAll('.illo-window--case').forEach((w, n) => {
+  document.querySelectorAll('.scene').forEach((w, n) => {
     if (!w.getClientRects().length || getComputedStyle(w).display === 'none') return;
     const labels = [...w.querySelectorAll('*')].filter(e => !e.closest('[data-mock]') && [...e.childNodes].some(c => c.nodeType === 3 && /[A-Za-z0-9]/.test(c.textContent)));
-    if (labels.length > 8) out.push(`ILL-07 case window ${n + 1} has ${labels.length} labels (at most 8)`);
-    const sides = [...w.querySelectorAll('.illo-side')];
-    if (sides.length) {
-      const lit = sides.filter(sd => [...sd.querySelectorAll('*')].some(e => { const c = getComputedStyle(e); return c.color === accRgb || c.backgroundColor === accRgb || c.borderTopColor === accRgb; }));
-      if (lit.length > 1) out.push(`ILL-07 case window ${n + 1} carries the accent on both sides (one side only)`);
-    } else out.push(`ILL-07 case window ${n + 1} is not a before/after (.illo-ba)`);
+    // a label drawn twice (an outline, then the solid object over it) counts once
+    const words = new Set(labels.map(e => e.textContent.trim().toLowerCase()));
+    if (words.size > 8) out.push(`ILL-07 case scene ${n + 1} has ${words.size} labels (at most 8)`);
+    const before = [...w.querySelectorAll('[data-side="before"]')], after = [...w.querySelectorAll('[data-side="after"]')];
+    if (!before.length || !after.length) { out.push(`ILL-07 case scene ${n + 1} is not a before/after ([data-side])`); return; }
+    const lit = el => [el, ...el.querySelectorAll('*')].some(e => { const c = getComputedStyle(e); return c.color === accRgb || c.backgroundColor === accRgb || c.borderTopColor === accRgb; });
+    if (before.some(lit)) out.push(`ILL-07 case scene ${n + 1} carries the accent on the side before (after only)`);
+    const caps = w.querySelectorAll('.scene__cap');
+    if (caps.length === 2 && Math.abs(caps[0].getBoundingClientRect().top - caps[1].getBoundingClientRect().top) > 1) out.push(`ILL-07 case scene ${n + 1}: the labels of the two sides do not start on one line`);
   });
   return location.pathname + ' :: ' + (out.length ? out.join(' ; ') : 'pass');
 })()
