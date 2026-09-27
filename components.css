@@ -163,7 +163,10 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
    Frosted, the same inner shade, a light bottom edge. Content width, lg radius; level -1 in spirit. */
 .glass{background:var(--surface-glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:var(--elevation-inset-1),var(--edge-glass);border:0;border-radius:var(--radius-lg)}
 .glass--deep{box-shadow:var(--elevation-inset-2),var(--edge-glass)}
-.case-details{padding:var(--space-fluid-l);margin-block:var(--stack-sm) 0} /* section 01 below keeps --section-y (SEC-04) */
+.case-details{padding:var(--space-fluid-l);margin-block:var(--stack-sm) 0;background:var(--surface-note);box-shadow:var(--elevation-inset-1);border-radius:var(--radius-md);-webkit-backdrop-filter:none;backdrop-filter:none}
+/* Case details and About's Tools share one look (Nayara 2026-09-27): the note ground, a shade deeper than the sky so it reads over the
+   parallax; eyebrow labels; values as Tools items (500, strong ink). */
+.case-details p{font-weight:500;color:var(--text-strong)} /* section 01 below keeps --section-y (SEC-04) */
 
 /* ---------- Cards: level 1, equal padding on every side (CRD-01) ---------- */
 .card{background:var(--surface-card);border:0;border-radius:var(--radius-md);box-shadow:var(--elevation-1)}
@@ -508,8 +511,10 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-split .h2{margin-bottom:clamp(20px,3vw,28px)}
 .ld-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg) 28px;margin:0}
 @media (max-width:560px){.ld-facts{grid-template-columns:minmax(0,1fr)}}
-.ld-facts dt{margin:0 0 6px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
-.ld-facts dd{margin:0;font-size:var(--font-size-action);line-height:var(--leading-snug);color:var(--text-strong)}
+.ld-facts dt{margin:0 0 var(--space-sm);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
+.ld-facts dd{margin:0;font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong)}
+/* The facts well takes the same look as the case details and About's Tools (Nayara 2026-09-27). */
+.well.ld-facts{background:var(--surface-note);box-shadow:var(--elevation-inset-1);border-radius:var(--radius-md);padding:var(--space-fluid-l)}
 .ld-facts dd a{color:var(--accent);text-decoration:none}
 .ld-facts--3{grid-template-columns:repeat(3,minmax(0,1fr))} /* the kinds of engagement (embedded partner, round 5) */
 @media (max-width:760px){.ld-facts--3{grid-template-columns:minmax(0,1fr)}}
