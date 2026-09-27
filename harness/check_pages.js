@@ -45,6 +45,13 @@
  *           image, a bordered row), never margins. Heroes, the ink band and the footer keep their own padding; the space
  *           under a hero with no line (the home) is the hero's (HERO-02); a well right after a section takes that
  *           section's space above it.
+ *   TYP-05  an eyebrow (or an uppercase label) is not --space-sm above the heading it labels (box to box, 1px); heroes: HERO-01
+ *   SEC-04  (phones, case bodies) a sub-section's divider does not have --space-fluid-xl above and below it (2px), or two
+ *           lines sit between the content above and the sub-section's heading (LAY-04)
+ *   FLW-01  (phones) a flow's scroller does not run to both screen edges, or the flow does not start on the gutter
+ *   LAY-06  (phones) a product prototype (.figure--proto) reflows instead of scrolling in its frame at its desktop shape
+ *   TYP-04  (phones, cases) the hero lede runs more than five lines
+ *   HERO-02 (phones) the home chat's thread is not framed (it grows and pushes the page)
  *   SEC-05  a top-level section's content does not start on the page gutter (within 1px); on a wide case page, on the
  *           case body column (column 2 of the details grid). Content inside a surface is inset by the surface.
  */
@@ -536,6 +543,105 @@
       else if (Math.abs(above - below) > 2) out.push(`ILL-07 case scene ${name} is not centred on its row (${above.toFixed(0)}px above, ${below.toFixed(0)}px below)`);
     });
     settle.remove();
+  }
+  // Round 6 (Nayara's mobile review, 2026-09-27)
+  {
+    const px = css => probe(css).h;
+    const trc = c => /rgba\(0, 0, 0, 0\)/.test(c) || c === 'transparent';
+    const shown = e => { if (!e.getClientRects().length) return false; for (let a = e; a && a !== document.body; a = a.parentElement) { const q = getComputedStyle(a); if (q.display === 'none' || q.visibility === 'hidden' || parseFloat(q.opacity) === 0) return false; } return true; };
+    // TYP-05 an eyebrow sits --space-sm above the heading it labels (box to box, within 1px); heroes keep HERO-01's 16px
+    {
+      const E = px('height:var(--space-sm)'), bad = new Set();
+      const isEb = e => { const q = getComputedStyle(e); return e.matches('.eyebrow,[data-eyebrow]') || (q.textTransform === 'uppercase' && Math.abs(parseFloat(q.fontSize) - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--font-size-eyebrow') || 11)) < 0.6 && e.textContent.trim()); };
+      for (const h of document.querySelectorAll('main h2, main h3, main .h2, body > section h2, .band-inverse h2')) {
+        if (inMock(h) || h.closest('header,footer,nav,.hero,figure,.figure,.illo-window,.scene,[data-case-index],.hx-sticker') || !shown(h) || getComputedStyle(h).textTransform === 'uppercase') continue;
+        let p = h.previousElementSibling; while (p && !shown(p)) p = p.previousElementSibling;
+        if (!p || !isEb(p) || p.matches('.hero__eyebrow')) continue;
+        const gap = h.getBoundingClientRect().top - p.getBoundingClientRect().bottom;
+        if (Math.abs(gap - E) > 1) bad.add(`TYP-05 eyebrow "${p.textContent.trim().slice(0, 24)}" sits ${gap.toFixed(0)}px above its heading; --space-sm is ${E.toFixed(0)}px`);
+      }
+      out.push(...bad);
+    }
+    const phoneCase = document.documentElement.classList.contains('has-case-index') && !matchMedia('(min-width: 861px)').matches;
+    // SEC-04 on phones: a sub-section's divider has the same space above and below it, --space-fluid-xl (within 2px);
+    // never two lines between the content above and the sub-section's heading (LAY-04)
+    if (phoneCase) {
+      const S = px('height:var(--space-fluid-xl)'), bad = new Set();
+      // a stack of frames that cross-fade (a stepper) holds the room of its tallest frame: every frame counts as content
+      const lift = document.createElement('style'); lift.textContent = '[data-frame]{opacity:1!important;transition:none!important}'; document.head.appendChild(lift);
+      const lineOf = e => { const q = getComputedStyle(e), r = e.getBoundingClientRect(), o = [];
+        if (parseFloat(q.borderTopWidth) > 0 && q.borderTopStyle !== 'none' && !trc(q.borderTopColor)) o.push({ t: r.top, b: r.top + parseFloat(q.borderTopWidth) });
+        if (parseFloat(q.borderBottomWidth) > 0 && q.borderBottomStyle !== 'none' && !trc(q.borderBottomColor)) o.push({ t: r.bottom - parseFloat(q.borderBottomWidth), b: r.bottom });
+        return o; };
+      for (const band of document.querySelectorAll('[data-case-band]')) {
+        const col = band.querySelector(':scope > [data-rail-indexed] + *'); if (!col) continue;
+        const cr = col.getBoundingClientRect();
+        const lines = [], boxes = [];
+        for (const e of col.querySelectorAll('*')) {
+          if (!shown(e) || e.closest('.figure,figure,[data-surface],.card,.note,[data-mock],svg,table,.stats,.flow-scroll,.chain-block')) continue;
+          const r = e.getBoundingClientRect(); if (r.height < 1 && !lineOf(e).length) continue;
+          lineOf(e).forEach(l => { if (r.width > cr.width * 0.6) lines.push(l); });
+          const q = getComputedStyle(e);
+          if ([...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) || e.matches('img,.figure,figure,[data-surface],.card,.note,table,.stats,.chain-block') || !trc(q.backgroundColor) || (q.boxShadow && q.boxShadow !== 'none')) boxes.push(r);
+        }
+        for (const e of col.querySelectorAll('.figure,figure,[data-surface],.card,.note,table,.stats,.chain-block')) if (shown(e) && !e.parentElement.closest('.figure,figure,[data-surface],.card,.note')) boxes.push(e.getBoundingClientRect());
+
+        for (const h of col.querySelectorAll('h3.subsection')) {
+          if (h.closest('.figure,figure,[data-surface],.card') || !shown(h)) continue;
+          const ht = h.getBoundingClientRect().top + parseFloat(getComputedStyle(h).paddingTop);
+          const prevB = Math.max(-Infinity, ...boxes.filter(b => b.bottom <= ht - 0.5 && !(b.top >= h.getBoundingClientRect().top - 0.5)).map(b => b.bottom));
+          if (prevB === -Infinity) continue;
+          const ls = lines.filter(l => l.t >= prevB - 0.5 && l.b <= ht + 0.5);
+          const name = h.textContent.trim().slice(0, 28);
+          if (ls.length > 1) { bad.add(`LAY-04 two lines above the sub-section "${name}"`); continue; }
+          if (!ls.length) continue;
+          const above = ls[0].t - prevB, below = ht - ls[0].b;
+          if (Math.abs(above - S) > 2 || Math.abs(below - S) > 2) bad.add(`SEC-04 sub-section "${name}": ${above.toFixed(0)}px above its divider, ${below.toFixed(0)}px below; on phones both are --space-fluid-xl (${S.toFixed(0)}px)`);
+        }
+      }
+      lift.remove();
+      out.push(...bad);
+    }
+    // FLW-01 on phones a flow's scroller runs to both screen edges, and the flow starts on the gutter (within 6px)
+    if (W <= 760) {
+      const G = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--page-gutter')) || 32;
+      for (const f of document.querySelectorAll('.chain, .fh-flow')) {
+        if (!shown(f) || inMock(f)) continue;
+        let sc = f.parentElement; while (sc && sc !== document.body && !/auto|scroll/.test(getComputedStyle(sc).overflowX)) sc = sc.parentElement;
+        if (!sc || sc === document.body) { out.push(`FLW-01 a flow near "${near(f.getBoundingClientRect().top + scrollY)}" does not scroll inside a frame`); break; }
+        const r = sc.getBoundingClientRect();
+        if (r.left > 1 || r.right < W - 1) { out.push(`FLW-01 a flow's scroller stops short of the screen edge (${r.left.toFixed(0)} to ${r.right.toFixed(0)}px), near "${near(r.top + scrollY)}"`); break; }
+        const first = sc.firstElementChild && sc.firstElementChild.getBoundingClientRect();
+        if (first && Math.abs(first.left + sc.scrollLeft - G) > 6) { out.push(`FLW-01 a flow starts at ${first.left.toFixed(0)}px, not on the gutter (${G}px), near "${near(r.top + scrollY)}"`); break; }
+      }
+    }
+    // LAY-06 on phones a product prototype keeps its desktop shape: nothing in a .figure--proto picture wraps, and the picture scrolls in its frame
+    if (W <= 760) {
+      for (const f of document.querySelectorAll('.figure--proto')) {
+        if (!f.getClientRects().length) continue;
+        const pic = [...f.children].find(c => !c.matches('figcaption,.figure__caption')); if (!pic) continue;
+        const q = getComputedStyle(pic);
+        if (!/auto|scroll/.test(q.overflowX)) { out.push(`LAY-06 a prototype's picture does not scroll inside its frame, near "${near(f.getBoundingClientRect().top + scrollY)}"`); break; }
+        let wrapped = false;
+        for (const e of pic.querySelectorAll('*')) {
+          const s = getComputedStyle(e); if (!s.display.includes('flex') || s.flexWrap !== 'wrap' || s.flexDirection.startsWith('column')) continue;
+          let mb = -Infinity; for (const k of e.children) { const r = k.getBoundingClientRect(); if (!r.width || getComputedStyle(k).position === 'absolute') continue; if (mb > -Infinity && r.top >= mb - 1) wrapped = true; mb = Math.max(mb, r.bottom); }
+          if (wrapped) break;
+        }
+        if (wrapped && !f.hasAttribute('data-wraps')) { out.push(`LAY-06 a prototype reflows on a phone (keep its desktop shape), near "${near(f.getBoundingClientRect().top + scrollY)}"`); break; }
+      }
+    }
+    // TYP-04 on phones a case's hero lede is short: five lines at most
+    if (W <= 560 && document.documentElement.classList.contains('has-case-index')) {
+      const h1 = document.querySelector('main h1');
+      const lede = h1 && [...h1.parentElement.querySelectorAll(':scope > p')].find(shown);
+      if (lede) { const n = Math.round(lede.getBoundingClientRect().height / parseFloat(getComputedStyle(lede).lineHeight)); if (n > 5) out.push(`TYP-04 the hero lede runs ${n} lines on a phone; five at most (a phone version, data-lead)`); }
+    }
+    // HERO-02 on phones the home chat is framed: its thread has a fixed height and clips, so the page never moves while it types
+    if (W <= 860) {
+      const t = document.querySelector('.hx__thread');
+      if (t && getComputedStyle(t).overflowY !== 'hidden') out.push('HERO-02 the home chat on a phone has no frame: its thread grows and pushes the page');
+    }
   }
   return location.pathname + ' :: ' + (out.length ? out.join(' ; ') : 'pass');
 })()

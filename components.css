@@ -36,6 +36,11 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 /* THE eyebrow: 11px, 600, 0.14em, uppercase (TYP-01). Never inflated by a surrounding style. */
 .eyebrow{margin:0 0 var(--space-sm);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
 .eyebrow--accent{color:var(--accent)}
+/* TYP-05 (Nayara 2026-09-27, round 6): an eyebrow sits one distance above the heading it labels, everywhere: --space-sm,
+   from the eyebrow's box to the heading's box (the system's DecisionCard draws the same 12px). Set here once; pages and
+   components do not set it (section heads, split blocks, layer, plan and link cards, the ink band). Heroes keep HERO-01's 16px. */
+:is(.eyebrow,[data-eyebrow]):has(+:is(h2,h3,h4,.h2)){margin-bottom:var(--space-sm)!important}
+:is(.eyebrow,[data-eyebrow])+:is(h2,h3,h4,.h2){margin-top:0!important}
 /* A tag is a label, not a control: level 0, no border, a faint ink tint, a pill. */
 .tag{display:inline-block;align-self:flex-start;padding:5px 11px;border-radius:var(--radius-full);background:var(--surface-tag);
   font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-tag);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body);white-space:nowrap} /* body ink: AA on its tint at the sky's darkest point */
@@ -80,7 +85,7 @@ a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
 .section>:first-child{border-top:1px solid var(--border-divider);padding-top:var(--section-y)}
 .hero+.section{padding-top:var(--section-gap)}
 .section-head{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-md);margin-bottom:var(--stack-lg)}
-.section-head .eyebrow{margin:0}
+.section-head .eyebrow{margin:0} /* above a heading, TYP-05 sets it */
 .section-head>p:not(.eyebrow){margin:0;max-width:46ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty} /* the lead (TYP-04) */
 .h2{margin:0;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);color:var(--text-heading);max-width:22ch;text-wrap:balance}
 
@@ -166,7 +171,24 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .case-details{padding:var(--space-fluid-l);margin-block:var(--stack-sm) 0;background:var(--surface-note);box-shadow:var(--elevation-inset-1);border-radius:var(--radius-md);-webkit-backdrop-filter:none;backdrop-filter:none}
 /* Case details and About's Tools share one look (Nayara 2026-09-27): the note ground, a shade deeper than the sky so it reads over the
    parallax; eyebrow labels; values as Tools items (500, strong ink). */
-.case-details p{font-weight:500;color:var(--text-strong)} /* section 01 below keeps --section-y (SEC-04) */
+/* The list itself (round 6, 2026-09-27): a <dl>, eyebrow labels, values as Tools items (14px, 500, strong ink).
+   Wide: four columns (the grid the case body sits on, SEC-05). Up to 860px: two. Phones (560px and down): compact, like a
+   footer or a spec sheet: the label beside its value, one pair per line. Section 01 below keeps --section-y (SEC-04). */
+.case-details{position:relative;isolation:isolate}
+.case-details::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.09;mix-blend-mode:multiply;
+  background-image:var(--texture-grain);background-size:var(--texture-grain-size)} /* the note's grain, so it matches About's Tools */
+.case-details__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-fluid-l);margin:0}
+.case-details__list>div{min-width:0}
+.case-details dt{margin:0 0 var(--space-sm);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
+.case-details dd{margin:0;font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty}
+@media (max-width:860px){.case-details__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg)}}
+@media (max-width:560px){
+  .case-details{padding:var(--space-md) var(--space-lg)}
+  .case-details__list{grid-template-columns:max-content minmax(0,1fr);gap:var(--space-sm) var(--space-md);align-items:baseline}
+  .case-details__list>div{display:contents}
+  .case-details dt{margin:0}
+  .case-details dd{line-height:var(--leading-snug)}
+}
 
 /* ---------- Cards: level 1, equal padding on every side (CRD-01) ---------- */
 .card{background:var(--surface-card);border:0;border-radius:var(--radius-md);box-shadow:var(--elevation-1)}
@@ -562,3 +584,27 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 .ld-layers .ld-list{max-width:none;margin-top:var(--space-lg);border-top-color:var(--border)}
 .ld-layers .ld-list li{padding:var(--space-sm) 0;font-size:var(--font-size-action);border-bottom-color:var(--border)}
 .ld-layers .ld-list li:last-child{border-bottom:0;padding-bottom:0}
+
+/* ---------- The case hero lede on phones (round 6, TYP-04) ----------
+   A phone shows a short version of the lede (three to five lines); the full one stays for wider screens. Both are the lead. */
+.hero__lede--phone{display:none}
+@media (max-width:560px){.hero__lede--desk{display:none}.hero__lede--phone{display:block}}
+
+/* ---------- Product prototypes in figures keep their desktop shape (round 6, LAY-06) ----------
+   On phones a prototype (the composer and other product mockups, `.figure--proto`) does not reflow: its picture keeps
+   the desktop width and scrolls sideways inside the figure's frame. 720px is the narrowest width at which none of the
+   composer bars wraps (measured, 2026-09-27). Captions stay at the screen's width. */
+@media (max-width:760px){
+  .figure--proto>:not(figcaption,.figure__caption){overflow-x:auto;overflow-y:hidden;contain:inline-size;overscroll-behavior-x:contain}
+  .figure--proto>:not(figcaption,.figure__caption)>*{min-width:720px}
+}
+
+/* ---------- Flows run to the screen edge on phones (round 6, FLW-01) ----------
+   A flow's scroller (`.flow-scroll`) bleeds past the gutter to both screen edges and pads its content back onto the gutter,
+   so the first step starts where the text does and the last one scrolls in from the edge. The rules around a flow
+   (`.chain-block`'s top rule) stay at content width. */
+.chain-block:has(>.flow-scroll){overflow:visible}
+.flow-scroll{overflow-x:auto;overflow-y:hidden;contain:inline-size}
+@media (max-width:760px){
+  .flow-scroll{margin-inline:calc(-1 * var(--page-gutter));padding-inline:var(--page-gutter);scroll-padding-inline:var(--page-gutter)}
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Round 6 report</title><meta name="robots" content="noindex">
+<style>
+:root{--bg:#f7f8f9;--card:#ffffff;--ink:#16252c;--body:#34464f;--muted:#5b6c74;--rule:#dde3e6;--accent:#1f6a80;--gain:#2f6b45;--cost:#9a4a2b}
+html{background:var(--bg);color-scheme:light}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1120px;margin:0 auto;padding:56px 32px 96px}
+h1{font-size:clamp(30px,4vw,44px);line-height:1.08;letter-spacing:-0.03em;font-weight:500;margin:8px 0 16px}
+h2{font-size:22px;line-height:1.25;letter-spacing:-0.01em;font-weight:600;margin:64px 0 12px;padding-top:24px;border-top:1px solid var(--rule)}
+h3{font-size:17px;font-weight:600;margin:32px 0 8px}
+p,li{color:var(--body);max-width:72ch}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0}
+.lede{font-size:18px;line-height:1.55;max-width:64ch}
+table{border-collapse:collapse;width:100%;margin:12px 0 8px;background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(20,40,50,.06)}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--rule);font-size:14px;line-height:1.5;color:var(--body)}
+th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;background:#fbfcfc}
+td:first-child{color:var(--ink);font-weight:600}
+tr:last-child td{border-bottom:0}
+td del{color:var(--muted)}td:first-child code{white-space:nowrap}
+.scroll{overflow-x:auto}
+.pair{margin:20px 0 32px}.pair figcaption{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.ba>div,.shot,.strip>div{background:var(--card);border-radius:10px;padding:8px;box-shadow:0 1px 3px rgba(20,40,50,.08)}
+.ba img,.shot img,.strip img{display:block;width:100%;height:auto;border-radius:6px}
+.shot{max-width:760px}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.k{display:inline-block;margin:2px 4px 8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cost)}
+.k--after{color:var(--gain)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
+.stat{background:var(--card);border-radius:10px;padding:16px;box-shadow:0 1px 2px rgba(20,40,50,.06)}
+.stat b{display:block;font-size:30px;font-weight:500;letter-spacing:-0.02em;color:var(--ink)}.stat span{font-size:14px;color:var(--muted)}
+.q{background:var(--card);border-radius:10px;padding:14px 18px;margin:10px 0;box-shadow:0 1px 2px rgba(20,40,50,.06)}
+.q p{margin:0}.q p+p{margin-top:6px;color:var(--ink)}.q p+p::before{content:"Recommendation: ";font-weight:600;color:var(--accent)}
+code{font:13px ui-monospace,Menlo,monospace;background:#eef2f4;padding:1px 5px;border-radius:4px}
+a{color:var(--accent)}
+details{margin:8px 0 24px}summary{cursor:pointer;font-weight:600;color:var(--accent)}
+@media (max-width:760px){main{padding:40px 16px 72px}.ba{grid-template-columns:1fr}.strip{grid-template-columns:1fr 1fr}}
+
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.bad{color:var(--cost);font-weight:600}td.ok{color:var(--gain);font-weight:600}
+.rule{background:var(--card);border-radius:10px;padding:16px 20px;margin:12px 0;box-shadow:0 1px 2px rgba(20,40,50,.06)}
+.rule p{margin:0;max-width:none}
+.ba375{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px}
+.ba375>div{background:var(--card);border-radius:10px;padding:8px;box-shadow:0 1px 3px rgba(20,40,50,.08)}
+.ba375 img{display:block;width:100%;height:auto;border-radius:6px}
+
+.ba--phone{max-width:760px}
+.ba--desk{grid-template-columns:1fr}
+</style></head><body><main>
+<p class="eyebrow">Round 6 · mobile review · 2026-09-27</p>
+<h1>Mobile refinements</h1>
+<p class="lede">Seven items from Nayara's review on her iPhone. Screenshots: headless Chrome at 390 × 844, device scale 2 (item 7 also at 1400px). Branch <code>mobile-r6</code>, preview <a href="https://mobile-r6-nayaramarques.nayara-marques.workers.dev">mobile-r6-nayaramarques.nayara-marques.workers.dev</a>. <code>python3 harness/check.py</code>: PASS, 16 pages at 1400px and 375px.</p>
+
+<h2>What needs your answer</h2>
+<div class="q"><p>Six short phone ledes (item 4) are new copy, marked <code>data-new-copy</code>. The full ledes stay for wider screens.</p><p>Read the table in item 4; approve, or edit any line.</p></div>
+<div class="q"><p>Eyebrow to heading (item 7): I used 12px (<code>--space-sm</code>), the distance the DecisionCard already draws, so one value holds everywhere. The other option is 8px (<code>--space-xs</code>), which is tighter under big headings but leaves the cards at 12.</p><p>Keep 12px.</p></div>
+<div class="q"><p>New pieces (proposals, CMP-03): <code>.figure--proto</code>, <code>.flow-scroll</code>, <code>.case-details__list</code>, <code>.hero__lede--desk</code> and <code>--phone</code>.</p><p>Promote all four to the system; they are small and each serves a rule.</p></div>
+<div class="q"><p>The home chat's frame (item 6) is a fixed box with a soft fade at its top, with no visible outline. A visible frame (a soft recess around thread and composer) would need the composer to go flat inside it (DEP-03).</p><p>Keep it without an outline; the page no longer moves, which was the problem.</p></div>
+<div class="q"><p>Two round 6 fixes apply on phones only: equal space around sub-section dividers, and a list's closing rule giving way above the next section's divider. Desktop keeps 56px above a sub-section and 20px under its rule.</p><p>Bring both to desktop in a later round, after you have seen them on the phone.</p></div>
+
+<h2>1. Space around dividers</h2>
+<p>On phones every sub-section divider now has the same space above and below it, 28px (<code>--space-fluid-xl</code>), less than a section's 36px. Before, the space was 56px on one side and 20 to 28px on the other, so a sub-section on a phone sat further from its content than a section. The space above is measured from the last thing above (a card, a figure, a list's last row), because blocks end differently. Where a list's closing rule sat right above a sub-section's own rule, the list's rule gives way, so there is one line (Benchmark, User flows and Key decisions on card insurance). On desktop two things move on card insurance: Benchmark and User flows, whose headings draw their own rule, now take LAY-09's 56px margin (Benchmark had 36px), and the closing rules of the benchmark list and the user flows give way to the sub-section rule under them (they were two lines 37 and 57px apart).</p>
+<figure class="pair"><figcaption>AI surfaces, Problem A: 28px above and below the divider (was 28 and 56)</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i1-ai-surfaces-sub-before.png" alt="AI surfaces, Problem A: 28px above and below the divider (was 28 and 56), before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i1-ai-surfaces-sub-after.png" alt="AI surfaces, Problem A: 28px above and below the divider (was 28 and 56), after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Card insurance, figures in 05</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i1-card-insurance-fig-before.png" alt="Card insurance, figures in 05, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i1-card-insurance-fig-after.png" alt="Card insurance, figures in 05, after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Fleet Optimizer, sections</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i1-fleet-sections-before.png" alt="Fleet Optimizer, sections, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i1-fleet-sections-after.png" alt="Fleet Optimizer, sections, after" loading="lazy"></div></div></figure>
+
+<h2>2. Prototypes keep their desktop shape</h2>
+<p>The composer mockups (Composer spec, 20 frames; AI surfaces, Analysis mode and Inline edit) keep 720px on phones and scroll sideways inside the figure. 720px is the narrowest width at which no composer bar wraps. Captions stay at the screen's width. Menus that already fit a phone, and the edit chat figure (report above chat on phones, your round 5 verdict), are unchanged.</p>
+<figure class="pair"><figcaption>AI surfaces, Analysis mode</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i2-ai-surfaces-composer-before.png" alt="AI surfaces, Analysis mode, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i2-ai-surfaces-composer-after.png" alt="AI surfaces, Analysis mode, after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Composer spec, the composer before the redesign</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i2-composer-spec-before.png" alt="Composer spec, the composer before the redesign, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i2-composer-spec-after.png" alt="Composer spec, the composer before the redesign, after" loading="lazy"></div></div></figure>
+
+<h2>3. Flows reach the screen edge</h2>
+<p>Card insurance's user flows and its flow placement figure now scroll to both screen edges on phones; the first step still starts on the gutter, and the rules between flows stay at content width. On phones the flow placement figure gives up its white card so nothing cuts the flows short.</p>
+<figure class="pair"><figcaption>Card insurance, user flows</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i3-card-chains-before.png" alt="Card insurance, user flows, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i3-card-chains-after.png" alt="Card insurance, user flows, after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Card insurance, flow placement</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i3-card-flow-before.png" alt="Card insurance, flow placement, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i3-card-flow-after.png" alt="Card insurance, flow placement, after" loading="lazy"></div></div></figure>
+
+<h2>4. Shorter ledes on phones</h2>
+<p>The lead size is 15px on phones (was 16; 18px on desktop is unchanged; every subtitle follows, TYP-04). Each case also has a short phone lede, three to five lines instead of nine to twelve. The full lede is not deleted: it shows from 561px up.</p>
+<figure class="pair"><figcaption>AI surfaces, hero</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i4-ai-surfaces-hero-before.png" alt="AI surfaces, hero, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i4-ai-surfaces-hero-after.png" alt="AI surfaces, hero, after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Composer spec, hero</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i4-composer-hero-before.png" alt="Composer spec, hero, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i4-composer-hero-after.png" alt="Composer spec, hero, after" loading="lazy"></div></div></figure>
+<div class="scroll"><table><tr><th>Key, case</th><th>Phone lede (new, for approval)</th><th>Full lede (unchanged)</th></tr>
+<tr><td><code>lede-phone-ai-surfaces</code><br>AI surfaces</td><td>The platform's AI lived on a separate chat page. I moved it into the screens where allocators and fund managers already work, with two modes: analysis, to ask about the screen, and edit, to change it.</td><td>The platform's AI lived on a separate chat page and answered every question the same way. I moved it into the surfaces where allocators and fund managers already work (the dashboard, reports, documents and meeting notes) and gave it two modes: analysis, for asking about what is on screen, and edit, for changing it with a review step. The composer (the box where users type to the AI), the two modes and the review step are now components in the design system, so engineers and AI tools build the next AI screen from them instead of drawing new ones.</td></tr><tr><td><code>lede-phone-composer-spec</code><br>Composer spec</td><td>The composer, the bar where users type to the AI, showed nine controls before anyone could ask a thing. I respecified it as twenty-six frames, each with one line an engineer can test.</td><td>The composer is the bar where users of an investment platform type to its AI. It showed every AI feature at once, so users faced nine controls before they could ask anything. I respecified it as twenty-six frames in six families of states, and gave each frame one line an engineer can test as pass or fail. The same composer serves both AI modes: analysis, when the user asks about what they are reading, and edit, when they change their work.</td></tr><tr><td><code>lede-phone-design-system</code><br>Design system</td><td>AI tools built most new screens, and the design system gave them two answers. I moved the single source into Claude Design and wrote rules so AI tools reuse components instead of guessing.</td><td>Most new screens on the platform were built with AI tools, and the design system gave those tools two different answers: one in the design tool, another in the code. I moved the single source into Claude Design, where the screens are built. I wrote eight families of rules so AI tools reuse existing components instead of guessing, and set up a way for anything new an AI tool draws to reach me for review.</td></tr><tr><td><code>lede-phone-fleet-optimizer</code><br>Fleet Optimizer</td><td>Fleet teams received paying loads by email. A sprint designed a platform to replace it, but the people who handle the loads chose the email. We redesigned the email, and the response rate rose 250%.</td><td>Fleet Optimizer found paying loads for companies that run their own trucks, to fill trucks that would otherwise drive back empty. The offers went out as a plain match email. A design sprint produced a web platform to replace it, but when people from fleet teams compared the two, the tactical staff, who handle the loads day to day, chose the email; only their managers preferred the platform. We redesigned the email instead, and the response rate rose 250%.</td></tr><tr><td><code>lede-phone-advisors-platform</code><br>Advisors platform</td><td>BTG Pactual’s advisors worked across scattered tools. I designed one workspace for four business verticals, tested it at 90% acceptance, and led it to a first release all four directors signed.</td><td>BTG Pactual’s investment advisors worked across several scattered tools. I designed one workspace for them, used in four business verticals: a dashboard each office configures, a side menu of the advisor's tools, and a client page that holds everything about one client. The directors of the four verticals could each veto the project. I led it from 12 interviews to a concept test with 90% acceptance, and to one first release (MVP) all four directors signed.</td></tr><tr><td><code>lede-phone-card-insurance</code><br>Card insurance</td><td>Card insurance in BTG+ was a fixed bundle at one price. I designed a modular version, and my usability test moved it out of the card request into the card's settings, to protect card sign-ups.</td><td>Customers of BTG+, the bank's app, could only buy card insurance as a fixed bundle at one price. I designed a modular version: the customer chooses a level of cover for card theft and misuse, and adds an assistance, a service such as pet care or home repairs. My usability test then showed that selling it during the card request put card sign-ups at risk, so the whole flow moved to the card's settings.</td></tr>
+</table></div>
+
+<h2>5. Case details</h2>
+<p>One definition list, styled once in <code>components.css</code> in the Tools look (eyebrow labels, 14px values at 500 in strong ink). On phones it is a compact list, each label beside its value, like a spec sheet: about half the height it was. Two columns from 561 to 860px; four on desktop, unchanged. Three cases had set their values at 16px in body ink; all six now match. The inner shade was there (a box-shadow, which iOS Safari draws); what was missing next to About's Tools was the note's grain, now added.</p>
+<figure class="pair"><figcaption>AI surfaces</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i5-ai-details-before.png" alt="AI surfaces, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i5-ai-details-after.png" alt="AI surfaces, after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Card insurance</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i5-card-details-before.png" alt="Card insurance, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i5-card-details-after.png" alt="Card insurance, after" loading="lazy"></div></div></figure>
+
+<h2>6. The home chat on phones</h2>
+<p>Up to 860px the chat thread sits in a frame of fixed height (three two-line messages). New messages push the old ones up inside the frame, where they fade out; the intro, the actions and the page below stay put.</p>
+<div class="strip" style="grid-template-columns:repeat(3,1fr)">
+<div><span class="k">Before, 1s</span><img src="round-6/i6-home-0s-before.png" alt="Home before, at 1 second" loading="lazy"></div>
+<div><span class="k">Before, 9s</span><img src="round-6/i6-home-8s-before.png" alt="Home before, at 9 seconds" loading="lazy"></div>
+<div><span class="k">Before, 22s</span><img src="round-6/i6-home-20s-before.png" alt="Home before, at 22 seconds" loading="lazy"></div>
+<div><span class="k k--after">After, 1s</span><img src="round-6/i6-home-0s-after.png" alt="Home after, at 1 second" loading="lazy"></div>
+<div><span class="k k--after">After, 9s</span><img src="round-6/i6-home-8s-after.png" alt="Home after, at 9 seconds" loading="lazy"></div>
+<div><span class="k k--after">After, 22s</span><img src="round-6/i6-home-20s-after.png" alt="Home after, at 22 seconds" loading="lazy"></div>
+</div>
+
+<h2>7. Eyebrow to heading</h2>
+<p>One distance everywhere: 12px from the eyebrow to the heading it labels (TYP-05), set once in <code>components.css</code>. Before, it ran from 0 (section heads on the service pages, "Questions") to 28px (the ink band on cases), with 10, 12 and 16 in between. Heroes keep HERO-01's 16px, which already fixes the title's height on every page.</p>
+<figure class="pair"><figcaption>Audit page, Questions, 1400px</figcaption>
+<div class="ba ba--desk"><div><span class="k">Before</span><img src="round-6/i7-audit-desk-before.png" alt="Audit page, Questions, 1400px, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i7-audit-desk-after.png" alt="Audit page, Questions, 1400px, after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Audit page, Who runs it, 1400px</figcaption>
+<div class="ba ba--desk"><div><span class="k">Before</span><img src="round-6/i7-audit-who-desk-before.png" alt="Audit page, Who runs it, 1400px, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i7-audit-who-desk-after.png" alt="Audit page, Who runs it, 1400px, after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Audit page, Questions, phone</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i7-audit-questions-before.png" alt="Audit page, Questions, phone, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i7-audit-questions-after.png" alt="Audit page, Questions, phone, after" loading="lazy"></div></div></figure>
+<figure class="pair"><figcaption>Audit page, Who runs it, phone</figcaption>
+<div class="ba ba--phone"><div><span class="k">Before</span><img src="round-6/i7-audit-who-before.png" alt="Audit page, Who runs it, phone, before" loading="lazy"></div><div><span class="k k--after">After</span><img src="round-6/i7-audit-who-after.png" alt="Audit page, Who runs it, phone, after" loading="lazy"></div></div></figure>
+
+<h2>Rules and checks</h2>
+<table>
+<tr><th>Rule</th><th>What changed</th><th>Check</th></tr>
+<tr><td>LAY-09, SEC-04</td><td>Phones: 28px above and below every sub-section divider; never two lines above a sub-section</td><td>check_pages at 375px</td></tr>
+<tr><td>LAY-06</td><td>Prototypes keep their desktop shape and scroll in the figure</td><td>check_pages: nothing wraps in <code>.figure--proto</code></td></tr>
+<tr><td>FLW-01</td><td>Flows run to both screen edges on phones, first step on the gutter</td><td>check_pages: the scroller spans the screen</td></tr>
+<tr><td>TYP-04</td><td>Lead 15px on phones; a case lede at most five lines on a phone</td><td>check_pages: line count</td></tr>
+<tr><td>LAY-07</td><td>Case details: one list, compact on phones, the note's grain</td><td>by eye</td></tr>
+<tr><td>HERO-02</td><td>The home chat is framed at a fixed height up to 860px</td><td>check_pages: the thread clips</td></tr>
+<tr><td>TYP-05 (new)</td><td>Eyebrow to heading, 12px everywhere; heroes 16px</td><td>check_pages at 1400px and 375px, within 1px</td></tr>
+</table>
+</main></body></html>

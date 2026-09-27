@@ -110,28 +110,17 @@
       </div>
       <h1 style="font-size:var(--font-size-3xl);font-weight:500;line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-l);max-width:24ch;text-wrap:balance">A design system AI can build from</h1>
       <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
-      <p style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Most new screens on the platform were built with AI tools, and the design system gave those tools two different answers: one in the design tool, another in the code. I moved the single source into Claude Design, where the screens are built. I wrote eight families of rules so AI tools reuse existing components instead of guessing, and set up a way for anything new an AI tool draws to reach me for review.</p>
+      <p class="hero__lede hero__lede--desk" style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Most new screens on the platform were built with AI tools, and the design system gave those tools two different answers: one in the design tool, another in the code. I moved the single source into Claude Design, where the screens are built. I wrote eight families of rules so AI tools reuse existing components instead of guessing, and set up a way for anything new an AI tool draws to reach me for review.</p>
+      <p class="hero__lede hero__lede--phone" data-lead style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">AI tools built most new screens, and the design system gave them two answers. I moved the single source into Claude Design and wrote rules so AI tools reuse components instead of guessing.</p>
     </section>
 
     <section class="glass case-details">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-fluid-l)">
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Role</div>
-          <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small)">Sole designer. Tokens, components, rules, templates, governance.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Users</div>
-          <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small)">Engineers building UI, AI tools generating it, one designer reviewing it.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Scope</div>
-          <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small)">Three products and a marketing site, one codebase. One designer, six people building against the system.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Built in</div>
-          <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small)">The design system lives in Claude Design, the build environment, as the single source. Engineering receives it through Claude Code, as a set of rules their tools can read.</p>
-        </div>
-      </div>
+      <dl class="case-details__list">
+        <div><dt>Role</dt><dd>Sole designer. Tokens, components, rules, templates, governance.</dd></div>
+        <div><dt>Users</dt><dd>Engineers building UI, AI tools generating it, one designer reviewing it.</dd></div>
+        <div><dt>Scope</dt><dd>Three products and a marketing site, one codebase. One designer, six people building against the system.</dd></div>
+        <div><dt>Built in</dt><dd>The design system lives in Claude Design, the build environment, as the single source. Engineering receives it through Claude Code, as a set of rules their tools can read.</dd></div>
+      </dl>
     </section>
 
     
@@ -382,7 +371,7 @@
     </section>
 
     <section class="band-inverse" style="padding:var(--section-y-lg) 0">
-      <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-on-inverse-muted);margin-bottom:var(--space-fluid-m)">Design systems</div>
+      <div data-eyebrow style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-on-inverse-muted)">Design systems</div>
       <h2 style="margin:0 0 var(--space-fluid-m);max-width:26ch;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-none);letter-spacing:var(--tracking-display);color:var(--text-on-inverse);text-wrap:balance">Let’s make a system your team and its AI tools can build from.</h2>
       <p style="margin:0 0 var(--space-fluid-l);max-width:58ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-on-inverse-muted);text-wrap:pretty">Tokens and components are the easy half. I write the rules for combining them, so AI tools reuse what exists, and I set up the review that catches what they invent.</p>
       <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm)">

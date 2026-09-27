@@ -115,7 +115,16 @@
   .hx__send svg { width: 15px; height: 15px; }
   .hx__chat.is-ready .hx__send { opacity: 1; }
   #work { scroll-margin-top: 72px; }
-  @media (max-width: 860px) { .hx__grid { grid-template-columns: minmax(0, 1fr); } .hx__name { white-space: normal; } .hx__thread { min-height: 0; } }
+  @media (max-width: 860px) { .hx__grid { grid-template-columns: minmax(0, 1fr); } .hx__name { white-space: normal; } }
+  /* Phones and tablets (round 6, HERO-02): the chat sits in a frame of fixed height, so the page never moves while it
+     types. The thread is anchored to the composer and scrolls up inside the frame; what leaves the top fades out. The frame
+     holds three two-line messages. */
+  @media (max-width: 860px) {
+    .hx { min-height: 0; } /* phones: the hero ends under the chat, it does not fill the screen (Nayara 2026-09-27) */
+    .hx__thread { height: 212px; min-height: 0; overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, var(--text-strong) var(--space-2xl)); mask-image: linear-gradient(to bottom, transparent, var(--text-strong) var(--space-2xl)); }
+    .hx__thread li { flex: none; }
+  }
   @media (max-width: 640px) { .hx__lede br { display: none; } }
   @media (prefers-reduced-motion: reduce) { .hx__caret { display: none; } .hx__thread li { animation: none; } }
   /* The sticker: a small red note follows the cursor only while it is over the chat (Nayara, 2026-09-27: no terminal,
@@ -170,7 +179,7 @@
       <div style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl) var(--section-y)">
 <div data-reveal="" data-case-row style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--section-y) 0;border-top:0">
           <a href="ai-surfaces.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
-          <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
+          <div data-eyebrow style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">
             <span style="color:var(--accent)">01</span><span>AI platform · private capital markets</span><span>2026</span>
           </div>
           <h2 style="font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">Where AI lives in an institutional investment platform</h2>
@@ -187,7 +196,7 @@
 
       <div data-reveal="" data-case-row style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--section-y) 0;border-top:1px solid var(--border-emphatic)">
           <a href="fleet-optimizer.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
-          <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
+          <div data-eyebrow style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">
             <span style="color:var(--accent)">02</span><span>Loadsmart</span><span>2021—23</span>
           </div>
           <h2 style="font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">Capacity matching for private truck fleets</h2>
@@ -203,7 +212,7 @@
 
       <div data-reveal="" data-case-row style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--section-y) 0;border-top:1px solid var(--border-emphatic)">
           <a href="composer-spec.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
-          <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
+          <div data-eyebrow style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">
             <span style="color:var(--accent)">03</span><span>AI platform · private capital markets</span><span>2026</span>
           </div>
           <h2 style="font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">Specifying an AI composer, frame by frame</h2>
@@ -220,7 +229,7 @@
 
       <div data-reveal="" data-case-row style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--section-y) 0;border-top:1px solid var(--border-emphatic)">
           <a href="design-system.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
-          <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
+          <div data-eyebrow style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">
             <span style="color:var(--accent)">04</span><span>AI platform · private capital markets</span><span>2026—</span>
           </div>
           <h2 style="font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">A design system AI can build from</h2>
@@ -237,7 +246,7 @@
 
       <div data-reveal="" data-case-row style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--section-y) 0;border-top:1px solid var(--border-emphatic)">
           <a href="advisors-platform.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
-          <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
+          <div data-eyebrow style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">
             <span style="color:var(--accent)">05</span><span>BTG Pactual</span><span>2019—21</span>
           </div>
           <h2 style="font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">An advisors platform for four business verticals</h2>
@@ -254,7 +263,7 @@
 
       <div data-reveal="" data-case-row style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-fluid-xl);align-items:start;padding:var(--section-y) 0;border-top:1px solid var(--border-emphatic)">
           <a href="card-insurance.html" style="min-width:0;text-decoration:none;color:inherit;transition:color .25s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent)">
-          <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">
+          <div data-eyebrow style="display:flex;gap:var(--space-md);flex-wrap:wrap;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">
             <span style="color:var(--accent)">06</span><span>BTG Pactual</span><span>2020</span>
           </div>
           <h2 style="font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0 0 var(--space-md);max-width:20ch;text-wrap:pretty">Modular card insurance in a banking app</h2>
