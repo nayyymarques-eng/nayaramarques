@@ -246,12 +246,12 @@ for path in FILES:
     # CNT-01 no prices
     if re.search(r'fixed price|fixed fee|[$€£]\s?\d', text, re.I) and name not in ('start-a-project.html', 'index.html', 'work.html'):
         add('CNT-01', path, 'price wording found; the site does not discuss price')
-    # CNT-01 the engagement pages say nothing about price at all (Nayara, round 5): no Investment section, no "Priced on the call"
-    if name in ('project-engagement.html', 'embedded-partner.html'):
-        for m in re.finditer(r'[^.]{0,30}\b(pric\w*|fees?|investment|budget|retainer rate|a figure)\b[^.]{0,30}', text, re.I):
+    # CNT-01 the offer pages say nothing about price at all (Nayara, round 5): no Investment section, no "Priced on the call", no fees
+    if name in ('project-engagement.html', 'embedded-partner.html', 'design-system-build.html', 'design-system-audit.html'):
+        for m in re.finditer(r'[^.]{0,30}\b(pric\w*|fees?|investment|retainer rate|a figure)\b[^.]{0,30}', text, re.I):
             if re.search(r'investment (?:platform|bank)', m.group(0), re.I):
                 continue
-            add('CNT-01', path, f'price talk on an engagement page: "{m.group(0).strip()[:70]}"')
+            add('CNT-01', path, f'price talk on an offer page: "{m.group(0).strip()[:70]}"')
     # CNT-02 one name
     if 'Nayara Silva' in t:
         add('CNT-02', path, '"Nayara Silva" found; the name is Nayara Marques')

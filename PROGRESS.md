@@ -14,7 +14,6 @@ Updated: 2026-09-27 (round 5 layout on branch round-5-layout: type scale, widths
 - **Domain:** `www.nayaramarques.com` still serves the old Netlify site. Waiting on Netlify support (case 1128037).
 
 ## Waiting on Nayara
-- Round 5 layout (`_review/round-5.html`): review; approve 14 new copy lines (About intro 2, Embedded partner 2, benchmark 7 + badge), the tokens `--font-size-lead` and `--font-size-h3`, the proposals `.ld-list--quiet` and `.ref-row`; answer four questions (two-up landing grids, contact's third card, "Priced on the call" left on Build and Audit, the long AI surfaces lede).
 - Round 4 (`_review/round-4.html`): review in the preview, and five open questions (one space under every hero and retire `--section-pad`/`--section-gap`; one ink band padding; ink band and NextCase for Fleet, Advisors, Card insurance; the next-case well's 64px; the services "Who runs it" split).
 - Round 2: all 13 approved 2026-09-26 (theme-sky 4dbfcf2). Still hers: two lesson titles for Advisors "What I learned".
 - Illustration atlas and section reader: comments. Atlas https://claude.ai/artifact/677im2fSPCqJWwvpm68v9C (70 visuals, 10 style families, 14 inconsistencies). Reader https://claude.ai/artifact/R1DMTmECbXHeNF83mxA2Da (168 sections, 240 flags). Read comments with ArtifactComments.
@@ -23,7 +22,7 @@ Updated: 2026-09-27 (round 5 layout on branch round-5-layout: type scale, widths
 - Open copy items: "sole designer" still on card-insurance, fleet-optimizer and design-system (she words it); the unverified Storybook benchmark on design-system-audit (CNT-06); "Clade" on Home and About.
 
 ## Next steps
-0. Round 5 layout: record her verdicts in `DECISIONS.md`, clear the `data-new-copy` marks she approves, then `ds-sync` for the two new tokens; merge `round-5-layout` with the edit-mode branch (keep the lead token on the AI surfaces hero and ink band).
+0. Round 5 layout approved 2026-09-27 (recorded, marks cleared, "Priced on the call" gone): run `ds-sync` for `--font-size-lead` and `--font-size-h3`; merge `round-5-layout` with the edit-mode branch (keep the lead token on the AI surfaces hero and ink band).
 0. Round 4: record her verdicts in `DECISIONS.md`; if she approves one space under heroes, change `spacing.css` and run `ds-sync`.
 1. When round 2 reports: review, show the preview, record her verdicts in `DECISIONS.md`.
 2. S4: turn CLAUDE.md into a map (about 40 lines) with the rules in `docs/rules/*.md`, after round 2 has merged its CLAUDE.md edits.
