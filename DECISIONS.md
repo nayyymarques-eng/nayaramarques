@@ -4,6 +4,14 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 
 Format: date · decision · what it replaces or rules out · enforced by.
 
+## 2026-09-27 (evening, mobile review on her phone)
+- Dividers on phones keep equal space above and below (some sections lost the top or bottom padding). · uneven gaps around dividers on phones · SEC-04 (check at 375px)
+- Product prototypes (the composer and other mockups in figures) keep their desktop shape on phones and scroll sideways inside their frame, instead of reflowing. · mockups that wrap on phones · by eye, LAY-06
+- Flows scroll sideways on phones and reach the screen edge: no mask or frame cutting them short of the edge. · the clipped flow scroller · FLW-01
+- Subtitles (the hero lede on cases) are too big on phones; people will not read that much on a phone. · the lede size on phones · TYP-04
+- Case details (Role, Users, Timeframe, Built) on phones: cleaned up in the footer/Tools style, compact; check the inner shade shows. · the tall stacked box · by eye
+- Home on phones: the chat does not work there; give it a frame with a fixed height and position so it does not push the page down. · the growing chat · by eye
+
 ## 2026-09-27 (after deploy)
 - Build page, "Four layers": deployed as written on her word ("DEPLOY"): the lead, four parts per card, and "How the system is refined" in four steps; "the owner" stays; the loop stays in this section; the in-card list stays local to this page. · the thin four cards · CNT-11
 - Embedded partner, Kinds of engagement: a bulleted list, a title per kind and its one line under it, scannable (`.ld-list--points`, the page list with a filled dot). · three label-and-line columns · by eye
