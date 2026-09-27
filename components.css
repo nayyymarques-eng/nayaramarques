@@ -260,9 +260,10 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
    allowed) and then .is-in once; every step is --dur-entrance with --ease-out (travel linear), started at
    --s beats of half an entrance. The styles below are the end state, so reduced motion and no script show it still. */
 .scene{--beat:calc(var(--dur-entrance) / 2);position:relative;display:grid;grid-template-columns:var(--cols,minmax(0,.78fr) auto minmax(0,1.22fr));
-  grid-template-rows:auto auto;column-gap:var(--space-lg);row-gap:var(--space-sm);align-items:center;width:100%;max-width:560px;justify-self:center;
+  grid-template-rows:auto auto;column-gap:var(--space-lg);row-gap:var(--space-sm);align-items:center;width:100%;max-width:560px;justify-self:center;align-self:center;
   container-type:inline-size;font-size:var(--font-size-2xs);line-height:var(--leading-label);color:var(--text-body)}
-.scene--product{max-width:600px}
+/* one scene box for all six (2026-09-27): a product scene fits the same 560px, so every scene on a page shares its left and right edges */
+.scene--product{max-width:560px}
 .scene__pic{position:relative;grid-row:1;min-width:0;align-self:stretch}
 /* the two sides share one top and one bottom (ILL-07, 2026-09-27): the side before stretches to the side after */
 .scene__pic[data-side="before"]{display:flex;flex-direction:column}

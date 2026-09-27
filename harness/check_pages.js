@@ -32,7 +32,8 @@
  *           or a card narrower than its group
  *   ILL-01  an animation inside a case scene (.scene) loops; case scenes move once, on entrance
  *   ILL-07  a case scene has at most 8 labels outside [data-mock], the accent on the side after only, both sides' labels on one line,
- *           and its two pictures share one top and one bottom (within 1px)
+ *           its two pictures share one top and one bottom (within 1px); all scenes on a page share left, right and
+ *           width (1px), each centred on its row (2px) and inside the row's padding
  *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window, .scene) is not the label style as rendered: under 9.5px,
  *           not uppercase, not 0.14em, or lighter than 600. In a figure's picture, uppercase labels must be the label
  *           style (9.5, 10.5 or 12.5px, 0.14em, 600). Product UI is exempt with [data-mock].
@@ -514,5 +515,27 @@
     const caps = w.querySelectorAll('.scene__cap');
     if (caps.length === 2 && Math.abs(caps[0].getBoundingClientRect().top - caps[1].getBoundingClientRect().top) > 1) out.push(`ILL-07 case scene ${n + 1}: the labels of the two sides do not start on one line`);
   });
+  // ILL-07 one scene box (2026-09-27): every case scene on a page shares its left edge, right edge and width (within 1px),
+  // sits centred on its row's content box (within 2px) and stays inside the row's padding (rows measured where they land)
+  {
+    const settle = document.createElement('style');
+    settle.textContent = '[data-reveal],[data-reveal] *:not([data-illo] *){opacity:1!important;transform:none!important;filter:none!important}';
+    document.head.appendChild(settle);
+    const sc = [...document.querySelectorAll('[data-case-row] .scene')].filter(e => e.getClientRects().length && getComputedStyle(e).display !== 'none');
+    if (sc.length > 1) {
+      const rs = sc.map(e => e.getBoundingClientRect());
+      const spread = k => Math.max(...rs.map(r => r[k])) - Math.min(...rs.map(r => r[k]));
+      const off = ['left', 'right', 'width'].filter(k => spread(k) > 1);
+      if (off.length) out.push(`ILL-07 case scenes do not share one box: ${off.map(k => `${k} varies ${spread(k).toFixed(0)}px`).join(', ')}`);
+    }
+    sc.forEach(e => {
+      const row = e.closest('[data-case-row]'), q = getComputedStyle(row), w = row.getBoundingClientRect(), r = e.getBoundingClientRect();
+      const ct = w.top + parseFloat(q.paddingTop), cb = w.bottom - parseFloat(q.paddingBottom), above = r.top - ct, below = cb - r.bottom;
+      const name = e.dataset.scene || '';
+      if (above < -1 || below < -1) out.push(`ILL-07 case scene ${name} overflows its row's padding (${above.toFixed(0)}px above, ${below.toFixed(0)}px below)`);
+      else if (Math.abs(above - below) > 2) out.push(`ILL-07 case scene ${name} is not centred on its row (${above.toFixed(0)}px above, ${below.toFixed(0)}px below)`);
+    });
+    settle.remove();
+  }
   return location.pathname + ' :: ' + (out.length ? out.join(' ; ') : 'pass');
 })()

@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-09-27 (round 5, home and Work illustrations)
+- Case scenes line up across rows: one box for all six (560px, same left and right edges; the product scenes no longer 600px), each centred vertically on its row's text column and inside the row padding ("still not aligned on the home"). · two widths, top-aligned scenes, case 06 overflowing its row · ILL-06, ILL-07 (check_pages)
 - Case scenes: the side before and the side after share one top and one bottom (case 05's four verticals span the product card exactly). Case rows breathe more: `--section-y` above and below each row's content, at every width (was `--space-fluid-xl`, 28 to 44px, and 32/40px on phones). The home hero eyebrow reads "Senior Product Designer" (drops "and Design Engineer"; product designer is enough). · before sides centred at their own height; compact rows; the "design engineer" title · ILL-07 (check_pages: sides within 1px), SEC-04 (check_pages: case rows), the eyebrow `data-new-copy="home-eyebrow"`
 
 ## 2026-09-27 (round 5, from her review of the live site)
