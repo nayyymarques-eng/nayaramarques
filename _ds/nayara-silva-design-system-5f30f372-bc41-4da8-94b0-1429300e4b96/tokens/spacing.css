@@ -54,4 +54,13 @@
   --min-col-md:260px; /* @kind spacing */
   --min-col-lg:320px; /* @kind spacing */                       /* decision cards, offer cards */
   --content-flex:460px; /* @kind spacing */                      /* flex-basis of the content column */
+
+  /* --- Theme sky ------------------------------------------------------- */
+  --hero-top:clamp(64px,7vw,96px); /* @kind spacing */          /* nav to eyebrow, on every page (HERO-01) */
+  --gap-cards:12px; /* @kind spacing */                        /* grouped cards and link cards stand apart */
+  --action-h:44px; /* @kind spacing */                         /* the three action variants */
+  --action-px:20px; /* @kind spacing */
+  --figure-inset:8px; /* @kind spacing */                      /* image inset inside a figure card */
+  --section-gap:clamp(48px,6vw,88px); /* @kind spacing */      /* space above a section's divider */
+  --section-pad:clamp(32px,4.5vw,56px); /* @kind spacing */    /* space between the divider and the section's head */
 }

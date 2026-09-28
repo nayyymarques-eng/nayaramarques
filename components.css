@@ -1,0 +1,614 @@
+/* Site components, theme sky. Loaded on every page after tokens/base.css (COL-03).
+   Values come only from tokens. Depth has one meaning (DEP-01): where a surface sits
+   relative to the page, never how important it is.
+     -2 deep recess  .illo-window, the home composer (windows you look into)   radius lg, --elevation-inset-2
+     -1 soft recess  .note, .glass (case details), .well (the next case)       radius lg/md, --elevation-inset-1
+      0 flat      text, rules, .tag, the ink band, actions' ground
+      1 resting   .card, .link-card, .accordion, the case index   radius md, --elevation-1
+      2 raised    .figure, .plan-card, a hovered link card        radius lg, --elevation-2
+      3 floating  the sticky header, menus                        radius md, --elevation-3
+   Frame -1 or -2, story 0, evidence +2. Only these variants exist. */
+
+/* ---------- Actions: exactly three variants (ACT-01) ----------
+   Identical geometry: 12px radius, 44px tall, 20px side padding, 15px, weight 500,
+   sentence case. Arrows take the text colour and move 3px on hover. */
+.action{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-xs);min-height:var(--action-h);padding:0 var(--action-px);
+  border:0;border-radius:var(--radius-action);font:inherit;font-size:var(--font-size-action);font-weight:500;line-height:1;letter-spacing:var(--tracking-action);
+  text-transform:none;text-decoration:none;white-space:nowrap;cursor:pointer;appearance:none;transition:var(--transition-lift)}
+.action__arrow{display:inline-block;color:inherit;transition:var(--transition-nudge)}
+.action:hover .action__arrow,a:hover .action__arrow{transform:translateX(3px)}
+/* Primary: a raised light surface, ink text, a soft shade below; hover lifts. One per view. */
+.action--primary{background:var(--surface-raised);color:var(--text-strong);box-shadow:var(--elevation-action)}
+.action--primary:hover{background:var(--surface-card);color:var(--text-strong);box-shadow:var(--elevation-action-hover)}
+/* Link: accent text, no fill, no shade. Every secondary action. */
+.action--link{background:none;color:var(--accent);padding-inline:var(--space-2xs);box-shadow:none}
+.action--link:hover{color:var(--accent-strong)}
+/* A link-variant label inside a larger link (a case row's "Read the case study"): the look, no box. */
+span.action--link,div.action--link{min-height:0;padding:0}
+a:hover span.action--link,a:hover div.action--link{color:var(--accent-strong)}
+/* Inverse: on the ink band, a paper fill with ink text, white on hover. */
+.action--inverse{background:var(--surface-page);color:var(--text-strong);box-shadow:var(--elevation-action-inverse)}
+.action--inverse:hover{background:var(--surface-card);color:var(--text-strong)}
+.action:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+.band-inverse .action:focus-visible{outline-color:var(--text-on-inverse)}
+
+/* ---------- Type ---------- */
+/* THE eyebrow: 11px, 600, 0.14em, uppercase (TYP-01). Never inflated by a surrounding style. */
+.eyebrow{margin:0 0 var(--space-sm);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
+.eyebrow--accent{color:var(--accent)}
+/* TYP-05 (Nayara 2026-09-27, round 6): an eyebrow sits one distance above the heading it labels, everywhere: --space-sm,
+   from the eyebrow's box to the heading's box (the system's DecisionCard draws the same 12px). Set here once; pages and
+   components do not set it (section heads, split blocks, layer, plan and link cards, the ink band). Heroes keep HERO-01's 16px. */
+:is(.eyebrow,[data-eyebrow]):has(+:is(h2,h3,h4,.h2)){margin-bottom:var(--space-sm)!important}
+:is(.eyebrow,[data-eyebrow])+:is(h2,h3,h4,.h2){margin-top:0!important}
+/* A tag is a label, not a control: level 0, no border, a faint ink tint, a pill. */
+.tag{display:inline-block;align-self:flex-start;padding:5px 11px;border-radius:var(--radius-full);background:var(--surface-tag);
+  font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-tag);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-body);white-space:nowrap} /* body ink: AA on its tint at the sky's darkest point */
+.tags{display:flex;flex-wrap:wrap;gap:var(--space-xs)}
+/* A badge marks a state inside product UI (Composer, In context): a pill, a dark slate fill, white text; the accent fill
+   tells one state apart from the rest (Composer). */
+.badge{display:inline-block;padding:3px 8px;border-radius:var(--radius-full);background:var(--text-body);color:var(--surface-card);
+  font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-tag);line-height:var(--leading-label);text-transform:uppercase;white-space:nowrap}
+.badge--accent{background:var(--accent)}
+/* A separate place you leave your work to reach (another page): a dashed outline, light, never a dark block. */
+.elsewhere{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:96px;padding:18px var(--space-md);
+  background:var(--surface-card);border:var(--stroke-diagram) dashed var(--text-muted);border-radius:var(--radius-sm)}
+.elsewhere__path{display:flex;flex-direction:column;align-items:center;gap:6px;margin:6px 0 8px;color:var(--text-muted)}
+.elsewhere__path::before{content:"";width:0;height:14px;border-left:var(--stroke-diagram) dashed var(--text-muted)}
+/* ---------- Flows read horizontally (FLW-01) ----------
+   A step is a small white object with the soft level-1 shade; the emphasised step is solid accent. A chain is one line
+   of steps with → between them; on a narrow screen it scrolls inside its own block, never the page. */
+.chip{display:inline-flex;align-items:center;flex:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-sm);background:var(--surface-card);
+  box-shadow:var(--elevation-1);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap}
+.chip--emph{background:var(--accent);color:var(--surface-card);font-weight:500}
+.chain{display:flex;flex-wrap:nowrap;gap:var(--space-xs);align-items:center;padding:2px 4px 6px}
+.chain-block{overflow-x:auto;overflow-y:hidden;contain:inline-size}
+/* A row of states or stages inside a figure: small white steps with the soft level-1 shade, → between them,
+   one line that scrolls inside its frame on a phone. The emphasised step carries an accent ring. */
+.steps-scroll{overflow-x:auto;overflow-y:hidden;contain:inline-size}
+.steps{display:grid;grid-template-columns:repeat(var(--steps,4),minmax(150px,1fr));gap:22px;padding:4px}
+.steps>*{position:relative}
+.steps>*+*::before{content:"→";position:absolute;left:-17px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--text-muted)}
+.step{background:var(--surface-card);border:0;border-radius:var(--radius-sm);box-shadow:var(--elevation-1)}
+.step--emph{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 45%,transparent),var(--elevation-1)}
+/* Compared options (FLW-02): the considered one says why, in the traded colour; the decided one is Chosen, solid accent.
+   Nothing is struck through: both stay fully readable. */
+.tag--considered{color:var(--status-cost);background:color-mix(in srgb,var(--status-cost) 10%,var(--surface-card));letter-spacing:var(--tracking-label)}
+.tag--chosen{color:var(--surface-card);background:var(--accent);letter-spacing:var(--tracking-label)}
+
+/* ---------- Sections (SEC-01, SEC-02, SEC-04) ----------
+   A divider opens every section: an in-flow 1px rule at content width, never edge
+   to edge. The subtitle sits below its heading, never beside it. The content sits
+   --section-y below the divider and --section-y above the next one (SEC-04); the
+   space under a hero is the hero's own (HERO-01). */
+.section{position:relative;padding-bottom:var(--section-y)}
+.section>:first-child{border-top:1px solid var(--border-divider);padding-top:var(--section-y)}
+.hero+.section{padding-top:var(--section-gap)}
+.section-head{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-md);margin-bottom:var(--stack-lg)}
+.section-head .eyebrow{margin:0} /* above a heading, TYP-05 sets it */
+.section-head>p:not(.eyebrow){margin:0;max-width:46ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty} /* the lead (TYP-04) */
+.h2{margin:0;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);color:var(--text-heading);max-width:22ch;text-wrap:balance}
+
+/* ---------- One hero anatomy on every page (HERO-01) ----------
+   nav, then --hero-top, then the eyebrow (one line tall), then 16px, then the h1. The title sits at the
+   same height on every page and never moves between pages. Heroes are never centred vertically.
+   An eyebrow that wraps on a phone grows upwards into the gap, so the title still does not move. */
+.hero{padding-top:var(--hero-top)}
+.hero__eyebrow{display:flex;flex-wrap:wrap;align-items:flex-end;align-content:flex-end;column-gap:var(--space-md);height:calc(var(--font-size-eyebrow) * 1.4);
+  margin:0 0 var(--space-md);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:1.4;text-transform:uppercase;color:var(--accent)}
+.hero h1{margin-top:0}
+
+/* ---------- Case section title and intro (LAY-08) ----------
+   The title in the body (case-index.js writes "05 The solution") is small and firm; the section's intro below it is an
+   ordinary paragraph, at most 600px wide. Neither is sticky. The title's type is set in case-index.js. */
+/* Sub-section (LAY-08 (4)): a noun phrase, no number. Smaller than the section title, bold like it, with a short accent
+   bar as its marker (flat, level 0: a mark in the label grammar, never a surface). Numbers belong to the section title only. */
+.subsection{display:flex;align-items:baseline;gap:10px;margin:0 0 12px;font-size:var(--font-size-subsection);font-weight:600;line-height:1.3;letter-spacing:-0.01em;color:var(--text-heading);text-wrap:balance}
+.subsection::before{content:"";flex:none;width:12px;height:2px;border-radius:var(--radius-full);background:var(--accent);transform:translateY(-0.32em)}
+p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+
+/* ---------- Widths in a case body (SEC-06, round 5) ----------
+   Components end on the column grid: in a case body, the body column (columns 2 to 4 on wide screens). So the body column has
+   no max-width of its own (pages used to cap it at 62ch or 66ch, so cards, rows, figures and rules ended at different places);
+   prose keeps its measure instead: paragraphs 66ch, text inside rows and cards 70ch. ListRow's measure prop is overridden here
+   so every row rule ends where the cards end. */
+[data-case-band]>h2[data-rail]+div{max-width:none!important}
+[data-case-band]>h2[data-rail]+div>p:not([data-case-eyebrow]){max-width:var(--measure-prose-wide)}
+[data-case-band] :is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"]){max-width:none!important}
+[data-case-band] div:has(>*>:is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"])){max-width:none!important}
+[data-case-band] :is([data-pattern="finding"],[data-pattern="reference"],[data-pattern="principle"],[data-pattern="gap"])>p{max-width:var(--measure-list)}
+/* Text inside a box fills the box (Nayara 2026-09-27): cards, figure captions and accordions carry no measure of their own;
+   the box is the measure. Rows and running prose keep theirs. */
+[data-surface="card"] p,[data-surface="card"] :is(h3,h4){max-width:none!important}
+/* ...and lines run to the box edge: no pretty/balance rewrapping inside boxes (it shortened whole paragraphs). */
+:is([data-surface="card"],.plan-card,.case-details,.accordion,.figure__caption,.figure>figcaption,.note) :is(p,dd,li){text-wrap:wrap}
+
+/* ---------- Content patterns (PAT, CLAUDE.md §7) ----------
+   approved by Nayara 2026-09-26 (round 2), restacked in round 3: one structure per job, the job named on the element as
+   data-pattern="<job>". Cards and rows are the design-system DecisionCard and ListRow, set through that attribute (CMP-02);
+   .stats is a site part. Considered for steps: the figure .steps (a picture of states inside a figure, with arrows).
+     cards  problem · constraint · step · decision · feature · term · outcome · lesson   DecisionCard, level 1, stacked
+     rows   finding · principle · reference                                              ListRow, a lead on its own line
+     gap    what the case does not cover                                                 ListRow, the inactive row below
+     stats  result · scope                                                               .stats, the only big numbers
+   Cards are stacked (Nayara, 2026-09-26): one per row, full content width, 12px apart, so a reader scanning fast meets one
+   structure. The eyebrow is the marker: "Problem A", "Constraint A", "Decision 01", the step's ordinal. */
+:is([data-pattern="finding"],[data-pattern="principle"],[data-pattern="reference"],[data-pattern="gap"])>p>strong:first-child{display:block;margin-bottom:var(--space-2xs);line-height:var(--leading-snug)}
+/* a marker only where it means something. Empty markers and empty eyebrows take no room. */
+:is([data-pattern="finding"],[data-pattern="principle"],[data-pattern="reference"],[data-pattern="gap"])>span:empty,
+[data-pattern][data-surface="card"]>div:empty{display:none}
+/* a step's ordinal says the order: in the accent, like every ordinal (the eyebrow reads --ink-6) */
+[data-pattern="step"][data-surface="card"]{--ink-6:var(--accent)}
+/* Gap: what the case does not cover (Nayara, 2026-09-26): known, but off topic, so it reads as inactive. Quieter ink (the
+   lead in body ink at 500, the text muted), a hollow muted marker, a dashed rule, no surface and no elevation. The text
+   stays AA on the sky (COL-08). ListRow reads --ink, --ink-2, --weight-semibold; the dash overrides its inline border
+   (each row sits in its own host element, so the last row is the one in the last host). */
+[data-pattern="gap"]{--ink:var(--text-body);--ink-2:var(--text-muted);--weight-semibold:500;border-top-style:dashed!important;box-shadow:none}
+:last-child>[data-pattern="gap"]{border-bottom-style:dashed!important} /* only the last row draws a bottom rule */
+[data-pattern="gap"]::before{content:"";flex:none;width:7px;height:7px;margin-top:9px;border:1px solid var(--text-subtle);border-radius:var(--radius-full)}
+/* approved by Nayara 2026-09-27 (round 5): .ref-row, a reference row with a picture and a tag (card insurance's benchmark). The row look of PAT-06
+   (the lead on its own line, 16/600 ink, the body under it, a --border rule between rows) plus a small picture of the source on
+   the left (sm radius, a rounded rectangle, never a disc: SHP-02) and, where it applies, the site's .tag on its own line under the text (.badge stays for states inside product mockups).
+   Considered: ListRow (text marker only, no picture slot; a tag could only sit inline), DecisionCard (heavier than a reference). */
+.ref-rows{border-bottom:1px solid var(--border)}
+.ref-row{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:var(--space-lg);align-items:start;padding:18px 0;border-top:1px solid var(--border)}
+.ref-row__pic{grid-row:1 / span 2;display:block;width:56px;height:84px;object-fit:cover;object-position:top;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);background:var(--surface-card)}
+.ref-row>p{margin:0;max-width:var(--measure-list);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+.ref-row>p>strong{color:var(--text-strong);font-weight:600}
+.ref-row__tag{grid-column:2;justify-self:start;margin-top:var(--space-xs)} /* placement only: the look is .tag */
+
+/* Stats: big numbers, only for a Result (measured) or a Scope count (what exists). The label says which (PAT-04). */
+.stats{margin:0}
+.stats>.eyebrow{margin:0 0 var(--space-md)}
+.stats__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:var(--space-fluid-m);list-style:none;margin:0;padding:0}
+.stat{margin:0;border-top:1px solid var(--border-divider);padding-top:var(--space-sm)}
+.stat__n{display:block;font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);color:var(--text-heading);font-variant-numeric:tabular-nums}
+.stat__caption{display:block;margin-top:var(--space-xs);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+/* proposal (visual round 2): .stats__note, one supporting line under a Result that gives its basis (the audit card). */
+.stats__grid:has(+.stats__note){margin-bottom:var(--space-sm)}
+.stats__note{margin:0;font-size:var(--font-size-action);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty}
+
+/* ---------- Glass: the case details, like the home's composer ----------
+   Frosted, the same inner shade, a light bottom edge. Content width, lg radius; level -1 in spirit. */
+.glass{background:var(--surface-glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:var(--elevation-inset-1),var(--edge-glass);border:0;border-radius:var(--radius-lg)}
+.glass--deep{box-shadow:var(--elevation-inset-2),var(--edge-glass)}
+.case-details{padding:var(--space-fluid-l);margin-block:var(--stack-sm) 0;background:var(--surface-note);box-shadow:var(--elevation-inset-1);border-radius:var(--radius-md);-webkit-backdrop-filter:none;backdrop-filter:none}
+/* Case details and About's Tools share one look (Nayara 2026-09-27): the note ground, a shade deeper than the sky so it reads over the
+   parallax; eyebrow labels; values as Tools items (500, strong ink). */
+/* The list itself (round 6, 2026-09-27): a <dl>, eyebrow labels, values as Tools items (14px, 500, strong ink).
+   Wide: four columns (the grid the case body sits on, SEC-05). Up to 860px: two. Phones (560px and down): compact, like a
+   footer or a spec sheet: the label beside its value, one pair per line. Section 01 below keeps --section-y (SEC-04). */
+.case-details{position:relative;isolation:isolate}
+.case-details::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.09;mix-blend-mode:multiply;
+  background-image:var(--texture-grain);background-size:var(--texture-grain-size)} /* the note's grain, so it matches About's Tools */
+.case-details__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-fluid-l);margin:0}
+.case-details__list>div{min-width:0}
+.case-details dt{margin:0 0 var(--space-sm);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
+.case-details dd{margin:0;font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong)}
+@media (max-width:860px){.case-details__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg)}}
+@media (max-width:560px){
+  .case-details{padding:var(--space-md) var(--space-lg)}
+  .case-details__list{grid-template-columns:max-content minmax(0,1fr);gap:var(--space-sm) var(--space-md);align-items:baseline}
+  .case-details__list>div{display:contents}
+  .case-details dt{margin:0}
+  .case-details dd{line-height:var(--leading-snug)}
+}
+
+/* ---------- Cards: level 1, equal padding on every side (CRD-01) ---------- */
+.card{background:var(--surface-card);border:0;border-radius:var(--radius-md);box-shadow:var(--elevation-1)}
+.card>:first-child{margin-top:0}
+/* a surface inside a surface is flat, with the small radius (DEP-03) */
+:is(.card,.link-card,.figure,.plan-card,.accordion,[data-surface]) :is(.card,[data-surface="card"]){box-shadow:none;border-radius:var(--radius-sm)}
+/* grouped cards stand apart, never on a filled gutter */
+.cards{display:grid;gap:var(--gap-cards)}
+/* The DecisionCard (design-system bundle) as a level-1 card: data-surface="card" is passed through
+   to its root; its own 1px border reads --line, so the border disappears on the sky's terms. */
+[data-surface="card"]{--line:transparent;border-radius:var(--radius-md);box-shadow:var(--elevation-1)}
+
+/* ---------- Link cards: a card you pick up (CRD-02) ----------
+   White, level 1; on hover it rises to level 2 and its arrow moves 3px. It never changes colour. */
+.link-card{display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-xl);background:var(--surface-card);border-radius:var(--radius-md);
+  box-shadow:var(--elevation-1);color:inherit;text-decoration:none;transition:var(--transition-lift)}
+.link-card:hover{box-shadow:var(--elevation-2);color:inherit}
+.link-card__arrow{color:var(--accent);line-height:1;transition:var(--transition-nudge)}
+.link-card:hover .link-card__arrow{transform:translateX(3px)}
+
+/* ---------- Figures: one surface (CRD-03) ----------
+   A white card at level 2, the image inset by 8px (radius sm), the caption on the same card.
+   One per row when it is evidence. */
+.figure{margin:0;min-width:0;background:var(--surface-card);border:0;border-radius:var(--radius-lg);box-shadow:var(--elevation-2);padding:var(--figure-inset)}
+.figure>:not(figcaption,.figure__caption){border:0;border-radius:var(--radius-sm);box-shadow:none;overflow:hidden}
+/* one caption style everywhere, inside the same white card: 15px at 1.5, the bold lead in ink, the rest in body */
+.figure>figcaption,.figure__caption{flex:1;background:none;border:0;border-radius:0;padding:var(--space-md) var(--space-sm) 10px;max-width:none;
+  font-size:var(--font-size-action);line-height:var(--leading-snug);color:var(--text-body);text-wrap:pretty}
+.figure__caption p{margin:0}
+.figure__caption p+p{margin-top:var(--space-xs)}
+.figure__caption strong{color:var(--text-strong);font-weight:600}
+.figure--col{display:flex;flex-direction:column}
+.figures{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--stack-md)}
+
+/* ---------- Wells: level -1 (CRD-04) ----------
+   Content width, lg radius, one step deeper, an inner shade, a light grain; no rules around it. */
+.well{position:relative;isolation:isolate;background:var(--surface-well);border:0;border-radius:var(--radius-lg);box-shadow:var(--elevation-inset-1);padding:var(--space-fluid-l)}
+.well::after,.illo-window::after,.note::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:.09;mix-blend-mode:multiply;
+  background-image:var(--texture-grain);background-size:var(--texture-grain-size)}
+.well--press{transition:box-shadow var(--dur-hover-slow) var(--ease-standard)}
+.well--press:hover{box-shadow:var(--elevation-inset-2)}
+/* the next case (design-system NextCase) sits in a well: its own rules give way to the well.
+   A top-level block (SEC-04): the section above gives the space over it; after the ink band it takes --section-y itself. */
+.well--next{--line:transparent;--line-ink:transparent;margin-block:0 var(--section-y);padding-block:0}
+.band-inverse+.well--next{margin-top:var(--section-y)}
+.well--next>*{padding-bottom:var(--space-fluid-l)}
+/* NextCase's title is an h2: the one h2 size (TYP-04), through the bundle's own size variable (CMP-02) */
+.well--next{--size-title:var(--font-size-h2)}
+
+/* ---------- The note: a soft recess (-1) on a light ground, grained ---------- */
+.note{position:relative;isolation:isolate;background:var(--surface-note);border-radius:var(--radius-md);border:0;box-shadow:var(--elevation-inset-1)}
+
+/* ---------- Illustration windows (ILL-01) ----------
+   A window into the product: a recessed well (level -1); the product UI inside rests at level 1.
+   A solid ink block inside is softened to a raised light surface: emphasis by depth, not darkness. */
+.illo-window{position:relative;isolation:isolate;background:var(--surface-well);border:0;border-radius:var(--radius-lg);box-shadow:var(--elevation-inset-2)}
+.illo-emph{background:var(--surface-card);color:var(--text-strong);border:0;border-radius:var(--radius-sm);box-shadow:var(--elevation-action)}
+.illo-col{display:flex;flex-direction:column;gap:var(--space-xs);min-width:0}
+.illo-label{margin:0;font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
+.illo-label--ink{color:var(--text-strong)}
+.illo-label--accent{color:var(--accent)}
+.illo-label--core{font-size:var(--font-size-diagram-core);font-weight:700;color:var(--text-strong)}
+.illo-label--heading{font-size:var(--font-size-diagram-heading);color:var(--text-strong)}
+.illo-row{display:flex;align-items:center;gap:var(--space-xs);min-width:0}
+.illo-row>.illo-end{margin-left:auto}
+.illo-rule{border-top:var(--stroke-diagram) solid var(--border);padding-top:var(--space-xs)}
+.illo-bar{height:5px;background:var(--surface-hover)}
+.illo-bar--ink{background:var(--border)}
+.illo-dot{flex:none;width:6px;height:6px;border-radius:var(--radius-full);background:var(--accent)}
+.illo-dot--quiet{background:var(--border)}
+.illo-icon{flex:none;width:12px;height:12px;display:block;color:var(--text-subtle)}
+.illo-pills{display:flex;flex-wrap:wrap;gap:var(--space-2xs)}
+.illo-pill{padding:3px 8px;border-radius:var(--radius-full);background:var(--surface-tag);color:var(--text-body)}
+.illo-pill--accent{background:var(--accent);color:var(--surface-card)}
+.illo-window .tag{padding:3px 8px;white-space:normal}
+/* A tag inside a drawing or a figure's picture is one of its labels: the label style (ILL-02). */
+:is(.illo-window,.figure>:not(figcaption,.figure__caption)) .tag{font-size:var(--font-size-diagram);letter-spacing:var(--tracking-eyebrow)}
+.illo-send{flex:none;width:18px;height:18px;border-radius:var(--radius-sm);background:var(--accent);display:grid;place-items:center;color:var(--surface-card)}
+.illo-send svg{width:10px;height:10px;display:block}
+.illo-caret{flex:none;width:1px;height:11px;background:var(--text-strong)}
+.illo-slot{box-shadow:none;border:var(--stroke-diagram) dashed var(--accent);color:var(--accent)}
+.illo-sign{font-size:var(--font-size-diagram-heading);font-weight:600;color:var(--text-muted);align-self:center}
+.illo-send--quiet{background:var(--surface-hover);color:var(--text-subtle)}
+.illo-bar--short{width:40%}
+.illo-bar--mid{width:64%}
+
+/* ---------- Case scenes (home and Work): ILL-06, ILL-07; approved by Nayara 2026-09-27 ----------
+   No window: the drawing sits on the sky. One change read left to right in a two-row grid: the pictures on row 1
+   (before, the arrow, after), the labels on row 2, so the labels of both sides start on one line. Real size, never
+   scaled, at most 560px (a product scene 600px). The side before is quiet (outlines, muted labels, no shade, no
+   accent); the side after carries the raised surfaces, the one accent and the core label. Levels 1 to 3 may sit on the
+   sky here, with no frame (DEP-03 exception). Parts are .sc-*; product UI inside keeps [data-mock].
+   Motion (ILL-01): one entrance when the scene scrolls into view, never a loop. art.js sets [data-enter] (motion
+   allowed) and then .is-in once; every step is --dur-entrance with --ease-out (travel linear), started at
+   --s beats of half an entrance. The styles below are the end state, so reduced motion and no script show it still. */
+.scene{--beat:calc(var(--dur-entrance) / 2);position:relative;display:grid;grid-template-columns:var(--cols,minmax(0,.78fr) auto minmax(0,1.22fr));
+  grid-template-rows:auto auto;column-gap:var(--space-lg);row-gap:var(--space-sm);align-items:center;width:100%;max-width:560px;justify-self:center;align-self:center;
+  container-type:inline-size;font-size:var(--font-size-2xs);line-height:var(--leading-label);color:var(--text-body)}
+/* one scene box for all six (2026-09-27): a product scene fits the same 560px, so every scene on a page shares its left and right edges */
+.scene--product{max-width:560px}
+.scene__pic{position:relative;grid-row:1;min-width:0;align-self:stretch}
+/* the two sides share one top and one bottom (ILL-07, 2026-09-27): the side before stretches to the side after */
+.scene__pic[data-side="before"]{display:flex;flex-direction:column}
+.scene__pic[data-side="after"]{display:flex;flex-direction:column;justify-content:center}
+.scene__to{align-self:center}
+.scene__pic[data-side="before"]{grid-column:1}.scene__pic[data-side="after"]{grid-column:3}
+.scene__to{grid-row:1;grid-column:2;position:relative;width:48px;height:16px;color:var(--text-subtle)}
+.scene__to::before{content:"";position:absolute;left:0;right:5px;top:50%;border-top:var(--stroke-diagram) solid currentColor}
+.scene__to--open::before{right:0}
+.scene__to svg{position:absolute;right:0;top:50%;width:10px;height:10px;margin-top:-5px}
+.scene__to .sc-dot{position:absolute;left:0;top:50%;margin-top:-3px;--tx:38px;--ty:0px}
+.scene__cap{grid-row:2;align-self:start;display:flex;flex-direction:column;gap:var(--space-2xs);min-width:0}
+.scene__cap[data-side="before"]{grid-column:1}.scene__cap[data-side="after"]{grid-column:3}
+.scene .sc-core{font-size:var(--font-size-diagram-heading);font-weight:700;color:var(--text-strong)}
+/* surfaces */
+.sc-card{position:relative;background:var(--surface-card);border-radius:var(--radius-sm);box-shadow:var(--elevation-1);padding:var(--space-xs) 10px;min-width:0;color:var(--text-body)}
+.sc-card--2{box-shadow:var(--elevation-2)}
+.sc-card--3{box-shadow:var(--elevation-3)}
+.sc-card--md{border-radius:var(--radius-md)}
+.sc-card--lg{border-radius:var(--radius-lg)}
+.sc-ghost{position:relative;background:transparent;border-radius:var(--radius-sm);box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border-divider);padding:var(--space-xs) 10px;color:var(--text-muted)}
+.sc-ghost .illo-bar{background:var(--border-divider)}
+.sc-dash{position:relative;border:var(--stroke-diagram) dashed var(--text-subtle);border-radius:var(--radius-sm);padding:var(--space-xs) 10px;color:var(--text-muted)}
+.sc-row{display:flex;align-items:center;gap:var(--space-xs);min-width:0}
+.sc-row>.sc-end{margin-left:auto}
+.sc-col{display:flex;flex-direction:column;gap:var(--space-xs);min-width:0}
+.sc-ico{flex:none;width:12px;height:12px;display:block;color:var(--text-subtle)}
+.sc-ico--acc{color:var(--accent)}
+.sc-ico--ink{color:var(--text-strong)}
+.sc-tint{position:absolute;inset:0;border-radius:inherit;background:var(--surface-accent-tint);pointer-events:none}
+.sc-mark{position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent)}
+.sc-sel{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 var(--stroke-diagram) var(--accent);pointer-events:none}
+.sc-pill{display:inline-flex;align-items:center;gap:var(--space-2xs);padding:3px 8px;border-radius:var(--radius-full);background:var(--surface-tag);color:var(--text-body);font-size:var(--font-size-2xs);font-weight:500;line-height:var(--leading-heading);white-space:nowrap;position:relative}
+.sc-pill--acc{background:var(--accent);color:var(--surface-card)}
+.sc-check{flex:none;width:14px;height:14px;border-radius:var(--radius-full);background:var(--accent);color:var(--surface-card);display:grid;place-items:center}
+.sc-check svg{width:9px;height:9px;display:block}
+.sc-dot{display:block;width:6px;height:6px;border-radius:var(--radius-full);background:var(--accent);opacity:0}
+.sc-cursor{position:absolute;left:0;top:0;width:16px;height:20px;z-index:4;color:var(--text-strong);pointer-events:none;opacity:0;transform:translate(var(--x2,0),var(--y2,0))}
+.sc-cursor svg{display:block;width:16px;height:20px;overflow:visible}
+.sc-cursor path{fill:currentColor;stroke:var(--surface-card);stroke-width:1.4;stroke-linejoin:round}
+.sc-ring{position:absolute;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:var(--radius-full);box-shadow:inset 0 0 0 var(--stroke-diagram) var(--accent);opacity:0;pointer-events:none;z-index:3}
+.sc-spark{position:absolute;width:22px;height:22px;margin:-11px 0 0 -11px;color:var(--accent);opacity:0;pointer-events:none;z-index:3}
+.sc-spark svg{display:block;width:100%;height:100%}
+.sc-spark path{stroke:currentColor;stroke-width:1.5;stroke-linecap:round;fill:none}
+/* connectors: a tree (one to many) and a merge (many to one), drawn in the one line weight */
+.sc-tree{position:relative;padding-left:22px}
+.sc-tree::before{content:"";position:absolute;left:0;top:var(--tree-top,15px);bottom:var(--tree-bottom,15px);border-left:var(--stroke-diagram) solid var(--text-subtle)}
+.sc-branch{position:relative}
+.sc-branch::before{content:"";position:absolute;left:-22px;width:22px;top:50%;border-top:var(--stroke-diagram) solid var(--text-subtle)}
+.sc-branch>.sc-dot{position:absolute;left:-22px;top:50%;margin-top:-3px;--tx:20px;--ty:0px}
+.sc-merge{position:relative;grid-row:1;grid-column:2;align-self:stretch;width:64px}
+.sc-merge svg{position:absolute;left:0;top:0;width:64px;height:100%;overflow:visible}
+.sc-merge .sc-dot{position:absolute;left:-3px;margin-top:-3px}
+.sc-line{fill:none;stroke:var(--text-subtle);stroke-width:var(--stroke-diagram);vector-effect:non-scaling-stroke}
+.sc-line--dash{stroke-dasharray:3 3}
+/* small product parts */
+.sc-scr{position:absolute;display:flex;gap:var(--space-xs);align-items:stretch;width:74%;height:74px;padding:var(--space-xs);background:var(--surface-well)}
+.sc-scr__nav{flex:none;width:14px;border-right:var(--stroke-diagram) solid var(--border-divider)}
+.sc-route{flex:none;position:relative;width:18px;height:6px;background:linear-gradient(var(--text-subtle),var(--text-subtle)) center/10px 1px no-repeat}
+.sc-route::before,.sc-route::after{content:"";position:absolute;top:1px;width:4px;height:4px;border-radius:var(--radius-full);box-shadow:inset 0 0 0 var(--stroke-diagram) var(--text-subtle)}
+.sc-route::before{left:0}.sc-route::after{right:0;background:var(--text-subtle)}
+.sc-gp{display:inline-block;padding:0;height:12px;border-radius:var(--radius-full)}
+.sc-mrow{position:relative;display:flex;align-items:center;gap:var(--space-xs);padding:6px;border-radius:var(--radius-sm)}
+.sc-avatar{flex:none;width:20px;height:20px;border-radius:var(--radius-full);background:var(--surface-accent-tint)}
+.sc-w4{flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-xs);min-width:0}
+.sc-wg{position:relative;height:46px;padding:var(--space-xs);border-radius:var(--radius-sm);display:flex;flex-direction:column;justify-content:center;min-width:0}
+.sc-wg--flat{box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border-subtle);background:var(--surface-card)}
+.sc-bars{display:flex;align-items:flex-end;gap:3px;height:24px}
+.sc-bars i{display:block;width:6px;background:var(--border)}
+.sc-bars i:last-child{background:var(--accent)}
+.sc-tg{position:relative;flex:none;width:26px;height:14px;border-radius:var(--radius-full);background:var(--border-divider)}
+.sc-tg__on{position:absolute;inset:0;border-radius:inherit;background:var(--accent)}
+.sc-tg__k{position:absolute;left:2px;top:2px;width:10px;height:10px;border-radius:var(--radius-full);background:var(--surface-card);box-shadow:var(--elevation-1)}
+.sc-mini-btn{display:block;width:26px;height:10px;border-radius:var(--radius-sm);background:var(--text-strong)}
+.sc-mini-input{display:block;width:32px;height:10px;border-radius:var(--radius-sm);box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border-divider)}
+.sc-mini-toggle{display:block;width:18px;height:10px;border-radius:var(--radius-full);background:var(--accent);position:relative}
+.sc-mini-toggle::after{content:"";position:absolute;right:1px;top:1px;width:8px;height:8px;border-radius:var(--radius-full);background:var(--surface-card)}
+.sc-mini-new{display:block;width:24px;height:12px;border-radius:var(--radius-sm);border:var(--stroke-diagram) dashed var(--accent)}
+.sc-tile{display:grid;place-items:center;height:30px;border-radius:var(--radius-sm);background:var(--surface-hover)}
+.scene__to--open::before{right:calc(-1 * var(--space-lg))}
+.scene__to--open .sc-dot{--tx:62px}
+.sc-stage{position:relative}
+/* the design system's cycle (04): four cells joined by drawn segments that run as one loop */
+.sc-loop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-xl);align-items:stretch}
+.sc-cell{position:relative;min-width:0}
+.sc-link{position:absolute;color:var(--text-subtle)}
+.sc-link--r{left:100%;top:50%;width:var(--space-xl);border-top:var(--stroke-diagram) solid currentColor}
+.sc-link--l{right:100%;top:50%;width:var(--space-xl);border-top:var(--stroke-diagram) solid currentColor}
+.sc-link--d{top:100%;left:50%;height:var(--space-xl);border-left:var(--stroke-diagram) solid currentColor}
+.sc-link--u{bottom:100%;left:50%;height:var(--space-xl);border-left:var(--stroke-diagram) solid currentColor}
+.sc-link__head{position:absolute;width:10px;height:10px}
+.sc-link .sc-dot{position:absolute;margin:-3.5px 0 0 -3.5px}
+.sc-link--r .sc-dot{left:0;top:0;--tx:calc(var(--space-xl) - 6px);--ty:0px}
+.sc-link--l .sc-dot{left:100%;top:0;--tx:calc(6px - var(--space-xl));--ty:0px}
+.sc-link--d .sc-dot{left:0;top:0;--tx:0px;--ty:calc(var(--space-xl) - 6px)}
+.sc-link--u .sc-dot{left:0;top:100%;--tx:0px;--ty:calc(6px - var(--space-xl))}
+.sc-swap{position:absolute;inset:var(--space-xs);display:flex;flex-direction:column;justify-content:center}
+.sc-navdot{position:absolute;left:6px;top:50%;margin-top:-3px;z-index:1}
+.sc-cc{display:block;width:34px;height:22px;padding:4px 5px;border-radius:var(--radius-sm);background:var(--surface-accent-tint)}
+.sc-cc__chip{display:block;width:9px;height:7px;background:var(--surface-card);box-shadow:inset 0 0 0 var(--stroke-diagram) var(--border)}
+/* narrow scenes (a 400 to 470px cell, 900 to 1100px wide): the side before narrows, the gaps close */
+@container (max-width:470px){
+  .scene__to{width:28px}.scene__to .sc-dot{--tx:20px}.scene__to--open .sc-dot{--tx:42px}
+  .sc-stack-narrow{flex-direction:column;align-items:stretch !important}
+  .sc-stack-narrow>*{margin-top:0 !important;flex:none !important}
+}
+
+/* the entrance: waiting (script, motion allowed, not yet in view) */
+.scene[data-enter]:not(.is-in) :is(.sc-a-in,.sc-a-fade,.sc-a-pop){opacity:0}
+.scene[data-enter]:not(.is-in) .sc-a-grow{transform:scaleX(0)}
+.scene[data-enter]:not(.is-in) :is(.sc-a-slide,.sc-a-shift){transform:none}
+.scene[data-enter]:not(.is-in) .sc-a-out{opacity:1}
+/* end state of the parts that only move during the entrance */
+.sc-a-out,.sc-a-away{opacity:0}
+.sc-a-slide{transform:translateX(var(--kx))}
+.sc-a-shift{transform:translate(var(--sx,0),var(--sy,0))}
+.sc-a-grow{transform-origin:left center}
+.scene.is-in :is(.sc-a-in,.sc-a-fade,.sc-a-pop,.sc-a-grow,.sc-a-slide,.sc-a-shift,.sc-a-out,.sc-a-away,.sc-dot,.sc-ring,.sc-spark){
+  animation-duration:var(--dur-entrance);animation-timing-function:var(--ease-out);animation-fill-mode:both;animation-delay:calc(var(--s,0) * var(--beat))}
+.scene.is-in .sc-a-in{animation-name:sc-in}
+.scene.is-in .sc-a-fade{animation-name:sc-fade}
+.scene.is-in .sc-a-pop{animation-name:sc-pop}
+.scene.is-in .sc-a-grow{animation-name:sc-grow}
+.scene.is-in .sc-a-slide{animation-name:sc-slide}
+.scene.is-in .sc-a-shift{animation-name:sc-shift}
+.scene.is-in .sc-a-out{animation-name:sc-out}
+.scene.is-in .sc-a-away{animation-name:sc-away}
+.scene.is-in .sc-dot{animation-name:sc-run;animation-timing-function:var(--ease-linear)}
+.scene.is-in .sc-ring{animation-name:sc-ring}
+.scene.is-in .sc-spark{animation-name:sc-spark}
+.scene.is-in .sc-cursor{animation:sc-cursor calc(var(--beat) * 9) var(--ease-standard) both;animation-delay:calc(var(--s,0) * var(--beat))}
+@keyframes sc-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes sc-fade{from{opacity:0}to{opacity:1}}
+@keyframes sc-pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
+@keyframes sc-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes sc-slide{from{transform:none}to{transform:translateX(var(--kx))}}
+@keyframes sc-shift{from{transform:none}to{transform:translate(var(--sx,0),var(--sy,0))}}
+@keyframes sc-out{from{opacity:1}to{opacity:0}}
+@keyframes sc-away{from{opacity:1;transform:none}70%{opacity:1}to{opacity:0;transform:translate(var(--tx,0),var(--ty,0)) scale(.4)}}
+@keyframes sc-run{0%{opacity:0;transform:none}15%{opacity:1}85%{opacity:1;transform:translate(var(--tx,0),var(--ty,0))}100%{opacity:0;transform:translate(var(--tx,0),var(--ty,0))}}
+@keyframes sc-ring{0%{opacity:0;transform:scale(.5)}20%{opacity:1}100%{opacity:0;transform:scale(1.4)}}
+@keyframes sc-spark{0%{opacity:0;transform:scale(.4)}40%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.2)}}
+@keyframes sc-cursor{
+  0%{opacity:0;transform:translate(var(--x0),var(--y0))}
+  11%{opacity:1;transform:translate(var(--x0),var(--y0))}
+  22%{transform:translate(var(--x1),var(--y1)) scale(1)}25%{transform:translate(var(--x1),var(--y1)) scale(.86)}28%{transform:translate(var(--x1),var(--y1)) scale(1)}
+  55%{transform:translate(var(--x2),var(--y2)) scale(1)}58%{transform:translate(var(--x2),var(--y2)) scale(.86)}61%{transform:translate(var(--x2),var(--y2)) scale(1)}
+  85%{opacity:1}100%{opacity:0;transform:translate(var(--x2),var(--y2))}}
+
+/* ---------- The ink band: architecture, straight, edge to edge (SHP-01) ---------- */
+.band-inverse{position:relative;isolation:isolate;background:var(--surface-inverse);color:var(--text-on-inverse);box-shadow:var(--bleed-shadow-inverse);clip-path:var(--bleed-clip);border:0;border-radius:0}
+.band-inverse::after{content:"";position:absolute;inset:0 -100vmax;z-index:-1;pointer-events:none;opacity:.16;mix-blend-mode:screen;background-image:var(--texture-grain);background-size:var(--texture-grain-size)}
+.band-inverse :is(h1,h2,h3){color:var(--text-on-inverse)}
+.band-inverse a:not(.action){color:var(--text-on-inverse)}
+
+/* ---------- Plan cards: an offer you choose between, level 2 ---------- */
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards)}
+/* two card widths (SEC-06): big (the content width) and small (half). A single offer card is small; there is no three-up. */
+.plans--1{grid-template-columns:minmax(0,calc((100% - var(--gap-cards)) / 2))}
+@media (max-width:760px){.plans{grid-template-columns:minmax(0,1fr)}}
+.plan-card{display:flex;flex-direction:column;background:var(--surface-card);border-radius:var(--radius-lg);box-shadow:var(--elevation-2);padding:var(--card-p-lg)}
+.plan-card .tag{margin:0 0 var(--space-lg)}
+.plan-card h3{margin:0 0 10px;font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead)} /* one h3 size (TYP-04) */
+.plan-card>p:not(.tag):not(.eyebrow){margin:0 0 var(--space-xl);max-width:none;font-size:var(--font-size-md);line-height:1.6;color:var(--text-body);text-wrap:pretty}
+.plan-card>.eyebrow{margin:0 0 var(--space-xs)}
+.plan-card ul{list-style:none;margin:0 0 28px;padding:0;border-top:1px solid var(--border)}
+.plan-card li{display:flex;gap:var(--space-sm);align-items:baseline;padding:var(--space-sm) 0;border-bottom:1px solid var(--border);font-size:var(--font-size-action);line-height:var(--leading-snug);color:var(--text-body)}
+.plan-card li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);transform:translateY(-2px)}
+.plan-card ul.plan-card__not li::before{background:transparent;box-shadow:inset 0 0 0 1.4px var(--accent)}
+.plan-card__foot{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:var(--space-xs) var(--space-md)}
+
+/* ---------- Accordion cards: a question you open, level 1 ---------- */
+.accordions{display:grid;gap:var(--gap-cards);max-width:calc((100% - var(--gap-cards)) / 2)} /* small: ends on the half line with the single offer card (SEC-06) */
+@media (max-width:760px){.accordions{max-width:none}}
+.accordion{background:var(--surface-card);border-radius:var(--radius-md);box-shadow:var(--elevation-1)}
+.accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);padding:clamp(18px,2.2vw,24px);
+  font-size:var(--font-size-md);font-weight:500;line-height:1.45;letter-spacing:-0.01em;color:var(--text-strong);border-radius:var(--radius-md)}
+.accordion summary::-webkit-details-marker{display:none}
+.accordion__chev{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;color:var(--accent);background:var(--surface-tag);transition:transform var(--dur-hover-slow) var(--ease-in-out-soft)}
+.accordion__chev svg{display:block;width:12px;height:12px}
+.accordion[open] .accordion__chev{transform:rotate(180deg)}
+.accordion p:not(.eyebrow){margin:0;padding:0 clamp(18px,2.2vw,24px) clamp(18px,2.2vw,24px);max-width:none;font-size:var(--font-size-action);line-height:1.65;color:var(--text-body);text-wrap:pretty}
+.accordion a{color:var(--accent)}
+
+/* ---------- Landing template (services pages) ---------- */
+.ld-wrap{max-width:var(--page-max);margin:0 auto;padding-inline:var(--page-gutter)}
+/* the landing hero sits on the one hero anatomy: top-aligned, never centred (HERO-01) */
+.ld-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:start;padding:0 0 clamp(8px,2vw,24px)}
+.ld-hero h1{margin:0 0 clamp(20px,3vw,28px);font-size:var(--font-size-3xl);font-weight:500;line-height:0.98;letter-spacing:var(--tracking-display);max-width:15ch;text-wrap:balance}
+.ld-lede{margin:0;max-width:52ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty} /* the lead (TYP-04) */
+.ld-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);margin-top:clamp(28px,4vw,40px)}
+.ld-under{margin:var(--space-md) 0 0;font-size:var(--font-size-sm);color:var(--text-muted)}
+.ld-under a{color:var(--accent)}
+@media (max-width:860px){.ld-hero{grid-template-columns:minmax(0,1fr)}}
+.ld-after{margin:clamp(24px,3vw,32px) 0 0;max-width:66ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+.ld-after a,.card a:not(.action){color:var(--accent)}
+/* two card widths (SEC-06): landing cards are small, two to a row (2 of the 4 columns each); one per row on phones.
+   the three-up, four-up and auto variants are retired (round 5). */
+.ld-layers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0}
+@media (max-width:620px){.ld-layers{grid-template-columns:minmax(0,1fr)}}
+/* text columns, not cards (About's Tools & range, footer-style): four across, two below 1080px, one below 620px */
+.ld-layers--cols{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1080px){.ld-layers--cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.ld-layers--cols{grid-template-columns:minmax(0,1fr)}}
+/* a block on the four-column grid (SEC-06): a wide part over columns 1 to 3, a narrow one in column 4; stacked below 860px */
+.ld-cols4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap-cards)}
+.ld-cols4__wide{grid-column:span 3}
+@media (max-width:860px){.ld-cols4{grid-template-columns:minmax(0,1fr)}.ld-cols4__wide{grid-column:auto}}
+.ld-layers>.card,.ld-card--half{padding:clamp(20px,2.4vw,28px)}
+.ld-layers .eyebrow,.ld-card--half .eyebrow{margin-bottom:10px}
+.ld-layers h3{margin:0 0 var(--space-xs);font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead)}
+:is(.ld-layers,.ld-card--half) p:not(.eyebrow):not(.ld-big){margin:0;font-size:var(--font-size-action);line-height:1.6;color:var(--text-body);text-wrap:pretty}
+.ld-card--half{max-width:calc((100% - var(--gap-cards)) / 2)} /* small (SEC-06) */
+@media (max-width:620px){.ld-card--half{max-width:none}}
+.ld-big{margin:0 0 var(--space-xs);font-size:clamp(26px,3vw,36px);font-weight:500;line-height:1.1;letter-spacing:-0.03em;color:var(--text-heading)}
+.ld-when{margin-top:var(--space-md) !important;padding-top:14px;border-top:1px solid var(--border);font-size:var(--font-size-sm) !important;color:var(--text-muted) !important}
+.ld-when .eyebrow{display:block;margin:0 0 6px}
+.ld-list{list-style:none;margin:0;padding:0;max-width:calc((100% - var(--gap-cards)) / 2);border-top:1px solid var(--border-strong)}
+@media (max-width:760px){.ld-list{max-width:none}}
+.ld-list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:var(--space-sm);padding:var(--space-md) 0;border-bottom:1px solid var(--border-strong);font-size:var(--font-size-md);line-height:1.6;color:var(--text-strong)}
+.ld-list li>span{font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);color:var(--accent);padding-top:3px;font-variant-numeric:tabular-nums}
+/* approved by Nayara 2026-09-27 (round 5): .ld-list--quiet, a disclaimer list ("What this does not include" on the services pages). Low emphasis, the
+   inactive look of a case's gap rows (PAT-07): a hollow muted dot, the lead in body ink at 500 on its own line, the text muted
+   (AA on the sky), dashed rules, no surface. Considered: .ld-layers--2 cards (too much weight for a disclaimer, Nayara round 5),
+   the plain .ld-list (numbered, ink text: reads as a requirement), ListRow data-pattern="gap" (case pages only, PAT-07). */
+.ld-list--quiet{border-top:1px dashed var(--border)}
+.ld-list--quiet li{display:flex;gap:var(--space-sm);align-items:baseline;border-bottom:1px dashed var(--border);color:var(--text-muted)}
+.ld-list--quiet li::before{content:"";flex:none;width:7px;height:7px;border:1px solid var(--text-subtle);border-radius:var(--radius-full);transform:translateY(-1px)}
+.ld-list--quiet li>p{margin:0}
+.ld-list--quiet li strong{display:block;margin-bottom:var(--space-3xs);font-weight:500;color:var(--text-body)}
+/* Points: the same list, a filled dot and a title per item, for parallel items with no order (kinds of engagement). */
+.ld-list--points li{display:flex;gap:var(--space-sm);align-items:baseline}
+.ld-list--points li::before{content:"";flex:none;width:7px;height:7px;background:var(--accent);border-radius:var(--radius-full);transform:translateY(-1px)}
+.ld-list--points li>p{margin:0}
+.ld-list--points li strong{display:block;margin-bottom:var(--space-3xs);font-weight:600;color:var(--text-strong)}
+.link-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-cards);list-style:none;margin:0;padding:0} /* small cards, two to a row (SEC-06) */
+@media (max-width:620px){.link-cards{grid-template-columns:minmax(0,1fr)}}
+.link-cards .link-card{height:100%;padding:clamp(20px,2.4vw,28px)}
+.link-card .eyebrow{margin:0 0 10px}
+.link-card h3{margin:0;font-size:var(--font-size-h3);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);text-wrap:balance}
+/* two equal columns with the case rows' gap, so the text column lines up with the home's case illustrations (SEC-05) */
+.ld-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-fluid-xl);align-items:center}
+@media (max-width:860px){.ld-split{grid-template-columns:minmax(0,1fr)}}
+.ld-portrait{width:100%;max-width:440px;aspect-ratio:4/5;margin:0} /* starts on the column edge, never centred in it (SEC-05) */
+.ld-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.ld-split p:not(.eyebrow){margin:0 0 var(--space-lg);max-width:60ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty}
+.ld-split .h2{margin-bottom:clamp(20px,3vw,28px)}
+.ld-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg) 28px;margin:0}
+@media (max-width:560px){.ld-facts{grid-template-columns:minmax(0,1fr)}}
+.ld-facts dt{margin:0 0 var(--space-sm);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted)}
+.ld-facts dd{margin:0;font-size:var(--font-size-sm);font-weight:500;line-height:var(--leading-small);color:var(--text-strong)}
+/* The facts well takes the same look as the case details and About's Tools (Nayara 2026-09-27). */
+.well.ld-facts{background:var(--surface-note);box-shadow:var(--elevation-inset-1);border-radius:var(--radius-md);padding:var(--space-fluid-l)}
+.ld-facts dd a{color:var(--accent);text-decoration:none}
+.ld-facts--3{grid-template-columns:repeat(3,minmax(0,1fr))} /* the kinds of engagement (embedded partner, round 5) */
+@media (max-width:760px){.ld-facts--3{grid-template-columns:minmax(0,1fr)}}
+.ld-band{margin-top:0} /* the section above gives the space (SEC-04) */
+.ld-band__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);align-items:start;padding-block:clamp(56px,8vw,104px)}
+.ld-band h2{margin:0;font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);max-width:18ch;text-wrap:balance} /* one h2 size (TYP-04) */
+.ld-band p:not(.eyebrow){margin:0 0 var(--space-xl);max-width:56ch;font-size:var(--font-size-lead);line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-on-inverse-muted);text-wrap:pretty}
+
+/* ---------- Illustrations, B (ILL-01..03) ----------
+   A mechanism with states: pending (quiet line), passing (the accent dot), done (marked in the accent).
+   Marks persist; the result resolves and holds; everything fades back together. Labels are the
+   label style at 9.5px (the result word 10.5px, 700). At most 400px wide. Per-page keyframes set the timing. */
+.ld-art{width:100%;max-width:400px;margin:0 auto 36px;overflow:hidden}
+.ld-art figure{margin:0;--fs:calc(1px * var(--vbw) / 400)}
+.ld-art__svg{display:block;width:100%;height:auto;overflow:visible}
+.ld-art__ring{fill:none;stroke:var(--text-strong);stroke-opacity:.28;stroke-width:1.2}
+.ld-art__ring--tip{fill:var(--surface-page);stroke-opacity:.45}
+.ld-art__line{fill:none;stroke:var(--text-strong);stroke-opacity:.32;stroke-width:1.2}
+.ld-art__line--rule{stroke-opacity:.22}
+.ld-art__line--on{stroke:var(--accent);stroke-opacity:1}
+.ld-art__line--drift{stroke:var(--accent);stroke-opacity:1;stroke-dasharray:3 4}
+.ld-art__flag{fill:var(--surface-page);stroke:var(--accent);stroke-width:1.4}
+.ld-art__num--quiet{fill:var(--text-subtle)}
+.ld-art__dot{fill:var(--accent)}
+.ld-art__label{fill:var(--text-body);font-size:calc(9.5 * var(--fs));font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase}
+.ld-art__label--mid{text-anchor:middle}
+.ld-art__num{fill:var(--accent);font-size:calc(9.5 * var(--fs));font-weight:600;letter-spacing:var(--tracking-eyebrow);font-variant-numeric:tabular-nums}
+.ld-art__core{fill:var(--text-strong);font-size:calc(10.5 * var(--fs));font-weight:700;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase}
+.ld-art__key{fill:var(--text-muted);font-size:calc(9.5 * var(--fs));font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase}
+@media (max-width:480px){.ld-art figure{--fs:calc(1px * var(--vbw) / 335)}.ld-art__core{font-size:calc(11.5 * var(--fs))}}
+.ld-mark{opacity:0;animation:var(--dur-scene) var(--ease-in-out-soft) infinite}
+.ld-resolve{opacity:.35;animation:var(--dur-scene) var(--ease-in-out-soft) infinite}
+.ld-runner{opacity:0;offset-rotate:0deg;offset-distance:0%;animation:var(--dur-scene) linear infinite}
+.ld-art.is-offscreen *{animation-play-state:paused !important}
+/* reduced motion shows the resolved state, still (ILL-03) */
+@media (prefers-reduced-motion:reduce){.ld-mark,.ld-resolve{opacity:1}.ld-runner{display:none}}
+/* proposal: layer parts (design-system-build "What gets built", 2026-09-27). The Points list (.ld-list--points) inside a layer card:
+   full card width, the card's body size, the card's inner rule, no rule under the last part. Considered: .plan-card ul (an offer's
+   inclusions, no title per item), ListRow (a case-page row with its own surface rules), a second row of cards (a card inside a card, DEP-03). */
+.ld-layers .ld-list{max-width:none;margin-top:var(--space-lg);border-top-color:var(--border)}
+.ld-layers .ld-list li{padding:var(--space-sm) 0;font-size:var(--font-size-action);border-bottom-color:var(--border)}
+.ld-layers .ld-list li:last-child{border-bottom:0;padding-bottom:0}
+
+/* ---------- The case hero lede on phones (round 6, TYP-04) ----------
+   A phone shows a short version of the lede (three to five lines); the full one stays for wider screens. Both are the lead. */
+.hero__lede--phone{display:none}
+@media (max-width:560px){.hero__lede--desk{display:none}.hero__lede--phone{display:block}}
+
+/* ---------- Product prototypes in figures keep their desktop shape (round 6, LAY-06) ----------
+   On phones a prototype (the composer and other product mockups, `.figure--proto`) does not reflow: its picture keeps
+   the desktop width and scrolls sideways inside the figure's frame. 720px is the narrowest width at which none of the
+   composer bars wraps (measured, 2026-09-27). Captions stay at the screen's width. */
+@media (max-width:760px){
+  .figure--proto>:not(figcaption,.figure__caption){overflow-x:auto;overflow-y:hidden;contain:inline-size;overscroll-behavior-x:contain}
+  .figure--proto>:not(figcaption,.figure__caption)>*{min-width:720px}
+}
+
+/* ---------- Flows run to the screen edge on phones (round 6, FLW-01) ----------
+   A flow's scroller (`.flow-scroll`) bleeds past the gutter to both screen edges and pads its content back onto the gutter,
+   so the first step starts where the text does and the last one scrolls in from the edge. The rules around a flow
+   (`.chain-block`'s top rule) stay at content width. */
+.chain-block:has(>.flow-scroll){overflow:visible}
+.flow-scroll{overflow-x:auto;overflow-y:hidden;contain:inline-size}
+@media (max-width:760px){
+  .flow-scroll{margin-inline:calc(-1 * var(--page-gutter));padding-inline:var(--page-gutter);scroll-padding-inline:var(--page-gutter)}
+}

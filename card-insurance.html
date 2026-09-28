@@ -20,14 +20,16 @@
 <meta name="twitter:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
+<script src="./sky.js" defer></script>
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/base.css">
+<link rel="stylesheet" href="components.css">
 <style id="boot-style">
-  html { background:var(--surface-page); color:var(--text-strong); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
+  html { background:var(--surface-page); color:var(--text-strong); font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
   html.booting x-dc { visibility: hidden; }
   #boot { display:none; }
   html.booting #boot { display:block; }
@@ -74,13 +76,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Card Insurance — Nayara Marques</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/styles.css">
+<script src="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/_ds_bundle.js"></script>
 <style>
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
-  * { box-sizing: border-box; }
   @media (max-width: 860px) {
     [data-rail] {
       flex: 1 1 100% !important;
@@ -92,6 +90,40 @@
       border-bottom: 1px solid var(--border);
     }
   }
+  /* 6.1 Flow placement. Flows read horizontally, left to right, on one shared six-column grid (FLW-01), so the moment of
+     card conversion lines up: step 6 in the considered flow, step 2 in the chosen one. The considered flow is labelled with its
+     reason, never struck through; the decided one is labelled Chosen (FLW-02). Narrow screens scroll inside the frame. */
+  .figure > .fh-scroll { overflow-x: auto; overflow-y: hidden; contain: inline-size; border-radius: var(--radius-sm); display: grid; gap: var(--space-xs); padding: 4px; }
+  /* Phones (round 6, FLW-01): the flows run to the screen edge; the figure gives up its white card so nothing cuts them
+     short of the edge, and the first flow still starts on the gutter. */
+  @media (max-width: 760px) {
+    .figure.fh { background: none; box-shadow: none; border-radius: 0; padding: 0; }
+    .figure > .fh-scroll { margin-inline: calc(-1 * var(--page-gutter)); padding: 4px var(--page-gutter); border-radius: 0; }
+  }
+  .fh-flow { min-width: 900px; border-radius: var(--radius-md); padding: 18px var(--space-lg) var(--space-md); }
+  .fh-flow--considered { background: transparent; }
+  .fh-flow--chosen { background: var(--surface-page); box-shadow: var(--elevation-inset-1); }
+  .fh-label { display: flex; align-items: baseline; gap: var(--space-sm); margin-bottom: 14px; }
+  .fh-name { font-size: var(--font-size-action); font-weight: 500; color: var(--text-strong); }
+  .fh-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px; }
+  .fh-step { position: relative; display: flex; flex-direction: column; gap: 6px; min-height: 72px; padding: var(--space-sm); border-radius: var(--radius-sm); background: var(--surface-card); font-size: var(--font-size-sm); line-height: 1.35; color: var(--text-body); box-shadow: var(--elevation-1); }
+  .fh-flow--considered .fh-step { box-shadow: 0 0 0 1px var(--border); }
+  .fh-step + .fh-step::before { content: "→"; position: absolute; left: -17px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--text-muted); }
+  .fh-n { font-size: var(--font-size-diagram); font-weight: 600; letter-spacing: var(--tracking-eyebrow); color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .fh-kicker { display: block; margin-bottom: 2px; font-size: var(--font-size-diagram); font-weight: 600; letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--accent); }
+  .fh-flow--considered .fh-risk { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--status-cost) 55%, transparent); }
+  .fh-flag { color: var(--status-cost); }
+  .fh-conv { background: var(--accent); color: var(--surface-card); font-weight: 500; }
+  .fh-conv .fh-n { color: color-mix(in srgb, var(--surface-card) 80%, transparent); }
+  /* conversion arriving late is the pale accent; ink text keeps it AA */
+  .fh-flow--considered .fh-conv--late { background: color-mix(in srgb, var(--accent) 45%, var(--surface-card)); color: var(--text-strong); box-shadow: none; }
+  .fh-conv--late .fh-n { color: var(--text-strong); }
+  .fh-after { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent), var(--elevation-1); }
+  .fh-pending { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent), var(--elevation-1); }
+  .fh-area { background: color-mix(in srgb, var(--accent) 7%, var(--surface-card)); }
+  .fh-note { margin: 14px 2px 0; font-size: var(--font-size-sm); line-height: var(--leading-snug); color: var(--text-muted); max-width: 70ch; }
+  .fp-risks-lead { margin: 28px 0 var(--space-xs); font-size: var(--font-size-md); line-height: var(--leading-body); color: var(--text-body); }
+  .fp-risks { margin: 0; padding-left: var(--space-lg); display: grid; gap: 6px; font-size: var(--font-size-md); line-height: var(--leading-snug); color: var(--text-body); }
 </style>
 <script src="./image-slot.js"></script>
 <script src="./case-index.js"></script>
@@ -104,311 +136,250 @@
 
   <main style="max-width:1400px;margin:0 auto;padding:0 var(--space-2xl)">
 
-    <section style="min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:var(--section-y-lg) 0">
-      <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-lg)"><span>BTG Pactual</span> · São Paulo · 2020</div>
+    <section class="hero" style="padding-bottom:var(--space-fluid-m)">
+      <div class="hero__eyebrow" style="color:var(--accent)"><span><span>BTG Pactual</span> · São Paulo · 2020</span></div>
       <h1 style="font-weight:500;font-size:var(--font-size-3xl);line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-l);max-width:22ch;text-wrap:balance">Modular card insurance in a banking app</h1>
       <div style="height:1px;background:var(--border);margin-bottom:var(--space-fluid-l)"></div>
-      <p style="margin:0;max-width:58ch;font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Card insurance came as a fixed bundle at one price. I designed modular cover and assistance inside the bank's app; my usability test then moved the whole flow out of card signup to protect conversion.</p>
+      <p class="hero__lede hero__lede--desk" style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Customers of BTG+, the bank's app, could only buy card insurance as a fixed bundle at one price. I designed a modular version: the customer chooses a level of cover for card theft and misuse, and adds an assistance, a service such as pet care or home repairs. My usability test then showed that selling it during the card request put card sign-ups at risk, so the whole flow moved to the card's settings.</p>
+      <p class="hero__lede hero__lede--phone" data-lead style="margin:0;max-width:58ch;font-size:var(--font-size-lead);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty">Card insurance in BTG+ was a fixed bundle at one price. I designed a modular version, and my usability test moved it out of the card request into the card's settings, to protect card sign-ups.</p>
     </section>
 
-    <section style="background:var(--surface-band);box-shadow:0 0 0 100vmax var(--surface-band);clip-path:inset(0 -100vmax);position:relative;padding:var(--space-fluid-xl) 0" style-before="content:'';position:absolute;top:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)" style-after="content:'';position:absolute;bottom:0;left:-100vmax;right:-100vmax;height:1px;background:var(--border)">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-fluid-l)">
-        <div>
-          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Role</div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7)">Senior Product Designer, sole designer.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Team</div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7)">PM, tech lead, developers, and Too Seguros as insurer.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Context</div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7)">BTG+, the bank's digital product. October 2020.</p>
-        </div>
-        <div>
-          <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Contribution</div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">survey · benchmark · user flows · prototyping · usability testing · flow strategy</p>
-        </div>
-      </div>
+    <section class="glass case-details">
+      <dl class="case-details__list">
+        <div><dt>Role</dt><dd>Senior Product Designer.</dd></div>
+        <div><dt>Team</dt><dd>PM, tech lead, developers, and Too Seguros as insurer.</dd></div>
+        <div><dt>Context</dt><dd>BTG+, the bank's digital product. October 2020.</dd></div>
+        <div><dt>Contribution</dt><dd>survey · benchmark · user flows · prototyping · usability testing · flow strategy</dd></div>
+      </dl>
     </section>
 
     <section style="display:grid">
 
       
 
-      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)">
-        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">01 — Context &amp; my role</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">01 — Context &amp; my role</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:66ch">
-          <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);font-weight:400;line-height:var(--leading-body);letter-spacing:normal;color:var(--text-body);text-wrap:pretty">BTG Pactual, one of Latin America's largest investment banks, was expanding into retail banking. Card insurance was one of the new products.</p>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I designed it end to end: survey, benchmark, flows, prototype, and the usability test that changed where it lived.</p>
-        <!-- proposal: note banner. A soft blue callout for context that sits beside the story (employer notes, caveats); reusable on any page. Considered InfoCard (white card for a single fact, no link row) and DecisionCard (gained/traded structure); neither fits a short aside. --><div style="margin-top:var(--space-2xl);padding:var(--space-lg) var(--space-xl);background:var(--surface-note);border-radius:var(--radius-sm)"><p style="margin:0 0 var(--space-sm);font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--accent)">Note · BTG Pactual</p>
+          <p data-sec-intro>BTG Pactual, one of Latin America's largest investment banks, was expanding into retail banking. Card insurance was one of the new products.</p>
+          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I designed it end to end: I ran the customer survey and a benchmark of other insurers, designed the flows and the prototype, and ran the usability test that moved insurance out of the card request.</p>
+        <!-- proposal: note banner. A soft blue callout for context that sits beside the story (employer notes, caveats); reusable on any page. Considered InfoCard (white card for a single fact, no link row) and DecisionCard (gained/traded structure); neither fits a short aside. --><div class="note" style="margin-top:var(--space-2xl);padding:var(--space-lg) var(--space-xl)"><p style="margin:0 0 var(--space-sm);font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--accent)">Note · BTG Pactual</p>
           <p style="margin:0 0 var(--space-md);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Two and a half years at BTG Pactual: I joined as a consultant on BTG+ and left as Product Design Lead on the advisors platform.</p>
           <p style="margin:0;max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty">Also the context for <a href="advisors-platform.html" style="color:var(--text-strong);text-decoration:none;border-bottom:1px solid var(--border)" style-hover="color:var(--accent)">An advisors platform for four business verticals</a>.</p>
         </div></div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
-        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">02 — The problem</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">02 — The problem</h2>
         <div style="flex:1 1 460px;min-width:0;max-width:62ch">
-          <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);font-weight:400;line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty">Almost everyone already had card insurance. Almost nobody was happy with it.</p>
+          <p data-sec-intro>Almost every customer surveyed already had card insurance, and most were unhappy with part of it. The survey also showed that they wanted to choose the parts themselves.</p>
           <p style="margin:0 0 var(--space-xl);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">A survey of 30 BTG Pactual customers:</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);overflow:hidden;margin-bottom:var(--space-xl)">
-            <div style="background:var(--surface-card);padding:var(--space-xl) var(--space-lg)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">90%</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">already have card insurance on at least one card</p></div>
-            <div style="background:var(--surface-card);padding:var(--space-xl) var(--space-lg)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">65%</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">are unhappy with at least one assistance in their package</p></div>
-            <div style="background:var(--surface-card);padding:var(--space-xl) var(--space-lg)"><div style="font-size:var(--font-size-2xl);line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin-bottom:var(--space-sm)">80%</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">would like to modularise their package</p></div>
+          <div style="margin-bottom:var(--space-xl)">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="finding" title="90%" measure="70ch" hint-size="100%,80px">already have card insurance on at least one card</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="finding" title="65%" measure="70ch" hint-size="100%,80px">are unhappy with at least one assistance (a service such as home repairs) in their package</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="finding" title="80%" last="{{ true }}" measure="70ch" hint-size="100%,80px">would like to modularise their package</x-import>
           </div>
-          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The category sells fixed bundles with no visible cost per part. The goal: modules customers pick, each showing its limit and price effect, plus a claim they can follow in the app.</p>
+          <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Card insurance is usually sold as a fixed bundle, with no visible cost for each part. We wanted customers to build their package from modules: a level of cover plus assistances. Each module would show its limit and how it changes the price, and customers would follow a claim in the app.</p>
 
-          <figure style="margin:var(--space-fluid-xl) 0 0">
-            <div style="border:1px solid var(--border);background:var(--surface-card)"><div style="padding:var(--space-xl) var(--space-xl) var(--space-xl);background:var(--surface-page)">
-              <div style="display:flex;justify-content:space-between;gap:var(--space-sm);font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-xl);padding-bottom:var(--space-sm);border-bottom:1px solid var(--border-emphatic)"><span>What the category sells · what the customer asked for</span><span>80% want to modularise</span></div>
+          <figure class="figure" style="margin:var(--space-fluid-xl) 0 0">
+            <div style="background:var(--surface-card)"><div style="padding:var(--space-xl) var(--space-xl) var(--space-xl);background:var(--surface-page)">
               <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--space-lg)">
-                <div style="background:var(--surface-card);border:1px solid var(--border);padding:var(--space-md)">
-                  <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">Fixed bundle</div>
+                <div class="step" style="padding:var(--space-md)">
+                  <div style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">Fixed bundle</div>
                   <div style="border:1px solid var(--border);padding:var(--space-sm);margin-bottom:var(--space-sm)">
                     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-sm);margin-bottom:var(--space-sm)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">One package</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">One price</span></div>
                     <div style="display:flex;flex-direction:column;gap:var(--space-xs)">
-                      <div style="display:flex;justify-content:space-between;gap:var(--space-sm)"><span style="width:56%;height:6px;background:var(--surface-band)"></span><span style="width:20px;height:6px;background:var(--surface-band)"></span></div>
-                      <div style="display:flex;justify-content:space-between;gap:var(--space-sm)"><span style="width:68%;height:6px;background:var(--surface-band)"></span><span style="width:20px;height:6px;background:var(--surface-band)"></span></div>
-                      <div style="display:flex;justify-content:space-between;gap:var(--space-sm)"><span style="width:44%;height:6px;background:var(--surface-band)"></span><span style="width:20px;height:6px;background:var(--surface-band)"></span></div>
-                      <div style="display:flex;justify-content:space-between;gap:var(--space-sm)"><span style="width:60%;height:6px;background:var(--surface-band)"></span><span style="width:20px;height:6px;background:var(--surface-band)"></span></div>
+                      <div style="display:flex;justify-content:space-between;gap:var(--space-sm)"><span style="width:56%;height:6px;background:var(--surface-hover)"></span><span style="width:20px;height:6px;background:var(--surface-hover)"></span></div>
+                      <div style="display:flex;justify-content:space-between;gap:var(--space-sm)"><span style="width:68%;height:6px;background:var(--surface-hover)"></span><span style="width:20px;height:6px;background:var(--surface-hover)"></span></div>
+                      <div style="display:flex;justify-content:space-between;gap:var(--space-sm)"><span style="width:44%;height:6px;background:var(--surface-hover)"></span><span style="width:20px;height:6px;background:var(--surface-hover)"></span></div>
+                      <div style="display:flex;justify-content:space-between;gap:var(--space-sm)"><span style="width:60%;height:6px;background:var(--surface-hover)"></span><span style="width:20px;height:6px;background:var(--surface-hover)"></span></div>
                     </div>
                   </div>
-                  <p style="margin:0;font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-muted)">Limits sit in the clauses. No part has a visible cost, so nothing can be compared or dropped.</p>
+                  <p style="margin:0;font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-muted)">In a fixed bundle, the limits of each part are buried in the policy's clauses, so customers can't compare the parts or drop the ones they don't want.</p>
                 </div>
-                <div style="background:var(--surface-card);border:1px solid var(--border-emphatic);padding:var(--space-md)">
-                  <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)">Modules, priced at the point of choice</div>
+                <div class="step step--emph" style="padding:var(--space-md)">
+                  <div style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)">Modules, priced at the point of choice</div>
                   <div style="display:flex;flex-direction:column;gap:var(--space-xs);margin-bottom:var(--space-sm)">
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);border:1px solid var(--border-emphatic);padding:var(--space-xs) var(--space-sm)"><span style="font-size:var(--font-size-xs);color:var(--text-strong)">Module · limit stated</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">+ R$</span></div>
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);border:1px solid var(--border);padding:var(--space-xs) var(--space-sm)"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Module · limit stated</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-body)">+ R$</span></div>
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);border:1px solid var(--border);padding:var(--space-xs) var(--space-sm)"><span style="font-size:var(--font-size-xs);color:var(--text-body)">Module · limit stated</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-body)">+ R$</span></div>
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);opacity:.5"><span style="font-size:var(--font-size-xs);color:var(--text-body);text-decoration:line-through">Not taken</span><span style="font-size:var(--font-size-xs);color:var(--text-muted)">—</span></div>
                   </div>
-                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border)"><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Premium</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--accent)">Moves as you choose</span></div>
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border)"><span style="font-size:var(--font-size-diagram);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Premium</span><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--accent)">Moves as you choose</span></div>
                 </div>
               </div>
             </div></div>
-            <figcaption data-caption style="margin:0;border:1px solid var(--border);border-top:0;background:var(--surface-band);padding:var(--space-md) var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Fixed bundle against modules.</strong> Customers could neither see what each assistance cost nor remove it. Modules make both possible.</figcaption>
+            <figcaption class="figure__caption" data-caption><strong>Fixed bundle against modules.</strong> A fixed bundle sells every part at one price. Modules let the customer see what each part covers and costs, and choose the ones they want.</figcaption>
           </figure>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
-        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">03 — Constraints</h2>
-        <div style="flex:1 1 460px;min-width:0;max-width:62ch">
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">A</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">A third-party insurer.</strong> Coverage, pricing and claim rules belonged to Too Seguros. Some claims had to finish outside the app.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">03 — Constraints</h2>
+        <div style="flex:1 1 460px;min-width:0;max-width:62ch"><p data-sec-intro>Part of the product belonged to someone else: the insurer set its rules. These are the limits every screen was designed within.</p>
+          <div class="cards">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint A" title="A third-party insurer" hint-size="100%,200px">Coverage, pricing and claim rules belonged to Too Seguros. Some claims had to finish outside the app.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint B" title="Regulated language" hint-size="100%,200px">Insurance terms are regulated and can't be reworded. So the product had to become clear through layout, by showing each limit next to the price where the customer decides.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint C" title="Free and paid products in one checkout" hint-size="100%,200px">Each plan (a level of cover) included one free assistance, so a single checkout had to mix a free product with paid ones.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="constraint" eyebrow="Constraint D" title="Card conversion is sacred" hint-size="100%,200px">Card conversion, the share of customers who finish requesting a card, was the retail business's key metric, and anything added to the card request put it at risk.</x-import>
           </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">B</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Regulated language.</strong> Terms can't be paraphrased. Transparency had to come from structure, not rewriting.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">C</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Free and paid products in one checkout.</strong> One assistance came free with the plan, which made checkout awkward.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">D</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Card conversion is sacred.</strong> Anything added to card request risked the retail business's key metric.</p>
-          </div>
-        </div>
+</div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
-        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">04 — Process &amp; key decisions</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;min-width:0;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">04 — Process &amp; key decisions</h2>
         <div style="flex:1 1 460px;min-width:0">
-          <p style="margin:0 0 var(--space-2xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Four stages: principles, benchmark, flows, and the decisions testing produced.</p>
-          <h3 style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg);margin-bottom:var(--space-md);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);color:var(--text-strong);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">4.1</span>Design principles</h3>
-          <p style="margin:0 0 var(--space-lg);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Agreed in a workshop with the PM, tech lead and developers. They settled most later arguments.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);overflow:hidden;margin-bottom:var(--section-y)">
-            <div style="background:var(--surface-card);padding:var(--space-lg) var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">Simplicity</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A fluid process, not an endless shelf of products.</p></div>
-            <div style="background:var(--surface-card);padding:var(--space-lg) var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">Personalisation</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Coverage matched to the customer's life, at a premium they'll pay.</p></div>
-            <div style="background:var(--surface-card);padding:var(--space-lg) var(--space-lg)"><div style="font-size:var(--font-size-md);font-weight:600;line-height:var(--leading-label);color:var(--text-strong);margin-bottom:var(--space-xs)">Transparency</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">No hidden clauses. Conditions explained where the decision is made.</p></div>
+          <p data-sec-intro>The work had four stages: design principles, a benchmark of other insurers, the user flows, and the decisions that came out of testing.</p>
+          <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">Design principles</h3>
+          <p style="margin:0 0 var(--space-lg);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Agreed in a workshop with the PM, tech lead and developers. Later disagreements were settled by checking them against these three principles.</p>
+          <div class="cards" style="margin-bottom:var(--section-y)">
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="principle" title="Simplicity" hint-size="100%,160px">Buying insurance takes a few clear steps, and the customer is never shown a long list of products.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="principle" title="Personalisation" hint-size="100%,160px">The customer gets coverage that fits their life, at a monthly price they are willing to pay.</x-import>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="principle" title="Transparency" hint-size="100%,160px">Nothing is hidden in the clauses: each condition is explained on the screen where the customer makes the related choice.</x-import>
           </div>
 
           <div style="margin-bottom:var(--section-y)">
-            <h3 style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg);margin-bottom:var(--space-md);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);color:var(--text-strong);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">4.2</span>Benchmark</h3>
-            <p style="margin:0 0 var(--space-lg);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Seven insurers reviewed for contracting, customisation and claims. Three shaped our structure.</p>
-            <div style="min-width:0;position:relative;border-top:1px solid var(--border);padding-top:var(--space-md)">
-              <div style="position:absolute;top:14px;right:0;display:flex;gap:var(--space-xs);z-index:2">
-                  <button type="button" aria-label="Previous reference" onClick="{{ benchPrev }}" style="width:26px;height:26px;border:1px solid var(--border);background:var(--surface-card);color:var(--text-strong);font-size:var(--font-size-xs);line-height:var(--leading-none);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0" style-hover="border-color:var(--border-emphatic);color:var(--accent)">←</button>
-                  <button type="button" aria-label="Next reference" onClick="{{ benchNext }}" style="width:26px;height:26px;border:1px solid var(--border);background:var(--surface-card);color:var(--text-strong);font-size:var(--font-size-xs);line-height:var(--leading-none);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0" style-hover="border-color:var(--border-emphatic);color:var(--accent)">→</button>
-                </div>
-                <div data-bench-track="1" onScroll="{{ benchScroll }}" style="display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none">
-                <div style="flex:0 0 100%;min-width:0;scroll-snap-align:start">
-                  <p style="margin:0 0 var(--space-md);padding-right:var(--space-5xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)"><span style="color:var(--text-muted);margin-right:var(--space-sm)">1 / 7</span><strong style="color:var(--text-strong);font-weight:600">Hedvig</strong>: inviting a friend visibly lowers the monthly price</p>
-                  <div style="background:#cccccc;border:1px solid #c4c4c4;height:clamp(280px,32vw,420px);overflow:hidden"><image-slot id="card-bench-6" src="assets/c8-0.png" shape="rect" fit="contain" style="max-width:100%;display:block;width:100%;height:100%"></image-slot></div>
-                </div>
-                <div style="flex:0 0 100%;min-width:0;scroll-snap-align:start">
-                  <p style="margin:0 0 var(--space-md);padding-right:var(--space-5xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)"><span style="color:var(--text-muted);margin-right:var(--space-sm)">2 / 7</span><strong style="color:var(--text-strong);font-weight:600">Wrisk</strong>: a custom policy built from plain-language questions, one at a time</p>
-                  <div style="background:#cccccc;border:1px solid #c4c4c4;height:clamp(280px,32vw,420px);overflow:hidden"><image-slot id="card-bench-0" src="assets/c8-1.png" shape="rect" fit="contain" style="max-width:100%;display:block;width:100%;height:100%"></image-slot></div>
-                </div>
-                <div style="flex:0 0 100%;min-width:0;scroll-snap-align:start">
-                  <p style="margin:0 0 var(--space-md);padding-right:var(--space-5xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)"><span style="color:var(--text-muted);margin-right:var(--space-sm)">3 / 7</span><strong style="color:var(--text-strong);font-weight:600">Pulse</strong>: a base module with paid extensions, shared with the household</p>
-                  <div style="background:#cccccc;border:1px solid #c4c4c4;height:clamp(280px,32vw,420px);overflow:hidden"><image-slot id="card-bench-7" src="assets/c8-2.png" shape="rect" fit="contain" style="max-width:100%;display:block;width:100%;height:100%"></image-slot></div>
-                </div>
-                <div style="flex:0 0 100%;min-width:0;scroll-snap-align:start">
-                  <p style="margin:0 0 var(--space-md);padding-right:var(--space-5xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)"><span style="color:var(--text-muted);margin-right:var(--space-sm)">4 / 7</span><strong style="color:var(--text-strong);font-weight:600">Lemonade</strong>: contracting written in plain, friendly language</p>
-                  <div style="background:#cccccc;border:1px solid #c4c4c4;height:clamp(280px,32vw,420px);overflow:hidden"><image-slot id="card-bench-2" src="assets/c8-3.png" shape="rect" fit="contain" style="max-width:100%;display:block;width:100%;height:100%"></image-slot></div>
-                </div>
-                <div style="flex:0 0 100%;min-width:0;scroll-snap-align:start">
-                  <p style="margin:0 0 var(--space-md);padding-right:var(--space-5xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)"><span style="color:var(--text-muted);margin-right:var(--space-sm)">5 / 7</span><strong style="color:var(--text-strong);font-weight:600">DeadHappy</strong>: underwriting as a short conversation, ending in a stated payout and price</p>
-                  <div style="background:#cccccc;border:1px solid #c4c4c4;height:clamp(280px,32vw,420px);overflow:hidden"><image-slot id="card-bench-8" src="assets/c8-4.png" shape="rect" fit="contain" style="max-width:100%;display:block;width:100%;height:100%"></image-slot></div>
-                </div>
-                <div style="flex:0 0 100%;min-width:0;scroll-snap-align:start">
-                  <p style="margin:0 0 var(--space-md);padding-right:var(--space-5xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)"><span style="color:var(--text-muted);margin-right:var(--space-sm)">6 / 7</span><strong style="color:var(--text-strong);font-weight:600">Cuvva</strong>: sliders raise coverage item by item, with the price updating instantly</p>
-                  <div style="background:#cccccc;border:1px solid #c4c4c4;height:clamp(280px,32vw,420px);overflow:hidden"><image-slot id="card-bench-1" src="assets/c8-5.png" shape="rect" fit="contain" style="max-width:100%;display:block;width:100%;height:100%"></image-slot></div>
-                </div>
-                <div style="flex:0 0 100%;min-width:0;scroll-snap-align:start">
-                  <p style="margin:0 0 var(--space-md);padding-right:var(--space-5xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)"><span style="color:var(--text-muted);margin-right:var(--space-sm)">7 / 7</span><strong style="color:var(--text-strong);font-weight:600">Santander</strong>: coverage chosen before purchase, with the instalment updating live</p>
-                  <div style="background:#cccccc;border:1px solid #c4c4c4;height:clamp(280px,32vw,420px);overflow:hidden"><image-slot id="card-bench-9" src="assets/c8-6.png" shape="rect" fit="contain" style="max-width:100%;display:block;width:100%;height:100%"></image-slot></div>
-                </div>
-              </div>
+            <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">Benchmark</h3>
+            <p style="margin:0 0 var(--space-lg);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">I reviewed seven insurers for how customers buy, customise and claim. Three of them shaped the plan-and-assistance structure described below.</p>
+            <!-- The benchmark as rows (Nayara, 2026-09-25: no carousel). Round 5: each row has a small picture of the insurer's app on the
+                 left (cropped from the retired benchmark screenshots, assets/c8-0 to c8-6, one screen each), a sentence on what it does
+                 that mattered here, and "Shaped the structure" as a tag on its own line for the three behind Decision 01.
+                 .ref-row (approved by Nayara 2026-09-27), a reference row with a picture and a tag. Considered: ListRow (its marker is text only, so there is
+                 no slot for a picture, and a tag could only sit inline in the text), DecisionCard (a card is heavier than a reference),
+                 .figure (evidence at level 2, one per row: too big for seven references). -->
+            <div class="ref-rows">
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-hedvig.png" alt="Hedvig's app" width="56" height="84" loading="lazy">
+              <p><strong>Hedvig</strong> <span>Hedvig lowers the monthly price when a customer invites a friend, and the new price shows at once.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-wrisk.png" alt="Wrisk's app" width="56" height="84" loading="lazy">
+              <p><strong>Wrisk</strong> <span>Wrisk builds each policy from plain-language questions asked one at a time, so the cover fits the customer without a long form.</span></p>
+              <span class="tag ref-row__tag">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-pulse.png" alt="Pulse's app" width="56" height="84" loading="lazy">
+              <p><strong>Pulse</strong> <span>Pulse sells a base module with paid extensions, and the customer can share the cover with their household.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-lemonade.png" alt="Lemonade's app" width="56" height="84" loading="lazy">
+              <p><strong>Lemonade</strong> <span>Lemonade writes its contract in plain, friendly language, so the customer can read what they are buying.</span></p>
+              <span class="tag ref-row__tag">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-deadhappy.png" alt="DeadHappy's app" width="56" height="84" loading="lazy">
+              <p><strong>DeadHappy</strong> <span>DeadHappy underwrites through a short conversation that ends with the payout and the price stated plainly.</span></p>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-cuvva.png" alt="Cuvva's app" width="56" height="84" loading="lazy">
+              <p><strong>Cuvva</strong> <span>Cuvva lets the customer raise cover item by item with sliders, and the price updates as they move.</span></p>
+              <span class="tag ref-row__tag">Shaped the structure</span>
+            </div>
+            <div class="ref-row" data-pattern="reference">
+              <img class="ref-row__pic" src="assets/bench-santander.png" alt="Santander's app" width="56" height="84" loading="lazy">
+              <p><strong>Santander</strong> <span>Santander has the customer choose their cover before buying, and the instalment updates as they choose.</span></p>
+            </div>
             </div>
           </div>
           <div style="margin-bottom:var(--section-y)">
-            <h3 style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg);margin-bottom:var(--space-md);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);color:var(--text-strong);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">4.3</span>User flows</h3>
-            <p style="margin:0 0 var(--space-2xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Contracting, claim and cancellation, mapped before any screen.</p>
+            <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">User flows</h3>
+            <p style="margin:0 0 var(--space-2xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The three flows: buying the insurance, making a claim and cancelling.</p>
             
-            <div style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Contracting</div>
-              <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);align-items:center"><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border-emphatic);background:var(--surface-inverse);color:var(--text-on-inverse);font-size:var(--font-size-sm);line-height:var(--leading-small);white-space:nowrap">The card is active?</span></div>
+            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)"><div class="flow-scroll">
+              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Contracting</div>
+              <div class="chain"><span class="chip">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip chip--emph">The card is active?</span></div>
               <div style="display:grid;gap:var(--space-md);margin-top:var(--space-md);margin-left:var(--space-sm);padding-left:var(--space-xl);border-left:2px solid var(--border)">
-                <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);align-items:center"><span style="flex:0 0 34px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--accent)">Yes</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);font-weight:600;border-color:var(--border-emphatic);white-space:nowrap">Insurance Page</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Select the package</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Select the assistance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Success</span></div>
-                <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);align-items:center"><span style="flex:0 0 34px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--accent)">No</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);font-weight:600;border-color:var(--border-emphatic);white-space:nowrap">Request a credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Activate the card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Insurance offer</span><span style="font-size:var(--font-size-sm);color:var(--text-muted);margin-left:var(--space-2xs)">rejoins “Select the package”</span></div>
+                <div class="chain"><span style="flex:0 0 34px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--accent)">Yes</span><span class="chip">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip" style="font-weight:600">Insurance Page</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Select the package</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Select the assistance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Success</span></div>
+                <div class="chain"><span style="flex:0 0 34px;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--accent)">No</span><span class="chip" style="font-weight:600">Request a credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Activate the card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Insurance offer</span><span style="font-size:var(--font-size-sm);color:var(--text-muted);margin-left:var(--space-2xs)">rejoins “Select the package”</span></div>
+              </div>
               </div>
             </div>
-            <div style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Claim</div>
-              <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);align-items:center"><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Insurance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Claim</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Contact info · insured info and document needed</span></div>
-              <p style="margin:var(--space-sm) 0 0;max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The customer finishes the claim by calling Too Seguros.</p>
+            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)"><div class="flow-scroll">
+              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Claim</div>
+              <div class="chain"><span class="chip">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Insurance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Claim</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Contact info · insured info and document needed</span></div>
+              <p style="margin:var(--space-sm) 0 0;max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The customer finishes the claim by phone with Too Seguros, the insurer, so the flow shows clearly the point where the app hands over.</p>
+              </div>
             </div>
-            <div style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Cancel</div>
-              <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);align-items:center"><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Insurance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Cancel</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Reason</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span style="padding:var(--space-sm) var(--space-md);border:1px solid var(--border);background:var(--surface-page);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);white-space:nowrap">Success</span></div>
+            <div class="chain-block" style="padding:var(--space-2xl) 0 var(--space-2xl);border-top:1px solid var(--border)"><div class="flow-scroll">
+              <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Cancel</div>
+              <div class="chain"><span class="chip">Home</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Credit card menu</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Insurance</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Cancel</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Reason</span><span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span><span class="chip">Success</span></div>
+              </div>
             </div>
             <div style="border-top:1px solid var(--border)"></div>
           </div>
-          <h3 style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg);margin-bottom:var(--space-xl);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);color:var(--text-strong);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">4.4</span>Key decisions</h3>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-xl);align-items:stretch">
+          <h3 class="subsection" style="border-top:1px solid var(--border-strong);padding-top:var(--space-lg)">Key decisions</h3>
+          <div class="cards">
 
-            <div style="border:1px solid var(--border);background:var(--surface-card);padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 01</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Three plans, then one free assistance to choose</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Not an open configurator: the customer picks one of three plans, then one assistance module. Personalisation where it matters, three options where it doesn't. Shaped by Cuvva, Wrisk and Lemonade.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The modularity customers asked for, without pricing every part themselves.</p></div>
-                <div><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">True à-la-carte pricing. The 80% get structured choice, not a blank slate.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 01" title="Three plans, then one free assistance to choose" gained="The modular package customers asked for, without having to compare a price for every part." traded="Pricing each part separately, which the original goal had included. The 80% who wanted a modular package get a structured choice instead of building one from nothing." hint-size="100%,300px">The customer picks one of three plans, then chooses one assistance module, which is free. They don't build a package from scratch. They tailor the part that depends on their life, the assistance, and the level of cover is kept to three clear options. The structure drew on Cuvva (the price updates as coverage changes), Wrisk (a policy built one question at a time) and Lemonade (plain language).</x-import>
 
-            <div style="border:1px solid var(--border);background:var(--surface-card);padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 02</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Design all three flows, not just the sale</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Easy cancellation is part of transparency, and the claim is where the product earns or loses trust.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A product that holds up after purchase, with a clear line where the insurer takes over.</p></div>
-                <div><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Scope. Claims and cancellation took time the business wanted spent on conversion.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 02" title="Design all three flows, not just the sale" gained="The product keeps working for the customer after the purchase, and the app shows clearly the point where the insurer takes over." traded="Design time. Claims and cancellation took time the business wanted spent on conversion." hint-size="100%,300px">Being able to cancel easily is part of being transparent. And the claim is when customers find out whether the insurance works for them, so it had to be designed as carefully as the sale.</x-import>
 
-            <div style="border:1px solid var(--border);background:var(--surface-card);padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Decision 03</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Take the insurance out of card signup, because the test said so</h3>
-              <p style="margin:0 0 var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">I tested both entry points with 10 active customers. The card request risked conversion, mixed free and paid products in one checkout, and was already crowded.</p>
-              <div style="border-top:1px solid var(--border);padding-top:var(--space-md);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-lg)">
-                <div><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-gain);margin-bottom:var(--space-xs)">Gained</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Insurance became a pending task after card success, with a permanent home in card settings.</p></div>
-                <div><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-xs)">Traded away</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">The highest-intent moment in the funnel, traded to protect card conversion.</p></div>
-              </div>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="decision" eyebrow="Decision 03" title="Take the insurance out of card signup, because the test said so" gained="Once the card is approved, insurance appears to the customer as a pending task, and it has a permanent place in card settings." traded="We gave up offering insurance at the moment customers are most ready to buy, during the card request, to protect card conversion." hint-size="100%,300px">I tested both entry points, inside the card request and in card settings, with 10 active customers. Inside the card request, insurance made an already crowded signup longer and mixed free and paid products in one checkout, which put card conversion at risk.</x-import>
 
           </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
-        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">05 — The solution</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">05 — The solution</h2>
         <div style="flex:1 1 460px;min-width:0;min-width:0">
-          <p style="margin:0 0 var(--space-2xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">An insurance page in card settings: three plans with limits side by side, assistance modules with detail sheets, a confirmation that restates plan, price and dates before the terms.</p>
+          <p data-sec-intro>The customer finds card insurance in their card settings. There they compare three plans with their limits side by side, open each assistance module to read its details. Before accepting the terms, they see a confirmation that restates the plan, the price and the dates.</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(224px,1fr));gap:var(--space-fluid-m);align-items:start">
-            <div style="min-width:0;display:flex;flex-direction:column">
-              <div style="aspect-ratio:375/812;position:relative;border:1px solid var(--border);background:var(--surface-card);overflow:hidden"><image-slot id="card-home" src="assets/card-home.png" shape="rect" fit="contain" style="max-width:100%;width:100%;height:100%"></image-slot></div>
-              <div data-caption style="border:1px solid var(--border);border-top:0;background:var(--surface-band);padding:var(--space-md) var(--space-lg);flex:1"><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Card home.</strong> Insurance is reached from settings, not the request flow.</p><p style="margin:var(--space-xs) 0 0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Why:</strong> The signup journey was already overloaded, and insurance there put conversion at risk.</p></div>
+            <div class="figure figure--col" style="min-width:0;display:flex;flex-direction:column">
+              <div style="aspect-ratio:375/812;position:relative;overflow:hidden"><image-slot id="card-home" src="assets/card-home.png" shape="rect" fit="contain" style="max-width:100%;width:100%;height:100%"></image-slot></div>
+              <div class="figure__caption" data-caption style="flex:1"><p><strong>Card home.</strong> A customer who already has the card reaches insurance from the card's settings, outside the card request.</p><p><strong>Why:</strong> Keeping insurance out of the card request keeps that request short, so more customers finish it.</p></div>
             </div>
-            <div style="min-width:0;display:flex;flex-direction:column">
-              <div style="aspect-ratio:375/812;position:relative;border:1px solid var(--border);background:var(--surface-card);overflow:hidden"><image-slot id="card-settings" src="assets/card-settings-menu.png" shape="rect" fit="contain" style="max-width:100%;width:100%;height:100%"></image-slot></div>
-              <div data-caption style="border:1px solid var(--border);border-top:0;background:var(--surface-band);padding:var(--space-md) var(--space-lg);flex:1"><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Card settings menu.</strong> “Seguro do cartão” sits with every other card setting.</p><p style="margin:var(--space-xs) 0 0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Why:</strong> One permanent home for contracting, claiming and cancelling.</p></div>
+            <div class="figure figure--col" style="min-width:0;display:flex;flex-direction:column">
+              <div style="aspect-ratio:375/812;position:relative;overflow:hidden"><image-slot id="card-settings" src="assets/card-settings-menu.png" shape="rect" fit="contain" style="max-width:100%;width:100%;height:100%"></image-slot></div>
+              <div class="figure__caption" data-caption style="flex:1"><p><strong>Card settings menu.</strong> “Seguro do cartão” (card insurance) sits with every other card setting.</p><p><strong>Why:</strong> The customer buys, claims and cancels in the same place, so they always know where to find their insurance.</p></div>
             </div>
-            <div style="min-width:0;display:flex;flex-direction:column">
-              <div style="aspect-ratio:375/812;position:relative;border:1px solid var(--border);background:var(--surface-card);overflow:hidden"><image-slot id="card-plans" src="assets/card-plans-crop.png" shape="rect" fit="contain" style="max-width:100%;width:100%;height:100%"></image-slot></div>
-              <div data-caption style="border:1px solid var(--border);border-top:0;background:var(--surface-band);padding:var(--space-md) var(--space-lg);flex:1"><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Plan comparison.</strong> Simples, Pleno and Superior side by side, limits stated in the comparison.</p><p style="margin:var(--space-xs) 0 0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Why:</strong> Limits next to the price is how transparency works when clauses can't be rewritten.</p></div>
+            <div class="figure figure--col" style="min-width:0;display:flex;flex-direction:column">
+              <div style="aspect-ratio:375/812;position:relative;overflow:hidden"><image-slot id="card-plans" src="assets/card-plans-crop.png" shape="rect" fit="contain" style="max-width:100%;width:100%;height:100%"></image-slot></div>
+              <div class="figure__caption" data-caption style="flex:1"><p><strong>Plan comparison.</strong> When the customer chooses a plan, Simples, Pleno and Superior sit side by side, each with its limits stated.</p><p><strong>Why:</strong> The customer sees what each plan covers next to its price before choosing, because the policy's wording can't be changed to make it clearer.</p></div>
             </div>
-            <div style="min-width:0;display:flex;flex-direction:column">
-              <div style="aspect-ratio:375/700;position:relative;border:1px solid var(--border);background:var(--surface-card);overflow:hidden"><image-slot id="card-assist" src="assets/card-assist-sel.png" shape="rect" fit="contain" style="max-width:100%;width:100%;height:100%"></image-slot></div>
-              <div data-caption style="border:1px solid var(--border);border-top:0;background:var(--surface-band);padding:var(--space-md) var(--space-lg);flex:1"><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Assistance selection.</strong> Five assistance modules (pet, repairs, home, emergency services, bike), with Too Seguros named below as the insurer.</p><p style="margin:var(--space-xs) 0 0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Why:</strong> This is where the package becomes the customer's own, and naming the insurer up front keeps checkout honest.</p></div>
+            <div class="figure figure--col" style="min-width:0;display:flex;flex-direction:column">
+              <div style="aspect-ratio:375/700;position:relative;overflow:hidden"><image-slot id="card-assist" src="assets/card-assist-sel.png" shape="rect" fit="contain" style="max-width:100%;width:100%;height:100%"></image-slot></div>
+              <div class="figure__caption" data-caption style="flex:1"><p><strong>Assistance selection.</strong> The customer picks from five assistance modules (pet, repairs, home, emergency services, bike), with Too Seguros named below as the insurer.</p><p><strong>Why:</strong> Here the customer fits the package to their own life, and knows before paying which company provides the insurance.</p></div>
             </div>
           </div></div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
-        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">06 — Impact</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">06 — Impact</h2>
         <div style="flex:1 1 460px;min-width:0;min-width:0">
-          <p style="margin:0 0 var(--space-2xl);max-width:88ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Ten active customers tried the prototype from both entry points. Two findings.</p>
+          <p data-sec-intro>The usability test produced two findings: where insurance should sit in the app, and how customers read price changes.</p>
 
           <div style="border-top:1px solid var(--border);padding-top:var(--space-lg);margin-bottom:var(--section-y)">
-            <h3 style="margin-bottom:var(--space-md);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);color:var(--text-strong);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">6.1</span>Flow placement</h3>
-            <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Insurance inside the card request put three things at risk (below). Contracting moved to card settings, with a pending task after card success, before any of it was built.</p>
+            <h3 class="subsection">Flow placement</h3>
+            <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Selling insurance inside the card request put card conversion at risk, along with the two other problems listed after the diagrams. So buying insurance moved to card settings, offered as a pending task once the card is approved.</p>
 
-          <figure style="margin:0 0 var(--space-fluid-l)">
-            <div style="border:1px solid var(--border);background:var(--surface-card)"><div style="padding:var(--space-xl) var(--space-xl) var(--space-xl);background:var(--surface-page)">
-              <div style="display:flex;justify-content:space-between;gap:var(--space-sm);font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-xl);padding-bottom:var(--space-sm);border-bottom:1px solid var(--border-emphatic)"><span>Where contracting lives</span><span>Tested from both entry points</span></div>
-              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--space-lg)">
-                <div style="background:var(--surface-card);border:1px solid var(--border);padding:var(--space-md)">
-                  <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)"><span style="text-decoration:line-through">Inside the card request</span></div>
-                  <div style="display:flex;flex-direction:column;gap:var(--space-xs);margin-bottom:var(--space-sm)">
-                    <div style="border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs);color:var(--text-body)">Request the card</div>
-                    <div style="border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs);color:var(--text-body)">Benefits</div>
-                    <div style="border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs);color:var(--text-body)">Invest+</div>
-                    <div style="border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs);color:var(--text-body)">Virtual card</div>
-                    <div style="border:1px solid var(--status-cost);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs);color:var(--text-body)">Insurance plans <span style="color:var(--status-cost)">+ paid checkout</span></div>
-                    <div style="border:1px solid var(--border-emphatic);background:var(--surface-inverse);color:var(--text-on-inverse);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs)">Card conversion</div>
-                  </div>
-                  <p style="margin:0;font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-muted)">One journey, five tasks, ending in the metric retail was measured on.</p>
-                </div>
-                <div style="background:var(--surface-card);border:1px solid var(--border-emphatic);padding:var(--space-md)">
-                  <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)">Insurance page in card settings</div>
-                  <div style="display:flex;flex-direction:column;gap:var(--space-xs);margin-bottom:var(--space-sm)">
-                    <div style="border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs);color:var(--text-body)">Request the card</div>
-                    <div style="border:1px solid var(--border-emphatic);background:var(--surface-inverse);color:var(--text-on-inverse);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs)">Card conversion</div>
-                    <div style="display:flex;gap:var(--space-xs);align-items:center;padding-left:var(--space-3xs)"><span aria-hidden="true" style="font-size:var(--font-size-xs);color:var(--text-subtle)">↓</span><span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent)">Pending task</span></div>
-                    <div style="border:1px solid var(--border-emphatic);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs);font-weight:600;color:var(--text-strong)">Card settings → Seguro do cartão</div>
-                    <div style="border:1px solid var(--border);padding:var(--space-xs) var(--space-sm);font-size:var(--font-size-xs);color:var(--text-body)">Contract · claim · cancel, one place</div>
-                  </div>
-                  <p style="margin:0;font-size:var(--font-size-xs);line-height:var(--leading-small);color:var(--text-muted)">Conversion completes first. Insurance gets a permanent home, and paid never sits beside free.</p>
-                </div>
+          <!-- proposal: horizontal flow figure (Nayara, 2026-09-25). Flows read left to right on one shared six-column grid, so card conversion lines up: step 6 in the considered flow, step 2 in the chosen one. The considered flow is labelled with its reason, never struck through. Considered: FlowChain (a wrapping row of chips, no shared grid), the case figure (holds an image, not aligned flows). -->
+          <figure class="figure fh">
+            <div class="fh-scroll flow-scroll">
+              <div class="fh-flow fh-flow--considered">
+                <div class="fh-label"><span class="tag tag--considered">Considered · too risky for conversion</span><span class="fh-name">Inside the card request</span></div>
+                <ol class="fh-steps"><li class="fh-step"><span class="fh-n">01</span><span>Request the card</span></li><li class="fh-step"><span class="fh-n">02</span><span>Benefits</span></li><li class="fh-step"><span class="fh-n">03</span><span>Invest+</span></li><li class="fh-step"><span class="fh-n">04</span><span>Virtual card</span></li><li class="fh-step fh-risk"><span class="fh-n">05</span><span>Insurance plans <span class="fh-flag">+ paid checkout</span></span></li><li class="fh-step fh-conv fh-conv--late"><span class="fh-n">06</span><span>Card conversion</span></li></ol>
+                <p class="fh-note">Before: the card request carried five tasks in one journey, with the insurance plans and a paid checkout just before the customer submits the card request.</p>
               </div>
-            </div></div>
-            <figcaption data-caption style="margin:0;border:1px solid var(--border);border-top:0;background:var(--surface-band);padding:var(--space-md) var(--space-lg);font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">The placement change.</strong> Made before build.</figcaption>
+              <div class="fh-flow fh-flow--chosen">
+                <div class="fh-label"><span class="tag tag--chosen">Chosen</span><span class="fh-name">Insurance page in card settings</span></div>
+                <ol class="fh-steps"><li class="fh-step"><span class="fh-n">01</span><span>Request the card</span></li><li class="fh-step fh-conv"><span class="fh-n">02</span><span>Card conversion</span></li><li class="fh-step fh-pending"><span class="fh-n">03</span><span><span class="fh-kicker">Pending task</span><span>Card insurance</span></span></li><li class="fh-step fh-after"><span class="fh-n">04</span><span>Card settings</span></li><li class="fh-step fh-after fh-area"><span class="fh-n">05</span><span><span class="fh-kicker">Seguro do cartão</span>Contract · claim · cancel, one place</span></li></ol>
+                <p class="fh-note">After: the customer finishes the card request first. Insurance has a permanent place in card settings, and paid plans are never sold in the same checkout as the free assistance.</p>
+              </div>
+            </div>
           </figure>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--space-sm);margin-bottom:var(--space-sm)">
-              <div style="background:var(--surface-page);border:1px solid var(--border);padding:var(--space-lg)"><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-sm)">Risk 01</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Card conversion, the retail business's key metric</p></div>
-              <div style="background:var(--surface-page);border:1px solid var(--border);padding:var(--space-lg)"><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-sm)">Risk 02</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A checkout mixing the free assistance with paid plans</p></div>
-              <div style="background:var(--surface-page);border:1px solid var(--border);padding:var(--space-lg)"><div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--status-cost);margin-bottom:var(--space-sm)">Risk 03</div><p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">A journey already carrying benefits, Invest+ and the virtual card</p></div>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:var(--space-md);align-items:center;border:1px solid var(--border);background:var(--surface-page);padding:var(--space-lg) var(--space-lg)">
-              <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);flex-shrink:0">Contracting moved</span>
-              <span style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-decoration:line-through">Card request journey</span>
-              <span aria-hidden="true" style="font-size:var(--font-size-sm);color:var(--text-subtle)">→</span>
-              <span style="font-size:var(--font-size-sm);line-height:var(--leading-small);font-weight:600;color:var(--text-strong)">Insurance page in card settings</span>
-            </div>
+          <p class="fp-risks-lead">Inside the card request, insurance put three things at risk:</p>
+          <ul class="fp-risks">
+            <li>Card conversion, the retail business's key metric</li>
+            <li>A checkout mixing the free assistance with paid plans</li>
+            <li>A journey already carrying benefits, Invest+ and the virtual card</li>
+          </ul>
           </div>
 
           <div style="border-top:1px solid var(--border);padding-top:var(--space-lg)">
-            <h3 style="margin-bottom:var(--space-md);font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-lead);color:var(--text-strong);text-transform:none"><span style="color:var(--text-muted);margin-right:0.45em">6.2</span>Price display</h3>
-            <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Customers understood the three plans, but read the price change too slowly. A micro-interaction on price and coverage went into the build.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-fluid-l);align-items:flex-start">
-            <div style="flex:0 1 360px;min-width:0;background:var(--surface-card);border:1px solid var(--border);padding:var(--space-xl) var(--space-lg)">
+            <h3 class="subsection">Price display</h3>
+            <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Customers understood the three plans, but were slow to notice how the price changed between them. So a short animation went into the build: when the customer switches plan, the price and limits update in place.</p>
+          <div class="ld-split" style="align-items:start"><!-- a small card (half) and its note in the other half (SEC-06, round 5) -->
+            <div class="card" style="min-width:0;padding:var(--space-xl)">
               <div style="font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-strong);margin-bottom:var(--space-md)">Planos</div>
               <div style="display:flex;gap:var(--space-xl);border-bottom:1px solid var(--border);margin-bottom:var(--space-lg)">
                 <sc-for list="{{ planTabs }}" as="tab" hint-placeholder-count="3">
@@ -421,7 +392,7 @@
                 <div style="font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-strong);margin-bottom:var(--space-sm)">Coberturas</div>
                 <div style="display:grid;gap:1px;background:var(--surface-hover);border:1px solid var(--border)">
                   <sc-for list="{{ planRows }}" as="row" hint-placeholder-count="3">
-                    <div style="background:var(--surface-card);padding:var(--space-sm) var(--space-md);display:flex;gap:var(--space-md);align-items:baseline;justify-content:space-between">
+                    <div class="card" style="padding:var(--space-sm);display:flex;gap:var(--space-md);align-items:baseline;justify-content:space-between">
                       <span style="font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted)">{{ row.label }}</span>
                       <span style="font-size:var(--font-size-sm);line-height:var(--leading-small);font-weight:600;color:var(--text-strong);white-space:nowrap"><span style="{{ planRoll }}">{{ row.value }}</span></span>
                     </div>
@@ -429,40 +400,24 @@
                 </div>
               </div>
             </div>
-            <p style="flex:1 1 260px;min-width:0;max-width:46ch;margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Switch plan to see it: price and limits roll up in place.</p>
+            <p style="min-width:0;max-width:46ch;margin:0;font-size:var(--font-size-md);line-height:var(--leading-body,1.7);color:var(--text-body)">Switch plan in the figure to see the price and limits update.</p>
           </div>
           </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y-lg)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
-        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">07 — What I learned</h2>
-        <div style="flex:1 1 460px;min-width:0">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-xl);align-items:stretch">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">07 — What I learned</h2>
+        <div style="flex:1 1 460px;min-width:0"><p data-sec-intro>Four lessons: two about the product, on placement and transparency, and two about the practice, on agreeing principles early and testing early.</p>
+          <div class="cards">
 
-            <div style="border:1px solid var(--border);background:var(--surface-card);padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the product</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Test the entry point, not just the screens</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">The screens worked in both journeys. Placement was the decision, and only testing the full flow from two starts surfaced it.</p>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the product" title="Test the entry point, not just the screens" hint-size="100%,220px">The screens worked in both journeys. Placement was the decision, and only testing the full flow from both entry points showed it.</x-import>
 
-            <div style="border:1px solid var(--border);background:var(--surface-card);padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the product</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">In regulated products, transparency is a layout problem</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">You can't rewrite the clause, but you can decide what the customer reads before the price.</p>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the product" title="In regulated products, transparency is a layout problem" hint-size="100%,220px">The wording of a clause can't be changed, so clarity has to come from what the customer reads before and beside the price.</x-import>
 
-            <div style="border:1px solid var(--border);background:var(--surface-card);padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the practice</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">Principles agreed early are cheaper than arguments later</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Written with engineering before the first screen, they framed the case for moving the flow in terms everyone had agreed. I still open projects this way.</p>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the practice" title="Principles agreed early are cheaper than arguments later" hint-size="100%,220px">Because the principles were written with engineering at the start, I could argue for moving the flow using principles everyone had already agreed to, such as keeping the process simple. I still start projects this way.</x-import>
 
-            <div style="border:1px solid var(--border);background:var(--surface-card);padding:var(--space-fluid-m)">
-              <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">On the practice</div>
-              <h3 style="font-weight:500;font-size:var(--font-size-xl-lead);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0 0 var(--space-md)">A small test beats a long debate</h3>
-              <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">Ten sessions settled a conversion question that would otherwise have been argued from opinion, or found after launch.</p>
-            </div>
+            <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.DecisionCard" data-surface="card" data-pattern="lesson" eyebrow="On the practice" title="A small test beats a long debate" hint-size="100%,220px">Ten sessions settled a conversion question that would otherwise have been argued from opinion, or found after launch.</x-import>
 
           </div>
         </div>
@@ -471,35 +426,23 @@
     </section>
 
     <section style="display:grid">
-      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;background:var(--surface-page);box-shadow:0 0 0 100vmax var(--surface-page);clip-path:inset(0 -100vmax);position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y-lg)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-emphatic)">
-        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--section-y);align-items:flex-start;position:relative;padding-top:var(--section-y);padding-bottom:var(--section-y)" style-before="content:'';position:absolute;top:0;left:var(--case-divider-left,0);right:0;height:1px;background:var(--border-divider)">
+        <h2 data-rail style="flex:0 0 200px;font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0;position:sticky;top:80px">08 — What this case doesn't cover</h2>
         <div style="flex:1 1 460px;min-width:0">
-          <p style="margin:0 0 var(--space-xl);max-width:62ch;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty">From the survey to handover for build. Not covered:</p>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);max-width:70ch">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">01</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Post-launch numbers.</strong> Attach, claim and cancellation rates. I left before they were measurable.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);max-width:70ch">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">02</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">The claim and cancellation screens.</strong> Designed, but not shown. The handoff to Too Seguros mid-claim was never tested with customers.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;border-top:1px solid var(--border);max-width:70ch">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">03</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Pricing.</strong> Set by the insurer. Willingness to pay was surveyed, never tested against real prices; the Pleno and Superior figures above are placeholders.</p>
-          </div>
-          <div style="display:flex;gap:var(--space-md);padding:var(--space-lg) 0;position:relative;max-width:70ch">
-            <span style="font-size:var(--font-size-xs);color:var(--accent);flex-shrink:0;padding-top:var(--space-2xs)">04</span>
-            <p style="margin:0;font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-body);text-wrap:pretty"><strong style="color:var(--text-strong);font-weight:600">Research depth.</strong> Thirty survey responses and ten moderated sessions: enough to settle placement, not to claim anything statistical. No accessibility review was run.</p>
-          </div>
+          <p data-sec-intro>The case runs from the survey to handover for build. What came after that is not covered:</p>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="Post-launch numbers." measure="70ch" hint-size="100%,80px">How many card customers bought the insurance, and how often they claimed or cancelled. I left before they were measurable.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="The claim and cancellation screens." measure="70ch" hint-size="100%,80px">Designed, but not shown. The handoff to Too Seguros mid-claim was never tested with customers.</x-import>
+          <x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="Pricing." measure="70ch" hint-size="100%,80px">Set by the insurer. Willingness to pay was surveyed, never tested against real prices; the Pleno and Superior prices in the figures are placeholders.</x-import>
+<x-import component-from-global-scope="NayaraSilvaDesignSystem_5f30f3.ListRow" data-pattern="gap" title="Research depth." last="{{ true }}" measure="70ch" hint-size="100%,80px">Thirty survey responses and ten moderated sessions: enough to settle placement, not to claim anything statistical. No accessibility review was run.</x-import>
         </div>
       </div>
     </section>
 
-    <section style="position:relative;padding:var(--section-y) 0 var(--section-y-lg)" style-before="content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)">
-      <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">Next case study</div>
+    <section class="well well--press" style="margin-block:0 var(--section-y)">
+      <div style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-md)">Next case study</div>
       <a href="ai-surfaces.html" style="display:flex;flex-wrap:wrap;gap:var(--space-fluid-s);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:var(--space-fluid-s) 0;position:relative;transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:var(--space-sm)">
-        <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0">Where AI lives in an institutional investment platform</h2>
-        <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);flex-shrink:0">AI platform</span>
+        <h2 style="font-size:var(--font-size-h2);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);margin:0">Where AI lives in an institutional investment platform</h2>
+        <span style="font-size:var(--font-size-eyebrow);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);flex-shrink:0">AI platform</span>
       </a>
     </section>
 
@@ -511,7 +454,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { bench: 0, plan: 0, fading: false };
+  state = { plan: 0, fading: false };
   plans = [
     { name: 'Simples', price: 'R$ 11,90', rec: true, cover: ['Até R$ 25 mil', 'Até R$ 50 mil', 'Até R$ 3 mil'] },
     { name: 'Pleno', price: 'R$ 19,90', rec: false, cover: ['Até R$ 50 mil', 'Até R$ 100 mil', 'Até R$ 5 mil'] },
@@ -524,34 +467,9 @@ class Component extends DCLogic {
     this.setState({ plan: n, rolling: true });
     this._swap = setTimeout(() => this.setState({ rolling: false }), 30);
   }
-  componentWillUnmount() { clearTimeout(this._swap); clearInterval(this._tween); }
-  track = React.createRef();
-  go(i) {
-    const n = Math.max(0, Math.min(6, i));
-    const el = document.querySelector('[data-bench-track]');
-    if (el) {
-      const from = el.scrollLeft, to = n * el.clientWidth, t0 = Date.now(), dur = 380;
-      clearInterval(this._tween);
-      this._tween = setInterval(() => {
-        const k = Math.min(1, (Date.now() - t0) / dur);
-        el.scrollLeft = from + (to - from) * (1 - Math.pow(1 - k, 3));
-        if (k >= 1) clearInterval(this._tween);
-      }, 16);
-    }
-    this.setState({ bench: n });
-  }
-  onTrackScroll = (e) => {
-    const el = e.currentTarget;
-    const n = Math.round(el.scrollLeft / Math.max(1, el.clientWidth));
-    if (n !== this.state.bench) this.setState({ bench: n });
-  };
+  componentWillUnmount() { clearTimeout(this._swap); }
   renderVals() {
-    const i = this.state.bench;
     return {
-      benchTrack: this.track,
-      benchScroll: this.onTrackScroll,
-      benchPrev: () => this.go(i - 1),
-      benchNext: () => this.go(i + 1),
       planTabs: this.plans.map((p, n) => ({
         name: p.name,
         pick: () => this.pickPlan(n),

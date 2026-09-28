@@ -1,7 +1,3 @@
-/* Archivo — the single typeface of the brand.
-   The source site loads it from Google Fonts as a variable font (wght 100..900).
-   No local binaries were provided, so it is imported from the Google CDN here.
-   Swap this @import for @font-face rules if self-hosted files become available. */
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap");
-
-/* The stacks (--font-sans, --font-mono) live in typography.css, which every page loads. */
+/* The brand face is the system face (theme sky, 2026-09-25): SF Pro on Apple,
+   Segoe UI on Windows, Roboto on Android. Nothing to load.
+   The stacks (--font-sans, --font-mono) live in typography.css, which every page loads. */

@@ -1,15 +1,24 @@
 :root{
   /* --- Scale. Pages use these names. -------------------------------- */
-  --font-sans:Archivo,system-ui,sans-serif;
+  --font-sans:system-ui,-apple-system,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,sans-serif; /* the system face: SF Pro on Apple */
   --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
-  --font-size-2xs:10px;                        /* eyebrow */
+  --font-size-2xs:10px;                        /* labels inside product mockups; tags */
+  --font-size-diagram:9.5px;                   /* every label inside an illustration (ILL-02) */
+  --font-size-diagram-core:10.5px;             /* the result word at the centre of an illustration */
+  --font-size-diagram-heading:12.5px;          /* a column heading inside an illustration (Centralised, Distributed) */
+  --font-size-eyebrow:11px;                    /* THE eyebrow: 11px, 600, 0.14em, uppercase (TYP-01) */
   --font-size-xs:11px;                         /* label, button, marker */
   --font-size-sm:14px;                         /* caption, card prose, chip */
+  --font-size-action:15px;                     /* the three action variants */
   --font-size-md:16px;                         /* running prose */
-  --font-size-lg:clamp(18px,1.43vw,20px);      /* hero deck, standfirst, sub-lead, sub-section title (B-8) */
-  --font-size-xl:clamp(20px,2vw,28px);         /* lead, statement, section title (B-8) */
+  --font-size-subsection:clamp(16px,1.25vw,17px); /* case sub-section title (h3.subsection): below the section title (18–20), above the item title (16) */
+  --font-size-lg:clamp(18px,1.43vw,20px);      /* a step of the scale; pages use --font-size-h3 (titles) or --font-size-lead (subtitles), round 5 */
+  --font-size-lead:clamp(15px,1.29vw,18px);    /* THE lead (TYP-04): every subtitle, under a page title (the hero lede), a section heading or the ink band's headline; 18px from 1400px, 15px on phones (round 6: 16 read too big on a phone) */
+  --font-size-h3:var(--font-size-lg);          /* an h3 outside case bodies: card, plan, layer and link-card titles, About's roles (TYP-04) */
+  --font-size-xl:clamp(20px,2vw,28px);         /* a step of the scale (the old statement size); no page uses it for a subtitle since round 5 */
   --font-size-xl-lead:var(--font-size-xl);     /* card titles: case-index.js steps them down to lg inside case bodies */
-  --font-size-2xl:clamp(24px,3.4vw,44px);      /* case / card title, big stat, dark CTA headline */
+  --font-size-2xl:clamp(24px,3.4vw,44px);      /* case title, big stat */
+  --font-size-h2:clamp(24px,3vw,38px);         /* every h2 outside case bodies: section title, next case, ink band headline (TYP-04) */
   --font-size-3xl:clamp(34px,5.2vw,68px);      /* page h1 */
 
   --font-size-sublead:var(--font-size-lg);    /* alias (B-8) */
@@ -18,7 +27,7 @@
   --leading-none:1; --leading-heading:1.2; --leading-label:1.4; --leading-snug:1.5;
 
   --tracking-display:-0.045em; --tracking-title:-0.036em; --tracking-heading:-0.028em;
-  --tracking-lead:-0.018em; --tracking-label:0.12em; --tracking-eyebrow:0.14em;
+  --tracking-lead:-0.018em; --tracking-label:0.12em; --tracking-eyebrow:0.14em; --tracking-action:-0.005em; --tracking-tag:0.1em;
 
   /* --- Sizes (old names, aliases of the scale; removed in step 6). Every headline in the source is a clamp(); the min/max are
          tokenised so the pair can be reused verbatim. ------------------- */
@@ -31,7 +40,7 @@
   --size-body:var(--font-size-md);                         /* running prose */
   --size-small:var(--font-size-sm);                        /* captions, card prose, chips */
   --size-label:var(--font-size-xs);                        /* button + link labels, markers */
-  --size-eyebrow:var(--font-size-2xs);                      /* uppercase section labels */
+  --size-eyebrow:var(--font-size-eyebrow);                      /* uppercase section labels */
 
   /* --- Weights. 500 is the headline weight; the brand never sets 700. -- */
   --weight-regular:400; /* @kind other */

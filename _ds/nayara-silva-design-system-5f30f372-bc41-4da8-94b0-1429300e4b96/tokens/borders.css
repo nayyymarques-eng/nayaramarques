@@ -1,22 +1,29 @@
 :root{
-  /* Corners. Site controls and cards are near square (sm); recreated product
-     mockups use md; dots and pills use full. */
-  --radius-sm:2px;
-  --radius-md:8px;
-  --radius-full:999px;
+  /* Corners. Architecture is straight, objects are round (SHP-01). Radius grows
+     with size and level: sm inside a surface, md for resting cards and floating
+     menus, lg for wells and raised evidence. Actions are 12px, labels are pills,
+     so the two can never be confused. A circle is for a disc or a core. */
   --radius-none:0;
+  --radius-sm:6px;                    /* a surface inside a surface; an image inset in a figure */
+  --radius-md:10px;                   /* level 1 cards, link cards, the case index, level 3 menus */
+  --radius-lg:14px;                   /* level -1 wells and windows, level 2 figures and plan cards */
+  --radius-action:12px;               /* the three action variants */
+  --radius-full:999px;                /* tags (pills), dots, discs */
   --radius:var(--radius-sm);          /* alias, removed in step 6 */
   --radius-pill:var(--radius-full);   /* alias, removed in step 6 */
+
+  /* The one line weight inside illustrations and figures: rules, outlines, connectors, dashed paths
+     (ILL-05). Proposal, illo round 1 (2026-09-26): awaiting Nayara's verdict. */
+  --stroke-diagram:1px;
 
   --border-hairline:1px solid var(--border); /* @kind other */
   --border-hairline-strong:1px solid var(--border-emphatic); /* @kind other */
   --border-control-1:1px solid var(--border); /* @kind other */
 
-  /* Elevation: three shades, --shadow-sm / -md / -lg in colors.css (they mix
-     from the colour primitives). The bleed shadow below is a layout device, not
-     a shade: a 100vmax spread that carries a band's background past the centred
-     container. Reuse it, do not soften it. */
-  --bleed-shadow-paper:0 0 0 100vmax var(--surface-page); /* @kind shadow */
-  --bleed-shadow-band:0 0 0 100vmax var(--surface-band); /* @kind shadow */
+  /* Elevation: five levels, --elevation-inset (-1), none (0), --elevation-1/2/3,
+     in colors.css (they mix from the one shadow hue). The ink band is the only
+     full-bleed band left; it carries its colour past the centred container
+     with the bleed shadow below. Reuse it, do not soften it. */
+  --bleed-shadow-inverse:0 0 0 100vmax var(--surface-inverse); /* @kind shadow */
   --bleed-clip:inset(0 -100vmax); /* @kind other */
 }

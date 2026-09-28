@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,310 +20,198 @@
 <meta name="twitter:description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
 <meta name="twitter:image" content="https://www.nayaramarques.com/assets/og-card.jpg?v=10">
 <script src="./support.js"></script>
+<script src="./sky.js" defer></script>
+<script src="./art.js" defer></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Embedded partner — Nayara Marques</title>
+<meta name="description" content="Product designer working AI-native on B2B and B2C products in fintech, logistics and energy.">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/colors.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/typography.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/borders.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/motion.css">
 <link rel="stylesheet" href="_ds/nayara-silva-design-system-5f30f372-bc41-4da8-94b0-1429300e4b96/tokens/base.css">
-<style id="boot-style">
-  html { background:var(--surface-page); color:var(--text-strong); font-family: Archivo, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; overflow-x: clip; }
-  html.booting x-dc { visibility: hidden; }
-  #boot { display:none; }
-  html.booting #boot { display:block; }
-  @keyframes bootPulse { 0%,100% { opacity:1 } 50% { opacity:.5 } }
-  #boot i { display:block; background:var(--border); animation: bootPulse 1.5s cubic-bezier(.19,1,.22,1) infinite; }
-</style>
-<script>document.documentElement.classList.add('booting');</script>
-</head>
-<body>
-<div id="boot" aria-hidden="true" style="position:fixed;inset:0;background:var(--surface-page);z-index:9999">
-  <div style="height:57px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 var(--space-2xl);gap:var(--space-sm)"><i style="width:18px;height:18px;background:#e0c3bd;animation:none"></i><i style="width:132px;height:9px;animation:none"></i></div>
-  <div style="max-width:1400px;margin:0 auto;padding:var(--section-y-lg) var(--space-2xl) 0">
-    <i style="width:min(58%,420px);height:clamp(34px,5.2vw,68px)"></i>
-    <i style="width:100%;max-width:960px;height:1px;margin:var(--space-fluid-xl) 0 0;background:var(--border);animation:none"></i>
-    <i style="width:min(92%,620px);height:14px;margin-top:var(--space-fluid-l)"></i>
-    <i style="width:min(86%,580px);height:14px;margin-top:var(--space-sm)"></i>
-    <i style="width:min(64%,430px);height:14px;margin-top:var(--space-sm)"></i>
-  </div>
-</div>
-<script>
-(function () {
-  var done = function () { document.documentElement.classList.remove('booting'); };
-  var start = function () {
-    var x = document.querySelector('x-dc');
-    if (!x) return done();
-    var raw = x.firstElementChild;
-    // The nav is a child component fetched after the page renders — waiting only on
-    // the page itself left an empty nav bar on screen for a beat.
-    var tick = function () {
-      var pageUp = !raw || !raw.isConnected || !x.contains(raw);
-      var navUp = !!document.querySelector('header nav a');
-      if (pageUp && navUp) return done();
-      requestAnimationFrame(tick);
-    };
-    tick();
-    // last-resort cap: never leave the page hidden, but give a cold nav fetch room
-    setTimeout(done, 10000);
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-})();
-</script>
-<x-dc>
-<helmet>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<title>Embedded partner — Nayara Marques</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="components.css">
 <style>
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { margin: 0; background: var(--surface-page); color: var(--text-strong); font-family: var(--font-sans); }
-  * { box-sizing: border-box; }
-  summary::-webkit-details-marker { display: none; }
-  details > summary span[data-faq]::before { content: "+"; }
-  details[open] > summary span[data-faq]::before { content: "\2013"; }
+  /* This page's illustration timing (ILL-01): a 12s scene, travel linear, marks persist, then fade back together. */
+  .ld-runner[data-run="e"] { animation-name: ld-e-run; }
+  @keyframes ld-e-run { 0% { offset-distance: 0%; opacity: 0; } 3% { opacity: 1; } 55% { offset-distance: 100%; opacity: 1; } 58% { opacity: 0; } 100% { offset-distance: 100%; opacity: 0; } }
+  .ld-mark[data-m="e0"] { animation-name: ld-m-e0; }
+  @keyframes ld-m-e0 { 0%, 10.5% { opacity: 0; } 13.0%, 82% { opacity: 1; } 95%, 100% { opacity: 0; } }
+  .ld-mark[data-m="e1"] { animation-name: ld-m-e1; }
+  @keyframes ld-m-e1 { 0%, 21.5% { opacity: 0; } 24.0%, 82% { opacity: 1; } 95%, 100% { opacity: 0; } }
+  .ld-mark[data-m="e2"] { animation-name: ld-m-e2; }
+  @keyframes ld-m-e2 { 0%, 32.5% { opacity: 0; } 35.0%, 82% { opacity: 1; } 95%, 100% { opacity: 0; } }
+  .ld-mark[data-m="e3"] { animation-name: ld-m-e3; }
+  @keyframes ld-m-e3 { 0%, 43.5% { opacity: 0; } 46.0%, 82% { opacity: 1; } 95%, 100% { opacity: 0; } }
+  .ld-mark[data-m="e4"] { animation-name: ld-m-e4; }
+  @keyframes ld-m-e4 { 0%, 54.5% { opacity: 0; } 57.0%, 82% { opacity: 1; } 95%, 100% { opacity: 0; } }
+  .ld-resolve[data-m="e4"] { animation-name: ld-r-e; }
+  @keyframes ld-r-e { 0%, 54.5% { opacity: .35; } 58.0%, 82% { opacity: 1; } 95%, 100% { opacity: .35; } }
 </style>
 </helmet>
+
 
 <div style="min-height:100vh;display:flex;flex-direction:column;overflow-x:clip">
 
   <dc-import name="Nav" hint-size="100%,57px" style="position:sticky;top:0;z-index:50"></dc-import>
 
-  <main style="flex:1">
+  <main style="flex:1;width:100%">
 
-    <section style="max-width:1400px;margin:0 auto;min-height:clamp(320px,38vw,496px);display:flex;flex-direction:column;justify-content:center;padding:var(--section-y-lg) var(--space-2xl)">
-      <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-fluid-m)">Engagement model 02</div>
-      <h1 style="font-size:var(--font-size-3xl);font-weight:500;line-height:var(--leading-display);letter-spacing:var(--tracking-display);margin:0 0 var(--space-fluid-m);max-width:none">
-        <span style="display:block;overflow:hidden;padding-bottom:0.16em;margin-bottom:-0.16em"><span style="display:block;will-change:transform,filter;animation:lineUp 1.5s cubic-bezier(.19,1,.22,1) both">Embedded partner</span></span>
-      </h1>
-      <div style="height:1px;background:var(--border);transform-origin:left;margin-bottom:var(--space-fluid-l)"></div>
-      <div>
-        <p style="margin:0;max-width:58ch;font-size:var(--font-size-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-body);text-wrap:pretty;animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .5s both">You have a product and a team. You need design that reaches production, not just approval.</p>
-        
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-fluid-xl);animation:fadeUp 1.2s cubic-bezier(.19,1,.22,1) .74s both">
-        <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:var(--space-md) var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--accent);border-color:var(--accent);color:var(--text-on-inverse)">Book an intro call <span>→</span></a>
-        <a href="project-engagement.html" style="white-space:nowrap;display:inline-flex;align-items:center;padding:var(--space-md) var(--space-xl);border:1px solid var(--border);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;transition:border-color .2s ease,background .2s ease" style-hover="background:var(--surface-hover)">Starting from scratch?</a>
-      </div>
-    </section>
-
-    <section style="background:var(--surface-band);border-top:1px solid var(--border)">
-      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
-        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-fluid-m)">Who you'd be working with</h2>
-      <div style="background:var(--surface-page);border:1px solid var(--border);padding:var(--space-fluid-m) var(--space-fluid-m);max-width:860px">
-        <div style="display:grid">
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:var(--space-fluid-m);align-items:baseline;padding:var(--space-sm) 0;">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Role</div>
-            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Senior Product Designer · design lead and design system owner</div>
-          </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:var(--space-fluid-m);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Experience</div>
-            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Nine years across fintech, logistics and energy</div>
-          </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:var(--space-fluid-m);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Engagements</div>
-            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Project work · embedded with your team · advisory · senior &amp; lead roles</div>
-          </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:var(--space-fluid-m);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">What I take on</div>
-            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">0→1 products · design systems in code · AI-native workflows</div>
-          </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:var(--space-fluid-m);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border);">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Based</div>
-            <div style="font-size:var(--font-size-sm);font-weight:500;letter-spacing:normal;line-height:var(--leading-small);color:var(--text-strong);text-wrap:pretty">Barcelona, Spain, remote worldwide. English, Spanish and Portuguese.</div>
-          </div>
-          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:var(--space-fluid-m);align-items:baseline;padding:var(--space-md) 0 0;border-top:1px solid var(--border);margin-top:var(--space-3xs)">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted)">Availability</div>
-            <a href="contact.html" style="display:inline-flex;gap:var(--space-xs);align-items:center;font-size:var(--font-size-sm);font-weight:600;letter-spacing:normal;line-height:var(--leading-small);color:var(--accent);text-decoration:none;transition:color .2s ease" style-hover="color:var(--accent)"><span style="width:6px;height:6px;border-radius:var(--radius-full);background:currentColor;flex-shrink:0"></span><span>Available now</span></a>
-          </div>
-        </div>
-      </div>
-      </div>
-    </section>
-
-    <section style="border-top:1px solid var(--border)">
-      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
-        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-fluid-l)">How the engagement is shaped</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--border);border-left:1px solid var(--border)">
-          <div style="background:var(--surface-page);padding:var(--space-fluid-m);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Typical duration</div>
-            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading);margin-bottom:var(--space-sm)">3 to 6 months</div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Rolling monthly, one month's notice either way.</p>
-          </div>
-          <div style="background:var(--surface-page);padding:var(--space-fluid-m);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Commitment</div>
-            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading);margin-bottom:var(--space-sm)">Your rhythm</div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Days a week set by your team, inside your standups.</p>
-          </div>
-          <div style="background:var(--surface-page);padding:var(--space-fluid-m);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Scope</div>
-            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading);margin-bottom:var(--space-sm)">Your roadmap</div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Priorities move with the team. No change requests for a reordered sprint.</p>
-          </div>
-          <div style="background:var(--surface-page);padding:var(--space-fluid-m);border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
-            <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-sm)">Best for</div>
-            <div style="font-size:var(--font-size-xl);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading);margin-bottom:var(--space-sm)">Continuous work</div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">Teams shipping weekly with no design lead, or one who is stretched.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section style="background:var(--surface-band);border-top:1px solid var(--border)">
-      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--section-y);align-items:start;margin-bottom:var(--space-fluid-xl)">
-          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0">Where I can help</h2>
-          <p style="margin:0;max-width:56ch;font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);text-wrap:pretty">Five positions. Most teams need two or three, depending on the hole in the team, not the stage of the product.</p>
-        </div>
-
-        <div style="display:grid;gap:0">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-fluid-xl);border-top:1px solid var(--border);padding:var(--space-fluid-m) 0">
-            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);letter-spacing:var(--tracking-label)">01</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading)">Design lead, or your only designer</h3></div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">As lead I set the standard and direct designers; as the only designer I hold everything from strategy to shipped code. I have done both, and will tell you which you need.</p>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:var(--space-xs)">You need this when</span>You have no designer, or designers nobody leads.</p>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-fluid-xl);border-top:1px solid var(--border);padding:var(--space-fluid-m) 0">
-            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);letter-spacing:var(--tracking-label)">02</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading)">Product designer on the roadmap</h3></div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">End-to-end design at your cadence: flows, interaction, interface, and usability testing where the stakes justify it.</p>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:var(--space-xs)">You need this when</span>The roadmap moves faster than design, and specs run out mid-sprint.</p>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-fluid-xl);border-top:1px solid var(--border);padding:var(--space-fluid-m) 0">
-            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);letter-spacing:var(--tracking-label)">03</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading)">Design system owner</h3></div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Tokens in code, component decisions written down, and validation that catches drift in CI.</p>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:var(--space-xs)">You need this when</span>You have a system nobody owns, or three, and engineers rebuild their own.</p>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-fluid-xl);border-top:1px solid var(--border);padding:var(--space-fluid-m) 0">
-            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);letter-spacing:var(--tracking-label)">04</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading)">The person who finds what is leaking</h3></div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">An audit of what you ship (states, flows, inconsistencies), taken to strategy, not filed as tickets.</p>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:var(--space-xs)">You need this when</span>The backlog is full of symptoms and the underlying problem has never been named.</p>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-fluid-xl);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:var(--space-fluid-m) 0">
-            <div style="display:flex;gap:var(--space-md);align-items:baseline"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);letter-spacing:var(--tracking-label)">05</span><h3 style="margin:0;font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading)">Prototyping and shipping</h3></div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Working HTML, CSS and JS on your data, so the team argues about behaviour, not images. It lands on your branch, through your review.</p>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-muted);text-wrap:pretty"><span style="display:block;font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:var(--space-xs)">You need this when</span>Design stops at approval, and the last ten percent falls to whoever has capacity.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section style="border-top:1px solid var(--border)">
-      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--section-y);align-items:start">
+    <!-- 1. Hero -->
+    <section class="hero ld-wrap" aria-labelledby="ld-title">
+      <div class="ld-hero">
         <div>
-          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-xl)">Investment</h2>
-          <div style="background:var(--surface-page);border:1px solid var(--border);padding:var(--space-fluid-m)">
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0">
-              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">Lighter week</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">One workstream, monthly retainer</div></div>
-              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
-            </div>
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border)">
-              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">Core week</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">Product design plus the system</div></div>
-              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
-            </div>
-            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-lg);align-items:baseline;padding:var(--space-sm) 0;border-top:1px solid var(--border)">
-              <div><div style="font-size:var(--font-size-sm);font-weight:600;margin-bottom:var(--space-2xs)">Full week</div><div style="font-size:var(--font-size-sm);color:var(--text-body);line-height:var(--leading-small)">Design lead, or your only designer</div></div>
-              <div style="font-size:var(--font-size-sm);font-weight:600;color:var(--accent);white-space:nowrap">On the call</div>
-            </div>
-            <p style="margin:var(--space-md) 0 0;padding-top:var(--space-md);border-top:1px solid var(--border);font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body)">A flat monthly fee for the agreed days. Priced on the call, once I know the shape of the work. <a href="start-a-project.html" style="color:var(--accent)">Send a short brief →</a> and I will bring a figure.</p>
+          <p class="hero__eyebrow">Engagement model 02</p>
+          <h1 id="ld-title">Embedded partner</h1>
+          <p class="ld-lede">You have a product and a team. You need design that reaches production, not just approval.</p>
+          <div class="ld-actions">
+            <a class="action action--primary" href="contact.html">Book an intro call <span class="action__arrow" aria-hidden="true">→</span></a>
+            <a class="action action--link" href="project-engagement.html">Starting from scratch?</a>
           </div>
+        </div>
+        <!-- proposal: hero illustration B (embedded partner), as a closed loop: the work goes round the team's cadence once a month and ends where the next month begins. Considered: the open J-arc sequence (it ends; this work recurs). -->
+        <div class="ld-art">
+          <figure style="--vbw:500" role="img" aria-label="A monthly loop through your team's cadence: roadmap, sprint planning, standups and review, ending inside your team, then starting again."><svg class="ld-art__svg" viewBox="0 76 500 372" aria-hidden="true" focusable="false"><circle class="ld-art__line" cx="250" cy="250" r="152"></circle><path class="ld-art__line ld-art__line--on ld-mark" data-m="e0" d="M 250.0 98.0 A 152 152 0 0 1 394.6 203.0"></path><path class="ld-art__line ld-art__line--on ld-mark" data-m="e1" d="M 394.6 203.0 A 152 152 0 0 1 339.3 373.0"></path><path class="ld-art__line ld-art__line--on ld-mark" data-m="e2" d="M 339.3 373.0 A 152 152 0 0 1 160.7 373.0"></path><path class="ld-art__line ld-art__line--on ld-mark" data-m="e3" d="M 160.7 373.0 A 152 152 0 0 1 105.4 203.0"></path><path class="ld-art__line ld-art__line--on ld-mark" data-m="e4" d="M 105.4 203.0 A 152 152 0 0 1 250.0 98.0"></path><circle class="ld-art__ring ld-art__ring--tip" cx="394.6" cy="203.0" r="4"></circle><circle class="ld-art__dot ld-mark" data-m="e0" cx="394.6" cy="203.0" r="4.6"></circle><text class="ld-art__num ld-art__num--quiet" style="text-anchor:start" x="409.8" y="195.1">01</text><text class="ld-art__num ld-mark" data-m="e0" style="text-anchor:start" x="409.8" y="195.1">01</text><text class="ld-art__label" style="text-anchor:start" x="409.8" y="210.1">Roadmap</text><circle class="ld-art__ring ld-art__ring--tip" cx="339.3" cy="373.0" r="4"></circle><circle class="ld-art__dot ld-mark" data-m="e1" cx="339.3" cy="373.0" r="4.6"></circle><text class="ld-art__num ld-art__num--quiet" style="text-anchor:middle" x="348.7" y="404.9">02</text><text class="ld-art__num ld-mark" data-m="e1" style="text-anchor:middle" x="348.7" y="404.9">02</text><text class="ld-art__label" style="text-anchor:middle" x="348.7" y="419.9">Sprint planning</text><circle class="ld-art__ring ld-art__ring--tip" cx="160.7" cy="373.0" r="4"></circle><circle class="ld-art__dot ld-mark" data-m="e2" cx="160.7" cy="373.0" r="4.6"></circle><text class="ld-art__num ld-art__num--quiet" style="text-anchor:middle" x="151.3" y="404.9">03</text><text class="ld-art__num ld-mark" data-m="e2" style="text-anchor:middle" x="151.3" y="404.9">03</text><text class="ld-art__label" style="text-anchor:middle" x="151.3" y="419.9">Standups</text><circle class="ld-art__ring ld-art__ring--tip" cx="105.4" cy="203.0" r="4"></circle><circle class="ld-art__dot ld-mark" data-m="e3" cx="105.4" cy="203.0" r="4.6"></circle><text class="ld-art__num ld-art__num--quiet" style="text-anchor:end" x="90.2" y="195.1">04</text><text class="ld-art__num ld-mark" data-m="e3" style="text-anchor:end" x="90.2" y="195.1">04</text><text class="ld-art__label" style="text-anchor:end" x="90.2" y="210.1">Review</text><circle class="ld-art__ring ld-art__ring--tip" cx="250" cy="98" r="6"></circle><circle class="ld-art__dot ld-mark" data-m="e4" cx="250" cy="98" r="6.6"></circle><text class="ld-art__core ld-art__label--mid ld-resolve" data-m="e4" x="250" y="252">Inside your team</text><text class="ld-art__key ld-art__label--mid" x="250" y="272">Rolling monthly</text><circle class="ld-art__dot ld-runner" data-run="e" style="offset-path:path('M 250 98 A 152 152 0 1 1 249.99 98')" r="4.6"></circle></svg></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. How the engagement is shaped -->
+    <section class="ld-wrap section" aria-labelledby="ld-shape">
+      <div class="section-head">
+        <h2 class="h2" id="ld-shape">How the engagement is shaped</h2>
+      </div>
+      <ul class="ld-layers">
+        <li class="card"><p class="eyebrow">Typical duration</p><p class="ld-big">3 to 6 months</p><p>Rolling monthly, one month's notice either way.</p></li>
+        <li class="card"><p class="eyebrow">Commitment</p><p class="ld-big">Your rhythm</p><p>Days a week set by your team, inside your standups.</p></li>
+        <li class="card"><p class="eyebrow">Scope</p><p class="ld-big">Your roadmap</p><p>Priorities move with the team. No change requests for a reordered sprint.</p></li>
+        <li class="card"><p class="eyebrow">Best for</p><p class="ld-big">Continuous work</p><p>Teams shipping weekly with no design lead, or one who is stretched.</p></li>
+      </ul>
+    </section>
+
+    <!-- 3. Where I can help: what you get -->
+    <section class="ld-wrap section" aria-labelledby="ld-help">
+      <div class="section-head">
+        <h2 class="h2" id="ld-help">Where I can help</h2>
+        <p>Five positions. Most teams need two or three, depending on the hole in the team, not the stage of the product.</p>
+      </div>
+      <ol class="ld-layers">
+        <li class="card"><p class="eyebrow eyebrow--accent">01</p><h3>Design lead, or your only designer</h3><p>As lead I set the standard and direct designers; as the only designer I hold everything from strategy to shipped code. I have done both, and will tell you which you need.</p><p class="ld-when"><span class="eyebrow">You need this when</span>You have no designer, or designers nobody leads.</p></li>
+        <li class="card"><p class="eyebrow eyebrow--accent">02</p><h3>Product designer on the roadmap</h3><p>End-to-end design at your cadence: flows, interaction, interface, and usability testing where the stakes justify it.</p><p class="ld-when"><span class="eyebrow">You need this when</span>The roadmap moves faster than design, and specs run out mid-sprint.</p></li>
+        <li class="card"><p class="eyebrow eyebrow--accent">03</p><h3>Design system owner</h3><p>Tokens in code, component decisions written down, and validation that catches drift in CI.</p><p class="ld-when"><span class="eyebrow">You need this when</span>You have a system nobody owns, or three, and engineers rebuild their own.</p></li>
+        <li class="card"><p class="eyebrow eyebrow--accent">04</p><h3>The person who finds what is leaking</h3><p>An audit of what you ship (states, flows, inconsistencies), taken to strategy, not filed as tickets.</p><p class="ld-when"><span class="eyebrow">You need this when</span>The backlog is full of symptoms and the underlying problem has never been named.</p></li>
+        <li class="card"><p class="eyebrow eyebrow--accent">05</p><h3>Prototyping and shipping</h3><p>Working HTML, CSS and JS on your data, so the team argues about behaviour, not images. It lands on your branch, through your review.</p><p class="ld-when"><span class="eyebrow">You need this when</span>Design stops at approval, and the last ten percent falls to whoever has capacity.</p></li>
+      </ol>
+    </section>
+
+    <!-- 4. Kinds of engagement (round 5): a light list, no cards and no price (CNT-01). A bulleted list with a title each. -->
+    <section class="ld-wrap section" aria-labelledby="ld-kinds">
+      <div class="section-head">
+        <h2 class="h2" id="ld-kinds">Kinds of engagement</h2>
+      </div>
+      <!-- A bulleted list with a title per kind (Nayara 2026-09-27): the page list (.ld-list) with a dot and a title, scannable. -->
+      <ul class="ld-list ld-list--points">
+        <li><p><strong>Lighter week</strong>One workstream, monthly retainer</p></li>
+        <li><p><strong>Core week</strong>Product design plus the system</p></li>
+        <li><p><strong>Full week</strong>Design lead, or your only designer</p></li>
+      </ul>
+    </section>
+
+    <!-- 5. What I need from you -->
+    <section class="ld-wrap section" aria-labelledby="ld-need">
+      <div class="section-head">
+        <h2 class="h2" id="ld-need">What I need from you</h2>
+      </div>
+      <ol class="ld-list">
+        <li><span>01</span>Treat me as part of the team: standups, Slack, sprint planning, not a vendor channel.</li>
+        <li><span>02</span>Repository access and a review process I can push into.</li>
+        <li><span>03</span>One engineer who cares about the front-end and will review my PRs.</li>
+        <li><span>04</span>A roadmap I can see, even a rough one, so design lands before the sprint.</li>
+      </ol>
+    </section>
+
+    <section class="ld-wrap section" aria-labelledby="ld-not">
+      <div class="section-head">
+        <h2 class="h2" id="ld-not">What this does not include</h2>
+        <p>Both can be arranged; say so on the call.</p>
+      </div>
+      <!-- round 5: a disclaimer, so a plain quiet list (.ld-list--quiet), no cards -->
+      <ul class="ld-list ld-list--quiet">
+        <li><p><strong>Backend engineering</strong> I write the front-end. Server-side belongs to your team or a developer you bring in.</p></li>
+        <li><p><strong>Brand identity</strong> A different discipline. I design inside your brand, or a plain one, and can refer you.</p></li>
+      </ul>
+    </section>
+
+    <!-- 7. Relevant work -->
+    <section class="ld-wrap section" aria-labelledby="ld-work">
+      <div class="section-head">
+        <h2 class="h2" id="ld-work">Relevant work</h2>
+      </div>
+      <ul class="link-cards">
+        <li><a class="link-card" href="ai-surfaces.html"><div><p class="eyebrow">AI platform</p><h3>Where AI lives in an institutional investment platform</h3></div><span class="link-card__arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="link-card" href="design-system.html"><div><p class="eyebrow">Method</p><h3>A design system AI can build from</h3></div><span class="link-card__arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="link-card" href="card-insurance.html"><div><p class="eyebrow">BTG Pactual</p><h3>Modular card insurance in a banking app</h3></div><span class="link-card__arrow" aria-hidden="true">→</span></a></li>
+      </ul>
+    </section>
+
+    <!-- 8. Questions -->
+    <section class="ld-wrap section" aria-labelledby="ld-faq">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Questions</p>
+          <h2 class="h2" id="ld-faq">What teams ask before embedding</h2>
+        </div>
+      </div>
+      <div class="accordions">
+        <details class="accordion"><summary>How is this different from hiring a contractor? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>I ship the front-end, so work doesn't stop at a handoff, and I argue about what's on the roadmap, not just how it looks.</p></details>
+        <details class="accordion"><summary>We already have designers. Does that work? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Often better. I take the system and front-end, or the lead, so they can stay on product depth. I've led designers and supported them.</p></details>
+        <details class="accordion"><summary>What happens when the engagement ends? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>The system is the handover: tokens, component docs and validation in CI keep the standard without me.</p></details>
+        <details class="accordion"><summary>Is AI writing our product? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>No. Claude Code and Claude Design speed up exploration and implementation. Every decision, review and shipped line is mine, gated by the same checks as any engineer's.</p></details>
+        <details class="accordion"><summary>Could this become a full-time role? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Yes. I'm open to senior and lead roles, and embedding is a good way to start that conversation.</p></details>
+        <details class="accordion"><summary>Which time zones do you cover? <span class="accordion__chev" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></span></summary><p>Remote worldwide, in English, Spanish and Portuguese, on hours that overlap yours. I travel for onsites when it matters.</p></details>
+      </div>
+    </section>
+
+    <!-- 9. Who you'd be working with: portrait and a well of facts -->
+    <section class="ld-wrap section" aria-labelledby="ld-who">
+      <div class="ld-split">
+        <div class="ld-portrait">
+          <img src="assets/nayara-portrait.png" alt="Nayara Marques" width="440" height="550">
         </div>
         <div>
-          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-xl)">What I need from you</h2>
-          <div style="display:grid;gap:0">
-            <div style="display:flex;gap:var(--space-md);padding:var(--space-md) 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);flex-shrink:0;padding-top:var(--space-3xs)">01</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">Treat me as part of the team: standups, Slack, sprint planning, not a vendor channel.</p></div>
-            <div style="display:flex;gap:var(--space-md);padding:var(--space-md) 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);flex-shrink:0;padding-top:var(--space-3xs)">02</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">Repository access and a review process I can push into.</p></div>
-            <div style="display:flex;gap:var(--space-md);padding:var(--space-md) 0;border-top:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);flex-shrink:0;padding-top:var(--space-3xs)">03</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">One engineer who cares about the front-end and will review my PRs.</p></div>
-            <div style="display:flex;gap:var(--space-md);padding:var(--space-md) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><span style="font-size:var(--font-size-xs);font-weight:600;color:var(--text-muted);flex-shrink:0;padding-top:var(--space-3xs)">04</span><p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-strong)">A roadmap I can see, even a rough one, so design lands before the sprint.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section style="background:var(--surface-band);border-top:1px solid var(--border)">
-      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--section-y);align-items:start;margin-bottom:var(--space-fluid-l)">
-          <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0">What this does not include</h2>
-          <p style="margin:0;max-width:56ch;font-size:var(--font-size-lg);font-weight:500;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);text-wrap:pretty">Both can be arranged; say so on the call.</p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)">
-          <div style="background:var(--surface-page);padding:var(--space-fluid-m)">
-            <div style="font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading);margin-bottom:var(--space-sm)">Backend engineering</div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">I write the front-end. Server-side belongs to your team or a developer you bring in.</p>
-          </div>
-          <div style="background:var(--surface-page);padding:var(--space-fluid-m)">
-            <div style="font-size:var(--font-size-xl-lead);font-weight:500;letter-spacing:var(--tracking-heading);line-height:var(--leading-heading);margin-bottom:var(--space-sm)">Brand identity</div>
-            <p style="margin:0;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">A different discipline. I design inside your brand, or a plain one, and can refer you.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section style="border-top:1px solid var(--border)">
-      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
-        <h2 style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);margin:0 0 var(--space-fluid-m)">Relevant work</h2>
-        <a href="ai-surfaces.html" style="display:flex;flex-wrap:wrap;gap:var(--space-fluid-s);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:var(--space-fluid-s) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:var(--space-sm)">
-          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0">Where AI lives in an institutional investment platform</h3>
-          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);flex-shrink:0">AI platform</span>
-        </a>
-        <a href="design-system.html" style="display:flex;flex-wrap:wrap;gap:var(--space-fluid-s);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:var(--space-fluid-s) 0;border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:var(--space-sm)">
-          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0">A design system AI can build from</h3>
-          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);flex-shrink:0">Method</span>
-        </a>
-        <a href="card-insurance.html" style="display:flex;flex-wrap:wrap;gap:var(--space-fluid-s);align-items:baseline;justify-content:space-between;text-decoration:none;color:inherit;padding:var(--space-fluid-s) 0;border-bottom:1px solid var(--border);transition:color .25s ease,padding-left .35s cubic-bezier(.19,1,.22,1)" style-hover="color:var(--accent);padding-left:var(--space-sm)">
-          <h3 style="font-size:var(--font-size-xl);font-weight:500;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin:0">Modular card insurance in a banking app</h3>
-          <span style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-muted);flex-shrink:0">BTG Pactual</span>
-        </a>
-      </div>
-    </section>
-
-    <section style="background:var(--surface-band);border-top:1px solid var(--border)">
-      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y) var(--space-2xl)">
-                <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--tracking-eyebrow);line-height:var(--leading-label);text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-lg)">Questions</div>
-        <h2 style="margin:0 0 var(--space-fluid-l);font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-title);letter-spacing:var(--tracking-title);max-width:22ch;text-wrap:balance">What teams ask before embedding</h2>
-          <details style="padding:var(--space-fluid-m) 0;border-bottom:1px solid var(--border);border-top:1px solid var(--border)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-strong)">How is this different from hiring a contractor? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
-            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">I ship the front-end, so work doesn't stop at a handoff, and I argue about what's on the roadmap, not just how it looks.</p>
-          </details>
-          <details style="padding:var(--space-fluid-m) 0;border-bottom:1px solid var(--border)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-strong)">We already have designers. Does that work? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
-            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Often better. I take the system and front-end, or the lead, so they can stay on product depth. I've led designers and supported them.</p>
-          </details>
-          <details style="padding:var(--space-fluid-m) 0;border-bottom:1px solid var(--border)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-strong)">What happens when the engagement ends? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
-            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">The system is the handover: tokens, component docs and validation in CI keep the standard without me.</p>
-          </details>
-          <details style="padding:var(--space-fluid-m) 0;border-bottom:1px solid var(--border)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-strong)">Is AI writing our product? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
-            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">No. Claude Code and Claude Design speed up exploration and implementation. Every decision, review and shipped line is mine, gated by the same checks as any engineer's.</p>
-          </details>
-          <details style="padding:var(--space-fluid-m) 0;border-bottom:1px solid var(--border)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-strong)">Could this become a full-time role? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
-            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Yes. I'm open to senior and lead roles, and embedding is a good way to start that conversation. No fee for converting.</p>
-          </details>
-          <details style="padding:var(--space-fluid-m) 0;border-bottom:1px solid var(--border)">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-lg);font-size:var(--font-size-md);font-weight:500;line-height:var(--leading-snug);letter-spacing:var(--tracking-lead);color:var(--text-strong)">Which time zones do you cover? <span data-faq="" style="flex:none;font-weight:600;color:var(--accent)"></span></summary>
-            <p style="margin:var(--space-md) 0 0;max-width:70ch;font-size:var(--font-size-sm);line-height:var(--leading-small);color:var(--text-body);text-wrap:pretty">Remote worldwide, in English, Spanish and Portuguese, on hours that overlap yours. I travel for onsites when it matters.</p>
-          </details>
-        <div style="margin-top:var(--space-fluid-xl)">
-          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:var(--space-md) var(--space-xl);background:var(--surface-inverse);color:var(--text-on-inverse);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);line-height:var(--leading-label);text-transform:uppercase;transition:background .2s ease" style-hover="background:var(--accent);border-color:var(--accent);color:var(--text-on-inverse)">Start a conversation <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section style="border-top:1px solid var(--border);background:var(--surface-inverse);color:var(--text-on-inverse)">
-      <div style="max-width:1400px;margin:0 auto;padding:var(--section-y-lg) var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--section-y);align-items:start">
-        <h2 style="font-size:var(--font-size-2xl);font-weight:500;line-height:var(--leading-none);letter-spacing:var(--tracking-display);margin:0;text-wrap:balance">Need a designer inside your team?</h2>
-        <div>
-          <p style="margin:0 0 var(--space-xl);font-size:var(--font-size-md);line-height:var(--leading-body);color:var(--text-on-inverse-muted);text-wrap:pretty">A 30-minute call. Tell me what your team ships and what keeps slipping; I'll say where I'd start, and whether you need me at all.</p>
-          <a href="contact.html" style="white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-sm);padding:var(--space-md) var(--space-xl);background:var(--surface-page);color:var(--text-strong);border-radius:var(--radius-sm);text-decoration:none;font-size:var(--font-size-xs);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;white-space:nowrap;transition:background .2s ease" style-hover="background:var(--accent);border-color:var(--accent);color:var(--text-on-inverse)">Book an intro call <span>→</span></a>
+          <h2 class="h2" id="ld-who">Who you'd be working with</h2>
+          <dl class="well ld-facts">
+            <div><dt>Role</dt><dd>Senior Product Designer · design lead and design system owner</dd></div>
+            <div><dt>Experience</dt><dd>Nine years across fintech, logistics and energy</dd></div>
+            <div><dt>Engagements</dt><dd>Project work · embedded with your team · advisory · senior &amp; lead roles</dd></div>
+            <div><dt>What I take on</dt><dd>0→1 products · design systems in code · AI-native workflows</dd></div>
+            <div><dt>Based</dt><dd>Barcelona, Spain, remote worldwide. English, Spanish and Portuguese.</dd></div>
+            <div><dt>Availability</dt><dd><a href="contact.html">Available now</a></dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
   </main>
 
-  <dc-import name="Foot" hint-size="100%,76px"></dc-import>
+  <!-- Call to action band -->
+  <section class="band-inverse ld-band" aria-labelledby="ld-cta">
+    <div class="ld-wrap ld-band__grid">
+      <h2 id="ld-cta">Need a designer inside your team?</h2>
+      <div>
+        <p>A 30-minute call. Tell me what your team ships and what keeps slipping; I'll say where I'd start, and whether you need me at all.</p>
+        <a class="action action--inverse" href="contact.html">Book an intro call <span class="action__arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Foot" hint-size="100%,80px"></dc-import>
 
 </div>
 </x-dc>

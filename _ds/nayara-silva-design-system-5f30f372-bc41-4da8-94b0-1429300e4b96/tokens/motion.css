@@ -1,21 +1,37 @@
 :root{
-  /* One easing curve carries the whole site. */
-  --ease:cubic-bezier(.19,1,.22,1); /* @kind other */
-  --ease-out:ease; /* @kind other */
+  /* Easing (MOTION.md). Standard for anything that moves and settles; out for
+     entrances; in-out-soft for anything that returns to its start (marks, fades,
+     breathing); linear only for constant-speed travel along a drawn path. */
+  --ease-standard:cubic-bezier(0.4,0,0.2,1); /* @kind other */
+  --ease-out:cubic-bezier(0,0,0.2,1); /* @kind other */
+  --ease-in-out-soft:cubic-bezier(0.45,0,0.55,1); /* @kind other */
+  --ease-linear:linear; /* @kind other */
+  --ease:cubic-bezier(.19,1,.22,1); /* the site's text and block entrances (lineUp, fadeUp) */ /* @kind other */
 
+  /* Durations */
+  --dur-micro:.18s; /* hover, focus: 150 to 200ms */ /* @kind other */
   --dur-hover:.2s; /* @kind other */
-  --dur-hover-slow:.25s; /* @kind other */
+  --dur-hover-slow:.25s; /* a link card rising, an arrow moving 3px */ /* @kind other */
   --dur-roll:.38s; /* @kind other */
+  --dur-entrance:.5s; /* one-off element entrance: 400 to 600ms */ /* @kind other */
+  --dur-ambient-sm:2.5s; /* one small ambient cycle (pulse, breathe) */ /* @kind other */
+  --dur-ambient-lg:6s; /* one large ambient cycle (orbit, ripple) */ /* @kind other */
+  --dur-scene:12s; /* a full illustration scene: travel ~half, hold ~30%, fade ~15% */ /* @kind other */
+  --dur-archive:.8s; /* the home chat's thread leaving */ /* @kind other */
   --dur-enter:1.2s; /* @kind other */
   --dur-enter-slow:1.5s; /* @kind other */
   --dur-rule:1.6s; /* @kind other */
 
+  /* Parallax: the sky moves at this fraction of the scroll (sky.js reads it). */
+  --sky-speed:0.3; /* @kind other */
+
   --transition-hover:color var(--dur-hover-slow) var(--ease-out),background var(--dur-hover) var(--ease-out),border-color var(--dur-hover) var(--ease-out); /* @kind other */
-  --transition-nudge:padding-left .35s var(--ease); /* @kind other */
+  --transition-lift:box-shadow var(--dur-hover-slow) var(--ease-standard),background-color var(--dur-hover) var(--ease-out),color var(--dur-hover) var(--ease-out); /* actions and link cards */ /* @kind other */
+  --transition-nudge:transform var(--dur-hover-slow) var(--ease-out); /* an arrow moving 3px */ /* @kind other */
 }
 
 /* Entrance animations. Text arrives by masked line reveal; blocks fade up.
-   Both blur on the way in, ~3—5px, and land at zero. */
+   Both blur on the way in, ~3—5px, and land at zero. One-off, never looped. */
 @keyframes lineUp{
   from{transform:translateY(1.05em);filter:blur(5px)}
   55%{filter:blur(0.8px)}
@@ -29,4 +45,8 @@
   from{transform:scaleX(0)}
   to{transform:scaleX(1)}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none !important}}
+/* Reduced motion (M-09): no loop, no travel, no parallax. Illustrations show
+   their resolved state (components.css); transitions become instant. */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition-duration:0s !important;scroll-behavior:auto !important}
+}
