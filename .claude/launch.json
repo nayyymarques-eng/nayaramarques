@@ -12,33 +12,6 @@
       "autoPort": true
     },
     {
-      "name": "theme-sky",
-      "runtimeExecutable": "sh",
-      "runtimeArgs": [
-        "-c",
-        "cd '/Users/nayaramarques/Portfolio and Services/.claude/worktrees/agent-a7f4a26ee1445f54e' && python3 -m http.server 8811 --bind 127.0.0.1"
-      ],
-      "port": 8811
-    },
-    {
-      "name": "r5-ai-edit",
-      "runtimeExecutable": "sh",
-      "runtimeArgs": [
-        "-c",
-        "cd '/Users/nayaramarques/Portfolio and Services/.claude/worktrees/r5-ai-edit' && python3 -m http.server 8813 --bind 127.0.0.1"
-      ],
-      "port": 8813
-    },
-    {
-      "name": "r5-layout",
-      "runtimeExecutable": "sh",
-      "runtimeArgs": [
-        "-c",
-        "cd '/Users/nayaramarques/Portfolio and Services/.claude/worktrees/r5-layout' && python3 -m http.server 8812 --bind 127.0.0.1"
-      ],
-      "port": 8812
-    },
-    {
       "name": "studio",
       "runtimeExecutable": "node",
       "runtimeArgs": [
