@@ -1,0 +1,17 @@
+<!-- @dsCard group="Case" height=460 width=900 subtitle="Decision with Gained / Traded away; problem card" -->
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body style="margin:0;padding:24px;background:var(--paper)">
+<div id="root" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;align-items:start"></div>
+<script>
+  const { DecisionCard } = window.NayaraSilvaDesignSystem_5f30f3;
+  const h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render([
+    h(DecisionCard, { key: 1, eyebrow: 'Decision 01 · Problem A', title: "Distribute the AI, don't centralise it",
+      gained: 'No context to re-type.',
+      traded: 'One place to learn. Four surfaces need one interaction language, or they read as four features.' },
+      'A question about a report is about that report. Restating it elsewhere means describing context the platform already holds.'),
+    h(DecisionCard, { key: 2, eyebrow: 'Problem B', title: 'One behaviour for two situations' },
+      'People came to ask about what they saw, or to change what they were working on. The chat treated both the same.')
+  ]);
+</script>
+</body></html>

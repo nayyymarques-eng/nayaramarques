@@ -1,0 +1,62 @@
+<!-- @dsCard group="Site" height=380 width=1400 subtitle="Static rendition of Nav.dc.html: closed, and with the Work menu open" -->
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  /* Copied from the rendered site header (Nav.dc.html). Hover rules were style-hover attributes there. */
+  .nav-header { position: relative; z-index: 50; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(242, 241, 238, 0.46); border-bottom: 1px solid var(--paper-2); }
+  .nav-row { max-width: 1400px; margin: 0 auto; padding: 0 32px; height: 57px; display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 3vw, 40px); }
+  .nav-home { display: flex; align-items: center; gap: 12px; height: 20px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; flex-shrink: 0; }
+  .nav-name { display: block; line-height: 20px; white-space: nowrap; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-6); }
+  .nav-links { display: flex; align-items: center; height: 20px; gap: clamp(16px, 2.4vw, 28px); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-btn { appearance: none; background: none; border: 0; padding: 0; font-family: Archivo, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: color .2s; }
+  .nav-link { color: var(--ink-4); text-decoration: none; transition: color .2s; }
+  .nav-btn:hover, .nav-link:hover { color: var(--ink) !important; }
+  .nav-menu { position: absolute; top: calc(100% + 14px); left: -18px; min-width: 250px; background: var(--paper); border: 1px solid var(--paper-2); box-shadow: rgba(16, 17, 20, 0.34) 0 18px 44px -26px; z-index: 60; }
+  .nav-item { display: block; padding: 12px 18px; text-decoration: none; border-bottom: 1px solid var(--paper-2); font-size: 14px; font-weight: 400; letter-spacing: normal; text-transform: none; transition: background .18s; color: var(--ink); }
+  .nav-item.all { border-bottom: 0; color: var(--rust); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+  .nav-item:hover { background: var(--paper-2) !important; }
+</style></head>
+<body style="margin:0;background:var(--paper)">
+<div id="closed"></div>
+<div style="height:24px"></div>
+<div id="open"></div>
+<template id="nav">
+  <header class="nav-header">
+    <nav class="nav-row">
+      <a href="#" class="nav-home" aria-label="Nayara Marques — home">
+        <span aria-hidden="true" style="width:18px;height:18px;flex:none;position:relative">
+          <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true" style="display:block;overflow:visible">
+            <path d="M 50 2 C 54 34 66 46 98 50 C 66 54 54 66 50 98 C 46 66 34 54 2 50 C 34 46 46 34 50 2" fill="#c0392b"></path>
+          </svg>
+        </span>
+        <span class="nav-name">Nayara Marques</span>
+      </a>
+      <div class="nav-links">
+        <div style="position:relative">
+          <button class="nav-btn" data-menu="work">Work <span style="display:inline-block;font-size:10px">▾</span></button>
+          <div class="nav-menu" hidden>
+            <a href="#" class="nav-item">AI surfaces</a>
+            <a href="#" class="nav-item">Composer spec</a>
+            <a href="#" class="nav-item">Design system</a>
+            <a href="#" class="nav-item">Advisors platform</a>
+            <a href="#" class="nav-item">Fleet optimizer</a>
+            <a href="#" class="nav-item">Card insurance</a>
+            <a href="#" class="nav-item all">All work</a>
+          </div>
+        </div>
+        <div style="position:relative">
+          <button class="nav-btn">Services <span style="display:inline-block;font-size:10px">▾</span></button>
+        </div>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Contact</a>
+      </div>
+    </nav>
+  </header>
+</template>
+<script>
+  const t = document.getElementById('nav');
+  document.getElementById('closed').append(t.content.cloneNode(true));
+  const open = t.content.cloneNode(true);
+  open.querySelector('.nav-menu').hidden = false;
+  document.getElementById('open').append(open);
+</script>
+</body></html>

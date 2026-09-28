@@ -1,0 +1,17 @@
+<!-- @dsCard group="Case" height=300 width=900 subtitle="A run of lettered rows; last drops the rule" -->
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body style="margin:0;padding:24px;background:var(--paper)">
+<div id="root"></div>
+<script>
+  const { ListRow } = window.NayaraSilvaDesignSystem_5f30f3;
+  const h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render([
+    h(ListRow, { key: 'a', marker: 'A', title: 'No users in the design sprint.', measure: '70ch' },
+      'No fleet manager could join; every output was a hypothesis until tested.'),
+    h(ListRow, { key: 'b', marker: 'B', title: 'Distributed by four time zones.', measure: '70ch' },
+      'Online, with participants in the US, Peru, Brazil and Argentina.'),
+    h(ListRow, { key: 'c', marker: 'C', title: 'An experimental vertical.', measure: '70ch', last: true },
+      'Investment depended on evidence. The company could change strategy, and later did.')
+  ]);
+</script>
+</body></html>

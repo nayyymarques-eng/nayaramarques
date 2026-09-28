@@ -4,18 +4,19 @@ Read this before any change. It is written for AI agents and people alike: every
 Sources of truth, in order: `_ds/…/tokens/*.css` (values) → this file (decisions) → `harness/` (checks). If they disagree, stop and ask Nayara.
 
 ## 0. Workflow
+0. Start: read `PROGRESS.md` (state, what waits on Nayara, next steps) and `DECISIONS.md` (her verdicts; never bring back what they rule out).
 1. Before editing: name the rule IDs your change touches.
 2. Edit. Reuse tokens and components (§1, §3). Never hand-write a value a token already has.
-3. Check source: `python3 harness/check_source.py`. Must end with `0 failure(s)`. Read warnings; fix the ones in files you touched.
-4. Check rendered pages: start the `site` preview (`.claude/launch.json`, port 8787), open each changed page, run
-   `eval(await (await fetch('/harness/check_pages.js')).text())`. Must return `pass`. Also look at it at 375px wide.
-5. Show Nayara the change in the preview. Deploy only when she says so: `/deploy`.
+3. Check: `python3 harness/check.py` (source rules, then every page in headless Chrome at 1400px and 375px; add page names to check only those). Must end with `PASS`. Read the warnings; fix the ones in files you touched. (By hand: `harness/check_source.py`, and in the `site` preview `eval(await (await fetch('/harness/check_pages.js')).text())`.)
+4. Show Nayara the change in the preview. Deploy only when she says so: `/deploy`.
+5. A verdict from Nayara goes into `DECISIONS.md` the same day. If a machine can check it, it also becomes a rule here and a check in `harness/`, so she never has to give it twice.
+6. End: update `PROGRESS.md` (the three blocks, and the `Updated:` line) before you stop.
 
 ## 1. Colour (COL)
 - **COL-01** No literal colour in any CSS context: `style`, `style-before`, `style-after`, `style-hover`, `<style>`, CSS strings in x-dc and inline scripts. Use `var(--token)`. `rgba()`, `hsl()`, `oklch()` count as literals; use `color-mix(in srgb, var(--role) N%, transparent)`. *(check_source)*
 - **COL-02** Exceptions, and only these: SVG presentation attributes (`fill=`, `stroke=`, var() does not work there); the loading screen's placeholder mark (`#e0c3bd` in `#boot`; the rest of the loading screen uses tokens); the recreated bank-app screen in `card-insurance.html` (`#cccccc`, `#c4c4c4`).
 - **COL-03** Every page links `tokens/colors.css` before its first `<style>`, followed by `typography.css`, `spacing.css`, `borders.css`, `motion.css` and `base.css`. Page `<style>` blocks do not repeat what `base.css` and `motion.css` already set (links, selection, focus ring, entrance keyframes, reduced motion). *(check_source)*
-- **COL-04** No page redefines a token (primitive, role or alias, in any `tokens/` file). Change it in `tokens/`, and tell Nayara so Claude Design is updated too (`ds-sync`). *(check_source)*
+- **COL-04** No page redefines a token. Change `tokens/colors.css`, then Nayara runs `/ds-sync` so the design system artifact gets it too. *(check_source)*
 - **COL-05** No new colour. If no token fits the job, stop and propose one: name, value, job. Do not approximate.
 - **COL-06** Pages use roles, never primitives (`--sand-*`, `--slate-*`, `--blue-*`, `--red-*`, `--green-*`, `--clay-*`). *(check_source; warning until the aliases go)*
 - **COL-07** Pages never use the old alias names listed under the token table. *(check_source; warning until the aliases go)*
@@ -76,7 +77,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
   Site components: `Nav` and `Foot` (`*.dc.html`), via `<dc-import name="…">`. Section rails: `<h2 data-rail>`.
 - **CMP-02** Change a component through its props or attributes, never by copying its markup into a page.
 - **CMP-03** Nothing fits? Draw it, mark it `<!-- proposal: what it does, components considered, why each was wrong -->`, and tell Nayara. It joins the system only after her verdict.
-- **CMP-04** Never edit `_ds/…/_ds_bundle.js`, `_ds_manifest.json` or `readme.md`; they are generated. The files in `tokens/` are the source: change them here, then run `ds-sync`.
+- **CMP-04** The repo is the design system's source. Edit `_ds/…/_ds_bundle.js` or other `_ds` files only for a change Nayara approved (CMP-03); `tokens/colors.css` follows COL-04. The design system artifact (claude.ai/artifact/1J1wRatHfa4NwaEmErc4eu) is built from the repo, never the other way round.
 
 ## 4. Content (CNT)
 - **CNT-01** No prices. Every offer says "Priced on the call". Budget ranges in the `start-a-project` form are allowed. *(check_source)*
