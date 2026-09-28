@@ -35,5 +35,21 @@ for (const w of WIDTHS) {
     console.log(`${ok ? 'pass' : 'FAIL'}  ${String(w).padStart(4)}px  ${p}${ok ? '' : '\n      ' + text.split('\n').join('\n      ')}`);
   }
 }
+// once with reduced motion on (MOT-01, ILL-03), for the pages with case scenes: nothing loops, scenes rest resolved
+const still = pages.filter(p => ['index.html', 'work.html'].includes(p));
+if (still.length) {
+  await send('Emulation.setDeviceMetricsOverride', { width: 1400, height: 900, deviceScaleFactor: 1, mobile: false });
+  await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  for (const p of still) {
+    await send('Page.navigate', { url: `${base}/${p}` });
+    await sleep(4500);
+    const r = await send('Runtime.evaluate', { expression: script, returnByValue: true, awaitPromise: true });
+    const v = r.result?.result?.value;
+    const text = typeof v === 'string' ? v : JSON.stringify(v ?? r.result?.exceptionDetails?.text ?? 'no result');
+    const ok = /::\s*pass\s*$/.test(text.trim());
+    if (!ok) failed++;
+    console.log(`${ok ? 'pass' : 'FAIL'}  1400px  ${p} (reduced motion)${ok ? '' : '\n      ' + text.split('\n').join('\n      ')}`);
+  }
+}
 ws.close(); chrome.kill();
 process.exit(failed ? 1 : 0);

@@ -15,49 +15,44 @@
   }
   window.addEventListener('load', function () { watch(); setTimeout(watch, 600); setTimeout(watch, 2000); });
 })();
-// Case scenes (ILL-01, ILL-06; 2026-09-27): one entrance when a .scene scrolls into view, never a loop.
-// With motion allowed, a scene waits ([data-enter]) and gets .is-in once, the first time a third of it is in view.
-// Before that, the cursor, its rings and the travelling pieces are placed on their targets, measured without transforms.
-// Reduced motion, or no script: nothing is set and the scene shows its end state (components.css).
+// Case scenes, direction B "The hand" (ILL-01, ILL-06; Nayara 2026-09-28): a cursor performs the case's one change on a
+// --dur-scene loop (components.css .scene--hand). This script measures the cursor's stops: the centre of each
+// [data-p="p0".."p5"] target, relative to the scene, measured without transforms (offset chain), written as --pkx/--pky
+// on the scene (a missing stop repeats the one before). The loop starts (.is-live) the first time the scene is in view and
+// pauses (.is-offscreen) while it is out of view, as the .ld-art loops above. Reduced motion, phones (below 900px, where the
+// scene stacks) and no script: the CSS shows the resolved end state, still.
 (function () {
   if (window.__scenes) return; // the page runtime can run scripts twice
   window.__scenes = true;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   function off(el, root) { var x = 0, y = 0, n = el; while (n && n !== root) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; } return [x, y]; }
-  function pt(stage, sel) { var el = stage.querySelector(sel); if (!el) return [0, 0]; var o = off(el, stage); return [o[0] + el.offsetWidth * 0.55, o[1] + el.offsetHeight * 0.6]; }
-  function place(scene) {
-    [].forEach.call(scene.querySelectorAll('[data-t1]'), function (cur) {
-      var stage = cur.offsetParent; if (!stage) return;
-      var a = pt(stage, cur.dataset.t1), b = pt(stage, cur.dataset.t2), o = (cur.dataset.t0 || '60,80').split(',').map(Number);
-      [['--x0', a[0] + o[0]], ['--y0', a[1] + o[1]], ['--x1', a[0]], ['--y1', a[1]], ['--x2', b[0]], ['--y2', b[1]]].forEach(function (v) { cur.style.setProperty(v[0], v[1].toFixed(1) + 'px'); });
-    });
-    [].forEach.call(scene.querySelectorAll('[data-at]'), function (r) {
-      var stage = r.offsetParent; if (!stage) return; var p = pt(stage, r.dataset.at); r.style.left = p[0] + 'px'; r.style.top = p[1] + 'px';
-    });
-    [].forEach.call(scene.querySelectorAll('[data-to]'), function (el) {
-      var t = scene.querySelector(el.dataset.to); if (!t || !el.offsetParent) return;
-      var a = off(el, scene), b = off(t, scene);
-      el.style.setProperty('--tx', (b[0] + t.offsetWidth / 2 - a[0] - el.offsetWidth / 2).toFixed(1) + 'px');
-      el.style.setProperty('--ty', (b[1] + t.offsetHeight / 2 - a[1] - el.offsetHeight / 2).toFixed(1) + 'px');
-    });
+  function measure(scene) {
+    var last = null, first = scene.querySelector('[data-p="p0"]') ? null : scene.querySelector('[data-p="p1"]');
+    // no p0: the cursor comes in from below left of its first stop
+    if (first && first.offsetParent) { var f = off(first, scene); last = [f[0] + first.offsetWidth / 2 - 56, f[1] + first.offsetHeight / 2 + 40]; }
+    for (var k = 0; k < 6; k++) {
+      var el = scene.querySelector('[data-p="p' + k + '"]');
+      if (el && el.offsetParent) { var o = off(el, scene); last = [o[0] + el.offsetWidth / 2, o[1] + el.offsetHeight / 2]; }
+      if (last) { scene.style.setProperty('--p' + k + 'x', last[0].toFixed(1) + 'px'); scene.style.setProperty('--p' + k + 'y', last[1].toFixed(1) + 'px'); }
+    }
   }
   var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (es) {
     es.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      place(e.target); e.target.classList.add('is-in'); io.unobserve(e.target);
+      var s = e.target;
+      s.classList.toggle('is-offscreen', !e.isIntersecting);
+      if (e.intersectionRatio >= 0.2 && !s.classList.contains('is-live')) { measure(s); s.classList.add('is-live'); }
     });
-  }, { threshold: 0.35 }) : null;
+  }, { threshold: [0, 0.2] }) : null;
   var seen = typeof WeakSet === 'function' ? new WeakSet() : null;
   function scan() {
-    [].forEach.call(document.querySelectorAll('.scene'), function (s) {
+    [].forEach.call(document.querySelectorAll('.scene--hand'), function (s) {
+      measure(s);
       if (seen && seen.has(s)) return;
       if (seen) seen.add(s);
-      if (!io || reduce.matches || s.classList.contains('is-in')) return;
-      s.setAttribute('data-enter', '');
-      io.observe(s);
+      if (io) io.observe(s);
     });
   }
   if (document.readyState !== 'loading') scan(); else document.addEventListener('DOMContentLoaded', scan);
   window.addEventListener('load', function () { scan(); setTimeout(scan, 600); setTimeout(scan, 2000); });
+  var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(scan, 150); });
   window.__sceneScan = scan;
 })();

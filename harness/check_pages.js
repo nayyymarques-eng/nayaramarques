@@ -30,10 +30,12 @@
  *           which kind it is (Result… for data-pattern="result", Scope… for data-pattern="scope")
  *   PAT-05  case cards are not stacked: a .cards group with more than one column, a gap other than 12px (--gap-cards),
  *           or a card narrower than its group
- *   ILL-01  an animation inside a case scene (.scene) loops; case scenes move once, on entrance
- *   ILL-07  a case scene has at most 8 labels outside [data-mock], the accent on the side after only, both sides' labels on one line,
- *           its two pictures share one top and one bottom (within 1px); all scenes on a page share left, right and
- *           width (1px), each centred on its row (2px) and inside the row's padding
+ *   ILL-01  a case scene (.scene) loop runs while the scene is out of view (it must pause), a scene animates anything
+ *           but transform and opacity (MOT-02), anything in a scene moves under reduced motion or below 900px, or the
+ *           cursor shows in the resolved state (direction B "The hand", Nayara 2026-09-28)
+ *   ILL-07  a case scene has at most 8 labels outside [data-mock], the accent on the side after only; from 900px up,
+ *           both sides' labels on one line, its two pictures share one top and one bottom (within 1px); all scenes on
+ *           a page share left, right and width (1px), each centred on its row (2px) and inside the row's padding
  *   ILL-02  text inside a drawing (svg, [data-illo], .illo-window, .scene) is not the label style as rendered: under 9.5px,
  *           not uppercase, not 0.14em, or lighter than 600. In a figure's picture, uppercase labels must be the label
  *           style (9.5, 10.5 or 12.5px, 0.14em, 600). Product UI is exempt with [data-mock].
@@ -415,6 +417,9 @@
       if (cs.backgroundImage !== 'none' || /blur/.test(cs.backdropFilter || '')) return null;
       const c = rgba(cs.backgroundColor);
       if (c[3] > 0) { layers.push(c); if (c[3] >= 1) break; }
+      // the sticky header's frost lives on its ::before (HDR-01): count its tint as a layer, the blur as nothing
+      const fb = getComputedStyle(a, '::before');
+      if (a.matches('[data-nav-bar]') && fb.content !== 'none') { const f = rgba(fb.backgroundColor); if (f[3] > 0) layers.push(f); }
     }
     let g = [255, 255, 255, 1];
     for (let i = layers.length - 1; i >= 0; i--) g = over(layers[i], g);
@@ -479,9 +484,22 @@
   }
   out.push(...ill.values());
 
-  // ILL-01 a case scene moves once, on entrance: no animation inside .scene loops
-  const sceneLoops = document.getAnimations().filter(a => a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('.scene') && a.effect.getComputedTiming().iterations === Infinity);
-  if (sceneLoops.length) out.push(`ILL-01 ${sceneLoops.length} animation(s) loop inside a case scene (entrance only)`);
+  // ILL-01 case scenes, direction B (2026-09-28): the loop pauses out of view, moves transform and opacity only (MOT-02),
+  // and nothing moves under reduced motion or below 900px (the stacked scene is still, in its resolved state)
+  {
+    const wide = innerWidth >= 900 && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const inScene = a => a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('.scene');
+    const anims = document.getAnimations().filter(inScene);
+    const running = anims.filter(a => a.playState === 'running');
+    if (!wide && running.length) out.push(`ILL-01 ${running.length} animation(s) run in a case scene with reduced motion on or below 900px (show the resolved state, still)`);
+    const outOfView = running.filter(a => { const r = inScene(a).getBoundingClientRect(); return r.bottom < 0 || r.top > innerHeight; });
+    if (outOfView.length) out.push(`ILL-01 ${outOfView.length} case scene animation(s) run out of view (loops pause off screen)`);
+    const props = new Set();
+    anims.forEach(a => (a.effect.getKeyframes ? a.effect.getKeyframes() : []).forEach(k => Object.keys(k).forEach(p => { if (!['offset', 'easing', 'composite', 'computedOffset'].includes(p)) props.add(p); })));
+    const bad = [...props].filter(p => !['transform', 'opacity'].includes(p));
+    if (bad.length) out.push(`ILL-01 a case scene animates ${bad.join(', ')} (MOT-02: transform and opacity only)`);
+    if (!wide) document.querySelectorAll('.scene .sc-hand').forEach(c => { if (c.getClientRects().length && parseFloat(getComputedStyle(c).opacity) > 0) out.push('ILL-01 the cursor shows in a still case scene'); });
+  }
 
   // ILL-07 a case scene (home, Work; .scene, 2026-09-27) shows one change read left to right: a picture and a caption
   // on each side ([data-side="before"|"after"]), at most 8 labels outside product UI ([data-mock]), the accent on the
@@ -514,6 +532,7 @@
       }
       return [t, b];
     };
+    if (innerWidth < 900) return; // below 900px the scene stacks (ILL-06): the side-by-side alignment does not apply
     const pics = [w.querySelector('.scene__pic[data-side="before"]'), w.querySelector('.scene__pic[data-side="after"]')];
     if (pics[0] && pics[1]) {
       const [e0, e1] = pics.map(extent);
@@ -528,7 +547,7 @@
     const settle = document.createElement('style');
     settle.textContent = '[data-reveal],[data-reveal] *:not([data-illo] *){opacity:1!important;transform:none!important;filter:none!important}';
     document.head.appendChild(settle);
-    const sc = [...document.querySelectorAll('[data-case-row] .scene')].filter(e => e.getClientRects().length && getComputedStyle(e).display !== 'none');
+    const sc = innerWidth < 900 ? [] : [...document.querySelectorAll('[data-case-row] .scene')].filter(e => e.getClientRects().length && getComputedStyle(e).display !== 'none');
     if (sc.length > 1) {
       const rs = sc.map(e => e.getBoundingClientRect());
       const spread = k => Math.max(...rs.map(r => r[k])) - Math.min(...rs.map(r => r[k]));
