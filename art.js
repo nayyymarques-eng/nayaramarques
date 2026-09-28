@@ -39,9 +39,9 @@
     es.forEach(function (e) {
       var s = e.target;
       s.classList.toggle('is-offscreen', !e.isIntersecting);
-      if (e.isIntersecting && !s.classList.contains('is-live')) { measure(s); s.classList.add('is-live'); }
+      if (e.intersectionRatio >= 0.2 && !s.classList.contains('is-live')) { measure(s); s.classList.add('is-live'); }
     });
-  }, { threshold: 0.2 }) : null;
+  }, { threshold: [0, 0.2] }) : null;
   var seen = typeof WeakSet === 'function' ? new WeakSet() : null;
   function scan() {
     [].forEach.call(document.querySelectorAll('.scene--hand'), function (s) {

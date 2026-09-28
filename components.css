@@ -465,11 +465,11 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
 @keyframes h-ring2{0%,33%{opacity:0;transform:scale(.3)}34%{opacity:1;transform:scale(.4)}40%,100%{opacity:0;transform:scale(1.4)}}
 @keyframes h-ring3{0%,45%{opacity:0;transform:scale(.3)}46%{opacity:1;transform:scale(.4)}52%,100%{opacity:0;transform:scale(1.4)}}
 @keyframes h-ring4{0%,57%{opacity:0;transform:scale(.3)}58%{opacity:1;transform:scale(.4)}64%,100%{opacity:0;transform:scale(1.4)}}
-@keyframes h-on1{0%,22%{opacity:0;transform:scale(.94)}27%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
-@keyframes h-on2{0%,34%{opacity:0;transform:scale(.94)}39%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
-@keyframes h-on3{0%,46%{opacity:0;transform:scale(.94)}51%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
-@keyframes h-on4{0%,58%{opacity:0;transform:scale(.94)}63%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
-@keyframes h-on5{0%,70%{opacity:0;transform:scale(.94)}75%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on1{0%,22%{opacity:0;transform:none}27%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on2{0%,34%{opacity:0;transform:none}39%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on3{0%,46%{opacity:0;transform:none}51%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on4{0%,58%{opacity:0;transform:none}63%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on5{0%,70%{opacity:0;transform:none}75%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
 @keyframes h-off1{0%,22%{opacity:1}27%,92%{opacity:0}100%{opacity:1}}
 @keyframes h-off2{0%,34%{opacity:1}39%,92%{opacity:0}100%{opacity:1}}
 @keyframes h-off3{0%,46%{opacity:1}51%,92%{opacity:0}100%{opacity:1}}
