@@ -400,47 +400,83 @@ p[data-sec-intro]{margin:0 0 var(--space-xl);max-width:600px;font-size:var(--fon
   .sc-stack-narrow>*{margin-top:0 !important;flex:none !important}
 }
 
-/* the entrance: waiting (script, motion allowed, not yet in view) */
-.scene[data-enter]:not(.is-in) :is(.sc-a-in,.sc-a-fade,.sc-a-pop){opacity:0}
-.scene[data-enter]:not(.is-in) .sc-a-grow{transform:scaleX(0)}
-.scene[data-enter]:not(.is-in) :is(.sc-a-slide,.sc-a-shift){transform:none}
-.scene[data-enter]:not(.is-in) .sc-a-out{opacity:1}
-/* end state of the parts that only move during the entrance */
+/* end state of parts from the entrance scenes (round 5; kept so the old review page still shows its end state) */
 .sc-a-out,.sc-a-away{opacity:0}
 .sc-a-slide{transform:translateX(var(--kx))}
 .sc-a-shift{transform:translate(var(--sx,0),var(--sy,0))}
-.sc-a-grow{transform-origin:left center}
-.scene.is-in :is(.sc-a-in,.sc-a-fade,.sc-a-pop,.sc-a-grow,.sc-a-slide,.sc-a-shift,.sc-a-out,.sc-a-away,.sc-dot,.sc-ring,.sc-spark){
-  animation-duration:var(--dur-entrance);animation-timing-function:var(--ease-out);animation-fill-mode:both;animation-delay:calc(var(--s,0) * var(--beat))}
-.scene.is-in .sc-a-in{animation-name:sc-in}
-.scene.is-in .sc-a-fade{animation-name:sc-fade}
-.scene.is-in .sc-a-pop{animation-name:sc-pop}
-.scene.is-in .sc-a-grow{animation-name:sc-grow}
-.scene.is-in .sc-a-slide{animation-name:sc-slide}
-.scene.is-in .sc-a-shift{animation-name:sc-shift}
-.scene.is-in .sc-a-out{animation-name:sc-out}
-.scene.is-in .sc-a-away{animation-name:sc-away}
-.scene.is-in .sc-dot{animation-name:sc-run;animation-timing-function:var(--ease-linear)}
-.scene.is-in .sc-ring{animation-name:sc-ring}
-.scene.is-in .sc-spark{animation-name:sc-spark}
-.scene.is-in .sc-cursor{animation:sc-cursor calc(var(--beat) * 9) var(--ease-standard) both;animation-delay:calc(var(--s,0) * var(--beat))}
-@keyframes sc-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@keyframes sc-fade{from{opacity:0}to{opacity:1}}
-@keyframes sc-pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
-@keyframes sc-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes sc-slide{from{transform:none}to{transform:translateX(var(--kx))}}
-@keyframes sc-shift{from{transform:none}to{transform:translate(var(--sx,0),var(--sy,0))}}
-@keyframes sc-out{from{opacity:1}to{opacity:0}}
-@keyframes sc-away{from{opacity:1;transform:none}70%{opacity:1}to{opacity:0;transform:translate(var(--tx,0),var(--ty,0)) scale(.4)}}
-@keyframes sc-run{0%{opacity:0;transform:none}15%{opacity:1}85%{opacity:1;transform:translate(var(--tx,0),var(--ty,0))}100%{opacity:0;transform:translate(var(--tx,0),var(--ty,0))}}
-@keyframes sc-ring{0%{opacity:0;transform:scale(.5)}20%{opacity:1}100%{opacity:0;transform:scale(1.4)}}
-@keyframes sc-spark{0%{opacity:0;transform:scale(.4)}40%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.2)}}
-@keyframes sc-cursor{
-  0%{opacity:0;transform:translate(var(--x0),var(--y0))}
-  11%{opacity:1;transform:translate(var(--x0),var(--y0))}
-  22%{transform:translate(var(--x1),var(--y1)) scale(1)}25%{transform:translate(var(--x1),var(--y1)) scale(.86)}28%{transform:translate(var(--x1),var(--y1)) scale(1)}
-  55%{transform:translate(var(--x2),var(--y2)) scale(1)}58%{transform:translate(var(--x2),var(--y2)) scale(.86)}61%{transform:translate(var(--x2),var(--y2)) scale(1)}
-  85%{opacity:1}100%{opacity:0;transform:translate(var(--x2),var(--y2))}}
+
+/* ---------- Case scenes, direction B "The hand" (Nayara 2026-09-28): ILL-01, ILL-06, ILL-07, MOT-02 ----------
+   No window, no arrow: a cursor performs the case's one change left to right (empties, merges, picks, toggles); each
+   click leaves a ring and a mark that persists; the scene ends resolved, holds, and resets with a fade (never a
+   reverse). One --dur-scene (12s) timeline: the cursor arrives at stop k (--pk*, measured by art.js from the
+   [data-p="pk"] targets) and clicks at 22, 34, 46, 58, 70%; .h-onk marks appear and .h-offk parts leave at click k;
+   hold to 92%, fade to the start by 100%. Transform and opacity only. The styles without .is-live are the resolved
+   end state: reduced motion, no script, off screen before the first view and phones (below 900px) show it still.
+   art.js sets .is-live the first time a scene is in view and .is-offscreen (paused) while it is out of view. */
+.scene--hand{max-width:620px;--cols:minmax(0,1fr) auto minmax(0,1fr);column-gap:var(--space-lg)}
+.scene--hand .scene__to{width:var(--space-md);height:1px}
+.scene--hand .scene__to::before{content:none}
+.scene--hand .scene__pic>.sc-fill{flex:1}
+.scene--hand .sc-ico{width:14px;height:14px}
+.scene--hand .illo-bar{height:6px}
+.scene--hand .illo-send{width:22px;height:22px}
+.scene--hand .illo-send svg{width:12px;height:12px}
+.scene--hand .sc-ghost,.scene--hand .sc-card{padding:10px 12px;border-radius:var(--radius-md)}
+.scene--hand [data-mock] .sc-ghost,.scene--hand .sc-card .sc-card{border-radius:var(--radius-sm)}
+.scene--hand .sc-hand-over{position:absolute;inset:0}
+.h-off1,.h-off2,.h-off3,.h-off4{opacity:0}
+.h-kn{transform:translateX(12px)}
+.sc-hand{position:absolute;left:0;top:0;width:16px;height:20px;z-index:4;color:var(--text-strong);pointer-events:none;opacity:0;transform:translate(var(--p5x,0),var(--p5y,0))}
+.sc-hand svg{display:block;width:16px;height:20px;overflow:visible}
+.sc-hand path{fill:currentColor;stroke:var(--surface-card);stroke-width:1.4;stroke-linejoin:round}
+.sc-hand__carry{position:absolute;left:12px;top:14px;opacity:0}
+.scene--hand .sc-ring{left:var(--rx,0);top:var(--ry,0)}
+.sc-ring[data-at="p1"]{--rx:var(--p1x);--ry:var(--p1y)}.sc-ring[data-at="p2"]{--rx:var(--p2x);--ry:var(--p2y)}.sc-ring[data-at="p3"]{--rx:var(--p3x);--ry:var(--p3y)}.sc-ring[data-at="p4"]{--rx:var(--p4x);--ry:var(--p4y)}
+/* the stacked scene (below 900px): direction A, still: before above, after below, no cursor, no rings, no arrow */
+@media (max-width:899px){
+  .scene--hand{grid-template-columns:minmax(0,1fr);max-width:none;row-gap:var(--space-sm)}
+  .scene--hand .scene__pic[data-side="before"]{grid-row:1;grid-column:1}
+  .scene--hand .scene__cap[data-side="before"]{grid-row:2;grid-column:1}
+  .scene--hand .scene__pic[data-side="after"]{grid-row:3;grid-column:1;margin-top:var(--space-md)}
+  .scene--hand .scene__cap[data-side="after"]{grid-row:4;grid-column:1}
+  .scene--hand .scene__to,.scene--hand .sc-hand,.scene--hand .sc-ring{display:none}
+}
+/* the loop: only with motion allowed, from 900px up, once the scene has been in view */
+@media (min-width:900px) and (prefers-reduced-motion:no-preference){
+  .scene--hand.is-live :is(.sc-hand,.sc-hand__carry,.sc-ring,.h-on1,.h-on2,.h-on3,.h-on4,.h-on5,.h-off1,.h-off2,.h-off3,.h-off4,.h-kn){
+    animation-duration:var(--dur-scene);animation-timing-function:var(--ease-in-out-soft);animation-iteration-count:infinite;animation-fill-mode:both}
+  .scene--hand.is-live .sc-hand{animation-name:h-hand;animation-timing-function:var(--ease-standard)}
+  .scene--hand.is-live .sc-hand__carry{animation-name:h-carry}
+  .scene--hand.is-live .sc-ring{animation-timing-function:var(--ease-out)}
+  .scene--hand.is-live .sc-ring[data-at="p1"]{animation-name:h-ring1}.scene--hand.is-live .sc-ring[data-at="p2"]{animation-name:h-ring2}
+  .scene--hand.is-live .sc-ring[data-at="p3"]{animation-name:h-ring3}.scene--hand.is-live .sc-ring[data-at="p4"]{animation-name:h-ring4}
+  .scene--hand.is-live .h-on1{animation-name:h-on1}.scene--hand.is-live .h-on2{animation-name:h-on2}.scene--hand.is-live .h-on3{animation-name:h-on3}
+  .scene--hand.is-live .h-on4{animation-name:h-on4}.scene--hand.is-live .h-on5{animation-name:h-on5}
+  .scene--hand.is-live .h-off1{animation-name:h-off1}.scene--hand.is-live .h-off2{animation-name:h-off2}
+  .scene--hand.is-live .h-off3{animation-name:h-off3}.scene--hand.is-live .h-off4{animation-name:h-off4}
+  .scene--hand.is-live .h-kn{animation-name:h-kn1}.scene--hand.is-live .h-kn.h-at2{animation-name:h-kn2}
+  .scene--hand.is-offscreen *{animation-play-state:paused !important}
+}
+@keyframes h-hand{0%,4%{opacity:0;transform:translate(var(--p0x),var(--p0y))}8%,10%{opacity:1;transform:translate(var(--p0x),var(--p0y))}
+  21%,26%{transform:translate(var(--p1x),var(--p1y))}33%,38%{transform:translate(var(--p2x),var(--p2y))}45%,50%{transform:translate(var(--p3x),var(--p3y))}
+  57%,62%{transform:translate(var(--p4x),var(--p4y))}69%,74%{opacity:1;transform:translate(var(--p5x),var(--p5y))}82%,100%{opacity:0;transform:translate(var(--p5x),var(--p5y))}}
+@keyframes h-carry{0%,8%{opacity:0}10%,58%{opacity:1}62%,100%{opacity:0}}
+@keyframes h-ring1{0%,21%{opacity:0;transform:scale(.3)}22%{opacity:1;transform:scale(.4)}28%,100%{opacity:0;transform:scale(1.4)}}
+@keyframes h-ring2{0%,33%{opacity:0;transform:scale(.3)}34%{opacity:1;transform:scale(.4)}40%,100%{opacity:0;transform:scale(1.4)}}
+@keyframes h-ring3{0%,45%{opacity:0;transform:scale(.3)}46%{opacity:1;transform:scale(.4)}52%,100%{opacity:0;transform:scale(1.4)}}
+@keyframes h-ring4{0%,57%{opacity:0;transform:scale(.3)}58%{opacity:1;transform:scale(.4)}64%,100%{opacity:0;transform:scale(1.4)}}
+@keyframes h-on1{0%,22%{opacity:0;transform:scale(.94)}27%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on2{0%,34%{opacity:0;transform:scale(.94)}39%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on3{0%,46%{opacity:0;transform:scale(.94)}51%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on4{0%,58%{opacity:0;transform:scale(.94)}63%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-on5{0%,70%{opacity:0;transform:scale(.94)}75%,92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes h-off1{0%,22%{opacity:1}27%,92%{opacity:0}100%{opacity:1}}
+@keyframes h-off2{0%,34%{opacity:1}39%,92%{opacity:0}100%{opacity:1}}
+@keyframes h-off3{0%,46%{opacity:1}51%,92%{opacity:0}100%{opacity:1}}
+@keyframes h-off4{0%,58%{opacity:1}63%,92%{opacity:0}100%{opacity:1}}
+@keyframes h-kn1{0%,22%{transform:none}27%,100%{transform:translateX(12px)}}
+@keyframes h-kn2{0%,34%{transform:none}39%,100%{transform:translateX(12px)}}
+
 
 /* ---------- The ink band: architecture, straight, edge to edge (SHP-01) ---------- */
 .band-inverse{position:relative;isolation:isolate;background:var(--surface-inverse);color:var(--text-on-inverse);box-shadow:var(--bleed-shadow-inverse);clip-path:var(--bleed-clip);border:0;border-radius:0}
