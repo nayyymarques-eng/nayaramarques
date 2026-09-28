@@ -417,6 +417,9 @@
       if (cs.backgroundImage !== 'none' || /blur/.test(cs.backdropFilter || '')) return null;
       const c = rgba(cs.backgroundColor);
       if (c[3] > 0) { layers.push(c); if (c[3] >= 1) break; }
+      // the sticky header's frost lives on its ::before (HDR-01): count its tint as a layer, the blur as nothing
+      const fb = getComputedStyle(a, '::before');
+      if (a.matches('[data-nav-bar]') && fb.content !== 'none') { const f = rgba(fb.backgroundColor); if (f[3] > 0) layers.push(f); }
     }
     let g = [255, 255, 255, 1];
     for (let i = layers.length - 1; i >= 0; i--) g = over(layers[i], g);

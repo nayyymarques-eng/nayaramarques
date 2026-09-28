@@ -6,8 +6,21 @@
       0 flat      text, rules, .tag, the ink band, actions' ground
       1 resting   .card, .link-card, .accordion, the case index   radius md, --elevation-1
       2 raised    .figure, .plan-card, a hovered link card        radius lg, --elevation-2
-      3 floating  the sticky header, menus                        radius md, --elevation-3
+      3 floating  menus                                           radius md, --elevation-3
+   The sticky header is not a surface: a frosted fade with no band and no edge (HDR-01).
    Frame -1 or -2, story 0, evidence +2. Only these variants exist. */
+
+/* ---------- The sticky header: no band, no edge (HDR-01, Nayara 2026-09-28) ----------
+   The header paints nothing itself. Its frost (the page tint and the blur) sits on ::before,
+   runs --space-2xl below the header and fades to nothing, so text passing under it softens
+   gradually and the header never reads as a band with a hard bottom edge over the sky.
+   No shade: a floating shade drew that edge. The mask only reads alpha, so any opaque
+   token will do for the solid stop. The tint is 60% (was 46%) so the red name passes AA
+   over the sky's darkest point (COL-08, 4.57:1). */
+[data-nav-bar]::before{content:"";position:absolute;left:0;right:0;top:0;bottom:calc(-1 * var(--space-2xl));z-index:-1;pointer-events:none;
+  background:color-mix(in srgb,var(--surface-page) 60%,transparent);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  -webkit-mask-image:linear-gradient(180deg,var(--surface-card) 0,var(--surface-card) calc(100% - var(--space-2xl) - var(--space-md)),transparent 100%);
+  mask-image:linear-gradient(180deg,var(--surface-card) 0,var(--surface-card) calc(100% - var(--space-2xl) - var(--space-md)),transparent 100%)}
 
 /* ---------- Actions: exactly three variants (ACT-01) ----------
    Identical geometry: 12px radius, 44px tall, 20px side padding, 15px, weight 500,

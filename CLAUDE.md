@@ -112,7 +112,7 @@ Nayara: new tokens (new role names included); merging values that differ; any co
 | 0 | Flat | text, titles, rules, tags, the ink band, the sky | none, or pill for tags | none |
 | 1 | Resting | cards, link cards, accordions, DecisionCards, steps and chips | md (sm inside a surface) | `--elevation-1` |
 | 2 | Raised | evidence: figures, plan cards, a hovered link card | lg | `--elevation-2` |
-| 3 | Floating | the sticky header, menus | md | `--elevation-3` |
+| 3 | Floating | menus (the sticky header is not a surface: HDR-01) | md | `--elevation-3` |
 - **DEP-01** Frame −1 or −2, story 0, evidence +2. Titles and text never cast a shadow. No other variants. A case scene (ILL-06) is story (0): it has no frame (the −2 window is gone), and its cards sit straight on the sky at level 1, its product surface at level 2 (DEP-03) (Nayara 2026-09-28, direction B).
 - **DEP-02** Siblings share one level: every card in a group is level 1.
 - **DEP-03** A surface inside a surface is flat, with the small radius. Only a window (−2) holds level-1 product UI. The one exception: a case scene (ILL-06) sets its surfaces straight on the sky, levels 1 to 3, with no frame; its product surface is level 2 and a menu over it level 3.
@@ -140,8 +140,12 @@ Nayara: new tokens (new role names included); merging values that differ; any co
 - **FLW-01** Flows read horizontally, left to right; compared flows share one column grid, so the same moment lines up. On a phone (760px and down) a flow scrolls inside its frame, and the frame runs to both screen edges: no mask stops it short of the edge, and the first step starts on the gutter (`.flow-scroll` bleeds by `--page-gutter` and pads back; a flow figure gives up its white card there; rules around a flow stay at content width; Nayara 2026-09-27). *(check_pages FLW-01: the scroller spans the screen; the flow starts on the gutter within 6px)*
 - **FLW-02** A considered option is labelled with its reason (`.tag--considered`, "Considered · reason"), never struck through; the decided one is labelled Chosen (`.tag--chosen`). *(check_source, warning; product mockups showing a deletion are excepted)*
 
+### Header (HDR)
+- **HDR-01** The sticky header shows no band and no edge on any page (Nayara 2026-09-28: "We should not see this background split, none of the pages"). The header paints nothing itself: its frost (`--surface-page` at 60%, so the red name passes AA over `--sky-deepest`, and a 20px blur) sits on `[data-nav-bar]::before` in `components.css`, runs `--space-2xl` below the header and fades to transparent through a mask, so text passing under it softens gradually while the nav stays readable. No shade under it (the floating shade drew the hard edge). Both headers carry `data-nav-bar` (`Nav.dc.html`, `404.html`); never give a header its own background, blur or shadow. COL-08 counts the frost's tint as the header's ground. The site has no dark mode; if one comes, the frost follows `--surface-page`. *(by eye; screenshots `_review/home-illo-hand/header/`)*
+
 ### Sky (SKY)
 - **SKY-01** One sky behind every page (`sky.js`, `[data-sky]` in `base.css`): the far plane is one continuous gradient moving at `--sky-speed` of the scroll; the grain lives on the sky, the ink band, wells and notes; white surfaces stay clean. Under reduced motion it does not move with the scroll. *(check_source: every page loads sky.js; check_pages: MOT-01)*
+- **SKY-01a** The sky covers the whole screen at every scroll position on every page (no fixed-height layer ending mid-page): `sky.js` sizes it to the travel it needs and resizes as the page grows. Checked 2026-09-28 on all 16 pages at 1400px and 375px, with and without reduced motion, at the top, middle and bottom of the scroll.
 - **SKY-02** No page or section paints its own ground: the body is transparent, no tinted bands, no page-coloured bleed, no painted hero backdrop. Only the ink band is full bleed. *(check_source, check_pages)*
 - **SKY-03** The sky's depth stays light enough that muted text, the accent and tags pass AA at its darkest point; `--sky-deepest` records it, measured from a render. Change the gradient, re-measure.
 
