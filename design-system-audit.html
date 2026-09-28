@@ -75,7 +75,7 @@ h3{font-size:var(--size-statement);line-height:1.22;letter-spacing:var(--track-s
   text-transform:uppercase;color:var(--text-meta);margin:0 0 var(--space-9)}
 .eyebrow.accent{color:var(--text-accent)}
 .lead{font-size:var(--size-lead);line-height:var(--leading-lead);letter-spacing:var(--track-lead);color:var(--text-body);max-width:44ch}
-.audit p.sub{font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:1.5;letter-spacing:-0.015em;color:var(--ink-2);max-width:58ch;margin:0;text-wrap:pretty}
+.audit p.sub{font-size:clamp(16px,1.15vw,18px);font-weight:400;line-height:var(--leading-body,1.7);letter-spacing:-0.015em;color:var(--ink-2);max-width:58ch;margin:0;text-wrap:pretty}
 
 
 
@@ -161,7 +161,7 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 <section class="band" id="why">
   <div class="wrap">
     <p class="eyebrow">Why now</p>
-    <h2>If AI writes your UI, your design system is the budget</h2>
+    <h2>How the design system affects the cost of AI-built UI</h2>
     <p style="margin-top:var(--space-9)">When components and tokens are reachable, an agent writes less, reuses more and needs fewer corrections. When they are not, you pay for every guess in tokens, review and rework.</p>
     <div class="grid two">
       <div class="cell">
@@ -181,13 +181,13 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
 <section>
   <div class="wrap">
     <p class="eyebrow">The cost of drift</p>
-    <h2>Every value an agent guesses, you pay for twice</h2>
-    <p style="margin-top:var(--space-9)">Once when it is written, again when someone catches it in review. Drift is a throughput problem, not a tidiness one.</p>
+    <h2>Each value an agent guesses is paid for twice</h2>
+    <p style="margin-top:var(--space-9)">Once when it is written, again when someone catches it in review. Drift reduces throughput; it is more than a tidiness issue.</p>
     <div class="grid two">
       <div class="cell"><p class="label traded">Tokens</p><h3>Raw values are long</h3><p style="margin-top:var(--space-5)">A component call is one line. The same part by hand is forty, and you pay for all forty every time.</p></div>
-      <div class="cell"><p class="label traded">Review</p><h3>Guesses land on a person</h3><p style="margin-top:var(--space-5)">An off-scale value looks right and reads wrong. Catching and fixing it costs more than generating it.</p></div>
-      <div class="cell"><p class="label traded">Consistency</p><h3>Near-misses ship</h3><p style="margin-top:var(--space-5)">Nine near-identical greys. A button rebuilt because the real one was hard to find. Nothing fails a test; the product feels loose.</p></div>
-      <div class="cell"><p class="label traded">Accessibility</p><h3>Conditions slip quietly</h3><p style="margin-top:var(--space-5)">Contrast below the minimum, motion that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></div>
+      <div class="cell"><p class="label traded">Review</p><h3>Guesses go to human review</h3><p style="margin-top:var(--space-5)">An off-scale value can look correct and still be wrong. Catching and fixing it costs more than generating it.</p></div>
+      <div class="cell"><p class="label traded">Consistency</p><h3>Near-misses ship</h3><p style="margin-top:var(--space-5)">Nine near-identical greys. A button rebuilt because the real one was hard to find. No test fails, but the product looks inconsistent.</p></div>
+      <div class="cell"><p class="label traded">Accessibility</p><h3>Conditions go unchecked</h3><p style="margin-top:var(--space-5)">Contrast below the minimum, motion that ignores the reduced-motion setting. Nobody notices until someone cannot use the screen.</p></div>
     </div>
   </div>
 </section>
@@ -230,7 +230,7 @@ summary:focus-visible{outline:2px solid var(--text-strong);outline-offset:3px}
     </div>
     <div>
       <p class="eyebrow">Who runs it</p>
-      <h2 style="margin-bottom:var(--space-11)">I design systems, and I ship them</h2>
+      <h2 style="margin-bottom:var(--space-11)">I design and ship design systems</h2>
       <p>Nine years designing products, lately also writing the code. Based in Barcelona, on US East Coast hours. Fintech, logistics and energy, from a seed startup to one of Latin America's largest investment banks.</p>
       <p>I built the design system for an AI platform in private capital markets, in Claude Design: 48 components, 9 templates, tokens as the single source of truth, validation that catches AI drift. The audit is that method, applied to your system.</p>
       <p style="margin:0"><a href="work.html" style="font-size:11px;font-weight:600;letter-spacing:0.12em;line-height:1.4;text-transform:uppercase;text-decoration:none;color:var(--rust)">See the work →</a></p>
