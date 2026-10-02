@@ -2,7 +2,7 @@
 
 Read this first in every session; update it before you stop (CLAUDE.md §0). Three blocks, kept short: what is true now, what waits on Nayara, what comes next. Decisions live in `DECISIONS.md`; Nayara's personal list is `~/Claude/tasks.md` (good night copies "Waiting on Nayara" there, one line per item).
 
-Updated: 2026-10-02 (CI on GitHub Actions and a pre-commit secret check, on branch `base-ci`, not pushed yet; earlier the same day: the domain moved to Cloudflare, Netlify closed).
+Updated: 2026-10-02 (domain on Cloudflare, Netlify closed; email and CV on hello@nayaramarques.com, live; CI on GitHub Actions and a pre-commit secret check in PR #11, font-dependent rules only warn on Linux).
 
 ## Current state
 - **Live (main c279f93, PR #10, deployed 2026-09-28 on her word "Deploy beautiful illustrations"):** the six home and Work case scenes in direction B "The hand" (cursor performs each change on a 12s loop, paused off screen, still under reduced motion, stacked and still below 900px; labels AI page, apart · The platform, three screens · Fixed bundle, one price · Two answers / One source / New part to review), and the sticky header without a band on every page (HDR-01: frost on `[data-nav-bar]::before`, 60% tint, fading 32px below the header, no shade; COL-08 counts the frost). Sky checked on all 16 pages for a split: none (SKY-01a). `harness/check.py` PASS. Cloudflare Workers Builds deploys it; the workers.dev address redirects to https://nayaramarques.com. Screenshots `_review/home-illo-hand/header/`, `_review/home-illo-hand/shots/`.
@@ -13,7 +13,7 @@ Updated: 2026-10-02 (CI on GitHub Actions and a pre-commit secret check, on bran
 - **CI and secret check (2026-10-02, branch `base-ci`, not pushed yet):** `.github/workflows/check.yml` runs `python3 harness/check.py` on every pull request and every push to main (GitHub Actions, ubuntu-latest, free Linux minutes; the runner's Chrome via `CHROME=google-chrome`, and `--no-sandbox` only when `CI` is set; on the Mac nothing changes). It does not hold back the Cloudflare deploy: the merge publishes, so read the check on the PR first. `.githooks/pre-commit` scans the staged diff and blocks private keys, API keys and tokens (Resend, Anthropic, OpenAI, AWS, GitHub, Cloudflare), literal passwords, valid CPFs, `data/` and `.env` files; on with `git config core.hooksPath .githooks` (done on this Mac), dry run `.githooks/pre-commit --all` (clean on the whole tree). `.github` and `.githooks` are in `.assetsignore`, so neither is ever published.
 
 ## Waiting on Nayara
-- Push `base-ci` and open its PR (the commands are in Next steps, item 7). Its first run on GitHub is the first time the rendered checks run on Linux, where SF Pro does not exist: if only rules measured on text (line counts, wraps) fail there, the choice is a macOS runner (same fonts as the Mac, minutes count 10×) or those rules on the Mac only.
+- Merge PR #11 (CI) once its checks are green. The email and CV changes (branch `site-email`) are live since 2026-10-02.
 - Look at the header on her phone and desktop (no band now; the frost fades under the nav). Open PRs #8 (ds-sync-local) and #9 (copy-condense draft) untouched.
 - Keep or drop the uncommitted ds-sync skill work in the main checkout.
 - Illustration atlas and section reader comments (optional). Atlas https://claude.ai/artifact/677im2fSPCqJWwvpm68v9C · Reader https://claude.ai/artifact/R1DMTmECbXHeNF83mxA2Da
