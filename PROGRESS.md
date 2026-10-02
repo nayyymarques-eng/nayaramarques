@@ -2,7 +2,7 @@
 
 Read this first in every session; update it before you stop (CLAUDE.md §0). Three blocks, kept short: what is true now, what waits on Nayara, what comes next. Decisions live in `DECISIONS.md`; Nayara's personal list is `~/Claude/tasks.md` (good night copies "Waiting on Nayara" there, one line per item).
 
-Updated: 2026-10-02 (the domain moved to Cloudflare; Netlify closed).
+Updated: 2026-10-02 (the domain moved to Cloudflare; Netlify closed; email and CV on hello@nayaramarques.com, branch site-email).
 
 ## Current state
 - **Live (main c279f93, PR #10, deployed 2026-09-28 on her word "Deploy beautiful illustrations"):** the six home and Work case scenes in direction B "The hand" (cursor performs each change on a 12s loop, paused off screen, still under reduced motion, stacked and still below 900px; labels AI page, apart · The platform, three screens · Fixed bundle, one price · Two answers / One source / New part to review), and the sticky header without a band on every page (HDR-01: frost on `[data-nav-bar]::before`, 60% tint, fading 32px below the header, no shade; COL-08 counts the frost). Sky checked on all 16 pages for a split: none (SKY-01a). `harness/check.py` PASS. Cloudflare Workers Builds deploys it; the workers.dev address redirects to https://nayaramarques.com. Screenshots `_review/home-illo-hand/header/`, `_review/home-illo-hand/shots/`.
@@ -12,6 +12,7 @@ Updated: 2026-10-02 (the domain moved to Cloudflare; Netlify closed).
 - **Domain (2026-10-02):** nayaramarques.com is in her own Name.com account, with name servers coco / maciej.ns.cloudflare.com. The Cloudflare zone is active: apex and www are custom domains of the `nayaramarques` Worker (valid HTTPS, Always Use HTTPS on, a www → root redirect rule). Zoho email records are on Cloudflare (MX ×3, SPF, DMARC, DKIM selector `zmail`, all verified). Netlify is gone: project and DNS zone deleted, and the plan downgrades to Free; `netlify.toml` was removed.
 
 ## Waiting on Nayara
+- Branch `site-email`, two commits: the email on the pages, then the CV replaced by the job-search master. Read the CV differences in the second commit's message before pushing; push only the first if she prefers.
 - Look at the header on her phone and desktop (no band now; the frost fades under the nav). Open PRs #8 (ds-sync-local) and #9 (copy-condense draft) untouched.
 - Keep or drop the uncommitted ds-sync skill work in the main checkout.
 - Illustration atlas and section reader comments (optional). Atlas https://claude.ai/artifact/677im2fSPCqJWwvpm68v9C · Reader https://claude.ai/artifact/R1DMTmECbXHeNF83mxA2Da

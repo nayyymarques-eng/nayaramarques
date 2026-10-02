@@ -5,6 +5,7 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 Format: date · decision · what it replaces or rules out · enforced by.
 
 ## 2026-10-02
+- Every file carries hello@nayaramarques.com, the CV included ("let's change everything"). The site CV (`assets/nayara-marques-resume.pdf` and `.md`) becomes the job-search master, `~/JobSearch/templates/resume-master.html`, the only CV with a source; its content differs from the 22 Sep CV (listed in the commit), so she reads the list before pushing. · the 22 Sep CV with the Outlook address (ReportLab PDF, no source) · by eye; `check_text.py` CON-04 in ~/JobSearch
 - The site's email is hello@nayaramarques.com ("yes update the email address on the website"): footer, Contact page, 404 and the Start a project inbox. · nayara.marques@outlook.com on the public pages (the CV keeps it until she says) · by eye
 - The domain lives on Cloudflare: name servers moved from Netlify, apex and www on the Worker, Always Use HTTPS, www → root redirect; Netlify closed. · Netlify hosting and DNS · by eye
 
