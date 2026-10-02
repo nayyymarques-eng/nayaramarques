@@ -1,0 +1,166 @@
+#!/usr/bin/env bash
+# Pre-commit: bloqueia segredos antes de entrarem no Git. Lê só o que está staged (git add), nunca o resto da pasta.
+#
+# Ligar (uma vez por clone):  git config core.hooksPath .githooks
+# Varrer todos os arquivos versionados (modo seco, não bloqueia nada):  .githooks/pre-commit --all
+#
+# Bloqueia, com alta confiança:
+#   - bloco de chave privada (-----BEGIN ... PRIVATE KEY-----)
+#   - chave do Resend (re_...), da Anthropic (sk-ant-...), da OpenAI (sk-... / sk-proj-...)
+#   - chave da AWS (AKIA... / ASIA...), token do GitHub (ghp_, gho_, ghu_, ghs_, ghr_, github_pat_)
+#   - token da Cloudflare (cfut_, cfat_, cfk_; ou CLOUDFLARE_API_TOKEN / CF_API_TOKEN com valor)
+#   - password= / senha= (e password: "...") seguidos de um valor literal
+#   - CPF formatado (000.000.000-00) com dígitos verificadores válidos (menos o exemplo 123.456.789-09)
+#   - qualquer arquivo em data/ (e data-backup-*/) na raiz, qualquer .env (menos .env.example) e o .dev.vars do Wrangler
+#
+# Falso positivo numa linha de exemplo: acrescente "secret-scan: allow" num comentário dessa linha.
+# Último recurso, com certeza de que não é segredo: git commit --no-verify
+set -u
+
+modo=staged
+case "${1:-}" in
+  --all) modo=all ;;
+  "") ;;
+  *) echo "uso: .githooks/pre-commit [--all]" >&2; exit 2 ;;
+esac
+
+raiz=$(git rev-parse --show-toplevel) || exit 2
+cd "$raiz" || exit 2
+
+# Caminhos proibidos: data/ e arquivos de segredo, só os que entram ou mudam (apagar um deles é permitido).
+if [ "$modo" = staged ]; then
+  caminhos=$(git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR)
+else
+  caminhos=$(git -c core.quotePath=false ls-files)
+fi
+achados_caminho=$(printf '%s\n' "$caminhos" | awk '
+  $0 == "" { next }
+  {
+    n = split($0, partes, "/"); base = partes[n]
+    if ($0 ~ /^data(-backup-[^\/]*)?\//) { print "  " $0 "  [pasta data/: dados de cliente nunca entram no Git]"; next }
+    if (base ~ /^\.env(\..*)?$/ && base != ".env.example") { print "  " $0 "  [arquivo .env: as chaves ficam fora do Git; o modelo é .env.example]"; next }
+    if (base ~ /^\.dev\.vars(\..*)?$/) { print "  " $0 "  [.dev.vars: segredos locais do Wrangler]"; next }
+  }')
+
+# Conteúdo: cada linha nova vira "caminho<TAB>linha<TAB>texto" e passa pelas regras.
+linhas() {
+  if [ "$modo" = staged ]; then
+    git -c core.quotePath=false diff --cached -U0 --no-color --no-ext-diff --no-textconv --no-renames --diff-filter=ACMR \
+      --src-prefix=a/ --dst-prefix=b/ | awk '
+      /^diff --git / { cab = 1; next }
+      cab && /^\+\+\+ / { arq = substr($0, 7); sub(/\t$/, "", arq); next }
+      /^@@ / { cab = 0; split($3, novo, ","); n = substr(novo[1], 2) + 0; next }
+      cab { next }
+      /^\+/ { print arq "\t" n "\t" substr($0, 2); n++; next }
+    '
+  else
+    # git grep -I pula binários; -e "" casa toda linha
+    git -c core.quotePath=false grep --cached -I -n -e '' | awk '
+      { if (match($0, /:[0-9]+:/)) print substr($0, 1, RSTART - 1) "\t" substr($0, RSTART + 1, RLENGTH - 2) "\t" substr($0, RSTART + RLENGTH) }
+    '
+  fi
+}
+
+achados_conteudo=$(linhas | awk -F '\t' '
+  function oculta(s) { return substr(s, 1, length(s) >= 16 ? 4 : 2) "…" }   # nunca o segredo inteiro na tela
+  function mistura(s,   m) {   # parece aleatório: maiúscula, minúscula e dígito
+    m = 0
+    if (s ~ /[A-Z]/) m++
+    if (s ~ /[a-z]/) m++
+    if (s ~ /[0-9]/) m++
+    return m == 3
+  }
+  function achou(regra, trecho) { print "  " arq ":" num "  [" regra "]  " oculta(trecho); }
+  # procura re em s com uma borda antes e depois (nada de letra, dígito, _ ou - colado); devolve o trecho ou ""
+  function busca(s, re,   resto, ini, t) {
+    resto = s
+    while (match(resto, re)) {
+      t = substr(resto, RSTART, RLENGTH)
+      ini = (RSTART == 1) ? "" : substr(resto, RSTART - 1, 1)
+      if (ini !~ /[A-Za-z0-9_-]/ && substr(resto, RSTART + RLENGTH, 1) !~ /[A-Za-z0-9_]/) return t
+      resto = substr(resto, RSTART + 1)
+    }
+    return ""
+  }
+  function cpf_valido(t,   d, i, s, r, v1, v2) {
+    gsub(/[^0-9]/, "", t)
+    if (t ~ /^(0+|1+|2+|3+|4+|5+|6+|7+|8+|9+)$/) return 0
+    for (i = 1; i <= 11; i++) d[i] = substr(t, i, 1) + 0
+    s = 0; for (i = 1; i <= 9; i++) s += d[i] * (11 - i)
+    r = (s * 10) % 11; if (r == 10) r = 0; v1 = r
+    s = 0; for (i = 1; i <= 10; i++) s += d[i] * (12 - i)
+    r = (s * 10) % 11; if (r == 10) r = 0; v2 = r
+    return v1 == d[10] && v2 == d[11]
+  }
+  {
+    arq = $1; num = $2
+    txt = $0; sub(/^[^\t]*\t[^\t]*\t/, "", txt)
+    if (txt ~ /secret-scan: allow/) next
+    if (arq ~ /(^|\/)\.githooks\/pre-commit$/) next   # este arquivo descreve os padrões
+
+    if (match(txt, /-----BEGIN[ A-Z0-9]*PRIVATE KEY( BLOCK)?-----/)) achou("chave privada", substr(txt, RSTART, RLENGTH))
+
+    t = busca(txt, "re_[A-Za-z0-9]{6,12}_[A-Za-z0-9]{16,40}")
+    if (t != "" && mistura(t)) achou("chave do Resend", t)
+
+    t = busca(txt, "sk-ant-[A-Za-z0-9_-]{20,}")
+    if (t != "") achou("chave da Anthropic", t)
+    else {
+      t = busca(txt, "sk-(proj-|svcacct-|admin-)?[A-Za-z0-9_-]{20,}")
+      if (t != "" && mistura(t)) achou("chave sk- (OpenAI ou parecida)", t)
+    }
+
+    t = busca(txt, "(AKIA|ASIA)[0-9A-Z]{16}")
+    if (t != "" && t !~ /EXAMPLE/) achou("chave da AWS", t)
+
+    t = busca(txt, "(ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{36,}")
+    if (t != "") achou("token do GitHub", t)
+    t = busca(txt, "github_pat_[A-Za-z0-9_]{40,}")
+    if (t != "") achou("token do GitHub", t)
+
+    t = busca(txt, "cf(ut|at|k)_[A-Za-z0-9]{40,}")
+    if (t != "") achou("token da Cloudflare", t)
+    if (match(txt, /(CLOUDFLARE|CF)_API_(TOKEN|KEY)["\047]?[ \t]*[:=][ \t]*["\047]?[A-Za-z0-9_-]{37,}/)) achou("token da Cloudflare", substr(txt, RSTART, RLENGTH))
+
+    # senha literal: password|passwd|senha (com prefixo/sufixo, ex.: SMTP_PASSWORD) = ou : "valor"; ou VAR=valor no início
+    # da linha (estilo .env) ou ?senha=valor numa URL. Fica de fora: variável, ${...}, process.env, vazio, placeholders.
+    low = tolower(txt); val = ""
+    if (match(low, /(password|passwd|senha)[a-z0-9_]*["\047]?[ \t]*[:=][ \t]*["\047][^"\047 \t]{4,}["\047]/)) {
+      val = substr(low, RSTART, RLENGTH); sub(/^[^:=]*[:=][ \t]*["\047]/, "", val); sub(/["\047]$/, "", val)
+    } else if (match(low, /^[ \t]*(export[ \t]+)?[a-z0-9_]*(password|passwd|senha)[a-z0-9_]*=[^ \t"\047]{4,}/)) {
+      val = substr(low, RSTART, RLENGTH); sub(/^[^=]*=/, "", val)
+    } else if (match(low, /[?&](password|passwd|senha)=[^&# \t"\047]{4,}/)) {
+      val = substr(low, RSTART, RLENGTH); sub(/^[^=]*=/, "", val)
+    }
+    if (val != "" && val !~ /^(\$|\{|<|%|process\.env|x+$|\*+$|\.\.\.|change.?me|example|exemplo|placeholder|redacted|secret$|senha$|password$|sua.?senha|your.?password|teste?$|test$)/) achou("senha literal", val)
+
+    # CPF só formatado e com dígitos válidos; 123.456.789-09 é o número de exemplo de sempre. Onze dígitos soltos ficam
+    # de fora: cerca de 1 em 100 números quaisquer passa no dígito verificador (ids, datas, telefones).
+    t = busca(txt, "[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}")
+    if (t != "" && t != "123.456.789-09" && cpf_valido(t)) achou("CPF", t)
+  }')
+
+if [ -z "$achados_caminho" ] && [ -z "$achados_conteudo" ]; then
+  [ "$modo" = all ] && echo "pre-commit --all: nada encontrado nos arquivos versionados."
+  exit 0
+fi
+
+if [ "$modo" = all ]; then
+  echo "pre-commit --all (modo seco: nada foi bloqueado). Encontrado nos arquivos versionados:"
+else
+  echo ""
+  echo "Commit bloqueado: parece haver um segredo ou dado pessoal no que está staged."
+fi
+[ -n "$achados_caminho" ] && printf '%s\n' "$achados_caminho"
+[ -n "$achados_conteudo" ] && printf '%s\n' "$achados_conteudo"
+if [ "$modo" = staged ]; then
+  cat <<'EOF'
+
+O que fazer:
+  - Tire o segredo do arquivo (ele fica no .env, que o Git ignora) e rode git add de novo.
+  - Arquivo que não deveria entrar: git restore --staged <arquivo>
+  - Linha de exemplo, sem segredo de verdade: acrescente "secret-scan: allow" num comentário dela.
+  - Se tiver certeza de que é falso positivo: git commit --no-verify
+EOF
+fi
+exit 1

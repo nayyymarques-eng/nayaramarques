@@ -5,16 +5,20 @@ import { spawn } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// Chrome: the CHROME variable when set (GitHub Actions sets it to google-chrome on its Linux runner), else the Mac's Google Chrome.
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const WIDTHS = [1400, 375];
 const [base, ...pages] = process.argv.slice(2);
 const script = readFileSync(fileURLToPath(new URL('./check_pages.js', import.meta.url)), 'utf8');
 const port = 9400 + Math.floor(Math.random() * 400);
 
-const chrome = spawn(CHROME, ['--headless=new', `--remote-debugging-port=${port}`, '--hide-scrollbars', 'about:blank'], { stdio: 'ignore' });
+// On a CI runner (CI=true) Chrome runs without its sandbox, which a Linux runner may not allow; it only opens this repo's pages.
+const chrome = spawn(CHROME, ['--headless=new', `--remote-debugging-port=${port}`, '--hide-scrollbars', ...(process.env.CI ? ['--no-sandbox'] : []), 'about:blank'], { stdio: 'ignore' });
+chrome.on('error', e => { console.log(`FAIL  Chrome did not start (${CHROME}: ${e.code || e.message}). Set CHROME to the browser's path.`); process.exit(1); });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let tabs;
 for (let i = 0; i < 40 && !tabs; i++) { await sleep(250); try { tabs = await (await fetch(`http://127.0.0.1:${port}/json`)).json(); } catch {} }
+if (!tabs) { console.log(`FAIL  Chrome did not answer (${CHROME}). Set CHROME to the browser's path.`); chrome.kill(); process.exit(1); }
 const ws = new WebSocket(tabs.find(t => t.type === 'page').webSocketDebuggerUrl);
 let id = 0; const pend = {};
 ws.onmessage = e => { const m = JSON.parse(e.data); if (m.id && pend[m.id]) { pend[m.id](m); delete pend[m.id]; } };
