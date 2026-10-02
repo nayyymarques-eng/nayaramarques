@@ -27,8 +27,8 @@ import os
 import re
 import sys
 
-sys.path.insert(0, __file__.split('/.claude/')[0] + '/.claude/skills/ds-handoff/scripts')
-from handoff import DS, ROOT  # noqa: E402  (one definition of the repo root and the _ds path)
+sys.path.insert(0, __file__.split('/.claude/')[0] + '/.claude/skills/ds-sync/scripts')
+from drift import DS, ROOT  # noqa: E402  (one definition of the repo root and the _ds path)
 
 VERDICTS = ROOT + 'harness/verdicts.json'
 VALID = ('promote', 'fold', 'keep-local', 'retire')
@@ -36,7 +36,9 @@ MARKER = re.compile(r'<!--\s*proposal:(.*?)-->', re.S)
 
 
 def manifest():
-    m = json.load(open(DS + '_ds_manifest.json'))
+    # The bundle's first line is its manifest: /* @ds-bundle: {"namespace": …, "components": [{"name": …}]} */
+    first = open(DS + '_ds_bundle.js').readline()
+    m = json.loads(first[len('/* @ds-bundle: '):first.rindex(' */')])
     return m['namespace'], {c['name'] for c in m['components']}
 
 

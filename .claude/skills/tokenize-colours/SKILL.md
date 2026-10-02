@@ -1,6 +1,6 @@
 ---
 name: tokenize-colours
-description: Find hard-coded colours in the nayaramarques.com site and replace them with design-system tokens. Exact matches are swapped automatically; near-duplicates (a hex a few steps off a token) are shown to the owner with the closest token and a recommendation, and only applied after she decides. Use this whenever check_source reports COL-01, when pages or components come in from Claude Design with raw hex values, when the user says "clean up colours", "use the tokens", "merge these greys", "everything that is the same", or before changing a token value (so the change reaches every page).
+description: Find hard-coded colours in the nayaramarques.com site and replace them with design-system tokens. Exact matches are swapped automatically; near-duplicates (a hex a few steps off a token) are shown to the owner with the closest token and a recommendation, and only applied after she decides. Use this whenever check_source reports COL-01, when pages or components come in with raw hex values, when the user says "clean up colours", "use the tokens", "merge these greys", "everything that is the same", or before changing a token value (so the change reaches every page).
 ---
 
 # Tokenize colours
@@ -27,7 +27,7 @@ Two kinds of literal, handled differently on purpose:
 5. **Watch for context the script can't see.** If a merge would erase a distinction (a current-item highlight that would become the same colour as its menu), give that file its own mapping and say so. Past example: `#f8f7f4` went to `--paper` in figures but `--paper-3` in the Nav, where it marks the current page.
 6. **Apply.** `python3 .claude/skills/tokenize-colours/scripts/tokenize.py apply --decisions decisions.json` (add `--dry-run` first on a big run). It also links the tokens stylesheet on pages that lack it, skips custom-property definitions, and skips tokens a file redefines locally.
 7. **Local redefinitions.** If a page redefines tokens in its own `:root`, the script leaves those literals alone. Resolve them: identical copies get deleted; ones that are really another token (its `--ink-4` equal to `--ink-2`) get pointed at that token; a real difference goes to Nayara. COL-04 in `check_source` fails until none remain.
-8. **Token value changes.** If a decision changes a token's value (the winning line colour), edit `colors.css` and tell Nayara the same change is needed in Claude Design, run `ds-handoff` (drift report; she can then start `/ds-sync` or paste the prompt).
+8. **Token value changes.** If a decision changes a token's value (the winning line colour), edit `colors.css` and tell Nayara the design system artifact needs it too: she starts `/ds-sync`.
 9. **Verify.** Run `site-verify` with the fingerprint compare, passing the rgb triples of every colour that was merged as allowed. Anything else that moved is a bug; find it before reporting.
 
 ## Report
@@ -36,4 +36,4 @@ Two kinds of literal, handled differently on purpose:
 - each near-value decision, as applied
 - anything that visibly changed hue (hover colours, highlights)
 - the verify table from `site-verify`
-- the Claude Design follow-up, if a token value changed
+- the `/ds-sync` follow-up, if a token value changed

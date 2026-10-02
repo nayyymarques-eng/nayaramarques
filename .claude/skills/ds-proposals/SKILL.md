@@ -1,6 +1,6 @@
 ---
 name: ds-proposals
-description: Review the components AI invented or copied instead of using the design system, and record Nayara's verdict on each (promote, fold, keep local, retire) in harness/verdicts.json. Finds CMP-03 proposal markers, site components that duplicate or shadow a system component, orphans, and pages that hand-draw a part the system already has. Use this after any build where AI drew something new, when check results or site-verify report open proposals, when the user asks "is this a new component?", "should this be in the design system?", "review proposals", or before a handoff to Claude Design.
+description: Review the components AI invented or copied instead of using the design system, and record Nayara's verdict on each (promote, fold, keep local, retire) in harness/verdicts.json. Finds CMP-03 proposal markers, site components that duplicate or shadow a system component, orphans, and pages that hand-draw a part the system already has. Use this after any build where AI drew something new, when check results or site-verify report open proposals, when the user asks "is this a new component?", "should this be in the design system?", "review proposals", or before a component change goes into the design system artifact.
 ---
 
 # Component proposals
@@ -15,7 +15,7 @@ The model is the one in her harness workflow: **machines produce findings, peopl
 |---|---|---|
 | **fold** | An existing system component does this job. The AI missed it. | Replace the drawn markup with the component (props only, CMP-02); delete a local copy. Then say what made it hard to find, and propose one line for its rules so the next search finds it. |
 | **keep-local** | Fine on this page, not a system part. | Leave it. Keep the marker; the verdict holds until the markup changes. |
-| **promote** | A real gap. It becomes a system component. | Write a brief for Claude Design (name, job, props, when to use, when not to, a picture). Keep the marker until the export brings the component back, then fold to it. |
+| **promote** | A real gap. It becomes a system component. | Write a brief (name, job, props, when to use, when not to, a picture). Keep the marker until the component is in the design system artifact and `_ds`, then fold to it. |
 | **retire** | Nothing uses it and nothing should. | `git rm` the file. |
 
 ## Steps
@@ -40,13 +40,13 @@ The model is the one in her harness workflow: **machines produce findings, peopl
 ## Things to watch
 
 - A `shadow` is not drift by default. The site's Nav may be ahead of the system's. Then the verdict is **promote** (the local one becomes the system version), not fold.
-- A promote changes the design system, which lives in Claude Design (CMP-04). This repo never gains a component by editing `_ds`. Use the brief, and `ds-handoff` or `/ds-sync` for any token it needs.
-- The script reads its paths from `ds-handoff`'s `handoff.py` and the namespace from `_ds_manifest.json`, so the same skill runs on another product (Digest) once those point there.
+- A promote changes the design system, which lives in the design system artifact (CMP-04). This repo never gains a component by editing `_ds` alone. Use the brief, and `/ds-sync` for any token it needs.
+- The script reads its paths from `ds-sync`'s `drift.py` and the namespace and component list from the bundle's first line, so the same skill runs on another product (Digest) once those point there.
 
 ## Report
 
 - items found by kind, and how many were NEW vs EXPIRED
 - per item: the evidence line, the verdict and note as recorded
-- what was applied (files changed or removed), briefs written for Claude Design, and suggested rule lines for folds
+- what was applied (files changed or removed), briefs written, and suggested rule lines for folds
 - site-verify table, if anything was applied
 - what is still open
