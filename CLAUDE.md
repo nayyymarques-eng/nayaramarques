@@ -97,6 +97,7 @@ Token by job. Pages use role names. The old names (`--paper`, `--ink-*`, `--line
 - **CNT-09** Positioning: the harness work governs AI generation (AI exploring and designing), not production. Services: Build = a design system AI can build with; Audit = is AI following your design system.
 - **CNT-10** Don't narrate the design process as if it were news: "made before build", "before any of it was built", "decided before build" state common knowledge. Remove or rephrase minimally, and list the change for Nayara. *(check_source, warning)*
 - **CNT-11** New copy that Nayara has not read carries `data-new-copy="<key>"` until she approves it.
+- **CNT-12** Parallel structure: items of the same kind (a list, a row of cards, meta lines, eyebrows, tags, a table column) use the same fields, in the same order, with the same casing (sentence case per segment); no segment repeats a term another already says; a missing field is omitted, never filled with a repeat (Nayara 2026-10-02).
 
 ## 5. Who decides
 Machine alone: running checks; swapping a literal for a token of the identical value; fixing a finding with one known right answer.
