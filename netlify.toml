@@ -1,6 +1,0 @@
-# Netlify serves nayaramarques.com until the domain moves to Cloudflare.
-# Publish only the public site: copy the repo into dist/, leaving out everything .assetsignore lists
-# (the same private files Cloudflare leaves out: CLAUDE.md, DECISIONS.md, PROGRESS.md, harness, _review, .claude...).
-[build]
-  command = "mkdir -p dist && rsync -a --exclude=dist --exclude-from=.assetsignore ./ dist/"
-  publish = "dist"
