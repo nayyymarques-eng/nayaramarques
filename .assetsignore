@@ -1,4 +1,6 @@
 .git
+.github
+.githooks
 .claude
 .gitignore
 .assetsignore
