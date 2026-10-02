@@ -25,6 +25,8 @@ ws.onmessage = e => { const m = JSON.parse(e.data); if (m.id && pend[m.id]) { pe
 await new Promise(r => (ws.onopen = r));
 const send = (method, params = {}) => new Promise(r => { const i = ++id; pend[i] = r; ws.send(JSON.stringify({ id: i, method, params })); });
 
+// Rules that depend on the font's metrics (wraps, widths set by text); see the CI note below.
+const FONTE = ['LAY-06', 'SEC-06', 'SKY-02', 'TYP-04', 'ILL-07'];
 let failed = 0;
 for (const w of WIDTHS) {
   await send('Emulation.setDeviceMetricsOverride', { width: w, height: 900, deviceScaleFactor: 1, mobile: w < 768 });
@@ -35,8 +37,12 @@ for (const w of WIDTHS) {
     const v = r.result?.result?.value;
     const text = typeof v === 'string' ? v : JSON.stringify(v ?? r.result?.exceptionDetails?.text ?? 'no result');
     const ok = /::\s*pass\s*$/.test(text.trim());
-    if (!ok) failed++;
-    console.log(`${ok ? 'pass' : 'FAIL'}  ${String(w).padStart(4)}px  ${p}${ok ? '' : '\n      ' + text.split('\n').join('\n      ')}`);
+    // On a CI runner the system face (SF Pro) is missing and Linux substitutes a wider one, so rules that measure
+    // text wraps and widths can fail there only. On CI, a page whose every finding is one of those rules is a
+    // warning ("só no Mac"); her Mac run (harness/check.py) still enforces them.
+    const fonte = process.env.CI && !ok && text.split('::').slice(1).join('::').split(/\s;\s|\n/).map(x => x.trim()).filter(Boolean).every(x => FONTE.some(r => x.startsWith(r)));
+    if (!ok && !fonte) failed++;
+    console.log(`${ok ? 'pass' : fonte ? 'aviso (só no Mac)' : 'FAIL'}  ${String(w).padStart(4)}px  ${p}${ok ? '' : '\n      ' + text.split('\n').join('\n      ')}`);
   }
 }
 // once with reduced motion on (MOT-01, ILL-03), for the pages with case scenes: nothing loops, scenes rest resolved
