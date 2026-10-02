@@ -194,7 +194,7 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;inbox&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;nayara.marques@outlook.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;inbox&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;hello@nayaramarques.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
 class Component extends DCLogic {
   state = { status: '' };
   constructor(p) {
@@ -212,7 +212,7 @@ class Component extends DCLogic {
           this.setState({ status: 'Name, email and a line about the work, please.' });
           return;
         }
-        const to = this.props.inbox ?? 'nayara.marques@outlook.com';
+        const to = this.props.inbox ?? 'hello@nayaramarques.com';
         const body = [
           'From: ' + who,
           'Email: ' + mail,

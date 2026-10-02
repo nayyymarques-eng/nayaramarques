@@ -4,6 +4,10 @@ Nayara's verdicts, newest first. Every verdict lands here the same day it is giv
 
 Format: date · decision · what it replaces or rules out · enforced by.
 
+## 2026-10-02
+- The site's email is hello@nayaramarques.com ("yes update the email address on the website"): footer, Contact page, 404 and the Start a project inbox. · nayara.marques@outlook.com on the public pages (the CV keeps it until she says) · by eye
+- The domain lives on Cloudflare: name servers moved from Netlify, apex and www on the Worker, Always Use HTTPS, www → root redirect; Netlify closed. · Netlify hosting and DNS · by eye
+
 ## 2026-09-28
 - Deploy the hand illustrations ("Deploy beautiful illustrations"), with the four label changes: AI page, apart · The platform, three screens · Fixed bundle, one price · case 04 back to Two answers / One source / New part to review. · the round 5 scenes live · CNT-11
 - No background split under the sticky header, on any page ("We should not see this background split, none of the pages"): the header was a tinted, blurred band with a floating shade and a hard bottom edge over the sky. Now the header paints nothing; its frost sits on `::before`, runs `--space-2xl` below and fades out through a mask, with no shade; the tint goes from 46% to 60% so the red name keeps AA over the sky's darkest point. The sky layer was checked for a split on tall pages too: none (it covers the screen at every scroll position on all 16 pages). · the header band with `--elevation-3` · HDR-01, SKY-01a (by eye; screenshots `_review/home-illo-hand/header/`)
